@@ -8,11 +8,11 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Tesamorelin / Ipamorelin two-compound research SKU. Cellular signaling research duo. Third-party tested lot. Catalog price USD 155. RUO only.">
-<link rel="canonical" href="https://biofirst.co/products/tesamorelin-ipamorelin">
+<link rel="canonical" href="https://biolabsresearch.co/products/tesamorelin-ipamorelin">
 <meta property="og:title" content="Tesamorelin / Ipamorelin | BioLabs Research Laboratory">
 <meta property="og:description" content="Tesamorelin / Ipamorelin two-compound research SKU. Cellular signaling research duo. Third-party tested lot. Catalog price USD 155. RUO only.">
 <meta property="og:image" content="/media/label-upright-v2.webp">
-<meta property="og:url" content="https://biofirst.co/products/tesamorelin-ipamorelin">
+<meta property="og:url" content="https://biolabsresearch.co/products/tesamorelin-ipamorelin">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
@@ -32,7 +32,7 @@
   },
   "offers": {
     "@type": "Offer",
-    "url": "https://biofirst.co/products/tesamorelin-ipamorelin",
+    "url": "https://biolabsresearch.co/products/tesamorelin-ipamorelin",
     "priceCurrency": "USD",
     "price": "155",
     "availability": "https://schema.org/InStock"
@@ -48,19 +48,19 @@
       "@type": "ListItem",
       "position": 1,
       "name": "Home",
-      "item": "https://biofirst.co/"
+      "item": "https://biolabsresearch.co/"
     },
     {
       "@type": "ListItem",
       "position": 2,
       "name": "Catalog",
-      "item": "https://biofirst.co/"
+      "item": "https://biolabsresearch.co/"
     },
     {
       "@type": "ListItem",
       "position": 3,
       "name": "Tesamorelin / Ipamorelin",
-      "item": "https://biofirst.co/products/tesamorelin-ipamorelin"
+      "item": "https://biolabsresearch.co/products/tesamorelin-ipamorelin"
     }
   ]
 }
@@ -394,7 +394,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     el.textContent = JSON.stringify(obj);
   }
   function applyProductSeo(p){
-    var url = 'https://biofirst.co/products/' + p.slug;
+    var url = 'https://biolabsresearch.co/products/' + p.slug;
     var title = p.name + ' | BioLabs Research RUO Catalog';
     var desc = (p.name + ' research reagent. ' + (p.tagline || '') + ' Third-party tested lot. Catalog price USD ' + p.price + '. Research use only.').replace(/\s+/g,' ').trim();
     document.title = title;
@@ -534,7 +534,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       '</div>';
   }
 
-  fetch('https://biofirst.co/api/products')
+  fetch('https://biolabsresearch.co/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
       localStorage.setItem('biofirst_products', JSON.stringify(products));
@@ -1126,7 +1126,7 @@ function submitCOARequest(e) {
     subject:   'COA Request - ' + (coaRequestProduct || 'General'),
     message:   (document.getElementById('coa-req-msg').value || '') + ' [Product: ' + (coaRequestProduct || 'General') + ']'
   };
-  fetch('https://biofirst.co/api/contact', {
+  fetch('https://biolabsresearch.co/api/contact', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(payload)

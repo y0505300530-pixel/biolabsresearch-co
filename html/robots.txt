@@ -9,4 +9,4 @@ Disallow: /products-data.json
 Disallow: /*.bak
 Disallow: /*.bak-*
 
-Sitemap: https://biofirst.co/sitemap.xml
+Sitemap: https://biolabsresearch.co/sitemap.xml

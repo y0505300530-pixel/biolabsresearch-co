@@ -341,7 +341,7 @@ select option{background:var(--surface2)}
         <div class="stripe-section">
           <h3>🌐 Store URL</h3>
           <p>Your D2C store is live at:</p>
-          <a href="https://biofirst.com/" target="_blank" style="color:var(--teal2);font-size:14px;font-weight:600">https://biofirst.com/</a>
+          <a href="https://biolabsresearch.com/" target="_blank" style="color:var(--teal2);font-size:14px;font-weight:600">https://biolabsresearch.com/</a>
         </div>
       </div>
     <!-- MESSAGES TAB -->
@@ -485,7 +485,7 @@ const STATUS_COLORS = {
 };
 
 function loadOrders() {
-  fetch('https://biofirst.co/api/orders', {
+  fetch('https://biolabsresearch.co/api/orders', {
     method: 'GET',
     mode: 'cors',
     headers: {'X-Admin-Secret': 'msol2026admin', 'Content-Type': 'application/json'}
@@ -526,7 +526,7 @@ function loadOrders() {
 }
 
 function updateOrderStatus(orderRef, newStatus) {
-  fetch('https://biofirst.co/api/orders/' + orderRef, {
+  fetch('https://biolabsresearch.co/api/orders/' + orderRef, {
     method: 'PATCH',
     mode: 'cors',
     headers: {'Content-Type': 'application/json', 'X-Admin-Secret': 'msol2026admin'},
@@ -568,7 +568,7 @@ function getProducts(){
 function saveProducts(products){
   localStorage.setItem('biofirst_products', JSON.stringify(products));
   // Also push to server so all visitors see the change
-  fetch('https://biofirst.co/api/products', {
+  fetch('https://biolabsresearch.co/api/products', {
     method: 'POST',
     headers: {'Content-Type':'application/json','X-Admin-Secret':'msol2026admin'},
     body: JSON.stringify(products)
@@ -601,7 +601,7 @@ function doLogin(){
 function logout(){sessionStorage.removeItem('msol_admin');location.reload()}
 document.addEventListener('DOMContentLoaded', function(){
   // Load from server first (overrides localStorage if server has newer data)
-  fetch('https://biofirst.co/api/products').then(r=>r.json()).then(products=>{
+  fetch('https://biolabsresearch.co/api/products').then(r=>r.json()).then(products=>{
     localStorage.setItem('biofirst_products', JSON.stringify(products));
     if(typeof loadProducts === 'function') loadProducts();
   }).catch(()=>{ if(typeof loadProducts === 'function') loadProducts(); });
@@ -757,7 +757,7 @@ async function handleImageFile(file){
   fd.append('image', file, file.name);
   fd.append('slug', slug);
   try {
-    const r = await fetch('https://biofirst.co/api/upload-image', {
+    const r = await fetch('https://biolabsresearch.co/api/upload-image', {
       method:'POST',
       headers:{'x-admin-secret':'msol2026admin'},
       body: fd
@@ -857,7 +857,7 @@ function loadMessages() {
   container.innerHTML = '<div style="text-align:center;color:#888;padding:40px">Loading...</div>';
   
   // Use iframe trick to avoid any XHR/fetch CORS issues
-  fetch('https://biofirst.co/api/messages', {
+  fetch('https://biolabsresearch.co/api/messages', {
     method: 'GET',
     mode: 'cors',
     headers: {'X-Admin-Secret': 'msol2026admin', 'Content-Type': 'application/json'}
@@ -900,7 +900,7 @@ function loadMessages() {
 
 function markRead(id, btn) {
   if (btn) { btn.disabled = true; btn.textContent = 'Marking...'; }
-  fetch('https://biofirst.co/api/messages/' + id, {
+  fetch('https://biolabsresearch.co/api/messages/' + id, {
     method: 'PATCH',
     mode: 'cors',
     headers: {'X-Admin-Secret': 'msol2026admin'}
@@ -911,7 +911,7 @@ function markRead(id, btn) {
 function checkUnreadMessages() {
   const secret = '';
   const xhr = new XMLHttpRequest();
-  xhr.open('GET', 'https://biofirst.co/api/messages', true);
+  xhr.open('GET', 'https://biolabsresearch.co/api/messages', true);
   xhr.setRequestHeader('X-Admin-Secret', secret);
   xhr.timeout = 5000;
   xhr.onload = function() {

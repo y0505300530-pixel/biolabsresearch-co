@@ -8,17 +8,17 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Research-use-only peptide and laboratory reagent listings. Third-party tested lots and catalog prices. Open a SKU page for name, price, and COA notes.">
-<link rel="canonical" href="https://biofirst.co/products/product.html">
+<link rel="canonical" href="https://biolabsresearch.co/products/product.html">
 <meta property="og:title" content="Research Peptide Catalog | BioLabs Research Laboratory">
 <meta property="og:description" content="Research-use-only peptide and laboratory reagent listings. Third-party tested lots and catalog prices. Open a SKU page for name, price, and COA notes.">
-<meta property="og:image" content="https://biofirst.co/media/label-box.png">
-<meta property="og:url" content="https://biofirst.co/products/product.html">
+<meta property="og:image" content="https://biolabsresearch.co/media/label-box.png">
+<meta property="og:url" content="https://biolabsresearch.co/products/product.html">
 <meta property="og:type" content="product">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Research Peptide Catalog | BioLabs Research Laboratory">
 <meta name="twitter:description" content="Research-use-only peptide and laboratory reagent listings. Third-party tested lots and catalog prices. Open a SKU page for name, price, and COA notes.">
-<meta name="twitter:image" content="https://biofirst.co/media/label-box.png">
+<meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/biofirst_style.css?v=21">
 <style>
@@ -322,7 +322,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     el.textContent = JSON.stringify(obj);
   }
   function applyProductSeo(p){
-    var url = 'https://biofirst.co/products/' + p.slug + '.html';
+    var url = 'https://biolabsresearch.co/products/' + p.slug + '.html';
     var title = p.name + ' | BioLabs Research RUO Catalog';
     var desc = (p.name + ' research reagent. ' + (p.tagline || '') + ' Third-party tested lot. Catalog price USD ' + p.price + '. Research use only.').replace(/\s+/g,' ').trim();
     document.title = title;
@@ -462,7 +462,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       '</div>';
   }
 
-  fetch('https://biofirst.co/api/products')
+  fetch('https://biolabsresearch.co/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
       localStorage.setItem('biofirst_products', JSON.stringify(products));
@@ -1054,7 +1054,7 @@ function submitCOARequest(e) {
     subject:   'COA Request - ' + (coaRequestProduct || 'General'),
     message:   (document.getElementById('coa-req-msg').value || '') + ' [Product: ' + (coaRequestProduct || 'General') + ']'
   };
-  fetch('https://biofirst.co/api/contact', {
+  fetch('https://biolabsresearch.co/api/contact', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(payload)

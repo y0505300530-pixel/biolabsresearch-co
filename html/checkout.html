@@ -9,17 +9,17 @@
 <title>Catalog Inquiry Checkout | BioLabs Research Laboratory</title>
 <meta name="description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://biofirst.co/checkout.html">
+<link rel="canonical" href="https://biolabsresearch.co/checkout.html">
 <meta property="og:title" content="Catalog Inquiry Checkout | BioLabs Research Laboratory">
 <meta property="og:description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
-<meta property="og:image" content="https://biofirst.co/media/label-box.png">
-<meta property="og:url" content="https://biofirst.co/checkout.html">
+<meta property="og:image" content="https://biolabsresearch.co/media/label-box.png">
+<meta property="og:url" content="https://biolabsresearch.co/checkout.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Checkout | BioLabs Research Laboratory">
 <meta name="twitter:description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
-<meta name="twitter:image" content="https://biofirst.co/media/label-box.png">
+<meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
 <link rel="stylesheet" href="/biofirst_style.css?v=21">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
@@ -653,7 +653,7 @@ Timestamp: ${orderData.timestamp}
 
 function notifyAdmin(orderData) {
   const { subject, body } = buildInquiryMail(orderData);
-  return fetch('https://biofirst.co/api/notify-order', {
+  return fetch('https://biolabsresearch.co/api/notify-order', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify({ subject, body, orderData, paymentMethod: 'inquiry' })

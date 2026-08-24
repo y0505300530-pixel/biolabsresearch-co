@@ -9,17 +9,17 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="description" content="Legacy product loader on biofirst.co. Use a catalog SKU URL for research peptide listings. Research use only.">
 <meta name="robots" content="noindex, follow">
-<link rel="canonical" href="https://biofirst.co/product.html">
+<link rel="canonical" href="https://biolabsresearch.co/product.html">
 <meta property="og:title" content="Research Peptide Page | BioLabs Research Laboratory">
 <meta property="og:description" content="Legacy product loader on biofirst.co. Use a catalog SKU URL for research peptide listings. Research use only.">
-<meta property="og:image" content="https://biofirst.co/media/label-box.png">
-<meta property="og:url" content="https://biofirst.co/product.html">
+<meta property="og:image" content="https://biolabsresearch.co/media/label-box.png">
+<meta property="og:url" content="https://biolabsresearch.co/product.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Research Peptide Page | BioLabs Research Laboratory">
 <meta name="twitter:description" content="Legacy product loader on biofirst.co. Use a catalog SKU URL for research peptide listings. Research use only.">
-<meta name="twitter:image" content="https://biofirst.co/media/label-box.png">
+<meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -349,7 +349,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
       '</div>';
   }
 
-  fetch('https://biofirst.co/api/products')
+  fetch('https://biolabsresearch.co/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
       localStorage.setItem('biofirst_products', JSON.stringify(products));
@@ -641,7 +641,7 @@ function submitCOARequest(e) {
     subject:   'COA Request - ' + (coaRequestProduct || 'General'),
     message:   (document.getElementById('coa-req-msg').value || '') + ' [Product: ' + (coaRequestProduct || 'General') + ']'
   };
-  fetch('https://biofirst.co/api/contact', {
+  fetch('https://biolabsresearch.co/api/contact', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
     body: JSON.stringify(payload)
