@@ -478,7 +478,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
             (p.purity ? '<span class="purity-badge">✓ '+p.purity+'</span>' : '<span class="purity-badge">See COA for this lot</span>') +
             '<span class="ruo-badge">RUO — Research Use Only</span>' +
           '</div>' +
-          '+ specStripHtml(p.slug) + '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
+          specStripHtml(p.slug) + '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
           '<div class="ingredients-label">Product Composition</div>' +
           '<div class="ingredient-list">' +
             '<div class="ingredient"><div class="ing-icon">'+getCategoryIcon(p.category)+'</div><div>' +
