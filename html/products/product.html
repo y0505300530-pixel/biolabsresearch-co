@@ -183,7 +183,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 .cart-note{font-size:11px;color:var(--ink-soft);text-align:center;margin-top:12px}
 @media(max-width:900px){.cart-drawer{width:100%;right:-100%}}
 
-</style>
+.spec-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:16px 0;padding:14px 0;border-top:1px solid #e8e2d8;border-bottom:1px solid #e8e2d8}.spec-strip dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#9A6D2A}.spec-strip dd{font-size:14px;color:#1F1F1F;font-family:ui-monospace,monospace}.spec-note{font-size:12px;color:#8A8A8A;margin:0 0 16px}</style>
 </head>
 <body>
 
@@ -209,7 +209,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
   <a href="/index.html#catalog">Catalog</a>
   <a href="/index.html#chemistry">Chemistry</a>
   <a href="/index.html#methods">Methods</a>
-  <a href="/index.html#coa">COA</a>
+  <a href="/science.html">COA</a>
   <a href="/terms-and-conditions.html">Terms</a>
   <a href="/privacy-policy.html">Privacy</a>
   <a href="/shipping.html">Shipping</a>
@@ -330,13 +330,13 @@ footer{background:var(--ink);padding:60px 60px 30px}
     setCanonical(url);
     setMetaByProp('og:title', title);
     setMetaByProp('og:description', desc);
-    setMetaByProp('og:image', p.image_url || 'https://media.base44.com/images/public/6a2a71f7657c7f4b9841fe12/689ba372d_generated_image.png');
+    setMetaByProp('og:image', p.image_url || '/media/label-upright-v2.webp');
     setMetaByProp('og:url', url);
     setMetaByProp('og:type', 'product');
     setMetaByName('twitter:card', 'summary_large_image');
     setMetaByName('twitter:title', title);
     setMetaByName('twitter:description', desc);
-    setMetaByName('twitter:image', p.image_url || 'https://media.base44.com/images/public/6a2a71f7657c7f4b9841fe12/689ba372d_generated_image.png');
+    setMetaByName('twitter:image', p.image_url || '/media/label-upright-v2.webp');
     var LIVE_API_SLUGS = ['bpc-157-tb-500-blend','nad-plus','aod-9604','curcumin-phytosome','tesamorelin-ipamorelin','bpc-157','glow-70','epithalon','ghk-cu','mots-c','kpv','semax','kisspeptin-10','thymosin-alpha-1','tb-500','retatrutide'];
     if (LIVE_API_SLUGS.indexOf(p.slug) === -1 || p.price == null || p.price === '') {
       var el = document.getElementById('product-jsonld');
@@ -348,7 +348,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       "@context": "https://schema.org",
       "@type": "Product",
       "name": p.name,
-      "image": (p.image_url || "https://media.base44.com/images/public/6a2a71f7657c7f4b9841fe12/689ba372d_generated_image.png"),
+      "image": (p.image_url || "/media/label-upright-v2.webp"),
       "description": desc,
       "brand": {"@type":"Brand","name":"BioFirst"},
       "offers": {
@@ -406,7 +406,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
             (p.purity ? '<span class="purity-badge">✓ '+p.purity+'</span>' : '<span class="purity-badge">See COA for this lot</span>') +
             '<span class="ruo-badge">RUO — Research Use Only</span>' +
           '</div>' +
-          '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
+          '+ specStripHtml(p.slug) + '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
           '<div class="ingredients-label">Product Composition</div>' +
           '<div class="ingredient-list">' +
             '<div class="ingredient"><div class="ing-icon">'+getCategoryIcon(p.category)+'</div><div>' +
@@ -419,7 +419,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
             '</div></div>' +
             '<div class="ingredient"><div class="ing-icon">🔬</div><div>' +
               '<div class="ing-name">Sterile Manufacturing</div>' +
-              '<div class="ing-desc">Produced under strictly controlled cleanroom conditions with full batch documentation and COA.</div>' +
+              '<div class="ing-desc">Lyophilized research material. Batch documentation is the lot COA when issued.</div>' +
             '</div></div>' +
           '</div>' +
           storageHtml + presentationHtml +
@@ -430,7 +430,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
               origHtml +
             '</div>' +
             '<div class="price-per">per unit — Research Use Only</div>' +
-            '<div class="price-note">COA included with every order. DDP delivery available.</div>' +
+            '<div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>' +
             '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">' +
         '<div style="display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:var(--radius-pill);overflow:hidden">' +
           '<button onclick="changePdpQty(-1)" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">−</button>' +
@@ -443,7 +443,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
               ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
               : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>') +
             '<div class="trust-items">' +
-              '<div class="trust-item">COA available for the lot</div>' +
+              '<div class="trust-item">COA on request for the lot</div>' +
               '<div class="trust-item">Sterile manufacturing</div>' +
               '<div class="trust-item">Cold-chain packaging</div>' +
               '<div class="trust-item">EU delivery (DDP)</div>' +
@@ -742,6 +742,100 @@ function checkout() {
 
 <script>
 // COA DATA MAP
+
+var PUB_IDS = {
+  "bpc-157": {
+    "cas": "137525-51-0",
+    "formula": "C62H98N16O22",
+    "mw": "~1419.5 Da",
+    "seq": "GEPPPGKPADDAGLV"
+  },
+  "nad-plus": {
+    "cas": "53-84-9",
+    "formula": "C21H27N7O14P2",
+    "mw": "~663.4 Da",
+    "seq": ""
+  },
+  "aod-9604": {
+    "cas": "221231-10-3",
+    "formula": "",
+    "mw": "",
+    "seq": "hGH 177\u2013191 (fragment listing)"
+  },
+  "ghk-cu": {
+    "cas": "89030-95-5",
+    "formula": "C14H22CuN6O4",
+    "mw": "~403.9 Da",
+    "seq": "GHK\u00b7Cu"
+  },
+  "epithalon": {
+    "cas": "307297-39-8",
+    "formula": "C16H22N4O9",
+    "mw": "~390.3 Da",
+    "seq": "AEDG"
+  },
+  "kpv": {
+    "cas": "67747-97-3",
+    "formula": "C16H30N4O4",
+    "mw": "~342.4 Da",
+    "seq": "KPV"
+  },
+  "semax": {
+    "cas": "80714-61-0",
+    "formula": "C37H51N9O10S",
+    "mw": "~813.9 Da",
+    "seq": "MEHFPGP"
+  },
+  "kisspeptin-10": {
+    "cas": "374675-21-5",
+    "formula": "",
+    "mw": "",
+    "seq": "YNWNSFGLRF-NH2"
+  },
+  "tb-500": {
+    "cas": "885340-09-2",
+    "formula": "",
+    "mw": "",
+    "seq": "Ac-LKKTETQ (TB-500 fragment listing)"
+  },
+  "mots-c": {
+    "cas": "1627580-64-6",
+    "formula": "",
+    "mw": "",
+    "seq": "MRWQEMGYIFYPRKLR"
+  },
+  "thymosin-alpha-1": {
+    "cas": "62304-98-7",
+    "formula": "",
+    "mw": "~3108 Da",
+    "seq": ""
+  },
+  "tesamorelin": {
+    "cas": "218949-48-5",
+    "formula": "",
+    "mw": "",
+    "seq": ""
+  },
+  "retatrutide": {
+    "cas": "2381089-83-2",
+    "formula": "",
+    "mw": "",
+    "seq": ""
+  }
+};
+function specStripHtml(slug){
+  var ids = PUB_IDS[slug] || {};
+  var rows = [];
+  if (ids.cas) rows.push('<div><dt>CAS</dt><dd>'+ids.cas+'</dd></div>');
+  if (ids.formula) rows.push('<div><dt>Formula</dt><dd>'+ids.formula+'</dd></div>');
+  if (ids.mw) rows.push('<div><dt>MW</dt><dd>'+ids.mw+'</dd></div>');
+  if (ids.seq) rows.push('<div><dt>Identity listing</dt><dd>'+ids.seq+'</dd></div>');
+  if (!rows.length) {
+    return '<p class="spec-note">Blend or complex SKU. Per-compound figures belong on the lot COA — not guessed here.</p>';
+  }
+  return '<dl class="spec-strip">'+rows.join('')+'</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity and observed mass live on the lot COA when a file is issued.</p>';
+}
+
 var COA_DATA = {
   // Live catalog slugs only. No hosted lot PDF for the other SKUs — those use Request COA.
   // Do not invent a lab name. The blend file is the existing hosted lot PDF (not a new document).
