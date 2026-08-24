@@ -6,18 +6,18 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catalog Inquiry Checkout | BioFirst Laboratory</title>
+<title>Catalog Inquiry Checkout | BioLabs Research Laboratory</title>
 <meta name="description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://biofirst.co/checkout.html">
-<meta property="og:title" content="Catalog Inquiry Checkout | BioFirst Laboratory">
+<meta property="og:title" content="Catalog Inquiry Checkout | BioLabs Research Laboratory">
 <meta property="og:description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
 <meta property="og:image" content="https://biofirst.co/media/label-box.png">
 <meta property="og:url" content="https://biofirst.co/checkout.html">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="BioFirst">
+<meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Catalog Inquiry Checkout | BioFirst Laboratory">
+<meta name="twitter:title" content="Catalog Inquiry Checkout | BioLabs Research Laboratory">
 <meta name="twitter:description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
 <meta name="twitter:image" content="https://biofirst.co/media/label-box.png">
 <link rel="stylesheet" href="/biofirst_style.css?v=21">
@@ -240,7 +240,7 @@ nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px
 
 <nav>
   <a class="logo" href="index.html">
-    <div class="logo-icon" style="border:none;background:transparent;width:48px;height:48px;"><img src="/biofirst-logo.webp" alt="BioFirst" style="width:100%;height:100%;object-fit:contain;"/></div>
+    <div class="logo-icon" style="border:none;background:transparent;width:48px;height:48px;"><img src="/biolabsresearch-logo.png" alt="BioLabs Research" style="width:100%;height:100%;object-fit:contain;"/></div>
     <div>
       <div class="logo-text">Bio<span>First</span></div>
       <div class="logo-sub">Science First. Research Always.</div>
@@ -610,7 +610,7 @@ function placeOrder() {
   if (!validate()) return;
   currentOrderRef = generateOrderRef();
   const orderData = collectOrderData(currentOrderRef);
-  localStorage.setItem('biofirst_last_order', JSON.stringify(orderData));
+  localStorage.setItem('biolabs_last_order', JSON.stringify(orderData));
   setSubmitBusy(true);
   notifyAdmin(orderData).then(function(ok) {
     if (ok) {
@@ -688,7 +688,7 @@ function showSuccess(orderData, paymentNote) {
 </style>
 <footer class="ck-footer">
   <div class="ck-footer-disc">Research Compound - Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products are sold for in vitro and laboratory research use only.</div>
-  <div class="ck-footer-copy">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioFirst. &nbsp;|&nbsp; <a href="terms-and-conditions.html">Terms</a> &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp; <a href="shipping.html">Shipping</a></div>
+  <div class="ck-footer-copy">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioLabs Research. &nbsp;|&nbsp; <a href="terms-and-conditions.html">Terms</a> &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp; <a href="shipping.html">Shipping</a></div>
 </footer>
 
 
@@ -726,10 +726,10 @@ function showSuccess(orderData, paymentNote) {
         <path d="M38 18 C34 22 36 26 38 30 C40 34 36 38 38 42" stroke="#2d7a52" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
       </svg>
     </div>
-    <h2>Welcome to BioFirst</h2>
+    <h2>Welcome to BioLabs Research</h2>
     <div class="tc-modal-badge">Research Use Only</div>
     <div class="tc-modal-text">
-      All products sold by BioFirst are intended strictly for <strong>laboratory research purposes only</strong>. They are not intended for human consumption, diagnostic, therapeutic, or veterinary use. By entering this site, you acknowledge these restrictions.
+      All products sold by BioLabs Research are intended strictly for <strong>laboratory research purposes only</strong>. They are not intended for human consumption, diagnostic, therapeutic, or veterinary use. By entering this site, you acknowledge these restrictions.
     </div>
     <div class="tc-checks">
       <label class="tc-check-label">
@@ -745,8 +745,8 @@ function showSuccess(orderData, paymentNote) {
         I confirm all products are for <strong>research use only (RUO)</strong> and not for human consumption.
       </label>
     </div>
-    <button class="tc-enter-btn" id="tcEnterBtn" disabled>Enter BioFirst</button>
-    <div class="tc-modal-foot">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioFirst.</div>
+    <button class="tc-enter-btn" id="tcEnterBtn" disabled>Enter BioLabs Research</button>
+    <div class="tc-modal-foot">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioLabs Research.</div>
   </div>
 </div>
 

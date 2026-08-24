@@ -1,4 +1,4 @@
-/* BioFirst Auth System
+/* BioLabs Research Auth System
    Google Sign-In + Apple Sign-In + Email/Password
    Stores user state in localStorage */
 
@@ -22,24 +22,24 @@
   // ===== Storage =====
   function loadState() {
     try {
-      user = JSON.parse(localStorage.getItem('biofirst_user') || 'null');
-      users = JSON.parse(localStorage.getItem('biofirst_users') || '{}');
+      user = JSON.parse(localStorage.getItem('biolabs_user') || 'null');
+      users = JSON.parse(localStorage.getItem('biolabs_users') || '{}');
     } catch(e) { user = null; users = {}; }
   }
 
   function saveUser(u) {
     user = u;
-    localStorage.setItem('biofirst_user', JSON.stringify(u));
+    localStorage.setItem('biolabs_user', JSON.stringify(u));
     updateNavUI();
   }
 
   function saveUsers() {
-    localStorage.setItem('biofirst_users', JSON.stringify(users));
+    localStorage.setItem('biolabs_users', JSON.stringify(users));
   }
 
   function logout() {
     user = null;
-    localStorage.removeItem('biofirst_user');
+    localStorage.removeItem('biolabs_user');
     if (window.google && google.accounts && google.accounts.id) {
       google.accounts.id.disableAutoSelect();
     }
@@ -289,7 +289,7 @@
 
     var orders = [];
     try {
-      orders = JSON.parse(localStorage.getItem('biofirst_orders') || '[]');
+      orders = JSON.parse(localStorage.getItem('biolabs_orders') || '[]');
     } catch(e) { orders = []; }
 
     // Filter orders by user email
@@ -351,10 +351,10 @@
 
   // ===== Track Orders =====
   // Call this when checkout completes to save order
-  window.saveBioFirstOrder = function(orderData) {
+  window.saveBioLabs ResearchOrder = function(orderData) {
     var orders = [];
     try {
-      orders = JSON.parse(localStorage.getItem('biofirst_orders') || '[]');
+      orders = JSON.parse(localStorage.getItem('biolabs_orders') || '[]');
     } catch(e) { orders = []; }
 
     orderData.id = 'BF' + Date.now().toString().slice(-6);
@@ -363,11 +363,11 @@
     if (user) orderData.email = user.email;
 
     orders.push(orderData);
-    localStorage.setItem('biofirst_orders', JSON.stringify(orders));
+    localStorage.setItem('biolabs_orders', JSON.stringify(orders));
   };
 
   // ===== Public API =====
-  window.BioFirstAuth = {
+  window.BioLabs ResearchAuth = {
     init: init,
     openLogin: openLoginModal,
     closeLogin: closeLoginModal,
