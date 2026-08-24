@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /_base44-brief
+Disallow: /api/
+Disallow: /checkout.html
+Disallow: /products-data.json
+Disallow: /*.bak
+Disallow: /*.bak-*
+
+Sitemap: https://biofirst.co/sitemap.xml

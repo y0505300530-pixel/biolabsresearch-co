@@ -1,0 +1,28 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+  <!-- Outer ring -->
+  <circle cx="50" cy="50" r="46" stroke="#1a5c38" stroke-width="2.5" fill="white"/>
+  
+  <!-- Leaf - left side, matching brochure: large curved leaf pointing up-right -->
+  <path d="M32 50 C32 38 38 28 50 24 C50 24 46 34 42 40 C38 45 34 46 32 50Z" fill="#1a5c38"/>
+  <path d="M32 50 C32 62 38 72 50 76 C50 76 46 66 42 60 C38 55 34 54 32 50Z" fill="#2d7a52" opacity="0.55"/>
+  <!-- Leaf vein -->
+  <path d="M32 50 C38 46 44 40 50 24" stroke="#f0f7f3" stroke-width="0.8" fill="none" opacity="0.6"/>
+
+  <!-- DNA double helix - right side -->
+  <!-- Left strand of helix -->
+  <path d="M54 22 C60 28 57 34 54 40 C51 46 54 52 57 58 C60 64 57 70 54 76" 
+        stroke="#1a5c38" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+  <!-- Right strand of helix -->
+  <path d="M62 25 C56 31 59 37 62 43 C65 49 62 55 59 61 C56 67 59 73 62 78" 
+        stroke="#2d7a52" stroke-width="2.2" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <!-- Helix rungs -->
+  <line x1="54" y1="26" x2="62" y2="25" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="54" y1="32" x2="61" y2="32" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="54" y1="38" x2="62" y2="39" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="55" y1="44" x2="63" y2="44" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="56" y1="50" x2="62" y2="50" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="56" y1="56" x2="61" y2="57" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="57" y1="62" x2="62" y2="62" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="56" y1="68" x2="61" y2="68" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+  <line x1="54" y1="74" x2="62" y2="74" stroke="#1a5c38" stroke-width="1.5" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioFirst Admin — Product Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#0a0f1e;
+  --surface:#12192e;
+  --surface2:#1a2540;
+  --border:#1e2d4a;
+  --teal:#1a7a6e;
+  --teal2:#22a596;
+  --teal-glow:rgba(26,122,110,0.15);
+  --gold:#c9a227;
+  --text:#e8eaf0;
+  --muted:#7a8599;
+  --white:#ffffff;
+  --red:#e74c3c;
+  --green:#1a7a4a;
+  --cream:#faf8f4;
+}
+body{background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;min-height:100vh}
+
+/* LOGIN */
+#login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--bg)}
+.login-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:48px 40px;width:400px;text-align:center}
+.login-logo{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:32px}
+.login-logo img{height:42px}
+.login-logo-text{font-family:'Playfair Display',serif;font-size:20px;color:var(--white)}
+.login-logo-text span{color:var(--teal2)}
+.login-box h2{font-size:22px;font-weight:700;margin-bottom:8px}
+.login-box p{color:var(--muted);font-size:13px;margin-bottom:32px}
+.form-group{margin-bottom:16px;text-align:left}
+.form-group label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px}
+.form-group input{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:14px;outline:none;transition:border .2s}
+.form-group input:focus{border-color:var(--teal2)}
+.btn-login{width:100%;background:var(--teal);color:white;border:none;padding:13px;border-radius:10px;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px;transition:all .2s}
+.btn-login:hover{background:var(--teal2)}
+.login-error{color:var(--red);font-size:13px;margin-top:12px;display:none}
+
+/* MAIN APP */
+#app{display:none}
+
+/* HEADER */
+header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 32px;display:flex;justify-content:space-between;align-items:center;height:64px;position:sticky;top:0;z-index:100}
+.header-logo{display:flex;align-items:center;gap:10px}
+.header-logo img{height:32px}
+.header-logo-text{font-family:'Playfair Display',serif;font-size:16px;color:var(--white)}
+.header-logo-text span{color:var(--teal2)}
+.header-right{display:flex;align-items:center;gap:16px}
+.admin-badge{background:var(--teal-glow);border:1px solid var(--teal);color:var(--teal2);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;text-transform:uppercase;letter-spacing:0.5px}
+.btn-logout{background:none;border:1px solid var(--border);color:var(--muted);padding:7px 14px;border-radius:8px;font-size:12px;cursor:pointer;transition:all .2s}
+.btn-logout:hover{border-color:var(--red);color:var(--red)}
+.btn-view-site{background:var(--teal);color:white;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;transition:all .2s}
+.btn-view-site:hover{background:var(--teal2)}
+
+/* LAYOUT */
+.layout{display:flex;min-height:calc(100vh - 64px)}
+aside{width:220px;background:var(--surface);border-right:1px solid var(--border);padding:24px 0;flex-shrink:0}
+.nav-section{margin-bottom:8px}
+.nav-section-title{font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;padding:0 20px 8px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:13px;font-weight:500;color:var(--muted);cursor:pointer;transition:all .2s;border-left:3px solid transparent}
+.nav-item:hover{color:var(--text);background:rgba(255,255,255,0.03)}
+.nav-item.active{color:var(--teal2);background:var(--teal-glow);border-left-color:var(--teal2)}
+.nav-item svg{width:16px;height:16px}
+main{flex:1;padding:32px;overflow-y:auto}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:32px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px}
+.stat-label{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px}
+.stat-val{font-size:28px;font-weight:800;color:var(--white)}
+.stat-sub{font-size:11px;color:var(--muted);margin-top:4px}
+.stat-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:4px}
+.dot-green{background:#1a7a4a}
+.dot-gold{background:var(--gold)}
+.dot-red{background:var(--red)}
+
+/* TOOLBAR */
+.toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.toolbar-left{display:flex;align-items:center;gap:12px}
+.page-title{font-size:20px;font-weight:700;color:var(--white)}
+.search-box{position:relative}
+.search-box input{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 12px 8px 36px;color:var(--text);font-size:13px;width:220px;outline:none;transition:border .2s}
+.search-box input:focus{border-color:var(--teal2)}
+.search-box svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted)}
+.filter-select{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 12px;color:var(--text);font-size:13px;outline:none;cursor:pointer}
+.btn-add-product{background:var(--teal);color:white;border:none;padding:9px 18px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px;transition:all .2s}
+.btn-add-product:hover{background:var(--teal2)}
+
+/* PRODUCT TABLE */
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+table{width:100%;border-collapse:collapse}
+thead{background:var(--surface2)}
+th{padding:14px 20px;text-align:left;font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid var(--border)}
+td{padding:16px 20px;font-size:13px;border-bottom:1px solid rgba(30,45,74,0.5);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,0.02)}
+.product-thumb{width:48px;height:48px;border-radius:8px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:24px;border:1px solid var(--border);overflow:hidden}
+.product-thumb img{width:100%;height:100%;object-fit:cover}
+.product-name-cell{display:flex;align-items:center;gap:14px}
+.product-info .name{font-weight:600;color:var(--white);font-size:14px}
+.product-info .slug{font-size:11px;color:var(--muted);margin-top:2px}
+.price-cell{font-weight:700;color:var(--white);font-size:15px}
+.price-cell .original{font-size:11px;color:var(--muted);text-decoration:line-through;font-weight:400;margin-left:4px}
+.badge-pill{display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.badge-instock{background:rgba(26,122,74,0.2);color:#4ade80;border:1px solid rgba(26,122,74,0.3)}
+.badge-lowstock{background:rgba(201,162,39,0.15);color:var(--gold);border:1px solid rgba(201,162,39,0.3)}
+.badge-outstock{background:rgba(231,76,60,0.15);color:var(--red);border:1px solid rgba(231,76,60,0.3)}
+.badge-active{background:rgba(26,122,110,0.2);color:var(--teal2);border:1px solid rgba(26,122,110,0.3)}
+.badge-inactive{background:rgba(122,133,153,0.15);color:var(--muted);border:1px solid rgba(122,133,153,0.2)}
+.category-pill{display:inline-block;padding:3px 10px;border-radius:100px;font-size:10px;font-weight:600;background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.action-btns{display:flex;align-items:center;gap:8px}
+.btn-edit{background:var(--teal-glow);border:1px solid var(--teal);color:var(--teal2);padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-edit:hover{background:var(--teal);color:white}
+.btn-delete{background:rgba(231,76,60,0.1);border:1px solid rgba(231,76,60,0.2);color:var(--red);padding:6px 12px;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-delete:hover{background:var(--red);color:white}
+.toggle-active{position:relative;display:inline-block;width:36px;height:20px}
+.toggle-active input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:var(--border);transition:.3s;border-radius:20px}
+.toggle-slider:before{position:absolute;content:"";height:14px;width:14px;left:3px;bottom:3px;background:white;transition:.3s;border-radius:50%}
+input:checked + .toggle-slider{background:var(--teal)}
+input:checked + .toggle-slider:before{transform:translateX(16px)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--surface);border:1px solid var(--border);border-radius:20px;width:100%;max-width:680px;max-height:90vh;overflow-y:auto;animation:slideUp .3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:24px 28px;border-bottom:1px solid var(--border)}
+.modal-title{font-size:18px;font-weight:700;color:var(--white)}
+.modal-close{background:none;border:none;color:var(--muted);font-size:20px;cursor:pointer;width:32px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:6px;transition:all .2s}
+.modal-close:hover{background:rgba(255,255,255,0.05);color:var(--text)}
+.modal-body{padding:28px}
+.modal-footer{padding:20px 28px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:12px}
+
+/* FORM */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-row.single{grid-template-columns:1fr}
+.form-group{margin-bottom:0}
+label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:6px}
+input[type=text],input[type=number],input[type=url],select,textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:14px;outline:none;transition:border .2s;font-family:'Inter',sans-serif}
+input:focus,select:focus,textarea:focus{border-color:var(--teal2)}
+textarea{resize:vertical;min-height:80px}
+select option{background:var(--surface2)}
+.img-preview{margin-top:10px;width:80px;height:80px;border-radius:10px;background:var(--surface2);border:1px solid var(--border);object-fit:cover;display:none}
+.img-preview.show{display:block}
+.btn-cancel{background:none;border:1px solid var(--border);color:var(--muted);padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-cancel:hover{border-color:var(--muted);color:var(--text)}
+.btn-save{background:var(--teal);color:white;border:none;padding:10px 24px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;transition:all .2s}
+.btn-save:hover{background:var(--teal2)}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--teal);color:white;padding:14px 20px;border-radius:10px;font-size:13px;font-weight:600;z-index:9999;animation:fadeIn .3s ease;display:none}
+.toast.show{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* EMPTY STATE */
+.empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty-state svg{width:48px;height:48px;margin-bottom:16px;opacity:0.4}
+.empty-state p{font-size:15px}
+
+/* STRIPE SECTION */
+.stripe-section{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:24px}
+.stripe-section h3{font-size:16px;font-weight:700;color:var(--white);margin-bottom:6px}
+.stripe-section p{font-size:13px;color:var(--muted);margin-bottom:20px}
+.stripe-input-row{display:flex;gap:12px}
+.stripe-input-row input{flex:1}
+.btn-save-stripe{background:var(--teal);color:white;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">
+      <img src="https://res.cloudinary.com/dqdyfkrli/image/upload/v1/mastersol/logo_white" 
+           onerror="this.style.display='none'" alt="BioFirst">
+      <div class="login-logo-text">BioFirst Admin</div>
+    </div>
+    <h2>Admin Access</h2>
+    <p>Product & Store Management</p>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" id="login-email" placeholder="admin@biofirst.com" value="admin@biofirst.com">
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input type="password" id="login-pass" placeholder="••••••••" value="">
+    </div>
+    <button class="btn-login" onclick="doLogin()">Sign In</button>
+    <div class="login-error" id="login-error">Invalid credentials. Try again.</div>
+  </div>
+</div>
+
+<!-- MAIN APP -->
+<div id="app">
+  <header>
+    <div class="header-logo">
+      <div class="header-logo-text">BioFirst</div>
+    </div>
+    <div class="header-right">
+      <span class="admin-badge">Admin Panel</span>
+      <a href="index.html" target="_blank" class="btn-view-site">View Store →</a>
+      <button class="btn-logout" onclick="logout()">Logout</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="nav-section">
+        <div class="nav-section-title">Store</div>
+        <div class="nav-item active" onclick="showTab('products')">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10"/></svg>
+          Products
+        </div>
+        <div class="nav-item" onclick="showTab('orders')">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+          Orders
+        </div>
+        <div class="nav-item" onclick="showTab('messages')" id="nav-messages">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          Messages <span id="msg-badge" style="background:#e53e3e;color:white;border-radius:10px;padding:1px 7px;font-size:10px;margin-left:4px;display:none;vertical-align:middle"></span>
+        </div>
+        <div class="nav-item" onclick="showTab('settings')">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg>
+          Settings
+        </div>
+      </div>
+    </aside>
+
+    <main>
+      <!-- PRODUCTS TAB -->
+      <div id="tab-products">
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-label">Total Products</div>
+            <div class="stat-val" id="stat-total">—</div>
+            <div class="stat-sub">In catalog</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Active</div>
+            <div class="stat-val" id="stat-active">—</div>
+            <div class="stat-sub"><span class="stat-dot dot-green"></span>Live on store</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Avg Price</div>
+            <div class="stat-val" id="stat-avg">—</div>
+            <div class="stat-sub">Per vial</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Categories</div>
+            <div class="stat-val" id="stat-cats">—</div>
+            <div class="stat-sub">Distinct</div>
+          </div>
+        </div>
+
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <div class="page-title">Products</div>
+            <div class="search-box">
+              <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path stroke-linecap="round" d="m21 21-4.35-4.35"/></svg>
+              <input type="text" placeholder="Search products..." id="search-input" oninput="filterProducts()">
+            </div>
+            <select class="filter-select" id="cat-filter" onchange="filterProducts()">
+              <option value="">All Categories</option>
+              <option>Performance</option>
+              <option>Longevity</option>
+              <option>Aesthetics</option>
+              <option>Weight Loss</option>
+              <option>Cognitive</option>
+            </select>
+          </div>
+          <button class="btn-add-product" onclick="openModal()">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4"/></svg>
+            Add Product
+          </button>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Status</th>
+                <th>Badge</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="products-tbody">
+              <tr><td colspan="7" style="text-align:center;padding:40px;color:var(--muted)">Loading products...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ORDERS TAB -->
+      <div id="tab-orders" style="display:none">
+        <div class="page-title" style="margin-bottom:24px">Orders</div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Product</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody id="orders-tbody">
+              <tr><td colspan="6" style="text-align:center;padding:60px;color:var(--muted)">
+                <div id="orders-loading">Loading orders...</div>
+              </td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SETTINGS TAB -->
+      <div id="tab-settings" style="display:none">
+        <div class="page-title" style="margin-bottom:24px">Settings</div>
+        <div class="stripe-section">
+          <h3>💳 Stripe Integration</h3>
+          <p>Enter your Stripe Publishable Key to activate payments on the store checkout.</p>
+          <div class="stripe-input-row">
+            <input type="text" id="stripe-pk" placeholder="pk_live_..." value="">
+            <button class="btn-save-stripe" onclick="saveStripeKey()">Save & Activate</button>
+          </div>
+          <div style="margin-top:12px;font-size:12px;color:var(--muted)">Get your key at <a href="https://dashboard.stripe.com/apikeys" target="_blank" style="color:var(--teal2)">dashboard.stripe.com/apikeys</a></div>
+        </div>
+        <div class="stripe-section">
+          <h3>🌐 Store URL</h3>
+          <p>Your D2C store is live at:</p>
+          <a href="https://biofirst.com/" target="_blank" style="color:var(--teal2);font-size:14px;font-weight:600">https://biofirst.com/</a>
+        </div>
+      </div>
+    <!-- MESSAGES TAB -->
+  <div id="tab-messages" class="tab-panel" style="display:none">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+      <h2 style="font-size:22px;font-weight:700;color:#1a3a2a">Contact Messages</h2>
+      <button onclick="loadMessages()" style="background:#1d5c3a;color:white;border:none;padding:8px 18px;border-radius:8px;cursor:pointer;font-size:13px">↻ Refresh</button>
+    </div>
+    <div id="messages-list">
+      <div style="text-align:center;color:#888;padding:40px">Loading messages...</div>
+    </div>
+  </div>
+  </main>
+  
+
+  </div>
+</div>
+
+<!-- PRODUCT MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title" id="modal-title">Add Product</div>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="edit-id">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Product Name *</label>
+          <input type="text" id="f-name" placeholder="e.g. Wolverine Blend">
+        </div>
+        <div class="form-group">
+          <label>URL Slug *</label>
+          <input type="text" id="f-slug" placeholder="e.g. wolverine-blend">
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group">
+          <label>Tagline</label>
+          <input type="text" id="f-tagline" placeholder="Short catchy line">
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group">
+          <label>Description</label>
+          <textarea id="f-desc" rows="3" placeholder="Full product description..."></textarea>
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group">
+          <label>Benefits (pipe-separated: Benefit 1|Benefit 2|Benefit 3)</label>
+          <input type="text" id="f-benefits" placeholder="Fast recovery|Reduced inflammation|Joint repair">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Price ($) *</label>
+          <input type="number" id="f-price" placeholder="149" min="0">
+        </div>
+        <div class="form-group">
+          <label>Original Price ($) <span style="font-weight:400;text-transform:none">(for strikethrough)</span></label>
+          <input type="number" id="f-original-price" placeholder="189" min="0">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Category</label>
+          <select id="f-category">
+            <option>Performance</option>
+            <option>Longevity</option>
+            <option>Aesthetics</option>
+            <option>Weight Loss</option>
+            <option>Cognitive</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Stock Status</label>
+          <select id="f-stock">
+            <option>In Stock</option>
+            <option>Low Stock</option>
+            <option>Out of Stock</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Badge <span style="font-weight:400;text-transform:none">(optional)</span></label>
+          <input type="text" id="f-badge" placeholder="e.g. Best Seller, New, Premium">
+        </div>
+        <div class="form-group">
+          <label>Stripe Price ID <span style="font-weight:400;text-transform:none">(optional)</span></label>
+          <input type="text" id="f-stripe" placeholder="price_xxxxx">
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group">
+          <label>Product Image</label>
+          <div id="upload-area" style="border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer;transition:border-color .2s;background:var(--surface2)" onclick="document.getElementById('f-image-file').click()" ondragover="event.preventDefault();this.style.borderColor='var(--green)'" ondragleave="this.style.borderColor='var(--border)'" ondrop="handleImageDrop(event)">
+            <div style="font-size:32px;margin-bottom:8px">📷</div>
+            <div style="font-size:13px;color:var(--text2)">Click to upload or drag & drop</div>
+            <div style="font-size:11px;color:var(--text2);margin-top:4px">JPG, PNG, WebP up to 5MB</div>
+          </div>
+          <input type="file" id="f-image-file" accept="image/*" style="display:none" onchange="handleImageFile(this.files[0])">
+          <div id="upload-progress" style="display:none;margin-top:10px;font-size:13px;color:var(--green)">Uploading...</div>
+          <img id="img-preview" class="img-preview" alt="Preview" style="margin-top:10px">
+          <input type="hidden" id="f-image" value="">
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group" style="display:flex;align-items:center;gap:12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px 16px">
+          <label style="margin:0;text-transform:none;font-size:14px;font-weight:600;color:var(--text)">Active on store</label>
+          <label class="toggle-active" style="margin:0">
+            <input type="checkbox" id="f-active" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input type="hidden" id="editing-id" value="">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" onclick="saveProduct()">Save Product</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+
+const ORDER_STATUSES = ['pending', 'payment-confirmed', 'processing', 'shipped', 'delivered', 'cancelled'];
+const STATUS_COLORS = {
+  'pending': {'bg':'#fff3cd','text':'#856404'},
+  'payment-confirmed': {'bg':'#d1ecf1','text':'#0c5460'},
+  'processing': {'bg':'#e8f4ee','text':'#1d5c3a'},
+  'shipped': {'bg':'#cce5ff','text':'#004085'},
+  'delivered': {'bg':'#d4edda','text':'#155724'},
+  'cancelled': {'bg':'#f8d7da','text':'#721c24'}
+};
+
+function loadOrders() {
+  fetch('https://biofirst.co/api/orders', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {'X-Admin-Secret': 'msol2026admin', 'Content-Type': 'application/json'}
+  })
+    .then(r => r.json())
+    .then(orders => {
+      const tbody = document.getElementById('orders-tbody');
+      if (!orders || !orders.length) {
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:60px;color:var(--muted)">No orders yet</td></tr>';
+        return;
+      }
+      tbody.innerHTML = orders.map(o => {
+        const items = (o.items||[]).map(i => i.name + ' x' + i.qty).join(', ');
+        const date = o.timestamp ? new Date(o.timestamp).toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'}) : '-';
+        const cust = o.customer ? (o.customer.firstName + ' ' + (o.customer.lastName||'')).trim() : '-';
+        const pm = o.paymentMethod || '-';
+        const status = o.status || 'pending';
+        const sc = STATUS_COLORS[status] || STATUS_COLORS['pending'];
+        const options = ORDER_STATUSES.map(s => '<option value="'+s+'"'+(s===status?' selected':'')+'>'+s.replace('-', ' ')+'</option>').join('');
+        return '<tr>' +
+          '<td style="font-weight:700;color:var(--navy)">' + (o.ref||'-') + '</td>' +
+          '<td>' + cust + '<br><span style="font-size:11px;color:var(--muted)">' + (o.customer&&o.customer.email?o.customer.email:'') + '</span></td>' +
+          '<td style="font-size:13px">' + items + '</td>' +
+          '<td style="font-weight:700">$' + (o.total||'0') + '</td>' +
+          '<td><span style="background:#e8f4ee;color:#1d5c3a;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700">' + pm + '</span></td>' +
+          '<td>' +
+            '<select onchange="updateOrderStatus(\''+o.ref+'\',this.value)" style="padding:4px 8px;border-radius:6px;border:1px solid #d4e4d8;font-size:12px;font-weight:600;background:'+sc.bg+';color:'+sc.text+';cursor:pointer">' + options + '</select>' +
+            (o.trackingNumber ? '<br><span style="font-size:10px;color:var(--muted)">Tracking: '+o.trackingNumber+'</span>' : '') +
+          '</td>' +
+          '<td style="font-size:13px;color:var(--muted)">' + date + '</td>' +
+        '</tr>';
+      }).join('');
+    })
+    .catch(e => {
+      const tbody = document.getElementById('orders-tbody');
+      if (tbody) tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:60px;color:var(--muted)">Failed to load orders</td></tr>';
+    });
+}
+
+function updateOrderStatus(orderRef, newStatus) {
+  fetch('https://biofirst.co/api/orders/' + orderRef, {
+    method: 'PATCH',
+    mode: 'cors',
+    headers: {'Content-Type': 'application/json', 'X-Admin-Secret': 'msol2026admin'},
+    body: JSON.stringify({ status: newStatus })
+  })
+    .then(r => r.json())
+    .then(d => {
+      if (d.ok) {
+        console.log('Order ' + orderRef + ' updated to: ' + newStatus);
+        loadOrders();
+      } else {
+        alert('Failed to update order: ' + (d.error || 'Unknown error'));
+      }
+    })
+    .catch(e => {
+      alert('Error updating order: ' + e.message);
+    });
+}
+
+</script>
+<script>
+
+</script>
+<script>
+// Products stored in localStorage for persistence
+const DEFAULT_PRODUCTS = [
+  {id:'1', name:'Wolverine Blend', slug:'wolverine-blend', category:'Recovery & Repair', price:185, original_price:220, stock_status:'In Stock', is_active:true, badge:'Bestseller', description:'Advanced multi-peptide recovery formula. BPC-157 + TB-500 + GHK-Cu for accelerated tissue repair and regeneration.', emoji:'🦾'},
+  {id:'2', name:'NAD+', slug:'nad-plus', category:'Longevity & Energy', price:120, original_price:150, stock_status:'In Stock', is_active:true, badge:'Popular', description:'Nicotinamide Adenine Dinucleotide — cellular energy production and DNA repair. Extensively researched for longevity.', emoji:'⚡'},
+  {id:'3', name:'AOD-9604', slug:'aod-9604', category:'Metabolic Research', price:95, original_price:120, stock_status:'In Stock', is_active:true, badge:'', description:'Modified fragment of hGH studied for fat metabolism and body composition research.', emoji:'🔬'},
+  {id:'4', name:'GLOW 70', slug:'glow-70', category:'Skin & Anti-Aging', price:140, original_price:175, stock_status:'In Stock', is_active:true, badge:'New', description:'GHK-Cu + BPC-157 + TB-500 — advanced skin health peptide blend for collagen synthesis and cellular recovery.', emoji:'✨'},
+  {id:'5', name:'Tesamorelin / Ipamorelin', slug:'tesamorelin-ipamorelin', category:'Growth Hormone', price:155, original_price:190, stock_status:'In Stock', is_active:true, badge:'', description:'Dual GH secretagogue stack. Tesamorelin + Ipamorelin for pulsatile GH research.', emoji:'🧬'},
+  {id:'6', name:'BPC-157', slug:'bpc-157', category:'Recovery & Healing', price:110, original_price:140, stock_status:'In Stock', is_active:true, badge:'Top Seller', description:'Body Protection Compound — one of the most extensively researched peptides for tissue repair and angiogenesis.', emoji:'🛡️'},
+];
+
+function getProducts(){
+  const stored = localStorage.getItem('biofirst_products');
+  return stored ? JSON.parse(stored) : DEFAULT_PRODUCTS;
+}
+function saveProducts(products){
+  localStorage.setItem('biofirst_products', JSON.stringify(products));
+  // Also push to server so all visitors see the change
+  fetch('https://biofirst.co/api/products', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json','X-Admin-Secret':'msol2026admin'},
+    body: JSON.stringify(products)
+  }).then(r => r.json()).then(d => {
+    if(d.ok) console.log('✅ Products synced to server');
+    else console.warn('Sync error:', d);
+  }).catch(e => console.warn('Sync failed (offline?):', e));
+}
+
+// ==================== AUTH ====================
+const VALID_USERS = [
+  {email:'admin@biofirst.co', pass:'MsolAdmin2026#!'},
+  {email:'meir@biofirst.co', pass:'MsolAdmin2026#!'},
+  {email:'shlomi.ashash@gmail.com', pass:'MsolAdmin2026#!'}
+];
+
+function doLogin(){
+  const e=document.getElementById('login-email').value.trim().toLowerCase();
+  const p=document.getElementById('login-pass').value;
+  const ok=VALID_USERS.some(u=>u.email===e && u.pass===p);
+  if(ok){
+    sessionStorage.setItem('msol_admin','1');
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='block';
+    loadProducts();
+  } else {
+    document.getElementById('login-error').style.display='block';
+  }
+}
+function logout(){sessionStorage.removeItem('msol_admin');location.reload()}
+document.addEventListener('DOMContentLoaded', function(){
+  // Load from server first (overrides localStorage if server has newer data)
+  fetch('https://biofirst.co/api/products').then(r=>r.json()).then(products=>{
+    localStorage.setItem('biofirst_products', JSON.stringify(products));
+    if(typeof loadProducts === 'function') loadProducts();
+  }).catch(()=>{ if(typeof loadProducts === 'function') loadProducts(); });
+  document.getElementById('login-pass').addEventListener('keydown',e=>{if(e.key==='Enter')doLogin()});
+  
+  document.getElementById('f-name').addEventListener('input',function(){
+    const slugField=document.getElementById('f-slug');
+    if(!slugField.dataset.manual){
+      slugField.value=this.value.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+    }
+  });
+  document.getElementById('f-slug').addEventListener('input',function(){
+    this.dataset.manual='1';
+  });
+
+  if(sessionStorage.getItem('msol_admin')){
+    document.getElementById('login-screen').style.display='none';
+    document.getElementById('app').style.display='block';
+    loadProducts();
+  }
+});
+
+// ==================== TABS ====================
+function showTab(t){
+  if(t === 'orders') loadOrders();
+  ['products','orders','settings','messages'].forEach(x=>{
+    var el=document.getElementById('tab-'+x);
+    if(el) el.style.display=x===t?'block':'none';
+  });
+  document.querySelectorAll('.nav-item').forEach(function(el){
+    if(el.getAttribute('onclick') && el.getAttribute('onclick').includes("'"+t+"'"))
+      el.classList.add('active');
+    else el.classList.remove('active');
+  });
+  if(t==='messages') loadMessages();
+}
+
+// ==================== PRODUCTS ====================
+let allProducts=[];
+
+function loadProducts(){
+  allProducts = getProducts();
+  renderProducts(allProducts);
+  updateStats(allProducts);
+}
+
+function updateStats(products){
+  document.getElementById('stat-total').textContent=products.length;
+  document.getElementById('stat-active').textContent=products.filter(p=>p.is_active).length;
+  const prices=products.map(p=>p.price).filter(Boolean);
+  document.getElementById('stat-avg').textContent=prices.length?'$'+Math.round(prices.reduce((a,b)=>a+b,0)/prices.length):'—';
+  const cats=new Set(products.map(p=>p.category).filter(Boolean));
+  document.getElementById('stat-cats').textContent=cats.size;
+}
+
+function filterProducts(){
+  const q=document.getElementById('search-input').value.toLowerCase();
+  const cat=document.getElementById('cat-filter').value;
+  const filtered=allProducts.filter(p=>{
+    const matchQ=!q||p.name?.toLowerCase().includes(q)||p.description?.toLowerCase().includes(q);
+    const matchCat=!cat||p.category===cat;
+    return matchQ && matchCat;
+  });
+  renderProducts(filtered);
+}
+
+function renderProducts(products){
+  const tbody=document.getElementById('products-tbody');
+  if(!products.length){
+    tbody.innerHTML='<tr><td colspan="7" style="text-align:center;padding:60px;color:var(--muted)">No products found</td></tr>';
+    return;
+  }
+  tbody.innerHTML=products.map(p=>`
+    <tr>
+      <td>
+        <div class="product-name-cell">
+          <div class="product-thumb">
+            ${p.image_url?`<img src="${p.image_url}" alt="${p.name}" onerror="this.parentElement.textContent='💊'">`:'💊'}
+          </div>
+          <div class="product-info">
+            <div class="name">${p.name||'—'}</div>
+            <div class="slug">/${p.slug||''}</div>
+          </div>
+        </div>
+      </td>
+      <td><span class="category-pill">${p.category||'—'}</span></td>
+      <td class="price-cell">
+        $${p.price||0}
+        ${p.original_price?`<span class="original">$${p.original_price}</span>`:''}
+      </td>
+      <td><span class="badge-pill ${p.stock_status==='In Stock'?'badge-instock':p.stock_status==='Low Stock'?'badge-lowstock':'badge-outstock'}">${p.stock_status||'—'}</span></td>
+      <td>
+        <label class="toggle-active">
+          <input type="checkbox" ${p.is_active?'checked':''} onchange="toggleActive('${p.id}',this.checked)">
+          <span class="toggle-slider"></span>
+        </label>
+      </td>
+      <td>${p.badge?`<span class="badge-pill badge-instock">${p.badge}</span>`:'<span style="color:var(--muted);font-size:12px">None</span>'}</td>
+      <td>
+        <div class="action-btns">
+          <button class="btn-edit" onclick="openModal(${JSON.stringify(p).replace(/"/g,'&quot;')})">Edit</button>
+          <button class="btn-delete" onclick="deleteProduct('${p.id}','${p.name}')">Delete</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function toggleActive(id, val){
+  const products = getProducts();
+  const p = products.find(x=>x.id===id);
+  if(p){ p.is_active = val; saveProducts(products); }
+  showToast(val?'Product activated':'Product hidden from store');
+  loadProducts();
+}
+
+// ==================== MODAL ====================
+function openModal(product=null){
+  const modal=document.getElementById('modal');
+  document.getElementById('modal-title').textContent=product?'Edit Product':'Add Product';
+  document.getElementById('edit-id').value=product?.id||'';
+  document.getElementById('f-name').value=product?.name||'';
+  document.getElementById('f-slug').value=product?.slug||'';
+  document.getElementById('f-tagline').value=product?.tagline||'';
+  document.getElementById('f-desc').value=product?.description||'';
+  document.getElementById('f-benefits').value=product?.benefits||'';
+  document.getElementById('f-price').value=product?.price||'';
+  document.getElementById('f-original-price').value=product?.original_price||'';
+  document.getElementById('f-category').value=product?.category||'Performance';
+  document.getElementById('f-stock').value=product?.stock_status||'In Stock';
+  document.getElementById('f-badge').value=product?.badge||'';
+  document.getElementById('f-stripe').value=product?.stripe_price_id||'';
+  document.getElementById('f-image').value=product?.image_url||'';
+  document.getElementById('editing-id').value=product?.id||'';
+  document.getElementById('f-active').checked=product?.is_active!==false;
+  previewImg(product?.image_url||'');
+  modal.classList.add('open');
+}
+
+function closeModal(){document.getElementById('modal').classList.remove('open')}
+
+function previewImg(url){
+  const img=document.getElementById('img-preview');
+  if(url){img.src=url;img.classList.add('show')}
+  else{img.classList.remove('show')}
+}
+
+async function handleImageFile(file){
+  if(!file) return;
+  const slug = document.getElementById('f-slug').value.trim() || 'product';
+  showToast('Uploading image...','info');
+  const fd = new FormData();
+  fd.append('image', file, file.name);
+  fd.append('slug', slug);
+  try {
+    const r = await fetch('https://biofirst.co/api/upload-image', {
+      method:'POST',
+      headers:{'x-admin-secret':'msol2026admin'},
+      body: fd
+    });
+    const j = await r.json();
+    if(j.ok && j.url){
+      document.getElementById('f-image').value = j.url;
+      previewImg(j.url);
+      showToast('Image uploaded!','success');
+    } else {
+      showToast('Upload failed: ' + (j.error||'unknown'),'error');
+    }
+  } catch(e){
+    showToast('Upload error: '+e.message,'error');
+  }
+}
+
+function handleImageDrop(e){
+  e.preventDefault();
+  e.currentTarget.style.borderColor='var(--border)';
+  const file = e.dataTransfer?.files?.[0];
+  if(file && file.type.startsWith('image/')) handleImageFile(file);
+}
+
+// Auto-slug handled in DOMContentLoaded
+
+async function saveProduct(){
+  const id=document.getElementById('edit-id').value;
+  const name=document.getElementById('f-name').value.trim();
+  const price=parseFloat(document.getElementById('f-price').value);
+  if(!name||isNaN(price)){showToast('Name and Price are required','error');return}
+  const data={
+    name,
+    slug:document.getElementById('f-slug').value.trim()||name.toLowerCase().replace(/[^a-z0-9]+/g,'-'),
+    tagline:document.getElementById('f-tagline').value.trim(),
+    description:document.getElementById('f-desc').value.trim(),
+    benefits:document.getElementById('f-benefits').value.trim(),
+    price,
+    original_price:parseFloat(document.getElementById('f-original-price').value)||null,
+    category:document.getElementById('f-category').value,
+    stock_status:document.getElementById('f-stock').value,
+    badge:document.getElementById('f-badge').value.trim(),
+    stripe_price_id:document.getElementById('f-stripe').value.trim(),
+    image_url:document.getElementById('f-image').value.trim(),
+    is_active:document.getElementById('f-active').checked
+  };
+  const products = getProducts();
+  if(id){
+    const idx = products.findIndex(x=>x.id===id);
+    if(idx>-1){ products[idx] = {...products[idx], ...data}; }
+    showToast('Product updated successfully!');
+  } else {
+    data.id = Date.now().toString();
+    products.push(data);
+    showToast('Product created!');
+  }
+  saveProducts(products);
+  closeModal();
+  loadProducts();
+}
+
+function deleteProduct(id, name){
+  if(!confirm(`Delete "${name}"? This cannot be undone.`)) return;
+  const products = getProducts().filter(x=>x.id!==id);
+  saveProducts(products);
+  showToast(`"${name}" deleted`);
+  loadProducts();
+}
+
+// ==================== SETTINGS ====================
+function saveStripeKey(){
+  const key=document.getElementById('stripe-pk').value.trim();
+  if(!key.startsWith('pk_')){showToast('Invalid Stripe key — must start with pk_','error');return}
+  localStorage.setItem('msol_stripe_pk',key);
+  showToast('Stripe key saved! Update checkout.html with this key to activate payments.');
+}
+
+// ==================== TOAST ====================
+function showToast(msg,type='success'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;
+  t.style.background=type==='error'?'var(--red)':'var(--teal)';
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+
+// Close modal on overlay click
+document.getElementById('modal').addEventListener('click',function(e){
+  if(e.target===this) closeModal();
+});
+
+
+// ===== MESSAGES =====
+function loadMessages() {
+  const container = document.getElementById('messages-list');
+  if (!container) return;
+  container.innerHTML = '<div style="text-align:center;color:#888;padding:40px">Loading...</div>';
+  
+  // Use iframe trick to avoid any XHR/fetch CORS issues
+  fetch('https://biofirst.co/api/messages', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {'X-Admin-Secret': 'msol2026admin', 'Content-Type': 'application/json'}
+  })
+  .then(function(r) {
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return r.json();
+  })
+  .then(function(messages) {
+    if (!messages || !messages.length) {
+      container.innerHTML = '<div style="text-align:center;color:#888;padding:60px;font-size:15px">No messages yet</div>';
+      return;
+    }
+    const unread = messages.filter(function(m){return m.status==='unread';}).length;
+    const badge = document.getElementById('msg-badge');
+    if (badge) { badge.textContent = unread; badge.style.display = unread ? 'inline' : 'none'; }
+    container.innerHTML = messages.map(function(m) { return `
+      <div id="msg-${m.id}" style="background:${m.status==='unread'?'rgba(29,92,58,0.15)':'rgba(255,255,255,0.03)'};border:1.5px solid ${m.status==='unread'?'#2fb68f':'rgba(255,255,255,0.08)'};border-radius:12px;padding:20px 24px;margin-bottom:14px;">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+          <div>
+            <span style="font-weight:700;font-size:15px;color:#e2e8f0">${m.firstName||''} ${m.lastName||''}</span>
+            ${m.org ? '<span style="margin-left:10px;font-size:12px;color:#94a3b8;background:rgba(255,255,255,0.08);padding:2px 8px;border-radius:20px">'+m.org+'</span>' : ''}
+            ${m.status==='unread' ? '<span style="margin-left:8px;font-size:11px;color:#4ade80;background:rgba(74,222,128,0.15);padding:2px 8px;border-radius:20px;font-weight:600">NEW</span>' : ''}
+          </div>
+          <span style="font-size:12px;color:#64748b">${new Date(m.receivedAt).toLocaleString()}</span>
+        </div>
+        <div style="margin-bottom:8px;font-size:13px;color:#94a3b8"><strong style="color:#cbd5e1">Subject:</strong> ${m.subject||'(no subject)'}</div>
+        <div style="margin-bottom:8px;font-size:13px;color:#94a3b8"><strong style="color:#cbd5e1">Email:</strong> <a href="mailto:${m.email}" style="color:#34d399">${m.email}</a></div>
+        <div style="font-size:14px;color:#e2e8f0;line-height:1.6;margin-top:10px;padding:12px;background:rgba(255,255,255,0.04);border-radius:8px">${m.message}</div>
+        ${m.status==='unread' ? '<button onclick="markRead(\''+m.id+'\',this)" style="margin-top:12px;background:#1d5c3a;color:white;border:none;padding:6px 16px;border-radius:6px;cursor:pointer;font-size:12px">Mark as Read</button>' : ''}
+      </div>`;
+    }).join('');
+  })
+  .catch(function(err) {
+    container.innerHTML = '<div style="color:#f87171;padding:20px;text-align:center">Error: ' + err.message + '<br><small>Check browser console for details</small></div>';
+    console.error('loadMessages error:', err);
+  });
+}
+
+
+function markRead(id, btn) {
+  if (btn) { btn.disabled = true; btn.textContent = 'Marking...'; }
+  fetch('https://biofirst.co/api/messages/' + id, {
+    method: 'PATCH',
+    mode: 'cors',
+    headers: {'X-Admin-Secret': 'msol2026admin'}
+  }).then(function() { loadMessages(); }).catch(function(e) { console.error(e); if(btn){btn.disabled=false;btn.textContent='Mark as Read';} });
+}
+
+// Count unread on page load
+function checkUnreadMessages() {
+  const secret = '';
+  const xhr = new XMLHttpRequest();
+  xhr.open('GET', 'https://biofirst.co/api/messages', true);
+  xhr.setRequestHeader('X-Admin-Secret', secret);
+  xhr.timeout = 5000;
+  xhr.onload = function() {
+    try {
+      const messages = JSON.parse(xhr.responseText);
+      const unread = messages.filter(m => m.status === 'unread').length;
+      const badge = document.getElementById('msg-badge');
+      if (badge) { badge.textContent = unread; badge.style.display = unread ? 'inline' : 'none'; }
+    } catch(e) {}
+  };
+  xhr.send();
+}
+
+// Patch showTab to load messages when switching to messages tab
+window.addEventListener('DOMContentLoaded', function() {
+  setTimeout(checkUnreadMessages, 1000);
+});
+
+</script>
+</body>
+</html>

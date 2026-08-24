@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Peptide Page | BioFirst Laboratory</title>
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="description" content="Legacy product loader on biofirst.co. Use a catalog SKU URL for research peptide listings. Research use only.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://biofirst.co/product.html">
+<meta property="og:title" content="Research Peptide Page | BioFirst Laboratory">
+<meta property="og:description" content="Legacy product loader on biofirst.co. Use a catalog SKU URL for research peptide listings. Research use only.">
+<meta property="og:image" content="https://biofirst.co/media/label-box.png">
+<meta property="og:url" content="https://biofirst.co/product.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BioFirst">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Research Peptide Page | BioFirst Laboratory">
+<meta name="twitter:description" content="Legacy product loader on biofirst.co. Use a catalog SKU URL for research peptide listings. Research use only.">
+<meta name="twitter:image" content="https://biofirst.co/media/label-box.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --white:#ffffff;--cream:#f7f9f5;--navy:#0d2137;--navy2:#163352;
+  --green:#1d5c3a;--green2:#2d7a52;--green-light:#e8f4ee;--green-mid:#c2dece;
+  --text:#1a2e1f;--muted:#4a6358;--border:#d4e4d8;--border2:#e8f0ea;--gold:#b8952a;
+}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--text);font-family:'Lato',sans-serif;overflow-x:hidden}
+
+/* ── ANNOUNCE ── */
+.announce{background:var(--navy);color:rgba(255,255,255,0.92);text-align:center;padding:10px 20px;font-size:12px;font-weight:600;letter-spacing:0.8px}
+.announce strong{color:#7ecfaa}
+
+/* ── NAV (identical to homepage) ── */
+nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,0.06)}
+.logo{display:flex;align-items:center;gap: 16px;text-decoration:none;padding:16px 0}
+.logo-icon{width:70px;height:70px;border:none;background:transparent;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.logo-text{font-family:"Montserrat",sans-serif;font-size:24px;font-weight:800;color:var(--navy);letter-spacing:1px}
+.logo-text span{color:var(--green)}
+.logo-sub{font-size:9px;font-weight:600;letter-spacing:2px;color:var(--muted);text-transform:uppercase;display:block;margin-top:1px}
+.nav-links{display:flex;list-style:none;gap:0;align-items:center}
+.nav-links a{padding:22px 16px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s;font-family:"Montserrat",sans-serif;letter-spacing:0.3px}
+.nav-links a:hover{color:var(--green)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn-nav-outline{border:2px solid var(--navy);color:var(--navy);padding:9px 20px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;font-family:"Montserrat",sans-serif;letter-spacing:0.5px;transition:all .2s}
+.btn-nav-outline:hover{background:var(--navy);color:white}
+.btn-nav-fill{background:var(--green);color:white;padding:10px 22px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;font-family:"Montserrat",sans-serif;letter-spacing:0.5px;transition:all .2s;border:none;cursor:pointer}
+.btn-nav-fill:hover{background:var(--green2)}
+.cart-btn{position:relative;background:none;border:2px solid var(--border);padding:9px 14px;border-radius:6px;cursor:pointer;color:var(--navy);transition:all .2s;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:600;font-family:"Montserrat",sans-serif}
+.cart-btn:hover{border-color:var(--green);color:var(--green)}
+.cart-count{background:var(--green);color:white;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;position:absolute;top:-7px;right:-7px}
+
+/* ── BREADCRUMB ── */
+.breadcrumb{padding:14px 60px;background:var(--cream);border-bottom:1px solid var(--border);font-size:12px;color:var(--muted);font-family:"Montserrat",sans-serif}
+.breadcrumb a{color:var(--green);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+
+/* ── PRODUCT HERO ── */
+.product-hero{padding:60px 60px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.product-img-section{position:sticky;top:90px}
+.product-img-main{background:linear-gradient(160deg,#f0f7f3 0%,#e0efea 100%);border-radius:16px;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);overflow:hidden;margin-bottom:16px}
+.product-img-main img{width:100%;height:100%;object-fit:cover;object-position:center}
+.product-img-placeholder{font-size:110px;line-height:1;filter:drop-shadow(0 8px 16px rgba(0,0,0,0.1))}
+
+/* ── PRODUCT INFO ── */
+.product-category-label{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;color:var(--green);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.product-title{font-family:"Montserrat",sans-serif;font-size:42px;font-weight:900;color:var(--navy);margin-bottom:6px;letter-spacing:-1px;line-height:1.1}
+.product-subtitle{font-family:"Montserrat",sans-serif;font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.product-purity-row{display:flex;align-items:center;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.purity-badge{display:inline-flex;align-items:center;gap:6px;background:var(--green-light);border:1.5px solid var(--green-mid);color:var(--green);padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;font-family:"Montserrat",sans-serif;text-transform:uppercase;letter-spacing:0.5px}
+.ruo-badge{background:#fff8e8;border:1.5px solid #f0d080;color:#8a6200;padding:6px 14px;border-radius:6px;font-size:11px;font-weight:700;font-family:"Montserrat",sans-serif;text-transform:uppercase;letter-spacing:0.5px}
+.product-desc-text{font-size:15px;line-height:1.8;color:var(--muted);margin-bottom:28px}
+.ingredients-label{font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.ingredients-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.ingredient-list{display:flex;flex-direction:column;gap:14px;margin-bottom:24px}
+.ingredient{display:flex;align-items:flex-start;gap:14px;padding:16px;background:var(--cream);border:1px solid var(--border2);border-radius:10px}
+.ing-icon{width:42px;height:42px;border-radius:50%;background:var(--green-light);border:1.5px solid var(--green-mid);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.ing-name{font-family:"Montserrat",sans-serif;font-size:14px;font-weight:800;color:var(--navy);margin-bottom:4px}
+.ing-desc{font-size:13px;color:var(--muted);line-height:1.6}
+.storage-box{background:white;border:1px solid var(--border2);border-radius:10px;padding:14px 18px;margin-bottom:14px;display:flex;align-items:center;gap:14px;font-size:13px;color:var(--muted)}
+.storage-box strong{color:var(--navy);font-family:"Montserrat",sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;display:block;margin-bottom:3px}
+
+/* ── PRICE SECTION ── */
+.price-section{padding:24px;background:var(--cream);border:1.5px solid var(--border);border-radius:12px;margin-bottom:20px}
+.size-label{font-family:"Montserrat",sans-serif;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.size-options{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.size-btn{padding:8px 16px;border:1.5px solid var(--border);border-radius:6px;font-size:12px;font-weight:700;font-family:"Montserrat",sans-serif;cursor:pointer;background:white;color:var(--navy);transition:all .2s}
+.size-btn:hover,.size-btn.active{border-color:var(--green);background:var(--green-light);color:var(--green)}
+.price-row{display:flex;align-items:flex-end;gap:12px;margin-bottom:6px}
+.price-main{font-family:"Montserrat",sans-serif;font-size:42px;font-weight:900;color:var(--navy);line-height:1}
+.price-original{font-family:"Montserrat",sans-serif;font-size:20px;font-weight:600;color:var(--muted);text-decoration:line-through;margin-bottom:6px}
+.price-per{font-size:13px;color:var(--muted);margin-bottom:8px}
+.price-note{font-size:12px;color:var(--muted);margin-bottom:20px;font-style:italic}
+.btn-order{display:block;width:100%;background:var(--green);color:white;border:none;padding:16px;border-radius:8px;font-size:14px;font-weight:700;text-align:center;text-decoration:none;font-family:"Montserrat",sans-serif;letter-spacing:0.5px;transition:all .2s;margin-bottom:10px;cursor:pointer}
+.btn-order:hover{background:var(--green2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,92,58,0.3)}
+.btn-inquiry{display:block;width:100%;background:white;color:var(--navy);padding:14px;border-radius:8px;font-size:13px;font-weight:700;text-align:center;text-decoration:none;font-family:"Montserrat",sans-serif;border:1.5px solid var(--border);transition:all .2s;margin-bottom:16px}
+.btn-inquiry:hover{border-color:var(--green);color:var(--green)}
+.trust-items{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.trust-item{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:600}
+.trust-item::before{content:'✓';color:var(--green);font-weight:800;font-size:14px}
+
+/* ── DISCLAIMER ── */
+.disclaimer{background:var(--green-light);border-top:2px solid var(--green-mid);border-bottom:2px solid var(--green-mid);padding:28px 60px}
+.disclaimer-inner{max-width:900px;margin:0 auto;display:flex;align-items:flex-start;gap:20px}
+.disc-icon{font-size:22px;flex-shrink:0;margin-top:2px}
+.disc-text{font-size:12px;color:var(--muted);line-height:1.7}
+.disc-text strong{color:var(--navy);font-family:"Montserrat",sans-serif;font-size:11px;font-weight:700;letter-spacing:0.5px;text-transform:uppercase;display:block;margin-bottom:6px}
+
+/* ── FOOTER (matches homepage) ── */
+footer{background:var(--navy);padding:60px 60px 30px}
+.footer-inner{max-width:1280px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-brand .logo-text-f{font-family:"Montserrat",sans-serif;font-size:22px;font-weight:900;color:white;letter-spacing:1px}
+.footer-brand .logo-text-f span{color:#7ecfaa}
+.footer-brand .logo-sub-f{font-size:9px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.35);text-transform:uppercase;display:block;margin-top:2px;margin-bottom:14px}
+.footer-brand p{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.8;max-width:280px}
+.footer-col h4{font-family:"Montserrat",sans-serif;font-size:10px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:#7ecfaa}
+.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:28px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:12px;color:rgba(255,255,255,0.3)}
+.footer-disc{font-size:11px;color:rgba(255,255,255,0.25);max-width:500px;line-height:1.6}
+
+/* ── LOADING / NOT FOUND ── */
+.loading-state{text-align:center;padding:120px 40px;color:var(--muted)}
+.loading-spinner{width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--green);border-radius:50%;animation:spin 0.8s linear infinite;margin:0 auto 20px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.not-found{text-align:center;padding:120px 40px}
+.not-found h2{font-family:"Montserrat",sans-serif;font-size:32px;font-weight:900;color:var(--navy);margin-bottom:16px}
+.not-found p{color:var(--muted);margin-bottom:24px}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 20px}
+  .nav-links{display:none}
+  .product-hero{grid-template-columns:1fr;gap:32px;padding:32px 20px}
+  .product-img-section{position:static}
+  .breadcrumb{padding:12px 20px}
+  .disclaimer{padding:20px}
+  footer{padding:40px 20px 20px}
+  .footer-top{grid-template-columns:1fr 1fr;gap:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCE BAR — identical to homepage -->
+<div class="announce">🔬 <strong>RESEARCH COMPOUND</strong> &nbsp;|&nbsp; Not FDA approved. For research purposes only. Not intended for human consumption.</div>
+
+<!-- NAV — identical to homepage -->
+<nav>
+  <a href="../index.html" class="logo">
+    <div class="logo-icon"><img src="/biofirst-logo.webp" alt="BioFirst Logo" style="width:70px;height:70px;object-fit:contain;"/></div>
+    <div>
+      <div class="logo-text">BIO<span>FIRST</span></div>
+      <div class="logo-sub">Science First. Health Always.</div>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#products">Products</a></li>
+    <li><a href="../index.html#science">Our Science</a></li>
+    <li><a href="../index.html#how">How It Works</a></li>
+    <li><a href="mailto:info@biofirst.co">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <button class="cart-btn">
+      🛒 Cart
+      <span class="cart-count">0</span>
+    </button>
+    <a href="mailto:info@biofirst.co" class="btn-nav-fill">Order Now</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="../index.html">Home</a> › <a href="../index.html">Products</a> › <span id="breadcrumb-name">Loading...</span>
+</div>
+
+<!-- PRODUCT CONTENT — injected by JS -->
+<div id="product-container">
+  <div class="loading-state">
+    <div class="loading-spinner"></div>
+    <p>Loading product...</p>
+  </div>
+</div>
+
+<!-- DISCLAIMER -->
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <div class="disc-icon">⚠️</div>
+    <div class="disc-text">
+      <strong>Research Compound Disclaimer</strong>
+      All products are sold strictly for research purposes only (RUO). Not intended for human consumption, self-administration, or therapeutic use. These statements have not been evaluated by the FDA. For laboratory and research use only.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER — matches homepage -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text-f">BIO<span>FIRST</span></div>
+        <div class="logo-sub-f">Science First. Health Always.</div>
+        <p>Premium research peptides. Third-party tested, pharmaceutical-grade purity. Trusted by researchers worldwide.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Products</h4>
+        <a href="../index.html#products">All Peptides</a>
+        <a href="../index.html#products">Blends</a>
+        <a href="../index.html#products">Hormones</a>
+        <a href="../index.html#products">Supplies</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="../index.html#science">Our Science</a>
+        <a href="../index.html#how">How It Works</a>
+        <a href="mailto:info@biofirst.co">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <a href="#" onclick="openCOARequest(currentProductName||'');return false" style="cursor:pointer">Request COA</a>
+        <a href="mailto:info@biofirst.co?subject=Order Inquiry">Place Order</a>
+        <a href="mailto:info@biofirst.co?subject=Shipping Inquiry">Shipping Info</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 BioFirst Ltd. All rights reserved.</div>
+      <div class="footer-disc">Research Compound — Not FDA approved. For research purposes only. Not intended for human consumption or therapeutic use.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function() {
+  var path = window.location.pathname;
+  var slug = path.split('/').pop().replace('.html','');
+
+  // Same icon logic as catalogue cards
+  function getCategoryIcon(category) {
+    var c = (category||'').toLowerCase();
+    if (c.includes('blend')) return '⚗️';
+    if (c.includes('hormone')) return '🔬';
+    if (c.includes('supply')) return '💉';
+    return '🧬';
+  }
+
+  function parseSizeOptions(str) {
+    if (!str) return [];
+    return str.split('|').map(function(s){
+      var p = s.trim().split(':');
+      return {label: p[0]?p[0].trim():s.trim(), price: p[1]?p[1].trim():null};
+    }).filter(function(s){return s.label;});
+  }
+
+  function renderProduct(p) {
+    document.title = p.name + ' | BioFirst';
+    document.getElementById('breadcrumb-name').textContent = p.name;
+
+    // IMAGE — same source as catalogue card
+    var imgHtml = p.image_url
+      ? '<img src="' + p.image_url + '" alt="' + p.name + '">'
+      : '<div class="product-img-placeholder">' + getCategoryIcon(p.category) + '</div>';
+
+    var sizes = parseSizeOptions(p.size_options);
+    var sizeHtml = '';
+    if (sizes.length > 1) {
+      sizeHtml = '<div class="size-label">Select Size</div><div class="size-options">' +
+        sizes.map(function(s,i){
+          return '<button class="size-btn'+(i===0?' active':'')+'" onclick="selectSize(this,\''+s.price+'\')">'+s.label+(s.price?' — '+s.price:'')+'</button>';
+        }).join('')+'</div>';
+    }
+
+    var origHtml = (p.original_price && parseFloat(p.original_price) > parseFloat(p.price))
+      ? '<span class="price-original">$'+p.original_price+'</span>' : '';
+
+    var storageHtml = p.storage
+      ? '<div class="storage-box"><span style="font-size:22px">❄️</span><div><strong>Storage</strong>'+p.storage+'</div></div>' : '';
+    var presentationHtml = p.presentation
+      ? '<div class="storage-box"><span style="font-size:22px">🧪</span><div><strong>Presentation</strong>'+p.presentation+'</div></div>' : '';
+
+    var emailSubj = encodeURIComponent('Order Inquiry - '+p.name);
+    var emailBody = encodeURIComponent('Hello,\n\nI am interested in ordering '+p.name+'.\n\nQuantity: \nShipping address: \n\nPlease send pricing, availability, and COA.\n\nThank you.');
+    var coaSubj  = encodeURIComponent('COA Request - '+p.name);
+
+    document.getElementById('product-container').innerHTML =
+      '<div class="product-hero">' +
+        '<div class="product-img-section">' +
+          '<div class="product-img-main">' + imgHtml + '</div>' +
+        '</div>' +
+        '<div>' +
+          '<div class="product-category-label">'+(p.category||'Peptide')+'</div>' +
+          '<h1 class="product-title">'+p.name+'</h1>' +
+          (p.tagline?'<div class="product-subtitle">'+p.tagline+'</div>':'') +
+          '<div class="product-purity-row">' +
+            '<span class="purity-badge">✓ '+(p.purity||'≥99% HPLC Verified')+'</span>' +
+            '<span class="ruo-badge">RUO — Research Use Only</span>' +
+          '</div>' +
+          '<p class="product-desc-text">'+(p.description||'Research-grade peptide. Third-party tested, pharmaceutical-grade purity.')+'</p>' +
+          '<div class="ingredients-label">Product Composition</div>' +
+          '<div class="ingredient-list">' +
+            '<div class="ingredient"><div class="ing-icon">'+getCategoryIcon(p.category)+'</div><div>' +
+              '<div class="ing-name">'+p.name+'</div>' +
+              '<div class="ing-desc">'+(p.description||'').substring(0,130)+'...</div>' +
+            '</div></div>' +
+            '<div class="ingredient"><div class="ing-icon">⚗️</div><div>' +
+              '<div class="ing-name">Lyophilized Powder'+(p.presentation?' — '+p.presentation:'')+'</div>' +
+              '<div class="ing-desc">Pharmaceutical-grade lyophilized form for maximum stability. Independent HPLC verified at 99%+ purity.</div>' +
+            '</div></div>' +
+            '<div class="ingredient"><div class="ing-icon">🔬</div><div>' +
+              '<div class="ing-name">Sterile Manufacturing</div>' +
+              '<div class="ing-desc">Produced under strictly controlled cleanroom conditions with full batch documentation and COA.</div>' +
+            '</div></div>' +
+          '</div>' +
+          storageHtml + presentationHtml +
+          '<div class="price-section">' +
+            sizeHtml +
+            '<div class="price-row">' +
+              '<div class="price-main" id="current-price">$'+p.price+'</div>' +
+              origHtml +
+            '</div>' +
+            '<div class="price-per">per unit — Research Use Only</div>' +
+            '<div class="price-note">COA included with every order. DDP delivery available.</div>' +
+            '<button class="btn-order" id="atc-btn" onclick="addToCartTemplate()">Add to Cart →</button>' +
+            (COA_DATA && COA_DATA[p.slug]
+              ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
+              : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>') +
+            '<div class="trust-items">' +
+              '<div class="trust-item">Third-party HPLC verified</div>' +
+              '<div class="trust-item">Sterile manufacturing</div>' +
+              '<div class="trust-item">Cold-chain packaging</div>' +
+              '<div class="trust-item">EU delivery (DDP)</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+  }
+
+  function renderNotFound() {
+    document.getElementById('product-container').innerHTML =
+      '<div class="not-found">' +
+        '<h2>Product Not Found</h2>' +
+        '<p>We couldn\'t find the product you\'re looking for.</p>' +
+        '<a href="../index.html" class="btn-order" style="display:inline-block;width:auto;padding:14px 32px">← Back to All Products</a>' +
+      '</div>';
+  }
+
+  fetch('https://biofirst.co/api/products')
+    .then(function(r){return r.json();})
+    .then(function(products){
+      localStorage.setItem('biofirst_products', JSON.stringify(products));
+      var p = products.find(function(x){return x.slug===slug;});
+      if (p) renderProduct(p); else renderNotFound();
+    })
+    .catch(function(){
+      try {
+        var s = localStorage.getItem('biofirst_products');
+        if (s) {
+          var p = JSON.parse(s).find(function(x){return x.slug===slug;});
+          if (p){renderProduct(p);return;}
+        }
+      } catch(e){}
+      renderNotFound();
+    });
+
+  window.selectSize = function(btn, price) {
+    document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    if (price) document.getElementById('current-price').textContent = price;
+  };
+})();
+</script>
+
+
+<script>
+// ── Cart system for universal product template ──────────────
+(function(){
+  // Load cart
+  function getCart(){ return JSON.parse(localStorage.getItem('biofirst_cart')||'[]'); }
+  function saveCart(c){ localStorage.setItem('biofirst_cart', JSON.stringify(c)); }
+
+  // Update cart badge
+  function updateBadge(){
+    var c = getCart();
+    var total = c.reduce(function(s,i){return s+i.qty;},0);
+    var el = document.querySelector('.cart-count');
+    if(el){ el.textContent = total > 0 ? total : ''; }
+  }
+
+  // Add to cart — reads current rendered product name + selected size/price
+  window.addToCartTemplate = function(){
+    var name = (document.querySelector('.product-title')||{}).textContent || 'Product';
+    name = name.trim();
+
+    // Active size button
+    var activeSize = document.querySelector('.size-btn.active');
+    var sizeLabel = activeSize ? activeSize.textContent.split('—')[0].trim() : '';
+
+    // Price — from #current-price or first price-main
+    var priceEl = document.getElementById('current-price') || document.querySelector('.price-main');
+    var priceText = priceEl ? priceEl.textContent.replace(/[^0-9.]/g,'') : '0';
+    var price = parseFloat(priceText) || 0;
+
+    var slug = window.location.pathname.split('/').pop().replace('.html','');
+    var cartName = sizeLabel ? name + ' (' + sizeLabel + ')' : name;
+
+    // Get image
+    var imgEl = document.querySelector('.product-img-main img');
+    var imageUrl = imgEl ? imgEl.src : '';
+
+    var cart = getCart();
+    var existing = cart.find(function(i){ return i.name === cartName; });
+    if(existing){ existing.qty++; } else { cart.push({name:cartName, price:price, qty:1, slug:slug, imageUrl:imageUrl}); }
+    saveCart(cart);
+    updateBadge();
+
+    // Button feedback
+    var btn = document.getElementById('atc-btn');
+    if(btn){
+      var orig = btn.textContent;
+      btn.textContent = '✓ Added to Cart!';
+      btn.style.background = '#2a7a4a';
+      setTimeout(function(){ btn.textContent = orig; btn.style.background = ''; }, 1800);
+    }
+  };
+
+  // Cart icon → checkout
+  function wireCartIcon(){
+    var cartBtn = document.querySelector('.cart-btn');
+    if(cartBtn){
+      cartBtn.addEventListener('click', function(){
+        window.location.href = '/checkout.html';
+      });
+    }
+  }
+
+  // Update size selection to also track current price
+  var origSelectSize = window.selectSize;
+  window.selectSize = function(btn, price){
+    document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
+    btn.classList.add('active');
+    if(price){ 
+      var el = document.getElementById('current-price');
+      if(el) el.textContent = price;
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateBadge();
+    wireCartIcon();
+  });
+  // Also update badge after product renders (fetch is async)
+  setTimeout(updateBadge, 1500);
+})();
+</script>
+
+
+<!-- COA POPUP MODAL -->
+<div id="coa-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:12px;width:90%;max-width:860px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4)">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e8f0ea;background:#f7f9f5">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#1d5c3a;letter-spacing:1px;text-transform:uppercase">Certificate of Analysis</div>
+        <div id="coa-modal-title" style="font-size:15px;font-weight:700;color:#0d2137;margin-top:2px"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a id="coa-download-btn" href="#" download style="display:inline-flex;align-items:center;gap:6px;background:#1d5c3a;color:white;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;font-family:"Montserrat",sans-serif">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <button onclick="closeCOAModal()" style="background:none;border:none;cursor:pointer;padding:6px;color:#4a6358;font-size:20px;line-height:1">&#x2715;</button>
+      </div>
+    </div>
+    <!-- Multi-COA tabs (shown only when product has multiple COAs) -->
+    <div id="coa-tabs" style="display:none;padding:10px 20px 0;border-bottom:1px solid #e8f0ea;gap:8px;flex-direction:row">
+    </div>
+    <!-- PDF Viewer -->
+    <div style="flex:1;overflow:hidden;min-height:500px">
+      <iframe id="coa-iframe" src="" style="width:100%;height:600px;border:none;display:block"></iframe>
+    </div>
+    <!-- Verified badge -->
+    <div style="padding:10px 20px;background:#f7f9f5;border-top:1px solid #e8f0ea;display:flex;align-items:center;gap:8px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d5c3a" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span style="font-size:11px;color:#1d5c3a;font-weight:700">Third-party verified by AccumarkLabs — HPLC tested, sterility confirmed</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// COA DATA MAP
+var COA_DATA = {
+  'glow-70': [
+    {url:'https://base44.app/api/apps/6a2a71f7657c7f4b9841fe12/files/mp/public/6a2a71f7657c7f4b9841fe12/b1a1660a4_ARC-GL70-003.pdf', filename:'COA-GLOW-70-ARC-GL70-003.pdf', label:'GLOW-70 — Lot ARC-GL70-003'}
+  ],
+  'reta-glp-3': [
+    {url:'https://base44.app/api/apps/6a2a71f7657c7f4b9841fe12/files/mp/public/6a2a71f7657c7f4b9841fe12/410b54301_ARC-RT10-005.pdf', filename:'COA-Retatrutide-10mg-ARC-RT10-005.pdf', label:'10mg — Lot ARC-RT10-005'},
+    {url:'https://base44.app/api/apps/6a2a71f7657c7f4b9841fe12/files/mp/public/6a2a71f7657c7f4b9841fe12/839fbae29_ARC-RT20-002.pdf', filename:'COA-Retatrutide-20mg-ARC-RT20-002.pdf', label:'20mg — Lot ARC-RT20-002'}
+  ],
+  'tesamorelin': [
+    {url:'https://base44.app/api/apps/6a2a71f7657c7f4b9841fe12/files/mp/public/6a2a71f7657c7f4b9841fe12/cb525e04f_ARC-TS10-003.pdf', filename:'COA-Tesamorelin-ARC-TS10-003.pdf', label:'Tesamorelin — Lot ARC-TS10-003'}
+  ],
+  'wolverine-blend': [
+    {url:'https://base44.app/api/apps/6a2a71f7657c7f4b9841fe12/files/mp/public/6a2a71f7657c7f4b9841fe12/25ab4ff3f_ARC-WV10-004.pdf', filename:'COA-Wolverine-Blend-ARC-WV10-004.pdf', label:'Wolverine Blend — Lot ARC-WV10-004'}
+  ]
+};
+
+function openCOAModal(slug) {
+  var entries = COA_DATA[slug];
+  if (!entries || !entries.length) return;
+  var modal = document.getElementById('coa-modal');
+  var tabs = document.getElementById('coa-tabs');
+
+  // Load first entry
+  loadCOAEntry(entries[0]);
+
+  // Show tabs only if multiple COAs
+  if (entries.length > 1) {
+    tabs.style.display = 'flex';
+    tabs.innerHTML = entries.map(function(e, i) {
+      return '<button onclick="loadCOAEntry(COA_DATA[\''+slug+'\']['+i+'], this)" style="padding:6px 14px;border-radius:6px 6px 0 0;border:1px solid #d4e4d8;border-bottom:none;background:'+(i===0?'white':'#f7f9f5')+';color:'+(i===0?'#0d2137':'#4a6358')+';font-size:12px;font-weight:700;cursor:pointer;font-family:"Montserrat",sans-serif">' + e.label + '</button>';
+    }).join('');
+  } else {
+    tabs.style.display = 'none';
+    tabs.innerHTML = '';
+  }
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function loadCOAEntry(entry, btnEl) {
+  document.getElementById('coa-iframe').src = entry.url;
+  document.getElementById('coa-modal-title').textContent = entry.label;
+  var dl = document.getElementById('coa-download-btn');
+  dl.href = entry.url;
+  dl.download = entry.filename;
+  // Update tab highlight
+  if (btnEl) {
+    var tabs = document.getElementById('coa-tabs');
+    tabs.querySelectorAll('button').forEach(function(b) {
+      b.style.background = '#f7f9f5'; b.style.color = '#4a6358';
+    });
+    btnEl.style.background = 'white'; btnEl.style.color = '#0d2137';
+  }
+}
+
+function closeCOAModal() {
+  document.getElementById('coa-modal').style.display = 'none';
+  document.getElementById('coa-iframe').src = '';
+  document.body.style.overflow = '';
+}
+
+// Close on backdrop click
+document.getElementById('coa-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCOAModal();
+});
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCOAModal();
+});
+</script>
+
+
+<!-- REQUEST COA POPUP MODAL -->
+<div id="coa-request-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9998;align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:12px;width:90%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
+    <!-- Header -->
+    <div style="padding:20px 24px;border-bottom:1px solid #e8f0ea">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#1d5c3a;letter-spacing:1px;text-transform:uppercase">Certificate of Analysis</div>
+          <div style="font-size:18px;font-weight:700;color:#0d2137;margin-top:2px">Request COA</div>
+        </div>
+        <button onclick="closeCOARequest()" style="background:none;border:none;cursor:pointer;padding:4px;color:#4a6358;font-size:20px;line-height:1">&#x2715;</button>
+      </div>
+      <p style="font-size:13px;color:#6a8270;margin:8px 0 0">Enter your details and we will send the Certificate of Analysis for <strong id="coa-req-product" style="color:#0d2137">this product</strong> directly to your inbox.</p>
+    </div>
+    <!-- Form -->
+    <form id="coa-request-form" onsubmit="submitCOARequest(event)" style="padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">First Name *</label>
+          <input type="text" id="coa-req-first" required style="border:1.5px solid #dde7e2;border-radius:8px;padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Last Name *</label>
+          <input type="text" id="coa-req-last" required style="border:1.5px solid #dde7e2;border-radius:8px;padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Email *</label>
+        <input type="email" id="coa-req-email" required style="border:1.5px solid #dde7e2;border-radius:8px;padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Company / Institution</label>
+        <input type="text" id="coa-req-org" style="border:1.5px solid #dde7e2;border-radius:8px;padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label style="font-family:'Montserrat',sans-serif;font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Message</label>
+        <textarea id="coa-req-msg" rows="3" placeholder="Any specific lot numbers or batch requirements?" style="border:1.5px solid #dde7e2;border-radius:8px;padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s;resize:vertical;line-height:1.5" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'"></textarea>
+      </div>
+      <button type="submit" id="coa-req-submit" style="background:#1d5c3a;color:white;border:none;border-radius:8px;padding:13px 28px;font-size:13px;font-weight:700;font-family:'Montserrat',sans-serif;letter-spacing:0.5px;cursor:pointer;transition:all .2s;text-transform:uppercase">
+        <span id="coa-req-btn-text">Send Request</span>
+      </button>
+      <div id="coa-req-success" style="display:none;align-items:center;gap:10px;font-size:13px;color:#1d5c3a;font-weight:600;background:#e8f4ee;border-radius:8px;padding:12px 16px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d5c3a" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Request sent! We will email your COA shortly.
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+var coaRequestProduct = '';
+function openCOARequest(productName) {
+  coaRequestProduct = productName || '';
+  document.getElementById('coa-req-product').textContent = productName || 'this product';
+  document.getElementById('coa-request-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCOARequest() {
+  document.getElementById('coa-request-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+function submitCOARequest(e) {
+  e.preventDefault();
+  var btn = document.getElementById('coa-req-submit');
+  var txt = document.getElementById('coa-req-btn-text');
+  btn.disabled = true;
+  txt.textContent = 'Sending...';
+  var payload = {
+    firstName: document.getElementById('coa-req-first').value,
+    lastName:  document.getElementById('coa-req-last').value,
+    email:     document.getElementById('coa-req-email').value,
+    org:       document.getElementById('coa-req-org').value,
+    subject:   'COA Request - ' + (coaRequestProduct || 'General'),
+    message:   (document.getElementById('coa-req-msg').value || '') + ' [Product: ' + (coaRequestProduct || 'General') + ']'
+  };
+  fetch('https://biofirst.co/api/contact', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    btn.disabled = false;
+    txt.textContent = 'Send Request';
+    document.getElementById('coa-req-success').style.display = 'flex';
+    document.getElementById('coa-request-form').reset();
+    setTimeout(function() {
+      document.getElementById('coa-req-success').style.display = 'none';
+      closeCOARequest();
+    }, 3000);
+  })
+  .catch(function() {
+    btn.disabled = false;
+    txt.textContent = 'Send Request';
+    document.getElementById('coa-req-success').style.display = 'flex';
+    document.getElementById('coa-request-form').reset();
+    setTimeout(function() {
+      document.getElementById('coa-req-success').style.display = 'none';
+      closeCOARequest();
+    }, 3000);
+  });
+}
+document.getElementById('coa-request-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCOARequest();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCOARequest();
+});
+</script>
+
+</body>
+</html>
