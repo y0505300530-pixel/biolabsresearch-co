@@ -230,7 +230,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 .cart-note{font-size:11px;color:var(--ink-soft);text-align:center;margin-top:12px}
 @media(max-width:900px){.cart-drawer{width:100%;right:-100%}}
 
-.spec-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:16px 0;padding:14px 0;border-top:1px solid #e8e2d8;border-bottom:1px solid #e8e2d8}.spec-strip dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#9A6D2A}.spec-strip dd{font-size:14px;color:#1F1F1F;font-family:ui-monospace,monospace}.spec-note{font-size:12px;color:#8A8A8A;margin:0 0 16px}</style>
+.spec-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:16px 0;padding:14px 0;border-top:1px solid #e8e2d8;border-bottom:1px solid #e8e2d8}.spec-strip dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#9A6D2A}.spec-strip dd{font-size:14px;color:#1F1F1F;font-family:ui-monospace,monospace}.spec-note{font-size:12px;color:#8A8A8A;margin:0 0 16px}.research-note{font-size:14px;line-height:1.55;color:#1F1F1F;margin:8px 0 16px;padding:12px 14px;background:#F4EFE4;border-radius:8px}.research-note h3{font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:#9A6D2A;margin:0 0 8px;font-weight:700}.research-note p{margin:0 0 8px}.research-note p:last-child{margin:0;color:#8A8A8A;font-size:13px}</style>
 </head>
 <body>
 
@@ -478,7 +478,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
             (p.purity ? '<span class="purity-badge">✓ '+p.purity+'</span>' : '<span class="purity-badge">See COA for this lot</span>') +
             '<span class="ruo-badge">RUO — Research Use Only</span>' +
           '</div>' +
-          specStripHtml(p.slug) + '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
+          specStripHtml(p.slug) + researchNoteHtml(p.slug) + '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
           '<div class="ingredients-label">Product Composition</div>' +
           '<div class="ingredient-list">' +
             '<div class="ingredient"><div class="ing-icon">'+getCategoryIcon(p.category)+'</div><div>' +
@@ -895,6 +895,79 @@ var PUB_IDS = {
     "seq": ""
   }
 };
+
+var RESEARCH = {
+  "bpc-157": {
+    "body": "BPC-157 is a pentadecapeptide (GEPPPGKPADDAGLV), CAS 137525-51-0. The sequence is published as a gastric-derived fragment and is used in cell and tissue models of cytoprotection and angiogenesis signaling.",
+    "limit": "Research reagent only. Not a medicine, not a wound protocol, no dose on this page."
+  },
+  "nad-plus": {
+    "body": "NAD+ is nicotinamide adenine dinucleotide, CAS 53-84-9 (C21H27N7O14P2). It is a published redox cofactor used in dehydrogenase and NAD-consuming enzyme assays.",
+    "limit": "Biochemical reference material. Not a supplement claim, no dose on this page."
+  },
+  "aod-9604": {
+    "body": "AOD-9604 is listed in literature as the C-terminal fragment of human growth hormone (residues 177-191), CAS 221231-10-3. It appears in lipid-metabolism models as a fragment listing, not as intact GH.",
+    "limit": "Research fragment only. Not growth-hormone replacement, no dose on this page."
+  },
+  "curcumin-phytosome": {
+    "body": "Curcumin (diferuloylmethane, CAS 458-37-7) in a phospholipid phytosome research formulation. Used in laboratory studies of polyphenol pathways. The catalog name may include a published formulation label; this page does not claim a licensed clinical product.",
+    "limit": "Research formulation. Not a dietary supplement or drug, no outcome on this page."
+  },
+  "tesamorelin-ipamorelin": {
+    "body": "Two named compounds in one SKU. Tesamorelin is a published GHRH analogue (CAS 218949-48-5). Ipamorelin is a published ghrelin-receptor (GHS-R) agonist (CAS 170851-70-4). They are used in GH-axis signaling research. Ratio and fill weight are lot data, not guessed here.",
+    "limit": "Research blend. Not a secretagogue therapy, not a registered drug, no dose on this page."
+  },
+  "bpc-157-tb-500-blend": {
+    "body": "Two named peptides in one SKU: BPC-157 (CAS 137525-51-0, GEPPPGKPADDAGLV) and a TB-500 / thymosin-beta-4 fragment listing (commonly Ac-LKKTETQ). Per-compound amounts belong on the lot document.",
+    "limit": "Research blend. Not a healing protocol, no ratio invented on this page."
+  },
+  "glow-70": {
+    "body": "GLOW 70 is a catalog name for a research blend. This page does not invent a formula, a three-peptide recipe, a ratio, or a purity number. Identity is the names on the label and the lot COA when a file is issued.",
+    "limit": "Named SKU only. Not a cosmetic treatment, no composition guessed here."
+  },
+  "epithalon": {
+    "body": "Epithalon (epitalon) is the tetrapeptide Ala-Glu-Asp-Gly (AEDG), CAS 307297-39-8. It appears in pineal and telomerase-related laboratory literature.",
+    "limit": "Research tetrapeptide. Not an anti-aging drug, no dose on this page."
+  },
+  "ghk-cu": {
+    "body": "GHK-Cu is the copper(II) complex of the tripeptide Gly-His-Lys, CAS 89030-95-5. It is used in extracellular-matrix and copper-binding research.",
+    "limit": "Research complex. Not a cosmetic or skin treatment, no dose on this page."
+  },
+  "mots-c": {
+    "body": "MOTS-c is a mitochondrial open-reading-frame peptide (MRWQEMGYIFYPRKLR), CAS 1627580-64-6. It is studied in metabolic signaling models.",
+    "limit": "Research peptide. Not a metabolic drug, no dose on this page."
+  },
+  "kpv": {
+    "body": "KPV is the tripeptide Lys-Pro-Val, a C-terminal fragment of alpha-MSH, CAS 67747-97-3. It is used in melanocortin-pathway research.",
+    "limit": "Research fragment. Not an anti-inflammatory medicine, no dose on this page."
+  },
+  "semax": {
+    "body": "Semax is the heptapeptide MEHFPGP, an ACTH(4-10) analogue, CAS 80714-61-0. It appears in CNS signaling models in the literature.",
+    "limit": "Research analogue. Not a nootropic product, no dose on this page."
+  },
+  "kisspeptin-10": {
+    "body": "Kisspeptin-10 is the decapeptide YNWNSFGLRF-NH2, a published ligand of KISS1R, CAS 374675-21-5. It is used in reproductive-axis receptor research.",
+    "limit": "Research ligand. Not a fertility treatment, no dose on this page."
+  },
+  "thymosin-alpha-1": {
+    "body": "Thymosin alpha-1 is an acetylated 28-residue thymic peptide, CAS 62304-98-7. It appears in immune-signaling literature.",
+    "limit": "Research peptide. Not an immunotherapy, no dose on this page."
+  },
+  "tb-500": {
+    "body": "TB-500 is a catalog name for a thymosin-beta-4 fragment listing (commonly Ac-LKKTETQ). Public CAS listings for the fragment vs intact T-beta-4 are not the same thing. Identity is the sequence printed on the lot COA when issued.",
+    "limit": "Research fragment listing. Not a healing protocol, no dose on this page."
+  },
+  "retatrutide": {
+    "body": "Retatrutide is a published triple agonist at GIP, GLP-1, and glucagon receptors (CAS 2381089-83-2; LY3437943 in literature). It is a research reagent for incretin-pathway assays.",
+    "limit": "Research agonist. Not a weight-loss product, no dose on this page."
+  }
+};
+function researchNoteHtml(slug){
+  var n = RESEARCH[slug];
+  if (!n) return '';
+  return '<div class="research-note"><h3>What this listing is</h3><p>'+n.body+'</p><p>'+n.limit+'</p></div>';
+}
+
 function specStripHtml(slug){
   var ids = PUB_IDS[slug] || {};
   var rows = [];
