@@ -53,8 +53,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="preload" as="image" href="/media/label-box.webp?v=37" fetchpriority="high">
-<link rel="stylesheet" href="/biofirst_style.css?v=35">
+<link rel="preload" as="image" href="/media/tile-blends.webp?v=42" fetchpriority="high">
+<link rel="stylesheet" href="/biofirst_style.css?v=42">
 <link rel="stylesheet" href="/auth.css?v=1">
 </head>
 <body>
@@ -62,7 +62,7 @@
 <!-- NAV — logo + hamburger + cart -->
 <nav class="nav">
   <a href="index.html" class="nav-logo">
-    <img src="/biolabsresearch-logo.png" alt="BioLabs Research" width="36" height="36">
+    
     <span class="nav-logo-text">biolabs research</span>
   </a>
   <div class="nav-right">
@@ -104,31 +104,31 @@
 
   <div class="hero-cards hero-tiles">
     <a href="#catalog" class="hero-card hero-card-singles">
-      <img src="/media/label-upright-v2.webp?v=37" alt="Upright labeled research vial on a light surface" width="800" height="600" fetchpriority="high" decoding="async">
+      <img src="/media/label-upright-v2.webp?v=42" alt="Upright labeled research vial on a light surface" width="800" height="600" fetchpriority="high" decoding="async">
       <div class="hero-card-overlay">
         <div class="hero-card-title">Singles</div>
-        <div class="hero-card-link">One compound. Listed. →</div>
+        <div class="hero-card-link">One compound →</div>
       </div>
     </a>
     <a href="products/bpc-157-tb-500-blend.html" class="hero-card hero-card-blends">
-      <img src="/media/label-box.webp?v=37" alt="Labeled two-compound research blend box and vial" width="800" height="600" decoding="async">
+      <img src="/media/tile-blends.webp?v=42" alt="Two labeled research vials" width="800" height="600" decoding="async">
       <div class="hero-card-overlay">
         <div class="hero-card-title">Blends</div>
-        <div class="hero-card-link">Two names. One SKU. →</div>
+        <div class="hero-card-link">Two names →</div>
       </div>
     </a>
     <a href="#catalog" class="hero-card">
-      <img src="/media/tile-catalog.webp?v=37" alt="Lyophilized research vials in a tray beside a catalog list" width="800" height="600" loading="lazy" decoding="async">
+      <img src="/media/tile-catalog.webp?v=42" alt="Lyophilized research vials in a tray beside a catalog list" width="800" height="600" loading="lazy" decoding="async">
       <div class="hero-card-overlay">
         <div class="hero-card-title">Catalog</div>
-        <div class="hero-card-link">See the list. →</div>
+        <div class="hero-card-link">Full list →</div>
       </div>
     </a>
     <a href="#ship-facts" class="hero-card">
-      <img src="/media/tile-shipping.webp?v=37" alt="Closed insulated shipper, gel pack, and packing slip" width="800" height="600" loading="lazy" decoding="async">
+      <img src="/media/tile-shipping.webp?v=42" alt="Closed insulated shipper, gel pack, and packing slip" width="800" height="600" loading="lazy" decoding="async">
       <div class="hero-card-overlay">
         <div class="hero-card-title">How it ships</div>
-        <div class="hero-card-link">Processed. Packed. Sent. →</div>
+        <div class="hero-card-link">Packed and sent →</div>
       </div>
     </a>
   </div>
@@ -273,7 +273,7 @@
       <p class="compounds-sub">Sixteen listed reagents. Soft light, clear type, no theatre. Research use only.</p>
     </div>
     <figure class="compounds-shot">
-      <img src="/media/label-upright-v2.webp?v=37" alt="BioLabs Research labeled research vial" width="900" height="1100" loading="lazy" decoding="async">
+      <img src="/media/label-upright-v2.webp?v=42" alt="BioLabs Research labeled research vial" width="900" height="1100" loading="lazy" decoding="async">
     </figure>
   </div>
 </section>
@@ -375,7 +375,7 @@
       </a>
       <a class="split-card" href="products/bpc-157-tb-500-blend.html">
         <div class="split-photo">
-          <img src="/media/label-box.webp?v=37" alt="Two-compound blend vial" width="800" height="1000" loading="lazy" decoding="async">
+          <img src="/media/tile-blends.webp?v=42" alt="Two-compound blend vial" width="800" height="1000" loading="lazy" decoding="async">
         </div>
         <div class="split-body">
           <div class="split-kicker">Blends · from $155</div>
@@ -784,34 +784,32 @@ document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ re
   function renderProducts(products) {
     var grid = document.getElementById('products-grid');
     if (!grid) return;
+    var vial = '/media/label-upright-v2.webp?v=42';
     grid.innerHTML = '';
     products.filter(function(p){ return p.is_active !== false && SLUG_MAP[p.slug]; }).forEach(function(p) {
       var href = SLUG_MAP[p.slug] || ('products/' + p.slug + '.html');
-      var imgHtml = p.image_url
-        ? '<img src="' + p.image_url + '" alt="' + escAttr(p.name) + '" loading="lazy" decoding="async" width="400" height="500">'
-        : '';
       var badgeHtml = p.badge
         ? '<div class="product-card-badge">' + escAttr(p.badge) + '</div>'
-        : '';
+        : '<div class="product-card-badge product-card-badge-spacer">&nbsp;</div>';
       var priceHtml = '<span class="product-card-price">$' + p.price + '</span>';
       if (p.original_price) {
         priceHtml += '<span class="product-card-original">$' + p.original_price + '</span>';
       }
       var card = document.createElement('article');
       card.className = 'product-card';
-      var imgUrl = p.image_url || '';
       card.innerHTML =
         '<a class="product-card-media" href="' + href + '">' +
-          '<div class="product-card-img">' + imgHtml +
-            '<div class="product-card-onimg">' +
-              badgeHtml +
-              '<span class="product-card-name">' + escAttr(p.name) + '</span>' +
-            '</div>' +
+          '<div class="product-card-img">' +
+            '<img src="' + vial + '" alt="' + escAttr(p.name) + '" loading="lazy" decoding="async" width="400" height="500">' +
           '</div>' +
         '</a>' +
-        '<div class="product-card-row">' +
-          '<div class="product-card-prices">' + priceHtml + '</div>' +
-          '<button type="button" class="product-card-atc" data-name="' + escAttr(p.name) + '" data-price="' + escAttr(p.price) + '" data-img="' + escAttr(imgUrl) + '">Add</button>' +
+        '<div class="product-card-body">' +
+          badgeHtml +
+          '<a class="product-card-name" href="' + href + '">' + escAttr(p.name) + '</a>' +
+          '<div class="product-card-row">' +
+            '<div class="product-card-prices">' + priceHtml + '</div>' +
+            '<button type="button" class="product-card-atc" data-name="' + escAttr(p.name) + '" data-price="' + escAttr(p.price) + '" data-img="' + vial + '">Add</button>' +
+          '</div>' +
         '</div>';
       grid.appendChild(card);
     });
