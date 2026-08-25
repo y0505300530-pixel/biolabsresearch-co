@@ -459,7 +459,7 @@ a{color:inherit;text-decoration:none}
   border-radius:var(--radius-pill);
   margin:0;
   width:fit-content;
-  animation:badge-flash 1.35s ease-in-out infinite;
+  animation:none;
 }
 @keyframes badge-flash{
   0%,100%{opacity:1;filter:brightness(1)}
@@ -1966,3 +1966,16 @@ a{color:inherit;text-decoration:none}
 .research-note h3{font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:var(--bronze);margin:0 0 8px;font-weight:700}
 .research-note p{margin:0 0 8px}
 .research-note p:last-child{margin:0;color:var(--ink-muted);font-size:13px}
+
+/* launch clean */
+.hero-shot{margin:36px auto 0;max-width:380px}
+.hero-shot img{width:100%;height:auto;border-radius:24px;background:var(--bg-warm);display:block}
+.product-below{max-width:1100px;margin:8px auto 48px;padding:24px 48px 0;border-top:1px solid var(--border-light,#E8E2D8)}
+.product-below .spec-strip{margin-top:8px}
+.product-below .research-note{margin-top:16px}
+.product-card-body{padding:4px 2px 8px}
+.product-card-body .product-card-name{background:none;padding:0;margin:0 0 6px;font-size:15px}
+@media(max-width:768px){
+  .product-below{padding:20px 20px 0}
+  .hero-shot{max-width:280px}
+}
