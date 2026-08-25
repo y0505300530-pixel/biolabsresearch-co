@@ -280,9 +280,14 @@ a{color:inherit;text-decoration:none}
   font-size:13px;
   font-weight:500;
   color:var(--bronze);
-  display:flex;
-  align-items:center;
-  gap:6px;
+  display:block;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  line-height:1.3;
+}
+.hero-card-overlay{
+  min-height:76px;
 }
 .hero-card-blends{background:var(--bg-warm)}
 .hero-card-singles{background:var(--bg-warm2)}
