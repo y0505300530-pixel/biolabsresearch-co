@@ -67,7 +67,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biofirst_style.css?v=40">
+<link rel="stylesheet" href="/biofirst_style.css?v=38">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -115,7 +115,7 @@ nav{background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-bottom:1p
 .product-hero{padding:60px 60px;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
 .product-img-section{position:sticky;top:90px}
 .product-img-main{background:linear-gradient(160deg,#f0f7f3 0%,#e0efea 100%);border-radius:var(--radius);aspect-ratio:1;display:flex;align-items:center;justify-content:center;border:1.5px solid var(--border);overflow:hidden;margin-bottom:16px}
-.product-img-main img{width:100%;height:100%;object-fit:contain;object-position:center;background:#f4efe4}
+.product-img-main img{width:100%;height:100%;object-fit:cover;object-position:center}
 .product-img-placeholder{font-size:110px;line-height:1;filter:drop-shadow(0 8px 16px rgba(0,0,0,0.1))}
 
 /* ── PRODUCT INFO ── */
@@ -441,7 +441,12 @@ footer{background:var(--ink);padding:60px 60px 30px}
     applyProductSeo(p);
     document.title = p.name + ' | BioLabs Research RUO Catalog';
     document.getElementById('breadcrumb-name').textContent = p.name;
-    var img = '/media/label-upright-v2.webp?v=40';
+
+    // IMAGE — same source as catalogue card
+    var imgHtml = p.image_url
+      ? '<img src="' + p.image_url + '" alt="' + p.name + '">'
+      : '<div class="product-img-placeholder">' + getCategoryIcon(p.category) + '</div>';
+
     var sizes = parseSizeOptions(p.size_options);
     var sizeHtml = '';
     if (sizes.length > 1) {
@@ -450,28 +455,49 @@ footer{background:var(--ink);padding:60px 60px 30px}
           return '<button class="size-btn'+(i===0?' active':'')+'" onclick="selectSize(this,\''+s.price+'\')">'+s.label+(s.price?' — '+s.price:'')+'</button>';
         }).join('')+'</div>';
     }
+
     var origHtml = (p.original_price && parseFloat(p.original_price) > parseFloat(p.price))
       ? '<span class="price-original">$'+p.original_price+'</span>' : '';
+
     var storageHtml = p.storage
-      ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
+      ? '<div class="storage-box"><span style="font-size:22px">❄️</span><div><strong>Storage</strong>'+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
-      ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
-    var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
-      : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>';
+      ? '<div class="storage-box"><span style="font-size:22px">🧪</span><div><strong>Presentation</strong>'+p.presentation+'</div></div>' : '';
+
+    var emailSubj = encodeURIComponent('Order Inquiry - '+p.name);
+    var emailBody = encodeURIComponent('Hello,\n\nI am interested in ordering '+p.name+'.\n\nQuantity: \nShipping address: \n\nPlease send pricing, availability, and COA.\n\nThank you.');
+    var coaSubj  = encodeURIComponent('COA Request - '+p.name);
+
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero">' +
         '<div class="product-img-section">' +
-          '<div class="product-img-main"><img src="'+img+'" alt="'+p.name+'"></div>' +
+          '<div class="product-img-main">' + imgHtml + '</div>' +
         '</div>' +
         '<div>' +
           '<div class="product-category-label">'+(p.category||'Peptide')+'</div>' +
           '<h1 class="product-title">'+p.name+'</h1>' +
           (p.tagline?'<div class="product-subtitle">'+p.tagline+'</div>':'') +
           '<div class="product-purity-row">' +
-            '<span class="purity-badge">See COA for this lot</span>' +
+            (p.purity ? '<span class="purity-badge">✓ '+p.purity+'</span>' : '<span class="purity-badge">See COA for this lot</span>') +
             '<span class="ruo-badge">RUO — Research Use Only</span>' +
           '</div>' +
+          specStripHtml(p.slug) + researchNoteHtml(p.slug) + '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
+          '<div class="ingredients-label">Product Composition</div>' +
+          '<div class="ingredient-list">' +
+            '<div class="ingredient"><div class="ing-icon">'+getCategoryIcon(p.category)+'</div><div>' +
+              '<div class="ing-name">'+p.name+'</div>' +
+              '<div class="ing-desc">'+(p.description||'').substring(0,130)+'...</div>' +
+            '</div></div>' +
+            '<div class="ingredient"><div class="ing-icon">⚗️</div><div>' +
+              '<div class="ing-name">Lyophilized Powder'+(p.presentation?' — '+p.presentation:'')+'</div>' +
+              '<div class="ing-desc">Lyophilized research material. Identity and purity are stated on the Certificate of Analysis for the shipped lot, when a COA is provided.</div>' +
+            '</div></div>' +
+            '<div class="ingredient"><div class="ing-icon">🔬</div><div>' +
+              '<div class="ing-name">Sterile Manufacturing</div>' +
+              '<div class="ing-desc">Lyophilized research material. Batch documentation is the lot COA when issued.</div>' +
+            '</div></div>' +
+          '</div>' +
+          storageHtml + presentationHtml +
           '<div class="price-section">' +
             sizeHtml +
             '<div class="price-row">' +
@@ -481,14 +507,16 @@ footer{background:var(--ink);padding:60px 60px 30px}
             '<div class="price-per">per unit — Research Use Only</div>' +
             '<div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>' +
             '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">' +
-              '<div style="display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:var(--radius-pill);overflow:hidden">' +
-                '<button type="button" onclick="changePdpQty(-1)" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">\u2212</button>' +
-                '<span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>' +
-                '<button type="button" onclick="changePdpQty(1)" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>' +
-              '</div>' +
-              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Add to Cart</button>' +
-            '</div>' +
-            coaBtn +
+        '<div style="display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:var(--radius-pill);overflow:hidden">' +
+          '<button onclick="changePdpQty(-1)" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">−</button>' +
+          '<span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>' +
+          '<button onclick="changePdpQty(1)" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>' +
+        '</div>' +
+        '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Add to Cart →</button>' +
+      '</div>' +
+            (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length
+              ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
+              : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>') +
             '<div class="trust-items">' +
               '<div class="trust-item">COA on request for the lot</div>' +
               '<div class="trust-item">Sterile manufacturing</div>' +
@@ -496,28 +524,10 @@ footer{background:var(--ink);padding:60px 60px 30px}
               '<div class="trust-item">EU delivery (DDP)</div>' +
             '</div>' +
           '</div>' +
-          specStripHtml(p.slug) +
-          researchNoteHtml(p.slug) +
-          '<p class="product-desc-text">'+(p.description||'Research-use-only laboratory reagent. See the lot COA for identity and purity data.')+'</p>' +
-          '<div class="ingredients-label">Product Composition</div>' +
-          '<div class="ingredient-list">' +
-            '<div class="ingredient"><div>' +
-              '<div class="ing-name">'+p.name+'</div>' +
-              '<div class="ing-desc">'+(p.description||'').substring(0,130)+'</div>' +
-            '</div></div>' +
-            '<div class="ingredient"><div>' +
-              '<div class="ing-name">Lyophilized powder'+(p.presentation?' — '+p.presentation:'')+'</div>' +
-              '<div class="ing-desc">Identity and purity are stated on the Certificate of Analysis for the shipped lot, when a COA is provided.</div>' +
-            '</div></div>' +
-            '<div class="ingredient"><div>' +
-              '<div class="ing-name">Sterile manufacturing</div>' +
-              '<div class="ing-desc">Batch documentation is the lot COA when issued.</div>' +
-            '</div></div>' +
-          '</div>' +
-          storageHtml + presentationHtml +
         '</div>' +
       '</div>';
   }
+
   function renderNotFound() {
     document.getElementById('product-container').innerHTML =
       '<div class="not-found">' +
@@ -963,15 +973,15 @@ function researchNoteHtml(slug){
 
 function specStripHtml(slug){
   var ids = PUB_IDS[slug] || {};
-  function cell(label, val){
-    return '<div><dt>'+label+'</dt><dd>'+(val && String(val).trim() ? val : '\u2014')+'</dd></div>';
+  var rows = [];
+  if (ids.cas) rows.push('<div><dt>CAS</dt><dd>'+ids.cas+'</dd></div>');
+  if (ids.formula) rows.push('<div><dt>Formula</dt><dd>'+ids.formula+'</dd></div>');
+  if (ids.mw) rows.push('<div><dt>MW</dt><dd>'+ids.mw+'</dd></div>');
+  if (ids.seq) rows.push('<div><dt>Identity listing</dt><dd>'+ids.seq+'</dd></div>');
+  if (!rows.length) {
+    return '<p class="spec-note">Blend or complex SKU. Per-compound figures belong on the lot COA — not guessed here.</p>';
   }
-  return '<dl class="spec-strip">'+
-    cell('CAS', ids.cas)+
-    cell('Formula', ids.formula)+
-    cell('MW', ids.mw)+
-    cell('Identity', ids.seq)+
-    '</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity and observed mass live on the lot COA when a file is issued.</p>';
+  return '<dl class="spec-strip">'+rows.join('')+'</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity and observed mass live on the lot COA when a file is issued.</p>';
 }
 
 var COA_DATA = {
