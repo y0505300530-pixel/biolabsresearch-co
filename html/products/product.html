@@ -20,7 +20,7 @@
 <meta name="twitter:description" content="Research-use-only peptide and laboratory reagent listings. Third-party tested lots and catalog prices. Open a SKU page for name, price, and COA notes.">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biofirst_style.css?v=38">
+<link rel="stylesheet" href="/biofirst_style.css?v=21">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -193,11 +193,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     <span class="nav-logo-text">biolabs research</span>
   </a>
   <div class="nav-right">
-    <div class="nav-desk">
-      <a href="/index.html#catalog" class="nav-cart">Catalog</a>
-      <a href="/science.html" class="nav-cart">Science</a>
-      <a href="/faq.html" class="nav-cart">FAQ</a>
-    </div>
+    <a href="/science.html" class="nav-cart" style="text-decoration:none">Science</a>
     <button class="nav-cart" onclick="toggleCart()">
       Cart <span class="nav-cart-count" id="cartCount">0</span>
     </button>
@@ -209,14 +205,15 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
 <div class="nav-menu" id="navMenu">
   <button class="nav-menu-close" onclick="toggleMenu()">&#10005;</button>
-  <a href="/index.html#catalog">Catalog</a>
   <a href="/science.html">Science</a>
-  <a href="/faq.html">FAQ</a>
-  <a href="/shipping.html">Shipping</a>
+  <a href="/index.html#catalog">Catalog</a>
+  <a href="/index.html#chemistry">Chemistry</a>
+  <a href="/index.html#methods">Methods</a>
+  <a href="/science.html">COA</a>
   <a href="/terms-and-conditions.html">Terms</a>
   <a href="/privacy-policy.html">Privacy</a>
+  <a href="/shipping.html">Shipping</a>
   <a href="/returns.html">Returns</a>
-  <a href="/checkout.html">Inquiry</a>
   <a href="mailto:info@biofirst.co">Contact</a>
 </div>
 
@@ -249,7 +246,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="logo-text-f">BioLabs <span>Research</span></div>
+        <div class="logo-text-f">BIO<span>FIRST</span></div>
         <div class="logo-sub-f">Science Now. Research Always.</div>
         <p>Research-use-only laboratory reagents. Third-party lot testing is documented on the COA for that lot, when available.</p>
       </div>
