@@ -351,7 +351,7 @@
 
   // ===== Track Orders =====
   // Call this when checkout completes to save order
-  window.saveBioLabs ResearchOrder = function(orderData) {
+  window.saveBioFirstOrder = function(orderData) {
     var orders = [];
     try {
       orders = JSON.parse(localStorage.getItem('biolabs_orders') || '[]');
@@ -367,7 +367,7 @@
   };
 
   // ===== Public API =====
-  window.BioLabs ResearchAuth = {
+  window.BioFirstAuth = {
     init: init,
     openLogin: openLoginModal,
     closeLogin: closeLoginModal,
