@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=74">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=74">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=74">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalog Inquiry Checkout | BioLabs Research Laboratory</title>
@@ -20,7 +20,7 @@
 <meta name="twitter:title" content="Catalog Inquiry Checkout | BioLabs Research Laboratory">
 <meta name="twitter:description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
-<link rel="stylesheet" href="/biofirst_style.css?v=21">
+<link rel="stylesheet" href="/biofirst_style.css?v=76">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -231,6 +231,7 @@ nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px
 @media(max-width:960px){.checkout-page{grid-template-columns:1fr;padding:32px 20px}}
 @media(max-width:640px){nav{padding:0 20px}.form-row{grid-template-columns:1fr}}
 </style>
+<script src="/cart-vial.js?v=73"></script>
 </head>
 <body>
 
@@ -239,15 +240,15 @@ nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px
 </div>
 
 <nav>
-  <a class="logo" href="index.html">
+  <a class="logo" href="https://biolabsresearch.co/index.html?from=nav">
     <div class="logo-icon" style="border:none;background:transparent;width:48px;height:48px;"></div>
     <div>
       <div class="logo-text">BioLabs <span>Research</span></div>
       <div class="logo-sub">Research Use Only</div>
     </div>
   </a>
-  <a href="science.html" class="back-link">Science</a>
-  <a href="index.html" class="back-link">
+  <a href="https://biolabsresearch.co/science.html" class="back-link">Science</a>
+  <a href="https://biolabsresearch.co/index.html?from=nav" class="back-link">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     Back to Shop
   </a>
@@ -388,7 +389,7 @@ nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px
         <div class="terms-block">
           <label class="check-row">
             <input type="checkbox" id="agreeTerms">
-            I agree to the <a href="terms-and-conditions.html" target="_blank" onclick="event.stopPropagation()">Terms & Conditions</a> and <a href="privacy-policy.html" target="_blank" onclick="event.stopPropagation()">Privacy Policy</a>
+            I agree to the <a href="https://biolabsresearch.co/terms-and-conditions.html" target="_blank" onclick="event.stopPropagation()">Terms & Conditions</a> and <a href="https://biolabsresearch.co/privacy-policy.html" target="_blank" onclick="event.stopPropagation()">Privacy Policy</a>
           </label>
           <label class="check-row">
             <input type="checkbox" id="agreeRuo">
@@ -414,9 +415,10 @@ nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px
         <div id="summaryItems">
           <div class="empty-msg">
             <p>No items in cart.</p>
-            <p style="margin-top:8px"><a href="index.html">← Browse peptides</a></p>
+            <p style="margin-top:8px"><a href="https://biolabsresearch.co/index.html?from=nav">← Browse peptides</a></p>
           </div>
         </div>
+        <div id="cartAddMore" class="cart-addmore-slot"></div>
         <div id="summaryTotals" style="display:none">
           <div class="summary-lines">
             <div class="sum-line"><span>Subtotal</span><span id="sumSubtotal">$0</span></div>
@@ -459,7 +461,7 @@ nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px
   <p id="successPaymentNote" style="margin-top:10px"></p>
   <div class="order-ref" id="orderRefDisplay"></div>
   <p style="font-size:13px;color:var(--muted)">We will reply to <strong id="successEmail"></strong> about availability and how to pay, if we accept the request.</p>
-  <a href="index.html" class="btn-back">← Continue Shopping</a>
+  <a href="https://biolabsresearch.co/index.html?from=nav" class="btn-back">← Continue Shopping</a>
 </div>
 
 <script>
@@ -482,14 +484,13 @@ function renderSummary() {
   const el = document.getElementById('summaryItems');
   const totals = document.getElementById('summaryTotals');
   if (!cart.length) {
-    el.innerHTML = '<div class="empty-msg"><p>No items in cart.</p><p style="margin-top:8px"><a href="index.html">← Browse peptides</a></p></div>';
+    el.innerHTML = '<div class="empty-msg"><p>No items in cart.</p><p style="margin-top:8px"><a href="https://biolabsresearch.co/index.html?from=nav">← Browse peptides</a></p></div>';
     totals.style.display = 'none';
+    mountAddMore([]);
     return;
   }
   el.innerHTML = cart.map(item => {
-    const imgHtml = item.imageUrl
-      ? `<img src="${item.imageUrl}" alt="${item.name}">`
-      : `<span style="font-size:22px">${item.emoji || '🧪'}</span>`;
+    const imgHtml = `<img src="${vialImg(item)}" alt="${item.name}">`;
     return `
       <div class="order-item">
         <div class="oi-img">${imgHtml}</div>
@@ -508,6 +509,7 @@ function renderSummary() {
         </div>
       </div>`;
   }).join('');
+  el.innerHTML += mountAddMore(cart);
   totals.style.display = 'block';
   const sub = getSubtotal();
   const total = getTotal();
@@ -688,7 +690,7 @@ function showSuccess(orderData, paymentNote) {
 </style>
 <footer class="ck-footer">
   <div class="ck-footer-disc">Research Compound - Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products are sold for in vitro and laboratory research use only.</div>
-  <div class="ck-footer-copy">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioLabs Research. &nbsp;|&nbsp; <a href="terms-and-conditions.html">Terms</a> &nbsp;|&nbsp; <a href="privacy-policy.html">Privacy</a> &nbsp;|&nbsp; <a href="shipping.html">Shipping</a></div>
+  <div class="ck-footer-copy">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioLabs Research. &nbsp;|&nbsp; <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a> &nbsp;|&nbsp; <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a> &nbsp;|&nbsp; <a href="https://biolabsresearch.co/shipping.html">Shipping</a></div>
 </footer>
 
 
@@ -738,7 +740,7 @@ function showSuccess(orderData, paymentNote) {
       </label>
       <label class="tc-check-label">
         <input type="checkbox" id="tcCheck2">
-        I have read and agree to the <a href="terms-and-conditions.html" target="_blank">Terms &amp; Conditions</a>.
+        I have read and agree to the <a href="https://biolabsresearch.co/terms-and-conditions.html" target="_blank">Terms &amp; Conditions</a>.
       </label>
       <label class="tc-check-label">
         <input type="checkbox" id="tcCheck3">

@@ -72,18 +72,19 @@ a{color:inherit;text-decoration:none}
 }
 .nav-logo{
   display:flex;
-  align-items:center;
-  gap:10px;
+  align-items:baseline;
+  gap:1px;
   text-decoration:none;
   color:inherit;
 }
 .nav-logo img{width:36px;height:36px;object-fit:contain}
+.nav-logo-mark{font-family:var(--font-logo);font-size:28px;font-weight:500;line-height:1;letter-spacing:-.04em;color:var(--ink);display:inline-block;margin-right:0}
 .nav-logo-text{
   font-family:var(--font-logo);
   font-size:22px;
   font-weight:500;
   color:var(--ink);
-  letter-spacing:-.5px;
+  letter-spacing:-.4px;
   text-transform:lowercase;
 }
 .nav-right{display:flex;align-items:center;gap:20px}
@@ -131,8 +132,9 @@ a{color:inherit;text-decoration:none}
   position:fixed;
   top:0;
   right:-100%;
-  width:320px;
-  max-width:85vw;
+  left:auto;
+  width:min(320px,100vw);
+  max-width:100vw;
   height:100vh;
   background:var(--bg);
   z-index:10001;
@@ -142,7 +144,7 @@ a{color:inherit;text-decoration:none}
   padding:80px 40px 40px;
   box-shadow:var(--shadow-xl);
 }
-.nav-menu.open{right:0}
+.nav-menu.open{right:0;left:auto}
 .nav-menu-close{
   position:absolute;
   top:24px;
@@ -249,6 +251,11 @@ a{color:inherit;text-decoration:none}
   object-position:center;
   background:var(--bg-warm);
   transition:transform .6s ease;
+}
+.hero-card-singles img{
+  object-fit:contain;
+  object-position:center;
+  background:var(--bg-warm);
 }
 .hero-card-blends img{
   object-fit:contain;
@@ -1059,8 +1066,8 @@ a{color:inherit;text-decoration:none}
   transition:var(--transition);
 }
 .split-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-xl)}
-.split-photo{aspect-ratio:16/10;overflow:hidden;background:var(--brown)}
-.split-photo img{width:100%;height:100%;object-fit:cover}
+.split-photo{aspect-ratio:4/3;overflow:hidden;background:var(--bg-warm)}
+.split-photo img{width:100%;height:100%;object-fit:contain;object-position:center}
 .split-body{padding:28px 28px 26px}
 .split-kicker{
   font-size:12px;
@@ -1125,7 +1132,9 @@ a{color:inherit;text-decoration:none}
   color:#fff;
   border:none;
   border-radius:var(--radius-pill);
-  padding:8px 16px;
+  padding:12px 16px;
+  min-height:44px;
+  min-width:44px;
   font-family:var(--font-display);
   font-size:13px;
   font-weight:600;
@@ -1159,14 +1168,15 @@ a{color:inherit;text-decoration:none}
 /* ===== SCIENCE PAGE + DENSE HOME BAND (v19) ===== */
 .sci-body{background:var(--bg)}
 .sci-hero{
-  max-width:var(--maxw);
+  max-width:820px;
   margin:0 auto;
-  padding:72px 48px 48px;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:48px;
-  align-items:end;
+  padding:72px 48px 56px;
+  display:block;
+  text-align:center;
 }
+.sci-hero-copy{max-width:720px;margin:0 auto}
+.sci-hero .sci-lead{margin-left:auto;margin-right:auto}
+.sci-hero .sci-toc{justify-content:center}
 .sci-hero h1{
   font-family:var(--font-display);
   font-size:clamp(44px,7vw,80px);
@@ -1198,14 +1208,7 @@ a{color:inherit;text-decoration:none}
   padding:8px 14px;
 }
 .sci-toc a:hover{background:var(--bg-warm)}
-.sci-hero-photo img{
-  width:100%;
-  aspect-ratio:4/5;
-  object-fit:cover;
-  border-radius:var(--radius);
-  display:block;
-  background:var(--bg-warm);
-}
+.sci-hero-photo{display:none}
 .sci-hero-photo figcaption,
 .sci-bleed figcaption,
 .sci-photo figcaption{
@@ -1973,7 +1976,371 @@ a{color:inherit;text-decoration:none}
 .research-note p{margin:0 0 8px}
 .research-note p:last-child{margin:0;color:var(--ink-muted);font-size:13px}
 
-.product-card-body{padding:2px 2px 10px}
-.product-card-body .product-card-name{background:none;padding:0;margin:0 0 8px;font-size:15px}
+.product-card-body{padding:2px 2px 10px;flex:1;display:flex;flex-direction:column}
+.product-card-body .product-card-name{background:none;padding:0;margin:0 0 8px;font-size:15px;min-height:2.4em}
+.product-card-body .product-card-row{margin-top:auto}
 .product-card-badge-spacer{visibility:hidden}
 
+
+
+/* Hims-quiet category pills — text left, pack shot right */
+.hero-tiles{
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+.hero-tiles .hero-card{
+  aspect-ratio:auto !important;
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  min-height:168px;
+  padding:18px 8px 18px 36px;
+  border-radius:999px 80px 80px 999px;
+  overflow:visible;
+  background:#E2D1CA;
+  border:none;
+}
+.hero-tiles .hero-card-singles{background:#E2D1CA}
+.hero-tiles .hero-card-blends{background:#E8D4C4}
+.hero-tiles .hero-card:nth-child(3){background:#E8DDD3}
+.hero-tiles .hero-card:nth-child(4){background:#DDD0C6}
+.hero-tiles .hero-card-overlay{
+  position:static !important;
+  background:transparent !important;
+  padding:0 !important;
+  min-height:0 !important;
+  flex:1 1 auto;
+  justify-content:center;
+  gap:6px;
+}
+.hero-tiles .hero-card-title{
+  font-size:clamp(22px,2.4vw,32px);
+  font-weight:600;
+  color:#6B4F48;
+  letter-spacing:-.6px;
+}
+.hero-tiles .hero-card-link{
+  color:#8A6A60;
+  font-size:14px;
+}
+.hero-tiles .hero-card img{
+  aspect-ratio:auto !important;
+  width:46% !important;
+  max-width:220px;
+  height:auto !important;
+  flex:0 0 auto;
+  object-fit:contain !important;
+  background:transparent !important;
+  filter:drop-shadow(0 14px 18px rgba(70,42,32,.2));
+  border-radius:0;
+}
+.hero-tiles .hero-card:hover{transform:translateY(-3px)}
+.hero-tiles .hero-card:hover img{transform:translateY(-6px) scale(1.03)}
+@media(max-width:800px){
+  .hero-tiles{grid-template-columns:1fr;gap:14px}
+  .hero-tiles .hero-card{min-height:140px;padding:14px 8px 14px 28px;border-radius:80px 56px 56px 80px}
+  .hero-tiles .hero-card img{max-width:150px;width:40% !important}
+}
+
+
+/* unify hero pills: one beige, inset photo, rounded chevron */
+.hero-tiles .hero-card,
+.hero-tiles .hero-card-singles,
+.hero-tiles .hero-card-blends,
+.hero-tiles .hero-card:nth-child(3),
+.hero-tiles .hero-card:nth-child(4){
+  background:#E2D1CA !important;
+}
+.hero-tiles .hero-card{
+  box-shadow:0 8px 24px rgba(90,60,45,.08);
+}
+.hero-tiles .hero-card img{
+  width:44% !important;
+  max-width:210px;
+  height:128px !important;
+  object-fit:cover !important;
+  object-position:center;
+  background:#EFE6DF !important;
+  border-radius:18px;
+  filter:none;
+  margin-right:10px;
+}
+.hero-tiles .hero-card:hover img{transform:scale(1.03)}
+.hero-card-link,
+.split-link,
+.vmap-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+}
+.chev{
+  display:inline-block;
+  flex:0 0 14px;
+  color:#3A2A26;
+  vertical-align:middle;
+}
+.hero-card-link .chev{color:#6B4F48}
+
+/* ===== Hims-scale type (v52) — large display copy, legal stays small ===== */
+body{font-size:18px;line-height:1.5}
+.hero-headline{
+  font-size:clamp(52px,8.2vw,92px)!important;
+  font-weight:600!important;
+  letter-spacing:-2.6px!important;
+  line-height:.96!important;
+}
+.hero-cta{
+  font-size:17px!important;
+  padding:16px 36px!important;
+  font-weight:700!important;
+}
+.hero-tiles .hero-card{
+  min-height:188px;
+  padding:20px 12px 20px 36px;
+}
+.hero-tiles .hero-card-title,
+.hero-card-title{
+  font-size:clamp(32px,3.8vw,46px)!important;
+  font-weight:700!important;
+  letter-spacing:-1.2px!important;
+  line-height:1.02!important;
+}
+.hero-tiles .hero-card-link,
+.hero-card-link{
+  font-size:16px!important;
+  font-weight:600!important;
+}
+.hero-card-link .chev,
+.split-link .chev,
+.vmap-cta .chev{
+  width:18px;height:18px;flex-basis:18px;
+}
+.section-head h2,
+.vmap-head h2,
+.dense-head h2,
+.research-cats-head h2,
+.coa-info-copy h2{
+  font-size:clamp(40px,6.2vw,72px)!important;
+  font-weight:700!important;
+  letter-spacing:-1.8px!important;
+  line-height:1.05!important;
+}
+.catalog-title{
+  font-size:clamp(40px,6vw,68px)!important;
+  font-weight:700!important;
+}
+.compounds-title{
+  font-size:clamp(48px,7.2vw,88px)!important;
+  font-weight:600!important;
+}
+.compounds-sub{font-size:20px!important;line-height:1.4!important}
+.split-body h3,
+.dense-split h3,
+.cat-body h3{
+  font-size:clamp(34px,4.2vw,52px)!important;
+  font-weight:700!important;
+  letter-spacing:-1.2px!important;
+}
+.split-link{font-size:17px!important;font-weight:600!important}
+.split-list li{font-size:17px!important}
+.vmap-name{
+  font-size:clamp(30px,3.4vw,44px)!important;
+  font-weight:700!important;
+}
+.vmap-meta{font-size:15px!important}
+.slogan-line{
+  font-size:clamp(40px,5.8vw,72px)!important;
+  font-weight:600!important;
+}
+.product-card-name,
+.product-card-name.below,
+.product-card-body .product-card-name{
+  font-size:20px!important;
+  font-weight:700!important;
+  line-height:1.15!important;
+  min-height:0!important;
+}
+.product-card-price{font-size:18px!important}
+.product-card-atc{font-size:15px!important;padding:12px 18px!important}
+.nav-logo-mark{font-size:28px!important}.nav-logo-text{font-size:22px!important}
+.nav-menu a, .nav-link, header nav a{font-size:16px!important}
+.method-num{font-size:clamp(48px,6vw,72px)!important}
+.method-lead{font-size:17px!important}
+.process-grid h3{font-size:28px!important}
+.process-grid p{font-size:16px!important}
+.faq-q, .faq-question, details summary{font-size:20px!important;font-weight:700!important}
+.recon-grid h3{font-size:24px!important}
+
+/* PDPs — name/price/buy stay large; CAS stays below */
+.product-title,
+.pdp-name, .product-name, .sku-title, .buy-panel h1, .product-hero-name{
+  font-size:clamp(40px,5.4vw,58px)!important;
+  font-weight:800!important;
+  letter-spacing:-1.6px!important;
+}
+.pdp-price, .product-price, .buy-panel .price, .coming-pdp-price{
+  font-size:26px!important;
+  font-weight:700!important;
+}
+.pdp-atc, .buy-panel button, .atc-btn, .btn-order, .coming-pdp-cta{
+  font-size:16px!important;
+  padding:16px 22px!important;
+}
+
+@media(max-width:800px){
+  .hero-tiles .hero-card{min-height:168px;padding:16px 8px 16px 28px}
+  .hero-tiles .hero-card-title{font-size:clamp(26px,7vw,34px)!important}
+  .hero-headline{font-size:clamp(40px,11vw,56px)!important}
+}
+
+/* keep legal / RUO tiny */
+.ruo-bar{font-size:11px!important}
+.hero-legal{font-size:12px!important}
+.footer-disclaimer, .footer-copy, .legal-tiny, .fine-print{font-size:12px!important}
+
+
+/* PDP review card v53 */
+/* PDP review card v53 */
+.pdp-review{background:#2A221C;color:#fff;border-radius:24px;padding:22px 22px 18px;margin-top:4px}
+.pdp-review-stars{display:flex;align-items:center;gap:3px;margin-bottom:14px}
+.pdp-review-star{display:block;flex-shrink:0}
+.pdp-review-quote{font-family:"Fraunces",Georgia,"Times New Roman",serif;font-size:22px;font-weight:500;line-height:1.22;letter-spacing:-0.02em;color:#fff;margin:0 0 16px}
+.pdp-review-who{display:flex;align-items:center;gap:10px}
+.pdp-review-thumb{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:center;background:#3a3028;border:1px solid rgba(255,255,255,.12);flex-shrink:0}
+.pdp-review-who-text{font-family:Inter,-apple-system,sans-serif;font-size:12px;font-weight:500;color:rgba(255,255,255,.72);line-height:1.35}
+@media(max-width:900px){
+  .pdp-review{margin-top:8px;margin-bottom:0}
+  .pdp-review-quote{font-size:20px}
+}\n\n/* science hero: real vial, no fake overlay box */\n.sci-hero-photo img{\n  object-fit:contain !important;\n  background:var(--bg-warm) !important;\n}\n
+
+/* footer bottom: white accessible text, no giant wordmark */
+.footer-disclaimer,
+.footer-legal-links,
+.footer-legal-links a{
+  color:#fff !important;
+  opacity:1 !important;
+}
+.footer-legal-links a:hover{color:#FBCF87 !important;}
+.footer-wordmark{display:none !important;}
+
+/* hero tiles: no photo box, product sits on card */
+.hero-tiles .hero-card img{
+  background:transparent !important;
+  border-radius:0 !important;
+  object-fit:contain !important;
+  object-position:center bottom !important;
+  width:auto !important;
+  max-width:46% !important;
+  height:148px !important;
+  filter:drop-shadow(0 10px 14px rgba(70,42,32,.28));
+  mix-blend-mode:multiply;
+  margin-right:18px;
+  padding:0 !important;
+}
+.hero-tiles .hero-card:hover img{transform:none; filter:drop-shadow(0 14px 18px rgba(70,42,32,.32));}
+
+/* science hero chromatogram, not a vial */
+.sci-hero-photo img{
+  object-fit:contain !important;
+  background:#F5F2ED !important;
+  aspect-ratio:4/5;
+}
+
+/* hero tiles v63: true cutouts, no photo box */
+.hero-tiles .hero-card img{
+  background:transparent !important;
+  border-radius:0 !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  width:auto !important;
+  max-width:48% !important;
+  height:152px !important;
+  mix-blend-mode:normal !important;
+  filter:drop-shadow(0 14px 12px rgba(70,42,32,.28));
+  margin-right:16px;
+  padding:0 !important;
+}
+.hero-tiles .hero-card:hover img{transform:translateY(-4px);}
+
+/* science hero v64 scientist photo */
+.sci-hero-photo img{
+  object-fit:cover !important;
+  object-position:center 20% !important;
+  background:#0b1c28 !important;
+}
+
+/* hero tiles: round ALL four corners, not only the left */
+.hero-tiles .hero-card,
+.hero-tiles .hero-card-singles,
+.hero-tiles .hero-card-blends{
+  border-radius:999px !important;
+  overflow:hidden;
+}
+@media(max-width:800px){
+  .hero-tiles .hero-card{
+    border-radius:999px !important;
+  }
+}
+
+
+
+
+/* cart add-more: compact horizontal cards pinned to drawer bottom */
+#cartAddMore,.cart-addmore-slot{flex:0 0 auto;background:#fff;border-top:1px solid #eee;max-width:100%;overflow:hidden}
+#cartAddMore:empty,.cart-addmore-slot:empty{display:none}
+.cart-addmore{margin:0;padding:12px 0 4px;border:0}
+.cart-addmore-title{text-align:center;font-size:15px;font-weight:800;margin:0 0 10px;padding:0 16px;color:#1a3a2a;letter-spacing:-.2px}
+.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:8px !important;overflow-x:scroll !important;overflow-y:hidden !important;-webkit-overflow-scrolling:touch;touch-action:pan-x;overscroll-behavior-x:contain;padding:0 16px 14px;scrollbar-width:thin}
+.cart-addmore-track::-webkit-scrollbar{height:6px}
+.cart-addmore-track::-webkit-scrollbar-thumb{background:#ccc;border-radius:99px}
+.cart-addcard{flex:0 0 110px !important;width:110px !important;min-width:110px !important;max-width:110px !important;background:#f3f7f4 !important;border-radius:22px !important;padding:10px 8px 12px !important;text-align:center;display:flex !important;flex-direction:column !important;align-items:center;gap:6px}
+.cart-addcard img{width:64px !important;height:64px !important;max-width:64px !important;object-fit:contain !important;background:transparent !important}
+.cart-addcard-name{font-size:11px !important;font-weight:700 !important;line-height:1.2;color:#1F1F1F;min-height:28px}
+.cart-addcard-price{font-size:16px !important;font-weight:800 !important;color:#2a9a7a !important;letter-spacing:-.3px}
+.cart-addcard-btn{background:#fff;color:#111;border:1.5px solid #111;border-radius:999px;padding:5px 16px;font-size:12px;font-weight:700;cursor:pointer;width:auto}
+.cart-addcard-btn:hover{background:#111;color:#fff}
+.cart-addmore-row,.cart-addmore-all,.cart-addmore-btn,.cart-addmore-info{display:none !important}
+
+/* cart line items stay large so you can read the name */
+.cart-title{font-size:26px !important;font-weight:800 !important}
+.ci-img, .cart-item > img, .oi-img{width:88px !important;height:88px !important;border-radius:14px !important;background:#F5F2ED !important}
+.ci-img img, .oi-img img, .cart-item > img{object-fit:contain !important}
+.ci-name, .cart-item-name, .oi-name{font-size:18px !important;font-weight:800 !important;line-height:1.2 !important;white-space:normal !important}
+.ci-price, .cart-item-price, .oi-price{font-size:18px !important;font-weight:700 !important}
+
+/* Product card tagline — short research description next to each bottle */
+.product-card-tagline{
+  font-size:13px!important;
+  color:var(--ink-muted)!important;
+  line-height:1.4!important;
+  margin:0 0 12px!important;
+  font-weight:400!important;
+  min-height:2.6em;
+}
+
+/* Product card description — full research description in catalog */
+.product-card-desc{
+  font-size:12px!important;
+  color:var(--ink-muted)!important;
+  line-height:1.45!important;
+  margin:0 0 14px!important;
+  font-weight:400!important;
+  min-height:3.6em;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+}
+
+/* Cart drawer item layout fix — .ci-* classes were unstyled, causing the
+   remove button to stretch to full row height (default flex align-items:stretch) */
+.cart-item{align-items:flex-start!important}
+.ci-info{flex:1!important;display:flex!important;flex-direction:column!important;gap:2px!important;min-width:0!important}
+.ci-qty{display:flex!important;align-items:center!important;gap:10px!important;margin-top:8px!important}
+.ci-qty button{background:var(--bg-warm)!important;border:none!important;width:28px!important;height:28px!important;flex:0 0 28px!important;border-radius:8px!important;cursor:pointer!important;font-size:16px!important;color:var(--ink)!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important}
+.ci-qty button:hover{background:var(--bg-warm2)!important}
+.ci-qty span{font-size:15px!important;font-weight:600!important;min-width:20px!important;text-align:center!important}
+.ci-remove{background:none!important;border:none!important;color:var(--ink-muted)!important;cursor:pointer!important;font-size:16px!important;align-self:flex-start!important;flex:0 0 28px!important;width:28px!important;height:28px!important;max-height:28px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important}
+.ci-remove:hover{color:var(--ink)!important}
