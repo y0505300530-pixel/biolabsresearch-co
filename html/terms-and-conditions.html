@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCMPHP783M');
+</script>
 <link rel="icon" type="image/x-icon" href="/favicon.ico?v=74">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=74">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=74">
@@ -116,6 +124,19 @@ footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:50px 60px 30px
 </style>
 </head>
 <body>
+<div class="promo-stack" id="promoStack">
+  <div class="ruo-bar">FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.</div>
+  <div class="promo-bar">
+    <span class="promo-off">25% OFF YOUR ORDER</span>
+    <span class="promo-mid"><span class="promo-kicker">RESEARCH INSIDER</span></span>
+    <button type="button" class="promo-code" id="promoCode" data-code="INSIDER25">INSIDER25</button>
+  </div>
+  <div class="cutoff-bar">
+    <div class="cutoff-copy"><strong>OFFER ENDS</strong><span>Code is added to your inquiry.</span></div>
+    <div class="cutoff-timer" id="promoTimer" data-end="2026-09-07T23:59:59+03:00">--:--:--</div>
+  </div>
+</div>
+
 
 <div class="announce">Research Use Only (RUO) — All products are for laboratory research purposes only. Not for human or animal consumption.</div>
 
@@ -417,7 +438,7 @@ footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:50px 60px 30px
   <!-- 17. IP -->
   <div class="section" id="ip">
     <h2>17. Intellectual Property</h2>
-    <p>All content on this Website, including text, graphics, branding, product descriptions, images, logos, and website design, is the property of BioLabs Research. Content may not be copied, reproduced, distributed, or used without prior written permission.</p>
+    <p>All content on this Website, including text, graphics, trade dress, product descriptions, images, logos, and website design, is the property of BioLabs Research. Content may not be copied, reproduced, distributed, or used without prior written permission.</p>
     <p>Unauthorized use may result in immediate account termination and legal action.</p>
   </div>
 
@@ -489,5 +510,6 @@ footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:50px 60px 30px
   </div>
 </footer>
 
+<script src="/promo-bar.js?v=1"></script>
 </body>
 </html>

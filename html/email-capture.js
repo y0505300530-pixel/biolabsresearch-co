@@ -1,75 +1,81 @@
-// BioLabs Research — Email Capture Widget
-// Lightweight, no external dependencies
-(function() {
-  var STORAGE_KEY = 'bl_email_captured';
-  var API_ENDPOINT = '/api/notify-order'; // reuse existing endpoint for now
-  
-  // Don't show if already captured
-  if (localStorage.getItem(STORAGE_KEY)) return;
-  
-  // Only show after 30 seconds on page
-  setTimeout(function() {
-    var overlay = document.createElement('div');
-    overlay.id = 'bl-email-overlay';
-    overlay.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:9999;transform:translateY(100%);transition:transform .4s ease;background:#1F1F1F;color:#fff;padding:24px 48px;display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap';
-    
-    overlay.innerHTML = '' +
-      '<div style="flex:1;min-width:280px;max-width:480px">' +
-        '<p style="font-family:Inter,sans-serif;font-size:16px;font-weight:600;margin:0 0 4px">Stay current on research-grade lots</p>' +
-        '<p style="font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,.6);margin:0">Get lot availability updates and new compound alerts. No spam — research only.</p>' +
-      '</div>' +
-      '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-        '<input type="email" id="bl-email-input" placeholder="your@lab.edu" style="flex:1;min-width:200px;padding:12px 16px;border:none;border-radius:999px;font-family:Inter,sans-serif;font-size:14px;outline:none">' +
-        '<button id="bl-email-submit" style="padding:12px 24px;background:#FBCF87;color:#1F1F1F;border:none;border-radius:999px;font-family:Inter,sans-serif;font-weight:600;font-size:14px;cursor:pointer">Subscribe</button>' +
-        '<button id="bl-email-close" style="padding:12px 16px;background:transparent;color:rgba(255,255,255,.4);border:none;border-radius:999px;font-size:14px;cursor:pointer">No thanks</button>' +
-      '</div>';
-    
+/* Research Insider exit-intent. Code INSIDER25. Posts to /api/notify-order until CRM webhook exists. */
+(function () {
+  var STORAGE_KEY = "bl_email_captured";
+  var CODE = "INSIDER25";
+  if (typeof localStorage !== "undefined" && localStorage.getItem(STORAGE_KEY)) return;
+  if (location.pathname.indexOf("checkout") !== -1) return;
+
+  var shown = false;
+  function el(html) {
+    var d = document.createElement("div");
+    d.innerHTML = html.trim();
+    return d.firstChild;
+  }
+  function show() {
+    if (shown) return;
+    if (localStorage.getItem(STORAGE_KEY)) return;
+    if (sessionStorage.getItem(STORAGE_KEY + "_dismissed")) return;
+    shown = true;
+    var overlay = el('<div id="bl-vip-overlay" style="position:fixed;inset:0;z-index:10050;background:rgba(13,33,55,.55);display:flex;align-items:center;justify-content:center;padding:20px"></div>');
+    var box = el(
+      '<div style="position:relative;width:min(420px,100%);background:#F4EFE4;border-radius:18px;padding:28px 24px 22px;text-align:center;box-shadow:0 24px 60px rgba(13,33,55,.28);font-family:var(--font,system-ui,sans-serif)">' +
+        '<button type="button" id="bl-vip-x" aria-label="Close" style="position:absolute;top:10px;right:12px;background:none;border:0;font-size:22px;cursor:pointer;color:#111;line-height:1">×</button>' +
+        '<div style="font-weight:800;letter-spacing:.12em;font-size:12px;color:#0d2137;margin-bottom:10px">BIO LABS</div>' +
+        '<h2 style="margin:0 0 6px;font-size:22px;line-height:1.2;color:#111">Wait! You almost left without this</h2>' +
+        '<p style="margin:0 0 16px;font-size:14px;color:#4a6358">Get 25% off your first inquiry</p>' +
+        '<input id="bl-vip-name" type="text" placeholder="First name" autocomplete="given-name" style="width:100%;box-sizing:border-box;margin:0 0 8px;padding:12px 14px;border:1.5px solid #111;border-radius:10px;background:#fff;font-size:15px">' +
+        '<input id="bl-vip-email" type="email" placeholder="Email" autocomplete="email" style="width:100%;box-sizing:border-box;margin:0 0 12px;padding:12px 14px;border:1.5px solid #111;border-radius:10px;background:#fff;font-size:15px">' +
+        '<button type="button" id="bl-vip-go" style="width:100%;padding:14px;border:0;border-radius:10px;background:#0d2137;color:#fff;font-weight:800;font-size:16px;cursor:pointer">Unlock my 25% off</button>' +
+        '<button type="button" id="bl-vip-no" style="display:block;width:100%;margin-top:10px;background:none;border:0;color:#6b7280;font-size:13px;cursor:pointer;text-decoration:underline">No thanks, I will pay full price</button>' +
+      '</div>'
+    );
+    overlay.appendChild(box);
     document.body.appendChild(overlay);
-    
-    requestAnimationFrame(function() {
-      overlay.style.transform = 'translateY(0)';
-    });
-    
-    function close() {
-      overlay.style.transform = 'translateY(100%)';
-      setTimeout(function() { overlay.remove(); }, 400);
-      // Set a session-only flag so it doesn't pop again this session
-      sessionStorage.setItem(STORAGE_KEY + '_dismissed', '1');
+    function close(permanent) {
+      overlay.remove();
+      try {
+        sessionStorage.setItem(STORAGE_KEY + "_dismissed", "1");
+        if (permanent) localStorage.setItem(STORAGE_KEY, "1");
+      } catch (e) {}
     }
-    
-    document.getElementById('bl-email-close').addEventListener('click', close);
-    
-    document.getElementById('bl-email-submit').addEventListener('click', function() {
-      var email = document.getElementById('bl-email-input').value.trim();
-      if (!email || !email.includes('@')) {
-        document.getElementById('bl-email-input').style.border = '2px solid #e74c3c';
+    document.getElementById("bl-vip-x").onclick = function () { close(false); };
+    document.getElementById("bl-vip-no").onclick = function () { close(false); };
+    overlay.addEventListener("click", function (e) { if (e.target === overlay) close(false); });
+    document.getElementById("bl-vip-go").onclick = function () {
+      var name = (document.getElementById("bl-vip-name").value || "").trim();
+      var email = (document.getElementById("bl-vip-email").value || "").trim();
+      if (!email || email.indexOf("@") < 1) {
+        document.getElementById("bl-vip-email").focus();
         return;
       }
-      // Store locally
-      localStorage.setItem(STORAGE_KEY, email);
-      
-      // Send to backend (reuse contact API)
-      try {
-        fetch('/api/contact', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            type: 'email_signup',
-            email: email,
-            source: window.location.pathname,
-            message: 'Email signup from website footer widget'
-          })
-        }).catch(function() {}); // silent fail — don't block UX
-      } catch(e) {}
-      
-      // Show success
-      overlay.innerHTML = '<div style="text-align:center;padding:8px 48px"><p style="font-family:Inter,sans-serif;font-size:16px;font-weight:600;color:#FBCF87">✓ Subscribed</p><p style="font-family:Inter,sans-serif;font-size:13px;color:rgba(255,255,255,.6);margin-top:4px">We\'ll notify you of new lots and compounds. Research only.</p></div>';
-      setTimeout(close, 3000);
-    });
-    
-    // Enter key submits
-    document.getElementById('bl-email-input').addEventListener('keydown', function(e) {
-      if (e.key === 'Enter') document.getElementById('bl-email-submit').click();
-    });
-  }, 30000);
+      try { localStorage.setItem("biofirst_coupon", CODE); } catch (e) {}
+      var body = "INSIDER SIGNUP\nName: " + name + "\nEmail: " + email + "\nCoupon: " + CODE + "\nPage: " + location.href;
+      fetch("/api/notify-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          subject: "Insider signup — " + email + " — " + CODE,
+          body: body,
+          orderData: { type: "insider-signup", firstName: name, email: email, coupon: CODE },
+          paymentMethod: "inquiry"
+        })
+      }).catch(function () {});
+      try { localStorage.setItem(STORAGE_KEY, "1"); } catch (e) {}
+      box.innerHTML =
+        '<button type="button" id="bl-vip-x2" aria-label="Close" style="position:absolute;top:10px;right:12px;background:none;border:0;font-size:22px;cursor:pointer;color:#111">×</button>' +
+        '<div style="font-weight:800;letter-spacing:.12em;font-size:12px;color:#0d2137;margin-bottom:10px">BIO LABS</div>' +
+        '<h2 style="margin:0 0 8px;font-size:22px;color:#111">Your code</h2>' +
+        '<div style="display:inline-block;background:#F2D191;color:#111;font-weight:800;font-size:20px;letter-spacing:.06em;padding:10px 18px;border-radius:10px;margin:8px 0 12px">' + CODE + '</div>' +
+        '<p style="margin:0;font-size:13px;color:#4a6358">Added to your inquiry. Honored when the order is confirmed.</p>';
+      document.getElementById("bl-vip-x2").onclick = function () { overlay.remove(); };
+    };
+  }
+  document.addEventListener("mouseout", function (e) {
+    if (e.clientY > 12) return;
+    if (e.relatedTarget) return;
+    show();
+  });
+  setTimeout(function () {
+    if (window.matchMedia && window.matchMedia("(pointer:coarse)").matches) show();
+  }, 25000);
 })();

@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCMPHP783M');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Research Peptide Page | BioLabs Research Laboratory</title>
@@ -147,6 +155,19 @@ footer{background:var(--navy);padding:60px 60px 30px}
 </style>
 </head>
 <body>
+<div class="promo-stack" id="promoStack">
+  <div class="ruo-bar">FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.</div>
+  <div class="promo-bar">
+    <span class="promo-off">25% OFF YOUR ORDER</span>
+    <span class="promo-mid"><span class="promo-kicker">RESEARCH INSIDER</span></span>
+    <button type="button" class="promo-code" id="promoCode" data-code="INSIDER25">INSIDER25</button>
+  </div>
+  <div class="cutoff-bar">
+    <div class="cutoff-copy"><strong>OFFER ENDS</strong><span>Code is added to your inquiry.</span></div>
+    <div class="cutoff-timer" id="promoTimer" data-end="2026-09-07T23:59:59+03:00">--:--:--</div>
+  </div>
+</div>
+
 
 <!-- ANNOUNCE BAR — identical to homepage -->
 <div class="announce">🔬 <strong>RESEARCH COMPOUND</strong> &nbsp;|&nbsp; Not FDA approved. For research purposes only. Not intended for human consumption.</div>
@@ -303,7 +324,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
                 '<span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>' +
                 '<button type="button" onclick="changePdpQty(1)" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>' +
               '</div>' +
-              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Add to Cart</button>' +
+              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Add to inquiry</button>' +
             '</div>' +
             coaBtn +
             '<div class="trust-items">' +
@@ -337,6 +358,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
   fetch('https://biolabsresearch.co/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
+      (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });
       localStorage.setItem('biofirst_products', JSON.stringify(products));
       var p = products.find(function(x){return x.slug===slug;});
       if (p) renderProduct(p); else renderNotFound();
@@ -376,7 +398,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
     if(el){ el.textContent = total > 0 ? total : ''; }
   }
 
-  // Add to cart — reads current rendered product name + selected size/price
+  // Add to inquiry — reads current rendered product name + selected size/price
   window.addToCartTemplate = function(){
     var name = (document.querySelector('.product-title')||{}).textContent || 'Product';
     name = name.trim();
@@ -661,5 +683,6 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
+<script src="/promo-bar.js?v=1"></script>
 </body>
 </html>

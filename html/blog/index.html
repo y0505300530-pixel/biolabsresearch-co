@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCMPHP783M');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Research Articles | BioLabs Research Blog</title>
@@ -20,7 +28,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biofirst_style.css?v=76">
+<link rel="stylesheet" href="/biofirst_style.css?v=145">
 <style>
 .blog-grid{max-width:1080px;margin:0 auto;padding:48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
 .blog-card{background:var(--bg-warm);border-radius:var(--radius);overflow:hidden;transition:var(--transition);text-decoration:none;color:inherit}
@@ -37,10 +45,35 @@
 </style>
 </head>
 <body>
-<div class="ruo-bar">Research Use Only. Not for human consumption. Not FDA approved. Laboratory reagents.</div>
-<nav class="nav"><a href="/index.html" class="nav-logo"><span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span></a><div class="nav-right"><a href="/science.html" class="nav-cart" style="text-decoration:none">Science</a><a href="/blog/" class="nav-cart" style="text-decoration:none">Blog</a><a href="/index.html" class="nav-cart" style="text-decoration:none">Catalog</a><button class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></nav>
+<div class="promo-stack" id="promoStack">
+  <div class="ruo-bar">FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.</div>
+  <div class="promo-bar">
+    <span class="promo-off">25% OFF YOUR ORDER</span>
+    <span class="promo-mid"><span class="promo-kicker">RESEARCH INSIDER</span></span>
+    <button type="button" class="promo-code" id="promoCode" data-code="INSIDER25">INSIDER25</button>
+  </div>
+  <div class="cutoff-bar">
+    <div class="cutoff-copy"><strong>OFFER ENDS</strong><span>Code is added to your inquiry.</span></div>
+    <div class="cutoff-timer" id="promoTimer" data-end="2026-09-07T23:59:59+03:00">--:--:--</div>
+  </div>
+</div>
+
+<nav class="nav"><a href="https://biolabsresearch.co/index.html?from=logo" class="nav-logo"><span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span></a><div class="nav-right"><a href="/science.html" class="nav-cart" style="text-decoration:none">Science</a><a href="/blog/" class="nav-cart" style="text-decoration:none">Blog</a><a href="/index.html" class="nav-cart" style="text-decoration:none">Catalog</a><button class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></nav>
 <div class="blog-header"><h1>Research Articles</h1><p>Peer-style overviews of peptides, laboratory methods, and sourcing guides. Written for laboratory professionals. RUO only.</p></div>
 <div class="blog-grid">
+<a href="/blog/melanotan-ii-identity.html" class="blog-card"><div class="blog-card-img">MT-II</div><div class="blog-card-body"><h3>Melanotan II Is a Cyclic α-MSH Analogue, Not a Catalog SKU</h3><p>Melanotan II: Ac-Nle-cyclo[Asp-His-D-Phe-Arg-Trp-Lys]-NH2, CAS 121062-08-6. Identity note. Not listed in this catalog.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/cjc-1295-dac-vs-modified-grf-identity.html" class="blog-card"><div class="blog-card-img">CJC-1295</div><div class="blog-card-body"><h3>CJC-1295 With DAC and Without DAC Are Different Molecules</h3><p>CJC-1295 DAC is not modified GRF 1-29. Discriminator is formula, not the storefront name. Not a catalog SKU.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/tb-500-vs-thymosin-beta-4-identity.html" class="blog-card"><div class="blog-card-img">TB-500</div><div class="blog-card-body"><h3>TB-500 vs Thymosin β4: Which Sequence Is on the Vial</h3><p>This catalog’s TB-500 listing is the Ac-LKKTETQ fragment, not full thymosin β4.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/kpv-alpha-msh-11-13-identity.html" class="blog-card"><div class="blog-card-img">KPV</div><div class="blog-card-body"><h3>KPV Is α-MSH 11–13, Not the Whole Hormone</h3><p>α-MSH 11–13 (KPV, CAS 67727-97-3). PubChem CID 125672. Free acid is not Ac-KPV-NH2.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/semax-acth-4-7-pgp-identity.html" class="blog-card"><div class="blog-card-img">Semax</div><div class="blog-card-body"><h3>Semax Is ACTH(4–7)-PGP, Sequence MEHFPGP</h3><p>ACTH(4–7)-PGP, sequence MEHFPGP, CAS 80714-61-0. Catalog RUO is not the Russian registered drug.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/kisspeptin-10-kiss1-fragment-identity.html" class="blog-card"><div class="blog-card-img">KP-10</div><div class="blog-card-body"><h3>Kisspeptin-10 Is the C-Terminal KISS1 Decapeptide Amide</h3><p>C-terminal KISS1 decapeptide amide YNWNSFGLRF-NH2. Not kisspeptin-54.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/thymosin-alpha-1-thymalfasin-identity.html" class="blog-card"><div class="blog-card-img">Tα1</div><div class="blog-card-body"><h3>Thymosin Alpha-1 Is the 28-Residue N-Acetyl Peptide, Not TB-500</h3><p>N-acetyl 28-mer (thymalfasin, CAS 62304-98-7). Unrelated to TB-500.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/tesamorelin-ipamorelin-blend-identity.html" class="blog-card"><div class="blog-card-img">Blend</div><div class="blog-card-body"><h3>Tesamorelin / Ipamorelin: Two CAS Numbers on One Vial</h3><p>Two CAS numbers on one vial. Blend COA must show both masses. No mix ratio invented.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/bpc-157-tb-500-blend-identity.html" class="blog-card"><div class="blog-card-img">Blend</div><div class="blog-card-body"><h3>BPC-157 / TB-500 Blend: Two Sequences, Two Masses</h3><p>Two sequences, two masses. A blend is not a third CAS. Lot paper must show both.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/curcumin-phytosome-identity.html" class="blog-card"><div class="blog-card-img">Curcumin</div><div class="blog-card-body"><h3>Curcumin Phytosome Is a Complex, Not a Peptide CAS</h3><p>Curcuminoids + phosphatidylcholine. No peptide CAS. Meriva is a trademark, not a license claim.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/glow-70-named-blend-identity.html" class="blog-card"><div class="blog-card-img">GLOW</div><div class="blog-card-body"><h3>GLOW 70 Is a Named Catalog Blend, Not a CAS Number</h3><p>A named catalog blend has no CAS. Identity is the lot COA component list.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
+<a href="/blog/hplc-area-percent-vs-net-peptide-content.html" class="blog-card"><div class="blog-card-img">HPLC</div><div class="blog-card-body"><h3>HPLC Area Percent Is Not Net Peptide Content</h3><p>HPLC area% is a UV chromatogram ratio, not milligrams of peptide in the vial. Mass spec, TFA, and NPC on a lot COA.</p><div class="meta">Aug 31, 2026 · 11 min read</div></div></a>
+<a href="/blog/aod-9604-hgh-fragment-identity.html" class="blog-card"><div class="blog-card-img">AOD-9604</div><div class="blog-card-body"><h3>AOD-9604 vs hGH 177–191: Match the Sequence on the Vial</h3><p>Tyr-hGH 177–191 (CAS 221231-10-3) is not unmodified fragment 176–191. Sequence, disulfide, and CAS on the listing.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
 <a href="/blog/what-is-bpc-157-research-overview.html" class="blog-card"><div class="blog-card-img">BPC-157</div><div class="blog-card-body"><h3>What Is BPC-157? A Research Overview</h3><p>Mechanism, research applications, and how to evaluate lot quality for the pentadecapeptide BPC-157.</p><div class="meta">Aug 26, 2026 · 7 min read</div></div></a>
 <a href="/blog/peptide-purity-and-coa-explained.html" class="blog-card"><div class="blog-card-img">COA</div><div class="blog-card-body"><h3>Peptide Purity and COA Explained</h3><p>How to read a Certificate of Analysis: HPLC, mass spec, residual solvents, and endotoxin testing.</p><div class="meta">Aug 26, 2026 · 8 min read</div></div></a>
 <a href="/blog/buying-research-peptides-online-guide-2026.html" class="blog-card"><div class="blog-card-img">Guide</div><div class="blog-card-body"><h3>Buying Research Peptides Online: 2026 Guide</h3><p>What to look for in a peptide supplier, COA requirements, red flags, and a sourcing checklist.</p><div class="meta">Aug 26, 2026 · 9 min read</div></div></a>
@@ -48,10 +81,11 @@
 <a href="/blog/ghk-cu-copper-peptide-research.html" class="blog-card"><div class="blog-card-img">GHK-Cu</div><div class="blog-card-body"><h3>GHK-Cu Copper Peptide: Research Overview</h3><p>The copper-binding tripeptide in wound healing, dermatological, and anti-inflammatory research.</p><div class="meta">Aug 26, 2026 · 6 min read</div></div></a>
 <a href="/blog/tb-500-thymosin-beta-4-research.html" class="blog-card"><div class="blog-card-img">TB-500</div><div class="blog-card-body"><h3>TB-500 (Thymosin Beta-4) Research Overview</h3><p>Mechanism, tissue repair research, and sourcing for laboratory studies of this thymus-derived peptide.</p><div class="meta">Aug 26, 2026 · 6 min read</div></div></a>
 <a href="/blog/epithalon-aging-research-peptide.html" class="blog-card"><div class="blog-card-img">Epithalon</div><div class="blog-card-body"><h3>Epithalon: Aging Research Overview</h3><p>Telomerase activation, cellular aging models, and sourcing for longevity research.</p><div class="meta">Aug 26, 2026 · 5 min read</div></div></a>
-<a href="/blog/retatrutide-metabolic-research.html" class="blog-card"><div class="blog-card-img">Retatrutide</div><div class="blog-card-body"><h3>Retatrutide: Metabolic Research Overview</h3><p>Triple GLP-1/GIP/glucagon receptor agonist — mechanism and metabolic research applications.</p><div class="meta">Aug 26, 2026 · 7 min read</div></div></a>
+<a href="/blog/retatrutide-metabolic-research.html" class="blog-card"><div class="blog-card-img">R3TA</div><div class="blog-card-body"><h3>R3TA: Metabolic Research Overview</h3><p>Triple GLP-1/GIP/glucagon receptor agonist — mechanism and metabolic research applications.</p><div class="meta">Aug 26, 2026 · 7 min read</div></div></a>
 <a href="/blog/mots-c-mitochondrial-research-peptide.html" class="blog-card"><div class="blog-card-img">MOTS-c</div><div class="blog-card-body"><h3>MOTS-c: Mitochondrial Research Peptide</h3><p>Mitochondrial-derived peptide in metabolic regulation, exercise mimicry, and aging research.</p><div class="meta">Aug 26, 2026 · 5 min read</div></div></a>
 </div>
 <script>function toggleMenu(){var o=document.getElementById('navOverlay');var m=document.getElementById('navMenu');if(o){o.classList.toggle('open')}if(m){m.classList.toggle('open')}}</script>
-<script src="/email-capture.js"></script>
+<script src="/email-capture.js?v=3"></script>
+<script src="/promo-bar.js?v=1"></script>
 </body>
 </html>

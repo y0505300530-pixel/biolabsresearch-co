@@ -3,6 +3,7 @@ Allow: /
 Disallow: /admin
 Disallow: /admin.html
 Disallow: /_base44-brief
+Allow: /api/products
 Disallow: /api/
 Disallow: /checkout.html
 Disallow: /products-data.json

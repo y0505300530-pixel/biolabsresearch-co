@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCMPHP783M');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>What Is BPC-157? A Research Overview (2026) | BioLabs Research</title>
@@ -48,7 +56,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biofirst_style.css?v=76">
+<link rel="stylesheet" href="/biofirst_style.css?v=145">
 <style>
 .article-hero{padding:80px 48px 40px;text-align:center;max-width:780px;margin:0 auto}
 .article-hero h1{font-family:var(--font-logo);font-size:42px;font-weight:500;line-height:1.2;margin-bottom:16px;color:var(--ink)}
@@ -74,10 +82,33 @@
   .article-hero h1{font-size:32px}
   .article-body{padding:0 20px 60px;font-size:16px}
 }
+
+.article-img{width:100%;border-radius:var(--radius);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin-bottom:24px;line-height:1.5;padding:0 16px}
+.article-img-caption strong{color:var(--ink-soft)}
+
+
+.article-quote{max-width:600px;margin:48px auto;padding:32px 40px;text-align:center;border-top:2px solid var(--border-light);border-bottom:2px solid var(--border-light)}
+.article-quote p{font-family:var(--font-display);font-size:22px;line-height:1.5;color:var(--ink);margin:0;font-style:italic}
+.article-quote p::before{content:"\201C";font-size:36px;color:var(--bronze);vertical-align:-12px;margin-right:4px}
+.article-quote p::after{content:"\201D";font-size:36px;color:var(--bronze);vertical-align:-12px;margin-left:4px}
+
 </style>
 </head>
 <body>
-<div class="ruo-bar">Research Use Only. Not for human consumption. Not FDA approved. Laboratory reagents.</div>
+<div class="promo-stack" id="promoStack">
+  <div class="ruo-bar">FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.</div>
+  <div class="promo-bar">
+    <span class="promo-off">25% OFF YOUR ORDER</span>
+    <span class="promo-mid"><span class="promo-kicker">RESEARCH INSIDER</span></span>
+    <button type="button" class="promo-code" id="promoCode" data-code="INSIDER25">INSIDER25</button>
+  </div>
+  <div class="cutoff-bar">
+    <div class="cutoff-copy"><strong>OFFER ENDS</strong><span>Code is added to your inquiry.</span></div>
+    <div class="cutoff-timer" id="promoTimer" data-end="2026-09-07T23:59:59+03:00">--:--:--</div>
+  </div>
+</div>
+
 <nav class="nav">
   <a href="https://biolabsresearch.co/index.html?from=logo" class="nav-logo">
     <span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span>
@@ -96,6 +127,8 @@
 
 <div class="article-body">
 <p>BPC-157 (Body Protection Compound-157) is a synthetic pentadecapeptide derived from a sequence found in human gastric juice. Composed of 15 amino acids, it has attracted significant research interest for its potential role in cellular signaling pathways related to tissue repair and regeneration in laboratory models. This article provides a research-only overview — no therapeutic claims are made or implied.</p>
+<img src="https://media.base44.com/images/public/6a2c6d7baec1758ff212266e/1f61354e6_generated_image.png" alt="BPC-157's 15-amino acid chain: a gastric-derived pentadecapeptide with demonstra" class="article-img" loading="lazy"><p class="article-img-caption">BPC-157's 15-amino acid chain: a gastric-derived pentadecapeptide with demonstrated tissue repair signaling in preclinical models.</p>
+
 
 <h2>Chemical Identity</h2>
 <p>BPC-157 has the amino acid sequence H-Gly-Glu-Pro-Pro-Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val-OH. It is a fragment of the larger BPC protein identified in gastric juice research. The peptide has a molecular weight of approximately 1,419.5 Da and is typically supplied as a lyophilized (freeze-dried) powder for reconstitution in laboratory settings.</p>
@@ -120,6 +153,8 @@
 <li><strong>Laboratory name and testing method</strong> — the testing facility should be identified</li>
 </ul>
 <p>Requesting a COA before purchase is standard practice in reagent sourcing. BioLabs Research provides lot COAs on request when available. See our <a href="/guide-reading-coa" style="color:var(--bronze);font-weight:500">guide to reading a COA</a> for a detailed breakdown of what each section means.</p>
+<img src="https://media.base44.com/images/public/6a2c6d7baec1758ff212266e/364c6be18_generated_image.png" alt="Sports recovery: the athletic context where BPC-157's tissue repair signaling fi" class="article-img" loading="lazy"><p class="article-img-caption">Sports recovery: the athletic context where BPC-157's tissue repair signaling finds its most direct research application.</p>
+
 
 <h2>Reconstitution and Storage for Laboratory Use</h2>
 <p>For laboratory handling of lyophilized BPC-157:</p>
@@ -138,9 +173,14 @@
 <ul>
 <li><strong>Third-party testing</strong> — COAs from independent laboratories, not just in-house testing</li>
 <li><strong>Lot traceability</strong> — each lot should have a unique identifier and test documentation</li>
-<li><strong>Purity specifications</strong> — typically ≥98% by HPLC for research-grade material</li>
+<li><strong>Purity specifications — HPLC purity as reported on the lot COA</li>
 <li><strong>Transparent pricing</strong> — research reagents should have clear, published pricing</li>
 </ul>
+
+
+<div class="article-quote">
+  <p>Recovery is not a setback — it is preparation for the next breakthrough.</p>
+</div>
 
 <div class="article-cta">
   <h3>Source BPC-157 for Your Research</h3>
@@ -153,7 +193,7 @@
 <p>No. BPC-157 is not FDA approved for any therapeutic use. It is sold as a research-use-only laboratory reagent. BioLabs Research does not make any therapeutic or lifestyle claims.</p>
 
 <h3>What purity should I expect from research-grade BPC-157?</h3>
-<p>Research-grade BPC-157 typically has ≥98% purity as determined by HPLC. Always request a COA to verify the purity of your specific lot.</p>
+<p>HPLC purity is reported on the lot-specific COA. Request the COA to verify the purity of your specific lot. Always request a COA to verify the purity of your specific lot.</p>
 
 <h3>Can I get a COA for my BPC-157 order?</h3>
 <p>Yes. BioLabs Research provides lot COAs on request when available. Contact us at info@biofirst.co with your order details.</p>
@@ -167,6 +207,7 @@
 <script>
 function toggleMenu(){var o=document.getElementById('navOverlay');var m=document.getElementById('navMenu');if(o){o.classList.toggle('open')}if(m){m.classList.toggle('open')}}
 </script>
-<script src="/email-capture.js"></script>
+<script src="/email-capture.js?v=3"></script>
+<script src="/promo-bar.js?v=1"></script>
 </body>
 </html>
