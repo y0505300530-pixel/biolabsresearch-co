@@ -159,10 +159,6 @@
       + '<article><div class="pdp-doc-art">'+figMs+'</div><h3>Mass spectrum</h3><p>Observed mass for this listing against the named compound. Lot data, not a homepage percentage.</p></article>'
       + '<article><div class="pdp-doc-art">'+figCoa+'</div><h3>Certificate of Analysis</h3><p>Lot number, date, laboratory, and method for this '+name+' vial.</p><button type="button" class="pdp-coa-btn" onclick="openCOARequest(\''+esc+'\')">Request this lot file</button></article>'
       + '</div></div></section>'
-      + '<section class="pdp-also-wrap">'
-      + '<div class="pdp-also-inner">'
-      + '<h2>Also in the catalog</h2>'
-      + '<div class="pdp-also">'+also+'</div>'
-      + '</div></section>';
+      ;
   };
 })();

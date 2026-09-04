@@ -27,8 +27,8 @@
 {"@context":"https://schema.org","@type":"Blog","name":"BioLabs Research Blog","url":"https://biolabsresearch.co/blog/","publisher":{"@type":"Organization","name":"BioLabs Research"}}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biofirst_style.css?v=145">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/biolabs_style.css?v=180">
 <style>
 .blog-grid{max-width:1080px;margin:0 auto;padding:48px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
 .blog-card{background:var(--bg-warm);border-radius:var(--radius);overflow:hidden;transition:var(--transition);text-decoration:none;color:inherit}
@@ -43,22 +43,36 @@
 .blog-header p{color:var(--ink-soft);max-width:600px;margin:0 auto;font-size:16px}
 @media(max-width:768px){.blog-grid{padding:24px;gap:16px}.blog-header{padding:60px 20px 20px}}
 </style>
+<script src="/cart-vial.js?v=100"></script>
+<script src="/search-overlay.js?v=3"></script>
 </head>
 <body>
 <div class="promo-stack" id="promoStack">
-  <div class="ruo-bar">FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.</div>
+  
   <div class="promo-bar">
-    <span class="promo-off">25% OFF YOUR ORDER</span>
-    <span class="promo-mid"><span class="promo-kicker">RESEARCH INSIDER</span></span>
-    <button type="button" class="promo-code" id="promoCode" data-code="INSIDER25">INSIDER25</button>
-  </div>
-  <div class="cutoff-bar">
-    <div class="cutoff-copy"><strong>OFFER ENDS</strong><span>Code is added to your inquiry.</span></div>
-    <div class="cutoff-timer" id="promoTimer" data-end="2026-09-07T23:59:59+03:00">--:--:--</div>
+    <div class="promo-track">
+      <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span></div>
+    </div>
   </div>
 </div>
 
-<nav class="nav"><a href="https://biolabsresearch.co/index.html?from=logo" class="nav-logo"><span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span></a><div class="nav-right"><a href="/science.html" class="nav-cart" style="text-decoration:none">Science</a><a href="/blog/" class="nav-cart" style="text-decoration:none">Blog</a><a href="/index.html" class="nav-cart" style="text-decoration:none">Catalog</a><button class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button></div></nav>
+</div>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span></a>
+  <div class="nav-left">
+    <a href="https://biolabsresearch.co/index.html#catalog">Catalog</a>
+    <a href="https://biolabsresearch.co/science.html">Science</a>
+    <a href="/blog/">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-util" href="https://biolabsresearch.co/index.html#catalog" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16.2 16.2L20 20"/></svg></a>
+    <button class="nav-cart" onclick="toggleCart()" type="button" aria-label="Cart"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg><span class="nav-cart-count" id="cartCount">0</span></button>
+    <button class="nav-hamburger" onclick="toggleMenu()" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
 <div class="blog-header"><h1>Research Articles</h1><p>Peer-style overviews of peptides, laboratory methods, and sourcing guides. Written for laboratory professionals. RUO only.</p></div>
 <div class="blog-grid">
 <a href="/blog/melanotan-ii-identity.html" class="blog-card"><div class="blog-card-img">MT-II</div><div class="blog-card-body"><h3>Melanotan II Is a Cyclic α-MSH Analogue, Not a Catalog SKU</h3><p>Melanotan II: Ac-Nle-cyclo[Asp-His-D-Phe-Arg-Trp-Lys]-NH2, CAS 121062-08-6. Identity note. Not listed in this catalog.</p><div class="meta">Aug 31, 2026 · 8 min read</div></div></a>
@@ -85,7 +99,30 @@
 <a href="/blog/mots-c-mitochondrial-research-peptide.html" class="blog-card"><div class="blog-card-img">MOTS-c</div><div class="blog-card-body"><h3>MOTS-c: Mitochondrial Research Peptide</h3><p>Mitochondrial-derived peptide in metabolic regulation, exercise mimicry, and aging research.</p><div class="meta">Aug 26, 2026 · 5 min read</div></div></a>
 </div>
 <script>function toggleMenu(){var o=document.getElementById('navOverlay');var m=document.getElementById('navMenu');if(o){o.classList.toggle('open')}if(m){m.classList.toggle('open')}}</script>
-<script src="/email-capture.js?v=3"></script>
-<script src="/promo-bar.js?v=1"></script>
+<script src="/email-capture.js?v=4"></script>
+<script>/* inline-insider-timer */
+(function(){
+  var END="2026-09-07T23:59:59+03:00";
+  function pad(n){ n=Math.floor(n); return (n<10?"0":"")+n; }
+  function tick(){
+    var endMs=Date.parse(END), text;
+    if(!isFinite(endMs)) text="00:00:00";
+    else {
+      var left=endMs-Date.now();
+      if(left<=0) text="00:00:00";
+      else {
+        var h=left/36e5, m=(left%36e5)/6e4, s=(left%6e4)/1e3;
+        text=pad(h)+":"+pad(m)+":"+pad(s);
+      }
+    }
+    var nodes=document.querySelectorAll(".cutoff-timer");
+    for(var i=0;i<nodes.length;i++) nodes[i].textContent=text;
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+<script src="/promo-bar.js?v=7"></script>
+<script src="/mg-picker.js?v=5"></script>
+<script src="/prices-sync.js?v=2"></script>
 </body>
 </html>

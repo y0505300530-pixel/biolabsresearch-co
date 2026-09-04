@@ -15,6 +15,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terms and Conditions | BioLabs Research Catalog</title>
+<link rel="stylesheet" href="/biolabs_style.css?v=180">
 <meta name="description" content="Legal terms for the BioLabs Research research peptide catalog. RUO laboratory reagents, inquiry orders, and purchaser obligations. Not for human use.">
 <link rel="canonical" href="https://biolabsresearch.co/terms-and-conditions.html">
 <meta property="og:title" content="Terms and Conditions | BioLabs Research Catalog">
@@ -27,136 +28,60 @@
 <meta name="twitter:title" content="Terms and Conditions | BioLabs Research Catalog">
 <meta name="twitter:description" content="Legal terms for the BioLabs Research research peptide catalog. RUO laboratory reagents, inquiry orders, and purchaser obligations. Not for human use.">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --white:#ffffff;
-  --cream:#f7f9f5;
-  --navy:#0d2137;
-  --navy2:#163352;
-  --green:#1d5c3a;
-  --green2:#2d7a52;
-  --green-light:#e8f4ee;
-  --green-mid:#c2dece;
-  --text:#1a2e1f;
-  --muted:#4a6358;
-  --border:#d4e4d8;
-  --border2:#e8f0ea;
-  --gold:#b8952a;
-  --red:#c0392b;
-}
-html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--text);font-family:'Lato',sans-serif;overflow-x:hidden}
-
-/* ANNOUNCE BAR */
-.announce{background:var(--navy);color:rgba(255,255,255,0.92);text-align:center;padding:10px 20px;font-size:12px;font-weight:600;letter-spacing:0.8px}
-.announce strong{color:#7ecfaa}
-
-/* NAV */
-nav{background:var(--white);border-bottom:2px solid var(--border);padding:0 60px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:200;box-shadow:0 2px 16px rgba(0,0,0,0.06)}
-.logo{display:flex;align-items:center;gap:14px;text-decoration:none;padding:16px 0}
-.logo-icon{width:44px;height:44px;border-radius:50%;border:2px solid var(--green);display:flex;align-items:center;justify-content:center}
-.logo-text{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:var(--navy);letter-spacing:1px}
-.logo-text span{color:var(--green)}
-.logo-sub{font-size:9px;font-weight:600;letter-spacing:2px;color:var(--muted);text-transform:uppercase;display:block;margin-top:1px}
-.nav-links{display:flex;list-style:none;gap:0;align-items:center}
-.nav-links a{padding:22px 16px;font-size:13px;font-weight:600;color:var(--muted);text-decoration:none;transition:color .2s;font-family:'Montserrat',sans-serif;letter-spacing:0.3px}
-.nav-links a:hover{color:var(--green)}
-.nav-actions{display:flex;align-items:center;gap:10px}
-.btn-nav-fill{background:var(--green);color:white;padding:10px 22px;border-radius:6px;font-size:12px;font-weight:700;text-decoration:none;font-family:'Montserrat',sans-serif;letter-spacing:0.5px;transition:all .2s;border:none;cursor:pointer}
-.btn-nav-fill:hover{background:var(--green2)}
-
-/* CONTENT */
-.page-hero{background:linear-gradient(160deg,#f0f7f3 0%,#ffffff 60%,#eaf4f0 100%);padding:60px 60px 40px;text-align:center}
-.page-hero h1{font-family:'Montserrat',sans-serif;font-size:40px;font-weight:900;color:var(--navy);letter-spacing:-0.5px;margin-bottom:8px}
-.page-hero p{font-size:15px;color:var(--muted);max-width:600px;margin:0 auto}
-.page-hero .updated{font-size:12px;color:var(--muted);margin-top:12px;font-style:italic}
-
-.terms-container{max-width:900px;margin:0 auto;padding:50px 60px 80px}
-.toc{background:var(--green-light);border:1px solid var(--border);border-radius:12px;padding:24px 32px;margin-bottom:40px}
-.toc h3{font-family:'Montserrat',sans-serif;font-size:13px;font-weight:800;color:var(--green);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
-.toc ol{list-style:none;counter-reset:toc}
+.page-hero{max-width:900px;margin:0 auto;padding:48px 48px 16px}
+.page-hero h1{font-size:36px;font-weight:700;color:#1F1F1F;letter-spacing:-1px;margin-bottom:8px}
+.page-hero p{font-size:15px;color:#4A4A4A;line-height:1.6;max-width:640px}
+.page-hero .updated{font-size:13px;color:#8A8A8A;margin-top:12px}
+.terms-container{max-width:900px;margin:0 auto;padding:8px 48px 100px}
+.toc{background:#F5F2EC;border:1px solid #E8E2D8;border-radius:12px;padding:24px 32px;margin-bottom:40px}
+.toc h3{font-size:13px;font-weight:800;color:#0d2137;letter-spacing:.08em;text-transform:uppercase;margin-bottom:14px}
+.toc ol{list-style:none;counter-reset:toc;padding:0}
 .toc ol li{counter-increment:toc;margin-bottom:6px}
-.toc ol li a{color:var(--navy);text-decoration:none;font-size:14px;font-weight:600;transition:color .2s}
-.toc ol li a:hover{color:var(--green)}
-.toc ol li::before{content:counter(toc) ". ";color:var(--green);font-weight:800;margin-right:6px}
-
+.toc ol li a{color:#1F1F1F;text-decoration:none;font-size:14px;font-weight:600}
+.toc ol li::before{content:counter(toc) ". ";color:#9A6D2A;font-weight:800;margin-right:6px}
 .section{margin-bottom:40px}
-.section h2{font-family:'Montserrat',sans-serif;font-size:22px;font-weight:800;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--border)}
-.section h3{font-family:'Montserrat',sans-serif;font-size:16px;font-weight:700;color:var(--green);margin-top:20px;margin-bottom:10px}
-.section p{font-size:15px;line-height:1.75;color:var(--text);margin-bottom:12px}
+.section h2{font-size:22px;font-weight:800;color:#0d2137;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #E8E2D8}
+.section h3{font-size:16px;font-weight:700;color:#0d2137;margin-top:20px;margin-bottom:10px}
+.section p,.section li{font-size:15px;line-height:1.75;color:#4A4A4A;margin-bottom:12px}
 .section ul{margin:10px 0 14px 20px}
-.section li{font-size:15px;line-height:1.75;color:var(--text);margin-bottom:6px}
-.section strong{color:var(--navy);font-weight:700}
-.highlight-box{background:#fff3cd;border:1px solid #ffe69c;border-radius:8px;padding:16px 20px;margin:16px 0}
-.highlight-box p{margin:0;font-size:14px;line-height:1.7}
-.warning-box{background:#fdeaea;border:1px solid #f5c6cb;border-radius:8px;padding:16px 20px;margin:16px 0}
-.warning-box p{margin:0;font-size:14px;line-height:1.7;color:var(--red)}
-
-/* FOOTER */
-footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:50px 60px 30px}
-.footer-inner{max-width:1280px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:36px}
-.footer-brand .logo-text-f{font-family:'Montserrat',sans-serif;font-size:20px;font-weight:800;color:white;letter-spacing:1px}
-.footer-brand .logo-text-f span{color:#7ecfaa}
-.footer-brand .logo-sub-f{font-size:9px;font-weight:600;letter-spacing:2px;color:rgba(255,255,255,0.35);text-transform:uppercase;margin-top:4px}
-.footer-brand p{font-size:13px;line-height:1.6;margin-top:14px;max-width:260px}
-.footer-col h4{font-family:'Montserrat',sans-serif;font-size:12px;font-weight:700;color:white;letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
-.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,0.5);text-decoration:none;margin-bottom:8px;transition:color .2s}
-.footer-col a:hover{color:#7ecfaa}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.08);padding-top:20px;text-align:center}
-.footer-disclaimer{font-size:12px;color:rgba(255,255,255,0.35);line-height:1.6;margin-bottom:8px}
-.footer-copy{font-size:12px;color:rgba(255,255,255,0.35)}
-.footer-copy a{color:rgba(255,255,255,0.5);text-decoration:none}
-.footer-copy a:hover{color:#7ecfaa}
-
+.highlight-box,.warning-box{border-radius:8px;padding:16px 20px;margin:16px 0}
+.highlight-box{background:#FBF6EA;border:1px solid #eadfca}
+.warning-box{background:#fdeaea;border:1px solid #f5c6cb}
+.warning-box p,.highlight-box p{margin:0;font-size:14px;line-height:1.7}
 @media(max-width:768px){
-  nav{padding:0 20px}
-  .nav-links{display:none}
-  .page-hero{padding:40px 20px 30px}
+  .page-hero,.terms-container{padding-left:20px;padding-right:20px}
   .page-hero h1{font-size:28px}
-  .terms-container{padding:30px 20px 60px}
-  .footer-top{grid-template-columns:1fr;gap:24px}
-  .section h2{font-size:18px}
-  .section p,.section li{font-size:14px}
 }
 </style>
+<script src="/cart-vial.js?v=100"></script>
+<script src="/search-overlay.js?v=3"></script>
 </head>
 <body>
 <div class="promo-stack" id="promoStack">
-  <div class="ruo-bar">FOR RESEARCH USE ONLY. NOT FOR HUMAN USE.</div>
+  
   <div class="promo-bar">
-    <span class="promo-off">25% OFF YOUR ORDER</span>
-    <span class="promo-mid"><span class="promo-kicker">RESEARCH INSIDER</span></span>
-    <button type="button" class="promo-code" id="promoCode" data-code="INSIDER25">INSIDER25</button>
-  </div>
-  <div class="cutoff-bar">
-    <div class="cutoff-copy"><strong>OFFER ENDS</strong><span>Code is added to your inquiry.</span></div>
-    <div class="cutoff-timer" id="promoTimer" data-end="2026-09-07T23:59:59+03:00">--:--:--</div>
+    <div class="promo-track">
+      <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-07T23:59:59+03:00">85:40:29</span></span><span class="promo-sep" aria-hidden="true">+</span></div>
+    </div>
   </div>
 </div>
 
-
-<div class="announce">Research Use Only (RUO) — All products are for laboratory research purposes only. Not for human or animal consumption.</div>
-
-<nav>
-  <a href="https://biolabsresearch.co/index.html?from=nav" class="logo">
-    <div class="logo-icon" style="border:none;background:transparent;width:48px;height:48px;"></div>
-    <div>
-      <div class="logo-text">BioLabs <span>Research</span></div>
-      <div class="logo-sub">Science Now. Research Always.</div>
-    </div>
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="https://biolabsresearch.co/science.html">Science</a></li>
-    <li><a href="https://biolabsresearch.co/index.html?from=nav#catalog">Catalog</a></li>
-    <li><a href="https://biolabsresearch.co/index.html?from=nav#science">Our Science</a></li>
-    <li><a href="https://biolabsresearch.co/index.html?from=nav#how">How It Works</a></li>
-    <li><a href="https://biolabsresearch.co/index.html?from=nav#contact">Contact</a></li>
-  </ul>
-  <div class="nav-actions">
-    <a href="https://biolabsresearch.co/index.html?from=nav" class="btn-nav-fill">Back to Shop</a>
+  <div class="nav-left">
+    <a href="https://biolabsresearch.co/index.html#catalog">Catalog</a>
+    <a href="https://biolabsresearch.co/science.html">Science</a>
+    <a href="/blog/">Blog</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-util" href="https://biolabsresearch.co/index.html#catalog" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16.2 16.2L20 20"/></svg></a>
+    <button class="nav-cart" onclick="toggleCart()" type="button" aria-label="Cart"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg><span class="nav-cart-count" id="cartCount">0</span></button>
+    <button class="nav-hamburger" onclick="toggleMenu()" type="button">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
@@ -250,15 +175,15 @@ footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:50px 60px 30px
     <p>All orders submitted through the Website are subject to internal review and acceptance. Submission of an order does not guarantee fulfillment. Prices displayed on the Website are invitations to conduct business, not binding offers. A contract is formed only upon our written confirmation of acceptance of your order, which may be provided via email or through the Website.</p>
     <p>BioLabs Research reserves the right to:</p>
     <ul>
-      <li>Cancel or decline any order at our sole discretion, including after payment has been received</li>
+      <li>Cancel or decline any order at our sole discretion, including after an inquiry is confirmed or a payment is later received</li>
       <li>Request additional verification or documentation prior to shipment</li>
       <li>Limit quantities or restrict product access based on account status</li>
       <li>Refuse service to any individual or entity at our sole discretion</li>
     </ul>
     <h3>Pricing and Taxes</h3>
     <p>All prices are listed in USD unless otherwise specified. Prices exclude applicable taxes, duties, and shipping charges, which are the responsibility of the Customer. Product availability, pricing, and descriptions may change without prior notice. In the event of order cancellation by BioLabs Research, our sole obligation shall be to refund the purchase price paid.</p>
-    <h3>Payment Methods</h3>
-    <p>Payments are processed through third-party payment providers. Accepted payment methods include credit card, bank transfer, Zelle, and cryptocurrency (ETH/TRON). A 3.5% processing fee applies to credit card transactions. Acceptance of payment depends on the policies of the selected payment provider or gateway.</p>
+        <h3>Payment Methods</h3>
+    <p>The public catalog on biolabsresearch.co is currently <strong>inquiry-only</strong>: submitting the form requests a quote / order confirmation and does not charge a card on this site. When card or other payment is enabled, it will be processed by a designated payment provider and disclosed at checkout. Until then, no payment method is collected through the storefront inquiry form.</p>
   </div>
 
   <!-- 5. SHIPPING -->
@@ -281,8 +206,8 @@ footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:50px 60px 30px
     <div class="warning-box">
       <p>Due to the nature of research materials, <strong>all sales are considered final</strong> unless otherwise required by law.</p>
     </div>
-    <p>Refunds may be issued solely at the discretion of BioLabs Research. Claims related to product purity or fill weight must be supported by independent third-party laboratory testing from a recognized analytical provider. BioLabs Research reserves the right to review and evaluate any such claims prior to issuing a refund or replacement.</p>
-    <p>Customers initiating chargebacks for fulfilled orders may have their accounts permanently suspended and may be prohibited from future purchases.</p>
+    <p>For inquiries, you may cancel or amend a request before a paid order is confirmed. Refunds or credits apply only when a paid order exists and payment has been collected. Claims related to product purity or fill weight must be supported by independent laboratory testing from a recognized analytical provider. BioLabs Research reserves the right to review such claims before issuing a refund, credit, or replacement.</p>
+    <p>When card payment is enabled, chargebacks on fulfilled paid orders may result in account suspension. Until then, resolve inquiry and order issues via the <a href="/checkout.html">inquiry form</a>.</p>
   </div>
 
   <!-- 7. PRODUCT DISCLAIMER -->
@@ -465,51 +390,50 @@ footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:50px 60px 30px
     <h2>21. Contact Us</h2>
     <p>If you have any questions regarding these Terms and Conditions or our compliance practices, please contact us:</p>
     <ul>
-      <li>Email: <a href="mailto:info@biofirst.co" style="color:var(--green);text-decoration:none;">info@biofirst.co</a></li>
+      <li>Email: <a href="/checkout.html" style="color:var(--green);text-decoration:none;">Inquiry form</a></li>
       <li>Website: <a href="https://biolabsresearch.co/index.html?from=nav" style="color:var(--green);text-decoration:none;">biolabsresearch.co</a></li>
     </ul>
   </div>
 
 </div>
 
-<footer>
+<footer class="footer">
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <div class="logo-text-f">BioLabs <span>Research</span></div>
-        <div class="logo-sub-f">Science Now. Research Always.</div>
-        <p>Premium research peptides for licensed professionals and clinical research applications.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Products</h4>
-        <a href="products/bpc-157-tb-500-blend.html">BPC-157 / TB-500 Blend</a>
-        <a href="products/nad-plus.html">NAD+</a>
-        <a href="products/aod-9604.html">AOD-9604</a>
-        <a href="products/curcumin-phytosome.html">Curcumin Phytosome</a>
-        <a href="products/tesamorelin-ipamorelin.html">Tesamorelin / Ipamorelin</a>
-        <a href="products/bpc-157.html">BPC-157</a>
-      </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <a href="mailto:info@biofirst.co">Contact Us</a>
-        <a href="mailto:info@biofirst.co">Request COA</a>
-        <a href="mailto:info@biofirst.co">B2B Inquiries</a>
-      </div>
-      <div class="footer-col">
-        <h4>Legal</h4>
-        <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms & Conditions</a>
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
+      <div class="footer-legal-links">
+        <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a>
         <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
         <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
         <a href="https://biolabsresearch.co/returns.html">Returns</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-disclaimer">Research Compound - Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products are sold for in vitro and laboratory research use only.</div>
-      <div class="footer-copy">© 2026 LEEDS MARKETING GROUP LTD, trading as BioLabs Research. All rights reserved.</div>
-    </div>
   </div>
 </footer>
 
-<script src="/promo-bar.js?v=1"></script>
+<script>/* inline-insider-timer */
+(function(){
+  var END="2026-09-07T23:59:59+03:00";
+  function pad(n){ n=Math.floor(n); return (n<10?"0":"")+n; }
+  function tick(){
+    var endMs=Date.parse(END), text;
+    if(!isFinite(endMs)) text="00:00:00";
+    else {
+      var left=endMs-Date.now();
+      if(left<=0) text="00:00:00";
+      else {
+        var h=left/36e5, m=(left%36e5)/6e4, s=(left%6e4)/1e3;
+        text=pad(h)+":"+pad(m)+":"+pad(s);
+      }
+    }
+    var nodes=document.querySelectorAll(".cutoff-timer");
+    for(var i=0;i<nodes.length;i++) nodes[i].textContent=text;
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+<script src="/promo-bar.js?v=7"></script>
+<script src="/mg-picker.js?v=5"></script>
+<script src="/prices-sync.js?v=2"></script>
 </body>
 </html>

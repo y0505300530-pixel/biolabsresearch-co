@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="240" viewBox="0 0 200 240">
+  <rect width="200" height="240" fill="#F4EFE4"/>
+  <rect x="78" y="18" width="44" height="18" rx="3" fill="#C9A46A"/>
+  <rect x="70" y="36" width="60" height="14" rx="2" fill="#0d2137"/>
+  <rect x="62" y="50" width="76" height="160" rx="10" fill="#fff" stroke="#0d2137" stroke-width="2"/>
+  <text x="100" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#0d2137">BIO LABS</text>
+  <text x="100" y="128" text-anchor="middle" font-family="sans-serif" font-size="9" font-weight="700" fill="#9A6D2A">SOLVENT</text>
+  <text x="100" y="148" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#4a6358">LAB USE ONLY</text>
+  <rect x="62" y="178" width="76" height="22" fill="#e8e2d8"/>
+  <text x="100" y="193" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#0d2137">RUO</text>
+</svg>
