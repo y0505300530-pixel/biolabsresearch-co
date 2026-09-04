@@ -38,10 +38,7 @@
     return null;
   }
 
-  function vialImg(p) {
-    if (p && p.slug) return "/media/vial-" + p.slug + ".webp?v=95";
-    return (p && p.image_url) || "/media/vial-bpc-157.webp?v=95";
-  }
+  function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.webp?v=140'; } return '/media/vial-'+slug+'.webp?v=140'; }
 
   function addItem(name, price, imageUrl, slug) {
     if (typeof window.addToCart === "function") {
@@ -49,10 +46,10 @@
       return;
     }
     var getCart = window.getCart || function () {
-      try { return JSON.parse(localStorage.getItem('biolabs_cart')||localStorage.getItem('biofirst_cart') || "[]"); } catch (e) { return []; }
+      try { return JSON.parse(localStorage.getItem("biofirst_cart") || "[]"); } catch (e) { return []; }
     };
     var saveCart = window.saveCart || function (c) {
-      localStorage.setItem('biolabs_cart', JSON.stringify(c));
+      localStorage.setItem("biofirst_cart", JSON.stringify(c));
     };
     var cart = getCart();
     var existing = cart.find(function (i) {

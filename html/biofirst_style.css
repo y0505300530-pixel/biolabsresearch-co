@@ -4280,7 +4280,7 @@ a.footer-brand{
 .promo-track{
   display:flex;align-items:center;flex-wrap:nowrap;
   width:max-content;
-  animation:promo-marquee 26s linear infinite;
+  animation:promo-marquee 70s linear infinite;
 }
 .promo-bar:hover .promo-track{animation-play-state:paused}
 .promo-group{display:flex;align-items:center;flex:0 0 auto}
@@ -4746,7 +4746,7 @@ a.footer-brand{
 .promo-track{
   display:flex !important;align-items:center !important;flex-wrap:nowrap !important;
   width:max-content !important;height:34px !important;
-  animation:promo-marquee 28s linear infinite !important;
+  animation:promo-marquee 70s linear infinite !important;
   will-change:transform;
 }
 .promo-bar:hover .promo-track{animation-play-state:paused !important}

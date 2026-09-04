@@ -35,7 +35,7 @@
   }
   function fileFor(slug, mg) {
     // Always clean base vial art — mg lives in UI chips/picker, not baked stickers
-    return "/media/vial-" + slug + ".webp?v=96";
+    return "/media/vial-" + slug + ".webp?v=130";
   }
   var MG = "";
   function setImgs(mg) {

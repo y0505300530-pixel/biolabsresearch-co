@@ -35,43 +35,7 @@ function productUrl(item){
   if (!slug || slug==='research-solvent') return '#';
   return '/products/' + slug + '.html';
 }
-function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.webp?v=95'; } return '/media/vial-'+slug+'.webp?v=95'; }
-var CART_SUGGEST = [
-  {slug:'bpc-157', name:'BPC-157', price:89},
-  {slug:'tb-500', name:'TB-500', price:99},
-  {slug:'bpc-157-tb-500-blend', name:'BPC-157 / TB-500 Blend', price:125},
-  {slug:'nad-plus', name:'NAD+', price:99},
-  {slug:'ghk-cu', name:'GHK-Cu', price:69},
-  {slug:'aod-9604', name:'AOD-9604', price:85},
-  {slug:'glow-70', name:'GLOW 70', price:139},
-  {slug:'epithalon', name:'Epithalon', price:79},
-  {slug:'mots-c', name:'MOTS-c', price:95},
-  {slug:'kpv', name:'KPV', price:79},
-  {slug:'semax', name:'Semax', price:89},
-  {slug:'kisspeptin-10', name:'Kisspeptin-10', price:99},
-  {slug:'thymosin-alpha-1', name:'Thymosin Alpha-1', price:109},
-  {slug:'tesamorelin-ipamorelin', name:'Tesamorelin / Ipamorelin', price:119},
-  {slug:'curcumin-phytosome', name:'Curcumin Phytosome', price:109},
-  {slug:'retatrutide', name:'R3TA', price:139}
-];
-function addMoreHtml(cart){
-  cart = cart || [];
-  var have = {};
-  cart.forEach(function(i){ have[(i.slug||'')]=1; have[String(i.name||'').toLowerCase()]=1; });
-  var list = CART_SUGGEST.filter(function(p){ return !have[p.slug] && !have[p.name.toLowerCase()]; });
-  if (!list.length) return '';
-  var html = '<div class="cart-addmore"><div class="cart-addmore-title">Add to this order</div><div class="cart-addmore-track">';
-  list.forEach(function(p){
-    html += '<div class="cart-addcard">' +
-      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.webp?v=94" alt="' + p.name + '" width="110" height="96"></a>' +
-      '<div class="cart-addcard-name">' + p.name + '</div>' +
-      '<div class="cart-addcard-price">$' + p.price + '</div>' +
-      '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + p.price + ')">Add</button>' +
-    '</div>';
-  });
-  html += '</div></div>';
-  return html;
-}
+function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.webp?v=140'; } return '/media/vial-'+slug+'.webp?v=140'; } return '/media/vial-'+slug+'.webp?v=140'; }
 function mountAddMore(cart){
   var html = (cart && cart.length) ? addMoreHtml(cart) : '';
   var slot = document.getElementById('cartAddMore');
@@ -87,7 +51,7 @@ function addSuggest(slug, name, price){
     var c = getCart();
     var ex = c.find(function(i){ return i.slug===slug || i.name===name; });
     if (ex) ex.qty += 1;
-    else c.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+slug+'.webp?v=94'});
+    else c.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/'});
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch (e) { saveCart(); }
     }
@@ -99,7 +63,7 @@ function addSuggest(slug, name, price){
   if (typeof cart !== 'undefined') {
     var ex2 = cart.find(function(i){ return i.slug===slug || i.name===name; });
     if (ex2) ex2.qty += 1;
-    else cart.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+slug+'.webp?v=94'});
+    else cart.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/'});
     if (typeof saveCart === 'function') saveCart();
     if (typeof renderCart === 'function') renderCart();
     if (typeof renderSummary === 'function') renderSummary();

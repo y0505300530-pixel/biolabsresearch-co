@@ -26,7 +26,9 @@
     return "/products/" + encodeURIComponent(p.slug) + ".html";
   }
   function thumb(p) {
-    return "/media/vial-" + p.slug + ".webp?v=95";
+    var slug = (p && p.slug) ? String(p.slug) : "";
+    if (!slug) return "";
+    return "/media/vial-" + slug + ".webp?v=140";
   }
   function catalog(list) {
     return (list || []).filter(function (p) {
@@ -93,7 +95,7 @@
       var sub = cat + (priceTxt ? (" · " + priceTxt) : "") + (stock ? (" · " + stock) : "");
       return (
         '<a class="so-row" href="' + esc(hrefFor(p)) + '">' +
-          '<img class="so-thumb" src="' + esc(thumb(p)) + '" alt="" width="48" height="48" loading="lazy">' +
+          '<img class="so-thumb" src="' + esc(thumb(p)) + '" alt="" width="80" height="80" loading="lazy">' +
           '<span class="so-meta">' +
             '<span class="so-name">' + esc(displayName(p)) + "</span>" +
             '<span class="so-sub">' + esc(sub) + "</span>" +

@@ -1,7 +1,7 @@
 /* INSIDER25 promo + countdown. Inquiry-only: stores code, does not auto-discount. */
 (function(){
   var CODE = "INSIDER25";
-  var FALLBACK_END = "2026-09-07T23:59:59+03:00";
+  var FALLBACK_END = "2026-09-04T17:29:28+03:00";
   function pad(n){ n=Math.floor(n); return (n<10?"0":"")+n; }
   function getEnd(){
     var el = document.querySelector(".cutoff-timer");

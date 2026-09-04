@@ -124,7 +124,7 @@
       + '</div>'
       + '<div class="pdp-expect">'
       + '<div class="pdp-expect-visual">'
-      + '<img class="pdp-body-sketch" src="/media/pdp-body-wire.webp?v=1" alt="">'
+      + '<img class="pdp-body-sketch" src="/media/pdp-body-wire.webp?v=130" alt="">'
       + '</div>'
       + '<div class="pdp-expect-col">'
       + '<h2>What to expect</h2>'
@@ -142,7 +142,7 @@
     var also = rel.map(function(s){
       var pr = PRICE[s] ? '<span class="pdp-also-price">$'+PRICE[s]+'</span>' : '';
       return '<a class="pdp-also-card" href="/products/'+s+'">'
-        + '<img src="/media/vial-'+s+'.webp?v=91" alt="'+NAMES[s]+'">'
+        + '<img src="/media/vial-'+s+'.webp?v=130" alt="'+NAMES[s]+'">'
         + '<strong>'+NAMES[s]+'</strong>'
         + pr
         + '<span class="pdp-also-view">View</span></a>';

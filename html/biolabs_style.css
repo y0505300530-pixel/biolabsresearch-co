@@ -4280,7 +4280,7 @@ a.footer-brand{
 .promo-track{
   display:flex;align-items:center;flex-wrap:nowrap;
   width:max-content;
-  animation:promo-marquee 26s linear infinite;
+  animation:promo-marquee 70s linear infinite;
 }
 .promo-bar:hover .promo-track{animation-play-state:paused}
 .promo-group{display:flex;align-items:center;flex:0 0 auto}
@@ -4707,8 +4707,8 @@ a.footer-brand{
 }
 .so-row:hover,.so-row:focus{background:rgba(13,33,55,.06);outline:none}
 .so-thumb{
-  width:48px;height:48px;border-radius:12px;object-fit:contain;
-  background:#fff;border:1px solid rgba(13,33,55,.06);flex:0 0 auto;
+  width:55px;height:55px;border-radius:12px;object-fit:cover;object-position:center;
+  background:#F5F2EC;border:1px solid rgba(13,33,55,.06);flex:0 0 auto;
 }
 .so-meta{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
 .so-name{font-size:15px;font-weight:800;color:#0d2137;line-height:1.2}
@@ -4746,7 +4746,7 @@ a.footer-brand{
 .promo-track{
   display:flex !important;align-items:center !important;flex-wrap:nowrap !important;
   width:max-content !important;height:34px !important;
-  animation:promo-marquee 28s linear infinite !important;
+  animation:promo-marquee 70s linear infinite !important;
   will-change:transform;
 }
 .promo-bar:hover .promo-track{animation-play-state:paused !important}
@@ -4849,3 +4849,92 @@ a.footer-brand{
 .nav-logo{order:0 !important;justify-self:auto !important;margin:0 !important}
 .nav-left{order:1 !important;justify-self:auto !important}
 .nav-right{order:2 !important;margin-left:auto !important;justify-self:auto !important}
+
+/* split-v140-fill */
+.split-photo{
+  aspect-ratio:5/4 !important;
+  background:#F5F2EC !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.split-photo img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center 40% !important;
+}
+
+
+/* popular-search-v141 */
+.product-card-img{
+  aspect-ratio:1/1 !important;
+  background:#F5F2EC !important;
+  overflow:hidden !important;
+}
+.product-card-img img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center 38% !important;
+  background:#F5F2EC !important;
+}
+.so-thumb{
+  width:55px;height:55px;border-radius:12px;object-fit:cover;object-position:center;
+  background:#F5F2EC;border:1px solid rgba(13,33,55,.06);flex:0 0 auto;
+}
+.so-row{align-items:center !important; gap:12px !important;}
+
+/* so-thumb-v186 — PDP masters, no letterbox, large enough for Yehuda */
+.so-thumb,
+img.so-thumb,
+.so-list .so-thumb{
+  width:80px !important;
+  height:80px !important;
+  min-width:80px !important;
+  min-height:80px !important;
+  max-width:80px !important;
+  max-height:80px !important;
+  border-radius:14px !important;
+  object-fit:cover !important;
+  object-position:center !important;
+  background:#F5F2EC !important;
+  border:1px solid rgba(13,33,55,.08) !important;
+  flex:0 0 auto !important;
+  padding:0 !important;
+  box-sizing:border-box !important;
+}
+.so-row{align-items:center !important; gap:14px !important;}
+.so-search-ico{width:18px !important;height:18px !important;flex:0 0 auto !important;}
+
+
+/* split-pdp-v142 */
+#singles-blend .split-photo{
+  aspect-ratio:1/1 !important;
+  background:#F5F2EC !important;
+  overflow:hidden !important;
+  padding:0 !important;
+}
+#singles-blend .split-photo img{
+  width:100% !important;
+  height:100% !important;
+  object-fit:cover !important;
+  object-position:center center !important;
+  transform:scale(1.1) !important;
+}
+
+/* singles-blends-v188 — exact PDP vial masters, full-bleed in card */
+#singles-blend .split-photo{
+  aspect-ratio: 1 / 1 !important;
+  overflow: hidden !important;
+  background: #F5F2EC !important;
+}
+#singles-blend .split-photo img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center 35% !important;
+  display: block !important;
+  background: #F5F2EC !important;
+}
+
