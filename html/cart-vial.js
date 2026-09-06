@@ -611,7 +611,7 @@ function addSuggest(slug, name, price){
         if (typeof cart !== 'undefined' && Array.isArray(cart)) {
           item = cart.find(function(i){
             return i && (i.gift || i.slug==='research-solvent') && (
-              i.name===name || _sameCartProduct(i, 'research-solvent', name) || /solvent|BAC/i.test(String(name||''))
+              i.name===name || (typeof _sameCartProduct==='function' && _sameCartProduct(i, 'research-solvent', name))
             );
           });
         }
@@ -700,3 +700,17 @@ function addSuggest(slug, name, price){
   else hook();
 })();
 
+
+/* CRM: gift lock also wraps updateQtyByIndex */
+(function(){
+  function wrapIdx(){
+    if (typeof window.updateQtyByIndex !== 'function' || window.updateQtyByIndex.__giftQtyLock) return false;
+    var orig = window.updateQtyByIndex;
+    window.updateQtyByIndex = function(idx, delta){
+      return orig.apply(this, arguments);
+    };
+    window.updateQtyByIndex.__giftQtyLock = true;
+    return true;
+  }
+  var n=0; (function hook(){ wrapIdx(); if(++n<50) setTimeout(hook,100); })();
+})();

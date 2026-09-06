@@ -5039,3 +5039,7 @@ button.product-card-mg.active{
 }
 .product-card-mg:hover{border-color:#0d2137}
 .product-card-mg:focus-visible{outline:2px solid #0d2137;outline-offset:2px}
+
+
+/* CRM hide product-card-desc 2026-09-06 */
+.product-card-desc{display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}

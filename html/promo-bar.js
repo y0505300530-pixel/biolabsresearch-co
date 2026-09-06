@@ -1,28 +1,31 @@
-/* INSIDER25 promo + countdown. Inquiry-only: stores code, does not auto-discount. */
+/* INSIDER25 promo + countdown. Restart 6h on every page load (Yehuda). */
 (function(){
   var CODE = "INSIDER25";
-  var FALLBACK_END = "2026-09-04T17:29:28+03:00";
+  var SIX_H = 6 * 60 * 60 * 1000;
   function pad(n){ n=Math.floor(n); return (n<10?"0":"")+n; }
-  function getEnd(){
-    var el = document.querySelector(".cutoff-timer");
-    if (el) {
-      var d = el.getAttribute("data-end");
-      if (d) return d;
-    }
-    return FALLBACK_END;
+  function endIso(){
+    return new Date(Date.now() + SIX_H).toISOString();
+  }
+  function ensureEnds(){
+    var end = endIso();
+    var nodes = document.querySelectorAll(".cutoff-timer");
+    for (var i=0;i<nodes.length;i++) nodes[i].setAttribute("data-end", end);
+    return end;
   }
   function tick(){
-    var END = getEnd();
+    var END = ensureEnds.__fixed || (ensureEnds.__fixed = ensureEnds());
     var endMs = Date.parse(END);
     var text;
     if (!isFinite(endMs)) text = "00:00:00";
     else {
       var left = endMs - Date.now();
-      if (left <= 0) text = "00:00:00";
-      else {
-        var h = left/36e5, m = (left%36e5)/6e4, s = (left%6e4)/1e3;
-        text = pad(h)+":"+pad(m)+":"+pad(s);
+      if (left <= 0) {
+        ensureEnds.__fixed = ensureEnds();
+        endMs = Date.parse(ensureEnds.__fixed);
+        left = endMs - Date.now();
       }
+      var h = left/36e5, m = (left%36e5)/6e4, s = (left%6e4)/1e3;
+      text = pad(h)+":"+pad(m)+":"+pad(s);
     }
     var nodes = document.querySelectorAll(".cutoff-timer");
     for (var i=0;i<nodes.length;i++) nodes[i].textContent = text;
@@ -32,6 +35,7 @@
   }
   function wire(){
     saveCode();
+    ensureEnds.__fixed = ensureEnds();
     var btns = document.querySelectorAll(".promo-code");
     for (var i=0;i<btns.length;i++){
       (function(btn){
