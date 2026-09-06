@@ -549,6 +549,7 @@ function addSuggest(slug, name, price){
 /* ELITE P0: lock body scroll while cart open */
 (function(){
   function syncBody(){
+    if (!document.body) return;
     var d = document.getElementById('cartDrawer');
     var open = d && d.classList.contains('open');
     document.body.classList.toggle('cart-open', !!open);
