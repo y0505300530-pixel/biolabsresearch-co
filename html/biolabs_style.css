@@ -4944,10 +4944,6 @@ img.so-thumb,
 .split-num,.split-index{content:none!important;display:none!important;background:none!important}
 
 
-/* CRM: catalog mg chips are display-only */
-
-
-.product-card-mg{cursor:default!important;pointer-events:none!important;user-select:none!important}
 .mg-picker{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px}
 .mg-picker-label{font-size:12px;font-weight:700;color:#0d2137;margin-right:4px}
 .mg-picker .mg-btn{padding:8px 16px;border:1.5px solid #0d2137;border-radius:999px;background:#fff;color:#0d2137;font-weight:800;font-size:13px;cursor:pointer}
@@ -5012,8 +5008,34 @@ img.so-thumb,
 /* cart header under sticky promo */
 .cart-drawer .cart-header{padding-top:max(28px, calc(env(safe-area-inset-top) + 12px)) !important}
 
-/* Catalog strength chips selectable */
-.product-card-mg{cursor:pointer!important;pointer-events:auto!important;user-select:none;border:1.5px solid #d5d0c8;background:#fff;color:#0d2137}
-button.product-card-mg{font:inherit}
-.product-card-mg.on,button.product-card-mg.on{background:#e8e4dc!important;border-color:#0d2137!important;font-weight:800!important}
+/* Catalog strength chips selectable (tappable) */
+.product-card-mg{
+  cursor:pointer!important;
+  pointer-events:auto!important;
+  user-select:none;
+  display:inline-flex;
+  align-items:center;
+  gap:0;
+  padding:6px 12px;
+  border:1.5px solid #0d2137;
+  border-radius:999px;
+  background:#fff;
+  color:#0d2137;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:.02em;
+  line-height:1.2;
+  transition:background .15s,color .15s,border-color .15s;
+}
+button.product-card-mg{font:inherit;appearance:none;-webkit-appearance:none}
+.product-card-mg.on,
+.product-card-mg.active,
+button.product-card-mg.on,
+button.product-card-mg.active{
+  background:#0d2137!important;
+  border-color:#0d2137!important;
+  color:#fff!important;
+  font-weight:800!important;
+}
 .product-card-mg:hover{border-color:#0d2137}
+.product-card-mg:focus-visible{outline:2px solid #0d2137;outline-offset:2px}

@@ -65,7 +65,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/vial-bpc-157-tb-500-blend.png?v=153" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=214">
+<link rel="stylesheet" href="/biolabs_style.css?v=215">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script src="/cart-vial.js?v=118"></script>
 <script src="/search-overlay.js?v=27"></script>
@@ -1076,9 +1076,17 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
         ? '<div class="product-card-badge">' + escAttr(p.badge) + '</div>'
         : '<div class="product-card-badge product-card-badge-spacer">&nbsp;</div>';
       var strengths = (p.strengths || []).filter(Boolean);
+      var sp = p.strength_prices || {};
+      var so = p.strength_originals || {};
       var strengthHtml = strengths.length
         ? '<div class="product-card-strengths">' + strengths.map(function(s){
-            return '<span class="product-card-mg">' + escAttr(String(s).replace(/mg/i,' mg').replace(/\s+/g,' ').trim()) + '</span>';
+            var key = String(s).replace(/\s+/g,'').toLowerCase();
+            var label = escAttr(String(s).replace(/mg/i,' mg').replace(/\s+/g,' ').trim());
+            var chipPrice = sp[key] != null ? sp[key] : (sp[s] != null ? sp[s] : p.price);
+            var chipOrig = so[key] != null ? so[key] : (so[s] != null ? so[s] : p.original_price);
+            var attrs = ' data-mg="' + escAttr(key) + '" data-price="' + escAttr(chipPrice) + '"';
+            if (chipOrig != null) attrs += ' data-original="' + escAttr(chipOrig) + '"';
+            return '<button type="button" class="product-card-mg"' + attrs + '>' + label + '</button>';
           }).join('') + '</div>'
         : '';
       var priceHtml = '<span class="product-card-price">$' + p.price + '</span>';
@@ -1174,6 +1182,6 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
 <script src="/promo-bar.js?v=9"></script>
 <script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
-<script src="/catalog-strength.js?v=1" defer></script>
+<script src="/catalog-mg.js?v=1" defer></script>
 </body>
 </html>
