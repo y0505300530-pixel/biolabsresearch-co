@@ -5081,3 +5081,9 @@ button.product-card-mg.active{
   .nav-logo-mark{font-size:24px !important;}
   .nav-logo-text{font-size:17px !important;}
 }
+
+
+/* CRM blog card fog fix 2026-09-06 — no washed lifestyle thumbs */
+.blog-card-img{opacity:1!important}
+.blog-card-img img{opacity:1!important;filter:none!important;object-fit:contain!important;object-position:center!important;padding:12px!important;background:#F5F2ED!important}
+.jrnl-card img{opacity:1!important;filter:none!important;object-fit:contain!important;background:#F5F2ED}
