@@ -38,11 +38,25 @@
   function baseName(name) {
     return String(name || "").replace(/\s*\([^)]*mg[^)]*\)\s*$/i, "").trim();
   }
+  function priceForMg(slug, mg, fallback) {
+    var p = window._currentProduct;
+    if (!p || p.slug !== slug || !p.strength_prices) return fallback;
+    var sp = p.strength_prices;
+    var entries = Array.isArray(sp) ? sp : Object.keys(sp).map(function (k) { return { mg: k, price: sp[k] }; });
+    for (var i = 0; i < entries.length; i++) {
+      var e = entries[i];
+      if (e && norm(e.mg || e.strength || e.label) === norm(mg) && e.price !== null && e.price !== '' && isFinite(Number(e.price))) return Number(e.price);
+    }
+    return fallback;
+  }
   var MG = "";
   function setImgs(mg) {
     var slug = slugFromPath();
     if (!slug) return;
     var src = fileFor(slug);
+    var priceEl = document.getElementById("current-price") || document.querySelector(".price-main");
+    var selectedPrice = priceForMg(slug, mg, null);
+    if (priceEl && selectedPrice !== null) priceEl.textContent = "$" + selectedPrice;
     document.querySelectorAll("img").forEach(function (img) {
       var s = img.getAttribute("src") || "";
       if (s.indexOf("vial-" + slug) !== -1) img.src = src;
@@ -161,7 +175,7 @@
       var origT = window.addToCartTemplate;
       window.addToCartTemplate = function () {
         window._pdpMg = MG;
-        /* Override name/mg logic: clean name, dedicated mg field, merge by slug */
+        /* Each strength is a separate cart line, priced from the current catalog when available. */
         try {
           var titleEl = document.querySelector(".product-title");
           var name = baseName((titleEl && titleEl.textContent) || "Product");
@@ -171,16 +185,13 @@
           var mg = window._pdpMg || MG || listFor(slug)[0];
           var pdpQty = parseInt(document.getElementById("pdpQty") ? document.getElementById("pdpQty").textContent : "1", 10) || 1;
           var c = readCartArr();
+          price = priceForMg(slug, mg, price);
           var ex = c.find(function (i) {
-            if (!i || i.gift) return false;
-            if (slug && i.slug === slug) {
-              /* same product: merge; keep mg in sync with PDP pick */
-              return true;
-            }
-            return baseName(i.name).toLowerCase() === name.toLowerCase();
+            return i && !i.gift && slug && i.slug === slug && norm(i.mg) === norm(mg);
           });
           if (ex) {
             ex.qty += pdpQty;
+            ex.price = price;
             ex.name = name;
             ex.slug = slug;
             ex.mg = mg;
