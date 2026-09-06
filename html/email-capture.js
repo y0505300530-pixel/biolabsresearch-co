@@ -6,29 +6,25 @@
     try { localStorage.setItem('biolabs_coupon', CODE); } catch (e) {}
   }
   function validEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return email.length <= 200 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
   function send(email, name) {
-    saveCode();
-    var body = "INSIDER SIGNUP\nEmail: " + email + (name ? "\nName: " + name : "") + "\nCoupon: " + CODE + "\nPage: " + location.href;
-    return fetch("/api/notify-order", {
+    return fetch("/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        subject: "Insider signup — " + email + " — " + CODE,
-        body: body,
-        orderData: { type: "insider-signup", email: email, firstName: name || "", coupon: CODE },
-        paymentMethod: "inquiry"
-      })
-    }).catch(function () {});
+      body: JSON.stringify({ email: email, firstName: name || "", coupon: CODE, page: location.href })
+    }).then(function (r) {
+      if (!r.ok) throw new Error("Could not subscribe");
+    });
   }
   function showSuccess(out, btn) {
+    saveCode();
     if (!out) return;
     out.hidden = false;
     out.innerHTML =
       '<span class="insider-code-chip">Code: <strong id="insiderCodeVal">' + CODE + "</strong></span>" +
       '<button type="button" class="insider-copy" id="insiderCopy">Copy code</button>' +
-      "<span>Added to your inquiry.</span>";
+      "<span>Subscription saved.</span>";
     var copyBtn = document.getElementById("insiderCopy");
     if (copyBtn) {
       copyBtn.addEventListener("click", function () {
@@ -45,7 +41,7 @@
     }
     if (btn) {
       btn.disabled = false;
-      btn.innerHTML = 'Code sent <span class="insider-go-arrow" aria-hidden="true">✓</span>';
+      btn.innerHTML = 'Subscribed <span class="insider-go-arrow" aria-hidden="true">✓</span>';
     }
     try { localStorage.setItem(STORAGE_KEY, "1"); } catch (e) {}
   }
@@ -84,6 +80,9 @@
       }
       Promise.resolve(send(email, "")).then(function () {
         showSuccess(out, btn);
+      }).catch(function () {
+        if (out) { out.hidden = false; out.textContent = "Could not subscribe. Please try again."; }
+        if (btn) { btn.disabled = false; btn.textContent = "Try again"; }
       }).finally(function () {
         busy = false;
       });
