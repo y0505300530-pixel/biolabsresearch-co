@@ -83,7 +83,7 @@
 })();
 </script>
 
-<script src="/cart-vial.js?v=119"></script>
+<script src="/cart-vial.js?v=120"></script>
 <script src="/search-overlay.js?v=27"></script>
 </head>
 <body>
@@ -923,7 +923,7 @@ function updateQty(name, delta) {
 }
 window.updateQtyByIndex = updateQtyByIndex;
 
-function saveCartfunction saveCart(c){
+function saveCart(c){
   if (typeof c === 'undefined') c = cart;
   if (Array.isArray(c)) {
     c = c.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0; }).map(function(i){
