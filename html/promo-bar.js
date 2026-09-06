@@ -1,43 +1,38 @@
-/* INSIDER25 promo + countdown. Restart 6h on every page load (Yehuda). */
+/* INSIDER25 promo + countdown. Fresh 6h on EVERY page load (Yehuda). */
 (function(){
   var CODE = "INSIDER25";
   var SIX_H = 6 * 60 * 60 * 1000;
-  function pad(n){ n=Math.floor(n); return (n<10?"0":"")+n; }
-  function endIso(){
-    return new Date(Date.now() + SIX_H).toISOString();
-  }
-  function ensureEnds(){
-    var end = endIso();
-    var nodes = document.querySelectorAll(".cutoff-timer");
-    for (var i=0;i<nodes.length;i++) nodes[i].setAttribute("data-end", end);
-    return end;
+  var END_MS = Date.now() + SIX_H; // reset every refresh — no localStorage
+  function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
+  function format(left){
+    var h = left / 36e5, m = (left % 36e5) / 6e4, s = (left % 6e4) / 1e3;
+    return pad(h) + ":" + pad(m) + ":" + pad(s);
   }
   function tick(){
-    var END = ensureEnds.__fixed || (ensureEnds.__fixed = ensureEnds());
-    var endMs = Date.parse(END);
-    var text;
-    if (!isFinite(endMs)) text = "00:00:00";
-    else {
-      var left = endMs - Date.now();
-      if (left <= 0) {
-        ensureEnds.__fixed = ensureEnds();
-        endMs = Date.parse(ensureEnds.__fixed);
-        left = endMs - Date.now();
-      }
-      var h = left/36e5, m = (left%36e5)/6e4, s = (left%6e4)/1e3;
-      text = pad(h)+":"+pad(m)+":"+pad(s);
-    }
+    var left = END_MS - Date.now();
+    if (left <= 0) { END_MS = Date.now() + SIX_H; left = END_MS - Date.now(); }
+    var text = format(left);
+    var iso = new Date(END_MS).toISOString();
     var nodes = document.querySelectorAll(".cutoff-timer");
-    for (var i=0;i<nodes.length;i++) nodes[i].textContent = text;
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("data-end", iso);
+      nodes[i].textContent = text;
+    }
   }
   function saveCode(){
-    try { localStorage.setItem('biolabs_coupon', CODE); } catch (e) {}
+    try { localStorage.setItem("biolabs_coupon", CODE); } catch (e) {}
   }
   function wire(){
     saveCode();
-    ensureEnds.__fixed = ensureEnds();
+    // clear any stale stored deadlines from older builds
+    try {
+      localStorage.removeItem("insider25_end");
+      localStorage.removeItem("promo_end");
+      localStorage.removeItem("cutoff_end");
+      sessionStorage.removeItem("insider25_end");
+    } catch (e) {}
     var btns = document.querySelectorAll(".promo-code");
-    for (var i=0;i<btns.length;i++){
+    for (var i = 0; i < btns.length; i++) {
       (function(btn){
         if (btn._wired) return;
         btn._wired = true;
@@ -61,9 +56,6 @@
     tick();
     if (!window._promoTick) window._promoTick = setInterval(tick, 1000);
   }
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", wire);
-  } else {
-    wire();
-  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+  else wire();
 })();
