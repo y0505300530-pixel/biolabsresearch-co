@@ -5087,3 +5087,7 @@ button.product-card-mg.active{
 .blog-card-img{opacity:1!important}
 .blog-card-img img{opacity:1!important;filter:none!important;object-fit:contain!important;object-position:center!important;padding:12px!important;background:#F5F2ED!important}
 .jrnl-card img{opacity:1!important;filter:none!important;object-fit:contain!important;background:#F5F2ED}
+
+/* blog-no-fog-v219 */
+.blog-card-img,.blog-card-img img,.jrnl-card img{opacity:1!important;filter:none!important}
+.blog-card-img img,.jrnl-card img{object-fit:contain!important;background:#F5F2ED!important}
