@@ -264,9 +264,18 @@
     card.setAttribute("data-selected-mg", selectedKey);
   }
 
+  var __mgApplying = false;
+
   function bind(card, p) {
     var pack = pricesFor(p);
-    applyCard(card, p, pickDefault(card, pack));
+    /* keep user selection across re-hydrate (MutationObserver used to snap back to 10mg) */
+    var sel = card.getAttribute("data-selected-mg");
+    __mgApplying = true;
+    try {
+      applyCard(card, p, sel || pickDefault(card, pack));
+    } finally {
+      __mgApplying = false;
+    }
     if (card.__catalogMgBound) return;
     card.__catalogMgBound = 1;
     card.addEventListener("click", function (e) {
@@ -275,7 +284,12 @@
       e.preventDefault();
       e.stopPropagation();
       var key = norm(btn.getAttribute("data-mg") || btn.textContent);
-      applyCard(card, p, key);
+      __mgApplying = true;
+      try {
+        applyCard(card, p, key);
+      } finally {
+        setTimeout(function () { __mgApplying = false; }, 0);
+      }
     });
   }
 
@@ -315,15 +329,17 @@
   function boot(products) {
     window.__catalogProducts = products;
     hydrate(products);
-    var grid = document.querySelector("#products-grid, .products-grid, #productsGrid, #productGrid, main");
+    var grid = document.querySelector("#catalog .products-grid, #products-grid, .products-grid, #productsGrid, #productGrid, #catalog, main");
     if (grid && !grid.__catalogMgObs) {
       grid.__catalogMgObs = 1;
       var t = null;
       new MutationObserver(function () {
+        if (__mgApplying) return;
         clearTimeout(t);
         t = setTimeout(function () {
+          if (__mgApplying) return;
           hydrate(window.__catalogProducts || products);
-        }, 30);
+        }, 80);
       }).observe(grid, { childList: true, subtree: true });
     }
   }
@@ -342,14 +358,25 @@
     }
   }
 
-  fetch("/api/products")
-    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
-    .then(function (d) {
-      var items = Array.isArray(d) ? d : (d && (d.products || d.items)) || [];
-      if (!items.length) items = fallbackList();
-      start(items);
-    })
-    .catch(function () { start(fallbackList()); });
+  function loadProducts() {
+    var urls = ["/api/products", "/products-data.json"];
+    function next(i) {
+      if (i >= urls.length) {
+        start(fallbackList());
+        return;
+      }
+      fetch(urls[i], { credentials: "same-origin" })
+        .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+        .then(function (d) {
+          var items = Array.isArray(d) ? d : (d && (d.products || d.items)) || [];
+          if (!items.length) throw new Error("empty");
+          start(items);
+        })
+        .catch(function () { next(i + 1); });
+    }
+    next(0);
+  }
+  loadProducts();
 
   var n = 0;
   (function hook() {
