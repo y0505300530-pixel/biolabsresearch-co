@@ -4,22 +4,94 @@
   var s = document.createElement('style');
   s.id = 'cart-addmore-css';
   s.textContent = [
-    '#cartAddMore,.cart-addmore-slot{flex:0 0 auto;background:#fff;border-top:1px solid #eee;max-width:100%;overflow:hidden}',
+    /* P0 scroll: drawer + items flex so .cart-items is the vertical scroller */
+    '.cart-drawer{height:100dvh !important;max-height:100dvh !important;min-height:0 !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}',
+    '.cart-drawer .cart-items{flex:1 1 0% !important;min-height:0 !important;overflow-y:auto !important;overscroll-behavior:contain !important;-webkit-overflow-scrolling:touch;padding:16px 20px !important}',
+    '#cartAddMore,.cart-addmore-slot{flex:0 0 auto !important;position:relative !important;background:#fff !important;z-index:1 !important;border-top:1px solid #eee;max-width:100%;overflow:visible;max-height:168px}',
     '#cartAddMore:empty,.cart-addmore-slot:empty{display:none}',
-    '.cart-addmore{margin:0;padding:12px 0 4px;border:0}',
-    '.cart-addmore-title{text-align:center;font-size:15px;font-weight:800;margin:0 0 10px;padding:0 16px;color:#1a3a2a}',
-    '.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:8px !important;overflow-x:scroll !important;overflow-y:hidden !important;-webkit-overflow-scrolling:touch;touch-action:pan-x;overscroll-behavior-x:contain;padding:0 16px 14px;scrollbar-width:thin}',
-    '.cart-addcard{flex:0 0 110px !important;width:110px !important;min-width:110px !important;max-width:110px !important;box-sizing:border-box !important;background:#f3f7f4 !important;border-radius:22px !important;padding:10px 8px 12px !important;text-align:center !important;display:flex !important;flex-direction:column !important;align-items:center !important;gap:6px !important}',
-    '.cart-addcard{padding:0 0 12px !important;overflow:hidden !important}',
+    '.cart-addmore{margin:0;padding:8px 0 2px;border:0}',
+    '.cart-addmore-title{text-align:center;font-size:12px;font-weight:800;margin:0 0 6px;padding:0 16px;color:#1a3a2a}',
+    '.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:6px !important;overflow-x:scroll !important;overflow-y:hidden !important;-webkit-overflow-scrolling:touch;touch-action:pan-x;overscroll-behavior:contain !important;padding:0 16px 8px;scrollbar-width:thin}',
+    'body.cart-open{overflow:hidden !important}',
+    '.cart-header,.cart-footer,#cartProgress{flex:0 0 auto !important}',
+    '.cart-header{padding:18px 20px 12px !important;padding-top:max(28px, calc(env(safe-area-inset-top) + 12px)) !important;overflow:visible !important}',
+    '.cart-title{font-size:20px !important;font-weight:800 !important;line-height:1.2 !important;padding-top:2px !important}',
+    '.cart-note,.cart-footer .cart-note{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
+    '.cart-footer{padding:10px 16px 14px !important}',
+    '.cart-footer .btn-continue{margin-top:8px !important}',
+    '.cart-drawer{z-index:10050 !important}',
+    '.cart-overlay.open,#cartOverlay.open{z-index:10040 !important}',
+    '.cart-addcard{flex:0 0 88px !important;width:88px !important;min-width:88px !important;max-width:88px !important;box-sizing:border-box !important;background:#f3f7f4 !important;border-radius:14px !important;padding:0 0 8px !important;text-align:center !important;display:flex !important;flex-direction:column !important;align-items:center !important;gap:3px !important;overflow:visible !important}',
     '.cart-addcard a{display:block !important;width:100% !important;line-height:0 !important}',
-    '.cart-addcard img,.cart-addmore .cart-addcard img{width:100% !important;height:96px !important;max-width:none !important;max-height:none !important;object-fit:cover !important;object-position:center 38% !important;background:#f3f7f4 !important;border-radius:0 !important}',
-    '.cart-addcard-name{font-size:11px !important;font-weight:700 !important;line-height:1.2 !important;color:#1F1F1F !important;min-height:28px}',
-    '.cart-addcard-price{font-size:16px !important;font-weight:800 !important;color:#2a9a7a !important}',
-    '.cart-addcard-btn{background:#fff !important;color:#111 !important;border:1.5px solid #111 !important;border-radius:999px !important;padding:5px 16px !important;font-size:12px !important;font-weight:700 !important;cursor:pointer}',
-    '.cart-addmore-row,.cart-addmore-all,.cart-addmore-btn,.cart-addmore-info{display:none !important}'
+    '.cart-addcard img,.cart-addmore .cart-addcard img{width:100% !important;height:52px !important;max-width:none !important;max-height:none !important;object-fit:cover !important;object-position:center 38% !important;background:#f3f7f4 !important;border-radius:0 !important}',
+    '.cart-addcard-name{font-size:10px !important;font-weight:700 !important;line-height:1.15 !important;color:#1F1F1F !important;min-height:22px;padding:0 4px}',
+    '.cart-addcard-price{font-size:12px !important;font-weight:800 !important;color:#2a9a7a !important}',
+    '.cart-addcard-btn{background:#fff !important;color:#111 !important;border:1.5px solid #111 !important;border-radius:999px !important;padding:3px 10px !important;font-size:10px !important;font-weight:700 !important;cursor:pointer}',
+    '.cart-addmore-row,.cart-addmore-all,.cart-addmore-btn,.cart-addmore-info{display:none !important}',
+    /* compact Inquiry rewards while cart open */
+    '#cartProgress.on{padding:8px 14px 10px !important}',
+    '#cartProgress .cp-msg{font-size:12px !important;margin:0 0 6px !important;line-height:1.25 !important}',
+    '#cartProgress .cp-kicker{font-size:10px !important;margin:0 0 2px !important}',
+    '#cartProgress .cp-track{height:8px !important;margin:4px 4px 14px !important}',
+    '#cartProgress .cp-unlocked{font-size:11px !important;margin:0 !important}',
+    '.ci-mg{font-weight:600;color:#6b6254;font-size:0.85em}'
   ].join('');
   (document.head || document.documentElement).appendChild(s);
 })();
+
+function _readCartLS(){
+  try {
+    var a = JSON.parse(localStorage.getItem('biolabs_cart')||'null');
+    if (Array.isArray(a) && a.length) return a;
+    var b = JSON.parse(localStorage.getItem('biofirst_cart')||'null');
+    if (Array.isArray(b) && b.length) {
+      try { localStorage.setItem('biolabs_cart', JSON.stringify(b)); } catch(e){}
+      return b;
+    }
+    return Array.isArray(a) ? a : (Array.isArray(b) ? b : []);
+  } catch(e){ return []; }
+}
+
+function _sanitizeCart(c){
+  if (!Array.isArray(c)) return [];
+  var out = [];
+  var sawGift = false;
+  c.forEach(function(i){
+    if (!i) return;
+    var q = parseInt(i.qty, 10);
+    if (!isFinite(q) || q <= 0) return; /* drop dead lines — never persist -99 */
+    if (i.gift || i.slug === 'research-solvent') {
+      if (sawGift) return;
+      sawGift = true;
+      i.qty = Math.max(1, q); /* Yehuda: BAC may be >1 */
+      i.gift = true;
+      i.slug = 'research-solvent';
+      if (!i.imageUrl || String(i.imageUrl).indexOf('.svg') !== -1) i.imageUrl = '/media/research-solvent.png?v=2';
+    } else {
+      i.qty = q;
+    }
+    out.push(i);
+  });
+  return out;
+}
+
+function _writeCartLS(c){
+  c = _sanitizeCart(c);
+  try { localStorage.setItem('biolabs_cart', JSON.stringify(c)); } catch(e){}
+  try { localStorage.setItem('biofirst_cart', JSON.stringify(c)); } catch(e){}
+  return c;
+}
+
+function _baseCartName(name){
+  return String(name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+}
+function _sameCartProduct(item, slug, name){
+  if (!item || item.gift) return false;
+  if (slug && item.slug && item.slug === slug) return true;
+  var a = _baseCartName(item.name).toLowerCase();
+  var b = _baseCartName(name).toLowerCase();
+  return !!(a && b && a === b);
+}
 function productSlug(item){
   var slug = (item && item.slug) ? String(item.slug) : '';
   if (!slug && item && item.name) {
@@ -35,36 +107,136 @@ function productUrl(item){
   if (!slug || slug==='research-solvent') return '#';
   return '/products/' + slug + '.html';
 }
-function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.webp?v=140'; } return '/media/vial-'+slug+'.webp?v=140'; } return '/media/vial-'+slug+'.webp?v=140'; }
+function vialImg(item){
+  if (item && (item.gift || item.slug === 'research-solvent')) return '/media/research-solvent.png?v=2';
+  var slug = productSlug(item);
+  return '/media/vial-'+(slug)+'.png?v=153';
+}
+var CART_SUGGEST = [
+  {slug:'bpc-157', name:'BPC-157', price:89},
+  {slug:'tb-500', name:'TB-500', price:99},
+  {slug:'bpc-157-tb-500-blend', name:'BPC-157 / TB-500 Blend', price:125},
+  {slug:'nad-plus', name:'NAD+', price:99},
+  {slug:'ghk-cu', name:'GHK-Cu', price:69},
+  {slug:'aod-9604', name:'AOD-9604', price:85},
+  {slug:'glow-70', name:'GLOW 70', price:139},
+  {slug:'epithalon', name:'Epithalon', price:79},
+  {slug:'mots-c', name:'MOTS-c', price:95},
+  {slug:'kpv', name:'KPV', price:79},
+  {slug:'semax', name:'Semax', price:89},
+  {slug:'kisspeptin-10', name:'Kisspeptin-10', price:99},
+  {slug:'thymosin-alpha-1', name:'Thymosin Alpha-1', price:109},
+  {slug:'tesamorelin-ipamorelin', name:'Tesamorelin / Ipamorelin', price:119},
+  {slug:'curcumin-phytosome', name:'Curcumin Phytosome', price:109},
+  {slug:'retatrutide', name:'R3TA', price:139}
+];
+function addMoreHtml(cart){
+  cart = cart || [];
+  var have = {};
+  cart.forEach(function(i){
+    have[(i.slug||'')]=1;
+    have[_baseCartName(i.name).toLowerCase()]=1;
+  });
+  var list = CART_SUGGEST.filter(function(p){ return !have[p.slug] && !have[p.name.toLowerCase()]; });
+  if (!list.length) return '';
+  var html = '<div class="cart-addmore"><div class="cart-addmore-title">Add to this order</div><div class="cart-addmore-track">';
+  list.forEach(function(p){
+    html += '<div class="cart-addcard">' +
+      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=153" alt="' + p.name + '" width="84" height="64"></a>' +
+      '<div class="cart-addcard-name">' + p.name + '</div>' +
+      '<div class="cart-addcard-price">$' + p.price + '</div>' +
+      '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + p.price + ')">Add</button>' +
+    '</div>';
+  });
+  html += '</div></div>';
+  return html;
+}
 function mountAddMore(cart){
-  var html = (cart && cart.length) ? addMoreHtml(cart) : '';
+  var html = (cart && cart.length && typeof addMoreHtml === 'function') ? addMoreHtml(cart) : '';
   var slot = document.getElementById('cartAddMore');
+  if (!slot) {
+    var drawer = document.getElementById('cartDrawer');
+    var items = document.getElementById('cartItems');
+    if (drawer && items) {
+      slot = document.createElement('div');
+      slot.id = 'cartAddMore';
+      slot.className = 'cart-addmore-slot';
+      if (items.nextSibling) drawer.insertBefore(slot, items.nextSibling);
+      else drawer.appendChild(slot);
+    }
+  }
   if (slot) {
     slot.innerHTML = html;
     slot.style.display = html ? 'block' : 'none';
-    return '';
   }
-  return html;
+  return ''; /* never concatenate into #cartItems */
+}
+
+/* sanitize every saveCart / getCart */
+(function(){
+  var n=0;
+  function hook(){
+    if (typeof window.saveCart === 'function' && !window.saveCart.__sanitize) {
+      var orig = window.saveCart;
+      window.saveCart = function(c){
+        if (typeof c === 'undefined' && typeof cart !== 'undefined') c = cart;
+        c = _sanitizeCart(Array.isArray(c) ? c : []);
+        if (typeof cart !== 'undefined') cart = c;
+        try { return orig.call(this, c); } catch(e) {
+          try { return orig.call(this); } catch(e2){ _writeCartLS(c); }
+        }
+      };
+      window.saveCart.__sanitize = true;
+    }
+    if (typeof window.getCart === 'function' && !window.getCart.__sanitize) {
+      var og = window.getCart;
+      window.getCart = function(){
+        var c = [];
+        try { c = og.apply(this, arguments) || []; } catch(e){ c = _readCartLS(); }
+        c = _sanitizeCart(c);
+        if (typeof cart !== 'undefined') cart = c;
+        return c;
+      };
+      window.getCart.__sanitize = true;
+    }
+    if (++n < 50) setTimeout(hook, 100);
+  }
+  hook();
+})();
+
+function _paintBadgeFromCart(c){
+  try {
+    var n = (c||[]).reduce(function(a,i){ var q=parseInt(i&&i.qty,10)||0; return a + Math.max(0,q); }, 0);
+    var el = document.getElementById('cartCount') || document.querySelector('.cart-count');
+    if (el) el.textContent = String(n);
+  } catch(e){}
 }
 function addSuggest(slug, name, price){
+  name = _baseCartName(name) || name;
   if (typeof getCart === 'function') {
     var c = getCart();
-    var ex = c.find(function(i){ return i.slug===slug || i.name===name; });
-    if (ex) ex.qty += 1;
-    else c.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/'});
+    var ex = c.find(function(i){ return _sameCartProduct(i, slug, name); });
+    if (ex) { ex.qty += 1; ex.name = _baseCartName(ex.name) || name; if (slug) ex.slug = slug; }
+    else c.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=153'});
     if (typeof saveCart === 'function') {
-      try { saveCart(c); } catch (e) { saveCart(); }
+      try { saveCart(c); } catch (e) { try { saveCart(); } catch(e2){} }
+    } else {
+      _writeCartLS(c);
     }
     if (typeof updateBadge === 'function') updateBadge();
+    else _paintBadgeFromCart(c);
     if (typeof renderCart === 'function') renderCart();
     if (typeof renderSummary === 'function') renderSummary();
     return;
   }
   if (typeof cart !== 'undefined') {
-    var ex2 = cart.find(function(i){ return i.slug===slug || i.name===name; });
-    if (ex2) ex2.qty += 1;
-    else cart.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/'});
+    var ex2 = cart.find(function(i){ return _sameCartProduct(i, slug, name); });
+    if (ex2) { ex2.qty += 1; ex2.name = _baseCartName(ex2.name) || name; if (slug) ex2.slug = slug; }
+    else cart.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=153'});
     if (typeof saveCart === 'function') saveCart();
+    else _writeCartLS(cart);
+    if (typeof updateBadge === 'function') updateBadge();
+    else _paintBadgeFromCart(cart);
     if (typeof renderCart === 'function') renderCart();
     if (typeof renderSummary === 'function') renderSummary();
   }
@@ -80,7 +252,7 @@ function addSuggest(slug, name, price){
   function lines(){
     try {
       if (typeof cart !== 'undefined' && Array.isArray(cart)) return cart.length;
-      var c = JSON.parse(localStorage.getItem('biolabs_cart')||localStorage.getItem('biofirst_cart') || '[]');
+      var c = _readCartLS();
       return Array.isArray(c) ? c.length : 0;
     } catch (e) { return 0; }
   }
@@ -175,17 +347,17 @@ function addSuggest(slug, name, price){
   ];
   var lastTier = -1;
 
-  var GIFT = {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Gift',note:'Laboratory use only'};
+  var GIFT = {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Gift',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'};
   var giftLock = false;
   function readCart(){
     try {
-      var ls = JSON.parse(localStorage.getItem('biolabs_cart')||localStorage.getItem('biofirst_cart')||'[]');
-      if (Array.isArray(ls) && ls.length) return ls;
       if (typeof cart !== 'undefined' && Array.isArray(cart) && cart.length) return cart.slice();
+      var ls = _readCartLS();
       return Array.isArray(ls) ? ls : [];
     } catch(e){ return []; }
   }
   function syncGifts(){
+    window.__syncGifts = syncGifts;
     if (giftLock) return;
     var c = readCart();
     var merch = 0;
@@ -194,10 +366,11 @@ function addSuggest(slug, name, price){
     var want = merch >= 100;
     if (want === has) return;
     giftLock = true;
-    if (want) c.push(GIFT);
+    if (want) { var g=Object.assign({},GIFT,{qty:1}); c=c.filter(function(i){return !(i.gift||i.slug==='research-solvent');}); c.push(g); }
     else c = c.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
-    try { localStorage.setItem('biolabs_cart', JSON.stringify(c)); } catch(e){}
+    /* assign memory FIRST so any re-entrant renderCart sees the synced gift state */
     if (typeof cart !== 'undefined') cart = c;
+    try { _writeCartLS(c); } catch(e){}
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch(e) { try { saveCart(); } catch(e2){} }
     }
@@ -209,19 +382,19 @@ function addSuggest(slug, name, price){
     var s = document.createElement('style');
     s.id = 'cart-progress-css';
     s.textContent = [
-      '#cartProgress{display:none;margin:0;padding:14px 18px 16px;background:linear-gradient(180deg,#FBF6EA 0%,#F4EFE4 100%);border-bottom:1px solid #eadfca}',
+      '#cartProgress{display:none;margin:0;padding:8px 14px 10px;background:linear-gradient(180deg,#FBF6EA 0%,#F4EFE4 100%);border-bottom:1px solid #eadfca;flex:0 0 auto}',
       '#cartProgress.on{display:block}',
-      '.cp-kicker{font-size:11px;font-weight:800;letter-spacing:.12em;color:#0d2137;margin:0 0 6px;text-transform:uppercase}',
-      '.cp-msg{font-size:14px;font-weight:700;color:#0d2137;line-height:1.3;margin:0 0 12px}',
+      '.cp-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;color:#0d2137;margin:0 0 2px;text-transform:uppercase}',
+      '.cp-msg{font-size:12px;font-weight:700;color:#0d2137;line-height:1.25;margin:0 0 6px}',
       '.cp-msg em{font-style:normal;color:#9A6D2A}',
-      '.cp-track{position:relative;height:10px;border-radius:999px;background:#e6dcc8;overflow:visible;margin:8px 6px 18px}',
+      '.cp-track{position:relative;height:8px;border-radius:999px;background:#e6dcc8;overflow:visible;margin:4px 4px 14px}',
       '.cp-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#E8C57A,#F2D191 40%,#C9A46A);width:0;transition:width .45s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px rgba(242,209,145,.55)}',
       '.cp-ticks{position:absolute;inset:0;pointer-events:none}',
-      '.cp-tick{position:absolute;top:50%;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:#fff;border:2px solid #c9b48a;box-sizing:border-box;transition:background .2s,border-color .2s,transform .2s}',
+      '.cp-tick{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;border:2px solid #c9b48a;box-sizing:border-box;transition:background .2s,border-color .2s,transform .2s}',
       '.cp-tick.on{background:#0d2137;border-color:#0d2137;transform:scale(1.08)}',
-      '.cp-tick .lbl{position:absolute;top:18px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#6b6254;white-space:nowrap}',
+      '.cp-tick .lbl{position:absolute;top:16px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:#6b6254;white-space:nowrap}',
       '.cp-tick.on .lbl{color:#0d2137}',
-      '.cp-unlocked{margin:2px 0 0;font-size:12px;color:#4a6358}'
+      '.cp-unlocked{margin:0;font-size:11px;color:#4a6358}'
     ].join('');
     (document.head||document.documentElement).appendChild(s);
   }
@@ -230,7 +403,7 @@ function addSuggest(slug, name, price){
     var c = [];
     try {
       if (typeof cart !== 'undefined' && Array.isArray(cart)) c = cart;
-      else c = JSON.parse(localStorage.getItem('biolabs_cart')||localStorage.getItem('biofirst_cart')||'[]');
+      else c = _readCartLS();
     } catch(e){ c = []; }
     return c.reduce(function(a,i){ if(i&&i.gift) return a; return a + (parseFloat(i.price)||0) * (i.qty||1); }, 0);
   }
@@ -275,7 +448,7 @@ function addSuggest(slug, name, price){
       el.className = '';
       el.innerHTML = '';
       lastTier = -1;
-      try { localStorage.removeItem('biolabs_volume');try{localStorage.removeItem('biofirst_volume');}catch(_e){}; } catch(e){}
+      try { localStorage.removeItem('biofirst_volume'); } catch(e){}
       return;
     }
     el.className = 'on';
@@ -290,7 +463,7 @@ function addSuggest(slug, name, price){
       '<div class="cp-track"><div class="cp-fill" style="width:'+st.pct+'%"></div><div class="cp-ticks">'+ticks+'</div></div>'+
       unlockedLine;
     try {
-      localStorage.setItem('biolabs_volume', JSON.stringify({
+      localStorage.setItem('biofirst_volume', JSON.stringify({
         total: Math.round(st.total*100)/100,
         prize: st.unlocked ? st.unlocked.prize : null,
         at: st.unlocked ? st.unlocked.at : 0
@@ -330,8 +503,8 @@ function addSuggest(slug, name, price){
 (function(){
   function qty(){
     try {
-      var c = JSON.parse(localStorage.getItem('biolabs_cart')||localStorage.getItem('biofirst_cart')||'[]');
-      return (c||[]).reduce(function(a,i){ return a + (parseInt(i.qty,10)||0); }, 0);
+      var c = _readCartLS();
+      return (c||[]).reduce(function(a,i){ var q=parseInt(i&&i.qty,10)||0; return a + Math.max(0,q); }, 0);
     } catch(e){ return 0; }
   }
   function paint(){
@@ -353,3 +526,177 @@ function addSuggest(slug, name, price){
     };
   }
 })();
+
+/* delegated Add — works on SSR cards + API cards, mobile safe */
+(function(){
+  if (window.__atcDelegated) return;
+  window.__atcDelegated = true;
+  document.addEventListener('click', function(e){
+    var btn = e.target && e.target.closest && e.target.closest('.product-card-atc');
+    if (!btn) return;
+    e.preventDefault();
+    e.stopPropagation();
+    var name = btn.getAttribute('data-name') || '';
+    var price = btn.getAttribute('data-price') || '0';
+    var img = btn.getAttribute('data-img') || '';
+    var slug = btn.getAttribute('data-slug') || '';
+    if (typeof window.addToCart === 'function') {
+      window.addToCart(name, price, img, slug);
+    }
+  }, false);
+})();
+
+/* ELITE P0: lock body scroll while cart open */
+(function(){
+  function syncBody(){
+    var d = document.getElementById('cartDrawer');
+    var open = d && d.classList.contains('open');
+    document.body.classList.toggle('cart-open', !!open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  function wrapToggle(){
+    if (typeof window.toggleCart !== 'function' || window.toggleCart.__bodyLock) return false;
+    var orig = window.toggleCart;
+    window.toggleCart = function(){
+      var r = orig.apply(this, arguments);
+      syncBody();
+      return r;
+    };
+    window.toggleCart.__bodyLock = true;
+    return true;
+  }
+  var n=0; (function hook(){ wrapToggle(); syncBody(); if(++n<50) setTimeout(hook,100); })();
+})();
+
+/* Gift solvent: force qty 1, block +/- */
+(function(){
+    function clampGifts(){
+    try {
+      if (typeof cart === 'undefined' || !Array.isArray(cart)) {
+        var ls = _sanitizeCart(_readCartLS());
+        _writeCartLS(ls);
+        return;
+      }
+      cart = _sanitizeCart(cart);
+      var merch = 0;
+      cart.forEach(function(i){ if(!i.gift && i.slug!=='research-solvent') merch += (parseFloat(i.price)||0)*(i.qty||1); });
+      var has = cart.some(function(i){ return i.gift || i.slug==='research-solvent'; });
+      if (merch >= 100 && !has) {
+        cart.push(Object.assign({}, {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Gift',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'}));
+      }
+      if (merch < 100 && has) {
+        cart = cart.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
+      }
+      cart.forEach(function(i){
+        if (i && (i.gift || i.slug==='research-solvent')) {
+          var q = parseInt(i.qty,10); if (!isFinite(q) || q < 1) i.qty = 1; else i.qty = q;
+          if (!i.imageUrl || String(i.imageUrl).indexOf('.svg')!==-1) i.imageUrl='/media/research-solvent.png?v=2';
+        }
+      });
+      if (typeof saveCart === 'function') {
+        try { saveCart(cart); } catch(e) { try { saveCart(); } catch(e2){} }
+      } else {
+        _writeCartLS(cart);
+      }
+    } catch(e){}
+  }
+  function wrapUpdate(){
+    if (typeof window.updateQty !== 'function' || window.updateQty.__giftQtyLock) return false;
+    var orig = window.updateQty;
+    window.updateQty = function(name, delta){
+      try {
+        var d = parseInt(delta, 10);
+        if (!isFinite(d)) d = 0;
+        var item = null;
+        if (typeof cart !== 'undefined' && Array.isArray(cart)) {
+          item = cart.find(function(i){
+            return i && (i.gift || i.slug==='research-solvent') && (
+              i.name===name || _sameCartProduct(i, 'research-solvent', name) || /solvent|BAC/i.test(String(name||''))
+            );
+          });
+        }
+        if (item) {
+          if (d <= -99) {
+            item.qty = Math.max(0, (parseInt(item.qty,10)||1) - 1);
+            if (item.qty <= 0) cart = cart.filter(function(i){ return i !== item; });
+            cart = _sanitizeCart(cart);
+            if (typeof saveCart === 'function') { try { saveCart(cart); } catch(e){} }
+            else { _writeCartLS(cart); }
+            clampGifts();
+            if (typeof renderCart === 'function') renderCart();
+            return;
+          }
+          if (d > 0) {
+            item.qty = (parseInt(item.qty,10)||1) + d;
+            if (typeof saveCart === 'function') { try { saveCart(_sanitizeCart(cart)); } catch(e){} }
+            else { _writeCartLS(cart); }
+            if (typeof renderCart === 'function') renderCart();
+            return;
+          }
+          item.qty = Math.max(0, (parseInt(item.qty,10)||1) + d);
+          if (item.qty <= 0) cart = cart.filter(function(i){ return i !== item; });
+          cart = _sanitizeCart(cart);
+          if (typeof saveCart === 'function') { try { saveCart(cart); } catch(e){} }
+          else { _writeCartLS(cart); }
+          clampGifts();
+          if (typeof renderCart === 'function') renderCart();
+          return;
+        }
+        /* never apply -99 as arithmetic into storage without sanitize after */
+      } catch(e){}
+      var r = orig.apply(this, arguments);
+      try {
+        if (typeof cart !== 'undefined' && Array.isArray(cart)) {
+          cart = _sanitizeCart(cart);
+          if (typeof saveCart === 'function') { try { saveCart(cart); } catch(e){ _writeCartLS(cart); } }
+          else _writeCartLS(cart);
+        } else {
+          _writeCartLS(_sanitizeCart(_readCartLS()));
+        }
+      } catch(e2){}
+      clampGifts();
+      return r;
+    };
+    window.updateQty.__giftQtyLock = true;
+    return true;
+  }
+  function wrapRender(){
+    if (typeof window.renderCart !== 'function' || window.renderCart.__giftQtyLock) return false;
+    var orig = window.renderCart;
+    window.renderCart = function(){
+      clampGifts();
+      return orig.apply(this, arguments);
+    };
+    window.renderCart.__giftQtyLock = true;
+    return true;
+  }
+  var n=0; (function hook(){ wrapUpdate(); wrapRender(); clampGifts(); if(++n<40) setTimeout(hook,120); })();
+})();
+
+/* ELITE: syncGifts before every renderCart so BAC drops immediately under $100 */
+(function(){
+  function runSync(){
+    try {
+      if (typeof window.__syncGifts === 'function') window.__syncGifts();
+      else if (typeof syncGifts === 'function') syncGifts();
+    } catch(e){}
+  }
+  var n=0;
+  function hook(){
+    if (typeof window.renderCart === 'function' && !window.renderCart.__syncGiftsFirst) {
+      var orig = window.renderCart;
+      window.renderCart = function(){
+        runSync();
+        if (typeof cart !== 'undefined' && Array.isArray(cart) && typeof _sanitizeCart === 'function') {
+          cart = _sanitizeCart(cart);
+        }
+        return orig.apply(this, arguments);
+      };
+      window.renderCart.__syncGiftsFirst = true;
+    }
+    if (++n < 60) setTimeout(hook, 80);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hook);
+  else hook();
+})();
+

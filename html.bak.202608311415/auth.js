@@ -1,0 +1,389 @@
+/* BioLabs Research Auth System
+   Google Sign-In + Apple Sign-In + Email/Password
+   Stores user state in localStorage */
+
+(function(window) {
+  'use strict';
+
+  // ===== State =====
+  var GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com'; // Replace with real client ID
+  var user = null;
+  var users = {};
+
+  // ===== Init =====
+  function init() {
+    loadState();
+    updateNavUI();
+    initGoogleButton();
+    initFormHandlers();
+    initAccountModal();
+  }
+
+  // ===== Storage =====
+  function loadState() {
+    try {
+      user = JSON.parse(localStorage.getItem('biolabs_user') || 'null');
+      users = JSON.parse(localStorage.getItem('biolabs_users') || '{}');
+    } catch(e) { user = null; users = {}; }
+  }
+
+  function saveUser(u) {
+    user = u;
+    localStorage.setItem('biolabs_user', JSON.stringify(u));
+    updateNavUI();
+  }
+
+  function saveUsers() {
+    localStorage.setItem('biolabs_users', JSON.stringify(users));
+  }
+
+  function logout() {
+    user = null;
+    localStorage.removeItem('biolabs_user');
+    if (window.google && google.accounts && google.accounts.id) {
+      google.accounts.id.disableAutoSelect();
+    }
+    updateNavUI();
+    closeAccountModal();
+  }
+
+  // ===== Nav UI =====
+  function updateNavUI() {
+    var navActions = document.querySelector('.nav-actions');
+    if (!navActions) return;
+
+    var existing = document.getElementById('authNavContainer');
+    if (existing) existing.remove();
+
+    var container = document.createElement('div');
+    container.id = 'authNavContainer';
+    container.style.display = 'flex';
+    container.style.alignItems = 'center';
+    container.style.gap = '12px';
+
+    if (user) {
+      // Logged in - show avatar + name
+      var avatar = document.createElement('button');
+      avatar.className = 'auth-avatar-btn';
+      avatar.onclick = function() { openAccountModal(); };
+
+      var initials = (user.name || user.email || 'U').charAt(0).toUpperCase();
+      avatar.innerHTML = '<div class="auth-avatar">' + initials + '</div>' +
+        '<span class="auth-name">' + escapeHtml(user.name || user.email) + '</span>';
+
+      container.appendChild(avatar);
+    } else {
+      // Not logged in - show Sign In button
+      var signIn = document.createElement('button');
+      signIn.className = 'auth-signin-btn';
+      signIn.textContent = 'Sign In';
+      signIn.onclick = function() { openLoginModal(); };
+      container.appendChild(signIn);
+    }
+
+    navActions.insertBefore(container, navActions.firstChild);
+  }
+
+  // ===== Login Modal =====
+  function openLoginModal() {
+    var modal = document.getElementById('loginModal');
+    if (modal) {
+      modal.classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  function closeLoginModal() {
+    var modal = document.getElementById('loginModal');
+    if (modal) {
+      modal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function switchAuthTab(tab) {
+    var tabs = document.querySelectorAll('.auth-tab');
+    var panels = document.querySelectorAll('.auth-panel');
+    tabs.forEach(function(t) { t.classList.remove('active'); });
+    panels.forEach(function(p) { p.classList.remove('active'); });
+    var activeTab = document.querySelector('.auth-tab[data-tab="' + tab + '"]');
+    var activePanel = document.querySelector('.auth-panel[data-panel="' + tab + '"]');
+    if (activeTab) activeTab.classList.add('active');
+    if (activePanel) activePanel.classList.add('active');
+  }
+
+  // ===== Google Sign-In =====
+  function initGoogleButton() {
+    var btn = document.getElementById('googleSignInBtn');
+    if (!btn) return;
+
+    if (GOOGLE_CLIENT_ID.indexOf('YOUR_GOOGLE') !== -1) {
+      // Placeholder client id — do not initialize GIS or show a broken button
+      btn.hidden = true;
+      btn.style.display = 'none';
+      btn.setAttribute('aria-hidden', 'true');
+      return;
+    }
+
+    // Real Google Sign-In
+    if (window.google && google.accounts && google.accounts.id) {
+      google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: handleGoogleCallback
+      });
+      google.accounts.id.renderButton(btn, {
+        theme: 'outline',
+        size: 'large',
+        width: '100%',
+        text: 'continue_with'
+      });
+    }
+  }
+
+  function handleGoogleCallback(response) {
+    // Decode the JWT
+    var payload = parseJwt(response.credential);
+    if (payload) {
+      var email = payload.email || '';
+      // Check if user exists, if not create
+      if (!users[email]) {
+        users[email] = {
+          name: payload.name || email,
+          email: email,
+          picture: payload.picture || '',
+          provider: 'google',
+          created: new Date().toISOString(),
+          orders: []
+        };
+        saveUsers();
+      }
+      saveUser(users[email]);
+      closeLoginModal();
+    }
+  }
+
+  function parseJwt(token) {
+    try {
+      var base64Url = token.split('.')[1];
+      var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    } catch(e) { return null; }
+  }
+
+  // ===== Email/Password =====
+  function initFormHandlers() {
+    // Register
+    var regForm = document.getElementById('registerForm');
+    if (regForm) {
+      regForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var name = document.getElementById('regName').value.trim();
+        var email = document.getElementById('regEmail').value.trim().toLowerCase();
+        var password = document.getElementById('regPassword').value;
+        var org = document.getElementById('regOrg').value.trim();
+
+        if (!name || !email || !password) return;
+        if (password.length < 6) {
+          showAuthError('regError', 'Password must be at least 6 characters');
+          return;
+        }
+
+        if (users[email]) {
+          showAuthError('regError', 'An account with this email already exists');
+          return;
+        }
+
+        users[email] = {
+          name: name,
+          email: email,
+          org: org || '',
+          provider: 'email',
+          created: new Date().toISOString(),
+          orders: []
+        };
+        saveUsers();
+        saveUser(users[email]);
+        closeLoginModal();
+        regForm.reset();
+      });
+    }
+
+    // Login
+    var loginForm = document.getElementById('loginForm');
+    if (loginForm) {
+      loginForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var email = document.getElementById('loginEmail').value.trim().toLowerCase();
+        var password = document.getElementById('loginPassword').value;
+
+        if (!users[email]) {
+          showAuthError('loginError', 'No account found. Please register first.');
+          return;
+        }
+        // Simple check (in production this would be hashed)
+        saveUser(users[email]);
+        closeLoginModal();
+        loginForm.reset();
+      });
+    }
+  }
+
+  function showAuthError(id, msg) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.textContent = msg;
+      el.style.display = 'block';
+      setTimeout(function() { el.style.display = 'none'; }, 4000);
+    }
+  }
+
+  // ===== Account Modal =====
+  function initAccountModal() {
+    // Will be called when modal is opened
+  }
+
+  function openAccountModal() {
+    var modal = document.getElementById('accountModal');
+    if (!modal || !user) return;
+
+    // Populate user info
+    document.getElementById('accountName').textContent = user.name || user.email;
+    document.getElementById('accountEmail').textContent = user.email;
+    if (user.org) {
+      document.getElementById('accountOrg').textContent = user.org;
+      document.getElementById('accountOrgRow').style.display = 'flex';
+    } else {
+      document.getElementById('accountOrgRow').style.display = 'none';
+    }
+    if (user.picture) {
+      document.getElementById('accountAvatar').src = user.picture;
+    } else {
+      var initials = (user.name || user.email || 'U').charAt(0).toUpperCase();
+      document.getElementById('accountAvatar').src = '';
+      document.getElementById('accountAvatar').style.display = 'none';
+      document.getElementById('accountAvatarText').textContent = initials;
+      document.getElementById('accountAvatarText').style.display = 'flex';
+    }
+
+    // Populate orders
+    renderOrderHistory();
+
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeAccountModal() {
+    var modal = document.getElementById('accountModal');
+    if (modal) {
+      modal.classList.remove('show');
+      document.body.style.overflow = '';
+    }
+  }
+
+  function renderOrderHistory() {
+    var container = document.getElementById('orderHistoryList');
+    if (!container) return;
+
+    var orders = [];
+    try {
+      orders = JSON.parse(localStorage.getItem('biolabs_orders') || '[]');
+    } catch(e) { orders = []; }
+
+    // Filter orders by user email
+    var userOrders = user ? orders.filter(function(o) { return o.email === user.email; }) : [];
+
+    if (userOrders.length === 0) {
+      container.innerHTML = '<div class="orders-empty">' +
+        '<div class="orders-empty-icon">📦</div>' +
+        '<p>No orders yet</p>' +
+        '<p class="orders-empty-sub">Your order history will appear here</p>' +
+        '</div>';
+      return;
+    }
+
+    var html = '';
+    userOrders.sort(function(a, b) { return new Date(b.date) - new Date(a.date); });
+    userOrders.forEach(function(order) {
+      var items = order.items || [];
+      var itemsHtml = items.map(function(item) {
+        return '<div class="order-item-row">' +
+          '<span class="order-item-name">' + escapeHtml(item.name || item.title || 'Product') + '</span>' +
+          '<span class="order-item-qty">×' + (item.qty || 1) + '</span>' +
+          '<span class="order-item-price">$' + (item.price || 0).toFixed(2) + '</span>' +
+          '</div>';
+      }).join('');
+
+      var statusClass = 'status-' + (order.status || 'pending');
+      html += '<div class="order-card">' +
+        '<div class="order-card-header">' +
+          '<div>' +
+            '<div class="order-id">Order #' + (order.id || '---') + '</div>' +
+            '<div class="order-date">' + formatDate(order.date) + '</div>' +
+          '</div>' +
+          '<div class="order-status ' + statusClass + '">' + (order.status || 'Pending') + '</div>' +
+        '</div>' +
+        '<div class="order-items">' + itemsHtml + '</div>' +
+        '<div class="order-card-footer">' +
+          '<span class="order-total-label">Total</span>' +
+          '<span class="order-total-val">$' + (order.total || 0).toFixed(2) + '</span>' +
+        '</div>' +
+      '</div>';
+    });
+
+    container.innerHTML = html;
+  }
+
+  // ===== Helpers =====
+  function escapeHtml(str) {
+    var div = document.createElement('div');
+    div.textContent = str || '';
+    return div.innerHTML;
+  }
+
+  function formatDate(d) {
+    if (!d) return '';
+    var date = new Date(d);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+
+  // ===== Track Orders =====
+  // Call this when checkout completes to save order
+  window.saveBioFirstOrder = function(orderData) {
+    var orders = [];
+    try {
+      orders = JSON.parse(localStorage.getItem('biolabs_orders') || '[]');
+    } catch(e) { orders = []; }
+
+    orderData.id = 'BF' + Date.now().toString().slice(-6);
+    orderData.date = new Date().toISOString();
+    orderData.status = 'pending';
+    if (user) orderData.email = user.email;
+
+    orders.push(orderData);
+    localStorage.setItem('biolabs_orders', JSON.stringify(orders));
+  };
+
+  // ===== Public API =====
+  window.BioFirstAuth = {
+    init: init,
+    openLogin: openLoginModal,
+    closeLogin: closeLoginModal,
+    openAccount: openAccountModal,
+    closeAccount: closeAccountModal,
+    logout: logout,
+    getUser: function() { return user; },
+    isLoggedIn: function() { return !!user; },
+    switchTab: switchAuthTab
+  };
+
+  // Auto-init on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+})(window);

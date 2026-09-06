@@ -1,0 +1,18 @@
+LOCKED-STYLE VIAL MASTER — REGEN NOTES
+Date: 2026-09-04 (Asia/Jerusalem)
+
+Locked concept: DNA helix icon + "BIO LABS" (NOT text "DNA + BIO LABS").
+Gold name band, mg box, registration ticks, gold crimp, clear flip cap, powder.
+
+NEED REGEN (wrong brand header "DNA + BIO LABS" text instead of DNA icon + BIO LABS):
+1. vial-tb-500.png          <- 67cf0c359e299f57f729088ccc73dfeaf3ee99d905a1765f0cb9c2ec4893e230.png
+2. vial-bpc-157-tb-500-blend.png <- 27d9b82cd938b1d00aeff2fa9d29ebc9505932a95cd21c742f1b6cc6688bf08b.png
+3. vial-retatrutide.png     <- 2d100a18619d8e50dea1cd02048b966b9e97c721d45d1c76be6962b9d95679a7.png
+   (also shows product name "R3TA" on gold band — confirm desired name vs RETATRUTIDE)
+
+OK / locked-style (DNA icon + BIO LABS):
+- bpc-157, nad-plus, aod-9604, curcumin-phytosome, tesamorelin-ipamorelin,
+  glow-70, epithalon, ghk-cu, mots-c, kpv, semax, kisspeptin-10, thymosin-alpha-1
+
+LIVE CATALOG: DO NOT overwrite. Keep live at vial-*.png?v=153.
+Drafts only under /var/www/biofirst/html/media/_drafts/

@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=74">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=74">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=74">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioLabs Research Peptides | RUO Laboratory Catalog</title>
+<meta name="description" content="BioLabs Research lists research peptides and laboratory reagents for RUO use. Catalog prices for research-use-only reagents. Lot documents on request — not lifestyle claims.">
+<link rel="canonical" href="https://biolabsresearch.co/">
+<meta property="og:title" content="BioLabs Research Peptides | RUO Laboratory Catalog">
+<meta property="og:description" content="BioLabs Research lists research peptides and laboratory reagents for RUO use. Catalog prices for research-use-only reagents. Lot documents on request — not lifestyle claims.">
+<meta property="og:image" content="https://biolabsresearch.co/media/label-box.png">
+<meta property="og:url" content="https://biolabsresearch.co/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BioLabs Research">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BioLabs Research Peptides | RUO Laboratory Catalog">
+<meta name="twitter:description" content="BioLabs Research lists research peptides and laboratory reagents for RUO use. Catalog prices for research-use-only reagents. Lot documents on request — not lifestyle claims.">
+<meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "LEEDS MARKETING GROUP LTD",
+      "alternateName": "BioLabs Research",
+      "url": "https://biolabsresearch.co",
+      "logo": "https://biolabsresearch.co/biolabsresearch-logo.png",
+      "email": "info@biofirst.co",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "71-75 Shelton Street, Covent Garden",
+        "addressLocality": "London",
+        "postalCode": "WC2H 9JQ",
+        "addressCountry": "GB"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "name": "BioLabs Research",
+      "url": "https://biolabsresearch.co",
+      "publisher": {
+        "@type": "Organization",
+        "name": "LEEDS MARKETING GROUP LTD"
+      }
+    }
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="/media/tile-blends.png?v=63" fetchpriority="high">
+<link rel="stylesheet" href="/biofirst_style.css?v=76">
+<link rel="stylesheet" href="/auth.css?v=1">
+<script src="/cart-vial.js?v=73"></script>
+</head>
+<body>
+
+<!-- NAV — logo + hamburger + cart -->
+<nav class="nav">
+  <a href="https://biolabsresearch.co/index.html?from=logo" class="nav-logo">
+    
+    <span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span>
+  </a>
+  <div class="nav-right">
+    <a href="https://biolabsresearch.co/science.html" class="nav-cart" style="text-decoration:none">Science</a>
+    <a href="/blog/" class="nav-cart" style="text-decoration:none">Blog</a>
+    <button class="nav-cart" onclick="toggleCart()">
+      Cart <span class="nav-cart-count" id="cartCount">0</span>
+    </button>
+    <button class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
+  <a href="https://biolabsresearch.co/science.html">Science</a>
+  <a href="#verticals">Verticals</a>
+  <a href="#catalog">Catalog</a>
+  <a href="https://biolabsresearch.co/science.html">Chemistry</a>
+  <a href="#methods">Methods</a>
+  <a href="https://biolabsresearch.co/science.html">COA</a>
+  <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a>
+  <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
+  <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
+  <a href="https://biolabsresearch.co/returns.html">Returns</a>
+  <a href="mailto:info@biofirst.co">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="hero-headline">Research,<br>without the noise.</h1>
+  <a href="#catalog" class="hero-cta">
+    Shop catalog
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+  <p class="hero-legal">Research use only. Not for human consumption.</p>
+
+  <div class="hero-cards hero-tiles">
+    <a href="#catalog" class="hero-card hero-card-singles">
+      <div class="hero-card-overlay">
+        <div class="hero-card-title">Singles</div>
+        <div class="hero-card-link">One compound <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <img src="/media/tile-singles.png?v=63" alt="Single gold-capped research vial" width="800" height="600" fetchpriority="high" decoding="async">
+    </a>
+    <a href="products/bpc-157-tb-500-blend.html" class="hero-card hero-card-blends">
+      <div class="hero-card-overlay">
+        <div class="hero-card-title">Blends</div>
+        <div class="hero-card-link">Two names <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <img src="/media/tile-blends.png?v=63" alt="Two labeled research vials" width="800" height="600" decoding="async">
+    </a>
+    <a href="#catalog" class="hero-card">
+      <div class="hero-card-overlay">
+        <div class="hero-card-title">Catalog</div>
+        <div class="hero-card-link">Full list <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <img src="/media/tile-catalog.png?v=63" alt="Lyophilized research vials in a tray beside a catalog list" width="800" height="600" loading="lazy" decoding="async">
+    </a>
+    <a href="#ship-facts" class="hero-card">
+      <div class="hero-card-overlay">
+        <div class="hero-card-title">How it ships</div>
+        <div class="hero-card-link">Packed and sent <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+      <img src="/media/tile-shipping.png?v=63" alt="Closed insulated shipper, gel pack, and packing slip" width="800" height="600" loading="lazy" decoding="async">
+    </a>
+  </div>
+</section>
+
+<!-- CATALOG -->
+<section class="catalog-section" id="catalog">
+  <div class="catalog-header">
+    <p class="section-kicker">16 compounds</p>
+    <h2 class="catalog-title">Catalog</h2>
+  </div>
+  <div class="catalog-grid" id="products-grid">
+    <div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--ink-muted);font-size:15px">Loading...</div>
+  </div>
+  <div class="catalog-coming" id="catalog-coming">
+    <div class="catalog-coming-header">
+      <p class="section-kicker">Coming to catalog</p>
+      <h3 class="catalog-coming-title">Display list · Inquire</h3>
+      <p class="catalog-coming-note">Display list prices only. Inquire — no add-to-cart. No invented HPLC or stock on these cards. Research use only.</p>
+    </div>
+    <div class="catalog-grid catalog-coming-grid">
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/glow-70.html">GLOW 70</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$180</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=GLOW%2070">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/epithalon.html">Epithalon</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$125</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=Epithalon">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/ghk-cu.html">GHK-Cu</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$105</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=GHK-Cu">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/mots-c.html">MOTS-c</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$140</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=MOTS-c">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/kpv.html">KPV</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$95</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=KPV">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/semax.html">Semax</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$110</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=Semax">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/kisspeptin-10.html">Kisspeptin-10</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$130</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=Kisspeptin-10">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/thymosin-alpha-1.html">Thymosin Alpha-1</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$150</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=Thymosin%20Alpha-1">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/tb-500.html">TB-500</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$120</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=TB-500">Inquire</a>
+        </div>
+      </article>
+      <article class="product-card product-card-coming">
+        <a class="product-card-name" href="products/retatrutide.html">Retatrutide</a>
+        <p class="product-card-ruo">Research use only</p>
+        <div class="product-card-row">
+          <div class="product-card-prices">
+            <span class="product-card-price">$195</span>
+            <span class="product-card-listnote">list</span>
+          </div>
+          <a class="product-card-inquire" href="mailto:info@biofirst.co?subject=Retatrutide">Inquire</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- COMPOUNDS — cream editorial, Hims-quiet -->
+<section class="compounds-section" id="compounds">
+  <div class="compounds-inner">
+    <div class="compounds-copy">
+      <p class="compounds-kicker">Research catalog</p>
+      <h2 class="compounds-title">The compounds.<br><em>Nothing else.</em></h2>
+      <p class="compounds-sub">Sixteen listed reagents. Soft light, clear type, no theatre. Research use only.</p>
+    </div>
+    <figure class="compounds-shot">
+      <img src="/media/compounds-sixteen.webp?v=47" alt="Sixteen listed research reagents, nothing else" width="900" height="1200" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</section>
+
+<!-- SLOGAN BAND -->
+<section class="slogan-band" id="voice">
+  <p class="slogan-line">Listed. Tested. Documented.</p>
+  <p class="slogan-line slogan-line-em">Research use only.</p>
+</section>
+
+
+<!-- STAT STRIP -->
+<section class="stat-strip" id="science">
+  <div class="stat-strip-inner">
+    <article class="stat-tile">
+      <div class="stat-num">16</div>
+      <div class="stat-label">listed SKUs</div>
+    </article>
+    <article class="stat-tile">
+      <div class="stat-num">$95</div>
+      <div class="stat-label">from*</div>
+    </article>
+    <article class="stat-tile">
+      <div class="stat-num">COA</div>
+      <div class="stat-label">on request</div>
+    </article>
+    <article class="stat-tile">
+      <div class="stat-num">RUO</div>
+      <div class="stat-label">only</div>
+    </article>
+  </div>
+  <p class="stat-asterisk">*Starting catalog price (AOD-9604).</p>
+</section>
+
+<!-- A) THREE METHOD CARDS -->
+<section class="method-section" id="methods">
+  <div class="section-inner">
+    <header class="section-head">
+      <p class="section-kicker">How a lot is checked</p>
+      <h2>Identity. Purity. Residuals.</h2>
+      <p>Method names only. Figures live on the lot COA.</p>
+    </header>
+    <div class="method-grid">
+      <article class="method-tile">
+        <div class="method-kicker">Purity</div>
+        <div class="method-num">HPLC</div>
+        <p class="method-lead">Purity as reported on the certificate. No invented percentages here.</p>
+        <div class="method-field">
+          <span>Reported purity</span>
+          <strong>on the COA</strong>
+        </div>
+      </article>
+      <article class="method-tile">
+        <div class="method-kicker">Identity</div>
+        <div class="method-num">MS</div>
+        <p class="method-lead">Mass spectrometry against the theoretical mass of the listed compound.</p>
+        <div class="method-field">
+          <span>Observed mass</span>
+          <strong>on the COA</strong>
+        </div>
+      </article>
+      <article class="method-tile">
+        <div class="method-kicker">Document fields</div>
+        <div class="method-num">Residuals</div>
+        <p class="method-lead">Solvents, appearance, and lot date as recorded by the testing lab.</p>
+        <div class="method-field">
+          <span>Solvents / appearance / date</span>
+          <strong>on the COA</strong>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- C) SINGLES VS BLEND -->
+<section class="split-section" id="singles-blend">
+  <div class="section-inner">
+    <header class="section-head">
+      <p class="section-kicker">How the catalog is built</p>
+      <h2>Singles and blends.</h2>
+      <p>Composition of the vial — not a protocol.</p>
+    </header>
+    <div class="split-grid">
+      <a class="split-card" href="products/bpc-157.html">
+        <div class="split-photo">
+          <img src="/media/tile-singles.png?v=63" alt="Single gold-capped research vial" width="800" height="600" loading="lazy" decoding="async">
+        </div>
+        <div class="split-body">
+          <div class="split-kicker">Singles · from $95</div>
+          <h3>One compound per vial.</h3>
+          <ul class="split-list">
+            <li>BPC-157 — pentadecapeptide · $110</li>
+            <li>NAD+ — nucleotide · $120</li>
+            <li>AOD-9604 — hGH 177–191 · $95</li>
+            <li>Curcumin Phytosome (Meriva) — botanical complex · $140</li>
+          </ul>
+          <span class="split-link">Open singles in the catalog <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+      <a class="split-card" href="products/bpc-157-tb-500-blend.html">
+        <div class="split-photo">
+          <img src="/media/vial-bpc-157-tb-500-blend.webp?v=46" alt="BPC-157 / TB-500 blend vials" width="800" height="600" loading="lazy" decoding="async">
+        </div>
+        <div class="split-body">
+          <div class="split-kicker">Blends · from $155</div>
+          <h3>Two compounds, one SKU.</h3>
+          <ul class="split-list">
+            <li>BPC-157 / TB-500 Blend — BPC-157 and TB-500 listed together · $185</li>
+            <li>Tesamorelin / Ipamorelin — two named compounds · $155</li>
+          </ul>
+          <span class="split-link">Open the blend SKU <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- D) PROCESS STRIP -->
+<section class="process-section" id="process">
+  <div class="section-inner">
+    <header class="section-head">
+      <p class="section-kicker">From list to vial</p>
+      <h2>The process.</h2>
+    </header>
+    <ol class="process-grid">
+      <li>
+        <span class="process-step">01</span>
+        <h3>Listed SKU</h3>
+        <p>Six catalog items. You order the named compound or two-compound SKU.</p>
+      </li>
+      <li>
+        <span class="process-step">02</span>
+        <h3>Third-party test</h3>
+        <p>Independent check. Methods named above. Numbers stay on the COA.</p>
+      </li>
+      <li>
+        <span class="process-step">03</span>
+        <h3>COA with the lot</h3>
+        <p>Certificate fields match the vial. The lot sheet is the document of record.</p>
+      </li>
+      <li>
+        <span class="process-step">04</span>
+        <h3>Ships</h3>
+        <p>Processed in 1–2 business days. Standard US delivery 3–5 business days. See <a href="https://biolabsresearch.co/shipping.html">shipping</a>.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+
+<section class="recon-section" id="reconstitute">
+  <div class="section-inner">
+    <header class="section-head">
+      <p class="section-kicker">Laboratory handling</p>
+      <h2>Reconstitution is a bench step.</h2>
+      <p>Working solution in mg/mL for in-vitro work. Not a dose. Not a body-weight chart.</p>
+    </header>
+    <ol class="recon-grid">
+      <li>
+        <span class="process-step">01</span>
+        <h3>Lyophilized cake</h3>
+        <p>The vial is a dry cake or powder. Record the labeled milligrams before you open it.</p>
+      </li>
+      <li>
+        <span class="process-step">02</span>
+        <h3>Add solvent</h3>
+        <p>Introduce a measured volume of the solvent specified in your protocol. Do not invent a volume here.</p>
+      </li>
+      <li>
+        <span class="process-step">03</span>
+        <h3>Working solution</h3>
+        <p>Concentration = labeled mg ÷ mL added. Write mg/mL on the tube. That is lab arithmetic, not a regimen.</p>
+      </li>
+      <li>
+        <span class="process-step">04</span>
+        <h3>Store as the COA says</h3>
+        <p>Follow the lot sheet for temperature and retest date. Research use only.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="ship-section" id="ship-facts">
+  <div class="section-inner">
+    <header class="section-head">
+      <p class="section-kicker">Fulfilment</p>
+      <h2>How it ships.</h2>
+      <p>Only what is already on the shipping page. No invented cutoff.</p>
+    </header>
+    <div class="method-grid">
+      <article class="method-tile">
+        <div class="method-kicker">Company</div>
+        <div class="method-num">London</div>
+      </article>
+      <article class="method-tile">
+        <div class="method-kicker">Processing</div>
+        <div class="method-num">1–2 days</div>
+        <p class="method-lead">Business days to process, then standard US delivery 3–5 business days.</p>
+      </article>
+      <article class="method-tile">
+        <div class="method-kicker">Packaging</div>
+        <div class="method-num">Cold-chain</div>
+        <p class="method-lead">Temperature-sensitive compounds ship with cold-chain packaging.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+<!-- VERTICALS — owner merchandising map (not API / not JSON-LD) -->
+<section class="vmap-section" id="verticals">
+  <div class="vmap-inner">
+    <div class="vmap-head">
+      <p class="section-kicker">Research map</p>
+      <h2>16 research peptides</h2>
+      <p>Serving multiple research verticals. Live SKUs open a listed product page. Unlisted names are inquire-only — no invented prices.</p>
+    </div>
+
+    <div class="vmap-grid">
+      <a class="vmap-card" href="products/bpc-157-tb-500-blend.html">
+        <span class="vmap-lane">Recovery &amp; Repair</span>
+        <strong class="vmap-name">BPC-157 / TB-500 Blend</strong>
+        <span class="vmap-meta">Listed SKU · BPC-157 / TB-500</span>
+        <span class="vmap-cta">View <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="vmap-card" href="products/nad-plus.html">
+        <span class="vmap-lane">Longevity</span>
+        <strong class="vmap-name">NAD+</strong>
+        <span class="vmap-meta">Listed SKU</span>
+        <span class="vmap-cta">View <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="vmap-card" href="products/aod-9604.html">
+        <span class="vmap-lane">Metabolic</span>
+        <strong class="vmap-name">AOD-9604</strong>
+        <span class="vmap-meta">Listed SKU</span>
+        <span class="vmap-cta">View <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=GLOW%2070">
+        <span class="vmap-lane">Anti-Aging</span>
+        <strong class="vmap-name">GLOW 70</strong>
+        <span class="vmap-meta">No live SKU</span>
+        <span class="vmap-cta">Coming / Inquire</span>
+      </a>
+      <a class="vmap-card" href="products/tesamorelin-ipamorelin.html">
+        <span class="vmap-lane">Recovery &amp; Repair</span>
+        <strong class="vmap-name">Tesamorelin / Ipamorelin</strong>
+        <span class="vmap-meta">Listed SKU</span>
+        <span class="vmap-cta">View <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+      <a class="vmap-card" href="products/bpc-157.html">
+        <span class="vmap-lane">Recovery &amp; Repair</span>
+        <strong class="vmap-name">BPC-157</strong>
+        <span class="vmap-meta">Listed SKU</span>
+        <span class="vmap-cta">View <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </a>
+    </div>
+
+    <h3 class="vmap-sub">Additional</h3>
+    <div class="vmap-grid vmap-grid-more">
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20Epithalon"><strong class="vmap-name">Epithalon</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20GHK-Cu"><strong class="vmap-name">GHK-Cu</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20MOTS-c"><strong class="vmap-name">MOTS-c</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20KPV"><strong class="vmap-name">KPV</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20Semax"><strong class="vmap-name">Semax</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20Kisspeptin-10"><strong class="vmap-name">Kisspeptin-10</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20Thymosin%20Alpha-1"><strong class="vmap-name">Thymosin Alpha-1</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20TB-500"><strong class="vmap-name">TB-500</strong><span class="vmap-cta">Coming / Inquire</span></a>
+      <a class="vmap-card is-coming" href="mailto:info@biofirst.co?subject=Inquire%20%E2%80%94%20Retatrutide"><strong class="vmap-name">Retatrutide (Reta)</strong><span class="vmap-cta">Coming / Inquire</span></a>
+    </div>
+
+    <h3 class="vmap-sub">Research verticals</h3>
+    <div class="vmap-chips" aria-label="Research verticals">
+      <span>Sports Medicine</span>
+      <span>Orthopedics</span>
+      <span>Longevity &amp; Anti-Aging</span>
+      <span>MedSpas</span>
+      <span>TRT Clinics</span>
+      <span>Compounding Pharmacies</span>
+      <span>Research Labs</span>
+    </div>
+    <p class="vmap-note">How labs and institutions group inquiries. Research use only. Not for human consumption.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<!-- Blog teaser -->
+<section style="max-width:1280px;margin:0 auto;padding:48px;text-align:center">
+  <h2 style="font-family:Fraunces,serif;font-size:32px;font-weight:500;color:#1F1F1F;margin-bottom:8px">Research Articles</h2>
+  <p style="color:#4A4A4A;margin-bottom:32px">Overviews and guides for laboratory professionals. RUO only.</p>
+  <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+    <a href="/blog/what-is-bpc-157-research-overview.html" style="display:inline-block;padding:12px 24px;background:#F5F2ED;border-radius:12px;font-size:14px;font-weight:600;color:#1F1F1F;text-decoration:none">What Is BPC-157?</a>
+    <a href="/blog/peptide-purity-and-coa-explained.html" style="display:inline-block;padding:12px 24px;background:#F5F2ED;border-radius:12px;font-size:14px;font-weight:600;color:#1F1F1F;text-decoration:none">COA Explained</a>
+    <a href="/blog/buying-research-peptides-online-guide-2026.html" style="display:inline-block;padding:12px 24px;background:#F5F2ED;border-radius:12px;font-size:14px;font-weight:600;color:#1F1F1F;text-decoration:none">2026 Sourcing Guide</a>
+    <a href="/blog/nad-plus-research-applications.html" style="display:inline-block;padding:12px 24px;background:#F5F2ED;border-radius:12px;font-size:14px;font-weight:600;color:#1F1F1F;text-decoration:none">NAD+ Research</a>
+    <a href="/blog/ghk-cu-copper-peptide-research.html" style="display:inline-block;padding:12px 24px;background:#F5F2ED;border-radius:12px;font-size:14px;font-weight:600;color:#1F1F1F;text-decoration:none">GHK-Cu Overview</a>
+  </div>
+  <a href="/blog/" style="display:inline-block;margin-top:24px;color:#9A6D2A;font-weight:600;font-size:15px;text-decoration:none">View all articles <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</section>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-text">biolabs</div>
+        <p class="footer-brand-desc">Science Now. Research Always. RUO only.</p>
+        <div class="footer-address">
+          LEEDS MARKETING GROUP LTD<br>
+          71-75 Shelton Street, Covent Garden<br>
+          London, WC2H 9JQ, UK<br>
+          Companies House #16057409
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Catalog</h4>
+        <a href="products/bpc-157-tb-500-blend.html">BPC-157 / TB-500 Blend</a>
+        <a href="products/nad-plus.html">NAD+</a>
+        <a href="products/aod-9604.html">AOD-9604</a>
+        <a href="products/curcumin-phytosome.html">Curcumin Phytosome</a>
+        <a href="products/tesamorelin-ipamorelin.html">Tesamorelin / Ipamorelin</a>
+        <a href="products/bpc-157.html">BPC-157</a>
+      </div>
+      <div class="footer-col">
+        <h4>More</h4>
+        <a href="products/glow-70.html">GLOW 70</a>
+        <a href="products/epithalon.html">Epithalon</a>
+        <a href="products/ghk-cu.html">GHK-Cu</a>
+        <a href="products/mots-c.html">MOTS-c</a>
+        <a href="products/kpv.html">KPV</a>
+        <a href="products/semax.html">Semax</a>
+        <a href="products/kisspeptin-10.html">Kisspeptin-10</a>
+        <a href="products/thymosin-alpha-1.html">Thymosin Alpha-1</a>
+        <a href="products/tb-500.html">TB-500</a>
+        <a href="products/retatrutide.html">Retatrutide</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="https://biolabsresearch.co/science.html">Science</a>
+        <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms & Conditions</a>
+        <a href="https://biolabsresearch.co/privacy-policy.html">Privacy Policy</a>
+        <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
+        <a href="https://biolabsresearch.co/returns.html">Returns</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@biofirst.co">info@biofirst.co</a>
+        <a href="https://wa.me/48732759035">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
+      <div class="footer-legal-links">
+        <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a>
+        <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
+        <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
+        <a href="https://biolabsresearch.co/returns.html">Returns</a>
+      </div>
+    </div>
+  </div>
+  
+</footer>
+
+<!-- CART OVERLAY & DRAWER -->
+<div class="tc-overlay" id="tcOverlay">
+  <div class="tc-modal">
+    <h2>Welcome to BioLabs Research</h2>
+    <div class="tc-modal-badge">Research Use Only</div>
+    <div class="tc-modal-text">All products are for laboratory research only. Not for human consumption.</div>
+    <div class="tc-checks">
+      <label class="tc-check-label"><input type="checkbox" id="tcCheck1"> I am at least <strong>21</strong> and a qualified researcher.</label>
+      <label class="tc-check-label"><input type="checkbox" id="tcCheck2"> I agree to the <a href="https://biolabsresearch.co/terms-and-conditions.html" target="_blank">Terms</a>.</label>
+      <label class="tc-check-label"><input type="checkbox" id="tcCheck3"> I confirm this is <strong>RUO</strong>, not for human consumption.</label>
+    </div>
+    <button class="tc-enter-btn" id="tcEnterBtn" disabled>Enter BioLabs Research</button>
+  </div>
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById("tcOverlay");
+  if (!overlay) return;
+  if (localStorage.getItem("biofirst_tc_accepted")) { overlay.style.display = "none"; return; }
+  overlay.classList.add("active");
+  document.body.style.overflow = "hidden";
+  var c1 = document.getElementById("tcCheck1");
+  var c2 = document.getElementById("tcCheck2");
+  var c3 = document.getElementById("tcCheck3");
+  var btn = document.getElementById("tcEnterBtn");
+  function update(){ btn.disabled = !(c1.checked && c2.checked && c3.checked); }
+  [c1,c2,c3].forEach(function(el){ el.addEventListener("change", update); });
+  btn.addEventListener("click", function(){
+    if (btn.disabled) return;
+    localStorage.setItem("biofirst_tc_accepted", "true");
+    overlay.classList.remove("active");
+    overlay.style.display = "none";
+    document.body.style.overflow = "";
+  });
+})();
+</script>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">Your order</div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg>
+      <p>Your cart is empty.</p>
+    </div>
+  </div>
+  <div id="cartAddMore" class="cart-addmore-slot"></div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <button class="btn-checkout" onclick="checkout()">Proceed to checkout <svg class="chev" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M5 3.2 L9.4 7 L5 10.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="cart-note">Secure inquiry — we'll confirm availability</div>
+  </div>
+</div>
+
+<script>
+// ===== CART =====
+let cart = JSON.parse(localStorage.getItem('biofirst_cart') || '[]');
+
+function toggleCart() {
+  document.getElementById('cartDrawer').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+  renderCart();
+}
+
+function toggleMenu() {
+  document.getElementById('navMenu').classList.toggle('open');
+  document.getElementById('navOverlay').classList.toggle('open');
+}
+
+function addToCart(name, price, imageUrl, slug) {
+  slug = slug || '';
+  var existing = cart.find(function(i){ return i.name === name || (slug && i.slug === slug); });
+  if (existing) { existing.qty++; if (slug) existing.slug = slug; }
+  else { cart.push({ name: name, price: price, imageUrl: vialImg({slug:slug, name:name}), qty: 1, slug: slug }); }
+  saveCart();
+  renderCart();
+  if (!document.getElementById('cartDrawer').classList.contains('open')) toggleCart();
+}
+
+function updateQty(name, delta) {
+  var item = cart.find(function(i){ return i.name === name; });
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(function(i){ return i.name !== name; });
+  saveCart();
+  renderCart();
+}
+
+function saveCart() {
+  localStorage.setItem('biofirst_cart', JSON.stringify(cart));
+  document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+}
+
+function renderCart() {
+  var el = document.getElementById('cartItems');
+  var total = cart.reduce(function(a,i){ return a + (parseFloat(i.price) || 0) * i.qty; }, 0);
+  document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+  if (!cart.length) {
+    el.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg><p>Your cart is empty.</p></div>';
+    mountAddMore([]);
+    return;
+  }
+  el.innerHTML = cart.map(function(item) {
+    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + '" width="88" height="88">';
+    return '<div class="cart-item">' +
+      '<div class="ci-img" style="overflow:hidden;padding:0;">' + imgHtml + '</div>' +
+      '<div class="ci-info">' +
+        '<div class="ci-name">' + item.name + '</div>' +
+        '<div class="ci-price">$' + (parseFloat(item.price) || 0).toFixed(2) + '</div>' +
+        '<div class="ci-qty">' +
+          '<button type="button" onclick="updateQty(\'' + item.name + '\',-1)">−</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button type="button" onclick="updateQty(\'' + item.name + '\',1)">+</button>' +
+        '</div>' +
+      '</div>' +
+      '<button type="button" class="ci-remove" onclick="updateQty(\'' + item.name + '\',-99)">✕</button>' +
+    '</div>';
+  }).join('') + mountAddMore(cart);
+}
+
+function checkout() {
+  if (!cart.length) return;
+  window.location.href = 'checkout.html';
+}
+
+document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+</script>
+
+<script>
+// ===== PRODUCT GRID =====
+(function() {
+  var SLUG_MAP = {
+    'wolverine-blend': 'products/bpc-157-tb-500-blend.html',
+    'bpc-157-tb-500-blend': 'products/bpc-157-tb-500-blend.html',
+    'nad-plus': 'products/nad-plus.html',
+    'aod-9604': 'products/aod-9604.html',
+    'curcumin-phytosome': 'products/curcumin-phytosome.html',
+    'tesamorelin-ipamorelin': 'products/tesamorelin-ipamorelin.html',
+    'glow-70': 'products/glow-70.html',
+    'epithalon': 'products/epithalon.html',
+    'ghk-cu': 'products/ghk-cu.html',
+    'mots-c': 'products/mots-c.html',
+    'kpv': 'products/kpv.html',
+    'semax': 'products/semax.html',
+    'kisspeptin-10': 'products/kisspeptin-10.html',
+    'thymosin-alpha-1': 'products/thymosin-alpha-1.html',
+    'tb-500': 'products/tb-500.html',
+    'retatrutide': 'products/retatrutide.html',
+    'bpc-157': 'products/bpc-157.html'
+  };
+
+  function escAttr(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/</g, '&lt;');
+  }
+
+  function renderProducts(products) {
+    var grid = document.getElementById('products-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    products.filter(function(p){ return p.is_active !== false && SLUG_MAP[p.slug]; }).forEach(function(p) {
+      var href = SLUG_MAP[p.slug] || ('products/' + p.slug + '.html');
+      var vial = '/media/vial-' + p.slug + '.webp?v=72';
+      var badgeHtml = p.badge
+        ? '<div class="product-card-badge">' + escAttr(p.badge) + '</div>'
+        : '<div class="product-card-badge product-card-badge-spacer">&nbsp;</div>';
+      var priceHtml = '<span class="product-card-price">$' + p.price + '</span>';
+      if (p.original_price) {
+        priceHtml += '<span class="product-card-original">$' + p.original_price + '</span>';
+      }
+      var card = document.createElement('article');
+      card.className = 'product-card';
+      card.innerHTML =
+        '<a class="product-card-media" href="' + href + '">' +
+          '<div class="product-card-img">' +
+            '<img src="' + vial + '" alt="' + escAttr(p.name) + '" loading="lazy" decoding="async" width="400" height="500">' +
+          '</div>' +
+        '</a>' +
+        '<div class="product-card-body">' +
+          badgeHtml +
+          '<a class="product-card-name" href="' + href + '">' + escAttr(p.name) + '</a>' +
+          '<div class="product-card-row">' +
+            '<div class="product-card-prices">' + priceHtml + '</div>' +
+            '<button type="button" class="product-card-atc" data-name="' + escAttr(p.name) + '" data-price="' + escAttr(p.price) + '" data-img="' + vial + '" data-slug="' + escAttr(p.slug) + '">Add</button>' +
+          '</div>' +
+        '</div>';
+      grid.appendChild(card);
+    });
+    grid.querySelectorAll('.product-card-atc').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        addToCart(btn.getAttribute('data-name'), btn.getAttribute('data-price'), btn.getAttribute('data-img'), btn.getAttribute('data-slug'));
+      });
+    });
+  }
+
+  fetch('https://biolabsresearch.co/api/products')
+    .then(function(r){ return r.json(); })
+    .then(function(products) {
+      localStorage.setItem('biofirst_products', JSON.stringify(products));
+      renderProducts(products);
+    })
+    .catch(function() {
+      var cached = localStorage.getItem('biofirst_products');
+      if (cached) renderProducts(JSON.parse(cached));
+    });
+})();
+</script>
+
+<script src="/auth.js?v=2"></script>
+
+<script src="/email-capture.js"></script>
+</body>
+</html>

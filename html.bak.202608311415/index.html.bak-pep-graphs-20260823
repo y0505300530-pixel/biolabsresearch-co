@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BioFirst | Science Now. Research Always.</title>
+<meta name="description" content="Premium research peptides. Third-party tested. Science Now. Research Always. RUO only.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/biofirst_style.css?v=12">
+<link rel="stylesheet" href="/auth.css?v=1">
+</head>
+<body>
+
+<!-- RUO BAR — thin black strip -->
+<div class="ruo-bar"><strong>RESEARCH USE ONLY</strong> &nbsp;|&nbsp; Not FDA approved. For research purposes only. Not intended for human consumption.</div>
+
+<!-- NAV — logo + hamburger + cart -->
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/biofirst-logo.png" alt="BioFirst">
+    <span class="nav-logo-text">biofirst</span>
+  </a>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="toggleCart()">
+      Cart <span class="nav-cart-count" id="cartCount">0</span>
+    </button>
+    <button class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
+  <a href="#catalog">Catalog</a>
+  <a href="#compounds">Compounds</a>
+  <a href="terms-and-conditions.html">Terms</a>
+  <a href="privacy-policy.html">Privacy</a>
+  <a href="shipping.html">Shipping</a>
+  <a href="returns.html">Returns</a>
+  <a href="mailto:info@biofirst.co">Contact</a>
+</div>
+
+<!-- HERO — one headline + 2 cards -->
+<section class="hero">
+  <h1 class="hero-headline">Research,<br>without the noise.</h1>
+  <p class="hero-sub">Laboratory compounds. Third-party tested. RUO only.</p>
+  <a href="#catalog" class="hero-cta">
+    Shop catalog
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </a>
+
+  <div class="hero-cards">
+    <a href="products/bpc-157-tb-500-blend.html" class="hero-card hero-card-blends">
+      <img src="/_base44-brief/biofirst-target-hero.png" alt="BioFirst blend">
+      <div class="hero-card-overlay">
+        <div class="hero-card-title">Blends</div>
+        <div class="hero-card-link">Start with a blend →</div>
+      </div>
+    </a>
+    <a href="products/bpc-157.html" class="hero-card hero-card-singles">
+      <img src="https://media.base44.com/images/public/6a2a71f7657c7f4b9841fe12/496e3c505_generated_image.png" alt="BPC-157">
+      <div class="hero-card-overlay">
+        <div class="hero-card-title">Singles</div>
+        <div class="hero-card-link">See the catalog →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- COMPOUNDS — full-bleed brown -->
+<section class="compounds-section" id="compounds">
+  <img class="compounds-photo" src="/_base44-brief/biofirst-target-hero.png" alt="">
+  <div class="compounds-copy">
+    <h2 class="compounds-title">The compounds.<br><em>Nothing else.</em></h2>
+  </div>
+</section>
+
+<!-- CATALOG — clean 2x3 grid -->
+<section class="catalog-section" id="catalog">
+  <div class="catalog-header">
+    <h2 class="catalog-title">Catalog</h2>
+  </div>
+  <div class="catalog-grid" id="products-grid">
+    <div style="grid-column:1/-1;text-align:center;padding:60px 0;color:var(--ink-muted);font-size:15px">Loading...</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-text">biofirst</div>
+        <p class="footer-brand-desc">Science Now. Research Always. RUO only.</p>
+        <div class="footer-address">
+          LEEDS MARKETING GROUP LTD<br>
+          71-75 Shelton Street, Covent Garden<br>
+          London, WC2H 9JQ, UK<br>
+          Companies House #16057409
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Catalog</h4>
+        <a href="products/bpc-157-tb-500-blend.html">BPC-157 / TB-500 Blend</a>
+        <a href="products/nad-plus.html">NAD+</a>
+        <a href="products/aod-9604.html">AOD-9604</a>
+        <a href="products/curcumin-phytosome.html">Curcumin Phytosome</a>
+        <a href="products/tesamorelin-ipamorelin.html">Tesamorelin / Ipamorelin</a>
+        <a href="products/bpc-157.html">BPC-157</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="terms-and-conditions.html">Terms & Conditions</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="returns.html">Returns</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:info@biofirst.co">info@biofirst.co</a>
+        <a href="https://wa.me/972505300530">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
+      <div class="footer-legal-links">
+        <a href="terms-and-conditions.html">Terms</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="returns.html">Returns</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART OVERLAY & DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">Your order</div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg>
+      <p>Your cart is empty.</p>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <button class="btn-checkout" onclick="checkout()">Proceed to checkout →</button>
+    <div class="cart-note">Secure inquiry — we'll confirm availability</div>
+  </div>
+</div>
+
+<script>
+// ===== CART =====
+let cart = JSON.parse(localStorage.getItem('biofirst_cart') || '[]');
+
+function toggleCart() {
+  document.getElementById('cartDrawer').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+  renderCart();
+}
+
+function toggleMenu() {
+  document.getElementById('navMenu').classList.toggle('open');
+  document.getElementById('navOverlay').classList.toggle('open');
+}
+
+function addToCart(name, price, imageUrl) {
+  var existing = cart.find(function(i){ return i.name === name; });
+  if (existing) { existing.qty++; }
+  else { cart.push({ name: name, price: price, imageUrl: imageUrl, qty: 1 }); }
+  saveCart();
+  renderCart();
+  if (!document.getElementById('cartDrawer').classList.contains('open')) toggleCart();
+}
+
+function updateQty(name, delta) {
+  var item = cart.find(function(i){ return i.name === name; });
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(function(i){ return i.name !== name; });
+  saveCart();
+  renderCart();
+}
+
+function saveCart() {
+  localStorage.setItem('biofirst_cart', JSON.stringify(cart));
+  document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+}
+
+function renderCart() {
+  var el = document.getElementById('cartItems');
+  var total = cart.reduce(function(a,i){ return a + (parseFloat(i.price) || 0) * i.qty; }, 0);
+  document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+  if (!cart.length) {
+    el.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg><p>Your cart is empty.</p></div>';
+    return;
+  }
+  el.innerHTML = cart.map(function(item) {
+    return '<div class="cart-item">' +
+      (item.imageUrl ? '<img src="' + item.imageUrl + '" alt="' + item.name + '">' : '') +
+      '<div class="cart-item-info">' +
+        '<div class="cart-item-name">' + item.name + '</div>' +
+        '<div class="cart-item-price">$' + item.price + '</div>' +
+        '<div class="cart-item-qty">' +
+          '<button onclick="updateQty(\'' + item.name + '\',-1)">−</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button onclick="updateQty(\'' + item.name + '\',1)">+</button>' +
+        '</div>' +
+      '</div>' +
+      '<button class="cart-item-remove" onclick="updateQty(\'' + item.name + '\',-99)">✕</button>' +
+    '</div>';
+  }).join('');
+}
+
+function checkout() {
+  if (!cart.length) return;
+  window.location.href = 'checkout.html';
+}
+
+document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+</script>
+
+<script>
+// ===== PRODUCT GRID =====
+(function() {
+  var SLUG_MAP = {
+    'wolverine-blend': 'products/bpc-157-tb-500-blend.html',
+    'bpc-157-tb-500-blend': 'products/bpc-157-tb-500-blend.html',
+    'nad-plus': 'products/nad-plus.html',
+    'aod-9604': 'products/aod-9604.html',
+    'curcumin-phytosome': 'products/curcumin-phytosome.html',
+    'tesamorelin-ipamorelin': 'products/tesamorelin-ipamorelin.html',
+    'bpc-157': 'products/bpc-157.html'
+  };
+
+  function renderProducts(products) {
+    var grid = document.getElementById('products-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    products.filter(function(p){ return p.is_active !== false; }).forEach(function(p) {
+      var href = SLUG_MAP[p.slug] || ('products/' + p.slug + '.html');
+      var imgHtml = p.image_url
+        ? '<img src="' + p.image_url + '" alt="' + p.name + '">'
+        : '';
+      var badgeHtml = p.badge
+        ? '<div class="product-card-badge">' + p.badge + '</div>'
+        : '';
+      var priceHtml = '<span class="product-card-price">$' + p.price + '</span>';
+      if (p.original_price) {
+        priceHtml += '<span class="product-card-original">$' + p.original_price + '</span>';
+      }
+      var card = document.createElement('a');
+      card.href = href;
+      card.className = 'product-card';
+      card.innerHTML =
+        '<div class="product-card-img">' + imgHtml + '</div>' +
+        badgeHtml +
+        '<div class="product-card-name">' + p.name + '</div>' +
+        priceHtml;
+      grid.appendChild(card);
+    });
+  }
+
+  fetch('https://biofirst.co/api/products')
+    .then(function(r){ return r.json(); })
+    .then(function(products) {
+      localStorage.setItem('biofirst_products', JSON.stringify(products));
+      renderProducts(products);
+    })
+    .catch(function() {
+      var cached = localStorage.getItem('biofirst_products');
+      if (cached) renderProducts(JSON.parse(cached));
+    });
+})();
+</script>
+
+<script src="/auth.js?v=1"></script>
+
+</body>
+</html>

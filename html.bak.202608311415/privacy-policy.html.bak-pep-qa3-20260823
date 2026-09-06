@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | BioFirst</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/biofirst_style.css?v=10">
+<style>
+.legal-page{max-width:760px;margin:0 auto;padding:80px 48px 120px}
+.legal-page h1{font-family:'Inter',sans-serif;font-size:36px;font-weight:700;color:#1F1F1F;letter-spacing:-1px;margin-bottom:8px}
+.legal-page .updated{font-size:13px;color:#8A8A8A;margin-bottom:48px}
+.legal-page h2{font-size:20px;font-weight:600;color:#1F1F1F;margin-top:40px;margin-bottom:12px}
+.legal-page p,.legal-page li{font-size:15px;color:#4A4A4A;line-height:1.7;margin-bottom:12px}
+.legal-page ul{padding-left:20px;margin-bottom:16px}
+.legal-back{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#1F1F1F;margin-bottom:32px}
+</style>
+</head>
+<body>
+
+<div class="ruo-bar"><strong>RESEARCH USE ONLY</strong> &nbsp;|&nbsp; Not FDA approved. For research purposes only. Not intended for human consumption.</div>
+
+<nav class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="/biofirst-logo.png" alt="BioFirst">
+    <span class="nav-logo-text">biofirst</span>
+  </a>
+  <div class="nav-right">
+    <button class="nav-cart" onclick="window.location.href='index.html'">Back to shop</button>
+  </div>
+</nav>
+
+<div class="legal-page">
+  <a href="index.html" class="legal-back">← Back</a>
+  <h1>Privacy Policy</h1>
+  <div class="updated">Last updated: August 23, 2026</div>
+
+  <h2>1. Overview</h2>
+  <p>LEEDS MARKETING GROUP LTD ("BioFirst", "we", "us") operates biofirst.co. We respect your privacy and are committed to protecting your personal data. This policy explains what we collect, why, and your rights.</p>
+
+  <h2>2. Data We Collect</h2>
+  <ul>
+    <li><strong>Contact information:</strong> name, email, phone, organization — when you submit an inquiry or place an order.</li>
+    <li><strong>Order data:</strong> product selections, quantities, shipping address.</li>
+    <li><strong>Technical data:</strong> IP address, browser type, pages visited — via standard server logs.</li>
+    <li><strong>Communication data:</strong> content of messages you send us via contact forms or email.</li>
+  </ul>
+
+  <h2>3. How We Use Your Data</h2>
+  <ul>
+    <li>To process and fulfill your orders and inquiries.</li>
+    <li>To respond to your questions and provide customer support.</li>
+    <li>To send order confirmations and shipping notifications.</li>
+    <li>To maintain records for compliance and regulatory purposes.</li>
+    <li>To improve our website and services.</li>
+  </ul>
+
+  <h2>4. Data Storage</h2>
+  <p>Order and account data is stored on secured servers. We do not store credit card information on our servers — payment processing is handled by third-party payment processors under their own security standards.</p>
+
+  <h2>5. Data Sharing</h2>
+  <p>We do not sell or rent your personal data. We may share data with:</p>
+  <ul>
+    <li>Payment processors to complete transactions.</li>
+    <li>Shipping carriers to deliver orders.</li>
+    <li>Regulatory authorities if legally required.</li>
+  </ul>
+
+  <h2>6. Cookies</h2>
+  <p>We use essential cookies for cart functionality and site operation. We do not use advertising or tracking cookies.</p>
+
+  <h2>7. Your Rights</h2>
+  <p>You have the right to access, correct, or delete your personal data. To exercise these rights, contact info@biofirst.co.</p>
+
+  <h2>8. Contact</h2>
+  <p>LEEDS MARKETING GROUP LTD<br>71-75 Shelton Street, Covent Garden<br>London, WC2H 9JQ, UK<br>Email: info@biofirst.co</p>
+
+  <h2>9. Research Use Only</h2>
+  <p>All BioFirst products are sold strictly for research purposes only (RUO). They are not intended for human consumption, self-administration, or therapeutic use. Purchasers are responsible for compliance with applicable laws in their jurisdiction.</p>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
+      <div class="footer-legal-links">
+        <a href="terms-and-conditions.html">Terms</a>
+        <a href="privacy-policy.html">Privacy</a>
+        <a href="shipping.html">Shipping</a>
+        <a href="returns.html">Returns</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

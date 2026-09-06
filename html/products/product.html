@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Research-use-only peptide and laboratory reagent listings. Third-party tested lots and catalog prices. Open a SKU page for name, price, and COA notes.">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=186">
+<link rel="stylesheet" href="/biolabs_style.css?v=214">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -204,9 +204,9 @@ footer{background:var(--ink);padding:60px 60px 30px}
 @media(max-width:900px){.cart-drawer{width:100%;right:-100%}}
 
 .spec-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:16px 0;padding:14px 0;border-top:1px solid #e8e2d8;border-bottom:1px solid #e8e2d8}.spec-strip dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#9A6D2A}.spec-strip dd{font-size:14px;color:#1F1F1F;font-family:ui-monospace,monospace}.spec-note{font-size:12px;color:#8A8A8A;margin:0 0 16px}.research-note{font-size:14px;line-height:1.55;color:#1F1F1F;margin:8px 0 16px;padding:12px 14px;background:#F4EFE4;border-radius:8px}.research-note h3{font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:#9A6D2A;margin:0 0 8px;font-weight:700}.research-note p{margin:0 0 8px}.research-note p:last-child{margin:0;color:#8A8A8A;font-size:13px}</style>
-<script src="/cart-vial.js?v=100"></script>
+<script src="/cart-vial.js?v=118"></script>
 <script src="/pdp-story.js?v=10"></script>
-<script src="/search-overlay.js?v=14"></script>
+<script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
 <div class="promo-stack" id="promoStack">
@@ -546,7 +546,7 @@ storageHtml + presentationHtml +
     var slug = window.location.pathname.split('/').pop().replace('.html','');
     var cartName = sizeLabel ? name+' ('+sizeLabel+')' : name;
     var imgEl = document.querySelector('.product-img-main img');
-    var productImageUrl = '/media/vial-' + slug + '.webp?v=99';
+    var productImageUrl = '/media/vial-' + slug + '.png?v=153';
     var cart = getCart();
     var ex = cart.find(function(i){return i.name===cartName;});
     var pdpQty = parseInt(document.getElementById('pdpQty') ? document.getElementById('pdpQty').textContent : '1') || 1;
@@ -661,7 +661,6 @@ window.compareAtPrice = function(item){
       <strong id="cartTotal">$0.00</strong>
     </div>
     <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
-    <div class="cart-note">Secure inquiry - we'll confirm availability</div>
     <button type="button" class="btn-continue" onclick="toggleCart()">Continue shopping <span aria-hidden="true">→</span></button>
   </div>
 </div>
@@ -716,7 +715,7 @@ function renderCart() {
   var total = cart.reduce(function(a, i) { return a + (parseFloat(i.price) || 0) * i.qty; }, 0);
   var totalEl = document.getElementById('cartTotal');
   if(totalEl) totalEl.textContent = '$' + total.toFixed(2);
-  var nItems = cart.reduce(function(a,i){ return a + (i.qty||0); }, 0);
+  var nItems = Math.max(0, cart.reduce(function(a,i){ return a + Math.max(0, parseInt(i.qty,10)||0); }, 0));
   var cl = document.getElementById('cartOrderCount');
   if (cl) cl.textContent = nItems ? ('(' + nItems + (nItems===1 ? ' item' : ' items') + ')') : '';
 
@@ -730,7 +729,7 @@ function renderCart() {
     return '<div class="cart-item">' +
       '<div class="ci-img" style="overflow:hidden;padding:0;">' + imgHtml + '</div>' +
       '<div class="ci-info">' +
-        '<div class="ci-name">' + item.name + '</div>' +
+        '<div class="ci-name">' + item.name + (item.mg ? ' <span class="ci-mg">' + String(item.mg).replace(/mg/i,' mg') + '</span>' : '') + '</div>' +
         '<div class="ci-price">$' + (parseFloat(item.price) || 0).toFixed(2) + (window.compareAtPrice && window.compareAtPrice(item) > (parseFloat(item.price)||0) ? ' <span class="was">$' + window.compareAtPrice(item).toFixed(2) + '</span>' : '') + '</div>' +
         '<div class="ci-qty">' +
           '<button onclick="updateQty(\'' + item.name + '\',-1)">-</button>' +
@@ -740,16 +739,31 @@ function renderCart() {
       '</div>' +
       '<button class="ci-remove" onclick="updateQty(\'' + item.name + '\',-99)">x</button>' +
     '</div>';
-  }).join('') + mountAddMore(cart);
+  }).join('');
+  mountAddMore(cart);
 }
 function updateQty(name, delta) {
-  var cart = getCart();
-  var item = cart.find(function(i) { return i.name === name; });
+  var base = String(name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+  var item = cart.find(function(i){
+    if (i.name === name) return true;
+    var iname = String(i.name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+    return iname === base;
+  });
   if (!item) return;
-  item.qty += delta;
-  if (item.qty <= 0) cart = cart.filter(function(i) { return i.name !== name; });
-  saveCart(cart);
-  updateBadge();
+  if (item.gift || item.slug === 'research-solvent') {
+    item.qty = 1;
+    saveCart();
+    renderCart();
+    return;
+  }
+  var d = parseInt(delta, 10) || 0;
+  if (d <= -99 || item.qty + d <= 0) {
+    cart = cart.filter(function(i){ return i !== item; });
+  } else {
+    item.qty = item.qty + d;
+  }
+  cart = cart.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
+  saveCart();
   renderCart();
 }
 function checkout() {
@@ -984,7 +998,8 @@ function openCOAModal(slug) {
     tabs.style.display = 'flex';
     tabs.innerHTML = entries.map(function(e, i) {
       return '<button onclick="loadCOAEntry(COA_DATA[\''+slug+'\']['+i+'], this)" style="padding:6px 14px;border-radius:var(--radius-sm) 6px 0 0;border:1px solid #d4e4d8;border-bottom:none;background:'+(i===0?'white':'#f7f9f5')+';color:'+(i===0?'#0d2137':'#4a6358')+';font-size:12px;font-weight:700;cursor:pointer;font-family:"Montserrat",sans-serif">' + e.label + '</button>';
-    }).join('') + mountAddMore(cart);
+    }).join('');
+    mountAddMore(cart);
   } else {
     tabs.style.display = 'none';
     tabs.innerHTML = '';
@@ -1163,9 +1178,9 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 <script src="/promo-bar.js?v=9"></script>
-<script src="/mg-picker.js?v=5"></script>
+<script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
 <section class="product-rail pdp-product-rail" id="productRail" aria-label="Pairs well at the bench" data-exclude-slug="product"></section>
-<script src="/product-marquee.js?v=7"></script>
+<script src="/product-marquee.js?v=20"></script>
 </body>
 </html>

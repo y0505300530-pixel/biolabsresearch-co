@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /checkout.html
+Disallow: /products-data.json
+
+Sitemap: https://biofirst.co/sitemap.xml

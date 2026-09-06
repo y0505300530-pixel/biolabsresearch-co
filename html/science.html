@@ -54,9 +54,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=185">
+<link rel="stylesheet" href="/biolabs_style.css?v=214">
 <link rel="stylesheet" href="/auth.css?v=1">
-<script src="/cart-vial.js?v=100"></script>
+<script src="/cart-vial.js?v=118"></script>
 <style id="sci-notes-restore">
 /* page-local: leftover .sci-card tile CSS clips names/prices and paints tan/green lab chrome */
 .sci-body .sci-card{
@@ -84,7 +84,7 @@
 .sci-body .price-bars,.sci-body .net-svg{overflow:visible;display:block;width:100%;height:auto;max-width:100%;}
 .sci-body .id-dl div{min-width:0;}
 </style>
-<script src="/search-overlay.js?v=13"></script>
+<script src="/search-overlay.js?v=26"></script>
 </head>
 <body class="sci-body">
 <div class="promo-stack" id="promoStack">
@@ -662,7 +662,6 @@ window.compareAtPrice = function(item){
       <strong id="cartTotal">$0</strong>
     </div>
     <button class="btn-checkout" onclick="checkout()">Proceed to checkout →</button>
-    <div class="cart-note">Secure inquiry — we'll confirm availability</div>
     <button type="button" class="btn-continue" onclick="toggleCart()">Continue shopping <span aria-hidden="true">→</span></button>
   </div>
 </div>
@@ -679,13 +678,13 @@ function toggleMenu() {
 }
 function saveCart() {
   localStorage.setItem('biolabs_cart', JSON.stringify(cart));
-  document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+  document.getElementById('cartCount').textContent = Math.max(0, cart.reduce(function(a,i){ return a + Math.max(0, parseInt(i.qty,10)||0); }, 0));
 }
 function renderCart() {
   var el = document.getElementById('cartItems');
   var total = cart.reduce(function(a,i){ return a + (parseFloat(i.price) || 0) * i.qty; }, 0);
   document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
-  var nItems = cart.reduce(function(a,i){ return a + (i.qty||0); }, 0);
+  var nItems = Math.max(0, cart.reduce(function(a,i){ return a + Math.max(0, parseInt(i.qty,10)||0); }, 0));
   var cl = document.getElementById('cartOrderCount');
   if (cl) cl.textContent = nItems ? ('(' + nItems + (nItems===1 ? ' item' : ' items') + ')') : '';
 
@@ -709,13 +708,30 @@ function renderCart() {
       '</div>' +
       '<button type="button" class="ci-remove" onclick="updateQty(\'' + item.name + '\',-99)">✕</button>' +
     '</div>';
-  }).join('') + mountAddMore(cart);
+  }).join('');
+    mountAddMore(cart);
 }
 function updateQty(name, delta) {
-  var item = cart.find(function(i){ return i.name === name; });
+  var base = String(name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+  var item = cart.find(function(i){
+    if (i.name === name) return true;
+    var iname = String(i.name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+    return iname === base;
+  });
   if (!item) return;
-  item.qty += delta;
-  if (item.qty <= 0) cart = cart.filter(function(i){ return i.name !== name; });
+  if (item.gift || item.slug === 'research-solvent') {
+    item.qty = 1;
+    saveCart();
+    renderCart();
+    return;
+  }
+  var d = parseInt(delta, 10) || 0;
+  if (d <= -99 || item.qty + d <= 0) {
+    cart = cart.filter(function(i){ return i !== item; });
+  } else {
+    item.qty = item.qty + d;
+  }
+  cart = cart.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
   saveCart();
   renderCart();
 }
@@ -723,7 +739,7 @@ function checkout() {
   if (!cart.length) return;
   window.location.href = 'checkout.html';
 }
-document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+document.getElementById('cartCount').textContent = Math.max(0, cart.reduce(function(a,i){ return a + Math.max(0, parseInt(i.qty,10)||0); }, 0));
 
 function updateLabCalc(){
   var mgEl = document.getElementById('calcMg');
@@ -776,7 +792,7 @@ document.addEventListener('DOMContentLoaded', function(){
 })();
 </script>
 <script src="/promo-bar.js?v=9"></script>
-<script src="/mg-picker.js?v=5"></script>
+<script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
 </body>
 </html>

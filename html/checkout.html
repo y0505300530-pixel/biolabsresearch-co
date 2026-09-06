@@ -28,7 +28,7 @@
 <meta name="twitter:title" content="Catalog Inquiry Checkout | BioLabs Research Laboratory">
 <meta name="twitter:description" content="Submit a research-use-only catalog inquiry. No payment is collected on this page. Laboratory reagents listed for research, not clinical use.">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
-<link rel="stylesheet" href="/biolabs_style.css?v=185">
+<link rel="stylesheet" href="/biolabs_style.css?v=214">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -233,8 +233,8 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 @media(max-width:960px){.checkout-page{grid-template-columns:1fr;padding:32px 20px}}
 @media(max-width:640px){.form-row{grid-template-columns:1fr}}
 </style>
-<script src="/cart-vial.js?v=100"></script>
-<script src="/search-overlay.js?v=13"></script>
+<script src="/cart-vial.js?v=118"></script>
+<script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
 <div class="promo-stack" id="promoStack">
@@ -553,7 +553,7 @@ function renderSummary() {
         </div>
       </div>`;
   }).join('');
-  el.innerHTML += mountAddMore(cart);
+  mountAddMore(cart);
   totals.style.display = 'block';
   const sub = getSubtotal();
   const total = getTotal();
@@ -566,8 +566,11 @@ function renderSummary() {
 function changeQty(name, delta) {
   const item = cart.find(i => i.name === name);
   if (!item) return;
-  item.qty += delta;
-  if (item.qty <= 0) cart = cart.filter(i => i.name !== name);
+  if (item.gift || item.slug === 'research-solvent') { item.qty = 1; saveCart(); renderOrder(); return; }
+  var d = parseInt(delta, 10) || 0;
+  if (d <= -99 || item.qty + d <= 0) cart = cart.filter(i => i !== item && !(i.qty<=0));
+  else item.qty = item.qty + d;
+  cart = cart.filter(i => i && (parseInt(i.qty,10)||0) > 0);
   localStorage.setItem('biolabs_cart', JSON.stringify(cart));
   renderSummary();
 }
@@ -901,7 +904,7 @@ function showSuccess(orderData, paymentNote) {
 })();
 </script>
 <script src="/promo-bar.js?v=9"></script>
-<script src="/mg-picker.js?v=5"></script>
+<script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
 </body>
 </html>

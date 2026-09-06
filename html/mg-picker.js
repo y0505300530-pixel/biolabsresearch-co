@@ -18,7 +18,6 @@
     "tb-500": ["5mg", "10mg"],
     "retatrutide": ["10mg", "20mg"]
   };
-  var V = "96";
   function slugFromPath() {
     var m = location.pathname.match(/\/products\/([^/.]+)/);
     return m ? m[1] : "";
@@ -33,18 +32,26 @@
     var n = norm(mg);
     return n.replace("mg", " mg");
   }
-  function fileFor(slug, mg) {
-    // Always clean base vial art — mg lives in UI chips/picker, not baked stickers
-    return "/media/vial-" + slug + ".webp?v=130";
+  function fileFor(slug) {
+    return "/media/vial-" + slug + ".png?v=153";
+  }
+  function baseName(name) {
+    return String(name || "").replace(/\s*\([^)]*mg[^)]*\)\s*$/i, "").trim();
   }
   var MG = "";
   function setImgs(mg) {
     var slug = slugFromPath();
     if (!slug) return;
-    var src = fileFor(slug, mg);
+    var src = fileFor(slug);
     document.querySelectorAll("img").forEach(function (img) {
       var s = img.getAttribute("src") || "";
       if (s.indexOf("vial-" + slug) !== -1) img.src = src;
+    });
+  }
+  function hideNativeSize() {
+    document.querySelectorAll(".size-options, .size-label").forEach(function (el) {
+      el.style.display = "none";
+      el.setAttribute("data-mg-hidden", "1");
     });
   }
   function mount() {
@@ -55,15 +62,24 @@
     if (!MG) MG = opts[0];
     var host = document.getElementById("atc-btn");
     if (!host || !host.parentNode) return;
+    hideNativeSize();
     var wrap = document.getElementById("mgPicker");
     if (!wrap) {
       wrap = document.createElement("div");
       wrap.id = "mgPicker";
       wrap.className = "mg-picker";
-      host.parentNode.insertBefore(wrap, host);
+      /* Prefer above the qty+ATC flex row so Amount sits with price */
+      var row = host.parentNode;
+      if (row && row.parentNode && (row.style.display === "flex" || (row.getAttribute("style")||"").indexOf("display:flex")!==-1)) {
+        row.parentNode.insertBefore(wrap, row);
+      } else {
+        host.parentNode.insertBefore(wrap, host);
+      }
       wrap.addEventListener("click", function (e) {
         var b = e.target.closest("button[data-mg]");
         if (!b) return;
+        e.preventDefault();
+        e.stopPropagation();
         MG = b.getAttribute("data-mg");
         window._pdpMg = MG;
         wrap.querySelectorAll("button[data-mg]").forEach(function (x) {
@@ -79,7 +95,7 @@
         .map(function (mg, i) {
           var on = norm(mg) === norm(MG) || (!MG && i === 0);
           return (
-            '<button type="button" class="size-btn' +
+            '<button type="button" class="mg-btn' +
             (on ? " active on" : "") +
             '" data-mg="' +
             mg +
@@ -92,18 +108,52 @@
     window._pdpMg = MG;
     setImgs(MG);
   }
-  function stampCart() {
+  function readCartArr() {
+    if (typeof getCart === "function") {
+      try { return getCart(); } catch (e) {}
+    }
+    if (typeof cart !== "undefined" && Array.isArray(cart)) return cart;
     try {
-      if (typeof cart !== "undefined" && cart.length) {
-        var last = cart[cart.length - 1];
-        var slug = last.slug || slugFromPath();
-        last.mg = window._pdpMg || MG || listFor(slug)[0];
-        if (slug) last.imageUrl = fileFor(slug, last.mg);
-        if (typeof saveCart === "function") {
-          try { saveCart(cart); } catch (e) { saveCart(); }
+      return JSON.parse(localStorage.getItem("biolabs_cart") || localStorage.getItem("biofirst_cart") || "[]");
+    } catch (e) {
+      return [];
+    }
+  }
+  function writeCartArr(c) {
+    if (typeof saveCart === "function") {
+      try { saveCart(c); return; } catch (e) { try { saveCart(); return; } catch (e2) {} }
+    }
+    if (typeof cart !== "undefined") cart = c;
+    try { localStorage.setItem("biolabs_cart", JSON.stringify(c)); } catch (e) {}
+  }
+  /* Stamp mg ONLY after PDP Add — never from addSuggest / catalog */
+  function stampPdpLine() {
+    try {
+      if (!/\/products\//.test(location.pathname)) return;
+      var pdpSlug = slugFromPath();
+      if (!pdpSlug) return;
+      var mg = window._pdpMg || MG || listFor(pdpSlug)[0];
+      var c = readCartArr();
+      if (!c.length) return;
+      /* prefer line matching this slug (last match) */
+      var idx = -1;
+      for (var i = c.length - 1; i >= 0; i--) {
+        if (c[i] && !c[i].gift && (c[i].slug === pdpSlug || baseName(c[i].name).toLowerCase() === baseName(((document.querySelector(".product-title") || {}).textContent || "")).toLowerCase())) {
+          idx = i;
+          break;
         }
-        if (typeof renderCart === "function") renderCart();
       }
+      if (idx < 0) idx = c.length - 1;
+      var last = c[idx];
+      if (!last || last.gift) return;
+      last.mg = mg;
+      last.slug = pdpSlug;
+      last.name = baseName(last.name) || last.name;
+      last.imageUrl = fileFor(pdpSlug);
+      writeCartArr(c);
+      if (typeof cart !== "undefined") cart = c;
+      if (typeof updateBadge === "function") updateBadge();
+      if (typeof renderCart === "function") renderCart();
     } catch (e) {}
   }
   function patch() {
@@ -111,32 +161,56 @@
       var origT = window.addToCartTemplate;
       window.addToCartTemplate = function () {
         window._pdpMg = MG;
-        var r = origT.apply(this, arguments);
-        stampCart();
-        return r;
+        /* Override name/mg logic: clean name, dedicated mg field, merge by slug */
+        try {
+          var titleEl = document.querySelector(".product-title");
+          var name = baseName((titleEl && titleEl.textContent) || "Product");
+          var priceEl = document.getElementById("current-price") || document.querySelector(".price-main");
+          var price = parseFloat((priceEl ? priceEl.textContent : "0").replace(/[^0-9.]/g, "")) || 0;
+          var slug = slugFromPath();
+          var mg = window._pdpMg || MG || listFor(slug)[0];
+          var pdpQty = parseInt(document.getElementById("pdpQty") ? document.getElementById("pdpQty").textContent : "1", 10) || 1;
+          var c = readCartArr();
+          var ex = c.find(function (i) {
+            if (!i || i.gift) return false;
+            if (slug && i.slug === slug) {
+              /* same product: merge; keep mg in sync with PDP pick */
+              return true;
+            }
+            return baseName(i.name).toLowerCase() === name.toLowerCase();
+          });
+          if (ex) {
+            ex.qty += pdpQty;
+            ex.name = name;
+            ex.slug = slug;
+            ex.mg = mg;
+            ex.imageUrl = fileFor(slug);
+          } else {
+            c.push({ name: name, price: price, qty: pdpQty, slug: slug, mg: mg, imageUrl: fileFor(slug) });
+          }
+          writeCartArr(c);
+          if (typeof cart !== "undefined") cart = c;
+          if (typeof updateBadge === "function") updateBadge();
+          var btn = document.getElementById("atc-btn");
+          if (btn) {
+            var o = btn.textContent;
+            btn.textContent = "✓ Added!";
+            btn.style.background = "#2a7a4a";
+            setTimeout(function () { btn.textContent = o; btn.style.background = ""; }, 1800);
+          }
+          var _cd = document.getElementById("cartDrawer");
+          if (_cd && !_cd.classList.contains("open") && typeof toggleCart === "function") toggleCart();
+          else if (typeof renderCart === "function") renderCart();
+          return;
+        } catch (err) {
+          var r = origT.apply(this, arguments);
+          stampPdpLine();
+          return r;
+        }
       };
       window.addToCartTemplate._mg = 1;
     }
-    if (typeof window.addToCart === "function" && !window.addToCart._mg) {
-      var orig = window.addToCart;
-      window.addToCart = function () {
-        var r = orig.apply(this, arguments);
-        if (!window._pdpMg) window._pdpMg = MG || "10mg";
-        stampCart();
-        return r;
-      };
-      window.addToCart._mg = 1;
-    }
-    if (typeof window.addSuggest === "function" && !window.addSuggest._mg) {
-      var origS = window.addSuggest;
-      window.addSuggest = function () {
-        var r = origS.apply(this, arguments);
-        window._pdpMg = window._pdpMg || "10mg";
-        stampCart();
-        return r;
-      };
-      window.addSuggest._mg = 1;
-    }
+    /* Do NOT wrap addToCart (catalog) or addSuggest — no PDP mg stamp */
   }
   function applyApi(items) {
     if (!items || !items.length) return;

@@ -4938,3 +4938,82 @@ img.so-thumb,
   background: #F5F2EC !important;
 }
 
+
+/* split-hide-nums-v203 — no giant numbers over Singles/Blends copy */
+.split-card::before,.split-card::after,.split-photo::before,.split-body::before,
+.split-num,.split-index{content:none!important;display:none!important;background:none!important}
+
+
+/* CRM: catalog mg chips are display-only */
+
+
+.product-card-mg{cursor:default!important;pointer-events:none!important;user-select:none!important}
+.mg-picker{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px}
+.mg-picker-label{font-size:12px;font-weight:700;color:#0d2137;margin-right:4px}
+.mg-picker .mg-btn{padding:8px 16px;border:1.5px solid #0d2137;border-radius:999px;background:#fff;color:#0d2137;font-weight:800;font-size:13px;cursor:pointer}
+.mg-picker .mg-btn.on,.mg-picker .mg-btn.active{background:#0d2137;color:#fff}
+
+/* ELITE cart flex leftover height 20260904 */
+.cart-drawer{
+  height:100dvh !important;
+  max-height:100dvh !important;
+  min-height:0 !important;
+  overflow:hidden !important;
+  display:flex !important;
+  flex-direction:column !important;
+}
+.cart-header,
+.cart-footer,
+#cartProgress{flex:0 0 auto !important}
+.cart-footer{padding:14px 18px !important}
+.cart-drawer .cart-items{
+  flex:1 1 0% !important;
+  min-height:0 !important;
+  overflow-y:auto !important;
+  overscroll-behavior:contain !important;
+  -webkit-overflow-scrolling:touch;
+  padding:16px 20px !important;
+}
+#cartAddMore,.cart-addmore-slot{
+  flex:0 0 auto !important;
+  max-height:120px !important;
+  overflow:hidden !important;
+}
+.cart-addmore-track{overscroll-behavior:contain !important;overflow-y:hidden !important}
+#cartProgress.on{padding:8px 14px 10px !important}
+#cartProgress .cp-msg{font-size:12px !important;margin:0 0 6px !important}
+#cartProgress .cp-kicker{font-size:10px !important;margin:0 0 2px !important}
+#cartProgress .cp-track{height:8px !important;margin:4px 4px 14px !important}
+
+/* ELITE addmore slot stacking 20260904 */
+#cartAddMore,.cart-addmore-slot{
+  position:relative !important;
+  background:#fff !important;
+  z-index:1 !important;
+  flex:0 0 auto !important;
+  max-height:120px !important;
+  overflow:hidden !important;
+}
+.cart-drawer .cart-items{
+  position:relative;
+  z-index:0;
+  flex:1 1 0% !important;
+  min-height:0 !important;
+  overflow-y:auto !important;
+}
+
+
+/* CRM cart Yehuda: hide inquiry note, header clear, Add visible */
+.cart-note{display:none!important}
+.cart-drawer{z-index:10050!important}
+#cartOverlay.cart-overlay,.cart-overlay{z-index:10040!important}
+.cart-header{padding-top:max(16px,env(safe-area-inset-top))!important}
+#cartAddMore{max-height:168px!important;overflow:visible!important}
+/* cart header under sticky promo */
+.cart-drawer .cart-header{padding-top:max(28px, calc(env(safe-area-inset-top) + 12px)) !important}
+
+/* Catalog strength chips selectable */
+.product-card-mg{cursor:pointer!important;pointer-events:auto!important;user-select:none;border:1.5px solid #d5d0c8;background:#fff;color:#0d2137}
+button.product-card-mg{font:inherit}
+.product-card-mg.on,button.product-card-mg.on{background:#e8e4dc!important;border-color:#0d2137!important;font-weight:800!important}
+.product-card-mg:hover{border-color:#0d2137}
