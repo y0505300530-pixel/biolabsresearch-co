@@ -18,6 +18,14 @@
     '.cart-title{font-size:20px !important;font-weight:800 !important;line-height:1.2 !important;padding-top:2px !important}',
     '.cart-note,.cart-footer .cart-note{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
     '.cart-footer{padding:10px 16px 14px !important}',
+
+    /* Yehuda cart footer: hide Subtotal forever; footer perk is the unlock line */
+    '.cart-subtotal{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important}',
+    '#cartProgress .cp-unlocked{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
+    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:8px !important;min-height:40px !important;margin:0 0 14px !important;padding:10px 12px !important;border-radius:10px !important;background:#F7F1E4 !important;border:1px solid #E2D3B3 !important;color:#9A6D2A !important;white-space:nowrap !important;overflow:hidden !important}',
+    '.cart-inquiry-perk-icon{flex:0 0 auto !important;color:#9A6D2A !important;display:block !important;width:16px !important;height:16px !important}',
+    '.cart-inquiry-perk-text{flex:1 1 auto !important;font-size:14.5px !important;font-weight:600 !important;line-height:1.2 !important;color:#9A6D2A !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}',
+
     '.cart-footer .btn-continue{margin-top:8px !important}',
     '.cart-drawer{z-index:10050 !important}',
     '.cart-overlay.open,#cartOverlay.open{z-index:10040 !important}',
@@ -772,7 +780,7 @@ function addSuggest(slug, name, price){
     }).join('');
     var unlockedLine = '';
     if (st.unlocked){
-      unlockedLine = '<p class="cp-unlocked"><span>Unlocked</span>'+st.unlocked.prize+'</p>';
+      unlockedLine = ''; /* footer perk owns unlock copy */
     }
     el.innerHTML =
       '<p class="cp-kicker">Inquiry rewards</p>'+
