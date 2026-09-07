@@ -37,7 +37,7 @@
   "author": {"@type": "Organization", "name": "BioLabs Research"},
   "publisher": {"@type": "Organization", "name": "BioLabs Research", "logo": {"@type": "ImageObject", "url": "https://biolabsresearch.co/biolabsresearch-logo.png"}},
   "datePublished": "2026-09-04",
-  "dateModified": "2026-09-04",
+  "dateModified": "2026-09-08",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://biolabsresearch.co/blog/lot-coa-not-purity-percentage.html"}
 }
 </script>
@@ -82,12 +82,32 @@
 .ruo-note{background:#FFF9E6;border:1px solid #E8DFA8;border-radius:var(--radius-sm);padding:16px 20px;margin:24px 0;font-size:14px;color:var(--ink-soft)}
 .ruo-note strong{color:var(--brown)}
 .refs{font-size:14px;line-height:1.55}
-.article-thumb{width:min(280px,70%);margin:24px auto 8px;display:block;border-radius:var(--radius)}
+
 @media(max-width:768px){
   .article-hero{padding:60px 20px 30px}
   .article-hero h1{font-size:32px}
   .article-body{padding:0 20px 60px;font-size:16px}
 }
+
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:var(--ink);font-size:15px}
+.article-author span{display:block;color:var(--ink-muted);font-size:13px;margin-top:2px}
+.article-toc{background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:var(--bronze,#8B6914);font-weight:500;text-decoration:none}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:var(--bg-warm,#F7F3EB);border-radius:12px;overflow:hidden;border:1px solid var(--border-light,#E8E2D8)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:var(--ink);font-weight:600}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+
 </style>
 <script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -127,29 +147,81 @@
 
 <div class="article-hero">
   <h1>Lot COA, not a purity percentage</h1>
-  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research</span>·<span>5 min read</span></div>
+  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research Scientific Editorial</span>·<span>9 min read</span></div>
   <p class="lede">How we read identity and purity fields on a certificate — without inventing numbers.</p>
 </div>
 <div class="article-body">
-<img src="/media/coa-trace.png" alt="Lot COA traceability — purity is not a single percentage" class="article-img" loading="lazy"><p class="article-img-caption">Lot COA traceability — purity is not a single percentage</p>
-<img src="/media/vial-bpc-157.png?v=153" alt="Catalog vial — lot COA identity note" class="article-img" loading="lazy"><p class="article-img-caption">Catalog vial — lot COA identity note</p>
+
+<div class="article-author">
+  <img src="/media/logo-b.png" alt="BioLabs Research mark" class="article-author-avatar" width="56" height="56" loading="lazy">
+  <div>
+    <strong>BioLabs Research Scientific Editorial</strong>
+    <span>Catalog identity notes</span>
+  </div>
+</div>
+
+<img src="/media/coa-trace.png" alt="Lot certificate of analysis traceability diagram — purity fields are method-bound and lot-specific" class="article-img" loading="lazy">
+<p class="article-img-caption">A COA is lot paper, not a marketing badge reused across SKUs.</p>
+
+
 <div class="ruo-note"><strong>RUO.</strong> Laboratory purchasing note. Not for human or veterinary use. Not a medicine. We do not invent HPLC area% or net peptide content on this page — those values, when issued, live on the lot certificate.</div>
+
+<div class="article-toc"><strong>On this page</strong>
+<ol>
+<li><a href="#what-coa">What a COA is for</a></li>
+<li><a href="#identity">Identity fields vs purity fields</a></li>
+<li><a href="#table">Field checklist</a></li>
+<li><a href="#hplc-npc">HPLC area% is not NPC</a></li>
+<li><a href="#references">References</a></li>
+</ol></div>
 
 <p>A Certificate of Analysis (COA) is lot paper, not a marketing badge. It is tied to a batch identifier. The useful fields are identity (what molecule was measured) and purity-related measurements (how that measurement was run). A storefront number that is not on that certificate is not lot data.</p>
 
-<p>Identity on a peptide COA usually means sequence or structure as named, a CAS or equivalent registry when applicable, theoretical mass, and an observed mass (often from MS). If the sequence line and the observed mass disagree, stop. Do not “average” them into a purity percentage. Confirm the SKU against the paper before the experiment starts.</p>
+<img src="/media/blog-lifestyle/peptide-purity-and-coa-explained-2.png" alt="Laboratory scientist recording identity and purity fields from lot paperwork onto a clipboard at the bench" class="article-img" loading="lazy">
+<p class="article-img-caption">Confirm SKU against the certificate before the material enters inventory.</p>
 
-<p>Purity fields are method-dependent. HPLC area percent is a UV chromatogram ratio under one method ID — not milligrams of peptide in the vial, and not net peptide content (NPC). Residual solvents, counter-ion (e.g. TFA), and water can all change how much peptide you actually weigh. Those distinctions belong on the COA when the lab reports them; they are not something a blog invents.</p>
 
-<p>When we say “COA on request,” we mean the lot document for that shipment — not a house purity claim reused across SKUs. If a field is blank, ask for it. If a percentage appears only on a product card and not on the certificate, treat it as missing. Related reading: <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC area percent vs net peptide content</a> and <a href="/blog/peptide-purity-and-coa-explained.html">Peptide purity and COA explained</a>.</p>
+<h2 id="what-coa">What a COA is for</h2>
+<p>When we say “COA on request,” we mean the lot document for that shipment — not a house purity claim reused across SKUs. If a field is blank, ask for it. If a percentage appears without a method ID, treat it as incomplete. Lot paper should travel with the vial through receiving.</p>
 
-<p>Contact for lot paper questions: <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>. Catalog listings remain research-use-only reagents. Match CAS, sequence, and mass on the COA to the vial label before you open the lot.</p>
+<h2 id="identity">Identity fields vs purity fields</h2>
+<p>Identity on a peptide COA usually means sequence or structure as named, a CAS or equivalent registry when applicable, theoretical mass, and an observed mass (often from MS). If the sequence line and the observed mass disagree, stop. Do not “average” them into a purity percentage.</p>
+<p>Purity fields are method-dependent. HPLC area percent is a UV chromatogram ratio under one method ID — not milligrams of peptide in the vial, and not net peptide content (NPC). Residual solvents, counter-ion (for example TFA), and water can all change how much peptide you actually weigh. Those distinctions belong on the COA when the lab reports them; they are not something a blog invents.</p>
 
-<div class="article-cta">
-  <h3>Read the HPLC vs NPC note</h3>
-  <p>Area% is not milligrams. Method ID matters.</p>
-  <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">Open the HPLC note →</a>
-</div>
+<img src="/media/vial-bpc-157.png?v=153" alt="Catalog research vial illustrating that lot COA identity notes belong with the physical reagent" class="article-img" loading="lazy">
+<p class="article-img-caption">Keep lot paper with the vial — identity and purity fields are batch-specific.</p>
+
+
+<h2 id="table">Field checklist</h2>
+<table>
+<thead><tr><th>Field</th><th>What “good” looks like</th><th>Common failure</th></tr></thead>
+<tbody>
+<tr><td>Lot / batch ID</td><td>Matches the carton and invoice</td><td>Generic “house COA” with no lot</td></tr>
+<tr><td>Sequence / structure</td><td>Printed and matches the SKU card</td><td>Nickname only</td></tr>
+<tr><td>CAS (if applicable)</td><td>Matches the named structure</td><td>Wrong CAS borrowed from a related peptide</td></tr>
+<tr><td>Observed mass (MS)</td><td>Consistent with theoretical mass</td><td>Missing MS with only HPLC%</td></tr>
+<tr><td>HPLC area%</td><td>Method ID + wavelength stated</td><td>Orphan percentage with no method</td></tr>
+<tr><td>NPC / counter-ion / water</td><td>Reported when claimed for weighing</td><td>Treating HPLC% as milligrams in the vial</td></tr>
+</tbody>
+</table>
+
+<h2 id="hplc-npc">HPLC area% is not NPC</h2>
+<p>Read the longer walkthrough: <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC area percent is not net peptide content</a>. Also useful: <a href="/blog/peptide-purity-and-coa-explained.html">Peptide purity and COA explained</a>. For blend vials, remember two CAS lines — see <a href="/blog/one-vial-two-cas-numbers.html">One vial, two CAS numbers</a>.</p>
+<p>Public compound identity for a listed example such as BPC-157 should be checked on PubChem when you are confirming a CAS/CID pair on receiving paperwork (search the CAS printed on your lot COA at <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a>).</p>
+
+<div class="article-cta"><h3>Request lot paper with your order</h3><p>Listed reagents. Research use only.</p><a href="/#catalog">Open catalog →</a></div>
+
+<div class="related-posts"><h3>Related notes</h3><div class="related-grid">
+<a class="related-card" href="/blog/hplc-area-percent-vs-net-peptide-content.html"><img src="/media/explain-hplc.png" alt="" loading="lazy"><span>HPLC% vs NPC</span></a>
+<a class="related-card" href="/blog/peptide-purity-and-coa-explained.html"><img src="/media/coa-trace.png" alt="" loading="lazy"><span>Purity &amp; COA explained</span></a>
+<a class="related-card" href="/blog/shipping-cold-chain-research-reagents.html"><img src="/media/tile-shipping.png" alt="" loading="lazy"><span>Cold-chain packing</span></a>
+</div></div>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li>PubChem compound search for CAS/CID verification on receiving. <a href="https://pubchem.ncbi.nlm.nih.gov/">https://pubchem.ncbi.nlm.nih.gov/</a></li>
+<li>BioLabs Research: <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC area percent vs net peptide content</a>.</li>
+</ol>
 
 </div>
 

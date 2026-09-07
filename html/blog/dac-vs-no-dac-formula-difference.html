@@ -37,7 +37,7 @@
   "author": {"@type": "Organization", "name": "BioLabs Research"},
   "publisher": {"@type": "Organization", "name": "BioLabs Research", "logo": {"@type": "ImageObject", "url": "https://biolabsresearch.co/biolabsresearch-logo.png"}},
   "datePublished": "2026-09-04",
-  "dateModified": "2026-09-04",
+  "dateModified": "2026-09-08",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://biolabsresearch.co/blog/dac-vs-no-dac-formula-difference.html"}
 }
 </script>
@@ -82,12 +82,32 @@
 .ruo-note{background:#FFF9E6;border:1px solid #E8DFA8;border-radius:var(--radius-sm);padding:16px 20px;margin:24px 0;font-size:14px;color:var(--ink-soft)}
 .ruo-note strong{color:var(--brown)}
 .refs{font-size:14px;line-height:1.55}
-.article-thumb{width:min(280px,70%);margin:24px auto 8px;display:block;border-radius:var(--radius)}
+
 @media(max-width:768px){
   .article-hero{padding:60px 20px 30px}
   .article-hero h1{font-size:32px}
   .article-body{padding:0 20px 60px;font-size:16px}
 }
+
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:var(--ink);font-size:15px}
+.article-author span{display:block;color:var(--ink-muted);font-size:13px;margin-top:2px}
+.article-toc{background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:var(--bronze,#8B6914);font-weight:500;text-decoration:none}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:var(--bg-warm,#F7F3EB);border-radius:12px;overflow:hidden;border:1px solid var(--border-light,#E8E2D8)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:var(--ink);font-weight:600}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+
 </style>
 <script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -127,29 +147,86 @@
 
 <div class="article-hero">
   <h1>DAC vs no-DAC is a formula difference</h1>
-  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research</span>·<span>5 min read</span></div>
+  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research Scientific Editorial</span>·<span>9 min read</span></div>
   <p class="lede">Why the storefront name is not the molecular identity.</p>
 </div>
 <div class="article-body">
-<img src="/media/blog-topic/dac-vs-no-dac-formula-difference-1.png" alt="DAC vs no-DAC formula difference on the label" class="article-img" loading="lazy"><p class="article-img-caption">DAC vs no-DAC formula difference — side-by-side peptide identity</p>
-<img src="/media/vial-tesamorelin-ipamorelin.png?v=153" alt="Tesamorelin / Ipamorelin catalog vial" class="article-img" loading="lazy"><p class="article-img-caption">Tesamorelin / Ipamorelin catalog vial</p>
-<div class="ruo-note"><strong>RUO.</strong> Identity note. Laboratory context only. Not for human or veterinary use. This site does not invent HPLC% for molecules it does not list as catalog SKUs.</div>
+
+<div class="article-author">
+  <img src="/media/logo-b.png" alt="BioLabs Research mark" class="article-author-avatar" width="56" height="56" loading="lazy">
+  <div>
+    <strong>BioLabs Research Scientific Editorial</strong>
+    <span>Catalog identity notes</span>
+  </div>
+</div>
+
+<img src="/media/blog-topic/dac-vs-no-dac-formula-difference-1.png" alt="DAC versus no-DAC peptide formula difference shown as separate molecular identities on laboratory labels" class="article-img" loading="lazy">
+<p class="article-img-caption">DAC vs no-DAC is a formula and mass difference — not a storefront nickname.</p>
+
+
+<div class="ruo-note"><strong>RUO.</strong> Identity note. Laboratory context only. Not for human or veterinary use. This site does not invent HPLC% for molecules it does not list as catalog SKUs. CJC-1295 (with or without DAC) is not a catalog SKU here.</div>
+
+<div class="article-toc"><strong>On this page</strong>
+<ol>
+<li><a href="#what-dac">What “DAC” usually means on paper</a></li>
+<li><a href="#two-molecules">Two molecules, not one nickname</a></li>
+<li><a href="#table">Side-by-side checklist</a></li>
+<li><a href="#what-we-list">What this catalog actually lists</a></li>
+<li><a href="#references">References</a></li>
+</ol></div>
 
 <p>“DAC” in peptide listings usually points to a Drug Affinity Complex-style chemical modification — commonly a maleimidopropionyl handle on a lysine — that changes formula and mass relative to the unmodified backbone. “No DAC” (or modified GRF 1-29 in the CJC-1295 naming cluster) is a different molecule. The storefront nickname is not the discriminator; the formula and observed mass are.</p>
 
-<p>Public records treat CJC-1295 with DAC and without DAC as separate backbones (different formulae, different nominal masses). CAS numbers in circulation have been mis-paired with those nicknames. Believe the structure and MS result on the lot COA, not the marketing label. A longer walkthrough lives on our note: <a href="/blog/cjc-1295-dac-vs-modified-grf-identity.html">CJC-1295 with DAC and without DAC are different molecules</a>.</p>
+<img src="/media/blog-lifestyle/hplc-area-percent-vs-net-peptide-content-2.png" alt="Scientist in a laboratory inspecting a glass vial while reviewing lot identity against analytical paperwork" class="article-img" loading="lazy">
+<p class="article-img-caption">Believe structure and MS on the lot COA — not the marketing label alone.</p>
 
-<p>This catalog does not list CJC-1295 (with or without DAC) as a SKU. The GHRH-class blend that is listed is <a href="https://biolabsresearch.co/products/tesamorelin-ipamorelin">tesamorelin / ipamorelin</a> — two named components with their own CAS lines. Do not map a DAC nickname onto that blend.</p>
 
-<p>When a PO or COA uses a nickname that can mean two formulae, require the certificate to print formula (or sequence plus modification) and observed mass. If the paper only says “CJC-1295” with no DAC flag and no mass, identity is unresolved. We will not fill that gap with a house purity number.</p>
+<h2 id="what-dac">What “DAC” usually means on paper</h2>
+<p>Public records and vendor literature treat CJC-1295 with DAC and CJC-1295 without DAC as separate backbones: different formulae, different nominal masses. CAS numbers in circulation have been mis-paired with those nicknames. A certificate that only says “CJC-1295” with no DAC flag and no mass leaves identity unresolved.</p>
+<p>A longer walkthrough lives on <a href="/blog/cjc-1295-dac-vs-modified-grf-identity.html">CJC-1295 with DAC and without DAC are different molecules</a>. Use that note when a PO template collapses both into one line item.</p>
 
-<p>For purchasing questions on listed SKUs, write <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>. Match the lot paper to the catalog card before the experiment — not the other way around.</p>
+<h2 id="two-molecules">Two molecules, not one nickname</h2>
+<p>When purchasing teams inherit a nickname from an older quote, require the supplier to print:</p>
+<ul>
+<li>Sequence (or backbone) plus modification flag (DAC / no DAC / maleimidopropionyl-Lys, etc.)</li>
+<li>Molecular formula or theoretical exact mass</li>
+<li>Observed intact mass (MS)</li>
+<li>Method ID for any HPLC area% reported</li>
+</ul>
+<p>If those fields disagree, do not average them into a purity percentage. Stop and correct the paper before receiving.</p>
 
-<div class="article-cta">
-  <h3>What we actually list</h3>
-  <p>Tesamorelin and ipamorelin as named components — not CJC-1295.</p>
-  <a href="https://biolabsresearch.co/products/tesamorelin-ipamorelin">View that blend →</a>
-</div>
+<img src="/media/vial-tesamorelin-ipamorelin.png?v=153" alt="Tesamorelin and Ipamorelin blend catalog vial — two named components with separate identity lines" class="article-img" loading="lazy">
+<p class="article-img-caption">Listed GHRH-class blend on this site: tesamorelin / ipamorelin — two CAS lines, not a DAC nickname.</p>
+
+
+<h2 id="table">Side-by-side checklist</h2>
+<table>
+<thead><tr><th>Label language</th><th>What to demand on the COA</th><th>On this catalog?</th></tr></thead>
+<tbody>
+<tr><td>“CJC-1295 with DAC”</td><td>Modification + formula + observed mass</td><td>Not listed</td></tr>
+<tr><td>“CJC-1295 no DAC” / mod GRF 1-29</td><td>Unmodified (or differently modified) backbone + mass</td><td>Not listed</td></tr>
+<tr><td>“CJC-1295” with no flag</td><td>Identity unresolved — reject until clarified</td><td>Not listed</td></tr>
+<tr><td>Tesamorelin / Ipamorelin blend</td><td>Both component CAS, sequences, masses</td><td>Listed blend</td></tr>
+</tbody>
+</table>
+
+<h2 id="what-we-list">What this catalog actually lists</h2>
+<p>This catalog does not list CJC-1295 (with or without DAC) as a SKU. The GHRH-class blend that is listed is <a href="https://biolabsresearch.co/products/tesamorelin-ipamorelin">tesamorelin / ipamorelin</a> — two named components with their own CAS lines. Do not map a DAC nickname onto that blend. See <a href="/blog/tesamorelin-ipamorelin-blend-identity.html">Tesamorelin / Ipamorelin blend identity</a> and <a href="/blog/one-vial-two-cas-numbers.html">One vial, two CAS numbers</a>.</p>
+<p>HPLC area% remains a UV ratio under one method. Read <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC vs NPC</a> before treating any percentage as net peptide content.</p>
+
+<div class="article-cta"><h3>Browse listed reagents</h3><p>Named SKUs and named blends only. Research use only.</p><a href="/#catalog">Open catalog →</a></div>
+
+<div class="related-posts"><h3>Related notes</h3><div class="related-grid">
+<a class="related-card" href="/blog/cjc-1295-dac-vs-modified-grf-identity.html"><img src="/media/blog-topic/cjc-1295-dac-vs-modified-grf-identity-1.png" alt="" loading="lazy"><span>CJC-1295 DAC identity</span></a>
+<a class="related-card" href="/blog/tesamorelin-ipamorelin-blend-identity.html"><img src="/media/blog-topic/tesamorelin-ipamorelin-blend-identity-1.png" alt="" loading="lazy"><span>Tesamorelin / Ipamorelin</span></a>
+<a class="related-card" href="/blog/catalog-skus-vs-research-analogues.html"><img src="/media/blog-topic/catalog-skus-vs-research-analogues-1.png" alt="" loading="lazy"><span>SKUs vs analogues</span></a>
+</div></div>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li>PubChem search entry points for CJC-1295-related records — verify formula and substituents on the specific CID you intend to order; do not rely on the nickname alone. Start at <a href="https://pubchem.ncbi.nlm.nih.gov/">https://pubchem.ncbi.nlm.nih.gov/</a>.</li>
+<li>BioLabs Research identity note: <a href="/blog/cjc-1295-dac-vs-modified-grf-identity.html">CJC-1295 with DAC vs without DAC</a>.</li>
+</ol>
 
 </div>
 

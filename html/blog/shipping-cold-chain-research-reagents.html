@@ -37,7 +37,7 @@
   "author": {"@type": "Organization", "name": "BioLabs Research"},
   "publisher": {"@type": "Organization", "name": "BioLabs Research", "logo": {"@type": "ImageObject", "url": "https://biolabsresearch.co/biolabsresearch-logo.png"}},
   "datePublished": "2026-09-04",
-  "dateModified": "2026-09-04",
+  "dateModified": "2026-09-08",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://biolabsresearch.co/blog/shipping-cold-chain-research-reagents.html"}
 }
 </script>
@@ -82,12 +82,32 @@
 .ruo-note{background:#FFF9E6;border:1px solid #E8DFA8;border-radius:var(--radius-sm);padding:16px 20px;margin:24px 0;font-size:14px;color:var(--ink-soft)}
 .ruo-note strong{color:var(--brown)}
 .refs{font-size:14px;line-height:1.55}
-.article-thumb{width:min(280px,70%);margin:24px auto 8px;display:block;border-radius:var(--radius)}
+
 @media(max-width:768px){
   .article-hero{padding:60px 20px 30px}
   .article-hero h1{font-size:32px}
   .article-body{padding:0 20px 60px;font-size:16px}
 }
+
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:var(--ink);font-size:15px}
+.article-author span{display:block;color:var(--ink-muted);font-size:13px;margin-top:2px}
+.article-toc{background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:var(--bronze,#8B6914);font-weight:500;text-decoration:none}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:var(--bg-warm,#F7F3EB);border-radius:12px;overflow:hidden;border:1px solid var(--border-light,#E8E2D8)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:var(--ink);font-weight:600}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+
 </style>
 <script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -127,29 +147,85 @@
 
 <div class="article-hero">
   <h1>Shipping cold-chain for research reagents</h1>
-  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research</span>·<span>5 min read</span></div>
+  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research Scientific Editorial</span>·<span>8 min read</span></div>
   <p class="lede">How temperature-sensitive lots leave the warehouse.</p>
 </div>
 <div class="article-body">
-<img src="/media/tile-shipping.png" alt="Cold-chain packing for research reagents" class="article-img" loading="lazy"><p class="article-img-caption">Cold-chain packing for research reagents</p>
-<img src="/media/research-solvent.png?v=2" alt="Research solvent packing for cold-chain lots" class="article-img" loading="lazy"><p class="article-img-caption">Research solvent packing for cold-chain lots</p>
-<div class="ruo-note"><strong>RUO.</strong> Fulfilment note for laboratory catalog shipments. Not for human or veterinary use. No reconstitution, administration, or dosing language — packing only.</div>
 
-<p>Temperature-sensitive research lots leave the warehouse with cold-chain packing when the SKU requires it. That packing rides on the same two carrier options shown at checkout and on the <a href="https://biolabsresearch.co/shipping.html">shipping policy</a>: USPS Ground Advantage (standard) and UPS 2nd Day Air (express). Cold-chain is packaging for the lot — not a third carrier.</p>
+<div class="article-author">
+  <img src="/media/logo-b.png" alt="BioLabs Research mark" class="article-author-avatar" width="56" height="56" loading="lazy">
+  <div>
+    <strong>BioLabs Research Scientific Editorial</strong>
+    <span>Catalog identity notes</span>
+  </div>
+</div>
 
+<img src="/media/tile-shipping.png" alt="Cold-chain packing illustration for temperature-sensitive research reagent shipments" class="article-img" loading="lazy">
+<p class="article-img-caption">Cold-chain is packaging for the lot — not a third carrier option.</p>
+
+
+<div class="ruo-note"><strong>RUO.</strong> Fulfilment note for laboratory catalog shipments. Not for human or veterinary use. No reconstitution, administration, or dosing language — packing and documentation only.</div>
+
+<div class="article-toc"><strong>On this page</strong>
+<ol>
+<li><a href="#packing">What cold-chain packing means here</a></li>
+<li><a href="#carriers">Carriers and timelines</a></li>
+<li><a href="#docs">Documents that travel with the lot</a></li>
+<li><a href="#table">Receiving checklist</a></li>
+<li><a href="#references">References</a></li>
+</ol></div>
+
+<p>Temperature-sensitive research lots leave the warehouse with cold-chain packing when the SKU requires it. That packing rides on the same carrier options shown at checkout and on the <a href="/shipping.html">shipping policy</a>: USPS Ground Advantage (standard) and UPS 2nd Day Air (express). Cold-chain is packaging for the lot — not a third carrier SKU.</p>
+
+<img src="/media/science-hero-lab.webp" alt="Analytical laboratory bench where research lots are checked in after cold-chain transit" class="article-img" loading="lazy">
+<p class="article-img-caption">On arrival, follow the SKU storage notes and keep lot paper with the vial.</p>
+
+
+<h2 id="packing">What cold-chain packing means here</h2>
+<p>Priority cold-chain packing is described on the shipping page as an inquiry reward threshold, not a separate shipping method. Do not assume ambient transit is appropriate for every peptide lot. Storage conditions after arrival belong on the product/SKU notes and on the lot paperwork — this article does not invent storage temperatures for every SKU.</p>
 <p>Inquiries are processed within 1–2 business days of confirmation. Research compounds require verification of intended laboratory use before shipment. Tracking is emailed once the order ships. Status questions go to <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>.</p>
 
-<p>Priority cold-chain packing is described on the shipping page as an inquiry reward threshold, not a separate shipping method. International DDP to select markets is available after inquiry confirmation; purchasers remain responsible for import rules in their jurisdiction. CoA, SDS, and origin documents can be provided to support clearance when needed.</p>
+<img src="/media/ship-pack-biolabs.png" alt="BioLabs Research ship-ready pack presentation used for catalog reagent fulfilment" class="article-img" loading="lazy">
+<p class="article-img-caption">Ship-ready presentation for catalog reagents — packing supports the lot, it does not redefine identity.</p>
 
-<p>If a shipment arrives damaged or is lost in transit, contact us within 48 hours with the order number so we can arrange replacement or refund per the shipping policy. Do not assume ambient transit is appropriate for every peptide lot — follow the SKU’s storage notes on arrival and keep lot paper with the vial.</p>
 
-<p>This article does not invent cutoffs, transit temperatures, or storage protocols beyond what the shipping page already states. For carrier choice and packing questions on a confirmed inquiry, use <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>.</p>
+<h2 id="carriers">Carriers and timelines</h2>
+<ul>
+<li>USPS Ground Advantage — standard option at checkout</li>
+<li>UPS 2nd Day Air — express option at checkout</li>
+<li>International DDP to select markets — after inquiry confirmation; purchasers remain responsible for import rules in their jurisdiction</li>
+</ul>
+<p>If a shipment arrives damaged or is lost in transit, contact us within 48 hours with the order number so we can arrange replacement or refund per the shipping policy.</p>
 
-<div class="article-cta">
-  <h3>Shipping policy</h3>
-  <p>Carriers, processing, and cold-chain notes — as published.</p>
-  <a href="https://biolabsresearch.co/shipping.html">Read shipping →</a>
-</div>
+<h2 id="docs">Documents that travel with the lot</h2>
+<p>CoA, SDS, and origin documents can be provided to support clearance when needed. Identity on the COA still follows the same rules as the identity blog notes: sequence/structure, registry numbers when applicable, and observed mass. A shipping carton does not create a CAS number. For purity field literacy see <a href="/blog/lot-coa-not-purity-percentage.html">Lot COA is not a purity percentage</a>.</p>
+<p>Public compound pages (for example via <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a>) help receiving teams verify that the CAS on inbound paper matches the intended SKU — they are not shipping instructions.</p>
+
+<h2 id="table">Receiving checklist</h2>
+<table>
+<thead><tr><th>Check</th><th>Pass looks like</th><th>Escalate when</th></tr></thead>
+<tbody>
+<tr><td>Outer pack integrity</td><td>No crush/puncture; cold-pack present if required</td><td>Damage or missing cold-pack on a cold-chain SKU</td></tr>
+<tr><td>Label vs PO</td><td>SKU name and lot ID match the order</td><td>Nickname-only label with no lot</td></tr>
+<tr><td>COA present / on request</td><td>Lot ID matches carton</td><td>House PDF with no batch ID</td></tr>
+<tr><td>Storage on arrival</td><td>Follow SKU storage notes immediately</td><td>Unknown storage conditions on the card</td></tr>
+<tr><td>Damage window</td><td>Report within 48 hours with order number</td><td>Silent discard without contacting support</td></tr>
+</tbody>
+</table>
+
+<div class="article-cta"><h3>Read the shipping policy</h3><p>Carriers, cold-chain packing, and inquiry steps. Research use only.</p><a href="/shipping.html">Shipping policy →</a></div>
+
+<div class="related-posts"><h3>Related notes</h3><div class="related-grid">
+<a class="related-card" href="/blog/lot-coa-not-purity-percentage.html"><img src="/media/coa-trace.png" alt="" loading="lazy"><span>Lot COA ≠ purity %</span></a>
+<a class="related-card" href="/blog/buying-research-peptides-online-guide-2026.html"><img src="/media/blog-topic/buying-research-peptides-online-guide-2026-1.png" alt="" loading="lazy"><span>Buying guide 2026</span></a>
+<a class="related-card" href="/blog/peptide-purity-and-coa-explained.html"><img src="/media/coa-trace.png" alt="" loading="lazy"><span>Purity &amp; COA</span></a>
+</div></div>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li>BioLabs Research shipping policy: <a href="https://biolabsresearch.co/shipping.html">https://biolabsresearch.co/shipping.html</a></li>
+<li>PubChem for CAS/CID verification on receiving paperwork: <a href="https://pubchem.ncbi.nlm.nih.gov/">https://pubchem.ncbi.nlm.nih.gov/</a></li>
+</ol>
 
 </div>
 

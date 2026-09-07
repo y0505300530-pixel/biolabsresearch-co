@@ -37,7 +37,7 @@
   "author": {"@type": "Organization", "name": "BioLabs Research"},
   "publisher": {"@type": "Organization", "name": "BioLabs Research", "logo": {"@type": "ImageObject", "url": "https://biolabsresearch.co/biolabsresearch-logo.png"}},
   "datePublished": "2026-09-04",
-  "dateModified": "2026-09-04",
+  "dateModified": "2026-09-08",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://biolabsresearch.co/blog/catalog-skus-vs-research-analogues.html"}
 }
 </script>
@@ -82,12 +82,32 @@
 .ruo-note{background:#FFF9E6;border:1px solid #E8DFA8;border-radius:var(--radius-sm);padding:16px 20px;margin:24px 0;font-size:14px;color:var(--ink-soft)}
 .ruo-note strong{color:var(--brown)}
 .refs{font-size:14px;line-height:1.55}
-.article-thumb{width:min(280px,70%);margin:24px auto 8px;display:block;border-radius:var(--radius)}
+
 @media(max-width:768px){
   .article-hero{padding:60px 20px 30px}
   .article-hero h1{font-size:32px}
   .article-body{padding:0 20px 60px;font-size:16px}
 }
+
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:var(--ink);font-size:15px}
+.article-author span{display:block;color:var(--ink-muted);font-size:13px;margin-top:2px}
+.article-toc{background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:var(--bronze,#8B6914);font-weight:500;text-decoration:none}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:var(--bg-warm,#F7F3EB);border-radius:12px;overflow:hidden;border:1px solid var(--border-light,#E8E2D8)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:var(--ink);font-weight:600}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+
 </style>
 <script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -127,29 +147,84 @@
 
 <div class="article-hero">
   <h1>Catalog SKUs vs research analogues</h1>
-  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research</span>·<span>5 min read</span></div>
+  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research Scientific Editorial</span>·<span>9 min read</span></div>
   <p class="lede">Melanotan II and other analogues that are not listed here — and why.</p>
 </div>
 <div class="article-body">
-<img src="/media/blog-topic/catalog-skus-vs-research-analogues-1.png" alt="Catalog SKUs vs research analogues — identity on the label" class="article-img" loading="lazy"><p class="article-img-caption">Catalog SKUs vs research analogues — identity for purchasing</p>
-<img src="/media/vial-aod-9604.png?v=153" alt="AOD-9604 catalog vial" class="article-img" loading="lazy"><p class="article-img-caption">AOD-9604 catalog vial</p>
-<div class="ruo-note"><strong>RUO.</strong> Catalog scope note. Not for human or veterinary use. Absence from this catalog is not a purity claim about any other vendor’s lot.</div>
 
-<p>This storefront lists a fixed set of research reagents. A name that circulates in the wider research literature is not automatically a SKU here. Identity notes on the blog exist so purchasing teams can tell catalog cards from analogues we do not stock.</p>
-
-<p><strong>Melanotan II</strong> is a cyclic α-MSH analogue (commonly described as Ac-Nle-cyclo[Asp-His-D-Phe-Arg-Trp-Lys]-NH2, CAS 121062-08-6 in public listings). It is <em>not</em> listed in this catalog. It is also not KPV (α-MSH 11–13). See <a href="/blog/melanotan-ii-identity.html">Melanotan II is a cyclic α-MSH analogue, not a catalog SKU</a> and <a href="/blog/kpv-alpha-msh-11-13-identity.html">KPV is α-MSH 11–13</a>.</p>
-
-<p>The same rule applies to other nicknames that collide with listed fragments: CJC-1295 with/without DAC is not a catalog SKU here; TB-500 on this site is the Ac-LKKTETQ fragment listing, not intact thymosin β4; named blends without component CAS are not single substances. Those boundaries are on the identity posts linked from <a href="/blog/">the blog index</a>.</p>
-
-<p>Why omit some analogues? Catalog scope is deliberate: we only publish cards we can support with named identity fields and lot paper on request. An analogue may be well-known in public databases and still absent from the storefront. Do not infer that a blog identity note means the compound is for sale.</p>
-
-<p>If you need a listed reagent, match the product page CAS and sequence to the lot COA. For scope questions: <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>. Related catalog example that <em>is</em> listed: <a href="https://biolabsresearch.co/products/aod-9604">AOD-9604</a> (sequence/CAS identity on the card — see <a href="/blog/aod-9604-hgh-fragment-identity.html">AOD-9604 vs hGH 177–191</a>).</p>
-
-<div class="article-cta">
-  <h3>Browse the catalog</h3>
-  <p>Named SKUs only. Research use only.</p>
-  <a href="/#catalog">Open catalog →</a>
+<div class="article-author">
+  <img src="/media/logo-b.png" alt="BioLabs Research mark" class="article-author-avatar" width="56" height="56" loading="lazy">
+  <div>
+    <strong>BioLabs Research Scientific Editorial</strong>
+    <span>Catalog identity notes</span>
+  </div>
 </div>
+
+<img src="/media/blog-topic/catalog-skus-vs-research-analogues-1.png" alt="Catalog SKUs versus research analogues — matching label identity to what the storefront actually lists" class="article-img" loading="lazy">
+<p class="article-img-caption">A research literature name is not automatically a catalog SKU.</p>
+
+
+<div class="ruo-note"><strong>RUO.</strong> Catalog scope note for laboratory purchasing. Not for human or veterinary use. Absence from this catalog is not a purity claim about any other vendor’s lot. We do not invent HPLC% for molecules we do not list.</div>
+
+<div class="article-toc"><strong>On this page</strong>
+<ol>
+<li><a href="#rule">The storefront rule</a></li>
+<li><a href="#examples">Examples that collide with listed names</a></li>
+<li><a href="#compare">Comparison table</a></li>
+<li><a href="#docs">What to put on the PO and COA</a></li>
+<li><a href="#references">References</a></li>
+</ol></div>
+
+<p>This storefront lists a fixed set of research reagents. A name that circulates in the wider research literature is not automatically a SKU here. Identity notes on the blog exist so purchasing teams can tell catalog cards from analogues we do not stock — before a purchase order is cut and before a lot is booked into LIMS.</p>
+
+<img src="/media/blog-lifestyle/buying-research-peptides-online-guide-2026-2.png" alt="Research purchaser reviewing catalog identity fields on a laptop with a laboratory visible through glass" class="article-img" loading="lazy">
+<p class="article-img-caption">Buyers should match CAS and sequence on the product card to the lot certificate — not to a nickname alone.</p>
+
+
+<h2 id="rule">The storefront rule</h2>
+<p>We only publish product cards we can support with named identity fields (sequence or structure, registry numbers when applicable) and lot paper on request. An analogue may be well-known in public databases and still absent from the storefront. Do not infer that a blog identity note means the compound is for sale.</p>
+<p><strong>Melanotan II</strong> is the clearest example: a cyclic α-MSH analogue (commonly Ac-Nle-cyclo[Asp-His-D-Phe-Arg-Trp-Lys]-NH2, CAS 121062-08-6 in public listings; <a href="https://pubchem.ncbi.nlm.nih.gov/compound/92432">PubChem CID 92432</a>). It is not listed here. It is also not KPV. See <a href="/blog/melanotan-ii-identity.html">Melanotan II identity</a> and <a href="/blog/kpv-alpha-msh-11-13-identity.html">KPV is α-MSH 11–13</a>.</p>
+
+<h2 id="examples">Examples that collide with listed names</h2>
+<ul>
+<li>CJC-1295 with DAC vs without DAC (modified GRF 1-29): different formulae and masses — neither is a catalog SKU here. See <a href="/blog/dac-vs-no-dac-formula-difference.html">DAC vs no-DAC</a> and <a href="/blog/cjc-1295-dac-vs-modified-grf-identity.html">CJC-1295 identity</a>.</li>
+<li>TB-500 on this site is the Ac-LKKTETQ fragment listing, not intact thymosin β4. See <a href="/blog/tb-500-vs-thymosin-beta-4-identity.html">TB-500 vs thymosin β4</a>.</li>
+<li>Named blends without component CAS are not single substances. See <a href="/blog/one-vial-two-cas-numbers.html">One vial, two CAS numbers</a> and <a href="/blog/glow-70-named-blend-identity.html">GLOW 70</a>.</li>
+</ul>
+
+<img src="/media/vial-aod-9604.png?v=153" alt="AOD-9604 catalog vial representing a listed research SKU with named sequence and CAS on the product card" class="article-img" loading="lazy">
+<p class="article-img-caption">Listed example: AOD-9604 — sequence and CAS live on the catalog card and should match the lot COA.</p>
+
+
+<h2 id="compare">Comparison table</h2>
+<table>
+<thead><tr><th>Name buyers see</th><th>Is it a BioLabs SKU?</th><th>What to verify</th></tr></thead>
+<tbody>
+<tr><td>Melanotan II</td><td>No</td><td>CAS 121062-08-6 / CID 92432 — do not map to KPV</td></tr>
+<tr><td>KPV</td><td>Yes</td><td>α-MSH 11–13 identity on the product page</td></tr>
+<tr><td>CJC-1295 (DAC / no DAC)</td><td>No</td><td>Formula + mass; do not map onto tesamorelin/ipamorelin blend</td></tr>
+<tr><td>AOD-9604</td><td>Yes</td><td>Tyr-hGH 177–191 vs unmodified 176–191</td></tr>
+<tr><td>TB-500 (this catalog)</td><td>Yes (fragment)</td><td>Ac-LKKTETQ vs full Tβ4 CAS</td></tr>
+</tbody>
+</table>
+
+<h2 id="docs">What to put on the PO and COA</h2>
+<p>If you need a listed reagent, match the product page CAS and sequence to the lot COA. Prefer the certificate’s sequence and observed mass over any marketing nickname. When a PO uses a name that can mean two formulae, require the certificate to print formula (or sequence plus modification) and observed mass before receiving.</p>
+<p>For scope questions: <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>. Related listed identity walkthrough: <a href="/blog/aod-9604-hgh-fragment-identity.html">AOD-9604 vs hGH 177–191</a>.</p>
+
+<div class="article-cta"><h3>Browse the catalog</h3><p>Named SKUs only. Research use only.</p><a href="/#catalog">Open catalog →</a></div>
+
+<div class="related-posts"><h3>Related notes</h3><div class="related-grid">
+<a class="related-card" href="/blog/melanotan-ii-identity.html"><img src="/media/blog-topic/melanotan-ii-identity-1.png" alt="" loading="lazy"><span>Melanotan II identity</span></a>
+<a class="related-card" href="/blog/dac-vs-no-dac-formula-difference.html"><img src="/media/blog-topic/dac-vs-no-dac-formula-difference-1.png" alt="" loading="lazy"><span>DAC vs no-DAC</span></a>
+<a class="related-card" href="/blog/buying-research-peptides-online-guide-2026.html"><img src="/media/blog-topic/buying-research-peptides-online-guide-2026-1.png" alt="" loading="lazy"><span>Buying guide 2026</span></a>
+</div></div>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li>PubChem CID 92432 (melanotan-II), CAS 121062-08-6. <a href="https://pubchem.ncbi.nlm.nih.gov/compound/92432">https://pubchem.ncbi.nlm.nih.gov/compound/92432</a></li>
+<li>BioLabs Research catalog product pages — match SKU CAS/sequence to lot COA fields when ordering listed reagents.</li>
+</ol>
 
 </div>
 

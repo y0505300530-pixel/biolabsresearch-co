@@ -37,7 +37,7 @@
   "author": {"@type": "Organization", "name": "BioLabs Research"},
   "publisher": {"@type": "Organization", "name": "BioLabs Research", "logo": {"@type": "ImageObject", "url": "https://biolabsresearch.co/biolabsresearch-logo.png"}},
   "datePublished": "2026-09-04",
-  "dateModified": "2026-09-04",
+  "dateModified": "2026-09-08",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://biolabsresearch.co/blog/one-vial-two-cas-numbers.html"}
 }
 </script>
@@ -82,12 +82,32 @@
 .ruo-note{background:#FFF9E6;border:1px solid #E8DFA8;border-radius:var(--radius-sm);padding:16px 20px;margin:24px 0;font-size:14px;color:var(--ink-soft)}
 .ruo-note strong{color:var(--brown)}
 .refs{font-size:14px;line-height:1.55}
-.article-thumb{width:min(280px,70%);margin:24px auto 8px;display:block;border-radius:var(--radius)}
+
 @media(max-width:768px){
   .article-hero{padding:60px 20px 30px}
   .article-hero h1{font-size:32px}
   .article-body{padding:0 20px 60px;font-size:16px}
 }
+
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:var(--ink);font-size:15px}
+.article-author span{display:block;color:var(--ink-muted);font-size:13px;margin-top:2px}
+.article-toc{background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:var(--bronze,#8B6914);font-weight:500;text-decoration:none}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:var(--bg-warm,#F7F3EB);border-radius:12px;overflow:hidden;border:1px solid var(--border-light,#E8E2D8)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:var(--ink);font-weight:600}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+
 </style>
 <script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -127,29 +147,85 @@
 
 <div class="article-hero">
   <h1>One vial, two CAS numbers</h1>
-  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research</span>·<span>5 min read</span></div>
+  <div class="meta"><span>September 4, 2026</span>·<span>BioLabs Research Scientific Editorial</span>·<span>9 min read</span></div>
   <p class="lede">What a blend COA must show when two compounds share a label.</p>
 </div>
 <div class="article-body">
-<img src="/media/blog-topic/one-vial-two-cas-numbers-1.png" alt="One vial, two CAS numbers — blend identity" class="article-img" loading="lazy"><p class="article-img-caption">One vial, two CAS numbers — documentation identity risk</p>
-<img src="/media/vial-bpc-157-tb-500-blend.png?v=153" alt="BPC-157 / TB-500 blend vial" class="article-img" loading="lazy"><p class="article-img-caption">BPC-157 / TB-500 blend vial</p>
-<div class="ruo-note"><strong>RUO.</strong> Blend identity note for laboratory purchasing. Not for human or veterinary use. A named mix is not a third CAS. We do not invent mix ratios or HPLC% here.</div>
+
+<div class="article-author">
+  <img src="/media/logo-b.png" alt="BioLabs Research mark" class="article-author-avatar" width="56" height="56" loading="lazy">
+  <div>
+    <strong>BioLabs Research Scientific Editorial</strong>
+    <span>Catalog identity notes</span>
+  </div>
+</div>
+
+<img src="/media/blog-topic/one-vial-two-cas-numbers-1.png" alt="One research vial containing a named peptide blend requires two CAS numbers and two identity lines on the COA" class="article-img" loading="lazy">
+<p class="article-img-caption">A named mix is not a third CAS Registry Number.</p>
+
+
+<div class="ruo-note"><strong>RUO.</strong> Blend identity note for laboratory purchasing. Not for human or veterinary use. A named mix is not a third CAS. We do not invent mix ratios or HPLC% here — measured values, when issued, live on the lot certificate.</div>
+
+<div class="article-toc"><strong>On this page</strong>
+<ol>
+<li><a href="#cas-rule">CAS indexes substances, not mix names</a></li>
+<li><a href="#coa">What a usable blend COA shows</a></li>
+<li><a href="#examples">Catalog examples</a></li>
+<li><a href="#table">Documentation checklist</a></li>
+<li><a href="#references">References</a></li>
+</ol></div>
 
 <p>CAS Registry Numbers index defined substances (or defined salts), not storefront mix names. When two peptides share one vial, the correct label is two CAS numbers — one for each component — plus the sequences and theoretical masses that go with them. Mixing two reagents does not mint a third registry entry.</p>
 
-<p>A usable blend COA therefore shows both identities: sequence (or structure) for each component, observed mass for each, and chromatogram information that can be read against those named peaks. One sequence line with two peaks, or two masses with only one CAS, is incomplete lot paper. Component amounts belong on the certificate only when measured for that lot.</p>
+<img src="/media/blog-lifestyle/tb-500-vs-thymosin-beta-4-identity-2.png" alt="Laboratory scientist inspecting multiple glass vials while matching each label sequence to lot documentation" class="article-img" loading="lazy">
+<p class="article-img-caption">Each component on a blend carton needs its own identity line before inventory booking.</p>
 
-<p>On this catalog, examples include the <a href="/blog/bpc-157-tb-500-blend-identity.html">BPC-157 / TB-500 blend</a> and the <a href="/blog/tesamorelin-ipamorelin-blend-identity.html">tesamorelin / ipamorelin blend</a>. Each listing names both molecules. Trade-name blends that never name components have no CAS until a lot COA lists molecules — see the <a href="/blog/glow-70-named-blend-identity.html">GLOW 70 identity note</a>.</p>
 
-<p>HPLC area% on a blend is still a UV ratio under one method. Two main peaks can yield two area% values and still tell you nothing about milligrams of either peptide. Do not convert a chromatogram ratio into a weighing factor. Read <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC area percent vs net peptide content</a> before treating any percentage on blend paper as net content.</p>
+<h2 id="cas-rule">CAS indexes substances, not mix names</h2>
+<p>Trade-name blends that never name components have no CAS until a lot COA lists molecules. Purchasing language that treats “Blend X” as if it were a single registry substance creates documentation risk: receiving, LIMS, and SDS mapping all depend on knowing which substances are present.</p>
 
-<p>If the COA is silent on both masses, it is not a blend COA. If only one CAS appears on a two-name carton, request corrected lot paper before use. Questions: <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>.</p>
+<h2 id="coa">What a usable blend COA shows</h2>
+<ul>
+<li>Sequence (or structure) for each component</li>
+<li>CAS (or equivalent registry) for each component when applicable</li>
+<li>Observed mass for each component</li>
+<li>Chromatogram information readable against those named peaks</li>
+<li>Component amounts only when measured for that lot</li>
+</ul>
+<p>One sequence line with two peaks, or two masses with only one CAS, is incomplete lot paper. HPLC area% on a blend is still a UV ratio under one method — two main peaks can yield two area% values and still tell you nothing about milligrams of either peptide. Read <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC area percent vs net peptide content</a> before converting a chromatogram ratio into a weighing factor.</p>
 
-<div class="article-cta">
-  <h3>BPC-157 / TB-500 blend listing</h3>
-  <p>Two sequences, two masses. Research use only.</p>
-  <a href="https://biolabsresearch.co/products/bpc-157-tb-500-blend">View the blend →</a>
-</div>
+<img src="/media/vial-bpc-157-tb-500-blend.png?v=153" alt="BPC-157 and TB-500 blend catalog vial showing a two-component research listing" class="article-img" loading="lazy">
+<p class="article-img-caption">Catalog example: BPC-157 / TB-500 blend — two sequences, two masses, two CAS lines on proper lot paper.</p>
+
+
+<h2 id="examples">Catalog examples</h2>
+<p>On this catalog, examples include the <a href="https://biolabsresearch.co/products/bpc-157-tb-500">BPC-157 / TB-500 blend</a> and the <a href="https://biolabsresearch.co/products/tesamorelin-ipamorelin">tesamorelin / ipamorelin blend</a>. Each listing names both molecules. For a trade-name blend without a CAS, see <a href="/blog/glow-70-named-blend-identity.html">GLOW 70 identity</a>. Component identity notes: <a href="/blog/bpc-157-tb-500-blend-identity.html">BPC-157 / TB-500 blend identity</a>, <a href="/blog/tb-500-vs-thymosin-beta-4-identity.html">TB-500 vs thymosin β4</a>.</p>
+
+<h2 id="table">Documentation checklist</h2>
+<table>
+<thead><tr><th>Paper field</th><th>Single-peptide vial</th><th>Two-peptide blend</th></tr></thead>
+<tbody>
+<tr><td>CAS lines</td><td>One (when applicable)</td><td>Two — one per component</td></tr>
+<tr><td>Sequence / structure</td><td>One</td><td>One per component</td></tr>
+<tr><td>Observed mass</td><td>One</td><td>One per component</td></tr>
+<tr><td>“Blend CAS”</td><td>N/A</td><td>Not a valid substitute for component CAS</td></tr>
+<tr><td>HPLC area%</td><td>Method-bound UV ratio</td><td>Still method-bound — not mg of each peptide</td></tr>
+</tbody>
+</table>
+
+<div class="article-cta"><h3>See blend listings</h3><p>Named components on the card. Research use only.</p><a href="/#catalog">Open catalog →</a></div>
+
+<div class="related-posts"><h3>Related notes</h3><div class="related-grid">
+<a class="related-card" href="/blog/bpc-157-tb-500-blend-identity.html"><img src="/media/blog-topic/bpc-157-tb-500-blend-identity-1.png" alt="" loading="lazy"><span>BPC-157 / TB-500 blend</span></a>
+<a class="related-card" href="/blog/glow-70-named-blend-identity.html"><img src="/media/blog-topic/glow-70-named-blend-identity-1.png" alt="" loading="lazy"><span>GLOW 70 named blend</span></a>
+<a class="related-card" href="/blog/lot-coa-not-purity-percentage.html"><img src="/media/coa-trace.png" alt="" loading="lazy"><span>Lot COA ≠ purity %</span></a>
+</div></div>
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li>PubChem compound pages for individual peptide components (look up each CAS/CID separately; a blend name is not a PubChem substance). <a href="https://pubchem.ncbi.nlm.nih.gov/">https://pubchem.ncbi.nlm.nih.gov/</a></li>
+<li>CAS Registry practice: defined substances vs mixtures — treat each peptide component as its own indexed substance on receiving paperwork.</li>
+</ol>
 
 </div>
 
