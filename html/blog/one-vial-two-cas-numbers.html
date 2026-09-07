@@ -172,6 +172,7 @@
 <li><a href="#coa">What a usable blend COA shows</a></li>
 <li><a href="#examples">Catalog examples</a></li>
 <li><a href="#table">Documentation checklist</a></li>
+<li><a href="#lims">LIMS and SDS mapping</a></li>
 <li><a href="#references">References</a></li>
 </ol></div>
 
@@ -212,6 +213,16 @@
 <tr><td>HPLC area%</td><td>Method-bound UV ratio</td><td>Still method-bound — not mg of each peptide</td></tr>
 </tbody>
 </table>
+
+
+<h2 id="lims">LIMS and SDS mapping for two-component vials</h2>
+<p>Most inventory systems assume one substance per container ID. Blends break that assumption. Practical options: (1) create a parent container record with two child substance links, or (2) store dual CAS/sequence pairs in structured custom fields that receiving must complete before release. Option (2) fails if the fields are free text without validation.</p>
+<p>SDS packets should list both components when the blend is sold as one SKU. If a supplier sends a single SDS that only names a trade blend, request component SDS sheets or an appendix that names both molecules. Emergency responders and EHS reviews need substance-level identity, not a marketing mix name.</p>
+<p>On the analytical side, specify which peak belongs to which component in the method worksheet. “Peak 1 / Peak 2” without names is how area% values later get attached to the wrong peptide in a spreadsheet. Name the peaks with the same strings used on the COA sequence lines.</p>
+<p>If a blend arrives with only one CAS, treat it as incomplete identity — same severity as a missing lot number. Do not “fix in” the second CAS from memory. Pull it from the catalog card or from PubChem for the named sequence, then require the supplier to correct the certificate.</p>
+
+
+<p>Purchasing should also refuse “proprietary ratio” as a substitute for measured component amounts. If the experiment needs a defined milligram of each peptide, the lot certificate has to state how those milligrams were assigned. A ratio copied from a marketing page is not lot data. When in doubt, order the two peptides as separate SKUs and combine under your own controlled procedure rather than accepting an undocumented mix.</p>
 
 <div class="article-cta"><h3>See blend listings</h3><p>Named components on the card. Research use only.</p><a href="/#catalog">Open catalog →</a></div>
 

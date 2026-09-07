@@ -172,6 +172,7 @@
 <li><a href="#two-molecules">Two molecules, not one nickname</a></li>
 <li><a href="#table">Side-by-side checklist</a></li>
 <li><a href="#what-we-list">What this catalog actually lists</a></li>
+<li><a href="#mass-first">Mass-first triage</a></li>
 <li><a href="#references">References</a></li>
 </ol></div>
 
@@ -213,6 +214,16 @@
 <h2 id="what-we-list">What this catalog actually lists</h2>
 <p>This catalog does not list CJC-1295 (with or without DAC) as a SKU. The GHRH-class blend that is listed is <a href="https://biolabsresearch.co/products/tesamorelin-ipamorelin">tesamorelin / ipamorelin</a> — two named components with their own CAS lines. Do not map a DAC nickname onto that blend. See <a href="/blog/tesamorelin-ipamorelin-blend-identity.html">Tesamorelin / Ipamorelin blend identity</a> and <a href="/blog/one-vial-two-cas-numbers.html">One vial, two CAS numbers</a>.</p>
 <p>HPLC area% remains a UV ratio under one method. Read <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC vs NPC</a> before treating any percentage as net peptide content.</p>
+
+
+<h2 id="mass-first">Mass-first triage when DAC language is ambiguous</h2>
+<p>If inbound paper says “CJC-1295” and nothing else, do not guess. Ask for theoretical mass and the modification string. DAC-bearing and non-DAC backbones will not share the same intact mass; that single number usually ends the argument faster than debating brand nicknames. Record the supplier’s answer in the lot folder even if you ultimately refuse the shipment.</p>
+<p>Internal methods should treat DAC status as a controlled vocabulary: <code>DAC</code>, <code>no-DAC</code>, or <code>unspecified</code>. Unspecified is not receivable. Teams that allow free text in that field recreate the collision this note exists to prevent. Pair the vocabulary with a rule that the GHRH-class blend on this catalog (tesamorelin / ipamorelin) is never an alias for either CJC form.</p>
+<p>When historical samples were logged under a collapsed nickname, quarantine the metadata before any new work. Relabeling a freezer box without correcting LIMS simply moves the error downstream. Prefer a new lot ID tied to corrected certificates over silent edits of old rows.</p>
+<p>None of this is a clinical comparison of DAC constructs. It is inventory hygiene for laboratories that must keep formulae distinct on paper, balances, and audit exports.</p>
+
+
+<p>For auditors, keep a one-page job aid at receiving: nickname → required fields → listed alternative on this catalog (if any). The only listed alternative in the GHRH neighborhood here is the tesamorelin/ipamorelin blend, which must never inherit a CJC-1295 DAC checkbox. If a supplier’s portal forces a single “CJC” SKU pick-list, attach a written clarification to the PO before payment clears.</p>
 
 <div class="article-cta"><h3>Browse listed reagents</h3><p>Named SKUs and named blends only. Research use only.</p><a href="/#catalog">Open catalog →</a></div>
 
