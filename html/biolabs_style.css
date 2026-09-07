@@ -5524,3 +5524,23 @@ a.nav-logo{
   .nav .nav-logo-text{font-size:18px!important}
   .nav .nav-left{display:none!important}
 }
+
+/* nav-links-right-after-search */
+.nav-sep{
+  display:inline-flex;align-items:center;justify-content:center;
+  color:rgba(13,33,55,.28);font-size:16px;font-weight:300;line-height:1;
+  padding:0 2px;user-select:none;
+}
+.nav-links-right{
+  display:flex;align-items:center;gap:22px;
+}
+.nav-links-right a{
+  font-size:15px;font-weight:500;color:#1F1F1F;text-decoration:none;letter-spacing:.01em;
+  white-space:nowrap;
+}
+.nav-links-right a:hover{opacity:.55}
+.nav-right{gap:14px !important}
+@media (max-width:800px){
+  .nav-sep,.nav-links-right{display:none !important}
+}
+
