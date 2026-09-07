@@ -285,6 +285,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <a href="https://biolabsresearch.co/science.html">Science</a>
       <a href="/blog/">Blog</a>
       <a href="/shipping.html">Shipping</a>
+          <a href="/tools.html">Tools</a>
+      <a href="/coa.html">COA Library</a>
     </div>
 <button class="nav-cart" onclick="toggleCart()" type="button" aria-label="Cart"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg><span class="nav-cart-count" id="cartCount">0</span></button>
     <button class="nav-hamburger" onclick="toggleMenu()" type="button">
@@ -549,7 +551,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     var presentationHtml = p.presentation
       ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
     var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
+      ? '<a class="btn-inquiry" href="/coa.html?q='+encodeURIComponent(p.slug)+'" style="cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none">View / Download COA</a>'
       : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>';
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero">' +
