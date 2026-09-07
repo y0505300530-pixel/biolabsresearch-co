@@ -5544,3 +5544,11 @@ a.nav-logo{
   .nav-sep,.nav-links-right{display:none !important}
 }
 
+/* footer-wa rivn 2026-09-07 */
+.footer-wa{display:inline-flex!important;align-items:center;gap:8px;margin-top:8px}
+.footer-wa-ico{flex:0 0 auto}
+.footer-col-contact .footer-chip{display:inline-flex;align-items:center;gap:8px;margin:0 0 8px}
+.contact-line{display:flex;align-items:center;gap:12px;margin:0 0 14px;font-size:16px;color:#0d2137;text-decoration:none}
+.contact-line:hover{color:#9A6D2A}
+.contact-line-ico{width:36px;height:36px;border-radius:999px;border:1px solid #d9cbae;display:inline-flex;align-items:center;justify-content:center;background:#fff;flex:0 0 auto}
+.contact-line-ico svg{width:18px;height:18px}
