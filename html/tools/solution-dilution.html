@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCMPHP783M');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
+<link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/biolabs_style.css?v=247">
+<script src="/cart-vial.js?v=124"></script>
+<script src="/search-overlay.js?v=26"></script>
+
+<title>Solution Dilution Calculator | BioLabs Research</title>
+<meta name="description" content="Lab dilution: vial mg + solvent mL → concentration mg/mL. Optional aliquot mass. Research use only.">
+<link rel="canonical" href="https://biolabsresearch.co/tools/solution-dilution.html">
+<meta property="og:title" content="Solution Dilution Calculator | BioLabs Research">
+<meta property="og:description" content="Lab dilution: vial mg + solvent mL → concentration mg/mL. Optional aliquot mass. Research use only.">
+<meta property="og:url" content="https://biolabsresearch.co/tools/solution-dilution.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BioLabs Research">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index,follow">
+
+
+<style>
+:root{--cream:#F7F4EE;--ink:#0d0d0d;--gold:#9A6D2A;--white:#fff;--muted:#5a5a5a;--line:#e5dfd4}
+body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-ui,sans-serif}
+.seo-wrap{max-width:1100px;margin:0 auto;padding:48px 40px 100px}
+.seo-wrap.narrow{max-width:860px}
+.seo-kicker{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.seo-wrap h1{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:0 0 16px;color:var(--ink)}
+.seo-lede{font-size:16px;line-height:1.65;color:var(--muted);margin:0 0 28px;max-width:640px}
+.seo-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;margin:0 0 24px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+.seo-card h2{font-size:20px;font-weight:700;margin:0 0 14px;color:var(--ink)}
+.seo-card h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--ink)}
+.seo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
+.seo-tool-tile{display:block;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
+.seo-tool-tile:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(154,109,42,.12)}
+.seo-tool-tile strong{display:block;font-size:17px;margin-bottom:8px;color:var(--ink)}
+.seo-tool-tile span{font-size:14px;line-height:1.5;color:var(--muted)}
+.seo-ruo{margin-top:18px;padding:12px 14px;background:#F4EFE4;border-radius:8px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--gold)}
+.seo-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.seo-form label{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.seo-form input,.seo-form select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--cream);color:var(--ink);box-sizing:border-box}
+.seo-form .full{grid-column:1/-1}
+.seo-result{margin-top:18px;padding:18px;background:var(--cream);border-radius:10px;border:1px solid var(--line)}
+.seo-result .val{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.seo-result .unit{font-size:14px;color:var(--muted);margin-top:4px}
+.seo-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.seo-btn{appearance:none;border:none;background:var(--ink);color:var(--white);padding:12px 20px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}
+.seo-btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.seo-btn.gold{background:var(--gold);color:var(--white)}
+.seo-table{width:100%;border-collapse:collapse;font-size:14px}
+.seo-table th,.seo-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.seo-table th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.seo-table a{color:var(--gold);font-weight:600}
+.seo-search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;margin-bottom:16px;background:var(--white);box-sizing:border-box}
+.seo-prose p,.seo-prose li{font-size:15.5px;line-height:1.75;color:#3a3a3a;margin:0 0 14px}
+.seo-prose ul{padding-left:20px;margin:0 0 18px}
+.seo-prose h2{font-size:22px;margin:36px 0 14px;font-weight:700}
+.seo-prose h3{font-size:17px;margin:24px 0 10px;font-weight:700}
+.seo-img{width:100%;border-radius:12px;border:1px solid var(--line);margin:20px 0;display:block;background:#fff}
+.seo-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
+.seo-cta{display:block;text-align:center;padding:16px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700}
+.seo-cta.alt{background:var(--gold)}
+.seo-refs a{color:var(--gold)}
+.quick-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.quick-table th,.quick-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
+.quick-table th{background:#F4EFE4;color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
+@media (max-width:860px){
+  .seo-wrap{padding:32px 18px 72px}
+  .seo-grid,.seo-form,.seo-cta-row{grid-template-columns:1fr}
+  .seo-table{display:block;overflow-x:auto}
+}
+</style>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Solution Dilution Calculator","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate mg/mL concentration from vial amount and solvent volume for laboratory research.","url":"https://biolabsresearch.co/tools/solution-dilution.html"}
+</script>
+</head>
+<body>
+<div class="promo-stack" id="promoStack">
+  <div class="promo-bar">
+    <div class="promo-track">
+      <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-14T23:59:59+03:00">--:--:--</span></span><span class="promo-sep" aria-hidden="true">·</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-14T23:59:59+03:00">--:--:--</span></span><span class="promo-sep" aria-hidden="true">·</span></div>
+    </div>
+  </div>
+</div>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span></a>
+  <div class="nav-left">
+    <a href="/#catalog">Catalog</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-util" href="/#catalog" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16.2 16.2L20 20"/></svg></a>
+    <span class="nav-sep" aria-hidden="true">|</span>
+    <div class="nav-links-right">
+      <a href="https://biolabsresearch.co/science.html">Science</a>
+      <a href="/blog/">Blog</a>
+      <a href="/shipping.html">Shipping</a>
+      <a href="/tools.html">Tools</a>
+      <a href="/coa.html">COA Library</a>
+    </div>
+<button class="nav-cart" onclick="toggleCart()" type="button" aria-label="Cart"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg><span class="nav-cart-count" id="cartCount">0</span></button>
+    <button class="nav-hamburger" onclick="toggleMenu()" type="button">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+
+<main class="seo-wrap narrow">
+  <p class="seo-kicker"><a href="/tools.html" style="color:#9A6D2A;text-decoration:none">Tools</a> / Dilution</p>
+  <h1>Solution dilution calculator</h1>
+  <p class="seo-lede">Laboratory dilution math only: enter the solid amount in the vial (mg) and the solvent volume you add (mL) to get concentration in mg/mL. Optionally enter an aliquot volume to see mass in that aliquot (mg). No body dosing. No syringe units.</p>
+  <div class="seo-card">
+    <form class="seo-form" id="dilForm" onsubmit="return false">
+      <div><label for="vialMg">Vial amount (mg)</label><input id="vialMg" type="number" min="0" step="any" placeholder="e.g. 10" inputmode="decimal"></div>
+      <div><label for="solvMl">Solvent volume (mL)</label><input id="solvMl" type="number" min="0" step="any" placeholder="e.g. 2" inputmode="decimal"></div>
+      <div class="full"><label for="aliqMl">Optional aliquot volume (mL)</label><input id="aliqMl" type="number" min="0" step="any" placeholder="e.g. 0.1" inputmode="decimal"></div>
+    </form>
+    <div class="seo-result" id="dilOut" aria-live="polite">
+      <div class="val" id="concVal">—</div>
+      <div class="unit" id="concUnit">Concentration (mg/mL)</div>
+      <div style="margin-top:14px" id="aliqBlock" hidden>
+        <div class="val" id="aliqVal" style="font-size:22px">—</div>
+        <div class="unit">Mass in aliquot (mg)</div>
+      </div>
+    </div>
+    <div class="seo-actions">
+      <button type="button" class="seo-btn secondary" id="dilReset">Reset</button>
+    </div>
+  </div>
+  <div class="seo-card">
+    <h2>How it works</h2>
+    <p style="color:#5a5a5a;line-height:1.65;margin:0 0 10px">Concentration (mg/mL) = vial amount (mg) ÷ solvent volume (mL).</p>
+    <p style="color:#5a5a5a;line-height:1.65;margin:0">Aliquot mass (mg) = concentration (mg/mL) × aliquot volume (mL).</p>
+  </div>
+  <p class="seo-ruo">For laboratory research use only. Not for human or veterinary use.</p>
+</main>
+<script>
+(function(){
+  var vial=document.getElementById('vialMg'), solv=document.getElementById('solvMl'), aliq=document.getElementById('aliqMl');
+  var concVal=document.getElementById('concVal'), aliqVal=document.getElementById('aliqVal'), aliqBlock=document.getElementById('aliqBlock');
+  function num(el){ var v=parseFloat(el.value); return isFinite(v)?v:NaN; }
+  function fmt(x){ if(!isFinite(x)) return '—'; if(Math.abs(x)>=100) return String(Math.round(x*100)/100); if(Math.abs(x)>=1) return String(Math.round(x*1000)/1000); return String(Math.round(x*1e6)/1e6); }
+  function update(){
+    var mg=num(vial), ml=num(solv), a=num(aliq);
+    if(!(mg>=0) || !(ml>0)){ concVal.textContent='—'; aliqBlock.hidden=true; return; }
+    var c=mg/ml; concVal.textContent=fmt(c);
+    if(a>=0 && isFinite(a) && aliq.value!==''){ aliqBlock.hidden=false; aliqVal.textContent=fmt(c*a); }
+    else { aliqBlock.hidden=true; }
+  }
+  [vial,solv,aliq].forEach(function(el){ el.addEventListener('input', update); });
+  document.getElementById('dilReset').addEventListener('click', function(){ vial.value=''; solv.value=''; aliq.value=''; update(); });
+  update();
+})();
+</script>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-bottom" style="border:none;padding-top:0">
+      <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
+      <div class="footer-legal-links">
+        <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a>
+        <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
+        <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
+        <a href="https://biolabsresearch.co/returns.html">Returns</a>
+        <a href="/tools.html">Tools</a>
+        <a href="/coa.html">COA Library</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/promo-bar.js?v=12"></script>
+
+</body>
+</html>
