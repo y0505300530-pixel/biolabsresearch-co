@@ -5711,3 +5711,36 @@ a.nav-logo{
   .product-img-section .bl-video-pdp{width:100%}
   .bl-video-caption{font-size:14px}
 }
+
+/* ===== Tools page video loops ===== */
+.bl-video-tools{margin:0;width:100%;max-width:100%}
+.bl-video-tools .bl-video-frame{
+  position:relative;width:100%;overflow:hidden;
+  border-radius:20px;border:1px solid #C9A46A;background:#F5F0E6;
+  aspect-ratio:1344/768;
+}
+.bl-video-tools video{
+  width:100%;height:100%;object-fit:cover;display:block;border:0;background:#F5F0E6;
+}
+.bl-video-tools .bl-video-caption{
+  margin-top:10px;font-size:14.5px;line-height:1.45;color:#5a5348;
+}
+.tr-hero-with-video{
+  display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:28px 36px;align-items:center;margin:0 0 28px;
+}
+.tr-hero-with-video .tr-hero-copy{min-width:0}
+.tr-hero-with-video .tr-lede{margin-bottom:0;max-width:640px}
+.tr-hero-with-video .bl-video-tools{margin:0}
+.bl-video-tools-strip{margin:0 0 28px;width:100%;max-width:100%}
+@media (max-width:900px){
+  .tr-hero-with-video{grid-template-columns:1fr;gap:16px}
+  .tr-hero-with-video .bl-video-tools,
+  .bl-video-tools-strip{width:100%;max-width:100%}
+  .bl-video-tools .bl-video-frame{max-height:220px}
+  .bl-video-tools video{max-height:220px}
+  .bl-video-tools .bl-video-caption{font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){
+  .bl-video-tools video{/* paused via tools-video.js; poster/static frame shown */}
+}
