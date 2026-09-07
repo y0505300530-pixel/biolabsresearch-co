@@ -12,7 +12,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Shipping | BioLabs Research</title>
-<meta name="description" content="Processing, USPS/UPS options, cold-chain packing, and tracking for BioLabs Research catalog inquiries. Research use only.">
+<meta name="description" content="Sealed, tracked shipping for BioLabs Research catalog inquiries. USPS Ground free, UPS express, cold-chain when needed. Research use only.">
 <link rel="canonical" href="https://biolabsresearch.co/shipping.html">
 <meta property="og:title" content="Shipping | BioLabs Research">
 <meta property="og:description" content="Processing times, carriers, and cold-chain notes for BioLabs Research research reagents. Laboratory catalog shipments after inquiry confirmation. RUO only.">
@@ -68,140 +68,218 @@
 
 
 
+
 <style>
-.ship-page{background:#F7F4EE;color:#0d2137;overflow-x:hidden}
-.ship-marquee{border-top:1px solid #eadfca;border-bottom:1px solid #eadfca;background:#fff;overflow:hidden;white-space:nowrap}
-.ship-marquee-track{display:inline-flex;gap:0;padding:12px 0;animation:shipScroll 28s linear infinite}
-.ship-marquee-seg{display:inline-flex;align-items:center;gap:18px;padding:0 18px;font-size:13px;font-weight:700;letter-spacing:.02em;color:#0d2137}
-.ship-marquee-seg em{font-style:normal;color:#9A6D2A}
-.ship-marquee-dot{width:5px;height:5px;border-radius:50%;background:#C9A46A;flex:0 0 auto}
-@keyframes shipScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media (prefers-reduced-motion:reduce){.ship-marquee-track{animation:none}}
+/* Shipping rebuild — BioLabs cream / black / white / gold only */
+.shp{background:#F7F4EE;color:#0d2137}
+.shp *{box-sizing:border-box}
+.shp-wrap{max-width:1240px;margin:0 auto;padding:0 28px}
 
-.ship-hero{max-width:1120px;margin:0 auto;padding:52px 28px 36px;display:grid;grid-template-columns:1.15fr .85fr;gap:36px;align-items:center}
-.ship-kicker{font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#9A6D2A;margin:0 0 14px}
-.ship-hero h1{font-family:var(--font-logo),Fraunces,Georgia,serif;font-size:clamp(36px,5.2vw,58px);font-weight:500;letter-spacing:-.035em;line-height:1.05;margin:0 0 16px;color:#0d2137}
-.ship-hero .lede{font-size:17px;line-height:1.6;color:#5a5348;margin:0 0 22px;max-width:520px}
-.ship-hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.ship-btn{display:inline-flex;align-items:center;gap:8px;background:#0d2137;color:#fff;border-radius:999px;padding:13px 20px;font-weight:700;text-decoration:none;font-size:14px}
-.ship-btn:hover{opacity:.9}
-.ship-btn-ghost{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #0d2137;color:#0d2137;border-radius:999px;padding:12px 18px;font-weight:700;text-decoration:none;font-size:14px;background:#fff}
-.ship-visual{position:relative;border-radius:24px;overflow:hidden;background:linear-gradient(160deg,#FBF6EA,#EFE6D4);border:1px solid #eadfca;min-height:320px;display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(13,33,55,.08)}
-.ship-visual img{width:100%;height:100%;object-fit:cover;display:block}
+/* 1. Dark hero */
+.shp-hero{
+  background:#0d2137;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.shp-hero::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 20%, rgba(201,164,106,.18), transparent 60%),
+    radial-gradient(ellipse 40% 40% at 10% 90%, rgba(242,209,145,.08), transparent 55%);
+  pointer-events:none;
+}
+.shp-hero-inner{
+  max-width:1240px;margin:0 auto;padding:64px 28px 48px;
+  display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;
+  position:relative;z-index:1;
+}
+.shp-kicker{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#E8C57A;margin:0 0 18px}
+.shp-hero h1{
+  font-family:Inter,system-ui,sans-serif;
+  font-size:clamp(34px,4.8vw,52px);
+  font-weight:800;letter-spacing:-.035em;line-height:1.05;
+  margin:0 0 18px;color:#fff;
+}
+.shp-hero .lede{font-size:16px;line-height:1.65;color:rgba(255,255,255,.78);margin:0 0 28px;max-width:480px}
+.shp-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:520px}
+.shp-stat{border-top:1px solid rgba(232,197,122,.45);padding-top:12px}
+.shp-stat strong{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em;color:#F2D191;margin-bottom:4px}
+.shp-stat span{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.65)}
+.shp-hero-visual{
+  border-radius:16px;overflow:hidden;border:1px solid rgba(232,197,122,.28);
+  background:#14283f;aspect-ratio:4/3;box-shadow:0 24px 60px rgba(0,0,0,.35);
+}
+.shp-hero-visual img{width:100%;height:100%;object-fit:cover;display:block}
 
+/* 2. Mid headline on cream */
+.shp-mid{padding:64px 0 28px;text-align:center}
+.shp-tag{
+  display:inline-block;font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;
+  color:#9A6D2A;border:1px solid #C9A46A;border-radius:999px;padding:8px 14px;margin:0 0 18px;background:#fff;
+}
+.shp-mid h2{
+  font-family:Inter,system-ui,sans-serif;font-size:clamp(28px,3.6vw,42px);font-weight:800;
+  letter-spacing:-.03em;line-height:1.1;margin:0 0 14px;color:#0d2137;
+}
+.shp-mid p{margin:0 auto;max-width:560px;font-size:16px;line-height:1.6;color:#5a5348}
 
+/* 3. Three steps */
+.shp-steps{padding:20px 0 56px;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.shp-step{background:#fff;border:1px solid #e8dfcf;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 8px 28px rgba(13,33,55,.05)}
+.shp-step-img{aspect-ratio:16/11;background:#F3EBDA;overflow:hidden}
+.shp-step-img img{width:100%;height:100%;object-fit:cover;display:block}
+.shp-step-body{padding:22px 22px 24px;display:flex;flex-direction:column;flex:1}
+.shp-num{font-size:12px;font-weight:800;letter-spacing:.14em;color:#9A6D2A;margin:0 0 8px}
+.shp-step h3{font-family:Inter,system-ui,sans-serif;font-size:20px;font-weight:800;letter-spacing:-.02em;margin:0 0 10px;line-height:1.2;color:#0d2137}
+.shp-step p{font-size:14.5px;line-height:1.65;color:#5a5348;margin:0 0 16px;flex:1}
+.shp-step a{font-size:14px;font-weight:700;color:#9A6D2A;text-decoration:none}
+.shp-step a:hover{opacity:.75}
 
-.ship-steps{max-width:1120px;margin:0 auto;padding:8px 28px 40px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.ship-card{background:#fff;border:1px solid #eadfca;border-radius:20px;padding:0;overflow:hidden;box-shadow:0 10px 28px rgba(13,33,55,.045);display:flex;flex-direction:column;min-height:100%}
-.ship-card-top{height:8px;background:linear-gradient(90deg,#E8C57A,#C9A46A)}
-.ship-card-body{padding:26px 24px 24px;display:flex;flex-direction:column;flex:1}
-.ship-num{font-size:12px;font-weight:800;letter-spacing:.16em;color:#9A6D2A;margin:0 0 10px}
-.ship-card h2{font-size:23px;font-weight:700;letter-spacing:-.025em;margin:0 0 12px;line-height:1.15}
-.ship-card p{font-size:15px;line-height:1.65;color:#5a5348;margin:0 0 18px;flex:1}
-.ship-card a{font-size:14px;font-weight:700;color:#9A6D2A;text-decoration:none}
-.ship-card a:hover{opacity:.7}
+/* 4. CTA band */
+.shp-cta{background:#0d2137;color:#fff;margin:0 0 56px;border-radius:18px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1.1fr;align-items:center;border:1px solid rgba(232,197,122,.25)}
+.shp-cta-img{min-height:240px;background:#14283f}
+.shp-cta-img img{width:100%;height:100%;object-fit:cover;display:block;min-height:240px}
+.shp-cta-copy{padding:36px 36px}
+.shp-cta-copy h2{font-family:Inter,system-ui,sans-serif;font-size:clamp(24px,3vw,34px);font-weight:800;letter-spacing:-.03em;margin:0 0 10px;line-height:1.1}
+.shp-cta-copy p{margin:0 0 20px;color:rgba(255,255,255,.75);line-height:1.55;max-width:420px}
+.shp-cta-btn{display:inline-flex;align-items:center;gap:8px;background:#F2D191;color:#0d2137;border-radius:999px;padding:14px 22px;font-weight:800;text-decoration:none;font-size:14px}
+.shp-cta-btn:hover{opacity:.92}
 
-.ship-cta{max-width:1120px;margin:8px auto 48px;padding:40px 32px;background:#0d2137;color:#fff;border-radius:24px;display:grid;grid-template-columns:1.2fr auto;gap:24px;align-items:center}
-.ship-cta h2{font-family:var(--font-logo),Fraunces,Georgia,serif;font-size:clamp(26px,3.4vw,38px);font-weight:500;margin:0 0 8px;letter-spacing:-.03em}
-.ship-cta p{margin:0;color:rgba(255,255,255,.78);line-height:1.55;max-width:520px}
-.ship-cta .btn{display:inline-flex;align-items:center;gap:8px;background:#F2D191;color:#0d2137;border-radius:999px;padding:14px 22px;font-weight:800;text-decoration:none;white-space:nowrap}
-.ship-cta .btn:hover{opacity:.92}
+/* 5. Policy */
+.shp-policy{padding:0 0 88px}
+.shp-policy h2{font-family:Inter,system-ui,sans-serif;font-size:22px;font-weight:800;letter-spacing:-.02em;margin:36px 0 14px;color:#0d2137;padding-bottom:10px;border-bottom:1px solid #e8dfcf}
+.shp-policy p,.shp-policy li{font-size:15px;line-height:1.7;color:#4A4A4A}
+.shp-policy ul{padding-left:18px;margin:0 0 12px}
+.shp-methods{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 16px}
+.shp-method{background:#fff;border:1px solid #e8dfcf;border-radius:14px;padding:18px 18px}
+.shp-method strong{display:block;font-size:15px;font-weight:800;color:#0d2137;margin-bottom:6px}
+.shp-method span{display:block;font-size:13px;color:#9A6D2A;font-weight:700;margin-bottom:4px}
+.shp-method p{margin:0;font-size:13.5px;color:#5a5348}
+.shp-policy a{color:#9A6D2A;font-weight:600}
+.shp-note{font-size:12px;color:#8A8A8A;margin-top:28px}
 
-.ship-policy{max-width:760px;margin:0 auto;padding:8px 28px 88px}
-.ship-policy h2{font-size:18px;margin:28px 0 10px;color:#0d2137}
-.ship-policy p,.ship-policy li{font-size:14.5px;line-height:1.7;color:#4A4A4A}
-.ship-policy ul{padding-left:18px}
-.ship-policy a{color:#9A6D2A}
-
-@media(max-width:900px){
-  .ship-hero{grid-template-columns:1fr;padding:36px 20px 24px;gap:22px}
-  .ship-visual{min-height:240px}
-  .ship-steps{grid-template-columns:1fr;padding:8px 16px 28px}
-  .ship-cta{grid-template-columns:1fr;margin:8px 16px 36px;padding:28px 22px;text-align:left}
+@media (max-width:900px){
+  .shp-hero-inner{grid-template-columns:1fr;padding:40px 20px 32px;gap:24px}
+  .shp-hero-visual{order:2}
+  .shp-hero-copy{order:1}
+  .shp-stats{grid-template-columns:1fr;max-width:none}
+  .shp-mid{padding:40px 0 16px}
+  .shp-steps{grid-template-columns:1fr;padding:12px 0 36px;gap:16px}
+  .shp-cta{grid-template-columns:1fr;margin-bottom:40px}
+  .shp-cta-copy{order:1;padding:28px 22px}
+  .shp-cta-img{order:2;min-height:180px}
+  .shp-methods{grid-template-columns:1fr}
+  .shp-wrap{padding:0 20px}
 }
 </style>
 
-<main class="ship-page">
-  <div class="ship-marquee" aria-hidden="true">
-    <div class="ship-marquee-track">
-      <span class="ship-marquee-seg">USPS Ground <em>free</em><span class="ship-marquee-dot"></span>3–5 business days<span class="ship-marquee-dot"></span>UPS 2nd Day Air <em>$18.99</em><span class="ship-marquee-dot"></span>Cold-chain on temp-sensitive lots<span class="ship-marquee-dot"></span>Priority cold-pack at <em>$375</em> reward<span class="ship-marquee-dot"></span>Tracked after dispatch<span class="ship-marquee-dot"></span></span>
-      <span class="ship-marquee-seg">USPS Ground <em>free</em><span class="ship-marquee-dot"></span>3–5 business days<span class="ship-marquee-dot"></span>UPS 2nd Day Air <em>$18.99</em><span class="ship-marquee-dot"></span>Cold-chain on temp-sensitive lots<span class="ship-marquee-dot"></span>Priority cold-pack at <em>$375</em> reward<span class="ship-marquee-dot"></span>Tracked after dispatch<span class="ship-marquee-dot"></span></span>
+<main class="shp" id="top">
+  <!-- 1. Hero -->
+  <section class="shp-hero">
+    <div class="shp-hero-inner">
+      <div class="shp-hero-copy">
+        <p class="shp-kicker">Fast, discreet fulfilment · Research use only</p>
+        <h1>Sealed, tracked,<br>and on its way to your lab.</h1>
+        <p class="lede">From confirmation to delivery — carefully packed, discreetly shipped and tracked at every step.</p>
+        <div class="shp-stats" aria-label="Shipping highlights">
+          <div class="shp-stat"><strong>1–2 DAYS</strong><span>Processing</span></div>
+          <div class="shp-stat"><strong>FREE</strong><span>USPS Ground</span></div>
+          <div class="shp-stat"><strong>TRACKED</strong><span>After dispatch</span></div>
+        </div>
+      </div>
+      <div class="shp-hero-visual">
+        <img src="/media/vial-bpc-157.png?v=153" alt="BioLabs research vial with gold crimp" width="900" height="675" loading="eager">
+      </div>
     </div>
+  </section>
+
+  <div class="shp-wrap">
+    <!-- 2. Mid headline -->
+    <section class="shp-mid">
+      <span class="shp-tag">Fast, discreet fulfilment</span>
+      <h2>Packed with care. Tracked to your door.</h2>
+      <p>Every confirmed inquiry is carefully prepared, documented and dispatched with tracking.</p>
+    </section>
+
+    <!-- 3. Three steps -->
+    <section class="shp-steps" aria-label="Shipping steps">
+      <article class="shp-step">
+        <div class="shp-step-img"><img src="/media/tile-shipping.png" alt="Cold-chain packing with research vials" width="800" height="550" loading="lazy"></div>
+        <div class="shp-step-body">
+          <p class="shp-num">01</p>
+          <h3>Prepared for transit</h3>
+          <p>Confirmed inquiries are processed within 1–2 business days. Temperature-sensitive lots receive appropriate cold-chain packing.</p>
+          <a href="/#catalog">See catalog SKUs →</a>
+        </div>
+      </article>
+      <article class="shp-step">
+        <div class="shp-step-img"><img src="/media/coa-trace.png" alt="Lot documentation and COA" width="800" height="550" loading="lazy"></div>
+        <div class="shp-step-body">
+          <p class="shp-num">02</p>
+          <h3>Sealed with lot documentation</h3>
+          <p>Each shipment includes the confirmed lot identity. COA, SDS and origin documentation are available when required.</p>
+          <a href="/science.html">Science &amp; COA →</a>
+        </div>
+      </article>
+      <article class="shp-step">
+        <div class="shp-step-img"><img src="/media/label-box.png" alt="Discreet packaging and tracking" width="800" height="550" loading="lazy"></div>
+        <div class="shp-step-body">
+          <p class="shp-num">03</p>
+          <h3>Discreet, tracked dispatch</h3>
+          <p>Orders ship in discreet outer packaging. Tracking is sent by email as soon as the parcel is handed to the carrier.</p>
+          <a href="mailto:admin@biolabsresearch.co">Ask about a shipment →</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 4. CTA -->
+    <section class="shp-cta">
+      <div class="shp-cta-img"><img src="/media/vial-tb-500.png?v=153" alt="BioLabs gold-crimp research vials" width="800" height="500" loading="lazy"></div>
+      <div class="shp-cta-copy">
+        <h2>Confirmed today. Packing in 1–2 business days.</h2>
+        <p>In-stock catalog compounds are carefully sealed, documented and tracked.</p>
+        <a class="shp-cta-btn" href="/#catalog">Browse the catalog</a>
+      </div>
+    </section>
+
+    <!-- 5. Policy -->
+    <section class="shp-policy" id="policy">
+      <h2>Shipping methods</h2>
+      <div class="shp-methods">
+        <div class="shp-method">
+          <strong>USPS Ground Advantage</strong>
+          <span>Free</span>
+          <p>3–5 business days within the US</p>
+        </div>
+        <div class="shp-method">
+          <strong>UPS 2nd Day Air</strong>
+          <span>$18.99</span>
+          <p>Approximately 2 business days, without a delivery guarantee</p>
+        </div>
+      </div>
+      <p>Confirmed inquiries process within 1–2 business days. Temperature-sensitive lots may use cold-chain packing. Priority cold-chain packing is an inquiry reward at $375 and is not a separate carrier. International DDP is available only for selected markets after confirmation.</p>
+
+      <h2>Costs &amp; extras</h2>
+      <p>USPS Ground is free. UPS 2nd Day Air is $18.99 on the inquiry form. Inquiries of $100+ may include a $0 research solvent (BAC water) marked laboratory use only. No reconstitution or human-use instructions.</p>
+
+      <h2>Tracking</h2>
+      <p>Tracking is sent by email after dispatch. Status questions: <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>.</p>
+
+      <h2>Customs &amp; import</h2>
+      <p>International shipments may face customs inspection. We can provide CoA, SDS, and origin documentation. Purchasers remain responsible for import rules in their jurisdiction.</p>
+
+      <h2>Damaged or lost</h2>
+      <p>Damaged or lost shipments must be reported within 48 hours at <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a> with your order number for a replacement or refund.</p>
+
+      <h2>Contact</h2>
+      <p><a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a><br>LEEDS MARKETING GROUP LTD, 71-75 Shelton Street, London, WC2H 9JQ, UK</p>
+      <p class="shp-note">Last updated: September 7, 2026 · Research use only.</p>
+    </section>
   </div>
-
-  <section class="ship-hero">
-    <div>
-      <p class="ship-kicker">Fast, discreet fulfilment · RUO</p>
-      <h1>Sealed, tracked, and on its way to your lab.</h1>
-      <p class="lede">Follow the inquiry from confirmation to your door — cold-chain when the lot needs it, with the same rigor as the certificate in the box.</p>
-      <div class="ship-hero-actions">
-        <a class="ship-btn" href="/#catalog">Browse catalog</a>
-        <a class="ship-btn-ghost" href="#policy">Full shipping policy</a>
-      </div>
-    </div>
-    <div class="ship-visual">
-      <img src="/media/tile-shipping.png" alt="Cold-chain packing for research reagents" width="800" height="600" loading="eager">
-</div>
-  </section>
-
-  <section class="ship-steps" aria-label="How shipping works">
-    <article class="ship-card">
-      <div class="ship-card-top"></div>
-      <div class="ship-card-body">
-        <p class="ship-num">01</p>
-        <h2>Lyophilized lots, packed for transit</h2>
-        <p>Confirmed inquiries process in 1–2 business days. Temperature-sensitive compounds ship with cold-chain packing on USPS or UPS — priority cold-pack unlocks at the $375 inquiry reward.</p>
-        <a href="/#catalog">See catalog SKUs →</a>
-      </div>
-    </article>
-    <article class="ship-card">
-      <div class="ship-card-top"></div>
-      <div class="ship-card-body">
-        <p class="ship-num">02</p>
-        <h2>Sealed with lot paperwork</h2>
-        <p>Shipments leave with the lot identity you confirmed. CoA, SDS, and origin docs can support clearance when international DDP is available after we confirm.</p>
-        <a href="/science.html">Science &amp; COA →</a>
-      </div>
-    </article>
-    <article class="ship-card">
-      <div class="ship-card-top"></div>
-      <div class="ship-card-body">
-        <p class="ship-num">03</p>
-        <h2>Discreet, tracked dispatch</h2>
-        <p>USPS Ground Advantage is free in the US (3–5 business days). UPS 2nd Day Air is $18.99 on the inquiry form. Tracking is emailed when the parcel is with the carrier.</p>
-        <a href="mailto:admin@biolabsresearch.co">Ask about a shipment →</a>
-      </div>
-    </article>
-  </section>
-
-  <section class="ship-cta">
-    <div>
-      <h2>Confirmed today — packing in 1–2 business days.</h2>
-      <p>In-stock catalog SKUs process after inquiry confirmation — sealed, tracked, research use only.</p>
-    </div>
-    <a class="btn" href="/#catalog">Open the catalog</a>
-  </section>
-
-  <section class="ship-policy" id="policy">
-    <h2>Shipping methods</h2>
-    <p>Choose a method on the inquiry form. These are the only two options.</p>
-    <ul>
-      <li><strong>USPS Ground Advantage (standard):</strong> 3–5 business days within the US. Free.</li>
-      <li><strong>UPS 2nd Day Air (express):</strong> 2 business days, no delivery guarantee. $18.99.</li>
-    </ul>
-    <p>Temperature-sensitive lots ship with cold-chain packing on either method. Priority cold-chain packing is an inquiry reward at $375 — not a third carrier. International DDP to select markets after we confirm the inquiry.</p>
-    <h2>Costs &amp; extras</h2>
-    <p>USPS Ground is free. UPS 2nd Day Air is $18.99. Inquiries of $100+ may include a $0 research solvent (BAC water) marked laboratory use only. No reconstitution or human-use instructions.</p>
-    <h2>Tracking</h2>
-    <p>Tracking is provided by email once the order ships. Status questions: <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>.</p>
-    <h2>Customs &amp; import</h2>
-    <p>International shipments may face customs inspection. We can provide CoA, SDS, and origin documentation. Purchasers remain responsible for import rules in their jurisdiction.</p>
-    <h2>Damaged or lost</h2>
-    <p>Contact us within 48 hours at <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a> with your order number for a replacement or refund.</p>
-    <h2>Contact</h2>
-    <p><a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a><br>LEEDS MARKETING GROUP LTD, 71-75 Shelton Street, London, WC2H 9JQ, UK</p>
-    <p style="font-size:12px;color:#8A8A8A;margin-top:28px">Last updated: September 7, 2026 · Research use only.</p>
-  </section>
 </main>
 
 <footer class="footer">
