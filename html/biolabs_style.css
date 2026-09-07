@@ -5343,3 +5343,92 @@ button.product-card-mg.active{
   }
   .nav-cart{position:relative!important}
 }
+
+/* nav-b-midline: stop B jump — share flex center with Catalog/Science/Blog */
+@media (min-width:901px){
+  .nav{
+    display:flex!important;
+    align-items:center!important;
+    height:68px!important;
+    min-height:68px!important;
+    padding:0 32px!important;
+    gap:28px!important;
+  }
+  .nav-logo{
+    display:inline-flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    height:40px!important;
+    gap:2px!important;
+    margin:0!important;
+    padding:0!important;
+    transform:none!important;
+  }
+  .nav-logo-mark{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    line-height:1!important;
+    font-size:28px!important;
+    font-weight:500!important;
+    color:#000!important;
+    transform:translateY(1px)!important; /* optical: Fraunces cap vs sans links */
+    position:static!important;
+    top:auto!important;
+  }
+  .nav-logo-text{
+    display:flex!important;
+    align-items:center!important;
+    height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    line-height:1!important;
+    font-size:22px!important;
+    font-weight:500!important;
+    color:#000!important;
+    transform:translateY(1px)!important;
+    position:static!important;
+    top:auto!important;
+    letter-spacing:-.01em!important;
+  }
+  .nav-left{
+    display:flex!important;
+    align-items:center!important;
+    height:40px!important;
+    gap:36px!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  .nav-left a{
+    display:inline-flex!important;
+    align-items:center!important;
+    height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    line-height:1!important;
+    font-size:15px!important;
+    transform:none!important;
+    position:static!important;
+    top:auto!important;
+  }
+  .nav-right{
+    display:flex!important;
+    align-items:center!important;
+    height:40px!important;
+    margin-left:auto!important;
+    gap:14px!important;
+  }
+  .nav-util,.nav-cart,.nav-hamburger{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:40px!important;
+    height:40px!important;
+    margin:0!important;
+    box-sizing:border-box!important;
+  }
+}
