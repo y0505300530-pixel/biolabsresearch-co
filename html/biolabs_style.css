@@ -5109,7 +5109,7 @@ button.product-card-mg.active{
   display:flex!important;
   align-items:center!important;
   gap:18px!important;
-  padding-top:4px!important;
+  padding-top:0!important;
 }
 .nav-left a{
   font-size:15px!important;
@@ -5123,7 +5123,7 @@ button.product-card-mg.active{
   top:0!important;
 }
 @media (max-width:900px){
-  .nav-left{padding-top:8px!important;gap:24px!important}
+  .nav-left{padding-top:0!important;gap:24px!important}
 }
 
 /* nav-logo-left-utils-right: Yehuda — big logo LEFT; search/cart/hamburger RIGHT */
@@ -5151,7 +5151,7 @@ button.product-card-mg.active{
     display:flex!important;
     align-items:center!important;
     gap:20px!important;
-    padding-top:6px!important;
+    padding-top:0!important;
     margin:0!important;
     justify-self:auto!important;
     grid-column:auto!important;
@@ -5178,4 +5178,72 @@ button.product-card-mg.active{
     box-sizing:border-box!important;
   }
   .nav-hamburger{margin-left:2px!important}
+}
+
+/* nav-gap-same-height: more space between Catalog/Science/Blog; one optical midline */
+@media (min-width:901px){
+  .nav{
+    display:flex!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:28px!important;
+    padding:16px 32px!important;
+    min-height:64px!important;
+  }
+  .nav-logo{
+    display:inline-flex!important;
+    align-items:center!important;
+    align-self:center!important;
+    margin:0 4px 0 0!important;
+    line-height:1!important;
+  }
+  .nav-logo-mark,.nav-logo-text{
+    line-height:1!important;
+    vertical-align:middle!important;
+    position:static!important;
+    top:auto!important;
+  }
+  .nav-left{
+    display:flex!important;
+    align-items:center!important;
+    align-self:center!important;
+    gap:36px!important;
+    padding-top:0!important;
+    margin:0!important;
+  }
+  .nav-left a{
+    display:inline-flex!important;
+    align-items:center!important;
+    height:40px!important;
+    line-height:1!important;
+    padding:0!important;
+    margin:0!important;
+    font-size:15px!important;
+    position:static!important;
+    top:auto!important;
+  }
+  .nav-right{
+    margin-left:auto!important;
+    display:flex!important;
+    align-items:center!important;
+    align-self:center!important;
+    gap:14px!important;
+    padding-right:4px!important;
+  }
+  .nav-util,.nav-cart{
+    width:40px!important;
+    height:40px!important;
+    border-radius:999px!important;
+    border:1px solid #ddd!important;
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+  }
+  .nav-hamburger{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    height:40px!important;
+    width:40px!important;
+  }
 }
