@@ -43,6 +43,9 @@ function _readCartLS(){
   try {
     var a = JSON.parse(localStorage.getItem('biolabs_cart')||'null');
     if (Array.isArray(a) && a.length) return a;
+    /* an empty array in the main key means the visitor emptied the cart, not that there is no data:
+       lifting the legacy mirror here used to put the deleted item straight back (measured 2026-09-07) */
+    if (Array.isArray(a)) return a;
     var b = JSON.parse(localStorage.getItem('biofirst_cart')||'null');
     if (Array.isArray(b) && b.length) {
       try { localStorage.setItem('biolabs_cart', JSON.stringify(b)); } catch(e){}
@@ -158,7 +161,17 @@ var _trackCartTouch = (function(){
     var t = token();
     if (!t) return;
     var p = payload();
-    if (!p) return;
+    if (!p) {
+      /* the cart has just been emptied. The server keeps the number of items as a profile
+         attribute and the abandonment campaign filters its trigger on it, so an empty cart
+         has to be reported once as well — otherwise this person stays "has a cart" for good.
+         Only for the person whose cart was reported from this browser, though: HASH_KEY carries the
+         tail of the token it was written under, and after a second signup here it belongs to someone
+         else, who never had a cart to empty. */
+      var seen = read(HASH_KEY);
+      if (!seen || seen.slice(-12) !== t.slice(-12)) return;
+      p = { items: [], total: 0, item_count: 0, cart_url: CART_URL };
+    }
     /* the token is part of the key: after a second signup from the same browser the same cart
        must be reported once more, now under the new person (contract §4) */
     var h = hash(p) + '|' + t.slice(-12);
