@@ -38,7 +38,7 @@
     return null;
   }
 
-  function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v=153'; } return '/media/vial-'+slug+'.png?v=153'; }
+  function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v=155'; } return '/media/vial-'+slug+'.png?v=155'; }
 
   function addItem(name, price, imageUrl, slug) {
     if (typeof window.addToCart === "function") {

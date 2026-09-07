@@ -354,7 +354,7 @@ function productUrl(item){
 function vialImg(item){
   if (item && (item.gift || item.slug === 'research-solvent')) return '/media/research-solvent.png?v=2';
   var slug = productSlug(item);
-  return '/media/vial-'+(slug)+'.png?v=153';
+  return '/media/vial-'+(slug)+'.png?v=155';
 }
 var CART_SUGGEST = [
   {slug:'bpc-157', name:'BPC-157', price:89},
@@ -386,7 +386,7 @@ function addMoreHtml(cart){
   var html = '<div class="cart-addmore"><div class="cart-addmore-title">Add to this order</div><div class="cart-addmore-track">';
   list.forEach(function(p){
     html += '<div class="cart-addcard">' +
-      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=153" alt="' + p.name + '" width="84" height="64"></a>' +
+      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=155" alt="' + p.name + '" width="84" height="64"></a>' +
       '<div class="cart-addcard-name">' + p.name + '</div>' +
       '<div class="cart-addcard-price">$' + p.price + '</div>' +
       '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + p.price + ')">Add to inquiry</button>' +
@@ -464,7 +464,7 @@ function addSuggest(slug, name, price){
     var c = getCart();
     var ex = c.find(function(i){ return _sameCartProduct(i, slug, name); });
     if (ex) { ex.qty += 1; ex.name = _baseCartName(ex.name) || name; if (slug) ex.slug = slug; }
-    else c.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=153'});
+    else c.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch (e) { try { saveCart(); } catch(e2){} }
     } else {
@@ -479,7 +479,7 @@ function addSuggest(slug, name, price){
   if (typeof cart !== 'undefined') {
     var ex2 = cart.find(function(i){ return _sameCartProduct(i, slug, name); });
     if (ex2) { ex2.qty += 1; ex2.name = _baseCartName(ex2.name) || name; if (slug) ex2.slug = slug; }
-    else cart.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=153'});
+    else cart.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
     if (typeof saveCart === 'function') saveCart();
     else _writeCartLS(cart);
     if (typeof updateBadge === 'function') updateBadge();
