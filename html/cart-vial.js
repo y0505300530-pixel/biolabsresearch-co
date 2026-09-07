@@ -1032,3 +1032,106 @@ function addSuggest(slug, name, price){
   }
   var n=0; (function hook(){ wrapIdx(); if(++n<50) setTimeout(hook,100); })();
 })();
+
+/* Coupon on the checkout page (2026-09-07): the field has no Apply button, and the page cannot say what a code does —
+   the discount is worked out by products-api (coupon table and volume ladder both live there). This asks the server
+   and prints its answer under the field. No rule is repeated here on purpose: the percentage, the amount and the
+   wording all come from the response, so a new code or a changed tier needs no second edit in the browser.
+   The Apply button itself is the generator's job; this is dressing over it, like the cart repair above. */
+(function(){
+  var API = '/api/coupon-quote';
+  var DEBOUNCE_MS = 500;
+  var field = null, note = null, wrapped = false, timer = null, seq = 0, lastSent = '';
+
+  function items(){
+    var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : _readCartLS();
+    if (!Array.isArray(c)) return [];
+    return c.slice(0, 50).map(function(i){
+      return { slug: (i && i.slug) || undefined, name: (i && i.name) || undefined, mg: (i && i.mg) || undefined,
+               qty: parseInt(i && i.qty, 10) || 1, price: Number(i && i.price) || 0 };
+    });
+  }
+  function shipping(){
+    try { if (typeof getShippingCost === 'function') return Number(getShippingCost()) || 0; } catch(e){}
+    return 0;
+  }
+  function line(){
+    if (note && note.parentNode) return note;
+    if (!field) return null;
+    note = document.createElement('div');
+    note.id = 'couponNote';
+    note.setAttribute('aria-live', 'polite');
+    note.style.cssText = 'margin-top:6px;font-size:12px;line-height:1.5;min-height:16px';
+    (field.parentNode || field).appendChild(note);
+    return note;
+  }
+  function show(text, tone){
+    var el = line();
+    if (!el) return;
+    el.textContent = text || '';
+    el.style.color = tone === 'ok' ? '#1d5c3a' : (tone === 'bad' ? '#8a4b2a' : '#4a6358');
+  }
+  function render(q){
+    if (!q || q.ok !== true) { show('Could not check the code right now.', 'muted'); return; }
+    /* the server could not price every line, or its figure disagrees with the cart the page shows:
+       the amount it returns would be a promise nobody can keep, so we name no amount at all */
+    if ((q.unknown_items && q.unknown_items.length) || q.price_mismatch === true) {
+      show('Your total will be confirmed by our team.', 'muted'); return;
+    }
+    var byCode = String(q.discount_source || '').indexOf('coupon:') === 0;
+    if (byCode) { show('Code applied — ' + q.discount_pct + '% off. Due $' + q.total_due + '.', 'ok'); return; }
+    /* recognised, but the code gives nothing here — a bigger volume discount, or nothing to discount */
+    if (q.recognized) {
+      if (Number(q.discount_pct) > 0) { show('Volume discount ' + q.discount_pct + '% applies — due $' + q.total_due + '.', 'ok'); return; }
+      show('This code gives nothing on this cart.', 'bad'); return;
+    }
+    /* the ladder can still be running: saying only "not recognised" would contradict the total the customer pays */
+    if (Number(q.discount_pct) > 0) { show('Code not recognised. Volume discount ' + q.discount_pct + '% applies — due $' + q.total_due + '.', 'bad'); return; }
+    show('Code not recognised.', 'bad');
+  }
+  function ask(){
+    if (!field) return;
+    var code = String(field.value || '').trim();
+    var list = items();
+    if (!code || !list.length) { show('', 'muted'); lastSent = ''; return; }
+    var body = JSON.stringify({ coupon: code.slice(0, 40), items: list, shippingCost: shipping() });
+    if (body === lastSent) return;              /* same question, same answer: do not ask twice */
+    lastSent = body;
+    var mine = ++seq;
+    show('Checking…', 'muted');
+    try {
+      fetch(API, { method: 'POST', credentials: 'omit', headers: { 'Content-Type': 'application/json' }, body: body })
+        .then(function(r){ return r.json().catch(function(){ return null; }); })
+        .then(function(j){ if (!j || j.ok !== true) lastSent = ''; if (mine === seq) render(j); })
+        .catch(function(){ if (mine === seq) { lastSent = ''; show('Could not check the code right now.', 'muted'); } });
+    } catch(e){ lastSent = ''; show('Could not check the code right now.', 'muted'); }
+  }
+  function schedule(){ clearTimeout(timer); timer = setTimeout(ask, DEBOUNCE_MS); }
+
+  function wire(){
+    if (!field) {
+      field = document.getElementById('couponCode');
+      if (field) {
+        field.addEventListener('input', function(){ lastSent = ''; schedule(); });
+        field.addEventListener('change', function(){ lastSent = ''; schedule(); });
+        schedule();                              /* the field may already hold a code from localStorage */
+      }
+    }
+    /* cart edits and the shipping radios both go through the page's renderSummary — recount after it */
+    if (!wrapped && typeof window.renderSummary === 'function') {
+      if (window.renderSummary.__couponQuote) { wrapped = true; }
+      else {
+        var orig = window.renderSummary;
+        var w = function(){ var r = orig.apply(this, arguments); try { schedule(); } catch(e){} return r; };
+        w.__couponQuote = true;
+        window.renderSummary = w;
+        wrapped = true;
+      }
+    }
+    return !!field && wrapped;
+  }
+  if (document.getElementById('couponCode') || document.readyState !== 'loading') wire();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  var n = 0;
+  (function tick(){ if (!wire() && ++n < 60) setTimeout(tick, 100); })();
+})();
