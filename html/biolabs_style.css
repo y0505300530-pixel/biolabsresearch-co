@@ -5103,3 +5103,25 @@ button.product-card-mg.active{
 /* blog-no-fog-v219 */
 .blog-card-img,.blog-card-img img,.jrnl-card img{opacity:1!important;filter:none!important}
 .blog-card-img img,.jrnl-card img{object-fit:contain!important;background:#F5F2ED!important}
+
+/* nav-links-lower: Catalog/Science/Blog sit lower, even gaps, not riding high vs logo B */
+.nav-left{
+  display:flex!important;
+  align-items:center!important;
+  gap:32px!important;
+  padding-top:10px!important;
+}
+.nav-left a{
+  font-size:15px!important;
+  font-weight:500!important;
+  line-height:1!important;
+  padding:0!important;
+  margin:0!important;
+  display:inline-block!important;
+  transform:none!important;
+  position:relative!important;
+  top:0!important;
+}
+@media (max-width:900px){
+  .nav-left{padding-top:8px!important;gap:24px!important}
+}
