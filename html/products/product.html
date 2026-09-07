@@ -31,7 +31,7 @@
 <meta name="twitter:description" content="Research-use-only peptide and laboratory reagent listings. Third-party tested lots and catalog prices. Open a SKU page for name, price, and COA notes.">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=248">
+<link rel="stylesheet" href="/biolabs_style.css?v=249">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -451,7 +451,15 @@ footer{background:var(--ink);padding:60px 60px 30px}
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero">' +
         '<div class="product-img-section">' +
-          '<div class="product-img-main"><img src="'+img+'" alt="'+p.name+'"></div>' +
+          '<figure class="bl-video bl-video-pdp">' +
+            '<div class="bl-video-frame" style="aspect-ratio:1344/768">' +
+              '<video autoplay muted loop playsinline preload="metadata" aria-label="Research-use vial close-up loop">' +
+                '<source src="/media/video/product-closeup-loop.mp4" type="video/mp4">' +
+              '</video>' +
+            '</div>' +
+            '<figcaption class="bl-video-caption">Research-use vial. Identity on the lot paperwork when issued.</figcaption>' +
+          '</figure>' +
+          '<div class="product-img-main bl-vial-secondary"><img src="'+img+'" alt="'+p.name+'"></div>' +
           pdpReviewHtml(p, img) +
         '</div>' +
         '<div>' +

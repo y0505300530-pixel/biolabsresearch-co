@@ -5647,3 +5647,67 @@ a.nav-logo{
   .cart-inquiry-perk-text{font-size:14px}
 }
 
+
+
+/* ===== BioLabs video loops (RUO) ===== */
+.bl-video{margin:0;width:100%;max-width:100%}
+.bl-video-frame{position:relative;width:100%;overflow:hidden;border-radius:12px;background:#F5F0E6}
+.bl-video video{width:100%;height:100%;object-fit:cover;display:block;border:0;background:#F5F0E6}
+.bl-video-caption{margin-top:10px;font-size:14.5px;line-height:1.45;color:#5a5348}
+.bl-video video::-webkit-media-controls{display:none !important}
+.bl-video video::-webkit-media-controls-enclosure{display:none !important}
+.bl-video video::-webkit-media-controls-panel{display:none !important}
+.bl-video video::-webkit-media-controls-start-playback-button{display:none !important}
+.bl-video video::-moz-media-controls{display:none !important}
+
+/* Hero stage: video replaces vial img */
+.nl-stage .bl-video{width:100%;max-width:min(640px,96%)}
+.nl-stage .bl-video-frame{border-radius:16px}
+.nl-stage .bl-video-caption{text-align:center;max-width:36ch;margin-left:auto;margin-right:auto}
+
+/* Shipping hero: video in visual column */
+.shp-hero-visual .bl-video{width:100%}
+.shp-hero-visual .bl-video-frame{border-radius:14px}
+
+/* Packed-with-care: side-by-side on desktop */
+.shp-mid-with-video{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:28px 36px;align-items:center;
+}
+.shp-mid-with-video .shp-mid-copy{min-width:0}
+.shp-mid-with-video .bl-video{margin:0}
+@media (max-width:800px){
+  .shp-mid-with-video{grid-template-columns:1fr;gap:18px}
+  .shp-mid-with-video .bl-video{width:100%}
+}
+
+/* COA page intro video */
+.seo-wrap .bl-video-coa{margin:22px 0 28px;max-width:720px}
+@media (min-width:801px){
+  .seo-wrap .bl-video-coa{max-width:640px}
+}
+
+/* Science: lab + COA video blocks */
+.sci-video-row{
+  display:grid;grid-template-columns:1fr;gap:18px;margin:22px 0 8px;
+}
+@media (min-width:801px){
+  .sci-video-row.sci-video-row-split{grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+}
+.sci-hero .bl-video,.sci-band .bl-video{margin:0}
+
+/* PDP: video primary, vial secondary */
+.product-img-section .bl-video-pdp{margin:0 0 14px}
+.product-img-section .bl-video-pdp .bl-video-frame{border-radius:12px}
+.product-img-main{margin-top:0}
+.product-img-main.bl-vial-secondary{
+  aspect-ratio:1;max-width:100%;
+  background:#F5F0E6 !important;
+  background-image:none !important;
+}
+.product-img-main.bl-vial-secondary img{
+  object-fit:contain;background:#F5F0E6;
+}
+@media (max-width:800px){
+  .product-img-section .bl-video-pdp{width:100%}
+  .bl-video-caption{font-size:14px}
+}
