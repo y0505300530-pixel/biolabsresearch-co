@@ -15,71 +15,77 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=249">
+<link rel="stylesheet" href="/biolabs_style.css?v=250">
 <script src="/cart-vial.js?v=126"></script>
 <script src="/search-overlay.js?v=26"></script>
 
-<title>Unit Converter (mg / mcg / ng) | BioLabs Research</title>
-<meta name="description" content="Convert mg, mcg, and ng for lab work. Optional IU with a declared mass-per-IU factor. Research use only.">
+<title>Mass Unit Converter (mg / mcg / ng) | BioLabs Research Tools</title>
+<meta name="description" content="Convert milligrams, micrograms, and nanograms for laboratory work. Optional IU with a declared mass-per-IU factor. Research use only.">
 <link rel="canonical" href="https://biolabsresearch.co/tools/unit-converter.html">
-<meta property="og:title" content="Unit Converter (mg / mcg / ng) | BioLabs Research">
-<meta property="og:description" content="Convert mg, mcg, and ng for lab work. Optional IU with a declared mass-per-IU factor. Research use only.">
+<meta property="og:title" content="Mass Unit Converter (mg / mcg / ng) | BioLabs Research Tools">
+<meta property="og:description" content="Convert milligrams, micrograms, and nanograms for laboratory work. Optional IU with a declared mass-per-IU factor. Research use only.">
 <meta property="og:url" content="https://biolabsresearch.co/tools/unit-converter.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
 
-
 <style>
-:root{--cream:#F7F4EE;--ink:#0d0d0d;--gold:#9A6D2A;--white:#fff;--muted:#5a5a5a;--line:#e5dfd4}
-body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-ui,sans-serif}
-.seo-wrap{max-width:1100px;margin:0 auto;padding:48px 40px 100px}
-.seo-wrap.narrow{max-width:860px}
-.seo-kicker{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
-.seo-wrap h1{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:0 0 16px;color:var(--ink)}
-.seo-lede{font-size:16px;line-height:1.65;color:var(--muted);margin:0 0 28px;max-width:640px}
-.seo-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;margin:0 0 24px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
-.seo-card h2{font-size:20px;font-weight:700;margin:0 0 14px;color:var(--ink)}
-.seo-card h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--ink)}
-.seo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
-.seo-tool-tile{display:block;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
-.seo-tool-tile:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(154,109,42,.12)}
-.seo-tool-tile strong{display:block;font-size:17px;margin-bottom:8px;color:var(--ink)}
-.seo-tool-tile span{font-size:14px;line-height:1.5;color:var(--muted)}
-.seo-ruo{margin-top:18px;padding:12px 14px;background:#F4EFE4;border-radius:8px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--gold)}
-.seo-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.seo-form label{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.seo-form input,.seo-form select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--cream);color:var(--ink);box-sizing:border-box}
-.seo-form .full{grid-column:1/-1}
-.seo-result{margin-top:18px;padding:18px;background:var(--cream);border-radius:10px;border:1px solid var(--line)}
-.seo-result .val{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-.seo-result .unit{font-size:14px;color:var(--muted);margin-top:4px}
-.seo-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.seo-btn{appearance:none;border:none;background:var(--ink);color:var(--white);padding:12px 20px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}
-.seo-btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.seo-btn.gold{background:var(--gold);color:var(--white)}
-.seo-table{width:100%;border-collapse:collapse;font-size:14px}
-.seo-table th,.seo-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.seo-table th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:700}
-.seo-table a{color:var(--gold);font-weight:600}
-.seo-search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;margin-bottom:16px;background:var(--white);box-sizing:border-box}
-.seo-prose p,.seo-prose li{font-size:15.5px;line-height:1.75;color:#3a3a3a;margin:0 0 14px}
-.seo-prose ul{padding-left:20px;margin:0 0 18px}
-.seo-prose h2{font-size:22px;margin:36px 0 14px;font-weight:700}
-.seo-prose h3{font-size:17px;margin:24px 0 10px;font-weight:700}
-.seo-img{width:100%;border-radius:12px;border:1px solid var(--line);margin:20px 0;display:block;background:#fff}
-.seo-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
-.seo-cta{display:block;text-align:center;padding:16px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700}
-.seo-cta.alt{background:var(--gold)}
-.seo-refs a{color:var(--gold)}
-.quick-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.quick-table th,.quick-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
-.quick-table th{background:#F4EFE4;color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
-@media (max-width:860px){
-  .seo-wrap{padding:32px 18px 72px}
-  .seo-grid,.seo-form,.seo-cta-row{grid-template-columns:1fr}
-  .seo-table{display:block;overflow-x:auto}
+:root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
+body{background:var(--tr-cream);color:var(--tr-ink)}
+.tr-wrap{max-width:1120px;margin:0 auto;padding:48px 40px 100px}
+.tr-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+.tr-eyebrow-bar{width:28px;height:2px;background:var(--tr-gold);border-radius:1px;flex:0 0 auto}
+.tr-eyebrow-txt{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tr-gold);margin:0}
+.tr-eyebrow-txt a{color:var(--tr-gold);text-decoration:none}
+.tr-wrap h1{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:0 0 14px}
+.tr-lede{font-size:16px;line-height:1.65;color:var(--tr-muted);margin:0 0 28px;max-width:640px}
+.tr-layout{display:grid;grid-template-columns:1.35fr .85fr;gap:24px;align-items:start;margin:0 0 36px}
+.tr-panel{background:var(--tr-white);border:1px solid var(--tr-line);border-radius:18px;padding:28px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+.tr-side{position:sticky;top:88px}
+.tr-side h2{font-size:15px;font-weight:700;margin:0 0 12px}
+.tr-side p{font-size:14.5px;line-height:1.65;color:var(--tr-muted);margin:0 0 12px}
+.tr-side .tr-example{background:var(--tr-cream);border-radius:12px;padding:16px;margin:14px 0;border:1px solid var(--tr-line)}
+.tr-side .tr-example strong{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-gold);margin:0 0 8px}
+.tr-side a{color:var(--tr-gold);font-weight:600;text-decoration:none}
+.tr-presets{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
+.tr-chip{appearance:none;border:1px solid var(--tr-line);background:var(--tr-cream);color:var(--tr-ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s}
+.tr-chip:hover,.tr-chip.is-active{border-color:var(--tr-gold);background:#fff;color:var(--tr-gold)}
+.tr-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tr-form .full{grid-column:1/-1}
+.tr-form label{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-ink);margin-bottom:8px}
+.tr-form input,.tr-form select{width:100%;height:52px;padding:0 16px;border:1px solid var(--tr-line);border-radius:12px;font-size:15px;background:var(--tr-cream);color:var(--tr-ink);box-sizing:border-box;outline:none;transition:border-color .15s,box-shadow .15s}
+.tr-form input:focus,.tr-form select:focus{border-color:var(--tr-gold);box-shadow:0 0 0 3px rgba(176,141,87,.25)}
+.tr-result{margin-top:20px;padding:22px;background:var(--tr-ink);border-radius:14px;color:#fff}
+.tr-result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
+.tr-result .val{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
+.tr-result .val.tr-flash{animation:trFadeIn .35s}
+@keyframes trFadeIn{from{opacity:0}to{opacity:1}}
+.tr-result .unit{font-size:13px;color:#a8a8a8;margin-top:6px}
+.tr-copy{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.tr-copy:hover{border-color:var(--tr-gold);color:var(--tr-gold)}
+.tr-out-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.tr-out-cell{background:rgba(255,255,255,.06);border-radius:10px;padding:12px 14px}
+.tr-out-cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a8a8a8;margin:0 0 4px}
+.tr-out-cell .v{font-size:18px;font-weight:700;color:#fff}
+.tr-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+.tr-btn.secondary{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
+.tr-related{margin:0 0 24px}
+.tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
+.tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tr-related a{display:block;background:var(--tr-white);border:1px solid var(--tr-line);border-radius:14px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.tr-related a:hover{border-color:var(--tr-gold);transform:translateY(-2px)}
+.tr-related strong{display:block;font-size:14px;margin:0 0 6px}
+.tr-related span{font-size:13px;color:var(--tr-muted);line-height:1.45}
+.tr-ruo{margin-top:8px;padding:14px 16px;background:#F4EFE4;border-radius:10px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--tr-gold)}
+@media (max-width:900px){
+  .tr-wrap{padding:32px 18px 72px}
+  .tr-layout{grid-template-columns:1fr}
+  .tr-side{position:static}
+  .tr-form{grid-template-columns:1fr}
+  .tr-related-grid{grid-template-columns:1fr}
+  .tr-out-grid{grid-template-columns:1fr}
 }
 </style>
 
@@ -118,55 +124,99 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   </div>
 </nav>
 
-
-<main class="seo-wrap narrow">
-  <p class="seo-kicker"><a href="/tools.html" style="color:#9A6D2A;text-decoration:none">Tools</a> / Units</p>
+<main class="tr-wrap">
+  <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools.html">Tools</a> / Units</p></div>
   <h1>Unit converter</h1>
-  <p class="seo-lede">Convert between milligrams (mg), micrograms (mcg), and nanograms (ng). Optional international units (IU) only when you declare the mass-per-IU factor for your reagent — we do not assume a factor. No syringe units.</p>
-  <div class="seo-card">
-    <form class="seo-form" onsubmit="return false">
-      <div><label for="ucVal">Value</label><input id="ucVal" type="number" min="0" step="any" placeholder="1" inputmode="decimal"></div>
-      <div><label for="ucFrom">From</label><select id="ucFrom"><option value="mg">mg</option><option value="mcg">mcg</option><option value="ng">ng</option><option value="iu">IU</option></select></div>
-      <div class="full"><label for="iuFactor">IU factor (mg per 1 IU) — required only if converting IU</label><input id="iuFactor" type="number" min="0" step="any" placeholder="Declare factor, e.g. 0.001" inputmode="decimal"></div>
-    </form>
-    <div class="seo-result" id="ucOut" aria-live="polite">
-      <table class="seo-table" style="margin:0">
-        <thead><tr><th>Unit</th><th>Value</th></tr></thead>
-        <tbody>
-          <tr><td>mg</td><td id="outMg">—</td></tr>
-          <tr><td>mcg</td><td id="outMcg">—</td></tr>
-          <tr><td>ng</td><td id="outNg">—</td></tr>
-          <tr><td>IU</td><td id="outIu">—</td></tr>
-        </tbody>
-      </table>
+  <p class="tr-lede">Convert between milligrams (mg), micrograms (mcg), and nanograms (ng). Optional international units (IU) only when you declare the mass-per-IU factor for your reagent — we do not assume a factor.</p>
+
+  <div class="tr-layout">
+    <div class="tr-panel">
+      <div class="tr-presets" role="group" aria-label="Common presets">
+        <button type="button" class="tr-chip" data-val="1" data-unit="mg">1 mg</button>
+        <button type="button" class="tr-chip" data-val="1000" data-unit="mcg">1000 mcg</button>
+        <button type="button" class="tr-chip" data-val="1000000" data-unit="ng">1e6 ng</button>
+      </div>
+      <form class="tr-form" onsubmit="return false">
+        <div><label for="ucVal">Value</label><input id="ucVal" type="number" min="0" step="any" placeholder="1" inputmode="decimal"></div>
+        <div><label for="ucFrom">From</label><select id="ucFrom"><option value="mg">mg</option><option value="mcg">mcg</option><option value="ng">ng</option><option value="iu">IU</option></select></div>
+        <div class="full"><label for="iuFactor">IU factor (mg per 1 IU) — required only if converting IU</label><input id="iuFactor" type="number" min="0" step="any" placeholder="Declare factor, e.g. 0.001" inputmode="decimal"></div>
+      </form>
+      <div class="tr-result" id="ucOut" aria-live="polite">
+        <div class="tr-result-head">
+          <div>
+            <div class="val" id="primaryVal">—</div>
+            <div class="unit" id="primaryUnit">Primary (mg)</div>
+          </div>
+          <button type="button" class="tr-copy" id="ucCopy">Copy result</button>
+        </div>
+        <div class="tr-out-grid">
+          <div class="tr-out-cell"><div class="k">mg</div><div class="v" id="outMg">—</div></div>
+          <div class="tr-out-cell"><div class="k">mcg</div><div class="v" id="outMcg">—</div></div>
+          <div class="tr-out-cell"><div class="k">ng</div><div class="v" id="outNg">—</div></div>
+          <div class="tr-out-cell"><div class="k">IU</div><div class="v" id="outIu">—</div></div>
+        </div>
+      </div>
+      <div class="tr-actions"><button type="button" class="tr-btn secondary" id="ucReset">Reset</button></div>
     </div>
-    <div class="seo-actions"><button type="button" class="seo-btn secondary" id="ucReset">Reset</button></div>
+    <aside class="tr-panel tr-side">
+      <h2>How it works</h2>
+      <p>1 mg = 1,000 mcg = 1,000,000 ng. IU is not a fixed mass; enter mg per IU for your material if you need an IU line.</p>
+      <div class="tr-example">
+        <strong>Worked example</strong>
+        <p style="margin:0">1 mg = <strong style="color:#0d0d0d">1,000 mcg</strong> = <strong style="color:#0d0d0d">1,000,000 ng</strong>.</p>
+      </div>
+      <p style="margin:0"><a href="/coa.html">Browse COA library →</a></p>
+    </aside>
   </div>
-  <div class="seo-card">
-    <h2>Conversion basis</h2>
-    <p style="color:#5a5a5a;line-height:1.65;margin:0">1 mg = 1,000 mcg = 1,000,000 ng. IU is not a fixed mass; enter mg per IU for your material if you need an IU line.</p>
-  </div>
-  <p class="seo-ruo">For laboratory research use only. Not for human or veterinary use.</p>
+
+  <section class="tr-related">
+    <h2>Related</h2>
+    <div class="tr-related-grid">
+      <a href="/tools/solution-dilution.html"><strong>Solution dilution</strong><span>mg + mL → concentration</span></a>
+      <a href="/tools/compound-comparison.html"><strong>Compound comparison</strong><span>CAS, MW, sequence side-by-side</span></a>
+      <a href="/blog/tb-500-vs-thymosin-beta-4-identity.html"><strong>TB-500 vs Thymosin β4</strong><span>Identity notes for researchers</span></a>
+    </div>
+  </section>
+
+  <p class="tr-ruo">For laboratory research use only. Not for human or veterinary use.</p>
 </main>
 <script>
 (function(){
   var val=document.getElementById('ucVal'), from=document.getElementById('ucFrom'), factor=document.getElementById('iuFactor');
   var outMg=document.getElementById('outMg'), outMcg=document.getElementById('outMcg'), outNg=document.getElementById('outNg'), outIu=document.getElementById('outIu');
+  var primaryVal=document.getElementById('primaryVal');
+  var lastTxt='—';
   function fmt(x){ if(!isFinite(x)) return '—'; var a=Math.abs(x); if(a===0) return '0'; if(a>=1000) return String(Math.round(x*100)/100); if(a>=1) return String(Math.round(x*1e6)/1e6); return x.toExponential(4); }
   function toMg(v,u,f){
     if(u==='mg') return v; if(u==='mcg') return v/1000; if(u==='ng') return v/1e6;
     if(u==='iu'){ if(!(f>0)) return NaN; return v*f; }
     return NaN;
   }
+  function flash(el){ el.classList.remove('tr-flash'); void el.offsetWidth; el.classList.add('tr-flash'); }
   function update(){
-    var v=parseFloat(val.value); if(!isFinite(v)||v<0){ outMg.textContent=outMcg.textContent=outNg.textContent=outIu.textContent='—'; return; }
+    var v=parseFloat(val.value); if(!isFinite(v)||v<0){ outMg.textContent=outMcg.textContent=outNg.textContent=outIu.textContent='—'; primaryVal.textContent='—'; lastTxt='—'; return; }
     var f=parseFloat(factor.value); var mg=toMg(v, from.value, f);
-    if(!isFinite(mg)){ outMg.textContent=outMcg.textContent=outNg.textContent='—'; outIu.textContent=(from.value==='iu'?'Enter IU factor':'—'); return; }
-    outMg.textContent=fmt(mg); outMcg.textContent=fmt(mg*1000); outNg.textContent=fmt(mg*1e6);
+    if(!isFinite(mg)){ outMg.textContent=outMcg.textContent=outNg.textContent='—'; outIu.textContent=(from.value==='iu'?'Enter IU factor':'—'); primaryVal.textContent='—'; lastTxt='—'; return; }
+    var mgT=fmt(mg), mcgT=fmt(mg*1000), ngT=fmt(mg*1e6);
+    if(outMg.textContent!==mgT){ outMg.textContent=mgT; flash(primaryVal); }
+    outMcg.textContent=mcgT; outNg.textContent=ngT; primaryVal.textContent=mgT;
     if(f>0) outIu.textContent=fmt(mg/f); else outIu.textContent='(declare factor)';
+    lastTxt=mgT+' mg = '+mcgT+' mcg = '+ngT+' ng';
   }
   [val,from,factor].forEach(function(el){ el.addEventListener('input', update); el.addEventListener('change', update); });
-  document.getElementById('ucReset').addEventListener('click', function(){ val.value=''; from.value='mg'; factor.value=''; update(); });
+  document.getElementById('ucReset').addEventListener('click', function(){ val.value=''; from.value='mg'; factor.value=''; document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');}); update(); });
+  document.getElementById('ucCopy').addEventListener('click', function(){
+    var btn=this; var txt=(lastTxt && lastTxt!=='—')?lastTxt:'—';
+    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(function(){ btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy result';},1200); }); }
+    else { btn.textContent='Copy unavailable'; setTimeout(function(){btn.textContent='Copy result';},1200); }
+  });
+  document.querySelectorAll('.tr-chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');});
+      chip.classList.add('is-active');
+      val.value=chip.getAttribute('data-val'); from.value=chip.getAttribute('data-unit'); update();
+    });
+  });
   val.value='1'; update();
 })();
 </script>

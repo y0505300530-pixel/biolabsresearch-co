@@ -15,71 +15,78 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=249">
+<link rel="stylesheet" href="/biolabs_style.css?v=250">
 <script src="/cart-vial.js?v=126"></script>
 <script src="/search-overlay.js?v=26"></script>
 
-<title>Compound Comparison Tool | BioLabs Research</title>
-<meta name="description" content="Compare 2–3 research compounds: CAS, formula, MW, sequence, vial strength, and live catalog price. RUO only.">
+<title>Compound Comparison Tool — CAS, MW &amp; Catalog Price | BioLabs Research</title>
+<meta name="description" content="Compare 2–3 research compounds side-by-side: CAS, formula, MW, sequence, vial strength, and live catalog price. Research use only.">
 <link rel="canonical" href="https://biolabsresearch.co/tools/compound-comparison.html">
-<meta property="og:title" content="Compound Comparison Tool | BioLabs Research">
-<meta property="og:description" content="Compare 2–3 research compounds: CAS, formula, MW, sequence, vial strength, and live catalog price. RUO only.">
+<meta property="og:title" content="Compound Comparison Tool — CAS, MW &amp; Catalog Price | BioLabs Research">
+<meta property="og:description" content="Compare 2–3 research compounds side-by-side: CAS, formula, MW, sequence, vial strength, and live catalog price. Research use only.">
 <meta property="og:url" content="https://biolabsresearch.co/tools/compound-comparison.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
 
-
 <style>
-:root{--cream:#F7F4EE;--ink:#0d0d0d;--gold:#9A6D2A;--white:#fff;--muted:#5a5a5a;--line:#e5dfd4}
-body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-ui,sans-serif}
-.seo-wrap{max-width:1100px;margin:0 auto;padding:48px 40px 100px}
-.seo-wrap.narrow{max-width:860px}
-.seo-kicker{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
-.seo-wrap h1{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:0 0 16px;color:var(--ink)}
-.seo-lede{font-size:16px;line-height:1.65;color:var(--muted);margin:0 0 28px;max-width:640px}
-.seo-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;margin:0 0 24px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
-.seo-card h2{font-size:20px;font-weight:700;margin:0 0 14px;color:var(--ink)}
-.seo-card h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--ink)}
-.seo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
-.seo-tool-tile{display:block;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
-.seo-tool-tile:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(154,109,42,.12)}
-.seo-tool-tile strong{display:block;font-size:17px;margin-bottom:8px;color:var(--ink)}
-.seo-tool-tile span{font-size:14px;line-height:1.5;color:var(--muted)}
-.seo-ruo{margin-top:18px;padding:12px 14px;background:#F4EFE4;border-radius:8px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--gold)}
-.seo-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.seo-form label{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.seo-form input,.seo-form select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--cream);color:var(--ink);box-sizing:border-box}
-.seo-form .full{grid-column:1/-1}
-.seo-result{margin-top:18px;padding:18px;background:var(--cream);border-radius:10px;border:1px solid var(--line)}
-.seo-result .val{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-.seo-result .unit{font-size:14px;color:var(--muted);margin-top:4px}
-.seo-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.seo-btn{appearance:none;border:none;background:var(--ink);color:var(--white);padding:12px 20px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}
-.seo-btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.seo-btn.gold{background:var(--gold);color:var(--white)}
-.seo-table{width:100%;border-collapse:collapse;font-size:14px}
-.seo-table th,.seo-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.seo-table th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:700}
-.seo-table a{color:var(--gold);font-weight:600}
-.seo-search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;margin-bottom:16px;background:var(--white);box-sizing:border-box}
-.seo-prose p,.seo-prose li{font-size:15.5px;line-height:1.75;color:#3a3a3a;margin:0 0 14px}
-.seo-prose ul{padding-left:20px;margin:0 0 18px}
-.seo-prose h2{font-size:22px;margin:36px 0 14px;font-weight:700}
-.seo-prose h3{font-size:17px;margin:24px 0 10px;font-weight:700}
-.seo-img{width:100%;border-radius:12px;border:1px solid var(--line);margin:20px 0;display:block;background:#fff}
-.seo-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
-.seo-cta{display:block;text-align:center;padding:16px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700}
-.seo-cta.alt{background:var(--gold)}
-.seo-refs a{color:var(--gold)}
-.quick-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.quick-table th,.quick-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
-.quick-table th{background:#F4EFE4;color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
-@media (max-width:860px){
-  .seo-wrap{padding:32px 18px 72px}
-  .seo-grid,.seo-form,.seo-cta-row{grid-template-columns:1fr}
-  .seo-table{display:block;overflow-x:auto}
+:root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
+body{background:var(--tr-cream);color:var(--tr-ink)}
+.tr-wrap{max-width:1120px;margin:0 auto;padding:48px 40px 100px}
+.tr-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+.tr-eyebrow-bar{width:28px;height:2px;background:var(--tr-gold);border-radius:1px;flex:0 0 auto}
+.tr-eyebrow-txt{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tr-gold);margin:0}
+.tr-eyebrow-txt a{color:var(--tr-gold);text-decoration:none}
+.tr-wrap h1{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:0 0 14px}
+.tr-lede{font-size:16px;line-height:1.65;color:var(--tr-muted);margin:0 0 28px;max-width:720px}
+.tr-layout{display:grid;grid-template-columns:1.45fr .75fr;gap:24px;align-items:start;margin:0 0 36px}
+.tr-panel{background:var(--tr-white);border:1px solid var(--tr-line);border-radius:18px;padding:28px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
+.tr-side{position:sticky;top:88px}
+.tr-side h2{font-size:15px;font-weight:700;margin:0 0 12px}
+.tr-side p{font-size:14.5px;line-height:1.65;color:var(--tr-muted);margin:0 0 12px}
+.tr-side .tr-example{background:var(--tr-cream);border-radius:12px;padding:16px;margin:14px 0;border:1px solid var(--tr-line)}
+.tr-side .tr-example strong{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-gold);margin:0 0 8px}
+.tr-side a{color:var(--tr-gold);font-weight:600;text-decoration:none}
+.tr-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tr-form .full{grid-column:1/-1}
+.tr-form label{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-ink);margin-bottom:8px}
+.tr-form select{width:100%;height:52px;padding:0 16px;border:1px solid var(--tr-line);border-radius:12px;font-size:15px;background:var(--tr-cream);color:var(--tr-ink);box-sizing:border-box;outline:none}
+.tr-form select:focus{border-color:var(--tr-gold);box-shadow:0 0 0 3px rgba(176,141,87,.25)}
+.tr-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
+.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+.tr-btn.secondary{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
+.tr-table-wrap{margin-top:20px}
+.tr-table{width:100%;border-collapse:collapse;font-size:14px}
+.tr-table th,.tr-table td{padding:12px 14px;border-bottom:1px solid var(--tr-line);text-align:left;vertical-align:top}
+.tr-table thead th{font-size:12px;letter-spacing:.04em;color:var(--tr-ink);font-weight:700;background:var(--tr-cream)}
+.tr-table tbody th{position:sticky;left:0;background:var(--tr-white);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--tr-gold);font-weight:700;z-index:1;min-width:120px}
+.tr-table tbody tr:hover td,.tr-table tbody tr:hover th{background:#FBF8F2}
+.tr-table a{color:var(--tr-gold);font-weight:600;text-decoration:none}
+.tr-status{font-size:13px;color:#8A8A8A;margin:12px 0 0}
+.tr-cards-mobile{display:none}
+.tr-mcard{background:var(--tr-cream);border:1px solid var(--tr-line);border-radius:14px;padding:16px;margin:0 0 12px}
+.tr-mcard h3{font-size:16px;margin:0 0 12px;font-weight:700}
+.tr-mrow{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--tr-line);font-size:13.5px}
+.tr-mrow:last-child{border-bottom:none}
+.tr-mrow .k{color:var(--tr-gold);font-weight:700;font-size:11px;letter-spacing:.06em;text-transform:uppercase;flex:0 0 42%}
+.tr-mrow .v{color:var(--tr-ink);text-align:right;flex:1}
+.tr-related{margin:0 0 24px}
+.tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
+.tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.tr-related a{display:block;background:var(--tr-white);border:1px solid var(--tr-line);border-radius:14px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
+.tr-related a:hover{border-color:var(--tr-gold);transform:translateY(-2px)}
+.tr-related strong{display:block;font-size:14px;margin:0 0 6px}
+.tr-related span{font-size:13px;color:var(--tr-muted);line-height:1.45}
+.tr-ruo{margin-top:8px;padding:14px 16px;background:#F4EFE4;border-radius:10px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--tr-gold)}
+@media (max-width:900px){
+  .tr-wrap{padding:32px 18px 72px}
+  .tr-layout{grid-template-columns:1fr}
+  .tr-side{position:static}
+  .tr-form{grid-template-columns:1fr}
+  .tr-related-grid{grid-template-columns:1fr}
+  .tr-table-wrap{display:none}
+  .tr-cards-mobile{display:block}
 }
 </style>
 
@@ -118,27 +125,49 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   </div>
 </nav>
 
-
-<main class="seo-wrap">
-  <p class="seo-kicker"><a href="/tools.html" style="color:#9A6D2A;text-decoration:none">Tools</a> / Compare</p>
+<main class="tr-wrap">
+  <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools.html">Tools</a> / Compare</p></div>
   <h1>Compound comparison</h1>
-  <p class="seo-lede">Pick 2–3 catalog compounds. Identity fields (CAS, formula, MW, sequence) come from the site identity map. Prices and vial strengths load live from the products API — never hardcoded.</p>
-  <div class="seo-card">
-    <form class="seo-form" onsubmit="return false">
-      <div><label for="c1">Compound 1</label><select id="c1"></select></div>
-      <div><label for="c2">Compound 2</label><select id="c2"></select></div>
-      <div class="full"><label for="c3">Compound 3 (optional)</label><select id="c3"><option value="">— none —</option></select></div>
-    </form>
-    <div class="seo-actions"><button type="button" class="seo-btn secondary" id="cmpReset">Reset</button></div>
-    <div style="overflow-x:auto;margin-top:18px">
-      <table class="seo-table" id="cmpTable">
-        <thead><tr><th>Field</th><th id="h1">—</th><th id="h2">—</th><th id="h3">—</th></tr></thead>
-        <tbody id="cmpBody"></tbody>
-      </table>
+  <p class="tr-lede">Pick 2–3 catalog compounds. Identity fields (CAS, formula, MW, sequence) come from the site identity map. Prices and vial strengths load live from the products API — never hardcoded.</p>
+
+  <div class="tr-layout">
+    <div class="tr-panel">
+      <form class="tr-form" onsubmit="return false">
+        <div><label for="c1">Compound 1</label><select id="c1"></select></div>
+        <div><label for="c2">Compound 2</label><select id="c2"></select></div>
+        <div class="full"><label for="c3">Compound 3 (optional)</label><select id="c3"><option value="">— none —</option></select></div>
+      </form>
+      <div class="tr-actions"><button type="button" class="tr-btn secondary" id="cmpReset">Reset</button></div>
+      <div class="tr-table-wrap">
+        <table class="tr-table" id="cmpTable">
+          <thead><tr><th>Field</th><th id="h1">—</th><th id="h2">—</th><th id="h3">—</th></tr></thead>
+          <tbody id="cmpBody"></tbody>
+        </table>
+      </div>
+      <div class="tr-cards-mobile" id="cmpCards" aria-live="polite"></div>
+      <p class="tr-status" id="cmpStatus"></p>
     </div>
-    <p id="cmpStatus" style="font-size:13px;color:#8A8A8A;margin:12px 0 0"></p>
+    <aside class="tr-panel tr-side">
+      <h2>How it works</h2>
+      <p>Select compounds from the live catalog. Identity fields come from the curated map; vial strengths and prices refresh from <code>/api/products</code>.</p>
+      <div class="tr-example">
+        <strong>Worked example</strong>
+        <p style="margin:0">Default view loads <strong style="color:#0d0d0d">BPC-157</strong> vs <strong style="color:#0d0d0d">TB-500</strong> (and GHK-Cu when available) so you can scan CAS, MW, and live price in one pass.</p>
+      </div>
+      <p style="margin:0"><a href="/coa.html">Browse COA library →</a></p>
+    </aside>
   </div>
-  <p class="seo-ruo">For laboratory research use only. Not for human or veterinary use.</p>
+
+  <section class="tr-related">
+    <h2>Related</h2>
+    <div class="tr-related-grid">
+      <a href="/tools/solution-dilution.html"><strong>Solution dilution</strong><span>mg + mL → concentration</span></a>
+      <a href="/tools/unit-converter.html"><strong>Unit converter</strong><span>mg ↔ mcg ↔ ng for lab math</span></a>
+      <a href="/blog/tb-500-vs-thymosin-beta-4-identity.html"><strong>TB-500 vs Thymosin β4</strong><span>Identity notes for researchers</span></a>
+    </div>
+  </section>
+
+  <p class="tr-ruo">For laboratory research use only. Not for human or veterinary use.</p>
 </main>
 <script>
 var IDENTITY = {"bpc-157": {"name": "BPC-157", "cas": "137525-51-0", "formula": "C62H98N16O22", "mw": "~1419.5 Da", "seq": "GEPPPGKPADDAGLV", "slug": "bpc-157", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/9941957"}, "tb-500": {"name": "TB-500", "cas": "885340-09-2", "formula": "\u2014", "mw": "\u2014", "seq": "Ac-LKKTETQ (fragment listing)", "slug": "tb-500", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/16132319"}, "ghk-cu": {"name": "GHK-Cu", "cas": "89030-95-5", "formula": "C14H22CuN6O4", "mw": "~403.9 Da", "seq": "GHK\u00b7Cu", "slug": "ghk-cu", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/378611"}, "epithalon": {"name": "Epithalon", "cas": "307297-39-8", "formula": "C16H22N4O9", "mw": "~390.3 Da", "seq": "AEDG", "slug": "epithalon", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/219042"}, "retatrutide": {"name": "R3TA (Retatrutide)", "cas": "2381089-83-2", "formula": "\u2014", "mw": "\u2014", "seq": "\u2014", "slug": "retatrutide", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/166816176"}, "nad-plus": {"name": "NAD+", "cas": "53-84-9", "formula": "C21H27N7O14P2", "mw": "~663.4 Da", "seq": "\u2014", "slug": "nad-plus", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/5892"}, "mots-c": {"name": "MOTS-c", "cas": "1627580-64-6", "formula": "\u2014", "mw": "\u2014", "seq": "MRWQEMGYIFYPRKLR", "slug": "mots-c", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/146682067"}, "semax": {"name": "Semax", "cas": "80714-61-0", "formula": "C37H51N9O10S", "mw": "~813.9 Da", "seq": "MEHFPGP", "slug": "semax", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/122178"}, "kpv": {"name": "KPV", "cas": "67747-97-3", "formula": "C16H30N4O4", "mw": "~342.4 Da", "seq": "KPV", "slug": "kpv", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/10047247"}, "aod-9604": {"name": "AOD-9604", "cas": "221231-10-3", "formula": "\u2014", "mw": "\u2014", "seq": "hGH 177\u2013191 (fragment listing)", "slug": "aod-9604", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/16131215"}, "kisspeptin-10": {"name": "Kisspeptin-10", "cas": "374675-21-5", "formula": "\u2014", "mw": "\u2014", "seq": "YNWNSFGLRF-NH2", "slug": "kisspeptin-10", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/25078187"}, "thymosin-alpha-1": {"name": "Thymosin Alpha-1", "cas": "62304-98-7", "formula": "\u2014", "mw": "~3108 Da", "seq": "\u2014", "slug": "thymosin-alpha-1", "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/16130566"}, "ipamorelin": {"name": "Ipamorelin", "cas": "170851-70-4", "formula": "C38H49N9O5", "mw": "~711.9 Da", "seq": "Aib-His-D-2Nal-D-Phe-Lys-NH2", "slug": null, "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/9831659"}, "sermorelin": {"name": "Sermorelin", "cas": "86168-78-7", "formula": "C149H246N44O42S", "mw": "~3357.9 Da", "seq": "GHRH (1\u201329) amide", "slug": null, "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/16129620"}, "cjc-dac": {"name": "CJC-1295 with DAC", "cas": "863288-34-0", "formula": "\u2014", "mw": "\u2014", "seq": "Mod GRF + Drug Affinity Complex", "slug": null, "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/91826077"}, "cjc-nodac": {"name": "CJC-1295 no DAC (Mod GRF 1-29)", "cas": "\u2014", "formula": "\u2014", "mw": "\u2014", "seq": "Modified GRF (1\u201329)", "slug": null, "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/16132248"}, "semaglutide": {"name": "Semaglutide", "cas": "910463-68-2", "formula": "C187H291N45O59", "mw": "~4113.6 Da", "seq": "GLP-1 analogue (published structure)", "slug": null, "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/56843331"}, "tirzepatide": {"name": "Tirzepatide", "cas": "2023788-19-2", "formula": "C225H348N48O68", "mw": "~4813.5 Da", "seq": "GIP/GLP-1 dual agonist (published)", "slug": null, "pubchem": "https://pubchem.ncbi.nlm.nih.gov/compound/156588324"}};
@@ -165,15 +194,8 @@ var IDENTITY = {"bpc-157": {"name": "BPC-157", "cas": "137525-51-0", "formula": 
   }
   function bySlug(slug){ for(var i=0;i<catalog.length;i++) if(catalog[i].slug===slug) return catalog[i]; return null; }
   function idOf(slug){ return IDENTITY[slug] || {name:slug,cas:'—',formula:'—',mw:'—',seq:'—'}; }
-  function render(){
-    var slugs = [sels[0].value, sels[1].value, sels[2].value].filter(Boolean);
-    var heads = ['h1','h2','h3'];
-    for(var i=0;i<3;i++){
-      var el=document.getElementById(heads[i]);
-      if(i<slugs.length){ var p=bySlug(slugs[i]); el.textContent = p?p.name:slugs[i]; el.style.display=''; }
-      else { el.textContent=''; el.style.display='none'; }
-    }
-    var rows = [
+  function fieldFns(){
+    return [
       ['CAS', function(s){ return idOf(s).cas||'—'; }],
       ['Formula', function(s){ return idOf(s).formula||'—'; }],
       ['MW', function(s){ return idOf(s).mw||'—'; }],
@@ -186,6 +208,16 @@ var IDENTITY = {"bpc-157": {"name": "BPC-157", "cas": "137525-51-0", "formula": 
       }],
       ['Product', function(s){ return '<a href="/products/'+s+'">View product →</a>'; }]
     ];
+  }
+  function render(){
+    var slugs = [sels[0].value, sels[1].value, sels[2].value].filter(Boolean);
+    var heads = ['h1','h2','h3'];
+    for(var i=0;i<3;i++){
+      var el=document.getElementById(heads[i]);
+      if(i<slugs.length){ var p=bySlug(slugs[i]); el.textContent = p?p.name:slugs[i]; el.style.display=''; }
+      else { el.textContent=''; el.style.display='none'; }
+    }
+    var rows = fieldFns();
     var html='';
     rows.forEach(function(r){
       html+='<tr><th>'+r[0]+'</th>';
@@ -196,6 +228,17 @@ var IDENTITY = {"bpc-157": {"name": "BPC-157", "cas": "137525-51-0", "formula": 
       html+='</tr>';
     });
     document.getElementById('cmpBody').innerHTML=html;
+
+    var cards='';
+    slugs.forEach(function(s){
+      var p=bySlug(s); var name=p?p.name:s;
+      cards+='<div class="tr-mcard"><h3>'+name+'</h3>';
+      rows.forEach(function(r){
+        cards+='<div class="tr-mrow"><span class="k">'+r[0]+'</span><span class="v">'+r[1](s)+'</span></div>';
+      });
+      cards+='</div>';
+    });
+    document.getElementById('cmpCards').innerHTML=cards;
   }
   sels.forEach(function(s){ s.addEventListener('change', render); });
   document.getElementById('cmpReset').addEventListener('click', function(){ fillSelects(); });

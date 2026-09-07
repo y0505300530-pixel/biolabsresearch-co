@@ -15,71 +15,60 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=249">
+<link rel="stylesheet" href="/biolabs_style.css?v=250">
 <script src="/cart-vial.js?v=126"></script>
 <script src="/search-overlay.js?v=26"></script>
 
-<title>Research Tools | BioLabs Research</title>
-<meta name="description" content="Lab dilution calculator, mass unit converter, and compound comparison for research reagents. Client-side, RUO only.">
+<title>Research Tools — Dilution, Units & Compound Compare | BioLabs Research</title>
+<meta name="description" content="Premium client-side lab tools: solution dilution calculator, mass unit converter, and catalog compound comparison. Research use only — no account required.">
 <link rel="canonical" href="https://biolabsresearch.co/tools.html">
-<meta property="og:title" content="Research Tools | BioLabs Research">
-<meta property="og:description" content="Lab dilution calculator, mass unit converter, and compound comparison for research reagents. Client-side, RUO only.">
+<meta property="og:title" content="Research Tools — Dilution, Units & Compound Compare | BioLabs Research">
+<meta property="og:description" content="Premium client-side lab tools: solution dilution calculator, mass unit converter, and catalog compound comparison. Research use only — no account required.">
 <meta property="og:url" content="https://biolabsresearch.co/tools.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
 
-
 <style>
-:root{--cream:#F7F4EE;--ink:#0d0d0d;--gold:#9A6D2A;--white:#fff;--muted:#5a5a5a;--line:#e5dfd4}
-body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-ui,sans-serif}
-.seo-wrap{max-width:1100px;margin:0 auto;padding:48px 40px 100px}
-.seo-wrap.narrow{max-width:860px}
-.seo-kicker{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
-.seo-wrap h1{font-size:clamp(28px,3.6vw,42px);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:0 0 16px;color:var(--ink)}
-.seo-lede{font-size:16px;line-height:1.65;color:var(--muted);margin:0 0 28px;max-width:640px}
-.seo-card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:28px;margin:0 0 24px;box-shadow:0 8px 24px rgba(0,0,0,.04)}
-.seo-card h2{font-size:20px;font-weight:700;margin:0 0 14px;color:var(--ink)}
-.seo-card h3{font-size:16px;font-weight:700;margin:20px 0 10px;color:var(--ink)}
-.seo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0}
-.seo-tool-tile{display:block;background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px 22px;text-decoration:none;color:inherit;transition:border-color .15s,box-shadow .15s}
-.seo-tool-tile:hover{border-color:var(--gold);box-shadow:0 10px 28px rgba(154,109,42,.12)}
-.seo-tool-tile strong{display:block;font-size:17px;margin-bottom:8px;color:var(--ink)}
-.seo-tool-tile span{font-size:14px;line-height:1.5;color:var(--muted)}
-.seo-ruo{margin-top:18px;padding:12px 14px;background:#F4EFE4;border-radius:8px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--gold)}
-.seo-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.seo-form label{display:block;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
-.seo-form input,.seo-form select{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;background:var(--cream);color:var(--ink);box-sizing:border-box}
-.seo-form .full{grid-column:1/-1}
-.seo-result{margin-top:18px;padding:18px;background:var(--cream);border-radius:10px;border:1px solid var(--line)}
-.seo-result .val{font-size:28px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
-.seo-result .unit{font-size:14px;color:var(--muted);margin-top:4px}
-.seo-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.seo-btn{appearance:none;border:none;background:var(--ink);color:var(--white);padding:12px 20px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer}
-.seo-btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.seo-btn.gold{background:var(--gold);color:var(--white)}
-.seo-table{width:100%;border-collapse:collapse;font-size:14px}
-.seo-table th,.seo-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
-.seo-table th{font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:700}
-.seo-table a{color:var(--gold);font-weight:600}
-.seo-search{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:15px;margin-bottom:16px;background:var(--white);box-sizing:border-box}
-.seo-prose p,.seo-prose li{font-size:15.5px;line-height:1.75;color:#3a3a3a;margin:0 0 14px}
-.seo-prose ul{padding-left:20px;margin:0 0 18px}
-.seo-prose h2{font-size:22px;margin:36px 0 14px;font-weight:700}
-.seo-prose h3{font-size:17px;margin:24px 0 10px;font-weight:700}
-.seo-img{width:100%;border-radius:12px;border:1px solid var(--line);margin:20px 0;display:block;background:#fff}
-.seo-cta-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0}
-.seo-cta{display:block;text-align:center;padding:16px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700}
-.seo-cta.alt{background:var(--gold)}
-.seo-refs a{color:var(--gold)}
-.quick-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
-.quick-table th,.quick-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
-.quick-table th{background:#F4EFE4;color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
-@media (max-width:860px){
-  .seo-wrap{padding:32px 18px 72px}
-  .seo-grid,.seo-form,.seo-cta-row{grid-template-columns:1fr}
-  .seo-table{display:block;overflow-x:auto}
+/* tools-redesign hub */
+:root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
+body{background:var(--tr-cream);color:var(--tr-ink)}
+.tr-wrap{max-width:1120px;margin:0 auto;padding:48px 40px 100px}
+.tr-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;margin:0 0 48px}
+.tr-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 14px}
+.tr-eyebrow-bar{width:28px;height:2px;background:var(--tr-gold);border-radius:1px;flex:0 0 auto}
+.tr-eyebrow-txt{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--tr-gold);margin:0}
+.tr-hero h1{font-size:clamp(32px,4vw,48px);font-weight:800;letter-spacing:-.035em;line-height:1.1;margin:0 0 16px;color:var(--tr-ink)}
+.tr-lede{font-size:16.5px;line-height:1.7;color:var(--tr-muted);margin:0 0 26px;max-width:520px}
+.tr-cta-row{display:flex;flex-wrap:wrap;gap:12px}
+.tr-cta{display:inline-flex;align-items:center;justify-content:center;padding:14px 22px;border-radius:12px;font-size:14px;font-weight:700;text-decoration:none;transition:transform .15s,box-shadow .15s,background .15s}
+.tr-cta-primary{background:var(--tr-ink);color:var(--tr-white)}
+.tr-cta-primary:hover{transform:translateY(-1px);box-shadow:0 8px 20px rgba(13,13,13,.18)}
+.tr-cta-ghost{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
+.tr-cta-ghost:hover{border-color:var(--tr-gold);color:var(--tr-gold)}
+.tr-hero-media{position:relative;border-radius:24px;overflow:hidden;background:#0d0d0d;aspect-ratio:4/5;max-height:460px;box-shadow:0 24px 48px rgba(13,13,13,.12)}
+.tr-hero-media video{width:100%;height:100%;object-fit:cover;display:block}
+.tr-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:0 0 40px}
+.tr-card{position:relative;display:block;background:var(--tr-white);border:1px solid var(--tr-line);border-radius:18px;padding:32px 26px 28px;text-decoration:none;color:inherit;overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s}
+.tr-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(13,13,13,.08);border-color:var(--tr-gold)}
+.tr-card-num{position:absolute;top:12px;right:16px;font-size:64px;font-weight:800;letter-spacing:-.04em;line-height:1;color:rgba(176,141,87,.08);pointer-events:none;user-select:none}
+.tr-card-icon{width:40px;height:40px;margin:0 0 18px;color:var(--tr-gold)}
+.tr-card-icon svg{width:40px;height:40px;display:block}
+.tr-card strong{display:block;font-size:18px;font-weight:700;margin:0 0 10px;color:var(--tr-ink)}
+.tr-card p{font-size:14.5px;line-height:1.55;color:var(--tr-muted);margin:0}
+.tr-trust{background:var(--tr-white);border:1px solid var(--tr-line);border-radius:16px;padding:28px 30px;margin:0 0 28px}
+.tr-trust h2{font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--tr-gold);margin:0 0 18px}
+.tr-trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tr-trust-item{display:flex;gap:12px;align-items:flex-start}
+.tr-trust-dot{width:8px;height:8px;border-radius:50%;background:var(--tr-gold);margin-top:6px;flex:0 0 auto}
+.tr-trust-item span{font-size:14.5px;line-height:1.5;color:var(--tr-ink);font-weight:500}
+.tr-ruo{margin-top:8px;padding:14px 16px;background:#F4EFE4;border-radius:10px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--tr-gold)}
+@media (max-width:900px){
+  .tr-wrap{padding:32px 18px 72px}
+  .tr-hero{grid-template-columns:1fr;gap:28px}
+  .tr-hero-media{max-height:340px;aspect-ratio:16/10}
+  .tr-cards,.tr-trust-grid{grid-template-columns:1fr}
 }
 </style>
 
@@ -118,22 +107,59 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   </div>
 </nav>
 
+<main class="tr-wrap">
+  <section class="tr-hero">
+    <div>
+      <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt">Laboratory utilities</p></div>
+      <h1>Research tools</h1>
+      <p class="tr-lede">Client-side calculators for laboratory dilution math, mass-unit conversion, and side-by-side catalog identity comparison. No account required. For laboratory research use only.</p>
+      <div class="tr-cta-row">
+        <a class="tr-cta tr-cta-primary" href="/tools/solution-dilution.html">Open dilution calculator</a>
+        <a class="tr-cta tr-cta-ghost" href="/coa.html">Browse COA library</a>
+      </div>
+    </div>
+    <div class="tr-hero-media">
+      <video src="/media/video/product-closeup-loop.mp4" muted autoplay loop playsinline aria-label="Product close-up"></video>
+    </div>
+  </section>
 
-<main class="seo-wrap">
-  <p class="seo-kicker">Laboratory utilities</p>
-  <h1>Research tools</h1>
-  <p class="seo-lede">Client-side calculators for laboratory dilution math, mass-unit conversion, and side-by-side catalog identity comparison. No account required. For laboratory research use only.</p>
-  <div class="seo-grid">
-    <a class="seo-tool-tile" href="/tools/solution-dilution.html"><strong>Solution dilution</strong><span>Vial amount (mg) + solvent volume (mL) → concentration (mg/mL). Optional aliquot mass.</span></a>
-    <a class="seo-tool-tile" href="/tools/unit-converter.html"><strong>Unit converter</strong><span>Convert mg ↔ mcg ↔ ng. Optional IU with a declared factor you supply.</span></a>
-    <a class="seo-tool-tile" href="/tools/compound-comparison.html"><strong>Compound comparison</strong><span>Compare 2–3 catalog compounds: CAS, formula, MW, sequence, vial strength, live price.</span></a>
-  </div>
-  <div class="seo-card">
-    <h2>Also useful</h2>
-    <p style="margin:0 0 10px;color:#5a5a5a;line-height:1.6"><a href="/coa.html" style="color:#9A6D2A;font-weight:600">COA Library</a> — download hosted certificates for lots with files on this site.</p>
-    <p style="margin:0;color:#5a5a5a;line-height:1.6"><a href="/compare/bpc-157-vs-tb-500.html" style="color:#9A6D2A;font-weight:600">Research comparisons</a> — identity-focused writeups (RUO language).</p>
-  </div>
-  <p class="seo-ruo">For laboratory research use only. Not for human or veterinary use.</p>
+  <section class="tr-cards" aria-label="Available tools">
+    <a class="tr-card" href="/tools/solution-dilution.html">
+      <span class="tr-card-num" aria-hidden="true">01</span>
+      <div class="tr-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6v10"/><path d="M16 10h8"/><path d="M14 18c0 6 2.5 12 6 14 3.5-2 6-8 6-14H14z"/><path d="M17 24h6"/></svg>
+      </div>
+      <strong>Solution dilution</strong>
+      <p>Vial amount (mg) + solvent volume (mL) → concentration (mg/mL). Optional aliquot mass.</p>
+    </a>
+    <a class="tr-card" href="/tools/unit-converter.html">
+      <span class="tr-card-num" aria-hidden="true">02</span>
+      <div class="tr-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 14h18"/><path d="M22 8l6 6-6 6"/><path d="M32 26H14"/><path d="M18 20l-6 6 6 6"/></svg>
+      </div>
+      <strong>Unit converter</strong>
+      <p>Convert mg ↔ mcg ↔ ng. Optional IU with a declared factor you supply.</p>
+    </a>
+    <a class="tr-card" href="/tools/compound-comparison.html">
+      <span class="tr-card-num" aria-hidden="true">03</span>
+      <div class="tr-card-icon" aria-hidden="true">
+        <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="8" width="28" height="24" rx="3"/><path d="M6 16h28M6 24h28M16 8v24M26 8v24"/></svg>
+      </div>
+      <strong>Compound comparison</strong>
+      <p>Compare 2–3 catalog compounds: CAS, formula, MW, sequence, vial strength, live price.</p>
+    </a>
+  </section>
+
+  <section class="tr-trust" aria-label="Trusted by researchers">
+    <h2>Trusted by researchers</h2>
+    <div class="tr-trust-grid">
+      <div class="tr-trust-item"><span class="tr-trust-dot" aria-hidden="true"></span><span>Lot COA available when hosted</span></div>
+      <div class="tr-trust-item"><span class="tr-trust-dot" aria-hidden="true"></span><span>Third-party methods</span></div>
+      <div class="tr-trust-item"><span class="tr-trust-dot" aria-hidden="true"></span><span>Ships in 1–2 business days</span></div>
+    </div>
+  </section>
+
+  <p class="tr-ruo">For laboratory research use only. Not for human or veterinary use.</p>
 </main>
 
 <footer class="footer">
