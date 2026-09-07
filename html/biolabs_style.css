@@ -5433,94 +5433,94 @@ button.product-card-mg.active{
   }
 }
 
-/* nav-final-baseline v237: logo + Catalog/Science/Blog share ONE text baseline */
-@media (min-width:901px){
-  .nav.nav,
-  nav.nav{
-    display:flex!important;
-    flex-direction:row!important;
-    align-items:baseline!important;
-    justify-content:flex-start!important;
-    gap:28px!important;
-    padding:18px 32px!important;
-    height:auto!important;
-    min-height:0!important;
-    max-height:none!important;
-  }
-  .nav .nav-logo{
-    display:inline-flex!important;
-    flex-direction:row!important;
-    align-items:baseline!important;
-    gap:2px!important;
-    height:auto!important;
-    line-height:1!important;
-    margin:0!important;
-    padding:0!important;
-    transform:none!important;
-    position:relative!important;
-    top:0!important;
-  }
-  .nav .nav-logo-mark,
-  .nav .nav-logo-text{
-    display:inline!important;
-    height:auto!important;
-    line-height:1!important;
-    margin:0!important;
-    padding:0!important;
-    position:static!important;
-    top:auto!important;
-    transform:none!important;
-    vertical-align:baseline!important;
-    color:#000!important;
-  }
-  .nav .nav-logo-mark{font-size:28px!important;font-weight:500!important}
-  .nav .nav-logo-text{font-size:22px!important;font-weight:500!important;letter-spacing:-.01em!important}
-  .nav .nav-left{
-    display:inline-flex!important;
-    align-items:baseline!important;
-    gap:36px!important;
-    height:auto!important;
-    margin:0!important;
-    padding:0!important;
-  }
-  .nav .nav-left a{
-    display:inline!important;
-    height:auto!important;
-    line-height:1!important;
-    margin:0!important;
-    padding:0!important;
-    font-size:15px!important;
-    font-weight:500!important;
-    position:static!important;
-    top:auto!important;
-    transform:none!important;
-    vertical-align:baseline!important;
-  }
-  .nav .nav-right{
-    display:inline-flex!important;
-    align-items:center!important;
-    align-self:center!important;
-    margin-left:auto!important;
-    gap:14px!important;
-    height:40px!important;
-    padding:0!important;
-  }
-  .nav .nav-util,
-  .nav .nav-cart,
-  .nav .nav-hamburger{
-    display:inline-flex!important;
-    align-items:center!important;
-    justify-content:center!important;
-    width:40px!important;
-    height:40px!important;
-    margin:0!important;
-    box-sizing:border-box!important;
-    transform:none!important;
-  }
-  .nav .nav-util,
-  .nav .nav-cart{
-    border-radius:999px!important;
-    border:1px solid #ddd!important;
-  }
-  .nav .nav-cart{position:relative!important}
+/* nav-midline-lock v238: logo LEFT + links share ONE vertical midline (not baseline — big type looked high) */
+nav.nav,
+.nav{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:flex-start!important;
+  gap:28px!important;
+  padding:16px 32px!important;
+  height:auto!important;
+  min-height:64px!important;
+  box-sizing:border-box!important;
+}
+.nav .nav-logo,
+a.nav-logo{
+  display:inline-flex!important;
+  flex-direction:row!important;
+  align-items:baseline!important;
+  align-self:center!important;
+  gap:2px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+  transform:none!important;
+  position:relative!important;
+  top:0!important;
+  order:0!important;
+}
+.nav .nav-logo-mark,
+.nav .nav-logo-text{
+  display:inline-block!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+  position:static!important;
+  top:auto!important;
+  transform:none!important;
+  vertical-align:baseline!important;
+  color:#000!important;
+}
+.nav .nav-logo-mark{font-size:28px!important;font-weight:500!important;letter-spacing:0!important}
+.nav .nav-logo-text{font-size:22px!important;font-weight:500!important;letter-spacing:-.01em!important}
+.nav .nav-left{
+  display:inline-flex!important;
+  align-items:center!important;
+  align-self:center!important;
+  gap:36px!important;
+  height:auto!important;
+  margin:0!important;
+  padding:0!important;
+}
+.nav .nav-left a{
+  display:inline-flex!important;
+  align-items:center!important;
+  height:28px!important;
+  margin:0!important;
+  padding:0!important;
+  line-height:1!important;
+  font-size:15px!important;
+  font-weight:500!important;
+  transform:none!important;
+  position:static!important;
+  top:auto!important;
+}
+.nav .nav-right{
+  display:inline-flex!important;
+  align-items:center!important;
+  align-self:center!important;
+  margin-left:auto!important;
+  gap:14px!important;
+  height:40px!important;
+}
+.nav .nav-util,
+.nav .nav-cart,
+.nav .nav-hamburger{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:40px!important;
+  height:40px!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+  transform:none!important;
+}
+@media (max-width:800px){
+  nav.nav,.nav{padding:14px 16px!important;gap:12px!important;min-height:56px!important}
+  .nav .nav-logo-mark{font-size:26px!important}
+  .nav .nav-logo-text{font-size:18px!important}
+  .nav .nav-left{display:none!important}
 }
