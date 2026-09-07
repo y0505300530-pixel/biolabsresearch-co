@@ -686,7 +686,7 @@ function addToCart(name, price, imageUrl, slug) {
     return iname === base || i.name === name;
   });
   if (existing) { existing.qty++; if (slug) existing.slug = slug; existing.name = base; }
-  else { var _img = (typeof vialImg==='function') ? vialImg({slug:slug, name:base}) : (imageUrl || ('/media/vial-'+slug+'.png?v=153')); cart.push({ name: base, price: price, imageUrl: _img, qty: 1, slug: slug }); }
+  else { var _img = (typeof vialImg==='function') ? vialImg({slug:slug, name:base}) : (imageUrl || ('/media/vial-'+slug+'.png?v=155')); cart.push({ name: base, price: price, imageUrl: _img, qty: 1, slug: slug }); }
   saveCart();
   renderCart();
   if (!document.getElementById('cartDrawer').classList.contains('open')) toggleCart();
@@ -852,7 +852,7 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
     grid.innerHTML = '';
     list.forEach(function(p) {
       var href = SLUG_MAP[p.slug] || ('products/' + p.slug + '.html');
-      var vial = (p.image_url && String(p.image_url).indexOf('/media/')===0) ? p.image_url : ('/media/vial-' + p.slug + '.png?v=153');
+      var vial = (p.image_url && String(p.image_url).indexOf('/media/')===0) ? p.image_url : ('/media/vial-' + p.slug + '.png?v=155');
       var badgeHtml = p.badge
         ? '<div class="product-card-badge">' + escAttr(p.badge) + '</div>'
         : '<div class="product-card-badge product-card-badge-spacer">&nbsp;</div>';

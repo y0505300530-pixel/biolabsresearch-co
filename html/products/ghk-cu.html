@@ -655,7 +655,7 @@ storageHtml + presentationHtml +
     var slug = window.location.pathname.split('/').pop().replace('.html','');
     var cartName = sizeLabel ? name+' ('+sizeLabel+')' : name;
     var imgEl = document.querySelector('.product-img-main img');
-    var productImageUrl = '/media/vial-' + slug + '.png?v=153';
+    var productImageUrl = '/media/vial-' + slug + '.png?v=155';
     var cart = getCart();
     var ex = cart.find(function(i){return i.name===cartName;});
     var pdpQty = parseInt(document.getElementById('pdpQty') ? document.getElementById('pdpQty').textContent : '1') || 1;
