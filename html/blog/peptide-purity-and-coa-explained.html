@@ -38,7 +38,7 @@
   "author": {"@type": "Organization", "name": "BioLabs Research"},
   "publisher": {"@type": "Organization", "name": "BioLabs Research", "logo": {"@type": "ImageObject", "url": "https://biolabsresearch.co/biolabsresearch-logo.png"}},
   "datePublished": "2026-08-26",
-  "dateModified": "2026-08-26",
+  "dateModified": "2026-09-08",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://biolabsresearch.co/blog/peptide-purity-and-coa-explained.html"}
 }
 </script>
@@ -89,6 +89,26 @@
 .article-quote p::before{content:"\201C";font-size:36px;color:var(--bronze);vertical-align:-12px;margin-right:4px}
 .article-quote p::after{content:"\201D";font-size:36px;color:var(--bronze);vertical-align:-12px;margin-left:4px}
 
+
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:var(--ink);font-size:15px}
+.article-author span{display:block;color:var(--ink-muted);font-size:13px;margin-top:2px}
+.article-toc{background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:var(--bronze,#8B6914);font-weight:500;text-decoration:none}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:var(--bg-warm,#F7F3EB);border-radius:12px;overflow:hidden;border:1px solid var(--border-light,#E8E2D8)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:var(--ink);font-weight:600}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+
 </style>
 <script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -128,16 +148,27 @@
 
 <div class="article-hero">
   <h1>Peptide Purity and COA Explained</h1>
-  <div class="meta"><span>August 26, 2026</span>·<span>BioLabs Research</span>·<span>8 min read</span></div>
+  <div class="meta"><span>August 26, 2026</span>·<span>BioLabs Research Scientific Editorial</span>·<span>8 min read<<div class="article-body"><div class="article-author">
+  <img src="/media/logo-b.png" alt="BioLabs Research mark" class="article-author-avatar" width="56" height="56" loading="lazy">
+  <div>
+    <strong>BioLabs Research Scientific Editorial</strong>
+    <span>Catalog identity notes</span>
+  </div>
 </div>
 
-<div class="article-body">
 <img src="/media/blog-topic/peptide-purity-and-coa-explained-1.png" alt="Reading an HPLC chromatogram: the main peak area vs. impurity peaks determines p" class="article-img" loading="lazy"><p class="article-img-caption">Reading an HPLC chromatogram: the main peak area vs. impurity peaks determines p</p>
+<p>Laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical lot before booking inventory.</p>
+<p>Do not treat adjacent figures as interchangeable evidence — each image documents a different check in the receiving workflow.</p>
 <img src="/media/blog-topic/peptide-purity-and-coa-explained-2.png" alt="Documentation matters: a COA is only as reliable as the researcher who reads it " class="article-img" loading="lazy"><p class="article-img-caption">Documentation matters: a COA is only as reliable as the researcher who reads it </p><p>A Certificate of Analysis (COA) is the single most important document when sourcing research peptides. It tells you what's in the vial, how pure it is, and whether the identity matches the label. This guide walks through each section of a typical peptide COA and explains what to look for — and what red flags to avoid.</p>
+<p>Laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical lot before booking inventory.</p>
+<p>Do not treat adjacent figures as interchangeable evidence — each image documents a different check in the receiving workflow.</p>
+<img src="/media/blog-lifestyle/peptide-purity-and-coa-explained-2.png" alt="Laboratory scientist working with research vials and lot documentation" class="article-img" loading="lazy">
+<p class="article-img-caption">Laboratory scientist working with research vials and lot documentation</p>
 
 
 
-<h2>Why COA Quality Matters</h2>
+
+<h2 id="why-coa-quality-matters">Why COA Quality Matters</h2>
 <p>Not all COAs are created equal. A COA is only as strong as the laboratory name, testing method, and lot ID printed on it. Without these elements, a COA is just a piece of paper. Researchers sourcing peptides for in vitro studies should verify that:</p>
 <ul>
 <li>The testing laboratory is named and identifiable</li>
@@ -148,7 +179,7 @@
 
 
 
-<h2>HPLC Purity Analysis</h2>
+<h2 id="hplc-purity-analysis">HPLC Purity Analysis</h2>
 <p>High-Performance Liquid Chromatography (HPLC) is the gold standard for peptide purity analysis. The COA should report:</p>
 <ul>
 <li><strong>Purity percentage</strong> — reported on the lot COA (HPLC/MS); no catalog-wide guarantee</li>
@@ -158,7 +189,7 @@
 </ul>
 <p>A single sharp peak at the expected retention time indicates high purity. Multiple significant peaks suggest impurities or incomplete synthesis.</p>
 
-<h2>Mass Spectrometry (MS) Confirmation</h2>
+<h2 id="mass-spectrometry-ms-confirmation">Mass Spectrometry (MS) Confirmation</h2>
 <p>Mass spectrometry confirms the molecular identity of the peptide. The COA should include:</p>
 <ul>
 <li><strong>Molecular weight</strong> — the observed mass should match the theoretical mass within instrument tolerance</li>
@@ -168,8 +199,20 @@
 <p>MS data is critical because HPLC alone cannot distinguish between peptides of similar retention times but different molecular weights.</p>
 
 <div class="ruo-note"><strong>RUO Notice:</strong> All BioLabs Research peptides are sold for in vitro and laboratory research only. COAs are provided as lot documentation, not as quality claims for therapeutic use.</div>
+<div class="article-toc"><strong>On this page</strong>
+<ol>
+<li><a href="#why-coa-quality-matters">Why COA Quality Matters</a></li>
+<li><a href="#hplc-purity-analysis">HPLC Purity Analysis</a></li>
+<li><a href="#mass-spectrometry-ms-confirmation">Mass Spectrometry (MS) Confirmation</a></li>
+<li><a href="#residual-solvent-testing">Residual Solvent Testing</a></li>
+<li><a href="#endotoxin-testing">Endotoxin Testing</a></li>
+<li><a href="#red-flags-in-peptide-coas">Red Flags in Peptide COAs</a></li>
+<li><a href="#requesting-a-coa-before-purchase">Requesting a COA Before Purchase</a></li>
+<li><a href="#checklist-what-to-verify-on-a-peptide-coa">Checklist: What to Verify on a Peptide COA</a></li>
+</ol></div>
 
-<h2>Residual Solvent Testing</h2>
+
+<h2 id="residual-solvent-testing">Residual Solvent Testing</h2>
 <p>Peptide synthesis involves organic solvents (acetonitrile, TFA, etc.). A quality COA should report residual solvent levels, particularly:</p>
 
 
@@ -180,7 +223,7 @@
 </ul>
 <p>High residual solvent levels can interfere with sensitive in vitro assays.</p>
 
-<h2>Endotoxin Testing</h2>
+<h2 id="endotoxin-testing">Endotoxin Testing</h2>
 <p>For cell culture applications, endotoxin levels matter. Bacterial endotoxin can trigger immune responses in cell-based assays, confounding results. A quality peptide COA may include:</p>
 <ul>
 <li><strong>Endotoxin level</strong> — typically reported in EU/mg (endotoxin units per milligram)</li>
@@ -188,7 +231,7 @@
 </ul>
 <p>For cell culture work, endotoxin levels below 0.5 EU/mg are generally preferred.</p>
 
-<h2>Red Flags in Peptide COAs</h2>
+<h2 id="red-flags-in-peptide-coas">Red Flags in Peptide COAs</h2>
 <p>Watch for these warning signs when evaluating a peptide supplier's documentation:</p>
 <ul>
 <li><strong>No laboratory name</strong> — if the testing lab isn't identified, the COA has limited value</li>
@@ -198,7 +241,7 @@
 <li><strong>Missing dates</strong> — no manufacture or test date raises traceability concerns</li>
 </ul>
 
-<h2>Requesting a COA Before Purchase</h2>
+<h2 id="requesting-a-coa-before-purchase">Requesting a COA Before Purchase</h2>
 <p>It is standard practice in reagent sourcing to request a COA before purchase. A reputable supplier will either provide the COA on their website or send it on request. At BioLabs Research, we provide lot COAs on request when available. Contact us at inquiry form with the product name and lot number.</p>
 
 
@@ -211,8 +254,14 @@
   <p>Lot documentation available on request. Third-party tested.</p>
   <a href="/guide-reading-coa">Read Our Full COA Guide →</a>
 </div>
+<div class="related-posts"><h3>Related notes</h3><div class="related-grid">
+<a class="related-card" href="/blog/hplc-area-percent-vs-net-peptide-content.html"><img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-1.png" alt="" loading="lazy"><span>HPLC Area Percent Is Not Net Peptide Content</span></a>
+<a class="related-card" href="/blog/lot-coa-not-purity-percentage.html"><img src="/media/logo-b.png" alt="" loading="lazy"><span>Lot COA, not a purity percentage</span></a>
+<a class="related-card" href="/blog/buying-research-peptides-online-guide-2026.html"><img src="/media/blog-topic/buying-research-peptides-online-guide-2026-1.png" alt="" loading="lazy"><span>Buying Research Peptides Online: A 2026 Sourcing</span></a>
+</div></div>
 
-<h2>Checklist: What to Verify on a Peptide COA</h2>
+
+<h2 id="checklist-what-to-verify-on-a-peptide-coa">Checklist: What to Verify on a Peptide COA</h2>
 <ul>
 <li>☐ Laboratory name is identified</li>
 <li>☐ Lot number matches the vial label</li>
@@ -224,9 +273,14 @@
 <li>☐ Testing method clearly specified</li>
 </ul>
 
+
+<h2 id="references">References</h2>
+<ol class="refs">
+<li>PubChem for CAS/CID verification alongside COA identity fields. <a href="https://pubchem.ncbi.nlm.nih.gov/">https://pubchem.ncbi.nlm.nih.gov/</a></li>
+</ol>
 </div>
 
-<div class="article-footer">
+<div class="article-footer">ass="article-footer">
   <p><a href="/blog/">← Back to Blog</a> · <a href="https://biolabsresearch.co/index.html?from=nav">Catalog</a> · <a href="https://biolabsresearch.co/science.html">Science</a></p>
 </div>
 

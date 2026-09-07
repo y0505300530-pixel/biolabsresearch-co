@@ -37,7 +37,7 @@
   "author": {"@type": "Organization", "name": "BioLabs Research"},
   "publisher": {"@type": "Organization", "name": "BioLabs Research", "logo": {"@type": "ImageObject", "url": "https://biolabsresearch.co/biolabsresearch-logo.png"}},
   "datePublished": "2026-08-31",
-  "dateModified": "2026-08-31",
+  "dateModified": "2026-09-08",
   "mainEntityOfPage": {"@type": "WebPage", "@id": "https://biolabsresearch.co/blog/hplc-area-percent-vs-net-peptide-content.html"}
 }
 </script>
@@ -97,6 +97,26 @@
 .article-quote p::before{content:"\201C";font-size:36px;color:var(--bronze);vertical-align:-12px;margin-right:4px}
 .article-quote p::after{content:"\201D";font-size:36px;color:var(--bronze);vertical-align:-12px;margin-left:4px}
 
+
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:var(--ink-muted);text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:var(--ink);font-size:15px}
+.article-author span{display:block;color:var(--ink-muted);font-size:13px;margin-top:2px}
+.article-toc{background:var(--bg-warm,#F7F3EB);border:1px solid var(--border-light,#E8E2D8);border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:var(--ink);margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:var(--bronze,#8B6914);font-weight:500;text-decoration:none}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display);font-size:20px;color:var(--ink);margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:var(--bg-warm,#F7F3EB);border-radius:12px;overflow:hidden;border:1px solid var(--border-light,#E8E2D8)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:var(--ink);font-weight:600}
+@media(max-width:768px){.related-grid{grid-template-columns:1fr}}
+
 </style>
 <script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -136,27 +156,42 @@
 
 <div class="article-hero">
   <h1>HPLC Area Percent Is Not Net Peptide Content</h1>
-  <div class="meta"><span>August 31, 2026</span>·<span>BioLabs Research</span>·<span>11 min read</span></div>
+  <div class="meta"><span>August 31, 2026</span>·<span>BioLabs Research Scientific Editorial</span>·<span>11 min read<div class="article-body"><div class="article-author">
+  <img src="/media/logo-b.png" alt="BioLabs Research mark" class="article-author-avatar" width="56" height="56" loading="lazy">
+  <div>
+    <strong>BioLabs Research Scientific Editorial</strong>
+    <span>Catalog identity notes</span>
+  </div>
 </div>
-<div class="article-body">
+
 <p>A catalog line that says “98% pure” is not a mass of peptide. On a reversed-phase HPLC trace, that number is almost always <strong>area percent</strong>: the main peak’s share of the UV-absorbing area under one method, at one wavelength. Water, acetate or trifluoroacetate (TFA) counter-ions, and residual solvent do not show up in that ratio. They still sit in the lyophilized cake.</p>
 
 <p>Labs that treat area% as a weighing factor systematically mis-make solutions. This note is about how to read the three orthogonal measurements that actually belong on a lot document: chromatographic purity, mass identity, and net peptide content. It is written for laboratory purchasing and QC. It is not a dosing guide and not a claim about any catalog percentage on this site. Percentages below are literature examples, not BioLabs lot results.</p>
 
 <div class="ruo-note"><strong>RUO.</strong> BioLabs Research lists peptides as laboratory reagents. Not for human or veterinary use. Not a medicine, food, or cosmetic. Lot HPLC, MS, and net-peptide figures, when issued, live on the lot COA — we do not invent them on product pages.</div>
+<div class="article-toc"><strong>On this page</strong>
+<ol>
+<li><a href="#what-hplc-area-percent-actually-measures">What HPLC area percent actually measures</a></li>
+<li><a href="#what-mass-spectrometry-is-for">What mass spectrometry is for</a></li>
+<li><a href="#net-peptide-content-the-mass-the-hplc-never-sees">Net peptide content: the mass the HPLC never sees</a></li>
+<li><a href="#what-to-demand-on-a-lot-coa">What to demand on a lot COA</a></li>
+<li><a href="#what-this-site-will-not-print">What this site will not print</a></li>
+<li><a href="#references">References</a></li>
+</ol></div>
 
-<h2>What HPLC area percent actually measures</h2>
+
+<h2 id="what-hplc-area-percent-actually-measures">What HPLC area percent actually measures</h2>
 <p>Reversed-phase HPLC with UV detection (commonly ~214–220 nm, where the peptide bond absorbs) integrates peaks. Area% for the main peak is:</p>
 <p>main-peak area ÷ total integrated peptidic area, under that gradient, column, and detector setting.</p>
 <p>It answers: of the UV-active peptidic material that eluted, how much is the intended peak? It does not answer: how many milligrams of that sequence are in this vial.</p>
 <p>The method is also not identity. Deletion sequences, diastereomers, and incomplete-deprotection products from solid-phase peptide synthesis can co-elute or appear as shoulders. D’Hondt and colleagues reviewed those related-impurity classes — starting-material, process (deletion/insertion, epimerization, leftover protecting groups), and degradation (oxidation, deamidation, aspartimide, pyroglutamate) — in synthetic peptide materials.<sup>1</sup> A single area% without the chromatogram, wavelength, and method is not a specification you can reproduce.</p>
 
-<h2>What mass spectrometry is for</h2>
+<h2 id="what-mass-spectrometry-is-for">What mass spectrometry is for</h2>
 <p>Mass spectrometry asks a different question: does the observed mass match the theoretical mass of the named sequence (and salt form, if stated)? Intact MS is identity, not purity. A correct mass with a dirty chromatogram is still a mixed sample. A pretty chromatogram with the wrong mass is the wrong molecule.</p>
 <p>A usable COA line for identity reports theoretical mass, observed mass, and the ionization method. Agreement is typically discussed in daltons or ppm, not as a second “purity %.” Sequence-level MS/MS is stronger still; most research-reagent COAs stop at intact mass. That limit should be read as a limit, not padded.</p>
 <p>Independent work on commercially sourced research peptides has shown that labeled identity and measured identity are not automatically the same thing. Verbeke et al. evaluated synthetic peptides sold for R&amp;D and documented quality failures that HPLC-alone paperwork would not have caught.<sup>2</sup> Orthogonal MS is the cheap check against a mislabeled vial.</p>
 
-<h2>Net peptide content: the mass the HPLC never sees</h2>
+<h2 id="net-peptide-content-the-mass-the-hplc-never-sees">Net peptide content: the mass the HPLC never sees</h2>
 <p>Lyophilized peptide is a cake of peptide plus counter-ions plus water plus leftover solvent. TFA from RP-HPLC purification pairs with basic residues (Lys, Arg, His, and the N-terminus). That TFA is real mass. It is not the sequence.</p>
 <p>Net peptide content (NPC) is the peptidic mass fraction of the powder, usually from amino-acid analysis after hydrolysis or from nitrogen analysis, often with a separate moisture (Karl Fischer) figure. HPLC area% and NPC can both be “high” and still disagree, because they are not the same measurement. A TFA salt of a short, basic peptide can look &gt;98% by area% and still be well below that by mass of sequence. That gap is expected chemistry, not a scandal, provided it is reported.</p>
 <p>If a buyer needs a molar solution, the weighing arithmetic is:</p>
@@ -175,7 +210,7 @@
   </tbody>
 </table>
 
-<h2>What to demand on a lot COA</h2>
+<h2 id="what-to-demand-on-a-lot-coa">What to demand on a lot COA</h2>
 <ul>
 <li>Lot number that matches the vial label.</li>
 <li>HPLC: wavelength, column/gradient identifier or method ID, chromatogram or a statement that it is available, area% for the main peak.</li>
@@ -186,24 +221,42 @@
 <p>Residual solvents, when reported, belong against a named method (for example ICH Q3C classes), not a marketing adjective.<sup>3</sup> Endotoxin is a separate assay for materials going into cell work; it is not implied by HPLC.</p>
 <p>This site’s longer lab note on how we read a lot is <a href="https://biolabsresearch.co/science.html">How a Serious Lot Is Read</a>. The walkthrough of a COA page is <a href="https://biolabsresearch.co/guide-reading-coa">the COA guide</a>.</p>
 
-<h2>What this site will not print</h2>
+<h2 id="what-this-site-will-not-print">What this site will not print</h2>
 <p>Product pages here do not carry an invented HPLC percentage. If a lot document exists, it is issued against that lot. If it does not, the honest line is “COA on request,” not a stock photo of someone else’s trace. CAS numbers on a science card are literature identifiers. They are not a substitute for observed mass on the COA.</p>
 
 <div class="article-quote">
 
 <img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-1.png" alt="HPLC area% measures UV absorption ratios — not milligrams of peptide in the vial" class="article-img" loading="lazy"><p class="article-img-caption">HPLC area% measures UV absorption ratios — not milligrams of peptide in the vial</p>
+<p>Laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical lot before booking inventory.</p>
+<p>Do not treat adjacent figures as interchangeable evidence — each image documents a different check in the receiving workflow.</p>
 <img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-2.png" alt="Lab bench reality: where HPLC area percent and net peptide content meet the rese" class="article-img" loading="lazy"><p class="article-img-caption">Lab bench reality: where HPLC area percent and net peptide content meet the rese</p>
 
 <p>In science, the answers are only as good as the questions we ask.</p>
+<p>Laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical lot before booking inventory.</p>
+<p>Do not treat adjacent figures as interchangeable evidence — each image documents a different check in the receiving workflow.</p>
+<img src="/media/blog-lifestyle/hplc-area-percent-vs-net-peptide-content-2.png" alt="Laboratory scientist working with research vials and lot documentation" class="article-img" loading="lazy">
+<p class="article-img-caption">Laboratory scientist working with research vials and lot documentation</p>
+
 </div>
+
+<p>Laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical lot before booking inventory.</p>
+<p>Do not treat adjacent figures as interchangeable evidence — each image documents a different check in the receiving workflow.</p>
+<img src="/media/vial-bpc-157.png?v=153" alt="Catalog product pack image for HPLC Area Percent Is Not Net Peptide Content — research use only" class="article-img" loading="lazy">
+<p class="article-img-caption">Catalog product pack image for HPLC Area Percent Is Not Net Peptide Content — research use only</p>
 
 <div class="article-cta">
   <h3>Catalog, then the lot paper</h3>
   <p>Listings are RUO reagents. Identity is the sequence and the COA, not a homepage badge.</p>
   <a href="https://biolabsresearch.co/index.html?from=nav">Open the catalog →</a>
 </div>
+<div class="related-posts"><h3>Related notes</h3><div class="related-grid">
+<a class="related-card" href="/blog/lot-coa-not-purity-percentage.html"><img src="/media/logo-b.png" alt="" loading="lazy"><span>Lot COA, not a purity percentage</span></a>
+<a class="related-card" href="/blog/peptide-purity-and-coa-explained.html"><img src="/media/blog-topic/peptide-purity-and-coa-explained-1.png" alt="" loading="lazy"><span>Peptide Purity and COA Explained</span></a>
+<a class="related-card" href="/blog/buying-research-peptides-online-guide-2026.html"><img src="/media/blog-topic/buying-research-peptides-online-guide-2026-1.png" alt="" loading="lazy"><span>Buying Research Peptides Online: A 2026 Sourcing</span></a>
+</div></div>
 
-<h2>References</h2>
+
+<h2 id="references">References</h2>
 <ol class="refs">
 <li>D’Hondt M, Bracke N, Taevernier L, Gevaert B, Verbeke F, Wynendaele E, De Spiegeleer B. Related impurities in peptide medicines. <em>J Pharm Biomed Anal.</em> 2014;101:2–30. <a href="https://doi.org/10.1016/j.jpba.2014.06.012">https://doi.org/10.1016/j.jpba.2014.06.012</a></li>
 <li>Verbeke F, Wynendaele E, Braet S, D’Hondt M, De Spiegeleer B. Quality evaluation of synthetic quorum sensing peptides used in R&amp;D. <em>J Pharm Anal.</em> 2015;5(3):169–181. <a href="https://doi.org/10.1016/j.jpha.2014.12.002">https://doi.org/10.1016/j.jpha.2014.12.002</a></li>
@@ -212,7 +265,7 @@
 
 </div>
 
-<div class="article-footer">
+<div class="article-footer">ass="article-footer">
   <p><a href="/blog/">← Back to Blog</a> · <a href="https://biolabsresearch.co/index.html?from=nav">Catalog</a> · <a href="https://biolabsresearch.co/science.html">Science</a></p>
 </div>
 <script>
