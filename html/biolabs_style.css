@@ -5574,3 +5574,15 @@ a.nav-logo{
 @media (max-width:420px){
   .product-card-atc{font-size:11px!important;letter-spacing:-.01em!important;padding:10px 8px!important}
 }
+
+/* support-hours-et 2026-09-07 */
+.support-hours{margin:8px 0 0;font-size:13px;line-height:1.45;color:#4A4A4A}
+.support-hours strong{color:#0d2137;font-weight:700}
+.support-status{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:12px;font-weight:600}
+.support-status .dot{width:8px;height:8px;border-radius:50%;background:#9A6D2A;display:inline-block}
+.support-status.on .dot{background:#2a9a7a}
+.support-status.off .dot{background:#8A8A8A}
+.footer-col-contact .support-hours{margin-top:10px;max-width:220px}
+.contact-hours-box{margin:24px 0 8px;padding:16px 18px;border:1px solid #e8e2d8;border-radius:12px;background:#fff}
+.nl-trust-row{display:flex;flex-wrap:wrap;gap:10px 14px;margin:14px 0 0;padding:0;list-style:none}
+.nl-trust-row li{font-size:12px;font-weight:600;color:#0d2137;background:#fff;border:1px solid #e8e2d8;border-radius:999px;padding:7px 12px}
