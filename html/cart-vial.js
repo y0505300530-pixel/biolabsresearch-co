@@ -616,19 +616,20 @@ function addSuggest(slug, name, price){
     var s = document.createElement('style');
     s.id = 'cart-progress-css';
     s.textContent = [
-      '#cartProgress{display:none;margin:0;padding:8px 14px 10px;background:linear-gradient(180deg,#FBF6EA 0%,#F4EFE4 100%);border-bottom:1px solid #eadfca;flex:0 0 auto}',
+      '#cartProgress{display:none;margin:0;padding:10px 14px 12px;background:linear-gradient(180deg,#FBF6EA 0%,#F4EFE4 100%);border-bottom:1px solid #eadfca;flex:0 0 auto}',
       '#cartProgress.on{display:block}',
       '.cp-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;color:#0d2137;margin:0 0 2px;text-transform:uppercase}',
       '.cp-msg{font-size:12px;font-weight:700;color:#0d2137;line-height:1.25;margin:0 0 6px}',
       '.cp-msg em{font-style:normal;color:#9A6D2A}',
-      '.cp-track{position:relative;height:8px;border-radius:999px;background:#e6dcc8;overflow:visible;margin:4px 4px 14px}',
+      '.cp-track{position:relative;height:8px;border-radius:999px;background:#e6dcc8;overflow:visible;margin:6px 4px 26px}',
       '.cp-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#E8C57A,#F2D191 40%,#C9A46A);width:0;transition:width .45s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px rgba(242,209,145,.55)}',
       '.cp-ticks{position:absolute;inset:0;pointer-events:none}',
       '.cp-tick{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;border:2px solid #c9b48a;box-sizing:border-box;transition:background .2s,border-color .2s,transform .2s}',
       '.cp-tick.on{background:#0d2137;border-color:#0d2137;transform:scale(1.08)}',
-      '.cp-tick .lbl{position:absolute;top:16px;left:50%;transform:translateX(-50%);font-size:9px;font-weight:700;color:#6b6254;white-space:nowrap}',
+      '.cp-tick .lbl{position:absolute;top:16px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;color:#6b6254;white-space:nowrap}',
       '.cp-tick.on .lbl{color:#0d2137}',
-      '.cp-unlocked{margin:0;font-size:11px;color:#4a6358}'
+      '.cp-unlocked{margin:2px 0 0;padding:8px 10px;border-radius:10px;background:#fff;border:1px solid #d9cbae;font-size:12.5px;font-weight:700;line-height:1.35;color:#0d2137;clear:both}',
+      '.cp-unlocked span{display:block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#9A6D2A;margin:0 0 2px}'
     ].join('');
     (document.head||document.documentElement).appendChild(s);
   }
@@ -690,7 +691,10 @@ function addSuggest(slug, name, price){
       var left = (t.at / 500) * 100;
       return '<span class="cp-tick'+(st.total>=t.at?' on':'')+'" style="left:'+left+'%"><span class="lbl">$'+t.at+'</span></span>';
     }).join('');
-    var unlockedLine = st.unlocked ? '<p class="cp-unlocked">Unlocked: '+st.unlocked.prize+'</p>' : '';
+    var unlockedLine = '';
+    if (st.unlocked){
+      unlockedLine = '<p class="cp-unlocked"><span>Unlocked</span>'+st.unlocked.prize+'</p>';
+    }
     el.innerHTML =
       '<p class="cp-kicker">Inquiry rewards</p>'+
       '<p class="cp-msg">'+st.msg.replace(/(\$\d+)/g,'<em>$1</em>')+'</p>'+
