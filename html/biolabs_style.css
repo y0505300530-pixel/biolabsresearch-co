@@ -5247,3 +5247,99 @@ button.product-card-mg.active{
     width:40px!important;
   }
 }
+
+/* nav-heights-lock: logo + Catalog/Science/Blog + util circles share ONE vertical center */
+@media (min-width:901px){
+  .nav{
+    display:flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    justify-content:flex-start!important;
+    gap:28px!important;
+    padding:0 32px!important;
+    height:68px!important;
+    min-height:68px!important;
+    max-height:68px!important;
+    box-sizing:border-box!important;
+  }
+  .nav > *{
+    align-self:center!important;
+    margin-top:0!important;
+    margin-bottom:0!important;
+  }
+  .nav-logo{
+    display:inline-flex!important;
+    flex-direction:row!important;
+    align-items:center!important;
+    height:40px!important;
+    line-height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    position:static!important;
+    top:auto!important;
+    transform:none!important;
+  }
+  .nav-logo-mark,
+  .nav-logo-text{
+    display:inline-block!important;
+    line-height:40px!important;
+    height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    position:static!important;
+    top:auto!important;
+    transform:none!important;
+    vertical-align:middle!important;
+  }
+  .nav-left{
+    display:flex!important;
+    align-items:center!important;
+    height:40px!important;
+    gap:36px!important;
+    padding:0!important;
+    margin:0!important;
+  }
+  .nav-left a{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    height:40px!important;
+    line-height:40px!important;
+    padding:0!important;
+    margin:0!important;
+    font-size:15px!important;
+    position:static!important;
+    top:auto!important;
+    transform:none!important;
+  }
+  .nav-right{
+    display:flex!important;
+    align-items:center!important;
+    height:40px!important;
+    margin:0 0 0 auto!important;
+    padding:0!important;
+    gap:14px!important;
+  }
+  .nav-util,
+  .nav-cart,
+  .nav-hamburger{
+    display:inline-flex!important;
+    align-items:center!important;
+    justify-content:center!important;
+    width:40px!important;
+    height:40px!important;
+    margin:0!important;
+    padding:0!important;
+    line-height:1!important;
+    box-sizing:border-box!important;
+  }
+  .nav-util,
+  .nav-cart{
+    border-radius:999px!important;
+    border:1px solid #ddd!important;
+  }
+  .nav-cart-count{
+    position:absolute!important;
+  }
+  .nav-cart{position:relative!important}
+}
