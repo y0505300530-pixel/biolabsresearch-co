@@ -1,8 +1,8 @@
-/* INSIDER25 promo + countdown. Fresh 6h on EVERY page load (Yehuda). */
+/* INSIDER25 promo + countdown. Fixed end: 2026-09-14T23:59:59+03:00 (Asia/Jerusalem). */
 (function(){
   var CODE = "INSIDER25";
-  var SIX_H = 6 * 60 * 60 * 1000;
-  var END_MS = Date.now() + SIX_H; // reset every refresh — no localStorage
+  var END_ISO = "2026-09-14T23:59:59+03:00";
+  var END_MS = Date.parse(END_ISO);
   function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
   function format(left){
     var h = left / 36e5, m = (left % 36e5) / 6e4, s = (left % 6e4) / 1e3;
@@ -10,12 +10,19 @@
   }
   function tick(){
     var left = END_MS - Date.now();
-    if (left <= 0) { END_MS = Date.now() + SIX_H; left = END_MS - Date.now(); }
-    var text = format(left);
-    var iso = new Date(END_MS).toISOString();
     var nodes = document.querySelectorAll(".cutoff-timer");
-    for (var i = 0; i < nodes.length; i++) {
-      nodes[i].setAttribute("data-end", iso);
+    var i, text;
+    if (left <= 0) {
+      text = "Offer ended";
+      for (i = 0; i < nodes.length; i++) {
+        nodes[i].setAttribute("data-end", END_ISO);
+        nodes[i].textContent = text;
+      }
+      return;
+    }
+    text = format(left);
+    for (i = 0; i < nodes.length; i++) {
+      nodes[i].setAttribute("data-end", END_ISO);
       nodes[i].textContent = text;
     }
   }
@@ -24,7 +31,6 @@
   }
   function wire(){
     saveCode();
-    // clear any stale stored deadlines from older builds
     try {
       localStorage.removeItem("insider25_end");
       localStorage.removeItem("promo_end");
