@@ -8,6 +8,13 @@
   function validEmail(email) {
     return email.length <= 200 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   }
+  /* stage 3: token for browser events, contract_events.md §4 */
+  function saveTrackToken(body) {
+    try {
+      var t = body && body.track_token;
+      if (typeof t === 'string' && t) localStorage.setItem('biolabs_track', t);
+    } catch (e) {}
+  }
   function send(email, name) {
     return fetch("/api/subscribe", {
       method: "POST",
@@ -15,6 +22,8 @@
       body: JSON.stringify({ email: email, firstName: name || "", coupon: CODE, page: location.href })
     }).then(function (r) {
       if (!r.ok) throw new Error("Could not subscribe");
+      /* a missing or broken body is not an error: no token, same success state */
+      return r.json().then(saveTrackToken, function () {});
     });
   }
   function showSuccess(out, btn) {

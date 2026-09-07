@@ -75,10 +75,241 @@ function _sanitizeCart(c){
   return out;
 }
 
+/* stage 3: shop events for Customer.io — cart_updated / checkout_started.
+   Contract: .scratch/shop-stage3/contract_events.md §3, §4.
+   Nothing but reads until localStorage holds a track token: no token, no request. */
+var _trackCartTouch = (function(){
+  var TOKEN_KEY = 'biolabs_track';    /* written by email-capture.js from /api/subscribe */
+  var HASH_KEY  = 'biolabs_track_h';  /* cart already reported */
+  var CO_KEY    = 'biolabs_track_co'; /* last checkout_started, ms */
+  var CE_KEY    = 'biolabs_track_ce'; /* address already sent to /api/checkout-identify */
+  var CART_URL  = 'https://biolabsresearch.co/checkout.html';
+  var DEBOUNCE_MS = 5000;
+  var CHECKOUT_EVERY_MS = 1800000;    /* 30 min */
+  var MAX_ITEMS = 30;
+  var MAX_NAME = 80;
+  var POLL_MS = 5000;
+  var timer = null;
+  var poll = null;        /* checkout only: interval id of the cart-hash poll */
+  var pollWired = false;
+  var lastIdent = '';     /* address already sent from this page */
+
+  function read(k){ try { return localStorage.getItem(k) || ''; } catch(e){ return ''; } }
+  function write(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
+  function token(){ var t = read(TOKEN_KEY); return (typeof t === 'string') ? t : ''; }
+
+  /* read the cart back from storage: the page keeps its own copy and may filter it further */
+  function payload(){
+    var c = _readCartLS();
+    if (!Array.isArray(c)) return null;
+    var items = [], total = 0, count = 0, i;
+    for (i = 0; i < c.length; i++) {
+      var it = c[i];
+      if (!it) continue;
+      var q = parseInt(it.qty, 10);
+      if (!isFinite(q) || q <= 0) continue;
+      var price = parseFloat(it.price);
+      if (!isFinite(price) || price < 0) price = 0;
+      total += price * q;
+      count += q;
+      if (items.length < MAX_ITEMS) {
+        var line = { slug: productSlug(it), name: String(it.name || ''), qty: q, price: price };
+        if (it.mg) line.mg = String(it.mg);
+        items.push(line);
+      }
+    }
+    if (!items.length) return null;
+    return { items: items, total: Math.round(total * 100) / 100, item_count: count, cart_url: CART_URL };
+  }
+
+  /* djb2 over slug|mg|qty|price of every line: the same cart written again sends nothing */
+  function hash(p){
+    var s = '', i;
+    for (i = 0; i < p.items.length; i++) {
+      s += p.items[i].slug + '|' + (p.items[i].mg || '') + '|' + p.items[i].qty + '|' + p.items[i].price + ';';
+    }
+    s += p.item_count + '|' + p.total;
+    var h = 5381;
+    for (i = 0; i < s.length; i++) h = ((h * 33) ^ s.charCodeAt(i)) >>> 0;
+    return String(h) + '.' + s.length;
+  }
+
+  function send(name, p){
+    var t = token();
+    if (!t || !p) return;
+    try {
+      fetch('/api/track', {
+        method: 'POST',
+        credentials: 'omit',
+        keepalive: true,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: t, event: name, data: p })
+      }).catch(function(){});
+    } catch(e){}
+  }
+
+  function flush(){
+    timer = null;
+    report();
+  }
+
+  /* cart_updated for whatever is in storage now, unless that cart was reported already */
+  function report(){
+    var t = token();
+    if (!t) return;
+    var p = payload();
+    if (!p) return;
+    /* the token is part of the key: after a second signup from the same browser the same cart
+       must be reported once more, now under the new person (contract §4) */
+    var h = hash(p) + '|' + t.slice(-12);
+    if (h === read(HASH_KEY)) return;
+    write(HASH_KEY, h);
+    send('cart_updated', p);
+  }
+
+  /* one event per 5s series. The timer is not restarted on every write on purpose:
+     clampGifts() rewrites the cart ~40 times right after load, and a restarting
+     debounce would push every event past the moment the visitor clicks away. */
+  function touch(){
+    if (!token()) return;
+    if (timer) return;
+    timer = setTimeout(flush, DEBOUNCE_MS);
+  }
+
+  function onCheckout(){
+    return /\/checkout(\.html)?$/i.test(String(location.pathname || ''));
+  }
+
+  function checkoutStarted(){
+    if (!token()) return;
+    if (!onCheckout()) return;
+    var p = payload();
+    if (!p) return;
+    var now = Date.now();
+    var last = parseInt(read(CO_KEY), 10);
+    if (isFinite(last) && now >= last && (now - last) < CHECKOUT_EVERY_MS) return;
+    write(CO_KEY, String(now));
+    send('checkout_started', p);
+  }
+
+  /* checkout.html writes localStorage on its own (checkout.html:574, :579), past both
+     hooks in this file, so a quantity change there never reaches touch(). Poll the cart
+     hash on that page only, and only once a token exists; report() keeps the same dedup. */
+  function startPoll(){
+    if (poll || !onCheckout() || !token()) return;
+    poll = setInterval(report, POLL_MS);
+    if (!pollWired) {
+      pollWired = true;
+      try { window.addEventListener('pagehide', stopPoll); } catch(e){}
+    }
+  }
+  function stopPoll(){
+    if (!poll) return;
+    clearInterval(poll);
+    poll = null;
+  }
+
+  /* address typed into the checkout form, contract_events.md §3.1: identify before the
+     order is sent, so an abandoned checkout can still be mailed. Nothing blocks the form. */
+  function validEmail(e){
+    return e.length <= 200 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  }
+
+  /* token is base64url(email) + '.' + hmac — the address it was issued for */
+  function tokenEmail(t){
+    var head = String(t || '').split('.')[0];
+    if (!head) return '';
+    try {
+      var b = head.replace(/-/g, '+').replace(/_/g, '/');
+      while (b.length % 4) b += '=';
+      return String(atob(b)).trim().toLowerCase();
+    } catch(e){ return ''; }
+  }
+
+  function emailInput(){
+    var el = document.getElementById('email');
+    if (el && el.tagName === 'INPUT') return el;
+    var all, i;
+    try { all = document.querySelectorAll('input[type=email]'); } catch(e){ return null; }
+    for (i = 0; i < all.length; i++) {
+      if (all[i].offsetParent || all[i].getClientRects().length) return all[i];
+    }
+    return null;
+  }
+
+  function firstNameValue(){
+    var el = document.getElementById('firstName');
+    var v = (el && el.value) ? String(el.value).trim() : '';
+    return v ? v.slice(0, MAX_NAME) : '';
+  }
+
+  function identify(email, first, key){
+    var b = { email: email, page: String(location.href || '') };
+    if (first) b.firstName = first;
+    try {
+      fetch('/api/checkout-identify', {
+        method: 'POST',
+        credentials: 'omit',
+        keepalive: true,   /* blur often means the visitor is already leaving the field */
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(b)
+      }).then(function(r){
+        if (!r || !r.ok) return null;
+        /* only once the server has taken the address: after a 500, a dropped connection or a 429 the
+           visitor must get another try, and this key outlives the page */
+        if (key) write(CE_KEY, key);
+        return r.json();
+      }).then(function(body){
+        var t = body && body.track_token;
+        if (typeof t !== 'string' || !t) return;
+        write(TOKEN_KEY, t);
+        checkoutStarted();  /* skipped on load: there was no token then */
+        startPoll();
+      }).catch(function(){});
+    } catch(e){}
+  }
+
+  function maybeIdentify(){
+    var el = emailInput();
+    if (!el) return;
+    var raw = String(el.value || '').trim();
+    if (!validEmail(raw)) return;
+    var em = raw.toLowerCase();
+    if (em === lastIdent || em === read(CE_KEY)) return;
+    var t = token();
+    if (t && tokenEmail(t) === em) return;   /* this address already has a token */
+    lastIdent = em;
+    identify(raw, firstNameValue(), em);
+  }
+
+  function wireCheckoutEmail(){
+    if (!onCheckout()) return;
+    var el = emailInput();
+    if (!el || el._blTrackWired) return;
+    el._blTrackWired = true;
+    el.addEventListener('blur', maybeIdentify);
+    el.addEventListener('change', maybeIdentify);
+  }
+
+  function boot(){
+    try { checkoutStarted(); } catch(e){}
+    try { wireCheckoutEmail(); } catch(e){}
+    try { startPoll(); } catch(e){}
+  }
+
+  try {
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  } catch(e){}
+
+  return touch;
+})();
+
 function _writeCartLS(c){
   c = _sanitizeCart(c);
   try { localStorage.setItem('biolabs_cart', JSON.stringify(c)); } catch(e){}
   try { localStorage.setItem('biofirst_cart', JSON.stringify(c)); } catch(e){}
+  try { _trackCartTouch(); } catch(e){}
   return c;
 }
 
@@ -184,6 +415,9 @@ function mountAddMore(cart){
         if (typeof cart !== 'undefined') cart = c;
         try { return orig.call(this, c); } catch(e) {
           try { return orig.call(this); } catch(e2){ _writeCartLS(c); }
+        } finally {
+          /* stage 3: the page's own saveCart writes storage directly, hook it here too */
+          try { _trackCartTouch(); } catch(e3){}
         }
       };
       window.saveCart.__sanitize = true;
