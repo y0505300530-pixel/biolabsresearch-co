@@ -566,7 +566,15 @@ footer{background:var(--ink);padding:60px 60px 30px}
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero">' +
         '<div class="product-img-section">' +
-          '<div class="product-img-main"><img src="'+img+'" alt="'+p.name+'"></div>' +
+          '<figure class="bl-video bl-video-pdp">' +
+            '<div class="bl-video-frame" style="aspect-ratio:1344/768">' +
+              '<video autoplay muted loop playsinline preload="metadata" aria-label="Research-use vial close-up loop">' +
+                '<source src="/media/video/product-closeup-loop.mp4" type="video/mp4">' +
+              '</video>' +
+            '</div>' +
+            '<figcaption class="bl-video-caption">Research-use vial. Identity on the lot paperwork when issued.</figcaption>' +
+          '</figure>' +
+          '<div class="product-img-main bl-vial-secondary"><img src="'+img+'" alt="'+p.name+'"></div>' +
           pdpReviewHtml(p, img) +
         '</div>' +
         '<div>' +
