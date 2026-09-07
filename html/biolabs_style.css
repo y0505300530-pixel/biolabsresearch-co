@@ -5089,11 +5089,12 @@ button.product-card-mg.active{
 .jrnl-card img{opacity:1!important;filter:none!important;object-fit:contain!important;background:#F5F2ED}
 
 
-/* logo-b-balanced: black, larger, B not jammed into iolabs */
-.nav-logo{display:inline-flex!important;align-items:baseline!important;gap:0.02em!important;column-gap:0.02em!important;letter-spacing:0!important}
-.nav-logo-mark{margin:0!important;padding:0!important;letter-spacing:0!important;margin-inline-end:0!important;color:#000!important;font-size:30px!important}
-.nav-logo-text{margin:0!important;padding:0!important;margin-inline-start:0!important;letter-spacing:-.01em!important;color:#000!important;font-size:24px!important}
+/* logo-b-optical 2026-09-07: ~2px air between B and i — one word, not glued, not B io */
+.nav-logo{display:inline-flex!important;align-items:baseline!important;gap:2px!important;column-gap:2px!important;letter-spacing:0!important}
+.nav-logo-mark{margin:0!important;padding:0!important;letter-spacing:0!important;margin-inline-end:0!important;color:#000!important;font-size:30px!important;font-weight:500!important;line-height:1!important}
+.nav-logo-text{margin:0!important;padding:0!important;margin-inline-start:0!important;letter-spacing:-.01em!important;color:#000!important;font-size:24px!important;font-weight:500!important;line-height:1!important}
 @media (max-width:800px){
+  .nav-logo{gap:2px!important;column-gap:2px!important}
   .nav-logo-mark{font-size:28px!important;letter-spacing:0!important;color:#000!important}
   .nav-logo-text{font-size:20px!important;margin-inline-start:0!important;letter-spacing:-.01em!important;color:#000!important}
 }
