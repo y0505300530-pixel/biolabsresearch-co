@@ -5084,8 +5084,7 @@ button.product-card-mg.active{
 
 
 /* CRM blog card fog fix 2026-09-06 — no washed lifestyle thumbs */
-.blog-card-img{opacity:1!important}
-.blog-card-img img{opacity:1!important;filter:none!important;object-fit:contain!important;object-position:center!important;padding:12px!important;background:#F5F2ED!important}
+
 .jrnl-card img{opacity:1!important;filter:none!important;object-fit:contain!important;background:#F5F2ED}
 
 
@@ -5101,8 +5100,7 @@ button.product-card-mg.active{
 
 
 /* blog-no-fog-v219 */
-.blog-card-img,.blog-card-img img,.jrnl-card img{opacity:1!important;filter:none!important}
-.blog-card-img img,.jrnl-card img{object-fit:contain!important;background:#F5F2ED!important}
+
 
 /* nav-links-lower: Catalog/Science/Blog sit lower, even gaps, not riding high vs logo B */
 .nav-left{
@@ -5586,3 +5584,37 @@ a.nav-logo{
 .contact-hours-box{margin:24px 0 8px;padding:16px 18px;border:1px solid #e8e2d8;border-radius:12px;background:#fff}
 .nl-trust-row{display:flex;flex-wrap:wrap;gap:10px 14px;margin:14px 0 0;padding:0;list-style:none}
 .nl-trust-row li{font-size:12px;font-weight:600;color:#0d2137;background:#fff;border:1px solid #e8e2d8;border-radius:999px;padding:7px 12px}
+
+/* Blog overhaul 2026-09: card covers + article images */
+.blog-card-img{width:100%;height:220px;overflow:hidden;background:#0d2137;opacity:1!important}
+.blog-card-img img,.jrnl-card img{width:100%;height:100%;object-fit:cover!important;object-position:center!important;padding:0!important;background:transparent!important;opacity:1!important;filter:none!important}
+.article-img{width:100%;max-width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:12px;box-shadow:0 8px 24px rgba(13,33,55,.08);margin:32px 0 8px;display:block}
+.article-img-caption{font-size:13px;color:#6b6560;text-align:center;margin:0 0 28px;line-height:1.5;padding:0 8px}
+.article-thumb{width:100%!important;max-width:100%!important;margin:32px 0 8px!important;display:block;border-radius:12px;aspect-ratio:16/9;object-fit:cover;box-shadow:0 8px 24px rgba(13,33,55,.08)}
+.article-author{display:flex;align-items:center;gap:14px;margin:28px 0 8px;padding:16px 18px;background:#F7F3EB;border:1px solid #E8E2D8;border-radius:12px}
+.article-author-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#F5F2ED;border:1px solid #E8E2D8}
+.article-author strong{display:block;color:#0d2137;font-size:15px}
+.article-author span{display:block;color:#6b6560;font-size:13px;margin-top:2px}
+.article-toc{background:#F7F3EB;border:1px solid #E8E2D8;border-radius:12px;padding:18px 22px;margin:24px 0 32px}
+.article-toc strong{display:block;font-size:14px;letter-spacing:.04em;text-transform:uppercase;color:#0d2137;margin-bottom:10px}
+.article-toc ol{margin:0 0 0 18px;padding:0}
+.article-toc li{margin:6px 0;font-size:14px}
+.article-toc a{color:#8B6914;font-weight:500;text-decoration:none}
+.article-toc a:hover{text-decoration:underline}
+.related-posts{margin:40px 0 16px}
+.related-posts h3{font-family:var(--font-display,inherit);font-size:20px;color:#0d2137;margin-bottom:16px}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.related-card{text-decoration:none;color:inherit;background:#F7F3EB;border-radius:12px;overflow:hidden;border:1px solid #E8E2D8;transition:transform .2s}
+.related-card:hover{transform:translateY(-2px)}
+.related-card img{width:100%;height:110px;object-fit:cover;display:block}
+.related-card span{display:block;padding:10px 12px;font-size:13px;line-height:1.35;color:#0d2137;font-weight:600}
+.blog-filters{max-width:1080px;margin:0 auto;padding:0 48px 8px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.blog-chip{border:1px solid #E2D4A8;background:#F5ECD7;color:#3E2B20;border-radius:999px;padding:7px 14px;font-size:12px;font-weight:600;letter-spacing:.03em;text-transform:uppercase;cursor:pointer}
+.blog-chip.active,.blog-chip:hover{background:#0d2137;color:#fff;border-color:#0d2137}
+.blog-search{flex:1;min-width:180px;border:1px solid #E8E2D8;border-radius:999px;padding:10px 16px;font-size:14px;background:#fff;color:#0d2137}
+.blog-tag{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#3E2B20;background:#F5ECD7;border:1px solid #E2D4A8;border-radius:999px;padding:3px 10px;margin-bottom:10px}
+@media(max-width:768px){
+  .related-grid{grid-template-columns:1fr}
+  .blog-filters{padding:0 20px 8px}
+}
+
