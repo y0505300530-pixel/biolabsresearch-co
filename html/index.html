@@ -65,7 +65,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/vial-bpc-157-tb-500-blend.png?v=153" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=224">
+<link rel="stylesheet" href="/biolabs_style.css?v=227">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -105,7 +105,7 @@
     <span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span>
   </a>
   <div class="nav-left">
-    <a href="https://biolabsresearch.co/index.html#catalog">Catalog</a>
+    <a href="#catalog">Catalog</a>
     <a href="https://biolabsresearch.co/science.html">Science</a>
     <a href="/blog/">Blog</a>
   </div>
@@ -1163,5 +1163,19 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
 <script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/catalog-mg.js?v=2" defer></script>
+
+<script data-catalog-hash-scroll="1">
+(function(){
+  function go(){
+    if (location.hash !== '#catalog') return;
+    var el = document.getElementById('catalog');
+    if (!el) return;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - 88;
+    window.scrollTo({ top: Math.max(0, y), behavior: 'smooth' });
+  }
+  window.addEventListener('load', function(){ setTimeout(go, 50); setTimeout(go, 400); });
+  window.addEventListener('hashchange', go);
+})();
+</script>
 </body>
 </html>
