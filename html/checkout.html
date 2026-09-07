@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var a=localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1;if(a){document.documentElement.classList.add('tc-ok');}}catch(e){}})();</script>
+<style>html.tc-ok .tc-overlay{display:none!important;visibility:hidden!important;pointer-events:none!important}.tc-overlay{display:none}.tc-overlay.active{display:flex}</style>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
 <script>
@@ -9,9 +12,9 @@
   gtag('js', new Date());
   gtag('config', 'G-KCMPHP783M');
 </script>
-<link rel="icon" type="image/x-icon" href="/favicon.ico?v=75">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=75">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=75">
+<link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
+<link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catalog Inquiry Checkout | BioLabs Research Laboratory</title>
@@ -233,7 +236,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 @media(max-width:960px){.checkout-page{grid-template-columns:1fr;padding:32px 20px}}
 @media(max-width:640px){.form-row{grid-template-columns:1fr}}
 </style>
-<script src="/cart-vial.js?v=123"></script>
+<script src="/cart-vial.js?v=124"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
@@ -860,7 +863,7 @@ function showSuccess(orderData, paymentNote) {
 (function(){
   var overlay = document.getElementById('tcOverlay');
   if (!overlay) return;
-  if (localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')) {
+  if (localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1) {
     overlay.style.display = 'none';
     overlay.classList.remove('active');
     return;
@@ -877,7 +880,7 @@ function showSuccess(orderData, paymentNote) {
   c3.addEventListener('change', update);
   btn.addEventListener('click', function(){
     if (btn.disabled) return;
-    localStorage.setItem('biolabs_tc_accepted', 'true');
+    localStorage.setItem('biolabs_tc_accepted','true');try{document.cookie='biolabs_tc=1;path=/;max-age=31536000;SameSite=Lax';}catch(e){}
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   });

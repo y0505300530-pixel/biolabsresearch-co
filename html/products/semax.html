@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>(function(){try{var a=localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1;if(a){document.documentElement.classList.add('tc-ok');}}catch(e){}})();</script>
+<style>html.tc-ok .tc-overlay{display:none!important;visibility:hidden!important;pointer-events:none!important}.tc-overlay{display:none}.tc-overlay.active{display:flex}</style>
+
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
 <script>
@@ -12,9 +15,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Semax | BioLabs Research</title>
-<link rel="icon" type="image/x-icon" href="/favicon.ico?v=75">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=75">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=75">
+<link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
+<link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <meta name="description" content="Semax laboratory peptide listed as a laboratory research reagent. Catalog price USD 110.">
 <link rel="canonical" href="https://biolabsresearch.co/products/semax">
 <meta property="og:title" content="Semax | BioLabs Research">
@@ -254,7 +257,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 @media(max-width:900px){.cart-drawer{width:100%;right:-100%}}
 
 .spec-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:16px 0;padding:14px 0;border-top:1px solid #e8e2d8;border-bottom:1px solid #e8e2d8}.spec-strip dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#9A6D2A}.spec-strip dd{font-size:14px;color:#1F1F1F;font-family:ui-monospace,monospace}.spec-note{font-size:12px;color:#8A8A8A;margin:0 0 16px}.research-note{font-size:14px;line-height:1.55;color:#1F1F1F;margin:8px 0 16px;padding:12px 14px;background:#F4EFE4;border-radius:8px}.research-note h3{font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:#9A6D2A;margin:0 0 8px;font-weight:700}.research-note p{margin:0 0 8px}.research-note p:last-child{margin:0;color:#8A8A8A;font-size:13px}</style>
-<script src="/cart-vial.js?v=123"></script>
+<script src="/cart-vial.js?v=124"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
@@ -772,7 +775,7 @@ window.compareAtPrice = function(item){
 (function(){
   var overlay = document.getElementById('tcOverlay');
   if (!overlay) return;
-  if (localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')) {
+  if (localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1) {
     overlay.style.display = 'none';
     overlay.classList.remove('active');
     return;
@@ -789,7 +792,7 @@ window.compareAtPrice = function(item){
   c3.addEventListener('change', update);
   btn.addEventListener('click', function(){
     if (btn.disabled) return;
-    localStorage.setItem('biolabs_tc_accepted', 'true');
+    localStorage.setItem('biolabs_tc_accepted','true');try{document.cookie='biolabs_tc=1;path=/;max-age=31536000;SameSite=Lax';}catch(e){}
     overlay.classList.remove('active');
     document.body.style.overflow = '';
   });

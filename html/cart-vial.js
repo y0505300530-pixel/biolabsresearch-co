@@ -389,7 +389,7 @@ function addMoreHtml(cart){
       '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=153" alt="' + p.name + '" width="84" height="64"></a>' +
       '<div class="cart-addcard-name">' + p.name + '</div>' +
       '<div class="cart-addcard-price">$' + p.price + '</div>' +
-      '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + p.price + ')">Add</button>' +
+      '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + p.price + ')">Add to inquiry</button>' +
     '</div>';
   });
   html += '</div></div>';
