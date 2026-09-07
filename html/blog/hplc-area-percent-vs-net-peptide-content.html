@@ -55,7 +55,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=223">
+<link rel="stylesheet" href="/biolabs_style.css?v=226">
 <style>
 .article-hero{padding:80px 48px 40px;text-align:center;max-width:780px;margin:0 auto}
 .article-hero h1{font-family:var(--font-logo);font-size:42px;font-weight:500;line-height:1.2;margin-bottom:16px;color:var(--ink)}
@@ -136,10 +136,7 @@
   <div class="meta"><span>August 31, 2026</span>·<span>BioLabs Research</span>·<span>11 min read</span></div>
 </div>
 <div class="article-body">
-
-<img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-1.png" alt="HPLC area% measures UV absorption ratios — not milligrams of peptide in the vial" class="article-img" loading="lazy"><p class="article-img-caption">HPLC area% measures UV absorption ratios — not milligrams of peptide in the vial</p>
-<img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-2.png" alt="Lab bench reality: where HPLC area percent and net peptide content meet the rese" class="article-img" loading="lazy"><p class="article-img-caption">Lab bench reality: where HPLC area percent and net peptide content meet the rese</p><p>A catalog line that says “98% pure” is not a mass of peptide. On a reversed-phase HPLC trace, that number is almost always <strong>area percent</strong>: the main peak’s share of the UV-absorbing area under one method, at one wavelength. Water, acetate or trifluoroacetate (TFA) counter-ions, and residual solvent do not show up in that ratio. They still sit in the lyophilized cake.</p>
-
+<p>A catalog line that says “98% pure” is not a mass of peptide. On a reversed-phase HPLC trace, that number is almost always <strong>area percent</strong>: the main peak’s share of the UV-absorbing area under one method, at one wavelength. Water, acetate or trifluoroacetate (TFA) counter-ions, and residual solvent do not show up in that ratio. They still sit in the lyophilized cake.</p>
 
 <p>Labs that treat area% as a weighing factor systematically mis-make solutions. This note is about how to read the three orthogonal measurements that actually belong on a lot document: chromatographic purity, mass identity, and net peptide content. It is written for laboratory purchasing and QC. It is not a dosing guide and not a claim about any catalog percentage on this site. Percentages below are literature examples, not BioLabs lot results.</p>
 
@@ -151,14 +148,10 @@
 <p>It answers: of the UV-active peptidic material that eluted, how much is the intended peak? It does not answer: how many milligrams of that sequence are in this vial.</p>
 <p>The method is also not identity. Deletion sequences, diastereomers, and incomplete-deprotection products from solid-phase peptide synthesis can co-elute or appear as shoulders. D’Hondt and colleagues reviewed those related-impurity classes — starting-material, process (deletion/insertion, epimerization, leftover protecting groups), and degradation (oxidation, deamidation, aspartimide, pyroglutamate) — in synthetic peptide materials.<sup>1</sup> A single area% without the chromatogram, wavelength, and method is not a specification you can reproduce.</p>
 
-
-
 <h2>What mass spectrometry is for</h2>
 <p>Mass spectrometry asks a different question: does the observed mass match the theoretical mass of the named sequence (and salt form, if stated)? Intact MS is identity, not purity. A correct mass with a dirty chromatogram is still a mixed sample. A pretty chromatogram with the wrong mass is the wrong molecule.</p>
 <p>A usable COA line for identity reports theoretical mass, observed mass, and the ionization method. Agreement is typically discussed in daltons or ppm, not as a second “purity %.” Sequence-level MS/MS is stronger still; most research-reagent COAs stop at intact mass. That limit should be read as a limit, not padded.</p>
 <p>Independent work on commercially sourced research peptides has shown that labeled identity and measured identity are not automatically the same thing. Verbeke et al. evaluated synthetic peptides sold for R&amp;D and documented quality failures that HPLC-alone paperwork would not have caught.<sup>2</sup> Orthogonal MS is the cheap check against a mislabeled vial.</p>
-
-
 
 <h2>Net peptide content: the mass the HPLC never sees</h2>
 <p>Lyophilized peptide is a cake of peptide plus counter-ions plus water plus leftover solvent. TFA from RP-HPLC purification pairs with basic residues (Lys, Arg, His, and the N-terminus). That TFA is real mass. It is not the sequence.</p>
@@ -193,9 +186,12 @@
 <h2>What this site will not print</h2>
 <p>Product pages here do not carry an invented HPLC percentage. If a lot document exists, it is issued against that lot. If it does not, the honest line is “COA on request,” not a stock photo of someone else’s trace. CAS numbers on a science card are literature identifiers. They are not a substitute for observed mass on the COA.</p>
 
-
 <div class="article-quote">
-  <p>In science, the answers are only as good as the questions we ask.</p>
+
+<img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-1.png" alt="HPLC area% measures UV absorption ratios — not milligrams of peptide in the vial" class="article-img" loading="lazy"><p class="article-img-caption">HPLC area% measures UV absorption ratios — not milligrams of peptide in the vial</p>
+<img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-2.png" alt="Lab bench reality: where HPLC area percent and net peptide content meet the rese" class="article-img" loading="lazy"><p class="article-img-caption">Lab bench reality: where HPLC area percent and net peptide content meet the rese</p>
+
+<p>In science, the answers are only as good as the questions we ask.</p>
 </div>
 
 <div class="article-cta">
