@@ -876,16 +876,8 @@ function addSuggest(slug, name, price, mg){
   ];
   var lastTier = -1;
 
-  var BAC = {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:false,recommended:true,mg:'10mL',badge:'Recommended',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'};
-  var GIFT = BAC; /* legacy alias */
+  var GIFT = {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Research solvent',note:'Laboratory use only — not for reconstitution instructions',imageUrl:'/media/research-solvent.png?v=2'};
   var giftLock = false;
-  var BAC_DISMISS_KEY = 'biolabs_bac_dismissed';
-  function bacDismissed(){
-    try { return sessionStorage.getItem(BAC_DISMISS_KEY) === '1'; } catch(e){ return false; }
-  }
-  function markBacDismissed(){
-    try { sessionStorage.setItem(BAC_DISMISS_KEY, '1'); } catch(e){}
-  }
   function readCart(){
     try {
       if (typeof cart !== 'undefined' && Array.isArray(cart) && cart.length) return cart.slice();
@@ -893,36 +885,36 @@ function addSuggest(slug, name, price, mg){
       return Array.isArray(ls) ? ls : [];
     } catch(e){ return []; }
   }
-  function writeCart(c){
+  function syncGifts(){
+    window.__syncGifts = syncGifts;
+    if (giftLock) return;
+    var c = readCart();
+    var merch = 0;
+    c.forEach(function(i){ if(!i.gift && i.slug!=='research-solvent') merch += (parseFloat(i.price)||0)*(i.qty||1); });
+    var has = c.some(function(i){ return i.slug==='research-solvent' || i.gift; });
+    var want = merch >= 100; /* milestone gift only — RUO: no Recommended auto-add */
+    if (want === has) {
+      /* keep badge SoT if present */
+      if (has) {
+        var changed=false;
+        c.forEach(function(i){ if(i && (i.slug==='research-solvent'||i.gift) && i.badge!=='Research solvent'){ i.badge='Research solvent'; i.recommended=false; i.gift=true; changed=true; }});
+        if (changed) {
+          if (typeof cart !== 'undefined') cart = c;
+          try { _writeCartLS(c); } catch(e){}
+        }
+      }
+      return;
+    }
+    giftLock = true;
+    if (want) { var g=Object.assign({},GIFT,{qty:1,badge:'Research solvent'}); c=c.filter(function(i){return !(i.gift||i.slug==='research-solvent');}); c.push(g); }
+    else c = c.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
     if (typeof cart !== 'undefined') cart = c;
     try { _writeCartLS(c); } catch(e){}
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch(e) { try { saveCart(); } catch(e2){} }
     }
-  }
-  function hasBac(c){
-    return (c||[]).some(function(i){ return i && (i.slug==='research-solvent' || /bac water|bacteriostatic/i.test(String(i.name||''))); });
-  }
-  /* Yehuda cart v2: on add, auto-add BAC as Recommended unless user removed it this session */
-  function ensureRecommendedBac(){
-    window.__ensureRecommendedBac = ensureRecommendedBac;
-    if (giftLock || bacDismissed()) return;
-    var c = readCart();
-    var merchOnly = c.filter(function(i){ return i && i.slug !== 'research-solvent' && !/bac water|bacteriostatic/i.test(String(i.name||'')); });
-    if (!merchOnly.length) return; /* empty cart — no BAC */
-    if (hasBac(c)) return;
-    giftLock = true;
-    c = c.concat([Object.assign({}, BAC, {qty:1, badge:'Recommended', recommended:true, gift:false})]);
-    writeCart(c);
     giftLock = false;
   }
-  function syncGifts(){
-    window.__syncGifts = syncGifts;
-    /* no longer auto add/remove BAC at $100 — handled by ensureRecommendedBac + dismiss */
-    return;
-  }
-  window.__markBacDismissed = markBacDismissed;
-  window.__hasBac = hasBac;
 
   function css(){
     if (document.getElementById('cart-progress-css')) return;
@@ -1222,11 +1214,20 @@ function addSuggest(slug, name, price, mg){
         return;
       }
       cart = _sanitizeCart(cart);
-      /* cart v2: do not auto add/remove BAC by $100 threshold */
+      var merch = 0;
+      cart.forEach(function(i){ if(!i.gift && i.slug!=='research-solvent') merch += (parseFloat(i.price)||0)*(i.qty||1); });
+      var has = cart.some(function(i){ return i.gift || i.slug==='research-solvent'; });
+      if (merch >= 100 && !has) {
+        cart.push(Object.assign({}, {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Research solvent',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'}));
+      }
+      if (merch < 100 && has) {
+        cart = cart.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
+      }
       cart.forEach(function(i){
-        if (i && (i.slug==='research-solvent' || i.recommended || i.gift)) {
+        if (i && (i.gift || i.slug==='research-solvent')) {
           var q = parseInt(i.qty,10); if (!isFinite(q) || q < 1) i.qty = 1; else i.qty = q;
-          if (!i.badge) i.badge = 'Recommended';
+          i.badge = 'Research solvent';
+          i.recommended = false;
           if (!i.imageUrl || String(i.imageUrl).indexOf('.svg')!==-1) i.imageUrl='/media/research-solvent.png?v=2';
         }
       });
@@ -1573,13 +1574,7 @@ function addSuggest(slug, name, price, mg){
 
 /* cart v2: BAC Recommended on add; dismiss for session on remove */
 (function(){
-  function afterAdd(){
-    try {
-      if (typeof window.__ensureRecommendedBac === 'function') window.__ensureRecommendedBac();
-      else if (typeof ensureRecommendedBac === 'function') ensureRecommendedBac();
-    } catch(e){}
-    try { if (typeof renderCart === 'function') renderCart(); } catch(e2){}
-  }
+  function afterAdd(){ /* RUO: no BAC auto-add on every add — milestone gift only */ }
   function wrapAdd(name){
     if (typeof window[name] !== 'function' || window[name].__bacRec) return false;
     var orig = window[name];
@@ -1652,17 +1647,17 @@ function addSuggest(slug, name, price, mg){
         var info = rows[i].querySelector('.ci-info');
         if (!info) continue;
         var existing = info.querySelector('.ci-rec-badge');
-        var isBac = item.slug === 'research-solvent' || item.recommended || item.badge === 'Recommended' || item.badge === 'Gift';
+        var isBac = item.slug === 'research-solvent' || item.gift || item.badge === 'Research solvent' || item.badge === 'Gift';
         if (isBac) {
           if (!existing) {
             var b = document.createElement('span');
             b.className = 'ci-rec-badge';
-            b.textContent = item.badge || 'Recommended';
+            b.textContent = item.badge || 'Research solvent';
             var name = info.querySelector('.ci-name');
             if (name && name.nextSibling) info.insertBefore(b, name.nextSibling);
             else info.appendChild(b);
           } else {
-            existing.textContent = item.badge || 'Recommended';
+            existing.textContent = item.badge || 'Research solvent';
           }
         } else if (existing) {
           existing.remove();
