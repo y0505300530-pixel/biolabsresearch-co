@@ -7652,7 +7652,9 @@ body:has(.cart-drawer.open) #promoStack {
   flex: 0 0 auto !important;
   grid-area: auto !important;
   font-size: 9px !important;
-  padding: 2px 6px !important;
+  padding: 2px 5px !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
 }
 .cart-item.ci-bac .ci-qty {
   flex: 0 0 auto !important;
@@ -7671,14 +7673,14 @@ body:has(.cart-drawer.open) #promoStack {
   min-width: 44px !important;
   min-height: 44px !important;
   max-height: 44px !important;
-  margin: -6px 0 !important;
+  margin: -6px !important;
   padding: 0 !important;
   background: transparent !important;
   border: 0 !important;
   box-shadow: none !important;
   font-size: 18px !important;
   line-height: 32px !important;
-  flex: 0 0 44px !important;
+  flex: 0 0 32px !important;
 }
 .cart-item.ci-bac .ci-qty span {
   min-width: 1.15em;
