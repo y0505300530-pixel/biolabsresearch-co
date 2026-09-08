@@ -11,7 +11,7 @@
     /* P0 scroll: drawer + items flex so .cart-items is the vertical scroller */
     '.cart-drawer{height:100dvh !important;max-height:100dvh !important;min-height:0 !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}',
     '.cart-drawer .cart-items{flex:1 1 0% !important;min-height:0 !important;overflow-y:auto !important;overflow-x:hidden !important;overscroll-behavior:contain !important;-webkit-overflow-scrolling:touch;padding:16px 20px 28px !important;position:relative !important;z-index:1 !important}',
-    '#cartAddMore,.cart-addmore-slot{flex:0 0 auto !important;position:relative !important;background:#fff !important;z-index:2 !important;border-top:1px solid #E6E0D6;max-width:100%;overflow:hidden !important;max-height:150px !important;flex-shrink:0 !important}',
+    '#cartAddMore,.cart-addmore-slot{flex:0 0 auto !important;position:relative !important;background:#fff !important;z-index:2 !important;border-top:1px solid #E6E0D6;max-width:100%;overflow:visible !important;max-height:none !important;flex-shrink:0 !important}',
     '#cartAddMore:empty,.cart-addmore-slot:empty{display:none}',
     '.cart-addmore{margin:0;padding:8px 0 2px;border:0}',
     '.cart-addmore-title{text-align:center;font-size:12px;font-weight:800;margin:0 0 6px;padding:0 16px;color:#1a3a2a}',
@@ -44,10 +44,10 @@
     '.cart-addcard-btn{background:#fff !important;color:#111 !important;border:1.5px solid #111 !important;border-radius:999px !important;padding:3px 10px !important;font-size:10px !important;font-weight:700 !important;cursor:pointer}',
     '.cart-addmore-row,.cart-addmore-all,.cart-addmore-btn,.cart-addmore-info{display:none !important}',
     /* compact Inquiry rewards while cart open */
-    '#cartProgress.on{padding:10px 14px 12px !important}',
+    '#cartProgress.on{padding:12px 14px !important}',
     '#cartProgress .cp-msg{font-size:12px !important;margin:0 0 6px !important;line-height:1.25 !important}',
     '#cartProgress .cp-kicker{font-size:10px !important;margin:0 0 2px !important}',
-    '#cartProgress .cp-track{height:8px !important;margin:8px 4px 28px !important}',
+    '#cartProgress .cp-track{height:6px !important;margin:6px 4px 22px !important}',
     '#cartProgress .cp-unlocked{display:block !important;margin:18px 0 0 !important;padding:8px 10px !important;font-size:12.5px !important;font-weight:700 !important;line-height:1.35 !important;border-radius:10px !important;background:#fff !important;border:1px solid #d9cbae !important;position:relative !important;z-index:1 !important;clear:both !important}',
     '.ci-mg{font-weight:600;color:#6b6254;font-size:0.85em}'
   ].join('');
@@ -876,8 +876,16 @@ function addSuggest(slug, name, price, mg){
   ];
   var lastTier = -1;
 
-  var GIFT = {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Gift',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'};
+  var BAC = {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:false,recommended:true,mg:'10mL',badge:'Recommended',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'};
+  var GIFT = BAC; /* legacy alias */
   var giftLock = false;
+  var BAC_DISMISS_KEY = 'biolabs_bac_dismissed';
+  function bacDismissed(){
+    try { return sessionStorage.getItem(BAC_DISMISS_KEY) === '1'; } catch(e){ return false; }
+  }
+  function markBacDismissed(){
+    try { sessionStorage.setItem(BAC_DISMISS_KEY, '1'); } catch(e){}
+  }
   function readCart(){
     try {
       if (typeof cart !== 'undefined' && Array.isArray(cart) && cart.length) return cart.slice();
@@ -885,26 +893,36 @@ function addSuggest(slug, name, price, mg){
       return Array.isArray(ls) ? ls : [];
     } catch(e){ return []; }
   }
-  function syncGifts(){
-    window.__syncGifts = syncGifts;
-    if (giftLock) return;
-    var c = readCart();
-    var merch = 0;
-    c.forEach(function(i){ if(!i.gift) merch += (parseFloat(i.price)||0)*(i.qty||1); });
-    var has = c.some(function(i){ return i.slug==='research-solvent' || i.gift; });
-    var want = merch >= 100;
-    if (want === has) return;
-    giftLock = true;
-    if (want) { var g=Object.assign({},GIFT,{qty:1}); c=c.filter(function(i){return !(i.gift||i.slug==='research-solvent');}); c.push(g); }
-    else c = c.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
-    /* assign memory FIRST so any re-entrant renderCart sees the synced gift state */
+  function writeCart(c){
     if (typeof cart !== 'undefined') cart = c;
     try { _writeCartLS(c); } catch(e){}
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch(e) { try { saveCart(); } catch(e2){} }
     }
+  }
+  function hasBac(c){
+    return (c||[]).some(function(i){ return i && (i.slug==='research-solvent' || /bac water|bacteriostatic/i.test(String(i.name||''))); });
+  }
+  /* Yehuda cart v2: on add, auto-add BAC as Recommended unless user removed it this session */
+  function ensureRecommendedBac(){
+    window.__ensureRecommendedBac = ensureRecommendedBac;
+    if (giftLock || bacDismissed()) return;
+    var c = readCart();
+    var merchOnly = c.filter(function(i){ return i && i.slug !== 'research-solvent' && !/bac water|bacteriostatic/i.test(String(i.name||'')); });
+    if (!merchOnly.length) return; /* empty cart — no BAC */
+    if (hasBac(c)) return;
+    giftLock = true;
+    c = c.concat([Object.assign({}, BAC, {qty:1, badge:'Recommended', recommended:true, gift:false})]);
+    writeCart(c);
     giftLock = false;
   }
+  function syncGifts(){
+    window.__syncGifts = syncGifts;
+    /* no longer auto add/remove BAC at $100 — handled by ensureRecommendedBac + dismiss */
+    return;
+  }
+  window.__markBacDismissed = markBacDismissed;
+  window.__hasBac = hasBac;
 
   function css(){
     if (document.getElementById('cart-progress-css')) return;
@@ -1204,18 +1222,11 @@ function addSuggest(slug, name, price, mg){
         return;
       }
       cart = _sanitizeCart(cart);
-      var merch = 0;
-      cart.forEach(function(i){ if(!i.gift && i.slug!=='research-solvent') merch += (parseFloat(i.price)||0)*(i.qty||1); });
-      var has = cart.some(function(i){ return i.gift || i.slug==='research-solvent'; });
-      if (merch >= 100 && !has) {
-        cart.push(Object.assign({}, {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Gift',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'}));
-      }
-      if (merch < 100 && has) {
-        cart = cart.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
-      }
+      /* cart v2: do not auto add/remove BAC by $100 threshold */
       cart.forEach(function(i){
-        if (i && (i.gift || i.slug==='research-solvent')) {
+        if (i && (i.slug==='research-solvent' || i.recommended || i.gift)) {
           var q = parseInt(i.qty,10); if (!isFinite(q) || q < 1) i.qty = 1; else i.qty = q;
+          if (!i.badge) i.badge = 'Recommended';
           if (!i.imageUrl || String(i.imageUrl).indexOf('.svg')!==-1) i.imageUrl='/media/research-solvent.png?v=2';
         }
       });
@@ -1558,3 +1569,142 @@ function addSuggest(slug, name, price, mg){
   else sync();
 })();
 
+
+
+/* cart v2: BAC Recommended on add; dismiss for session on remove */
+(function(){
+  function afterAdd(){
+    try {
+      if (typeof window.__ensureRecommendedBac === 'function') window.__ensureRecommendedBac();
+      else if (typeof ensureRecommendedBac === 'function') ensureRecommendedBac();
+    } catch(e){}
+    try { if (typeof renderCart === 'function') renderCart(); } catch(e2){}
+  }
+  function wrapAdd(name){
+    if (typeof window[name] !== 'function' || window[name].__bacRec) return false;
+    var orig = window[name];
+    window[name] = function(){
+      var r = orig.apply(this, arguments);
+      setTimeout(afterAdd, 0);
+      return r;
+    };
+    window[name].__bacRec = true;
+    return true;
+  }
+  function isBacItem(i){
+    return i && (i.slug === 'research-solvent' || i.recommended || /bac water|bacteriostatic/i.test(String(i.name||'')));
+  }
+  function wrapRemove(){
+    if (typeof window.removeFromCart === 'function' && !window.removeFromCart.__bacDismiss) {
+      var orig = window.removeFromCart;
+      window.removeFromCart = function(name){
+        try {
+          var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
+          var hit = c.some(function(i){ return isBacItem(i) && (i.name === name || (arguments.length>1 && arguments[1] && i.slug===arguments[1])); });
+          if (!hit && c.length) {
+            /* name-only match */
+            hit = c.some(function(i){ return isBacItem(i) && String(i.name) === String(name); });
+          }
+          if (hit && typeof window.__markBacDismissed === 'function') window.__markBacDismissed();
+        } catch(e){}
+        return orig.apply(this, arguments);
+      };
+      window.removeFromCart.__bacDismiss = true;
+    }
+    if (typeof window.updateQty === 'function' && !window.updateQty.__bacDismiss) {
+      var uo = window.updateQty;
+      window.updateQty = function(name, delta){
+        try {
+          var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
+          var item = null;
+          for (var i=0;i<c.length;i++){
+            if (isBacItem(c[i]) && (c[i].name === name || (typeof _sameCartProduct==='function' && _sameCartProduct(c[i],'research-solvent',name)))) { item = c[i]; break; }
+          }
+          if (item) {
+            var q = (parseInt(item.qty,10)||0) + (parseInt(delta,10)||0);
+            if (q <= 0 && typeof window.__markBacDismissed === 'function') window.__markBacDismissed();
+          }
+        } catch(e){}
+        return uo.apply(this, arguments);
+      };
+      window.updateQty.__bacDismiss = true;
+    }
+  }
+  var n=0; (function hook(){
+    wrapAdd('addToCart');
+    wrapAdd('addToCartTemplate');
+    wrapAdd('addSuggest');
+    wrapRemove();
+    if (++n < 60) setTimeout(hook, 100);
+  })();
+})();
+
+
+/* cart v2: inject Recommended badge into line items after renderCart */
+(function(){
+  function decorate(){
+    try {
+      var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
+      var rows = document.querySelectorAll('#cartItems .cart-item');
+      for (var i = 0; i < rows.length; i++) {
+        var item = c[i];
+        if (!item) continue;
+        var info = rows[i].querySelector('.ci-info');
+        if (!info) continue;
+        var existing = info.querySelector('.ci-rec-badge');
+        var isBac = item.slug === 'research-solvent' || item.recommended || item.badge === 'Recommended' || item.badge === 'Gift';
+        if (isBac) {
+          if (!existing) {
+            var b = document.createElement('span');
+            b.className = 'ci-rec-badge';
+            b.textContent = item.badge || 'Recommended';
+            var name = info.querySelector('.ci-name');
+            if (name && name.nextSibling) info.insertBefore(b, name.nextSibling);
+            else info.appendChild(b);
+          } else {
+            existing.textContent = item.badge || 'Recommended';
+          }
+        } else if (existing) {
+          existing.remove();
+        }
+      }
+    } catch(e){}
+  }
+  function wrap(){
+    if (typeof window.renderCart !== 'function' || window.renderCart.__recBadge) return false;
+    var orig = window.renderCart;
+    window.renderCart = function(){
+      var r = orig.apply(this, arguments);
+      decorate();
+      return r;
+    };
+    window.renderCart.__recBadge = true;
+    return true;
+  }
+  var n=0; (function hook(){ wrap(); if(++n<50) setTimeout(hook,100); })();
+})();
+
+/* cart v2: dismiss BAC when removed via qty -99 / index */
+(function(){
+  function wrap(){
+    if (typeof window.updateQtyByIndex !== 'function' || window.updateQtyByIndex.__bacDismiss) return false;
+    var orig = window.updateQtyByIndex;
+    window.updateQtyByIndex = function(idx, delta){
+      try {
+        var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
+        var item = c[idx];
+        var d = parseInt(delta,10)||0;
+        if (item && (item.slug==='research-solvent' || item.recommended || item.badge==='Recommended' || item.gift)) {
+          var q = (parseInt(item.qty,10)||0) + d;
+          if (d <= -99 || q <= 0) {
+            if (typeof window.__markBacDismissed === 'function') window.__markBacDismissed();
+          }
+        }
+      } catch(e){}
+      return orig.apply(this, arguments);
+    };
+    window.updateQtyByIndex.__bacDismiss = true;
+    return true;
+  }
+  var n=0; (function hook(){ wrap(); if(++n<50) setTimeout(hook,100); })();
+})();
