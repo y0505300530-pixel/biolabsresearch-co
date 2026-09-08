@@ -6976,3 +6976,11 @@ a.cart-inquiry-perk {
   z-index: 3 !important;
   background: #F5F2EC !important;
 }
+
+/* Homepage blog teaser CTA */
+.jrnl-cta{display:flex;justify-content:center;margin-top:28px}
+.jrnl-cta-btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 22px;border-radius:999px;background:#1a1a1a;color:#fff!important;font-weight:600;font-size:14px;text-decoration:none!important}
+.jrnl-cta-btn:hover{opacity:.92}
+@media (max-width:720px){
+  .jrnl-cta{margin-top:20px}
+}
