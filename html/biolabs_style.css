@@ -5884,7 +5884,9 @@ button.promo-code {
 .nav { top: 44px !important; }
 html { scroll-padding-top: 108px; }
 
-/* Cart drawer: scroll, close hit area, no clip at 375 */
+/* Cart drawer: scroll, close hit area, no clip at 375.
+   Desktop keeps 420px panel; full-bleed width is mobile-only
+   (Stage 4 #6 width:100% was applied sitewide and blanked the drawer). */
 .cart-drawer,
 #cartDrawer {
   height: 100dvh !important;
@@ -5893,9 +5895,21 @@ html { scroll-padding-top: 108px; }
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
-  width: 100% !important;
+  width: 420px !important;
   max-width: 100% !important;
   box-sizing: border-box !important;
+}
+@media (max-width: 640px) {
+  .cart-drawer,
+  #cartDrawer {
+    width: 100% !important;
+    max-width: 100% !important;
+    right: -100% !important;
+  }
+  .cart-drawer.open,
+  #cartDrawer.open {
+    right: 0 !important;
+  }
 }
 .cart-drawer .cart-items,
 #cartItems {
@@ -5905,6 +5919,21 @@ html { scroll-padding-top: 108px; }
   overflow-x: hidden !important;
   overscroll-behavior: contain !important;
   -webkit-overflow-scrolling: touch;
+}
+.cart-empty {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  text-align: center !important;
+  margin: 0 auto !important;
+  box-sizing: border-box !important;
+}
+.cart-empty svg {
+  display: block !important;
+  width: 48px !important;
+  height: 48px !important;
+  max-width: 48px !important;
+  margin: 0 auto 16px !important;
 }
 .cart-header,
 .cart-footer,
