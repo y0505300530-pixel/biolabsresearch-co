@@ -1157,7 +1157,7 @@ function submitCOARequest(e) {
   .catch(function() {
     btn.disabled = false;
     txt.textContent = 'Send Request';
-    var mail = 'mailto:info@biofirst.co?subject=' + encodeURIComponent(payload.subject) +
+    var mail = 'mailto:admin@biolabsresearch.co?subject=' + encodeURIComponent(payload.subject) +
       '&body=' + encodeURIComponent('COA request from ' + payload.firstName + ' ' + payload.lastName +
         '\nEmail: ' + payload.email + '\nOrg: ' + (payload.org||'') + '\n' + payload.message);
     window.location.href = mail;

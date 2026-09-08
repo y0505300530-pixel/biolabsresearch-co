@@ -14,7 +14,8 @@ RUO = (
     "laboratory research use only."
 )
 HOURS = "8:00 AM – 9:00 PM ET"
-EMAIL = "info@biofirst.co"
+# Brand email stays on biolabsresearch.co. Do not rewrite to biofirst.co.
+# Until Yehuda locks admin@ vs info@biolabsresearch.co, leave existing addresses.
 
 FAQ_SHIP = (
     "Confirmed inquiries are processed within 1–2 business days. Catalog fulfillment "
@@ -39,10 +40,6 @@ def iter_files():
 
 
 def apply_text(text: str, rel: str) -> str:
-    # Emails (public contact only). Placeholders like you@email.com stay.
-    text = text.replace("admin@biolabsresearch.co", EMAIL)
-    text = text.replace("Contact via " + EMAIL, EMAIL)
-
     # Hours: exact string, drop weekday suffix
     text = text.replace("8:00 AM – 9:00 PM ET, Monday–Friday", HOURS)
     text = text.replace("8:00 AM – 9:00 PM ET, Monday-Friday", HOURS)
