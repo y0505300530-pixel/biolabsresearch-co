@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Form — Bio Labs Research">
 <meta name="twitter:description" content="Submit a research-use catalog inquiry. No payment is collected here. Lines stay tied to listed SKUs, and fulfillment follows the published shipping policy.">
-<link rel="stylesheet" href="/biolabs_style.css?v=286">
+<link rel="stylesheet" href="/biolabs_style.css?v=288">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -242,7 +242,6 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
 </head>
 <body>
-<div class="site-sticky-chrome">
 <div class="promo-stack" id="promoStack">
   
   <div class="promo-bar">
@@ -274,8 +273,6 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
     </button>
   </div>
 </nav>
-</div><!-- /.site-sticky-chrome -->
-<div class="site-sticky-chrome-spacer" aria-hidden="true"></div>
 <div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
 <div class="nav-menu" id="navMenu">
   <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
@@ -945,25 +942,6 @@ function showSuccess(orderData, paymentNote) {
     for(var i=0;i<nodes.length;i++) nodes[i].textContent=text;
   }
   tick(); setInterval(tick,1000);
-})();
-</script>
-<script>
-(function(){
-  function sizeChrome(){
-    var c = document.querySelector('.site-sticky-chrome');
-    var s = document.querySelector('.site-sticky-chrome-spacer');
-    if (!c || !s) return;
-    var h = Math.ceil(c.getBoundingClientRect().height);
-    if (h > 0) {
-      s.style.height = h + 'px';
-      document.documentElement.style.setProperty('--site-chrome-h', h + 'px');
-    }
-  }
-  sizeChrome();
-  window.addEventListener('resize', sizeChrome);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(sizeChrome).catch(function(){});
-  setTimeout(sizeChrome, 50);
-  setTimeout(sizeChrome, 300);
 })();
 </script>
 <script src="/promo-bar.js?v=15"></script>

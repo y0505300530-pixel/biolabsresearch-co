@@ -7132,3 +7132,47 @@ button.promo-code::before {
   color: #F2D191 !important;
   background: none !important;
 }
+
+/* === FIX 2026-09-08: promo scrolls away; only nav stays pinned === */
+.promo-stack{
+  position:relative !important;
+  top:auto !important;
+  z-index:1100 !important;
+}
+.nav{
+  top:0 !important;
+}
+.site-sticky-chrome{
+  position:fixed !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
+  z-index:12000 !important;
+  background:#fff !important;
+}
+.site-sticky-chrome .promo-stack{ display:none !important; } /* safety if ever nested */
+.site-sticky-chrome .nav{
+  position:relative !important;
+  top:auto !important;
+}
+
+/* checkout/home: discount bar scrolls away; nav pins alone */
+.promo-stack,
+#promoStack{
+  position:relative !important;
+  top:auto !important;
+}
+.nav{
+  position:sticky !important;
+  top:0 !important;
+  z-index:12000 !important;
+}
+/* legacy checkout chrome — if present, do not cover promo */
+.site-sticky-chrome{
+  position:sticky !important;
+  top:0 !important;
+  left:auto !important;
+  right:auto !important;
+}
+.site-sticky-chrome-spacer{display:none !important;height:0 !important;}
