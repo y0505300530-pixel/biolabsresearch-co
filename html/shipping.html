@@ -129,9 +129,17 @@
 .shp-stat span{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.65)}
 .shp-hero-visual{
   border-radius:16px;overflow:hidden;border:1px solid rgba(232,197,122,.28);
-  background:#14283f;aspect-ratio:4/3;box-shadow:0 24px 60px rgba(0,0,0,.35);
+  background:#F5F2EC;aspect-ratio:1344/768;box-shadow:0 24px 60px rgba(0,0,0,.35);
+  position:relative;
 }
 .shp-hero-visual img{width:100%;height:100%;object-fit:cover;display:block}
+.shp-hero-visual .bl-video,
+.shp-hero-visual .bl-video-frame{
+  position:absolute;inset:0;width:100%;height:100%;margin:0;aspect-ratio:auto!important;
+  border-radius:0;display:block;
+}
+.shp-hero-visual video{width:100%;height:100%;object-fit:cover;display:block}
+.shp-hero-visual .bl-video-caption{display:none!important}
 
 /* 2. Mid headline on cream */
 .shp-mid{padding:64px 0 28px;text-align:center}
@@ -196,13 +204,6 @@
   .shp-wrap{padding:0 20px}
 }
 
-/* Yehuda: no caption strip under shipping hero media */
-.shp-hero-visual .bl-video-caption{display:none!important}
-.shp-hero-visual .bl-video{margin:0}
-.shp-hero-visual .bl-video-frame{border-radius:0;height:100%;aspect-ratio:auto!important}
-.shp-hero-visual{display:flex;align-items:stretch}
-.shp-hero-visual .bl-video{flex:1;width:100%;display:flex;flex-direction:column}
-.shp-hero-visual video{width:100%;height:100%;object-fit:cover}
 </style>
 
 <main class="shp" id="top">
