@@ -3430,7 +3430,7 @@ body{font-size:18px;line-height:1.5}
   background-color:#f6f1e8 !important;
 }
 .lab-team-overlay{display:none !important}
-.lab-team-kicker{color:#c48a2a !important}
+.lab-team-kicker{color:#7A5520 !important}
 .lab-team-title{color:#1a1a1a !important}
 .lab-team-desc{color:#4a453c !important}
 
@@ -3655,7 +3655,7 @@ a.footer-brand{
 /* /unified-vial-cream */
 
 /* catalog-popular-head */
-.catalog-header .section-kicker{color:#c48a2a;font-size:13px;letter-spacing:.14em}
+.catalog-header .section-kicker{color:#7A5520;font-size:13px;letter-spacing:.14em}
 .catalog-title{
   font-family:var(--font, system-ui, sans-serif) !important;
   font-weight:800 !important;
@@ -5621,14 +5621,14 @@ a.nav-logo{
   border-radius:10px;
   background:#F7F1E4;
   border:1px solid #E2D3B3;
-  color:#9A6D2A;
+  color:#7A5520;
   white-space:nowrap;overflow:hidden;
 }
-.cart-inquiry-perk-icon{flex:0 0 auto;color:#9A6D2A;display:block}
+.cart-inquiry-perk-icon{flex:0 0 auto;color:#7A5520;display:block}
 .cart-inquiry-perk-text{
   flex:1 1 auto;min-width:0;
   font-size:14.5px;font-weight:600;line-height:1.2;
-  letter-spacing:.01em;color:#9A6D2A;
+  letter-spacing:.01em;color:#7A5520;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .cart-total-sr-only,[hidden].cart-total-sr-only{
@@ -6226,3 +6226,51 @@ button.promo-code,
   touch-action: manipulation;
 }
 nav.nav { top: 44px !important; }
+
+/* === a11y wave1 2026-09-08: focus-visible (cream/black/gold) === */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[href]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible,
+.promo-code:focus-visible,
+button.promo-code:focus-visible,
+.nav a:focus-visible,
+.nav button:focus-visible,
+.nav-cart:focus-visible,
+.nav-util:focus-visible,
+.nav-menu a:focus-visible,
+.cart-close:focus-visible,
+.cart-drawer a:focus-visible,
+.cart-drawer button:focus-visible,
+.btn-checkout:focus-visible,
+.btn-continue:focus-visible,
+.product-card-atc:focus-visible,
+.product-card-mg:focus-visible,
+.product-card-name:focus-visible,
+.product-card-media:focus-visible {
+  outline: 2px solid #0d2137;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(242, 209, 145, 0.9);
+}
+.promo-bar .promo-code:focus-visible,
+.promo-seg .promo-code:focus-visible,
+.promo-bar button.promo-code:focus-visible {
+  outline: 2px solid #F2D191;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 3px #0d2137;
+}
+.cf-input:focus-visible,
+.cf-select:focus-visible,
+.cf-textarea:focus-visible {
+  outline: 2px solid #7A5520;
+  outline-offset: 1px;
+  box-shadow: 0 0 0 3px rgba(251, 207, 135, 0.55);
+}
+.cart-drawer[role="dialog"]:focus {
+  outline: none;
+}
+/* /a11y wave1 focus-visible */

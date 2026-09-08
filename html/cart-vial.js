@@ -26,9 +26,9 @@
     /* Yehuda cart footer: hide Subtotal forever; footer perk is the unlock line */
     '.cart-subtotal{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important}',
     '#cartProgress .cp-unlocked{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
-    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:8px !important;min-height:40px !important;margin:0 0 14px !important;padding:10px 12px !important;border-radius:10px !important;background:#F7F1E4 !important;border:1px solid #E2D3B3 !important;color:#9A6D2A !important;white-space:nowrap !important;overflow:hidden !important}',
-    '.cart-inquiry-perk-icon{flex:0 0 auto !important;color:#9A6D2A !important;display:block !important;width:16px !important;height:16px !important}',
-    '.cart-inquiry-perk-text{flex:1 1 auto !important;font-size:14.5px !important;font-weight:600 !important;line-height:1.2 !important;color:#9A6D2A !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}',
+    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:8px !important;min-height:40px !important;margin:0 0 14px !important;padding:10px 12px !important;border-radius:10px !important;background:#F7F1E4 !important;border:1px solid #E2D3B3 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:hidden !important}',
+    '.cart-inquiry-perk-icon{flex:0 0 auto !important;color:#7A5520 !important;display:block !important;width:16px !important;height:16px !important}',
+    '.cart-inquiry-perk-text{flex:1 1 auto !important;font-size:14.5px !important;font-weight:600 !important;line-height:1.2 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}',
 
     '.cart-footer .btn-continue{margin-top:8px !important}',
     '.cart-drawer{z-index:10050 !important}',
@@ -1130,3 +1130,95 @@ function addSuggest(slug, name, price){
   var n = 0;
   (function tick(){ if (!wire() && ++n < 60) setTimeout(tick, 100); })();
 })();
+
+
+/* a11y wave1 2026-09-08: cart drawer Escape + dialog + focus */
+(function(){
+  if (window.__cartA11yWave1) return;
+  window.__cartA11yWave1 = true;
+  var lastFocus = null;
+
+  function drawer(){ return document.getElementById('cartDrawer'); }
+  function overlay(){ return document.getElementById('cartOverlay') || document.querySelector('.cart-overlay'); }
+  function isOpen(){
+    var d = drawer();
+    return !!(d && d.classList.contains('open'));
+  }
+  function closeBtn(d){
+    return (d && (d.querySelector('.cart-close') || d.querySelector('[data-cart-close]'))) || null;
+  }
+  function ensureDialogAttrs(){
+    var d = drawer();
+    if (!d) return;
+    if (!d.getAttribute('role')) d.setAttribute('role', 'dialog');
+    if (!d.getAttribute('aria-modal')) d.setAttribute('aria-modal', 'true');
+    if (!d.getAttribute('aria-label') && !d.getAttribute('aria-labelledby')) {
+      d.setAttribute('aria-label', 'Shopping cart');
+    }
+    var btn = closeBtn(d);
+    if (btn) {
+      if (!btn.getAttribute('aria-label')) btn.setAttribute('aria-label', 'Close cart');
+      if (!btn.getAttribute('type')) btn.setAttribute('type', 'button');
+    }
+  }
+  function closeCartOnly(){
+    var d = drawer();
+    var o = overlay();
+    if (d && d.classList.contains('open')) d.classList.remove('open');
+    if (o && o.classList.contains('open')) o.classList.remove('open');
+    try {
+      document.body.classList.remove('cart-open');
+      document.body.style.overflow = '';
+    } catch(e){}
+    try {
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    } catch(e){}
+  }
+  function onOpen(){
+    ensureDialogAttrs();
+    try { lastFocus = document.activeElement; } catch(e){ lastFocus = null; }
+    var d = drawer();
+    var btn = closeBtn(d);
+    if (btn && typeof btn.focus === 'function') {
+      try { btn.focus(); } catch(e){}
+    } else if (d && typeof d.focus === 'function') {
+      if (!d.hasAttribute('tabindex')) d.setAttribute('tabindex', '-1');
+      try { d.focus(); } catch(e){}
+    }
+  }
+  function sync(){
+    ensureDialogAttrs();
+    if (isOpen()) onOpen();
+  }
+  function wrapToggle(){
+    if (typeof window.toggleCart !== 'function' || window.toggleCart.__a11yWave1) return false;
+    var orig = window.toggleCart;
+    window.toggleCart = function(){
+      var was = isOpen();
+      var r = orig.apply(this, arguments);
+      ensureDialogAttrs();
+      if (!was && isOpen()) onOpen();
+      return r;
+    };
+    window.toggleCart.__a11yWave1 = true;
+    return true;
+  }
+  document.addEventListener('keydown', function(e){
+    if (!e) return;
+    var key = e.key || e.code;
+    if (key !== 'Escape' && key !== 'Esc' && e.keyCode !== 27) return;
+    if (!isOpen()) return;
+    e.preventDefault();
+    e.stopPropagation();
+    closeCartOnly();
+  }, true);
+  var n = 0;
+  (function hook(){
+    wrapToggle();
+    ensureDialogAttrs();
+    if (++n < 50) setTimeout(hook, 100);
+  })();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sync);
+  else sync();
+})();
+

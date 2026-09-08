@@ -17,8 +17,8 @@
 <link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
-<link rel="stylesheet" href="/biolabs_style.css?v=263">
-<script src="/cart-vial.js?v=261"></script>
+<link rel="stylesheet" href="/biolabs_style.css?v=264">
+<script src="/cart-vial.js?v=262"></script>
 <script src="/search-overlay.js?v=26"></script>
 <meta property="og:title" content="Contact the Lab Desk — Bio Labs Research">
 <meta property="og:description" content="Reach the catalog desk for SKU questions, lot paperwork, or shipment status. Support hours are published here. Research use only, inquiry-only storefront.">
@@ -80,17 +80,17 @@
       <div class="cf-field">
         <label class="cf-label" for="cfName">Name</label>
         <input class="cf-input" type="text" id="cfName" name="name" autocomplete="name" maxlength="100" required>
-        <div class="cf-error" id="errName" role="alert"></div>
+        <div class="cf-error" id="errName" role="alert" aria-live="assertive"></div>
       </div>
       <div class="cf-field">
         <label class="cf-label" for="cfEmail">Email</label>
         <input class="cf-input" type="email" id="cfEmail" name="email" autocomplete="email" maxlength="255" required>
-        <div class="cf-error" id="errEmail" role="alert"></div>
+        <div class="cf-error" id="errEmail" role="alert" aria-live="assertive"></div>
       </div>
       <div class="cf-field">
         <label class="cf-label" for="cfOrg">Company / Institution <span class="cf-opt">(optional)</span></label>
         <input class="cf-input" type="text" id="cfOrg" name="org" autocomplete="organization" maxlength="200">
-        <div class="cf-error" id="errOrg" role="alert"></div>
+        <div class="cf-error" id="errOrg" role="alert" aria-live="assertive"></div>
       </div>
       <div class="cf-field">
         <label class="cf-label" for="cfSubject">Subject</label>
@@ -101,12 +101,12 @@
           <option value="Shipping">Shipping</option>
           <option value="Other">Other</option>
         </select>
-        <div class="cf-error" id="errSubject" role="alert"></div>
+        <div class="cf-error" id="errSubject" role="alert" aria-live="assertive"></div>
       </div>
       <div class="cf-field">
         <label class="cf-label" for="cfMessage">Message</label>
         <textarea class="cf-textarea" id="cfMessage" name="message" maxlength="1000" required rows="5" placeholder="How can we help?"></textarea>
-        <div class="cf-error" id="errMessage" role="alert"></div>
+        <div class="cf-error" id="errMessage" role="alert" aria-live="assertive"></div>
       </div>
       <!-- honeypot -->
       <div class="cf-hp" aria-hidden="true">
