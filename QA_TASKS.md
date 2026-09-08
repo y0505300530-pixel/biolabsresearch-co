@@ -37,6 +37,7 @@ was closed.
 | M11 | No blog article carries the site footer or the research-use-only line, and 27 of them show a broken tag as visible text | infra | in progress (infra, 2026-09-08) |
 | M12 | The contact page was served with no stylesheet at all | pages | done (pages, 2026-09-08) |
 | M13 | Visitors with "reduce motion" turned on see the promo bar as a static wall of repeated text on every page | pages | open |
+| M14 | The header wordmark "Biolabs research" does not sit on the same baseline as the menu items. The header was changed four times on 7 and 8 September | pages | open |
 
 ## Needs a decision from the owner
 
@@ -46,6 +47,8 @@ was closed.
 | D2 | Review texts and author names on the site are invented | open |
 | D3 | Leftovers of the old BioFirst brand and links to biofirst.co | open |
 | D4 | The public GitHub repository holds `html.bak.*`, `docs/nginx-enabled.bak-telehealth-*` and `_base44-brief/`. Make the repository private, or remove those from it | open |
+| D5 | One catalog card on the home page has a black background while the rest are cream (commit `a39cc7b`, "Catalog vial diversification"). Deliberate, but a single dark card among cream ones reads as a mistake to a visitor. Infra will not change it without a decision | open |
+| D6 | The promo bar counts down to 2026-09-14 23:59:59 +03:00 (commit `8889211`), but the INSIDER25 code on the server has no end date at all: `COUPONS = { INSIDER25: 25 }` in the API. Either give the code the same end date on the server, or take the date off the bar. Needs deciding before 14 September | open |
 
 ## Not reproduced
 
