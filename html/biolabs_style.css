@@ -4723,36 +4723,38 @@ a.footer-brand{
 }
 
 
-/* === CRM PROMO TICKER LOCK — single row only === */
+/* === CRM PROMO TICKER LOCK — single row only (44px; was 34 and clipped) === */
 .promo-stack{
   position:sticky !important;top:0 !important;z-index:1100 !important;
-  overflow:hidden !important;width:100% !important;height:34px !important;
+  overflow:hidden !important;width:100% !important;height:44px !important;
+  min-height:44px !important;max-height:44px !important;
   background:#0d2137 !important;
 }
 .promo-stack .ruo-bar{display:none !important}
 .promo-bar{
   background:#0d2137 !important;color:#fff !important;
-  overflow:hidden !important;height:34px !important;max-height:34px !important;
+  overflow:hidden !important;height:44px !important;max-height:44px !important;min-height:44px !important;
   padding:0 !important;margin:0 !important;border:0 !important;
-  display:block !important;width:100% !important;
+  display:flex !important;align-items:center !important;width:100% !important;
   flex-wrap:nowrap !important;
 }
 .promo-track{
   display:flex !important;align-items:center !important;flex-wrap:nowrap !important;
-  width:max-content !important;height:34px !important;
+  width:max-content !important;height:44px !important;min-height:44px !important;
   animation:promo-marquee 70s linear infinite !important;
   will-change:transform;
 }
 .promo-bar:hover .promo-track{animation-play-state:paused !important}
 .promo-group{
   display:flex !important;align-items:center !important;flex:0 0 auto !important;
-  flex-wrap:nowrap !important;height:34px !important;
+  flex-wrap:nowrap !important;height:44px !important;min-height:44px !important;
 }
 .promo-seg{
   display:inline-flex !important;align-items:center !important;gap:8px !important;
   padding:0 6px !important;white-space:nowrap !important;
-  font-size:11px !important;font-weight:700 !important;letter-spacing:.1em !important;
-  text-transform:uppercase !important;color:#fff !important;line-height:34px !important;
+  font-size:12px !important;font-weight:700 !important;letter-spacing:.08em !important;
+  text-transform:uppercase !important;color:#fff !important;line-height:1 !important;
+  height:44px !important;
 }
 .promo-sep{
   display:inline-flex !important;align-items:center !important;justify-content:center !important;
@@ -5839,9 +5841,9 @@ img, video, svg { max-width: 100%; height: auto; }
 /* #6 INSIDER25 promo tap target — bar grows to fit 44px */
 .promo-bar,
 .promo-stack .promo-bar {
-  height: auto !important;
+  height: 44px !important;
   min-height: 44px !important;
-  max-height: none !important;
+  max-height: 44px !important;
   overflow: hidden !important;
   display: flex !important;
   align-items: center !important;
@@ -6182,50 +6184,153 @@ html { scroll-padding-top: 108px; }
 }
 
 
-/* === QA final: INSIDER25 must be 44px (overrides earlier height:34px ticker lock) === */
-.promo-stack,
-.promo-stack .promo-bar,
-.promo-bar {
+/* === FIX 2026-09-08: promo ticker half-clip ===
+   Old ticker lock forced height:34px + overflow:hidden while later
+   rules forced 44px children — only the top half of glyphs showed.
+   Full row visible, tap target stays ≥44px, marquee still clips X only. */
+.promo-stack {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1100 !important;
+  width: 100% !important;
   height: 44px !important;
   min-height: 44px !important;
   max-height: 44px !important;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+  background: #0d2137 !important;
+  box-sizing: border-box !important;
+}
+.promo-stack .ruo-bar { display: none !important; }
+.promo-stack .promo-bar,
+.promo-bar {
+  background: #0d2137 !important;
+  color: #fff !important;
+  width: 100% !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
   overflow: hidden !important;
   display: flex !important;
   align-items: center !important;
   box-sizing: border-box !important;
 }
 .promo-bar .promo-track,
-.promo-track,
-.promo-group,
-.promo-seg {
+.promo-track {
+  display: flex !important;
+  align-items: center !important;
+  flex-wrap: nowrap !important;
+  width: max-content !important;
   height: 44px !important;
   min-height: 44px !important;
   max-height: 44px !important;
-  line-height: 44px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+.promo-group {
+  display: flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  box-sizing: border-box !important;
+}
+.promo-seg {
   display: inline-flex !important;
   align-items: center !important;
+  gap: 8px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  padding: 0 6px !important;
+  margin: 0 !important;
+  white-space: nowrap !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  text-transform: uppercase !important;
+  color: #fff !important;
+  line-height: 1 !important;
   box-sizing: border-box !important;
+}
+.promo-sep {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  height: 44px !important;
+  margin: 0 18px !important;
+  color: rgba(242, 209, 145, .85) !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  flex: 0 0 auto !important;
 }
 .promo-code,
 .promo-seg .promo-code,
 button.promo-code,
 .promo-bar button.promo-code {
-  height: 44px !important;
-  min-height: 44px !important;
-  min-width: 88px !important;
-  padding: 0 16px !important;
-  margin: 0 4px !important;
+  background: #F2D191 !important;
+  color: #0d2137 !important;
+  font-weight: 800 !important;
   font-size: 12px !important;
+  letter-spacing: .06em !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  max-height: 28px !important;
+  min-width: 96px !important;
+  padding: 0 14px !important;
+  margin: 0 4px !important;
+  border: 0 !important;
+  border-radius: 999px !important;
   line-height: 1 !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   box-sizing: border-box !important;
-  border-radius: 8px !important;
+  cursor: pointer !important;
+  /* expand hit area to 44px without growing the visible pill past the bar */
+  position: relative !important;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-nav.nav { top: 44px !important; }
+.promo-code::before,
+.promo-seg .promo-code::before,
+button.promo-code::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 50% !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  width: 100% !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  min-height: 44px !important;
+}
+.promo-seg .cutoff-timer,
+.promo-bar .cutoff-timer {
+  font-variant-numeric: tabular-nums !important;
+  color: #F2D191 !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  height: 44px !important;
+}
+nav.nav,
+.nav {
+  top: 44px !important;
+}
+html {
+  scroll-padding-top: 108px;
+}
 
 /* === a11y wave1 2026-09-08: focus-visible (cream/black/gold) === */
 a:focus-visible,
