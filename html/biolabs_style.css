@@ -6500,3 +6500,31 @@ button.promo-code:focus-visible,
     pointer-events: auto !important;
   }
 }
+
+/* === FIX 2026-09-08: drop nav wordmark at Catalog height — keep B mark only === */
+.nav-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+}
+.nav-logo-text {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  left: -9999px !important;
+}
+.nav-logo-mark {
+  font-size: 30px !important;
+  line-height: 1 !important;
+  display: inline-block !important;
+}
+.nav {
+  align-items: center !important;
+}
+.nav-left,
+.nav-right,
+.nav-links-right {
+  align-items: center !important;
+}
