@@ -6501,36 +6501,63 @@ button.promo-code:focus-visible,
   }
 }
 
-/* === FIX 2026-09-08: drop nav wordmark at Catalog height — keep B mark only === */
-.nav-logo {
-  display: inline-flex !important;
-  align-items: center !important;
-  gap: 0 !important;
-}
-.nav-logo-text {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-  overflow: hidden !important;
-  position: absolute !important;
-  left: -9999px !important;
-}
-.nav-logo-mark {
-  font-size: 30px !important;
-  line-height: 1 !important;
-  display: inline-block !important;
-}
-.nav {
-  align-items: center !important;
-}
-.nav-left,
-.nav-right,
-.nav-links-right {
-  align-items: center !important;
-}
-
 /* === FIX 2026-09-08: no hero video caption under homepage stage === */
 .hero .bl-video-caption,
 .nl-stage .bl-video-caption {
   display: none !important;
+}
+
+/* === FIX 2026-09-08: full Biolabs research wordmark, aligned with nav links === */
+.nav {
+  display: flex !important;
+  align-items: center !important;
+}
+.nav-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  line-height: 1 !important;
+  height: auto !important;
+  transform: none !important;
+  position: relative !important;
+  top: 0 !important;
+}
+.nav-logo-mark {
+  display: inline-block !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  line-height: 1 !important;
+  letter-spacing: -.04em !important;
+  color: #0d2137 !important;
+  margin: 0 !important;
+  vertical-align: middle !important;
+}
+.nav-logo-text {
+  display: inline !important;
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+  left: auto !important;
+  font-size: 22px !important;
+  font-weight: 500 !important;
+  letter-spacing: -.02em !important;
+  line-height: 1 !important;
+  color: #0d2137 !important;
+  white-space: nowrap !important;
+  vertical-align: middle !important;
+}
+.nav-left,
+.nav-right,
+.nav-links-right {
+  display: flex !important;
+  align-items: center !important;
+}
+.nav-left a,
+.nav-links-right a {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
 }
