@@ -17,8 +17,8 @@ was closed.
 | H1 | Plus, minus and remove in the cart drawer did nothing on 17 product pages: `updateQty` used an undeclared `cart` and called `saveCart()` with no argument, which writes an empty cart | pages | done (pages, 2026-09-08) |
 | H2 | The discount code on checkout did nothing and the page could not say what a code was worth | infra | done (infra, 2026-09-07) |
 | H3 | Five blog articles were up to four times wider than a phone screen | infra | done (infra, 2026-09-07) |
-| H6 | The same product carried different prices depending on where you looked: "Pairs well at the bench" printed a 5 mg label with the 10 mg price, and the strikethrough on a product page did not follow the selected dose | infra | done (infra, 2026-09-08) |
-| H7 | Items added from the cart suggestions, the product rail and the catalog cards carried no strength at all, so an order did not say which vial to ship | infra | done (infra, 2026-09-08) |
+| H6 | The same product carried different prices depending on where you looked: "Pairs well at the bench" printed a 5 mg label with the 10 mg price, and the strikethrough on a product page did not follow the selected dose | infra | done (infra, 2026-09-08; the files landed in commit `965a184`) |
+| H7 | Items added from the cart suggestions, the product rail and the catalog cards carried no strength at all, so an order did not say which vial to ship | infra | done (infra, 2026-09-08; the files landed in commit `965a184`) |
 
 ## Medium
 
