@@ -9,7 +9,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
-<link rel="stylesheet" href="/biolabs_style.css?v=253">
+<link rel="stylesheet" href="/biolabs_style.css?v=254">
 <script src="/cart-vial.js?v=128"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
@@ -105,9 +105,9 @@
 
   <div class="cf-secondary">
     <p class="cf-secondary-title">Or reach us directly</p>
-    <a class="contact-line" href="mailto:admin@biolabsresearch.co">
+    <a class="contact-line" href="mailto:info@biofirst.co">
       <span class="contact-line-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 7 9-7"/></svg></span>
-      <span>admin@biolabsresearch.co</span>
+      <span>info@biofirst.co</span>
     </a>
     <a class="contact-line" href="https://wa.me/48732759035" target="_blank" rel="noopener">
       <span class="contact-line-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M20.5 3.5A11 11 0 0 0 2.1 17.6L1 23l5.6-1.5A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-3.3.9.9-3.2-.2-.3a9 9 0 1 1 7.5 4.1zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5c.1-.1.2-.3.3-.4s0-.3 0-.4-.6-1.5-.8-2-.2-.5-.5-.5h-.4c-.1 0-.4.1-.6.3a2 2 0 0 0-.6 1.5 3.5 3.5 0 0 0 .7 1.9 8 8 0 0 0 3.1 3 10 10 0 0 0 2 .8 2.4 2.4 0 0 0 1.7-.4 2.8 2.8 0 0 0 1-1.7c.1-.3 0-.5-.1-.6z"/></svg></span>
@@ -116,7 +116,7 @@
   </div>
 
   <div class="contact-hours-box">
-    <p class="support-hours" style="margin:0"><strong>Support:</strong> 8:00 AM – 9:00 PM ET, Monday–Friday</p>
+    <p class="support-hours" style="margin:0"><strong>Support:</strong> 8:00 AM – 9:00 PM ET</p>
     <div class="support-status" data-support-status></div>
   </div>
 </main>
@@ -220,7 +220,13 @@ function toggleMenu() {
 
   function setSending(on) {
     btn.disabled = !!on;
-    btn.textContent = on ? 'Sending...' : 'Send message';
+    if (on) {
+      btn.setAttribute('aria-busy', 'true');
+      btn.innerHTML = '<span class="cf-spinner" aria-hidden="true"></span><span>Sending...</span>';
+    } else {
+      btn.removeAttribute('aria-busy');
+      btn.textContent = 'Send message';
+    }
   }
 
   function rateLimited() {
@@ -275,16 +281,12 @@ function toggleMenu() {
         setTimeout(function(){ setSending(false); }, RATE_MS);
       } else {
         setSending(false);
-        showStatus('err', 'Something went wrong. Email <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a> or WhatsApp <a href="https://wa.me/48732759035" target="_blank" rel="noopener">+48 732 759 035</a>.');
-        setTimeout(function(){ btn.disabled = false; }, RATE_MS);
-        btn.disabled = true;
+        showStatus('err', 'Something went wrong. Email <a href="mailto:info@biofirst.co">info@biofirst.co</a> or WhatsApp <a href="https://wa.me/48732759035" target="_blank" rel="noopener">+48 732 759 035</a>.');
       }
     }).catch(function(){
       lastSubmitAt = Date.now();
       setSending(false);
-      showStatus('err', 'Something went wrong. Email <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a> or WhatsApp <a href="https://wa.me/48732759035" target="_blank" rel="noopener">+48 732 759 035</a>.');
-      btn.disabled = true;
-      setTimeout(function(){ btn.disabled = false; btn.textContent = 'Send message'; }, RATE_MS);
+      showStatus('err', 'Something went wrong. Email <a href="mailto:info@biofirst.co">info@biofirst.co</a> or WhatsApp <a href="https://wa.me/48732759035" target="_blank" rel="noopener">+48 732 759 035</a>.');
     });
   });
 })();

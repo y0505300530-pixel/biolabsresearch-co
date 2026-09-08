@@ -5761,7 +5761,7 @@ body.nav-open{overflow:hidden !important;}
 
 
 
-/* contact-form-ui v253 */
+/* contact-form-ui v254 */
 .cf-wrap{margin:8px 0 28px}
 .cf-form{display:flex;flex-direction:column;gap:16px;width:100%}
 .cf-field{display:flex;flex-direction:column;gap:6px;width:100%}
@@ -5805,6 +5805,14 @@ body.nav-open{overflow:hidden !important;}
 }
 .cf-submit:hover:not(:disabled){background:#111}
 .cf-submit:disabled{opacity:.55;cursor:not-allowed}
+.cf-submit .cf-spinner{
+  width:18px;height:18px;margin-right:10px;flex-shrink:0;
+  border:2px solid rgba(255,255,255,.35);border-top-color:#fff;
+  border-radius:50%;
+  animation:cf-spin .7s linear infinite;
+}
+@keyframes cf-spin{to{transform:rotate(360deg)}}
+
 .cf-status{margin-top:12px;padding:14px 16px;border-radius:12px;font-size:15px;line-height:1.5;display:none}
 .cf-status.show{display:block}
 .cf-status.ok{background:#F7F3EB;border:1px solid #C9A227;color:#0d2137}
