@@ -32,7 +32,9 @@
 
     '.cart-footer .btn-continue{margin-top:8px !important}',
     '.cart-drawer{z-index:10050 !important}',
-    '.cart-overlay.open,#cartOverlay.open{z-index:10040 !important}',
+    '.cart-overlay.open,#cartOverlay.open{z-index:10040 !important;display:block !important;opacity:1 !important;pointer-events:auto !important}',
+    /* ELITE: 44×44 tap targets for remove / qty inside the drawer (was 28px) */
+    '.cart-drawer .ci-remove,.cart-drawer .cart-item-remove,.cart-drawer .ci-qty button,.cart-drawer .ci-qty-btn,.cart-drawer .cart-item-qty button{min-width:44px !important;min-height:44px !important;width:44px !important;height:44px !important;max-height:none !important;flex:0 0 44px !important;box-sizing:border-box !important;padding:0 !important;display:inline-flex !important;align-items:center !important;justify-content:center !important}',
     '.cart-addcard{flex:0 0 88px !important;width:88px !important;min-width:88px !important;max-width:88px !important;box-sizing:border-box !important;background:#f3f7f4 !important;border-radius:14px !important;padding:0 0 8px !important;text-align:center !important;display:flex !important;flex-direction:column !important;align-items:center !important;gap:3px !important;overflow:visible !important}',
     '.cart-addcard a{display:block !important;width:100% !important;line-height:0 !important}',
     '.cart-addcard img,.cart-addmore .cart-addcard img{width:100% !important;height:52px !important;max-width:none !important;max-height:none !important;object-fit:cover !important;object-position:center 38% !important;background:#f3f7f4 !important;border-radius:0 !important}',
@@ -808,6 +810,52 @@ function addSuggest(slug, name, price){
       window.addToCart(name, price, img, slug);
     }
   }, false);
+})();
+
+/* ELITE: click overlay/backdrop (outside the drawer panel) closes cart. X already works.
+   Close-only so an existing inline onclick="toggleCart()" cannot double-toggle the drawer back open. */
+(function(){
+  if (window.__cartOverlayCloseWired) return;
+  window.__cartOverlayCloseWired = true;
+  function isOverlay(el){
+    if (!el) return false;
+    if (el.id === 'cartOverlay') return true;
+    return !!(el.classList && el.classList.contains('cart-overlay'));
+  }
+  function closeCart(){
+    var d = document.getElementById('cartDrawer');
+    var o = document.getElementById('cartOverlay') || document.querySelector('.cart-overlay');
+    if (d && d.classList.contains('open')) d.classList.remove('open');
+    if (o && o.classList.contains('open')) o.classList.remove('open');
+    try {
+      document.body.classList.remove('cart-open');
+      document.body.style.overflow = '';
+    } catch(e){}
+  }
+  function onOverlayClick(e){
+    var t = e.target;
+    if (!isOverlay(t)) return;
+    e.preventDefault();
+    e.stopPropagation();
+    closeCart();
+  }
+  function bindOverlay(el){
+    if (!el || el.__cartOverlayClose) return;
+    el.__cartOverlayClose = true;
+    try { el.onclick = null; } catch(e){}
+    el.removeAttribute('onclick');
+    el.addEventListener('click', onOverlayClick, true);
+  }
+  function wire(){
+    bindOverlay(document.getElementById('cartOverlay'));
+    var all = document.querySelectorAll('.cart-overlay');
+    for (var i = 0; i < all.length; i++) bindOverlay(all[i]);
+  }
+  document.addEventListener('click', onOverlayClick, true);
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire);
+  else wire();
+  var n = 0;
+  (function tick(){ wire(); if (++n < 40) setTimeout(tick, 100); })();
 })();
 
 /* ELITE P0: lock body scroll while cart open */

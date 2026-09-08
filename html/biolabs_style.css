@@ -606,9 +606,9 @@ a{color:inherit;text-decoration:none}
 .cart-item-name{font-size:15px;font-weight:600;color:var(--ink)}
 .cart-item-price{font-size:13px;color:var(--ink-soft);font-weight:500;margin-top:4px}
 .cart-item-qty{display:flex;align-items:center;gap:12px;margin-top:8px}
-.cart-item-qty button{background:var(--bg-warm);border:none;width:28px;height:28px;border-radius:8px;cursor:pointer;font-size:16px;color:var(--ink);display:flex;align-items:center;justify-content:center}
+.cart-item-qty button{background:var(--bg-warm);border:none;width:44px;height:44px;min-width:44px;min-height:44px;border-radius:8px;cursor:pointer;font-size:16px;color:var(--ink);display:flex;align-items:center;justify-content:center;box-sizing:border-box;padding:0}
 .cart-item-qty button:hover{background:var(--bg-warm2)}
-.cart-item-remove{background:none;border:none;color:var(--ink-muted);cursor:pointer;font-size:14px;align-self:flex-start}
+.cart-item-remove{background:none;border:none;color:var(--ink-muted);cursor:pointer;font-size:14px;align-self:flex-start;width:44px;height:44px;min-width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;padding:0;box-sizing:border-box}
 .cart-footer{padding:24px 28px;border-top:1px solid var(--border)}
 .cart-subtotal{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
 .cart-subtotal span{font-size:15px;color:var(--ink-soft)}
@@ -2334,10 +2334,10 @@ body{font-size:18px;line-height:1.5}
 .cart-item{align-items:flex-start!important}
 .ci-info{flex:1!important;display:flex!important;flex-direction:column!important;gap:2px!important;min-width:0!important}
 .ci-qty{display:flex!important;align-items:center!important;gap:10px!important;margin-top:8px!important}
-.ci-qty button{background:var(--bg-warm)!important;border:none!important;width:28px!important;height:28px!important;flex:0 0 28px!important;border-radius:8px!important;cursor:pointer!important;font-size:16px!important;color:var(--ink)!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important}
-.ci-qty button:hover{background:var(--bg-warm2)!important}
+.ci-qty button,.ci-qty-btn{background:var(--bg-warm)!important;border:none!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;flex:0 0 44px!important;border-radius:8px!important;cursor:pointer!important;font-size:16px!important;color:var(--ink)!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;box-sizing:border-box!important}
+.ci-qty button:hover,.ci-qty-btn:hover{background:var(--bg-warm2)!important}
 .ci-qty span{font-size:15px!important;font-weight:600!important;min-width:20px!important;text-align:center!important}
-.ci-remove{background:none!important;border:none!important;color:var(--ink-muted)!important;cursor:pointer!important;font-size:16px!important;align-self:flex-start!important;flex:0 0 28px!important;width:28px!important;height:28px!important;max-height:28px!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important}
+.ci-remove,.cart-item-remove{background:none!important;border:none!important;color:var(--ink-muted)!important;cursor:pointer!important;font-size:16px!important;align-self:flex-start!important;flex:0 0 44px!important;width:44px!important;height:44px!important;min-width:44px!important;min-height:44px!important;max-height:none!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:0!important;margin:0!important;box-sizing:border-box!important}
 .ci-remove:hover{color:var(--ink)!important}
 
 
@@ -5985,12 +5985,16 @@ html { scroll-padding-top: 108px; }
     padding-bottom: 12px !important;
   }
   .ci-qty button,
-  .cart-item-qty button {
+  .ci-qty-btn,
+  .cart-item-qty button,
+  .ci-remove,
+  .cart-item-remove {
     min-width: 44px !important;
     min-height: 44px !important;
     width: 44px !important;
     height: 44px !important;
     flex: 0 0 44px !important;
+    max-height: none !important;
   }
   .product-card-mg {
     min-height: 44px !important;
