@@ -6349,10 +6349,10 @@ button.promo-code::before {
 }
 nav.nav,
 .nav {
-  top: 44px !important;
+  top: 0 !important; /* flush; promo no longer sticky */
 }
 html {
-  scroll-padding-top: 108px;
+  scroll-padding-top: 72px;
 }
 
 /* === a11y wave1 2026-09-08: focus-visible (cream/black/gold) === */
