@@ -6431,3 +6431,20 @@ button.promo-code:focus-visible,
   .nav { padding: 12px 16px !important; }
   .nav-hamburger { display: inline-flex !important; }
 }
+
+/* === FIX 2026-09-08: promo marquee no empty gap === */
+.promo-track {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  width: max-content !important;
+}
+.promo-half {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+}
+.promo-group {
+  flex: 0 0 auto !important;
+}
