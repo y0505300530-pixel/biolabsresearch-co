@@ -7207,3 +7207,23 @@ html body #promoStack,
   padding: 0 !important;
 }
 html { scroll-padding-top: 72px !important; }
+
+/* === FIX 2026-09-08: hide discount ticker while cart is open === */
+body.cart-open .promo-stack,
+body.cart-open #promoStack,
+body:has(#cartDrawer.open) .promo-stack,
+body:has(#cartDrawer.open) #promoStack,
+body:has(.cart-drawer.open) .promo-stack,
+body:has(.cart-drawer.open) #promoStack {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}

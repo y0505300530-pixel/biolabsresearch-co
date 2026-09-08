@@ -17,6 +17,7 @@
     '.cart-addmore-title{text-align:center;font-size:12px;font-weight:800;margin:0 0 6px;padding:0 16px;color:#1a3a2a}',
     '.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:6px !important;overflow-x:scroll !important;overflow-y:hidden !important;-webkit-overflow-scrolling:touch;touch-action:pan-x;overscroll-behavior:contain !important;padding:0 16px 8px;scrollbar-width:thin}',
     'body.cart-open{overflow:hidden !important}',
+    'body.cart-open .promo-stack,body.cart-open #promoStack{display:none!important;height:0!important;min-height:0!important;max-height:0!important;overflow:hidden!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;margin:0!important;padding:0!important;border:0!important}',
     '.cart-header,.cart-footer,#cartProgress{flex:0 0 auto !important}',
     '.cart-header{padding:18px 20px 12px !important;padding-top:max(28px, calc(env(safe-area-inset-top) + 12px)) !important;overflow:visible !important}',
     '.cart-title{font-size:20px !important;font-weight:800 !important;line-height:1.2 !important;padding-top:2px !important}',
