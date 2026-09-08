@@ -7272,6 +7272,8 @@ body:has(.cart-drawer.open) #promoStack {
     margin: 0 !important;
     overflow: visible !important;
   }
+  #cartProgress .cp-kicker { margin: 0 0 2px !important; }
+  #cartProgress .cp-msg { margin: 0 0 6px !important; }
   #cartProgress .cp-track {
     height: 6px !important;
     margin: 6px 4px 22px !important;
@@ -7483,15 +7485,15 @@ body:has(.cart-drawer.open) #promoStack {
   }
 }
 
-/* === CART MOBILE v2.1 — fit ≥2 items + text Continue + compact addmore === */
+/* === CART MOBILE v2.2 — 110px addmore + 52px checkout; BAC compact row; ≥2 items === */
 @media (max-width: 667px) {
   #cartAddMore,
   .cart-addmore-slot {
-    max-height: 128px !important;
-    height: 128px !important;
+    max-height: 138px !important;
+    height: 138px !important;
     overflow: hidden !important;
     padding: 6px 0 8px !important;
-    flex: 0 0 128px !important;
+    flex: 0 0 138px !important;
   }
   .cart-addmore { padding: 0 !important; margin: 0 !important; }
   .cart-addmore-title {
@@ -7501,10 +7503,11 @@ body:has(.cart-drawer.open) #promoStack {
     line-height: 1.2 !important;
   }
   .cart-addmore-track {
-    height: 100px !important;
-    max-height: 100px !important;
+    height: 110px !important;
+    max-height: 110px !important;
     padding: 0 12px 2px !important;
     gap: 6px !important;
+    scroll-snap-type: x mandatory !important;
   }
   .cart-addcard,
   .cart-addmore .cart-addcard {
@@ -7512,18 +7515,19 @@ body:has(.cart-drawer.open) #promoStack {
     width: 96px !important;
     min-width: 96px !important;
     max-width: 96px !important;
-    height: 100px !important;
-    max-height: 100px !important;
+    height: 110px !important;
+    max-height: 110px !important;
     padding: 0 0 4px !important;
     gap: 2px !important;
     border-radius: 12px !important;
     overflow: hidden !important;
     box-sizing: border-box !important;
+    scroll-snap-align: start !important;
   }
   .cart-addcard img,
   .cart-addmore .cart-addcard img {
-    height: 48px !important;
-    max-height: 48px !important;
+    height: 52px !important;
+    max-height: 52px !important;
   }
   .cart-addcard-name {
     font-size: 9px !important;
@@ -7540,7 +7544,7 @@ body:has(.cart-drawer.open) #promoStack {
     height: 22px !important;
   }
   .cart-footer {
-    max-height: 120px !important;
+    max-height: 130px !important;
     padding: 6px 12px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
     gap: 4px !important;
   }
@@ -7552,9 +7556,9 @@ body:has(.cart-drawer.open) #promoStack {
   .cart-inquiry-perk-text { font-size: 12px !important; }
   .cart-footer .btn-checkout,
   .btn-checkout {
-    height: 48px !important;
-    min-height: 48px !important;
-    max-height: 48px !important;
+    height: 52px !important;
+    min-height: 52px !important;
+    max-height: 52px !important;
   }
   html body .cart-footer .btn-continue,
   html body .cart-drawer .btn-continue,
@@ -7585,10 +7589,110 @@ body:has(.cart-drawer.open) #promoStack {
   }
   #cartProgress,
   #cartProgress.on {
-    padding: 10px 12px !important;
+    padding: 12px 14px !important;
   }
   #cartProgress .cp-track {
     height: 6px !important;
-    margin: 4px 4px 18px !important;
+    margin: 6px 4px 22px !important;
   }
+}
+
+/* BAC compact add-on row — cream, no thumbnail, always last above carousel */
+.cart-item.ci-bac,
+.cart-drawer .cart-item.ci-bac {
+  min-height: 48px !important;
+  height: 48px !important;
+  max-height: 48px !important;
+  padding: 0 10px !important;
+  margin: 0 -14px !important;
+  gap: 8px !important;
+  align-items: center !important;
+  background: #F7F1E4 !important;
+  border-bottom: 0 !important;
+  border-top: 1px solid #E6DCC8 !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+.cart-item.ci-bac .ci-img,
+.cart-item.ci-bac .ci-remove,
+.cart-drawer .cart-item.ci-bac .ci-img,
+.cart-drawer .cart-item.ci-bac .ci-remove {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  min-width: 0 !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  flex: 0 0 0 !important;
+}
+.cart-item.ci-bac .ci-info {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 8px !important;
+  width: 100% !important;
+  min-width: 0 !important;
+  grid-template-columns: none !important;
+  grid-template-areas: none !important;
+}
+.cart-item.ci-bac .ci-name {
+  flex: 1 1 auto !important;
+  min-width: 0 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+  margin: 0 !important;
+}
+.cart-item.ci-bac .ci-mg { display: none !important; }
+.cart-item.ci-bac .ci-rec-badge {
+  flex: 0 0 auto !important;
+  grid-area: auto !important;
+  font-size: 9px !important;
+  padding: 2px 6px !important;
+}
+.cart-item.ci-bac .ci-qty {
+  flex: 0 0 auto !important;
+  grid-area: auto !important;
+  display: flex !important;
+  align-items: center !important;
+  height: 32px !important;
+  margin: 0 !important;
+  gap: 0 !important;
+}
+.cart-item.ci-bac .ci-qty button,
+.cart-item.ci-bac .ci-qty-btn,
+.cart-drawer .cart-item.ci-bac .ci-qty button {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  max-height: 44px !important;
+  margin: -6px 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  font-size: 18px !important;
+  line-height: 32px !important;
+  flex: 0 0 44px !important;
+}
+.cart-item.ci-bac .ci-qty span {
+  min-width: 1.15em;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 32px;
+}
+.cart-item.ci-bac .ci-price {
+  flex: 0 0 auto !important;
+  grid-area: auto !important;
+  margin: 0 0 0 auto !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  white-space: nowrap !important;
+  align-self: center !important;
 }

@@ -11,7 +11,8 @@
     /* P0 scroll: drawer + items flex so .cart-items is the vertical scroller */
     '.cart-drawer{height:100dvh !important;max-height:100dvh !important;min-height:0 !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}',
     '.cart-drawer .cart-items{flex:1 1 0% !important;min-height:0 !important;overflow-y:auto !important;overflow-x:hidden !important;overscroll-behavior:contain !important;-webkit-overflow-scrolling:touch;padding:16px 20px 28px !important;position:relative !important;z-index:1 !important}',
-    '#cartAddMore,.cart-addmore-slot{flex:0 0 128px !important;position:relative !important;background:#fff !important;z-index:2 !important;border-top:1px solid #E6E0D6;max-width:100%;overflow:hidden !important;max-height:128px !important;height:128px !important;flex-shrink:0 !important}',
+    '#cartAddMore,.cart-addmore-slot{flex:0 0 138px !important;position:relative !important;background:#fff !important;z-index:2 !important;border-top:1px solid #E6E0D6;max-width:100%;overflow:hidden !important;max-height:138px !important;height:138px !important;flex-shrink:0 !important}',
+    '@media (max-width:667px){#cartAddMore,.cart-addmore-slot{flex:0 0 138px !important;max-height:138px !important;height:138px !important}.cart-addmore .cart-addcard,.cart-addcard{height:110px !important;max-height:110px !important}}',
     '#cartAddMore:empty,.cart-addmore-slot:empty{display:none}',
     '.cart-addmore{margin:0;padding:8px 0 2px;border:0}',
     '.cart-addmore-title{text-align:center;font-size:12px;font-weight:800;margin:0 0 6px;padding:0 16px;color:#1a3a2a}',
@@ -49,7 +50,18 @@
     '#cartProgress .cp-kicker{font-size:10px !important;margin:0 0 2px !important}',
     '#cartProgress .cp-track{height:6px !important;margin:6px 4px 22px !important}',
     '#cartProgress .cp-unlocked{display:block !important;margin:18px 0 0 !important;padding:8px 10px !important;font-size:12.5px !important;font-weight:700 !important;line-height:1.35 !important;border-radius:10px !important;background:#fff !important;border:1px solid #d9cbae !important;position:relative !important;z-index:1 !important;clear:both !important}',
-    '.ci-mg{font-weight:600;color:#6b6254;font-size:0.85em}'
+    '.ci-mg{font-weight:600;color:#6b6254;font-size:0.85em}',
+    /* BAC compact add-on row — no thumbnail, one 48px line, last above carousel */
+    '.cart-item.ci-bac,.cart-drawer .cart-item.ci-bac{min-height:48px !important;height:48px !important;max-height:48px !important;padding:0 10px !important;margin:0 -14px !important;gap:8px !important;align-items:center !important;background:#F7F1E4 !important;border-bottom:0 !important;border-top:1px solid #E6DCC8 !important;overflow:hidden !important;box-sizing:border-box !important}',
+    '.cart-item.ci-bac .ci-img,.cart-item.ci-bac .ci-remove,.cart-drawer .cart-item.ci-bac .ci-img,.cart-drawer .cart-item.ci-bac .ci-remove{display:none !important;width:0 !important;height:0 !important;min-width:0 !important;min-height:0 !important;max-width:0 !important;max-height:0 !important;overflow:hidden !important;flex:0 0 0 !important;padding:0 !important;margin:0 !important;border:0 !important}',
+    '.cart-item.ci-bac .ci-info{display:flex !important;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center !important;gap:8px !important;width:100% !important;min-width:0 !important;grid-template-columns:none !important;grid-template-areas:none !important}',
+    '.cart-item.ci-bac .ci-name{flex:1 1 auto !important;min-width:0 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;font-size:13px !important;font-weight:700 !important;line-height:1.2 !important;margin:0 !important}',
+    '.cart-item.ci-bac .ci-mg{display:none !important}',
+    '.cart-item.ci-bac .ci-rec-badge{flex:0 0 auto !important;grid-area:auto !important;font-size:9px !important;padding:2px 6px !important}',
+    '.cart-item.ci-bac .ci-qty{flex:0 0 auto !important;grid-area:auto !important;display:flex !important;align-items:center !important;height:32px !important;margin:0 !important;gap:0 !important}',
+    '.cart-item.ci-bac .ci-qty button,.cart-item.ci-bac .ci-qty-btn,.cart-drawer .cart-item.ci-bac .ci-qty button{width:44px !important;height:44px !important;min-width:44px !important;min-height:44px !important;max-height:44px !important;margin:-6px 0 !important;padding:0 !important;background:transparent !important;border:0 !important;box-shadow:none !important;font-size:18px !important;line-height:32px !important;flex:0 0 44px !important}',
+    '.cart-item.ci-bac .ci-qty span{min-width:1.15em;text-align:center;font-size:13px;font-weight:700;line-height:32px}',
+    '.cart-item.ci-bac .ci-price{flex:0 0 auto !important;grid-area:auto !important;margin:0 0 0 auto !important;font-size:13px !important;font-weight:700 !important;white-space:nowrap !important;align-self:center !important}'
   ].join('');
   (document.head || document.documentElement).appendChild(s);
 })();
@@ -70,6 +82,28 @@ function _readCartLS(){
   } catch(e){ return []; }
 }
 
+var BAC_DISMISS_KEY = 'biolabs_bac_dismissed';
+var BAC_DISPLAY_NAME = 'Bacteriostatic Water 30ml';
+var BAC_BADGE = 'Research solvent';
+function _isBacItem(i){
+  return !!(i && (i.slug === 'research-solvent' || i.gift || i.recommended ||
+    /bac water|bacteriostatic|research solvent/i.test(String(i.name || ''))));
+}
+function _bacDismissed(){
+  try { return sessionStorage.getItem(BAC_DISMISS_KEY) === '1'; } catch (e) { return false; }
+}
+function _markBacDismissed(){
+  try { sessionStorage.setItem(BAC_DISMISS_KEY, '1'); } catch (e) {}
+}
+window.__markBacDismissed = _markBacDismissed;
+window.__bacDismissed = _bacDismissed;
+function _sortBacLast(c){
+  if (!Array.isArray(c)) return [];
+  var merch = [], bac = [];
+  c.forEach(function(i){ if (_isBacItem(i)) bac.push(i); else merch.push(i); });
+  return merch.concat(bac);
+}
+
 function _sanitizeCart(c){
   if (!Array.isArray(c)) return [];
   var out = [];
@@ -78,12 +112,14 @@ function _sanitizeCart(c){
     if (!i) return;
     var q = parseInt(i.qty, 10);
     if (!isFinite(q) || q <= 0) return; /* drop dead lines — never persist -99 */
-    if (i.gift || i.slug === 'research-solvent') {
+    if (_isBacItem(i)) {
       if (sawGift) return;
       sawGift = true;
       i.qty = Math.max(1, q); /* Yehuda: BAC may be >1 */
       i.gift = true;
       i.slug = 'research-solvent';
+      i.badge = BAC_BADGE;
+      i.recommended = false;
       if (!i.imageUrl || String(i.imageUrl).indexOf('.svg') !== -1) i.imageUrl = '/media/research-solvent.png?v=2';
     } else {
       i.qty = q;
@@ -92,7 +128,7 @@ function _sanitizeCart(c){
     }
     out.push(i);
   });
-  return out;
+  return _sortBacLast(out);
 }
 
 /* Catalog for the whole storefront, read once (2026-09-08). Outside the product page nothing knew more about a
@@ -727,12 +763,13 @@ function addSuggest(slug, name, price, mg){
     if (!Array.isArray(c)) return false;
     var item = c[idx];
     if (!item) return false;
-    if (item.gift || item.slug === 'research-solvent') { item.qty = 1; }
-    else {
-      var d = parseInt(delta, 10) || 0;
-      var q = parseInt(item.qty, 10) || 0;
-      if (d <= -99 || q + d <= 0) c = c.filter(function(x){ return x !== item; });
-      else item.qty = q + d;
+    var d = parseInt(delta, 10) || 0;
+    var q = parseInt(item.qty, 10) || 0;
+    if (d <= -99 || q + d <= 0) {
+      if (_isBacItem(item)) _markBacDismissed();
+      c = c.filter(function(x){ return x !== item; });
+    } else {
+      item.qty = q + d;
     }
     c = c.filter(function(x){ return x && (parseInt(x.qty, 10) || 0) > 0; });
     if (typeof saveCart === 'function') { try { saveCart(c); } catch(e){ _writeCartLS(c); } }
@@ -876,7 +913,7 @@ function addSuggest(slug, name, price, mg){
   ];
   var lastTier = -1;
 
-  var GIFT = {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Research solvent',note:'Laboratory use only — not for reconstitution instructions',imageUrl:'/media/research-solvent.png?v=2'};
+  var GIFT = {id:'17',name:BAC_DISPLAY_NAME,price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:BAC_BADGE,note:'Laboratory use only — not for reconstitution instructions',imageUrl:'/media/research-solvent.png?v=2'};
   var giftLock = false;
   function readCart(){
     try {
@@ -891,14 +928,18 @@ function addSuggest(slug, name, price, mg){
     var c = readCart();
     var merch = 0;
     c.forEach(function(i){ if(!i.gift && i.slug!=='research-solvent') merch += (parseFloat(i.price)||0)*(i.qty||1); });
-    var has = c.some(function(i){ return i.slug==='research-solvent' || i.gift; });
-    var want = merch >= 100; /* milestone gift only — RUO: no Recommended auto-add */
+    var has = c.some(function(i){ return _isBacItem(i); });
+    var want = merch >= 100 && !_bacDismissed(); /* milestone gift only — RUO: no Recommended auto-add */
     if (want === has) {
-      /* keep badge SoT if present */
+      /* keep badge SoT if present; BAC always last above carousel */
       if (has) {
         var changed=false;
-        c.forEach(function(i){ if(i && (i.slug==='research-solvent'||i.gift) && i.badge!=='Research solvent'){ i.badge='Research solvent'; i.recommended=false; i.gift=true; changed=true; }});
-        if (changed) {
+        c.forEach(function(i){ if(_isBacItem(i) && i.badge!==BAC_BADGE){ i.badge=BAC_BADGE; i.recommended=false; i.gift=true; changed=true; }});
+        var sorted = _sortBacLast(c);
+        var orderChanged = false;
+        for (var si=0; si<sorted.length; si++) { if (sorted[si] !== c[si]) { orderChanged = true; break; } }
+        if (changed || orderChanged) {
+          c = sorted;
           if (typeof cart !== 'undefined') cart = c;
           try { _writeCartLS(c); } catch(e){}
         }
@@ -906,8 +947,8 @@ function addSuggest(slug, name, price, mg){
       return;
     }
     giftLock = true;
-    if (want) { var g=Object.assign({},GIFT,{qty:1,badge:'Research solvent'}); c=c.filter(function(i){return !(i.gift||i.slug==='research-solvent');}); c.push(g); }
-    else c = c.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
+    if (want) { var g=Object.assign({},GIFT,{qty:1,badge:BAC_BADGE}); c=c.filter(function(i){return !_isBacItem(i);}); c=_sortBacLast(c.concat([g])); }
+    else c = _sortBacLast(c.filter(function(i){ return !_isBacItem(i); }));
     if (typeof cart !== 'undefined') cart = c;
     try { _writeCartLS(c); } catch(e){}
     if (typeof saveCart === 'function') {
@@ -1215,22 +1256,23 @@ function addSuggest(slug, name, price, mg){
       }
       cart = _sanitizeCart(cart);
       var merch = 0;
-      cart.forEach(function(i){ if(!i.gift && i.slug!=='research-solvent') merch += (parseFloat(i.price)||0)*(i.qty||1); });
-      var has = cart.some(function(i){ return i.gift || i.slug==='research-solvent'; });
-      if (merch >= 100 && !has) {
-        cart.push(Object.assign({}, {id:'17',name:'Research solvent (BAC water)',price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:'Research solvent',note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'}));
+      cart.forEach(function(i){ if(!_isBacItem(i)) merch += (parseFloat(i.price)||0)*(i.qty||1); });
+      var has = cart.some(function(i){ return _isBacItem(i); });
+      if (merch >= 100 && !has && !_bacDismissed()) {
+        cart.push(Object.assign({}, {id:'17',name:BAC_DISPLAY_NAME,price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:BAC_BADGE,note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'}));
       }
       if (merch < 100 && has) {
-        cart = cart.filter(function(i){ return !(i.gift || i.slug==='research-solvent'); });
+        cart = cart.filter(function(i){ return !_isBacItem(i); });
       }
       cart.forEach(function(i){
-        if (i && (i.gift || i.slug==='research-solvent')) {
+        if (_isBacItem(i)) {
           var q = parseInt(i.qty,10); if (!isFinite(q) || q < 1) i.qty = 1; else i.qty = q;
-          i.badge = 'Research solvent';
+          i.badge = BAC_BADGE;
           i.recommended = false;
           if (!i.imageUrl || String(i.imageUrl).indexOf('.svg')!==-1) i.imageUrl='/media/research-solvent.png?v=2';
         }
       });
+      cart = _sortBacLast(cart);
       if (typeof saveCart === 'function') {
         try { saveCart(cart); } catch(e) { try { saveCart(); } catch(e2){} }
       } else {
@@ -1245,39 +1287,32 @@ function addSuggest(slug, name, price, mg){
       try {
         var d = parseInt(delta, 10);
         if (!isFinite(d)) d = 0;
+        var c = (typeof getCart === 'function') ? getCart() : ((typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : _readCartLS());
+        if (!Array.isArray(c)) c = [];
         var item = null;
-        if (typeof cart !== 'undefined' && Array.isArray(cart)) {
-          item = cart.find(function(i){
-            return i && (i.gift || i.slug==='research-solvent') && (
-              i.name===name || (typeof _sameCartProduct==='function' && _sameCartProduct(i, 'research-solvent', name))
-            );
-          });
+        var i;
+        for (i = 0; i < c.length; i++) {
+          if (_isBacItem(c[i]) && (
+            c[i].name === name ||
+            String(c[i].name||'') === String(name||'') ||
+            /research solvent|bac water|bacteriostatic/i.test(String(name||''))
+          )) { item = c[i]; break; }
         }
         if (item) {
-          if (d <= -99) {
-            item.qty = Math.max(0, (parseInt(item.qty,10)||1) - 1);
-            if (item.qty <= 0) cart = cart.filter(function(i){ return i !== item; });
-            cart = _sanitizeCart(cart);
-            if (typeof saveCart === 'function') { try { saveCart(cart); } catch(e){} }
-            else { _writeCartLS(cart); }
-            clampGifts();
-            if (typeof renderCart === 'function') renderCart();
-            return;
+          var q = parseInt(item.qty, 10) || 1;
+          if (d <= -99 || q + d <= 0) {
+            _markBacDismissed();
+            c = c.filter(function(x){ return x !== item; });
+          } else {
+            item.qty = q + d;
           }
-          if (d > 0) {
-            item.qty = (parseInt(item.qty,10)||1) + d;
-            if (typeof saveCart === 'function') { try { saveCart(_sanitizeCart(cart)); } catch(e){} }
-            else { _writeCartLS(cart); }
-            if (typeof renderCart === 'function') renderCart();
-            return;
-          }
-          item.qty = Math.max(0, (parseInt(item.qty,10)||1) + d);
-          if (item.qty <= 0) cart = cart.filter(function(i){ return i !== item; });
-          cart = _sanitizeCart(cart);
-          if (typeof saveCart === 'function') { try { saveCart(cart); } catch(e){} }
-          else { _writeCartLS(cart); }
+          c = _sortBacLast(_sanitizeCart(c));
+          if (typeof cart !== 'undefined') cart = c;
+          if (typeof saveCart === 'function') { try { saveCart(c); } catch(e){ _writeCartLS(c); } }
+          else { _writeCartLS(c); }
           clampGifts();
           if (typeof renderCart === 'function') renderCart();
+          if (typeof updateBadge === 'function') { try { updateBadge(); } catch(e2){} }
           return;
         }
         /* never apply -99 as arithmetic into storage without sanitize after */
@@ -1572,7 +1607,7 @@ function addSuggest(slug, name, price, mg){
 
 
 
-/* cart v2: BAC Recommended on add; dismiss for session on remove */
+/* cart v2: BAC milestone gift only; dismiss for session on remove */
 (function(){
   function afterAdd(){ /* RUO: no BAC auto-add on every add — milestone gift only */ }
   function wrapAdd(name){
@@ -1635,11 +1670,32 @@ function addSuggest(slug, name, price, mg){
 })();
 
 
-/* cart v2: inject Recommended badge into line items after renderCart */
+/* cart v2: compact BAC row + Research solvent badge after renderCart */
 (function(){
+  function liveCart(){
+    if (typeof cart !== 'undefined' && Array.isArray(cart)) return cart;
+    if (typeof getCart === 'function') {
+      try { var g = getCart(); if (Array.isArray(g)) return g; } catch(e){}
+    }
+    return _readCartLS();
+  }
+  function sortLive(){
+    var c = liveCart();
+    if (!Array.isArray(c) || c.length < 2) return;
+    var sorted = _sortBacLast(c);
+    var same = sorted.length === c.length;
+    if (same) {
+      for (var i = 0; i < sorted.length; i++) { if (sorted[i] !== c[i]) { same = false; break; } }
+    }
+    if (same) return;
+    c.length = 0;
+    sorted.forEach(function(x){ c.push(x); });
+    if (typeof cart !== 'undefined') cart = c;
+    try { _writeCartLS(c); } catch(e){}
+  }
   function decorate(){
     try {
-      var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
+      var c = liveCart();
       var rows = document.querySelectorAll('#cartItems .cart-item');
       for (var i = 0; i < rows.length; i++) {
         var item = c[i];
@@ -1647,20 +1703,27 @@ function addSuggest(slug, name, price, mg){
         var info = rows[i].querySelector('.ci-info');
         if (!info) continue;
         var existing = info.querySelector('.ci-rec-badge');
-        var isBac = item.slug === 'research-solvent' || item.gift || item.badge === 'Research solvent' || item.badge === 'Gift';
+        var isBac = _isBacItem(item);
         if (isBac) {
+          rows[i].classList.add('ci-bac');
+          var img = rows[i].querySelector('.ci-img');
+          if (img) img.setAttribute('hidden', '');
+          var rm = rows[i].querySelector('.ci-remove');
+          if (rm) rm.setAttribute('hidden', '');
+          var nameEl = info.querySelector('.ci-name');
+          if (nameEl) nameEl.textContent = BAC_DISPLAY_NAME;
           if (!existing) {
             var b = document.createElement('span');
             b.className = 'ci-rec-badge';
-            b.textContent = item.badge || 'Research solvent';
-            var name = info.querySelector('.ci-name');
-            if (name && name.nextSibling) info.insertBefore(b, name.nextSibling);
+            b.textContent = BAC_BADGE;
+            if (nameEl && nameEl.nextSibling) info.insertBefore(b, nameEl.nextSibling);
             else info.appendChild(b);
           } else {
-            existing.textContent = item.badge || 'Research solvent';
+            existing.textContent = BAC_BADGE;
           }
-        } else if (existing) {
-          existing.remove();
+        } else {
+          rows[i].classList.remove('ci-bac');
+          if (existing) existing.remove();
         }
       }
     } catch(e){}
@@ -1669,6 +1732,7 @@ function addSuggest(slug, name, price, mg){
     if (typeof window.renderCart !== 'function' || window.renderCart.__recBadge) return false;
     var orig = window.renderCart;
     window.renderCart = function(){
+      sortLive();
       var r = orig.apply(this, arguments);
       decorate();
       return r;
@@ -1689,7 +1753,7 @@ function addSuggest(slug, name, price, mg){
         var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
         var item = c[idx];
         var d = parseInt(delta,10)||0;
-        if (item && (item.slug==='research-solvent' || item.recommended || item.badge==='Recommended' || item.gift)) {
+        if (_isBacItem(item)) {
           var q = (parseInt(item.qty,10)||0) + d;
           if (d <= -99 || q <= 0) {
             if (typeof window.__markBacDismissed === 'function') window.__markBacDismissed();
