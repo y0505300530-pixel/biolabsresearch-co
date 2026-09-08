@@ -69,7 +69,7 @@
 <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/vial-bpc-157-tb-500-blend.png?v=155" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=261">
+<link rel="stylesheet" href="/biolabs_style.css?v=262">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -219,6 +219,64 @@ with lot documentation.</h1>
   </div>
 </section>
 
+
+<!-- RESEARCH TOOLS -->
+<section class="tools-section" id="research-tools">
+  <div class="tools-inner">
+    <div class="tools-head">
+      <div class="tools-copy">
+        <p class="section-kicker tools-kicker">Research Tools</p>
+        <h2>Plan your order before you buy</h2>
+        <p>Free calculators for reconstitution, unit conversion and side-by-side compound comparison.</p>
+      </div>
+      <figure class="bl-video bl-video-tools tools-head-video">
+        <div class="bl-video-frame tools-video-frame" style="aspect-ratio:1344/768">
+          <video muted loop playsinline preload="metadata"
+            poster="/media/video/tools-dilution-loop-poster.jpg"
+            width="672" height="384"
+            aria-label="Dilution calculator in use">
+            <source src="/media/video/tools-dilution-loop.mp4" type="video/mp4">
+          </video>
+        </div>
+      </figure>
+    </div>
+
+    <div class="tools-grid">
+      <a class="tools-card" href="/tools/dilution">
+        <span class="tools-card-num" aria-hidden="true">01</span>
+        <span class="tools-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h6"/><path d="M13 3v5.2L7.6 18.2A4.4 4.4 0 0 0 11.5 25h5a4.4 4.4 0 0 0 3.9-6.8L15 8.2V3"/><path d="M10 17h8"/></svg>
+        </span>
+        <strong>Dilution calculator</strong>
+        <p>Work out mg per mL and the exact draw for your target dose.</p>
+        <span class="tools-card-cta">Open tool →</span>
+      </a>
+      <a class="tools-card" href="/tools/units">
+        <span class="tools-card-num" aria-hidden="true">02</span>
+        <span class="tools-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 10h14"/><path d="M15 6l4 4-4 4"/><path d="M23 18H9"/><path d="M13 14l-4 4 4 4"/></svg>
+        </span>
+        <strong>Unit converter</strong>
+        <p>Convert mg, mcg, ng and IU without second-guessing the math.</p>
+        <span class="tools-card-cta">Open tool →</span>
+      </a>
+      <a class="tools-card" href="/tools/compare">
+        <span class="tools-card-num" aria-hidden="true">03</span>
+        <span class="tools-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 28 28" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="8" height="18" rx="2"/><rect x="16" y="5" width="8" height="18" rx="2"/><path d="M6.5 10h3M6.5 14h3M18.5 10h3M18.5 14h3"/></svg>
+        </span>
+        <strong>Compare compounds</strong>
+        <p>Put catalog vials side by side: purity, lot fields, presentation.</p>
+        <span class="tools-card-cta">Open tool →</span>
+      </a>
+    </div>
+
+    <div class="tools-more">
+      <a class="tools-browse" href="/tools">Browse all tools</a>
+    </div>
+  </div>
+</section>
+
 <!-- COMPOUNDS — cream editorial, Hims-quiet -->
 <section class="compounds-section" id="compounds">
   <div class="compounds-inner">
@@ -260,46 +318,6 @@ with lot documentation.</h1>
     </article>
   </div>
   <p class="stat-asterisk">*Starting catalog price (GHK-Cu).</p>
-</section>
-
-<!-- A) THREE METHOD CARDS -->
-<section class="method-section" id="methods">
-  <div class="section-inner">
-    <header class="section-head">
-      <p class="section-kicker">How a lot is checked</p>
-      <h2>Identity. Purity. Residuals.</h2>
-      <p>Method names only. Figures live on the lot COA.</p>
-    </header>
-    <div class="method-grid">
-      <article class="method-tile">
-        <div class="method-kicker">Purity</div>
-        <div class="method-num">HPLC</div>
-        <p class="method-lead">Purity as reported on the certificate. No invented percentages here.</p>
-        <div class="method-field">
-          <span>Reported purity</span>
-          <strong>on the COA</strong>
-        </div>
-      </article>
-      <article class="method-tile">
-        <div class="method-kicker">Identity</div>
-        <div class="method-num">MS</div>
-        <p class="method-lead">Mass spectrometry against the theoretical mass of the listed compound.</p>
-        <div class="method-field">
-          <span>Observed mass</span>
-          <strong>on the COA</strong>
-        </div>
-      </article>
-      <article class="method-tile">
-        <div class="method-kicker">Document fields</div>
-        <div class="method-num">Residuals</div>
-        <p class="method-lead">Solvents, appearance, and lot date as recorded by the testing lab.</p>
-        <div class="method-field">
-          <span>Solvents / appearance / date</span>
-          <strong>on the COA</strong>
-        </div>
-      </article>
-    </div>
-  </div>
 </section>
 
 <!-- D) SCIENCE POINTS (not the scientists block) -->
