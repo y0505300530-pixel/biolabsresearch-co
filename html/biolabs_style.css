@@ -6704,3 +6704,80 @@ button.promo-code:focus-visible,
     gap: 16px !important;
   }
 }
+
+/* === FIX 2026-09-08: cart unlocked perk clear of progress ticks === */
+#cartProgress,
+#cartProgress.on {
+  overflow: visible !important;
+  padding-bottom: 22px !important;
+  margin-bottom: 0 !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+#cartProgress .cp-track {
+  height: 8px !important;
+  margin: 8px 4px 26px !important;
+  overflow: visible !important;
+}
+#cartProgress .cp-tick .lbl {
+  top: 18px !important;
+  font-size: 10px !important;
+}
+#cartAddMore,
+.cart-addmore-slot {
+  position: relative !important;
+  z-index: 1 !important;
+  margin-bottom: 0 !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
+}
+.cart-footer {
+  position: relative !important;
+  z-index: 4 !important;
+  background: #F5F2EC !important;
+  padding-top: 16px !important;
+  margin-top: 0 !important;
+  border-top: 1px solid #E6E0D6 !important;
+  clear: both !important;
+}
+.cart-inquiry-perk,
+a.cart-inquiry-perk {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+  min-height: 48px !important;
+  margin: 0 0 14px !important;
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+  background: #F7F1E4 !important;
+  border: 1px solid #E2D3B3 !important;
+  color: #7A5520 !important;
+  text-decoration: none !important;
+  position: relative !important;
+  z-index: 5 !important;
+  overflow: visible !important;
+  box-shadow: none !important;
+  box-sizing: border-box !important;
+}
+.cart-inquiry-perk::before,
+.cart-inquiry-perk::after {
+  display: none !important;
+  content: none !important;
+}
+.cart-inquiry-perk-icon {
+  flex: 0 0 auto !important;
+  width: 18px !important;
+  height: 18px !important;
+  color: #7A5520 !important;
+}
+.cart-inquiry-perk-text {
+  flex: 1 1 auto !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+  color: #7A5520 !important;
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+}

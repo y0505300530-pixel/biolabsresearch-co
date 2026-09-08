@@ -26,7 +26,7 @@
     /* Yehuda cart footer: hide Subtotal forever; footer perk is the unlock line */
     '.cart-subtotal{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important}',
     '#cartProgress .cp-unlocked{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
-    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:8px !important;min-height:40px !important;margin:0 0 14px !important;padding:10px 12px !important;border-radius:10px !important;background:#F7F1E4 !important;border:1px solid #E2D3B3 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:hidden !important}',
+    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:10px !important;min-height:44px !important;margin:12px 0 14px !important;padding:12px 14px !important;border-radius:12px !important;background:#F7F1E4 !important;border:1px solid #E2D3B3 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:visible !important;position:relative !important;z-index:3 !important;box-shadow:none !important}',
     '.cart-inquiry-perk-icon{flex:0 0 auto !important;color:#7A5520 !important;display:block !important;width:16px !important;height:16px !important}',
     '.cart-inquiry-perk-text{flex:1 1 auto !important;font-size:14.5px !important;font-weight:600 !important;line-height:1.2 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}',
 
@@ -46,7 +46,7 @@
     '#cartProgress.on{padding:10px 14px 12px !important}',
     '#cartProgress .cp-msg{font-size:12px !important;margin:0 0 6px !important;line-height:1.25 !important}',
     '#cartProgress .cp-kicker{font-size:10px !important;margin:0 0 2px !important}',
-    '#cartProgress .cp-track{height:8px !important;margin:6px 4px 48px !important}',
+    '#cartProgress .cp-track{height:8px !important;margin:8px 4px 28px !important}',
     '#cartProgress .cp-unlocked{display:block !important;margin:18px 0 0 !important;padding:8px 10px !important;font-size:12.5px !important;font-weight:700 !important;line-height:1.35 !important;border-radius:10px !important;background:#fff !important;border:1px solid #d9cbae !important;position:relative !important;z-index:1 !important;clear:both !important}',
     '.ci-mg{font-weight:600;color:#6b6254;font-size:0.85em}'
   ].join('');
@@ -910,12 +910,12 @@ function addSuggest(slug, name, price, mg){
     var s = document.createElement('style');
     s.id = 'cart-progress-css';
     s.textContent = [
-      '#cartProgress{display:none;margin:0;padding:10px 14px 12px;background:linear-gradient(180deg,#FBF6EA 0%,#F4EFE4 100%);border-bottom:1px solid #eadfca;flex:0 0 auto}',
+      '#cartProgress{display:none;margin:0;padding:10px 14px 18px;background:linear-gradient(180deg,#FBF6EA 0%,#F4EFE4 100%);border-bottom:1px solid #eadfca;flex:0 0 auto;overflow:visible}',
       '#cartProgress.on{display:block}',
       '.cp-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;color:#0d2137;margin:0 0 2px;text-transform:uppercase}',
       '.cp-msg{font-size:12px;font-weight:700;color:#0d2137;line-height:1.25;margin:0 0 6px}',
       '.cp-msg em{font-style:normal;color:#9A6D2A}',
-      '.cp-track{position:relative;height:8px;border-radius:999px;background:#e6dcc8;overflow:visible;margin:6px 4px 48px}',
+      '.cp-track{position:relative;height:8px;border-radius:999px;background:#e6dcc8;overflow:visible;margin:8px 4px 28px}',
       '.cp-fill{height:100%;border-radius:999px;background:linear-gradient(90deg,#E8C57A,#F2D191 40%,#C9A46A);width:0;transition:width .45s cubic-bezier(.2,.7,.2,1);box-shadow:0 0 12px rgba(242,209,145,.55)}',
       '.cp-ticks{position:absolute;inset:0;pointer-events:none}',
       '.cp-tick{position:absolute;top:50%;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;background:#fff;border:2px solid #c9b48a;box-sizing:border-box;transition:background .2s,border-color .2s,transform .2s}',
