@@ -94,7 +94,7 @@
 @media(max-width:768px){.related-grid{grid-template-columns:1fr}}
 
 </style>
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
@@ -159,9 +159,8 @@
   </div>
 </div>
 
-<img src="/media/blog-topic/one-vial-two-cas-numbers-1.png" alt="One research vial containing a named peptide blend requires two CAS numbers and two identity lines on the COA" class="article-img" loading="lazy">
+<img src="/media/blog-topic/one-vial-two-cas-numbers-1.webp" alt="One research vial containing a named peptide blend requires two CAS numbers and two identity lines on the COA" width="600" height="338" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='/media/blog-topic/one-vial-two-cas-numbers-1.png'">
 <p class="article-img-caption">A named mix is not a third CAS Registry Number.</p>
-
 
 <div class="ruo-note">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
 
@@ -179,9 +178,8 @@
 
 <p>Document the check shown above before moving to the next figure — label fields, lot paper, and pack notes belong on the same receiving record.</p>
 <p>Research use only. Do not treat storefront nicknames as a substitute for sequence, CAS, or observed mass on the certificate.</p>
-<img src="/media/blog-lifestyle/tb-500-vs-thymosin-beta-4-identity-2.png" alt="Laboratory scientist inspecting multiple glass vials while matching each label sequence to lot documentation" class="article-img" loading="lazy">
+<img src="/media/blog-lifestyle/tb-500-vs-thymosin-beta-4-identity-2.webp" alt="Laboratory scientist inspecting multiple glass vials while matching each label sequence to lot documentation" width="1024" height="1024" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/blog-lifestyle/tb-500-vs-thymosin-beta-4-identity-2.png'">
 <p class="article-img-caption">Each component on a blend carton needs its own identity line before inventory booking.</p>
-
 
 <h2 id="cas-rule">CAS indexes substances, not mix names</h2>
 <p>Trade-name blends that never name components have no CAS until a lot COA lists molecules. Purchasing language that treats “Blend X” as if it were a single registry substance creates documentation risk: receiving, LIMS, and SDS mapping all depend on knowing which substances are present.</p>
@@ -196,9 +194,8 @@
 </ul>
 <p>One sequence line with two peaks, or two masses with only one CAS, is incomplete lot paper. HPLC area% on a blend is still a UV ratio under one method — two main peaks can yield two area% values and still tell you nothing about milligrams of either peptide. Read <a href="/blog/hplc-area-percent-vs-net-peptide-content">HPLC area percent vs net peptide content</a> before converting a chromatogram ratio into a weighing factor.</p>
 
-<img src="/media/vial-bpc-157-tb-500-blend.png?v=153" alt="BPC-157 and TB-500 blend catalog vial showing a two-component research listing" class="article-img" loading="lazy">
+<img src="/media/vial-bpc-157-tb-500-blend.webp" alt="BPC-157 and TB-500 blend catalog vial showing a two-component research listing" width="1200" height="675" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-bpc-157-tb-500-blend.png'">
 <p class="article-img-caption">Catalog example: BPC-157 / TB-500 blend — two sequences, two masses, two CAS lines on proper lot paper.</p>
-
 
 <h2 id="examples">Catalog examples</h2>
 <p>On this catalog, examples include the <a href="https://biolabsresearch.co/products/bpc-157-tb-500">BPC-157 / TB-500 blend</a> and the <a href="https://biolabsresearch.co/products/tesamorelin-ipamorelin">tesamorelin / ipamorelin blend</a>. Each listing names both molecules. For a trade-name blend without a CAS, see <a href="/blog/glow-70-named-blend-identity">GLOW 70 identity</a>. Component identity notes: <a href="/blog/bpc-157-tb-500-blend-identity">BPC-157 / TB-500 blend identity</a>, <a href="/blog/tb-500-vs-thymosin-beta-4-identity">TB-500 vs thymosin β4</a>.</p>
@@ -215,13 +212,11 @@
 </tbody>
 </table>
 
-
 <h2 id="lims">LIMS and SDS mapping for two-component vials</h2>
 <p>Most inventory systems assume one substance per container ID. Blends break that assumption. Practical options: (1) create a parent container record with two child substance links, or (2) store dual CAS/sequence pairs in structured custom fields that receiving must complete before release. Option (2) fails if the fields are free text without validation.</p>
 <p>SDS packets should list both components when the blend is sold as one SKU. If a supplier sends a single SDS that only names a trade blend, request component SDS sheets or an appendix that names both molecules. Emergency responders and EHS reviews need substance-level identity, not a marketing mix name.</p>
 <p>On the analytical side, specify which peak belongs to which component in the method worksheet. “Peak 1 / Peak 2” without names is how area% values later get attached to the wrong peptide in a spreadsheet. Name the peaks with the same strings used on the COA sequence lines.</p>
 <p>If a blend arrives with only one CAS, treat it as incomplete identity — same severity as a missing lot number. Do not “fix in” the second CAS from memory. Pull it from the catalog card or from PubChem for the named sequence, then require the supplier to correct the certificate.</p>
-
 
 <p>Purchasing should also refuse “proprietary ratio” as a substitute for measured component amounts. If the experiment needs a defined milligram of each peptide, the lot certificate has to state how those milligrams were assigned. A ratio copied from a marketing page is not lot data. When in doubt, order the two peptides as separate SKUs and combine under your own controlled procedure rather than accepting an undocumented mix.</p>
 
@@ -230,9 +225,9 @@
 <div class="article-cta"><h3>See blend listings</h3><p>Named components on the card. Research use only.</p><a href="/#catalog">Open catalog →</a></div>
 
 <div class="related-posts"><h3>Related notes</h3><div class="related-grid">
-<a class="related-card" href="/blog/bpc-157-tb-500-blend-identity"><img src="/media/blog-topic/bpc-157-tb-500-blend-identity-1.png" alt="Clear glass research vial labeled BPC-157 with a gold crimp cap" loading="lazy"><span>BPC-157 / TB-500 blend</span></a>
-<a class="related-card" href="/blog/glow-70-named-blend-identity"><img src="/media/blog-topic/glow-70-named-blend-identity-1.png" alt="Clear glass research vial labeled GLOW 70 with a gold crimp cap" loading="lazy"><span>GLOW 70 named blend</span></a>
-<a class="related-card" href="/blog/lot-coa-not-purity-percentage"><img src="/media/coa-trace.png" alt="HPLC chromatogram trace printed on a lot certificate" loading="lazy"><span>Lot COA ≠ purity %</span></a>
+<a class="related-card" href="/blog/bpc-157-tb-500-blend-identity"><img src="/media/blog-topic/bpc-157-tb-500-blend-identity-1.webp" alt="Clear glass research vial labeled BPC-157 with a gold crimp cap" width="600" height="600" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/blog-topic/bpc-157-tb-500-blend-identity-1.png'"><span>BPC-157 / TB-500 blend</span></a>
+<a class="related-card" href="/blog/glow-70-named-blend-identity"><img src="/media/blog-topic/glow-70-named-blend-identity-1.webp" alt="Clear glass research vial labeled GLOW 70 with a gold crimp cap" width="600" height="600" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/blog-topic/glow-70-named-blend-identity-1.png'"><span>GLOW 70 named blend</span></a>
+<a class="related-card" href="/blog/lot-coa-not-purity-percentage"><img src="/media/coa-trace.webp" alt="HPLC chromatogram trace printed on a lot certificate" width="600" height="400" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/coa-trace.png'"><span>Lot COA ≠ purity %</span></a>
 </div></div>
 
 <h2 id="references">References</h2>
@@ -246,17 +241,6 @@
 <div class="article-footer">
   <p><a href="/blog/">← Back to Blog</a> · <a href="https://biolabsresearch.co/index.html?from=nav">Catalog</a> · <a href="https://biolabsresearch.co/science">Science</a></p>
 </div>
-<script>
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-}
-</script>
 <script src="/promo-bar.js?v=12"></script>
 <script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>

@@ -34,7 +34,7 @@
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://biolabsresearch.co/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Epithalon", "item": "https://biolabsresearch.co/products/epithalon"}]}</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=252">
+<link rel="stylesheet" href="/biolabs_style.css?v=253">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -210,7 +210,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 @media(max-width:900px){.cart-drawer{width:100%;right:-100%}}
 
 .spec-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:16px 0;padding:14px 0;border-top:1px solid #e8e2d8;border-bottom:1px solid #e8e2d8}.spec-strip dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#9A6D2A}.spec-strip dd{font-size:14px;color:#1F1F1F;font-family:ui-monospace,monospace}.spec-note{font-size:12px;color:#8A8A8A;margin:0 0 16px}.research-note{font-size:14px;line-height:1.55;color:#1F1F1F;margin:8px 0 16px;padding:12px 14px;background:#F4EFE4;border-radius:8px}.research-note h3{font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:#9A6D2A;margin:0 0 8px;font-weight:700}.research-note p{margin:0 0 8px}.research-note p:last-child{margin:0;color:#8A8A8A;font-size:13px}</style>
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
@@ -275,7 +275,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
           <figure class="bl-video bl-video-pdp">
   <div class="bl-video-frame" style="aspect-ratio:1344/768">
     <video autoplay muted loop playsinline preload="metadata"
-      aria-label="Research-use vial close-up loop">
+      poster="/media/video/product-closeup-loop-poster.webp"
+      aria-label="Research-use vial close-up loop — sealed peptide vial on sand studio backdrop">
       <source src="/media/video/product-closeup-loop.mp4" type="video/mp4">
     </video>
   </div>
@@ -403,7 +404,6 @@ footer{background:var(--ink);padding:60px 60px 30px}
     }).filter(function(s){return s.label;});
   }
 
-
   function setMetaByName(name, content){
     var el = document.querySelector('meta[name="'+name+'"]');
     if(!el){ el=document.createElement('meta'); el.setAttribute('name', name); document.head.appendChild(el); }
@@ -463,7 +463,6 @@ footer{background:var(--ink);padding:60px 60px 30px}
     setProductJsonLd(data);
   }
 
-
   function pdpReviewHtml(p, img) {
     var slug = (p && p.slug) ? p.slug : '';
     var name = (p && p.name) ? p.name : '';
@@ -496,6 +495,15 @@ footer{background:var(--ink);padding:60px 60px 30px}
       '</div>' +
     '</div>';
   }
+  // Qty handlers declared BEFORE renderProduct so onclick is never unbound
+  window.changePdpQty = function(delta) {
+    var el = document.getElementById('pdpQty');
+    if (!el) return;
+    var q = (parseInt(el.textContent, 10) || 1) + (parseInt(delta, 10) || 0);
+    if (q < 1) q = 1;
+    el.textContent = q;
+  };
+
   function renderProduct(p) {
     applyProductSeo(p);
     /* Stage 2: keep unique static document.title */
@@ -523,7 +531,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         '<div class="product-img-section">' +
           '<figure class="bl-video bl-video-pdp">' +
             '<div class="bl-video-frame" style="aspect-ratio:1344/768">' +
-              '<video autoplay muted loop playsinline preload="metadata" aria-label="Research-use vial close-up loop">' +
+              '<video autoplay muted loop playsinline preload="metadata" poster="/media/video/product-closeup-loop-poster.webp" aria-label="Research-use vial close-up loop — sealed peptide vial on sand studio backdrop">' +
                 '<source src="/media/video/product-closeup-loop.mp4" type="video/mp4">' +
               '</video>' +
             '</div>' +
@@ -602,7 +610,6 @@ storageHtml + presentationHtml +
 })();
 </script>
 
-
 <script>
 (function(){
   window.getCart = function(){ return JSON.parse(localStorage.getItem('biolabs_cart')||localStorage.getItem('biofirst_cart')||'[]'); };
@@ -612,12 +619,6 @@ storageHtml + presentationHtml +
     var el = document.getElementById('cartCount') || document.querySelector('.cart-count');
     if(el) el.textContent = total;
   }
-  window.changePdpQty = function(delta) {
-  var el = document.getElementById('pdpQty');
-  var q = parseInt(el.textContent) + delta;
-  if (q < 1) q = 1;
-  el.textContent = q;
-};
   window.addToCartTemplate = function(){
     var name = (document.querySelector('.product-title')||{}).textContent||'Product';
     name = name.trim();
@@ -777,15 +778,6 @@ window.compareAtPrice = function(item){
 
 // === CART DRAWER FUNCTIONS ===
 
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-}
 function toggleCart() {
   var drawer = document.getElementById('cartDrawer');
   var overlay = document.getElementById('cartOverlay');
@@ -829,6 +821,8 @@ function renderCart() {
   mountAddMore(cart);
 }
 function updateQty(name, delta) {
+  var cart = (typeof getCart === 'function') ? getCart() : [];
+  if (!Array.isArray(cart)) cart = [];
   var base = String(name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
   var item = cart.find(function(i){
     if (i.name === name) return true;
@@ -838,19 +832,22 @@ function updateQty(name, delta) {
   if (!item) return;
   if (item.gift || item.slug === 'research-solvent') {
     item.qty = 1;
-    saveCart();
+    saveCart(cart);
     renderCart();
+    if (typeof updateBadge === 'function') updateBadge();
     return;
   }
   var d = parseInt(delta, 10) || 0;
-  if (d <= -99 || item.qty + d <= 0) {
+  var q = parseInt(item.qty, 10) || 0;
+  if (d <= -99 || q + d <= 0) {
     cart = cart.filter(function(i){ return i !== item; });
   } else {
-    item.qty = item.qty + d;
+    item.qty = q + d;
   }
   cart = cart.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
-  saveCart();
+  saveCart(cart);
   renderCart();
+  if (typeof updateBadge === 'function') updateBadge();
 }
 function checkout() {
   var cart = getCart();
@@ -1132,7 +1129,6 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-
 <!-- REQUEST COA POPUP MODAL -->
 <div id="coa-request-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9998;align-items:center;justify-content:center">
   <div style="background:#fff;border-radius:12px;width:90%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
@@ -1274,5 +1270,6 @@ document.addEventListener('keydown', function(e) {
 <script src="/product-marquee.js?v=20"></script>
 <script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>
 
+<script src="/tools-video.js?v=2"></script>
 </body>
 </html>

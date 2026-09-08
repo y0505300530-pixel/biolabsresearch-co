@@ -9,8 +9,8 @@
 <link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
-<link rel="stylesheet" href="/biolabs_style.css?v=253">
-<script src="/cart-vial.js?v=128"></script>
+<link rel="stylesheet" href="/biolabs_style.css?v=254">
+<script src="/cart-vial.js?v=129"></script>
 <script src="/search-overlay.js?v=26"></script>
 <meta property="og:title" content="Contact the Lab Desk — Bio Labs Research">
 <meta property="og:description" content="Reach the catalog desk for SKU questions, lot paperwork, or shipment status. Support hours are published here. Research use only, inquiry-only storefront.">
@@ -145,18 +145,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-}
-</script>
 <script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>
 <script>
 (function(){
@@ -229,7 +217,13 @@ function toggleMenu() {
 
   function setSending(on) {
     btn.disabled = !!on;
-    btn.textContent = on ? 'Sending...' : 'Send message';
+    if (on) {
+      btn.setAttribute('aria-busy', 'true');
+      btn.innerHTML = '<span class="cf-spinner" aria-hidden="true"></span><span>Sending...</span>';
+    } else {
+      btn.removeAttribute('aria-busy');
+      btn.textContent = 'Send message';
+    }
   }
 
   function rateLimited() {
@@ -285,15 +279,11 @@ function toggleMenu() {
       } else {
         setSending(false);
         showStatus('err', 'Something went wrong. Email <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a> or WhatsApp <a href="https://wa.me/48732759035" target="_blank" rel="noopener">+48 732 759 035</a>.');
-        setTimeout(function(){ btn.disabled = false; }, RATE_MS);
-        btn.disabled = true;
       }
     }).catch(function(){
       lastSubmitAt = Date.now();
       setSending(false);
       showStatus('err', 'Something went wrong. Email <a href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a> or WhatsApp <a href="https://wa.me/48732759035" target="_blank" rel="noopener">+48 732 759 035</a>.');
-      btn.disabled = true;
-      setTimeout(function(){ btn.disabled = false; btn.textContent = 'Send message'; }, RATE_MS);
     });
   });
 })();

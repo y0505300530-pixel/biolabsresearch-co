@@ -54,7 +54,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/biolabs_style.css?v=252">
 <link rel="stylesheet" href="/auth.css?v=1">
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <style id="sci-notes-restore">
 /* page-local: leftover .sci-card tile CSS clips names/prices and paints tan/green lab chrome */
 .sci-body .sci-card{
@@ -158,7 +158,6 @@
     </nav>
   </div>
 </section>
-
 
 <section class="sci-band" id="lab-context" aria-label="Laboratory context">
   <div class="sci-wrap">
@@ -705,15 +704,6 @@ function toggleCart() {
   document.getElementById('cartDrawer').classList.toggle('open');
   document.getElementById('cartOverlay').classList.toggle('open');
   renderCart();
-}
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
 }
 function saveCart() {
   localStorage.setItem('biolabs_cart', JSON.stringify(cart));

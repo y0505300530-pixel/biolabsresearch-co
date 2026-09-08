@@ -497,72 +497,6 @@ function addSuggest(slug, name, price){
   }
 }
 
-/* Cart +/- and remove on product pages: the page's own updateQty reads an undeclared
-   `cart` and calls saveCart() with no argument, so the first click throws ReferenceError,
-   and repairing only the first fault would persist an empty cart. Measured 2026-09-07 on
-   all 17 files in /products; the generator rewrites those pages, so the repair lives here.
-   Applied only where the page has no global `cart` at all — index.html and science.html
-   declare one and their own version works.
-   Keep this block ABOVE the gold burst and the gift lock below, and keep its first pass
-   synchronous: the gift lock starts polling the moment this file runs (every 120ms, no
-   DOMContentLoaded gate), and whichever of us reaches updateQty first decides whether the
-   fault gets wrapped or repaired. Being higher in the file puts our timer ahead of its
-   timer in every round; waiting for DOMContentLoaded lost that race whenever the page tail
-   was slow, and the repair then never installed at all. */
-(function(){
-  function pageVersionBroken(fn){
-    var s = '';
-    try { s = Function.prototype.toString.call(fn); } catch(e){ return false; }
-    return /\bsaveCart\s*\(\s*\)/.test(s) && !/\b(var|let|const)\s+cart\b/.test(s);
-  }
-  function pageHasGlobalCart(){
-    try { return typeof cart !== 'undefined'; } catch(e){ return true; } /* TDZ: leave the page alone */
-  }
-  function fixedUpdateQty(name, delta){
-    var c = (typeof getCart === 'function') ? getCart() : _readCartLS();
-    if (!Array.isArray(c)) c = [];
-    var i, item = null;
-    for (i = 0; i < c.length; i++) { if (c[i] && c[i].name === name) { item = c[i]; break; } }
-    if (!item) { /* same fallback as the page: match with the "(N mg)" suffix trimmed */
-      var base = _baseCartName(name);
-      for (i = 0; i < c.length; i++) { if (c[i] && _baseCartName(c[i].name) === base) { item = c[i]; break; } }
-    }
-    if (!item) return;
-    if (item.gift || item.slug === 'research-solvent') {
-      item.qty = 1;                                    /* gift stays pinned, as on the page */
-    } else {
-      var d = parseInt(delta, 10) || 0;
-      var q = parseInt(item.qty, 10) || 0;
-      if (d <= -99 || q + d <= 0) c = c.filter(function(x){ return x !== item; });
-      else item.qty = q + d;
-      c = c.filter(function(x){ return x && (parseInt(x.qty, 10) || 0) > 0; });
-    }
-    if (typeof saveCart === 'function') saveCart(c); else _writeCartLS(c);
-    /* render first: the gift BAC line is added and dropped at the $100 mark by syncGifts(),
-       which runs inside paint() on every renderCart, so the badge is painted from the cart
-       the visitor actually ends up with */
-    if (typeof renderCart === 'function') renderCart();
-    if (typeof updateBadge === 'function') updateBadge(); else _paintBadgeFromCart(_readCartLS());
-  }
-  fixedUpdateQty.__qtyFix = true;
-  function install(){
-    try {
-      if (typeof window.updateQty === 'function' && !window.updateQty.__qtyFix
-          && pageVersionBroken(window.updateQty) && !pageHasGlobalCart()) {
-        window.updateQty = fixedUpdateQty;
-        window.__cartQtyFixApplied = true;   /* видно снаружи: встала ли починка на этой странице */
-      }
-    } catch(e){}
-  }
-  /* Два входа, и оба нужны. Опрос каждые 40 мс обгоняет gift lock (120 мс, стартует сразу),
-     когда хвост страницы грузится долго и DOMContentLoaded далеко. Слушатель DOMContentLoaded
-     нужен для обратного случая: страница успевает дорисоваться быстрее нашего первого тика,
-     и тогда решает очередь слушателей — наш зарегистрирован раньше, чем у gold burst ниже. */
-  var n = 0;
-  (function tick(){ install(); if (++n < 120) setTimeout(tick, 40); })();
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', install);
-})();
-
 /* gold cart burst: short on every Add, big at 2 and 3 unique lines. no VIP copy. */
 (function(){
   var lastX = 0, lastY = 0;
@@ -842,15 +776,15 @@ function addSuggest(slug, name, price){
   if (typeof window.toggleCart !== 'function') {
     window.toggleCart = function(){ window.location.href = '/checkout'; };
   }
-  window.toggleMenu = function(){
-      var m = document.getElementById('navMenu');
-      var o = document.getElementById('navOverlay');
-      if (!m) return;
-      var open = !m.classList.contains('open');
-      m.classList.toggle('open', open);
-      if (o) o.classList.toggle('open', open);
-      try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-    };
+  window.toggleMenu = function toggleMenu(){
+  var m = document.getElementById('navMenu');
+  var o = document.getElementById('navOverlay');
+  if (!m && !o) return;
+  var open = m ? !m.classList.contains('open') : (o ? !o.classList.contains('open') : false);
+  if (m) m.classList.toggle('open', open);
+  if (o) o.classList.toggle('open', open);
+  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
+};
 })();
 
 /* delegated Add — works on SSR cards + API cards, mobile safe */

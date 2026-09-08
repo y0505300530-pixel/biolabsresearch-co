@@ -52,7 +52,7 @@
   .page-hero h1{font-size:28px}
 }
 </style>
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <script src="/search-overlay.js?v=26"></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Terms", "item": "https://biolabsresearch.co/terms-and-conditions"}]}</script>
 </head>
@@ -368,8 +368,6 @@
     <p>While BioLabs Research takes reasonable measures to ensure product quality, purchasers acknowledge that COAs reflect testing results at the time of manufacture and do not guarantee product performance in any specific research application. BioLabs Research does not warrant that any product will produce specific research results or be suitable for any particular research purpose. Purchasers are responsible for independently verifying product suitability for their specific research applications.</p>
     <p>BioLabs Research does not rely solely on supplier-provided COAs from manufacturing sources. Independent verification is conducted for each production lot to ensure compliance with stated purity specifications. However, purchasers are encouraged to conduct their own independent testing if their research protocols require additional verification.</p>
 
-
-
   <!-- 16. CONTENT DISCLAIMER -->
   <div class="section" id="content">
     <h2>16. Website Content Disclaimer</h2>
@@ -455,16 +453,5 @@
 <script src="/promo-bar.js?v=12"></script>
 <script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
-<script>
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-}
-</script>
 </body>
 </html>

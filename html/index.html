@@ -66,9 +66,10 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/vial-bpc-157-tb-500-blend.png?v=155" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=252">
+<link rel="stylesheet" href="/biolabs_style.css?v=260">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -86,7 +87,7 @@
 })();
 </script>
 
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <script src="/search-overlay.js?v=27"></script>
 </head>
 <body>
@@ -100,7 +101,6 @@
 </div>
   </div>
 </div>
-
 
 <!-- NAV — logo + hamburger + cart -->
 <nav class="nav">
@@ -167,7 +167,8 @@ with lot documentation.</h1>
       <figure class="bl-video">
   <div class="bl-video-frame" style="aspect-ratio:1344/768">
     <video autoplay muted loop playsinline preload="metadata"
-      aria-label="Research vial loop">
+      poster="/media/video/vial-hero-loop-v2-poster.webp"
+      aria-label="Research vial hero loop — sealed RUO vial on sand studio backdrop">
       <source src="/media/video/vial-hero-loop-v2.mp4" type="video/mp4">
     </video>
   </div>
@@ -175,8 +176,6 @@ with lot documentation.</h1>
 </figure>
     </div>
   </div>
-
-
 
 </section>
 
@@ -220,7 +219,6 @@ with lot documentation.</h1>
   </div>
 </section>
 
-
 <!-- COMPOUNDS — cream editorial, Hims-quiet -->
 <section class="compounds-section" id="compounds">
   <div class="compounds-inner">
@@ -240,7 +238,6 @@ with lot documentation.</h1>
   <p class="slogan-line">Listed. Tested. Documented.</p>
   <p class="slogan-line slogan-line-em">Research use only.</p>
 </section>
-
 
 <!-- STAT STRIP -->
 <section class="stat-strip" id="science">
@@ -334,10 +331,6 @@ with lot documentation.</h1>
   </div>
 </section>
 
-
-
-
-
 <!-- Punch #14: removed stock expert/team bios (no verified credentials; not inventing degrees). -->
 
 <!-- Blog teaser -->
@@ -352,11 +345,9 @@ with lot documentation.</h1>
     </header>
     <ul class="jrnl-grid">
 
-
-
       <li>
         <a class="jrnl-card" href="https://biolabsresearch.co/blog/lot-coa-not-purity-percentage">
-          <img src="/media/coa-trace.png" alt="HPLC chromatogram trace printed on a lot certificate">
+          <img src="/media/coa-trace.png" alt="HPLC chromatogram trace printed on a lot certificate" width="1536" height="1024" loading="lazy" decoding="async">
           <span class="jrnl-date">Sep 4, 2026</span>
           <h3>Lot COA, not a purity percentage</h3>
           <p>How we read identity and purity fields on a certificate — without inventing numbers.</p>
@@ -364,10 +355,9 @@ with lot documentation.</h1>
         </a>
       </li>
 
-
       <li>
         <a class="jrnl-card" href="https://biolabsresearch.co/blog/one-vial-two-cas-numbers">
-          <img src="/media/blog-topic/bpc-157-tb-500-blend-identity-1.png" alt="Clear glass research vial labeled BPC-157 with a gold crimp cap">
+          <img src="/media/blog-topic/bpc-157-tb-500-blend-identity-1.png" alt="Clear glass research vial labeled BPC-157 with a gold crimp cap" width="1024" height="1024" loading="lazy" decoding="async">
           <span class="jrnl-date">Sep 4, 2026</span>
           <h3>One vial, two CAS numbers</h3>
           <p>What a blend COA must show when two compounds share a label.</p>
@@ -375,10 +365,9 @@ with lot documentation.</h1>
         </a>
       </li>
 
-
       <li>
         <a class="jrnl-card" href="https://biolabsresearch.co/blog/dac-vs-no-dac-formula-difference">
-          <img src="/media/blog-topic/cjc-1295-dac-vs-modified-grf-identity-1.png" alt="Research note illustration for cjc 1295 dac vs modified grf identity">
+          <img src="/media/blog-topic/cjc-1295-dac-vs-modified-grf-identity-1.png" alt="Research note illustration for cjc 1295 dac vs modified grf identity" width="1024" height="1024" loading="lazy" decoding="async">
           <span class="jrnl-date">Sep 4, 2026</span>
           <h3>DAC vs no-DAC is a formula difference</h3>
           <p>Why the storefront name is not the molecular identity.</p>
@@ -386,10 +375,9 @@ with lot documentation.</h1>
         </a>
       </li>
 
-
       <li>
         <a class="jrnl-card" href="https://biolabsresearch.co/blog/catalog-skus-vs-research-analogues">
-          <img src="/media/blog-topic/melanotan-ii-identity-1.png" alt="Research note illustration for melanotan ii identity">
+          <img src="/media/blog-topic/melanotan-ii-identity-1.png" alt="Research note illustration for melanotan ii identity" width="1024" height="1024" loading="lazy" decoding="async">
           <span class="jrnl-date">Sep 4, 2026</span>
           <h3>Catalog SKUs vs research analogues</h3>
           <p>Melanotan II and other analogues that are not listed here — and why.</p>
@@ -425,7 +413,6 @@ with lot documentation.</h1>
     </div>
   </div>
 </section>
-
 
 <!-- VERTICALS — owner merchandising map (not API / not JSON-LD) -->
 <section class="vmap-section" id="verticals">
@@ -592,7 +579,6 @@ with lot documentation.</h1>
   </div>
 </footer>
 
-
 <!-- CART OVERLAY & DRAWER -->
 <div class="tc-overlay" id="tcOverlay">
   <div class="tc-modal">
@@ -681,16 +667,6 @@ function toggleCart() {
   document.getElementById('cartDrawer').classList.toggle('open');
   document.getElementById('cartOverlay').classList.toggle('open');
   renderCart();
-}
-
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
 }
 
 function addToCart(name, price, imageUrl, slug) {
@@ -1003,5 +979,6 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
 })();
 </script>
 
+<script src="/tools-video.js?v=2"></script>
 </body>
 </html>
