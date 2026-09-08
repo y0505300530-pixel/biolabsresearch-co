@@ -6528,3 +6528,9 @@ button.promo-code:focus-visible,
 .nav-links-right {
   align-items: center !important;
 }
+
+/* === FIX 2026-09-08: no hero video caption under homepage stage === */
+.hero .bl-video-caption,
+.nl-stage .bl-video-caption {
+  display: none !important;
+}
