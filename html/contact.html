@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCMPHP783M');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact the Lab Desk — Bio Labs Research</title>
@@ -275,6 +283,17 @@
         form.reset();
         btn.disabled = true;
         btn.textContent = 'Sent';
+        if (typeof gtag === 'function') {
+          gtag('event', 'form_submit', {
+            form_id: 'contactForm',
+            form_name: 'contact',
+            form_destination: '/api/contact'
+          });
+          gtag('event', 'generate_lead', {
+            method: 'contact_form',
+            currency: 'USD'
+          });
+        }
         setTimeout(function(){ setSending(false); }, RATE_MS);
       } else {
         setSending(false);

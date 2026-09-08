@@ -753,6 +753,12 @@ function showSuccess(orderData, paymentNote) {
   document.getElementById('successEmail').textContent = orderData.customer.email;
   document.getElementById('successPaymentNote').textContent = paymentNote;
   window.scrollTo(0, 0);
+  if (typeof gtag === 'function') {
+    gtag('event', 'generate_lead', {
+      method: 'inquiry',
+      currency: 'USD'
+    });
+  }
 }
 </script>
 
