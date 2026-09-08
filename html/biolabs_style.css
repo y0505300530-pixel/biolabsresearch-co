@@ -5851,7 +5851,7 @@ body.nav-open{overflow:hidden !important;}
 }
 
 /* ===== Stage 4 mobile + CLS harden 2026-09-08 ===== */
-html, body { overflow-x: hidden; max-width: 100%; }
+html, body { overflow-x: clip; max-width: 100%; }
 img, video, svg { max-width: 100%; height: auto; }
 .bl-video-frame, .bl-video-pdp .bl-video-frame, .bl-video-tools .bl-video-frame {
   aspect-ratio: 1344 / 768;
@@ -6985,17 +6985,21 @@ a.cart-inquiry-perk {
   .jrnl-cta{margin-top:20px}
 }
 
-/* Checkout sticky chrome: promo + nav stay together on scroll */
+/* Checkout sticky chrome: fixed so overflow-x on body cannot kill it */
 .site-sticky-chrome{
-  position:sticky !important;
+  position:fixed !important;
   top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  width:100% !important;
   z-index:12000 !important;
-  background:#F5F2EC;
+  background:#F5F2EC !important;
 }
 .site-sticky-chrome .promo-stack{
   position:relative !important;
   top:auto !important;
   z-index:auto !important;
+  height:44px !important;
 }
 .site-sticky-chrome .nav{
   position:relative !important;
@@ -7005,6 +7009,12 @@ a.cart-inquiry-perk {
 .site-sticky-chrome .nav-logo-mark,
 .site-sticky-chrome .nav-logo-text{
   font-family:var(--font-logo),'Fraunces',Georgia,serif !important;
+}
+.site-sticky-chrome-spacer{
+  width:100%;
+  height:var(--site-chrome-h, 100px);
+  flex:0 0 auto;
+  pointer-events:none;
 }
 
 /* === FIX 2026-09-08: promo ticker no hitch ===
