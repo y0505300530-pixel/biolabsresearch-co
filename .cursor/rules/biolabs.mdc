@@ -1,0 +1,58 @@
+---
+description: House rules for the biolabsresearch.co storefront
+alwaysApply: true
+---
+
+Static storefront, research use only. No build step: files under `html/` are served as they are.
+Prices, products, discounts and orders live behind the `/api/` Node service, not in this repo.
+The same files are also served on `blrcommerce.io`.
+
+# Do not rewrite the shared scripts
+
+`html/cart-vial.js`, `html/mg-picker.js`, `html/prices-sync.js`, `html/email-capture.js`,
+`html/product-marquee.js` are maintained by infra and carry fixes the pages rely on. Change the page
+instead. If one of them truly must change, say so in the commit message. The cookie banner
+(`consent.js`) is injected by nginx and is not in this repo — do not add a second banner.
+
+# Prices
+
+Read them from `/api/products`. Never write a price list into a page or a script.
+The catalog has `price`, `original_price`, `strengths`, `strength_prices`, `strength_originals`.
+For most products `strengths[0]` is the smaller dose and `price` is the price of the largest one, so:
+
+- a card that prints a strength prints that strength's price from `strength_prices`;
+- a strikethrough comes from `strength_originals` for the selected strength;
+- no `strength_originals` means no strikethrough, not the base price.
+
+Never pair a 5 mg label with the 10 mg price.
+
+# Cart
+
+Every add button passes `data-mg`, and every cart line holds `mg` plus that dose's price as a number.
+A line without a strength cannot be shipped or price-checked.
+
+In each `products/*.html`, `updateQty` must start with `var cart = getCart();` and must call
+`saveCart(cart)` with the argument. `saveCart()` with no argument writes an empty cart and wipes the
+visitor's basket. After editing a product page, exercise plus, minus and remove in the drawer.
+
+# API paths
+
+Relative only: `/api/products`, never `https://biolabsresearch.co/api/...`. The site runs on two domains.
+
+# Every page
+
+- fits the screen: `documentElement.scrollWidth <= window.innerWidth` at 375 and 390 px;
+- ends with the site footer from `index.html`, which carries the research-use-only line;
+- appears in `html/sitemap.xml` if it is public. Keep out `admin.html`, `404.html`, `checkout.html`,
+  the Google verification file and the `product` template.
+
+# Language
+
+No accounts exist: never write "sign in", "my account" or "track your order". No invented purity
+percentages, no fabricated reviews, no dosing or human-use advice. Certificates are "on request".
+
+# Working here
+
+Small commits with a readable prefix. The server working copy is live and shared: check `git status`
+for the file first and leave someone else's uncommitted changes alone. Never `git reset --hard`,
+`git clean` or `git stash`. Open tasks with owners are in `QA_TASKS.md`.

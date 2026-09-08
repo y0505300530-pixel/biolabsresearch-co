@@ -1,0 +1,55 @@
+# QA_TASKS.md
+
+Open work on biolabsresearch.co, from the QA run of 2026-09-07 (57 pages, 11 device and browser
+combinations, plus two visual reviews). Severity: **High** means a common device breaks the journey or
+the customer is misled about price or product. **Medium** means it works, but awkwardly.
+
+Owners: **pages** — whoever is editing the HTML and CSS. **infra** — Alejandro, the shared scripts,
+nginx and the API. **decision** — needs the owner of the business to choose.
+
+Mark what you finish: `done (owner, date)`. Do not delete rows; a closed row is the record that it
+was closed.
+
+## High
+
+| # | Finding | Owner | Status |
+|---|---|---|---|
+| H1 | Plus, minus and remove in the cart drawer did nothing on 17 product pages: `updateQty` used an undeclared `cart` and called `saveCart()` with no argument, which writes an empty cart | pages | done (pages, 2026-09-08) |
+| H2 | The discount code on checkout did nothing and the page could not say what a code was worth | infra | done (infra, 2026-09-07) |
+| H3 | Five blog articles were up to four times wider than a phone screen | infra | done (infra, 2026-09-07) |
+| H6 | The same product carries different prices depending on where you look: "Pairs well at the bench" prints a 5 mg label with the 10 mg price, and the strikethrough on a product page does not follow the selected dose | infra | in progress (infra, 2026-09-08) |
+| H7 | Items added from the cart suggestions carry no strength at all, so an order does not say which vial to ship | infra | in progress (infra, 2026-09-08) |
+
+## Medium
+
+| # | Finding | Owner | Status |
+|---|---|---|---|
+| M1 | The certificate viewer exists on product pages but no button opens it; the only visible control is *Request COA*, which opens a form | pages | open |
+| M2 | FAQ answers print on top of the questions below them on a phone, six overlapping pairs | pages | open |
+| M3 | The country selector on checkout has no label and no accessible name | pages | open |
+| M4 | The menu button on the home page has no accessible name | pages | open |
+| M5 | The contact page has no contact form, only an email address | decision | open |
+| M6 | Pages missing from `sitemap.xml` | pages | done (pages, 2026-09-08); `/contact` still missing, infra |
+| M7 | The social preview image is a relative address on 16 product cards, so shared links show no image | pages | open |
+| M8 | Product photos are served far larger than they are displayed, for example 1536 px shown at 163 px | pages | open |
+| M9 | The page template is publicly reachable at `/products/product` and has no product behind it | pages | open |
+| M10 | Nine colour-contrast failures at the level automated tools call serious | pages | partly done (pages, 2026-09-08) |
+| M11 | No blog article carries the site footer or the research-use-only line, and 27 of them show a broken tag as visible text | infra | in progress (infra, 2026-09-08) |
+| M12 | The contact page was served with no stylesheet at all | pages | done (pages, 2026-09-08) |
+| M13 | Visitors with "reduce motion" turned on see the promo bar as a static wall of repeated text on every page | pages | open |
+
+## Needs a decision from the owner
+
+| # | Question | Status |
+|---|---|---|
+| D1 | The home page card shows the price of the largest dose while the product page opens on the smallest, so the same product reads $69 on one page and $34 on the next. Show "from $34", or open the product page on the larger dose? | open |
+| D2 | Review texts and author names on the site are invented | open |
+| D3 | Leftovers of the old BioFirst brand and links to biofirst.co | open |
+| D4 | The public GitHub repository holds `html.bak.*`, `docs/nginx-enabled.bak-telehealth-*` and `_base44-brief/`. Make the repository private, or remove those from it | open |
+
+## Not reproduced
+
+Four items raised by the visual review did not survive a live check and should not be worked on: the
+promo bar covering article headings on a small iPhone, a uniquely broken 404 page, the site menu
+appearing instead of the cart, and the closed cart panel showing at the right edge. The first two came
+from low-resolution thumbnails; the third was an artefact of the test tooling.
