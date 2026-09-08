@@ -3926,7 +3926,7 @@ a.footer-brand{
 /* nav-northline — logo left */
 .nav{
   position:sticky;
-  top:34px;
+  top:0; /* was 34 */
   z-index:1000;
   background:#F5F2EC;
   border-bottom:1px solid rgba(13,33,55,.08);
@@ -4304,7 +4304,7 @@ a.footer-brand{
 /* white-header */
 .nav{
   background:#fff !important;
-  top:34px;
+  top:0; /* was 34 */
 }
 
 /* insider-off-gold */
@@ -4772,7 +4772,7 @@ a.footer-brand{
   font-variant-numeric:tabular-nums !important;color:#F2D191 !important;
   border:0 !important;padding:0 !important;font-size:11px !important;
 }
-.nav{top:34px !important}
+.nav{top:0 !important} /* was 34 under sticky promo */
 @keyframes promo-marquee{
   from{transform:translateX(0)}
   to{transform:translateX(-50%)}
@@ -4808,7 +4808,7 @@ a.footer-brand{
 /* nav-logo-left */
 .nav{
   position:sticky;
-  top:34px;
+  top:0; /* was 34 */
   z-index:1000;
   background:#F5F2EC;
   border-bottom:1px solid rgba(13,33,55,.08);
@@ -5900,7 +5900,7 @@ button.promo-code {
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
 }
-.nav { top: 44px !important; }
+.nav { top: 0 !important; } /* was 44 under sticky promo */
 html { scroll-padding-top: 108px; }
 
 /* Cart drawer: scroll, close hit area, no clip at 375.
@@ -7176,3 +7176,34 @@ button.promo-code::before {
   right:auto !important;
 }
 .site-sticky-chrome-spacer{display:none !important;height:0 !important;}
+
+/* === FIX 2026-09-08: sticky nav flush to viewport top (no dead band) === */
+html body .nav,
+html body nav.nav,
+.nav {
+  position: sticky !important;
+  top: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 14px !important;
+  transform: none !important;
+}
+html body .promo-stack,
+html body #promoStack,
+.promo-stack,
+#promoStack {
+  position: relative !important;
+  top: auto !important;
+  bottom: auto !important;
+  margin: 0 !important;
+}
+/* kill leftover chrome spacer height */
+.site-sticky-chrome-spacer {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+html { scroll-padding-top: 72px !important; }
