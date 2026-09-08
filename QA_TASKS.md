@@ -17,8 +17,8 @@ was closed.
 | H1 | Plus, minus and remove in the cart drawer did nothing on 17 product pages: `updateQty` used an undeclared `cart` and called `saveCart()` with no argument, which writes an empty cart | pages | done (pages, 2026-09-08) |
 | H2 | The discount code on checkout did nothing and the page could not say what a code was worth | infra | done (infra, 2026-09-07) |
 | H3 | Five blog articles were up to four times wider than a phone screen | infra | done (infra, 2026-09-07) |
-| H6 | The same product carries different prices depending on where you look: "Pairs well at the bench" prints a 5 mg label with the 10 mg price, and the strikethrough on a product page does not follow the selected dose | infra | in progress (infra, 2026-09-08) |
-| H7 | Items added from the cart suggestions carry no strength at all, so an order does not say which vial to ship | infra | in progress (infra, 2026-09-08) |
+| H6 | The same product carried different prices depending on where you looked: "Pairs well at the bench" printed a 5 mg label with the 10 mg price, and the strikethrough on a product page did not follow the selected dose | infra | done (infra, 2026-09-08) |
+| H7 | Items added from the cart suggestions, the product rail and the catalog cards carried no strength at all, so an order did not say which vial to ship | infra | done (infra, 2026-09-08) |
 
 ## Medium
 
@@ -29,15 +29,19 @@ was closed.
 | M3 | The country selector on checkout has no label and no accessible name | pages | open |
 | M4 | The menu button on the home page has no accessible name | pages | open |
 | M5 | The contact page has no contact form, only an email address | decision | open |
-| M6 | Pages missing from `sitemap.xml` | pages | done (pages, 2026-09-08); `/contact` still missing, infra |
-| M7 | The social preview image is a relative address on 16 product cards, so shared links show no image | pages | open |
+| M6 | Pages missing from `sitemap.xml` | pages | done (pages, 2026-09-08; `/contact` added by infra the same day, 63 URLs) |
+| M7 | The social preview image is a relative address on 16 product cards, so shared links show no image | pages | done (pages, 2026-09-08) |
 | M8 | Product photos are served far larger than they are displayed, for example 1536 px shown at 163 px | pages | open |
 | M9 | The page template is publicly reachable at `/products/product` and has no product behind it | pages | open |
 | M10 | Nine colour-contrast failures at the level automated tools call serious | pages | partly done (pages, 2026-09-08) |
-| M11 | No blog article carries the site footer or the research-use-only line, and 27 of them show a broken tag as visible text | infra | in progress (infra, 2026-09-08) |
+| M11 | No blog page carried the site footer, and 21 of them printed a leftover of an earlier edit as visible text | infra | done (infra, 2026-09-08) |
 | M12 | The contact page was served with no stylesheet at all | pages | done (pages, 2026-09-08) |
 | M13 | Visitors with "reduce motion" turned on see the promo bar as a static wall of repeated text on every page | pages | open |
 | M14 | The header wordmark "Biolabs research" does not sit on the same baseline as the menu items. The header was changed four times on 7 and 8 September | pages | open |
+| M15 | The support line in the footer is barely readable: `#4A4A4A` text on a `#161310` ground. It now appears on the blog pages too, because they gained the site footer | pages | open |
+| M16 | The `support-status` dot in the footer stays empty everywhere except the home page: the script that fills it is inline in `index.html` | pages | open |
+| M17 | On checkout, the plus and minus on the free BAC-water line call `saveCart()`, which does not exist on that page, so the click throws | pages | open |
+| M18 | Four scripts each fetch `/api/products` on every page view: `cart-vial`, `mg-picker`, `prices-sync` and, on product pages, `product-marquee`. One shared request would do | infra | open |
 
 ## Needs a decision from the owner
 
