@@ -77,6 +77,30 @@
     _raf = requestAnimationFrame(frame);
   }
 
+  
+  function normalizeSeg(seg){
+    if (!seg || seg.getAttribute("data-norm")==="1") return;
+    var timer = seg.querySelector(".cutoff-timer");
+    var codeBtn = seg.querySelector(".promo-code");
+    if (!timer || !codeBtn) return;
+    // Rebuild: "25% OFF — CODE" + button + " · " + timer (same baseline, no floating)
+    var wrap = document.createElement("span");
+    wrap.className = "promo-ends-wrap";
+    wrap.appendChild(document.createTextNode(" · "));
+    wrap.appendChild(timer);
+    // clear seg and rebuild cleanly
+    var label = document.createTextNode("25% OFF — CODE ");
+    seg.innerHTML = "";
+    seg.appendChild(label);
+    seg.appendChild(codeBtn);
+    seg.appendChild(wrap);
+    seg.setAttribute("data-norm","1");
+  }
+  function normalizeAll(){
+    var segs = document.querySelectorAll(".promo-seg");
+    for (var i=0;i<segs.length;i++) normalizeSeg(segs[i]);
+  }
+
   function fillMarquee(){
     var track = document.querySelector(".promo-track");
     var bar = document.querySelector(".promo-bar");
@@ -116,6 +140,7 @@
     var b = makeHalf();
     b.innerHTML = a.innerHTML;
     track.appendChild(b);
+    try { normalizeAll(); } catch (eN2) {}
     _x = 0;
     _halfW = 0;
     startMarquee();
@@ -124,6 +149,7 @@
   function wire(){
     saveCode();
     try { fillMarquee(); } catch (e) {}
+    try { normalizeAll(); } catch (eN) {}
     try {
       window.addEventListener("resize", function(){
         clearTimeout(_resizeT);
