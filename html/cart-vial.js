@@ -86,10 +86,170 @@ function _sanitizeCart(c){
       if (!i.imageUrl || String(i.imageUrl).indexOf('.svg') !== -1) i.imageUrl = '/media/research-solvent.png?v=2';
     } else {
       i.qty = q;
+      /* every Add path in the shop ends here, so the strength is recovered in one place instead of six */
+      _blrFillMg(i);
     }
     out.push(i);
   });
   return out;
+}
+
+/* Catalog for the whole storefront, read once (2026-09-08). Outside the product page nothing knew more about a
+   product than its `price`, and in this catalog `price` belongs to the LAST strength while the card shows the
+   first one — so a line could carry a price the customer was never shown and no word about which vial to ship.
+   Whatever needs a strength asks these three helpers, so the page keeps one request and one answer for all of
+   its modules. Until the answer arrives every helper returns null: guessing from stale data is what we fix. */
+(function(){
+  var BY_SLUG = null;
+
+  function key(mg){ return String(mg == null ? '' : mg).replace(/\s+/g, '').toLowerCase(); }
+  function num(v){ var n = parseFloat(v); return isFinite(n) ? n : null; }
+
+  /* the catalog writes strengths as {'10mg':69} and as [{mg:'10mg',price:69}], and the solvent spells
+     the same strength '10mL' in `strengths` and '10ml' in the price table */
+  function table(src){
+    var out = {};
+    if (!src) return out;
+    if (Array.isArray(src)) {
+      src.forEach(function(e){ if (e) out[key(e.mg || e.strength || e.label)] = (e.price !== undefined ? e.price : e.original); });
+    } else {
+      Object.keys(src).forEach(function(k){ out[key(k)] = src[k]; });
+    }
+    return out;
+  }
+
+  function entry(p, mg){
+    if (!p || mg == null || mg === '') return null;
+    var price = num(table(p.strength_prices)[key(mg)]);
+    var original = num(table(p.strength_originals)[key(mg)]);
+    if (price === null) {
+      /* One strength and no price table: the product's own price is all anyone ever had, and it can only mean
+         that one strength. With several strengths `p.price` belongs to the LAST of them, so answering with it
+         would put "5 mg" next to the 10 mg price — the very thing this file was opened to stop. */
+      if ((p.strengths || []).length > 1) return null;
+      if (key(mg) !== key((p.strengths || [])[0])) return null;
+      price = num(p.price);
+      original = num(p.original_price);
+      if (price === null) return null;
+    }
+    return { mg: String(mg), price: price, original: original };
+  }
+
+  window.blrCatalogProduct = function(slug){
+    if (!BY_SLUG || !slug) return null;
+    return BY_SLUG[String(slug)] || null;
+  };
+
+  window.blrDefaultStrength = function(slug){
+    var p = window.blrCatalogProduct(slug);
+    var list = p && p.strengths;
+    if (!p || !Array.isArray(list) || !list.length) return null;
+    return entry(p, list[0]);
+  };
+
+  window.blrStrengthByPrice = function(slug, price){
+    var p = window.blrCatalogProduct(slug);
+    var want = num(price);
+    if (!p || want === null) return null;
+    var prices = table(p.strength_prices);
+    var list = (Array.isArray(p.strengths) && p.strengths.length) ? p.strengths : Object.keys(prices);
+    for (var i = 0; i < list.length; i++) {
+      var got = num(prices[key(list[i])]);
+      if (got !== null && Math.abs(got - want) < 0.005) return entry(p, list[i]);
+    }
+    return null;
+  };
+
+  /* the price of one named strength, for a line that already says which vial it is */
+  window.blrStrengthFor = function(slug, mg){
+    return entry(window.blrCatalogProduct(slug), mg);
+  };
+
+  /* No strength has this exact price. Name the closest one and let the caller keep the price it had: see
+     the note over _blrFillMg for why moving the price here would be the expensive mistake. */
+  window.blrStrengthNearestPrice = function(slug, price){
+    var p = window.blrCatalogProduct(slug);
+    var want = num(price);
+    if (!p || want === null) return null;
+    var list = (Array.isArray(p.strengths) && p.strengths.length) ? p.strengths : Object.keys(table(p.strength_prices));
+    var best = null, bestGap = null;
+    for (var i = 0; i < list.length; i++) {
+      var e = entry(p, list[i]);
+      if (!e) continue;
+      var gap = Math.abs(e.price - want);
+      if (bestGap === null || gap < bestGap) { best = e; bestGap = gap; }
+    }
+    return best;
+  };
+
+  function adopt(items){
+    var map = {};
+    (items || []).forEach(function(p){ if (p && p.slug) map[String(p.slug)] = p; });
+    BY_SLUG = map;
+    try { _blrNormalizeStoredCart(); } catch(e){}
+  }
+
+  try {
+    fetch('/api/products', { credentials: 'same-origin' })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){ adopt(Array.isArray(d) ? d : (d && (d.products || d.items)) || []); })
+      .catch(function(){});
+  } catch(e){}
+})();
+
+function _blrPrettyMg(mg){
+  return String(mg == null ? '' : mg).replace(/\s+/g, '').replace(/(mcg|mg|ml|g)$/i, ' $1');
+}
+
+/* A line that names no strength is an order nobody can pick: the price alone does not say which vial.
+   The strength is read back from the price the line already carries. When no strength has that price the
+   nearest one is named and the price is LEFT ALONE: the catalog is edited by hand, and on the day a price
+   moves every saved line would otherwise stop matching and quietly become the cheapest strength — a 10 mg
+   order shipped as 5 mg for half the money, with the server's own price check agreeing. Keeping the price
+   the visitor saw means the gap reaches `priceCheck`, which flags `price_mismatch` for staff to look at. */
+function _blrFillMg(i){
+  if (!i || i.gift || i.slug === 'research-solvent') return;
+  var n = parseFloat(i.price);
+  if (isFinite(n) && i.price !== n) i.price = n;   /* '125' off a data-attribute is not a price anyone can sum */
+  var slug = productSlug(i);
+  if (!slug) return;
+  if (i.mg) {
+    /* it already says which vial; all that can be wrong is the struck-through price beside it */
+    var known = (typeof window.blrStrengthFor === 'function') ? window.blrStrengthFor(slug, i.mg) : null;
+    if (known && known.original !== null && known.original !== undefined && known.original > i.price) i.original_price = known.original;
+    return;
+  }
+  if (typeof window.blrStrengthByPrice !== 'function') return;
+  var s = window.blrStrengthByPrice(slug, i.price);
+  if (!s && typeof window.blrStrengthNearestPrice === 'function') s = window.blrStrengthNearestPrice(slug, i.price);
+  if (!s) return;
+  i.mg = s.mg;
+  /* the drawer's struck-through price comes from a hard-coded map of `original_price`, which is the LAST
+     strength's: a 5 mg line showed "$34" beside "$85". Carry this strength's own old price with the line. */
+  if (s.original !== null && s.original !== undefined && s.original > i.price) i.original_price = s.original;
+}
+
+/* The visitor's cart may predate the catalog by weeks, and nothing rewrites it until the next Add:
+   stamp it once when the answer is in hand, and only write when something actually changed. */
+function _blrNormalizeStoredCart(){
+  var c = _readCartLS();
+  if (!Array.isArray(c) || !c.length) return;
+  var before = JSON.stringify(c);
+  var out = _sanitizeCart(c);
+  if (JSON.stringify(out) === before) return;
+  if (typeof window.saveCart === 'function') {
+    try { window.saveCart(out); } catch(e){ _writeCartLS(out); }
+  } else {
+    _writeCartLS(out);
+  }
+  /* checkout.html parses the cart once into its own `cart` and sends THAT array with the order. Writing
+     storage alone would leave the page ordering the un-stamped copy whenever the catalog answered after
+     the page had loaded — the visitor arriving straight on /checkout from an abandoned-cart e-mail. */
+  if (typeof cart !== 'undefined' && Array.isArray(cart)) cart = out;
+  if (typeof updateBadge === 'function') { try { updateBadge(); } catch(e){} }
+  if (typeof renderCart === 'function') { try { renderCart(); } catch(e){} }
+  /* on checkout the total lives in renderSummary, and a line whose price just changed must not stay in it */
+  if (typeof renderSummary === 'function') { try { renderSummary(); } catch(e){} }
 }
 
 /* stage 3: shop events for Customer.io — cart_updated / checkout_started.
@@ -399,11 +559,19 @@ function addMoreHtml(cart){
   if (!list.length) return '';
   var html = '<div class="cart-addmore"><div class="cart-addmore-title">Add to this order</div><div class="cart-addmore-track">';
   list.forEach(function(p){
+    /* the card printed the catalog's `price`, which here is the LAST strength: the drawer offered "BPC-157 $89"
+       and dropped a 10 mg vial in the cart while every other surface showed 5 mg for $44 */
+    var d = (typeof window.blrDefaultStrength === 'function') ? window.blrDefaultStrength(p.slug) : null;
+    var price = d ? d.price : p.price;
+    /* unlike the name and the slug above, this string comes from the API and lands in an onclick attribute:
+       a quote in it would end the attribute early. Strengths are digits and letters, so keep only those. */
+    var mgSafe = d ? String(d.mg).replace(/[^0-9A-Za-z. ]/g, '') : '';
+    var mgArg = mgSafe ? ',\'' + mgSafe + '\'' : '';
     html += '<div class="cart-addcard">' +
       '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=155" alt="' + p.name + '" width="84" height="64"></a>' +
       '<div class="cart-addcard-name">' + p.name + '</div>' +
-      '<div class="cart-addcard-price">$' + p.price + '</div>' +
-      '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + p.price + ')">Add to inquiry</button>' +
+      '<div class="cart-addcard-price">' + (mgSafe ? _blrPrettyMg(mgSafe) + ' · ' : '') + '$' + price + '</div>' +
+      '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + price + mgArg + ')">Add to inquiry</button>' +
     '</div>';
   });
   html += '</div></div>';
@@ -472,13 +640,34 @@ function _paintBadgeFromCart(c){
     if (el) el.textContent = String(n);
   } catch(e){}
 }
-function addSuggest(slug, name, price){
+function _blrOtherStrengthInCart(slug, mg){
+  if (!slug || !mg) return false;
+  var c = (typeof getCart === 'function') ? getCart() : _readCartLS();
+  if (!Array.isArray(c)) return false;
+  var k = String(mg).replace(/\s+/g,'').toLowerCase();
+  return c.some(function(i){
+    return i && !i.gift && String(i.slug || '') === String(slug) && i.mg &&
+      String(i.mg).replace(/\s+/g,'').toLowerCase() !== k;
+  });
+}
+/* two strengths of one compound are two lines: merging them would silently reprice one of them.
+   A line written before the catalog was known carries no strength — it still merges, as it always did. */
+function _sameCartLine(item, slug, name, mg){
+  if (!_sameCartProduct(item, slug, name)) return false;
+  if (!mg || !item.mg) return true;
+  return String(item.mg).replace(/\s+/g,'').toLowerCase() === String(mg).replace(/\s+/g,'').toLowerCase();
+}
+/* `mg` is optional on purpose: the generator's pages and older copies of the drawer still call this with three
+   arguments, and that call has to keep working exactly as before. */
+function addSuggest(slug, name, price, mg){
   name = _baseCartName(name) || name;
+  var _p = parseFloat(price);
+  if (isFinite(_p)) price = _p;
   if (typeof getCart === 'function') {
     var c = getCart();
-    var ex = c.find(function(i){ return _sameCartProduct(i, slug, name); });
-    if (ex) { ex.qty += 1; ex.name = _baseCartName(ex.name) || name; if (slug) ex.slug = slug; }
-    else c.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
+    var ex = c.find(function(i){ return _sameCartLine(i, slug, name, mg); });
+    if (ex) { ex.qty += 1; ex.name = _baseCartName(ex.name) || name; if (slug) ex.slug = slug; if (mg && !ex.mg) ex.mg = mg; }
+    else c.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch (e) { try { saveCart(); } catch(e2){} }
     } else {
@@ -491,9 +680,9 @@ function addSuggest(slug, name, price){
     return;
   }
   if (typeof cart !== 'undefined') {
-    var ex2 = cart.find(function(i){ return _sameCartProduct(i, slug, name); });
-    if (ex2) { ex2.qty += 1; ex2.name = _baseCartName(ex2.name) || name; if (slug) ex2.slug = slug; }
-    else cart.push({name:name, price:price, qty:1, slug:slug, imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
+    var ex2 = cart.find(function(i){ return _sameCartLine(i, slug, name, mg); });
+    if (ex2) { ex2.qty += 1; ex2.name = _baseCartName(ex2.name) || name; if (slug) ex2.slug = slug; if (mg && !ex2.mg) ex2.mg = mg; }
+    else cart.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
     if (typeof saveCart === 'function') saveCart();
     else _writeCartLS(cart);
     if (typeof updateBadge === 'function') updateBadge();
@@ -502,6 +691,84 @@ function addSuggest(slug, name, price){
     if (typeof renderSummary === 'function') renderSummary();
   }
 }
+
+/* Two strengths of one compound are now two cart lines wherever the shop offers them, and the drawer's own
+   updateQty(name, delta) picks the FIRST line with that name: minus on the 10 mg row moved the 5 mg row, and
+   the cross removed the wrong vial. The name cannot tell them apart — the row that was clicked can, because
+   the drawer prints one .cart-item per line in cart order. Only the ambiguous case is taken over; with one
+   line of that name the page's own function runs untouched, exactly as before. */
+(function(){
+  var lastRow = null;
+  document.addEventListener('click', function(e){
+    var t = e.target;
+    lastRow = (t && t.closest) ? t.closest('#cartItems .cart-item') : null;
+  }, true);
+
+  function rowIndex(){
+    if (!lastRow || !lastRow.parentNode) return -1;
+    var rows = lastRow.parentNode.querySelectorAll(':scope > .cart-item');
+    for (var i = 0; i < rows.length; i++) if (rows[i] === lastRow) return i;
+    return -1;
+  }
+
+  function twins(c, name){
+    var base = _baseCartName(name).toLowerCase();
+    var n = 0;
+    for (var i = 0; i < c.length; i++) {
+      var it = c[i];
+      if (it && !it.gift && _baseCartName(it.name).toLowerCase() === base) n++;
+    }
+    return n;
+  }
+
+  function apply(idx, delta){
+    var c = (typeof getCart === 'function') ? getCart() : _readCartLS();
+    if (!Array.isArray(c)) return false;
+    var item = c[idx];
+    if (!item) return false;
+    if (item.gift || item.slug === 'research-solvent') { item.qty = 1; }
+    else {
+      var d = parseInt(delta, 10) || 0;
+      var q = parseInt(item.qty, 10) || 0;
+      if (d <= -99 || q + d <= 0) c = c.filter(function(x){ return x !== item; });
+      else item.qty = q + d;
+    }
+    c = c.filter(function(x){ return x && (parseInt(x.qty, 10) || 0) > 0; });
+    if (typeof saveCart === 'function') { try { saveCart(c); } catch(e){ _writeCartLS(c); } }
+    else _writeCartLS(c);
+    if (typeof cart !== 'undefined' && Array.isArray(cart)) cart = c;
+    if (typeof updateBadge === 'function') { try { updateBadge(); } catch(e){} }
+    if (typeof renderCart === 'function') { try { renderCart(); } catch(e){} }
+    if (typeof renderSummary === 'function') { try { renderSummary(); } catch(e){} }
+    return true;
+  }
+
+  var tries = 0;
+  function hook(){
+    var fn = window.updateQty;
+    if (typeof fn === 'function' && !fn.__blrRowAware) {
+      var orig = fn;
+      var wrapped = function(name, delta){
+        try {
+          var c = (typeof getCart === 'function') ? getCart() : _readCartLS();
+          if (Array.isArray(c) && twins(c, name) > 1) {
+            var idx = rowIndex();
+            /* the row must still hold the line the click was about */
+            if (idx >= 0 && c[idx] && _baseCartName(c[idx].name).toLowerCase() === _baseCartName(name).toLowerCase()) {
+              if (apply(idx, delta)) return;
+            }
+          }
+        } catch(e){}
+        return orig.apply(this, arguments);
+      };
+      wrapped.__blrRowAware = 1;
+      window.updateQty = wrapped;
+    }
+    if (++tries < 60) setTimeout(hook, 100);
+  }
+  hook();
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hook);
+})();
 
 /* gold cart burst: short on every Add, big at 2 and 3 unique lines. no VIP copy. */
 (function(){
@@ -806,6 +1073,16 @@ function addSuggest(slug, name, price){
     var price = btn.getAttribute('data-price') || '0';
     var img = btn.getAttribute('data-img') || '';
     var slug = btn.getAttribute('data-slug') || '';
+    var mg = btn.getAttribute('data-mg') || '';
+    /* the page's addToCart matches a line by slug alone: adding 10 mg on top of a 5 mg line kept one line at
+       the 5 mg price and the second vial disappeared. Only that collision is taken over here — the drawer is
+       opened the same way afterwards; every other Add stays with the page's own function. */
+    if (mg && _blrOtherStrengthInCart(slug, mg)) {
+      addSuggest(slug, name, price, mg);
+      var d = document.getElementById('cartDrawer');
+      if (d && !d.classList.contains('open') && typeof window.toggleCart === 'function') window.toggleCart();
+      return;
+    }
     if (typeof window.addToCart === 'function') {
       window.addToCart(name, price, img, slug);
     }
@@ -1052,6 +1329,14 @@ function addSuggest(slug, name, price){
   }
   function line(){
     if (note && note.parentNode) return note;
+    /* the page now ships its own #couponNote next to the Apply button; creating a second one would leave the
+       answer in a node nobody styled and, on a page with both, print it twice */
+    var own = document.getElementById('couponNote');
+    if (own) {
+      note = own;
+      if (!note.getAttribute('aria-live')) note.setAttribute('aria-live', 'polite');
+      return note;
+    }
     if (!field) return null;
     note = document.createElement('div');
     note.id = 'couponNote';
@@ -1102,6 +1387,21 @@ function addSuggest(slug, name, price){
     } catch(e){ lastSent = ''; show('Could not check the code right now.', 'muted'); }
   }
   function schedule(){ clearTimeout(timer); timer = setTimeout(ask, DEBOUNCE_MS); }
+  /* Apply means "answer me now": the half-second wait and the "same question, same answer" guard both make
+     a press look ignored, and the visitor presses again. Delegated because the button belongs to the page —
+     it may be rendered after this file runs, and on most pages it is not there at all. */
+  function applyNow(){
+    clearTimeout(timer);
+    lastSent = '';
+    if (!field) wire();
+    ask();
+  }
+  document.addEventListener('click', function(e){
+    var b = e.target && e.target.closest && e.target.closest('#applyCoupon');
+    if (!b) return;
+    if (e.preventDefault) e.preventDefault();
+    applyNow();
+  }, false);
 
   function wire(){
     if (!field) {

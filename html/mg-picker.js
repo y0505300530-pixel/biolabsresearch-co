@@ -38,9 +38,51 @@
   function baseName(name) {
     return String(name || "").replace(/\s*\([^)]*mg[^)]*\)\s*$/i, "").trim();
   }
-  function priceForMg(slug, mg, fallback) {
+  var PRODUCT = null; /* this page's catalog record, kept from the read below — the page's own fetch may land later */
+  function currentProduct(slug) {
     var p = window._currentProduct;
-    if (!p || p.slug !== slug || !p.strength_prices) return fallback;
+    if (p && p.slug === slug) return p;
+    if (PRODUCT && PRODUCT.slug === slug) return PRODUCT;
+    return null;
+  }
+  function originalForMg(p, mg) {
+    var so = p && p.strength_originals;
+    if (!so) return null;
+    var entries = Array.isArray(so) ? so : Object.keys(so).map(function (k) { return { mg: k, price: so[k] }; });
+    for (var i = 0; i < entries.length; i++) {
+      var e = entries[i];
+      var v = e && (e.price !== undefined ? e.price : e.original);
+      if (e && norm(e.mg || e.strength || e.label) === norm(mg) && v !== null && v !== '' && isFinite(Number(v))) return Number(v);
+    }
+    return null;
+  }
+  /* The struck-through price is printed once from original_price — the LAST strength — and never followed the
+     picker: /products/ghk-cu opened at 5 mg showed $34 beside $85 and promised a 60 % discount that does not
+     exist. When this strength has no old price, the element is hidden rather than left showing another one.
+     The search stays inside the price block on purpose: `.was` is also the cart drawer's compare-at price. */
+  function setOriginal(priceEl, slug, mg, price) {
+    var p = currentProduct(slug);
+    if (!p) return;
+    var scope = (priceEl && priceEl.closest) ? priceEl.closest(".price-section, .price-row") : null;
+    if (!scope && priceEl) scope = priceEl.parentNode;
+    if (!scope) scope = document.querySelector(".price-section");
+    if (!scope) return;
+    var orig = originalForMg(p, mg);
+    var shown = (price === null || price === undefined)
+      ? parseFloat(String((priceEl && priceEl.textContent) || "").replace(/[^0-9.]/g, ""))
+      : Number(price);
+    scope.querySelectorAll(".price-original, .was, .price-old").forEach(function (el) {
+      if (orig === null || !isFinite(shown) || orig <= shown) {
+        el.style.display = "none";
+      } else {
+        el.textContent = "$" + orig;
+        el.style.display = "";
+      }
+    });
+  }
+  function priceForMg(slug, mg, fallback) {
+    var p = currentProduct(slug);
+    if (!p || !p.strength_prices) return fallback;
     var sp = p.strength_prices;
     var entries = Array.isArray(sp) ? sp : Object.keys(sp).map(function (k) { return { mg: k, price: sp[k] }; });
     for (var i = 0; i < entries.length; i++) {
@@ -57,6 +99,7 @@
     var priceEl = document.getElementById("current-price") || document.querySelector(".price-main");
     var selectedPrice = priceForMg(slug, mg, null);
     if (priceEl && selectedPrice !== null) priceEl.textContent = "$" + selectedPrice;
+    setOriginal(priceEl, slug, mg, selectedPrice);
     document.querySelectorAll("img").forEach(function (img) {
       var s = img.getAttribute("src") || "";
       if (s.indexOf("vial-" + slug) !== -1) img.src = src;
@@ -227,6 +270,7 @@
     if (!items || !items.length) return;
     items.forEach(function (p) {
       if (p && p.slug && p.strengths && p.strengths.length) STRENGTHS[p.slug] = p.strengths;
+      if (p && p.slug && p.slug === slugFromPath()) PRODUCT = p;
     });
     var el = document.getElementById("mgPicker");
     if (el) el.remove();

@@ -25,6 +25,26 @@
     return "";
   }
 
+  function normMg(mg) {
+    return String(mg == null ? "" : mg).replace(/\s+/g, "").toLowerCase();
+  }
+
+  /* The rail printed p.price beside strengths[0], and in this catalog p.price is the price of the LAST strength:
+     the blend read "5mg · $125" while 5 mg costs $62. The record is already in hand here — no second load. */
+  function strengthPrice(p, mg) {
+    var base = typeof p.price === "number" ? p.price : parseFloat(p.price) || 0;
+    var sp = p && p.strength_prices;
+    if (!sp || !mg) return base;
+    var v = null;
+    if (Array.isArray(sp)) {
+      sp.forEach(function (e) { if (e && normMg(e.mg || e.strength || e.label) === normMg(mg)) v = e.price; });
+    } else {
+      Object.keys(sp).forEach(function (k) { if (normMg(k) === normMg(mg)) v = sp[k]; });
+    }
+    var n = parseFloat(v);
+    return isFinite(n) ? n : base;
+  }
+
   function categoryLabel(p) {
     var c = String(p.category || "").trim();
     return c ? c.toUpperCase() : "RESEARCH COMPOUND";
@@ -40,9 +60,39 @@
 
   function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v=155'; } return '/media/vial-'+slug+'.png?v=155'; }
 
-  function addItem(name, price, imageUrl, slug) {
+  /* The page's own addToCart knows nothing about strengths, so the line it just wrote says only "$62".
+     Name the strength the card showed; a line that already names one is left alone. */
+  function stampLast(slug, mg, price) {
+    try {
+      var read = window.getCart || window._readCartLS;
+      var c = typeof read === "function" ? read() : null;
+      if (!Array.isArray(c) || !c.length) return;
+      for (var i = c.length - 1; i >= 0; i--) {
+        var it = c[i];
+        if (!it || it.gift) continue;
+        if (String(it.slug || "") !== String(slug || "")) continue;
+        if (it.mg) continue;
+        it.mg = mg;
+        it.price = price;
+        if (typeof window.saveCart === "function") {
+          try { window.saveCart(c); } catch (e) { if (typeof window._writeCartLS === "function") window._writeCartLS(c); }
+        } else if (typeof window._writeCartLS === "function") {
+          window._writeCartLS(c);
+        }
+        if (typeof window.updateBadge === "function") window.updateBadge();
+        if (typeof window.renderCart === "function") window.renderCart();
+        return;
+      }
+    } catch (e) {}
+  }
+
+  function addItem(name, price, imageUrl, slug, mg) {
+    /* data-* attributes are strings, and a string price reached orders.json as "125" */
+    var n = parseFloat(price);
+    price = isFinite(n) ? n : 0;
     if (typeof window.addToCart === "function") {
       window.addToCart(name, price, imageUrl, slug);
+      if (mg) stampLast(slug, mg, price);
       return;
     }
     var getCart = window.getCart || function () {
@@ -53,10 +103,16 @@
     };
     var cart = getCart();
     var existing = cart.find(function (i) {
+      if (i && i.gift) return false;
+      if (mg && i && i.mg && normMg(i.mg) !== normMg(mg)) return false;   /* another strength is another line */
       return i.name === name || (slug && i.slug === slug);
     });
-    if (existing) existing.qty = (existing.qty || 1) + 1;
-    else cart.push({ name: name, price: price, qty: 1, slug: slug || "", imageUrl: imageUrl || "" });
+    if (existing) { existing.qty = (existing.qty || 1) + 1; if (mg && !existing.mg) { existing.mg = mg; existing.price = price; } }
+    else {
+      var line = { name: name, price: price, qty: 1, slug: slug || "", imageUrl: imageUrl || "" };
+      if (mg) line.mg = mg;
+      cart.push(line);
+    }
     saveCart(cart);
     if (typeof window.updateBadge === "function") window.updateBadge();
     else {
@@ -71,9 +127,9 @@
 
   function card(p) {
     var img = vialImg(p);
-    var price = typeof p.price === "number" ? p.price : parseFloat(p.price) || 0;
     var href = "/products/" + encodeURIComponent(p.slug) + ".html";
     var mg = strengthLine(p);
+    var price = strengthPrice(p, mg);
     var stockState = isInStock(p);
     var stockHtml = "";
     if (stockState === true) {
@@ -95,7 +151,7 @@
         '<p class="pr-card-price">$' + price.toFixed(0) + "</p>" +
         '<div class="pr-card-actions">' +
           '<a class="pr-card-view" href="' + href + '">View</a>' +
-          '<button type="button" class="pr-card-atc" data-name="' + esc(p.name) + '" data-price="' + esc(price) + '" data-img="' + esc(img) + '" data-slug="' + esc(p.slug) + '">ADD TO CART</button>' +
+          '<button type="button" class="pr-card-atc" data-name="' + esc(p.name) + '" data-price="' + esc(price) + '" data-img="' + esc(img) + '" data-slug="' + esc(p.slug) + '"' + (mg ? ' data-mg="' + esc(mg) + '"' : '') + '>ADD TO CART</button>' +
         "</div>" +
       "</article>"
     );
@@ -112,7 +168,8 @@
           btn.getAttribute("data-name"),
           btn.getAttribute("data-price"),
           btn.getAttribute("data-img"),
-          btn.getAttribute("data-slug")
+          btn.getAttribute("data-slug"),
+          btn.getAttribute("data-mg")
         );
       });
     });
