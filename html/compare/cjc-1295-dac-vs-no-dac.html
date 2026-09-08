@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/biolabs_style.css?v=252">
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <script src="/search-overlay.js?v=26"></script>
 
 <title>CJC-1295 with DAC vs no DAC | BioLabs Research</title>
@@ -29,7 +29,6 @@
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="robots" content="index,follow">
-
 
 <style>
 :root{--cream:#F7F4EE;--ink:#0d0d0d;--gold:#9A6D2A;--white:#fff;--muted:#5a5a5a;--line:#e5dfd4}
@@ -187,17 +186,5 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   </div>
 </footer>
 <script src="/promo-bar.js?v=12"></script>
-
-<script>
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-}
-</script>
 </body>
 </html>

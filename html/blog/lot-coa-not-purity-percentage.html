@@ -109,7 +109,7 @@
 @media(max-width:768px){.related-grid{grid-template-columns:1fr}}
 
 </style>
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
@@ -177,7 +177,6 @@
 <img src="/media/coa-trace.png" alt="Lot certificate of analysis traceability diagram — purity fields are method-bound and lot-specific" class="article-img" loading="lazy">
 <p class="article-img-caption">A COA is lot paper, not a marketing badge reused across SKUs.</p>
 
-
 <div class="ruo-note"><strong>RUO.</strong> Laboratory purchasing note. Not for human or veterinary use. Not a medicine. We do not invent HPLC area% or net peptide content on this page — those values, when issued, live on the lot certificate.</div>
 
 <div class="article-toc"><strong>On this page</strong>
@@ -197,7 +196,6 @@
 <img src="/media/blog-lifestyle/peptide-purity-and-coa-explained-2.png" alt="Laboratory scientist recording identity and purity fields from lot paperwork onto a clipboard at the bench" class="article-img" loading="lazy">
 <p class="article-img-caption">Confirm SKU against the certificate before the material enters inventory.</p>
 
-
 <h2 id="what-coa">What a COA is for</h2>
 <p>When we say “COA on request,” we mean the lot document for that shipment — not a house purity claim reused across SKUs. If a field is blank, ask for it. If a percentage appears without a method ID, treat it as incomplete. Lot paper should travel with the vial through receiving.</p>
 
@@ -207,7 +205,6 @@
 
 <img src="/media/vial-bpc-157.png?v=153" alt="Catalog research vial illustrating that lot COA identity notes belong with the physical reagent" class="article-img" loading="lazy">
 <p class="article-img-caption">Keep lot paper with the vial — identity and purity fields are batch-specific.</p>
-
 
 <h2 id="table">Field checklist</h2>
 <table>
@@ -226,13 +223,11 @@
 <p>Read the longer walkthrough: <a href="/blog/hplc-area-percent-vs-net-peptide-content">HPLC area percent is not net peptide content</a>. Also useful: <a href="/blog/peptide-purity-and-coa-explained">Peptide purity and COA explained</a>. For blend vials, remember two CAS lines — see <a href="/blog/one-vial-two-cas-numbers">One vial, two CAS numbers</a>.</p>
 <p>Public compound identity for a listed example such as BPC-157 should be checked on PubChem when you are confirming a CAS/CID pair on receiving paperwork (search the CAS printed on your lot COA at <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a>).</p>
 
-
 <h2 id="vendor-pdfs">Vendor PDFs vs lot-tied certificates</h2>
 <p>Marketing decks often show a single HPLC chromatogram or a round purity number beside a product family photo. That artwork is not lot paper. Receiving should ask three questions: Does the PDF print a lot or batch ID? Does that ID match the carton? Does the method section describe the HPLC (and MS, if claimed) actually run on that batch?</p>
 <p>If any answer is no, escalate before releasing the material to the bench. Some labs keep a “vendor literature” folder separate from “lot quality records” so auditors can see the difference. Crossing those folders is how a house percentage becomes an undocumented weighing factor months later.</p>
 <p>Net peptide content, when you need it for solution preparation math, must be a reported field — not inferred from area%. Counter-ion and water statements matter for the same reason. If the certificate omits them, either weigh with the limitations documented or request a revised COA. Silent assumptions are not a quality system.</p>
 <p>For blends, apply the same lot discipline twice: each component needs identity, and any purity-like number needs a method boundary. A single “98%” stamp on a two-peak chromatogram without peak assignment is not dual identity.</p>
-
 
 <p>Build a simple release gate: no lot ID, no release; no MS when the SKU card implies a defined sequence, no release; HPLC% without method ID, hold for clarification. Document exceptions with a signed note — not a Slack message. That discipline is what turns “COA on request” into a traceable quality record instead of a brochure claim.</p>
 
@@ -255,17 +250,6 @@
 <div class="article-footer">
   <p><a href="/blog/">← Back to Blog</a> · <a href="https://biolabsresearch.co/index.html?from=nav">Catalog</a> · <a href="https://biolabsresearch.co/science">Science</a></p>
 </div>
-<script>
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-}
-</script>
 <script src="/promo-bar.js?v=12"></script>
 <script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>

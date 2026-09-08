@@ -236,7 +236,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 @media(max-width:960px){.checkout-page{grid-template-columns:1fr;padding:32px 20px}}
 @media(max-width:640px){.form-row{grid-template-columns:1fr}}
 </style>
-<script src="/cart-vial.js?v=128"></script>
+<script src="/cart-vial.js?v=129"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
@@ -820,7 +820,6 @@ function showSuccess(orderData, paymentNote) {
   </div>
 </footer>
 
-
 <!-- ENTRY GATE MODAL -->
 <style>
 .tc-overlay{position:fixed;inset:0;background:rgba(13,33,55,0.88);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}
@@ -964,18 +963,6 @@ function showSuccess(orderData, paymentNote) {
   paint();
   setInterval(paint, 60000);
 })();
-</script>
-
-<script>
-function toggleMenu() {
-  var m = document.getElementById('navMenu');
-  var o = document.getElementById('navOverlay');
-  if (!m) return;
-  var open = !m.classList.contains('open');
-  m.classList.toggle('open', open);
-  if (o) o.classList.toggle('open', open);
-  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-}
 </script>
 </body>
 </html>
