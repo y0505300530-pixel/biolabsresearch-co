@@ -287,7 +287,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       </div>
       <div class="footer-col">
         <h4>Products</h4>
-        <a href="/#catalog">All Peptides</a>
+        <a href="/#catalog">All Compounds</a>
         <a href="/#catalog">Blends</a>
         <a href="/#catalog">Hormones</a>
         <a href="/#catalog">Supplies</a>
@@ -465,7 +465,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
           pdpReviewHtml(p, img) +
         '</div>' +
         '<div>' +
-          '<div class="product-category-label">'+(p.category||'Peptide')+'</div>' +
+          '<div class="product-category-label">'+(p.category||'Compound')+'</div>' +
           '<h1 class="product-title">'+p.name+'</h1>' +
           (p.tagline?'<div class="product-subtitle">'+p.tagline+'</div>':'') +
           '<div class="product-purity-row">' +
@@ -1157,7 +1157,7 @@ function submitCOARequest(e) {
   .catch(function() {
     btn.disabled = false;
     txt.textContent = 'Send Request';
-    var mail = 'mailto:admin@biolabsresearch.co?subject=' + encodeURIComponent(payload.subject) +
+    var mail = 'mailto:info@biofirst.co?subject=' + encodeURIComponent(payload.subject) +
       '&body=' + encodeURIComponent('COA request from ' + payload.firstName + ' ' + payload.lastName +
         '\nEmail: ' + payload.email + '\nOrg: ' + (payload.org||'') + '\n' + payload.message);
     window.location.href = mail;

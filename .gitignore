@@ -2,3 +2,5 @@ html/*.bak*
 html/**/*.bak*
 html/**/*.bak-*
 *.bak
+__pycache__/
+*.pyc
