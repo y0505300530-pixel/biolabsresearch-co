@@ -1136,14 +1136,36 @@ function addSuggest(slug, name, price, mg){
   (function tick(){ wire(); if (++n < 40) setTimeout(tick, 100); })();
 })();
 
-/* ELITE P0: lock body scroll while cart open */
+/* ELITE P0: lock body scroll while cart open + hide promo ticker */
 (function(){
+  function setPromoHidden(hide){
+    var nodes = document.querySelectorAll('.promo-stack, #promoStack');
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      if (hide) {
+        el.setAttribute('data-cart-hidden', '1');
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('height', '0', 'important');
+        el.style.setProperty('visibility', 'hidden', 'important');
+        el.style.setProperty('opacity', '0', 'important');
+        el.style.setProperty('pointer-events', 'none', 'important');
+      } else if (el.getAttribute('data-cart-hidden') === '1') {
+        el.removeAttribute('data-cart-hidden');
+        el.style.removeProperty('display');
+        el.style.removeProperty('height');
+        el.style.removeProperty('visibility');
+        el.style.removeProperty('opacity');
+        el.style.removeProperty('pointer-events');
+      }
+    }
+  }
   function syncBody(){
     if (!document.body) return;
     var d = document.getElementById('cartDrawer');
-    var open = d && d.classList.contains('open');
-    document.body.classList.toggle('cart-open', !!open);
+    var open = !!(d && d.classList.contains('open'));
+    document.body.classList.toggle('cart-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
+    setPromoHidden(open);
   }
   function wrapToggle(){
     if (typeof window.toggleCart !== 'function' || window.toggleCart.__bodyLock) return false;
@@ -1156,7 +1178,20 @@ function addSuggest(slug, name, price, mg){
     window.toggleCart.__bodyLock = true;
     return true;
   }
-  var n=0; (function hook(){ wrapToggle(); syncBody(); if(++n<50) setTimeout(hook,100); })();
+  function watchDrawer(){
+    var d = document.getElementById('cartDrawer');
+    if (!d || d.__promoHideObs) return !!d;
+    var obs = new MutationObserver(function(){ syncBody(); });
+    obs.observe(d, { attributes: true, attributeFilter: ['class'] });
+    d.__promoHideObs = true;
+    return true;
+  }
+  var n=0; (function hook(){
+    wrapToggle();
+    watchDrawer();
+    syncBody();
+    if(++n<80) setTimeout(hook,100);
+  })();
 })();
 
 /* Gift solvent: force qty 1, block +/- */

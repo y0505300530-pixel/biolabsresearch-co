@@ -108,6 +108,16 @@
     var groups = track.querySelectorAll(".promo-group");
     if (!groups.length) return;
     var template = groups[0].cloneNode(true);
+    // SoT CODE: always INSIDER25 on ticker pills
+    var codeBtns = template.querySelectorAll('.promo-code');
+    for (var ci = 0; ci < codeBtns.length; ci++) {
+      codeBtns[ci].setAttribute('data-code', CODE);
+      codeBtns[ci].textContent = CODE;
+    }
+    var segs = template.querySelectorAll('.promo-seg');
+    for (var si = 0; si < segs.length; si++) {
+      /* keep structure; code button already forced */
+    }
     var minW = Math.max(bar.clientWidth || 0, window.innerWidth || 0, 1200);
     track.innerHTML = "";
     track.style.animation = "none";
