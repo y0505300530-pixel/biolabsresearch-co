@@ -842,14 +842,15 @@ function addSuggest(slug, name, price){
   if (typeof window.toggleCart !== 'function') {
     window.toggleCart = function(){ window.location.href = '/checkout.html'; };
   }
-  if (typeof window.toggleMenu !== 'function') {
-    window.toggleMenu = function(){
+  window.toggleMenu = function(){
       var m = document.getElementById('navMenu');
       var o = document.getElementById('navOverlay');
-      if (m) m.classList.toggle('open');
-      if (o) o.classList.toggle('open');
+      if (!m) return;
+      var open = !m.classList.contains('open');
+      m.classList.toggle('open', open);
+      if (o) o.classList.toggle('open', open);
+      try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
     };
-  }
 })();
 
 /* delegated Add — works on SSR cards + API cards, mobile safe */

@@ -9,8 +9,8 @@
 <link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
-<link rel="stylesheet" href="/biolabs_style.css?v=249">
-<script src="/cart-vial.js?v=126"></script>
+<link rel="stylesheet" href="/biolabs_style.css?v=252">
+<script src="/cart-vial.js?v=127"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
@@ -32,6 +32,20 @@
     <button class="nav-hamburger" onclick="toggleMenu()" type="button"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
+  <a href="/science.html">Science</a>
+  <a href="#verticals">Verticals</a>
+  <a href="#catalog">Catalog</a>
+  <a href="#methods">Methods</a>
+  <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a>
+  <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
+  <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
+  <a href="https://biolabsresearch.co/returns.html">Returns</a>
+  <a href="/contact.html">Contact</a>
+</div>
+
 
 <main class="legal-page" style="max-width:720px;margin:0 auto;padding:72px 28px 100px">
   <p class="legal-back"><a href="/">← Back</a></p>
@@ -65,41 +79,14 @@
 </main>
 
 <script>
-function toggleMenu(){var m=document.getElementById('navMenu');var o=document.getElementById('navOverlay');if(m)m.classList.toggle('open');if(o)o.classList.toggle('open')}
-function toggleCart(){if(window.toggleCart&&toggleCart!==arguments.callee){}}
-</script>
-<script src="/promo-bar.js?v=12"></script>
-
-<script>
-(function(){
-  function etNow(){
-    try{
-      var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());
-      var map={}; parts.forEach(function(p){ map[p.type]=p.value; });
-      return {dow:map.weekday, hour:parseInt(map.hour,10), minute:parseInt(map.minute,10)};
-    }catch(e){ return null; }
-  }
-  function isOnline(t){
-    if(!t) return false;
-    var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};
-    if(!days[t.dow]) return false;
-    var mins=t.hour*60+(t.minute||0);
-    return mins>=8*60 && mins<21*60; // 8:00–21:00 ET
-  }
-  function paint(){
-    var t=etNow();
-    var on=isOnline(t);
-    var nodes=document.querySelectorAll('[data-support-status]');
-    for(var i=0;i<nodes.length;i++){
-      var el=nodes[i];
-      el.className='support-status '+(on?'on':'off');
-      el.innerHTML=on
-        ? '<span class="dot" aria-hidden="true"></span><span>Online now</span>'
-        : '<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';
-    }
-  }
-  paint();
-  setInterval(paint, 60000);
+function toggleMenu() {
+  var m = document.getElementById('navMenu');
+  var o = document.getElementById('navOverlay');
+  if (!m) return;
+  var open = !m.classList.contains('open');
+  m.classList.toggle('open', open);
+  if (o) o.classList.toggle('open', open);
+  try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
 })();
 </script>
 

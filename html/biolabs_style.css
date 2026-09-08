@@ -5744,3 +5744,18 @@ a.nav-logo{
 @media (prefers-reduced-motion:reduce){
   .bl-video-tools video{/* paused via tools-video.js; poster/static frame shown */}
 }
+
+/* mobile-nav-menu-harden */
+.nav{z-index:10050 !important; position:sticky;}
+.nav-hamburger{
+  position:relative;z-index:10060 !important;
+  min-width:44px;min-height:44px;
+  display:inline-flex !important;align-items:center;justify-content:center;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.nav-overlay{z-index:10070 !important;}
+.nav-menu{z-index:10080 !important;}
+.nav-menu.open{right:0 !important;}
+body.nav-open{overflow:hidden !important;}
+
