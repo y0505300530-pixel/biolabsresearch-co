@@ -184,14 +184,14 @@ footer{background:var(--navy);padding:60px 60px 30px}
     <li><a href="../index.html#products">Products</a></li>
     <li><a href="https://biolabsresearch.co/index.html?from=nav#science">Our Science</a></li>
     <li><a href="../index.html#how">How It Works</a></li>
-    <li><a href="/contact.html">Contact</a></li>
+    <li><a href="/contact">Contact</a></li>
   </ul>
   <div class="nav-actions">
     <button class="cart-btn">
       🛒 Cart
       <span class="cart-count">0</span>
     </button>
-    <a href="/checkout.html" class="btn-nav-fill">Order Now</a>
+    <a href="/checkout" class="btn-nav-fill">Order Now</a>
   </div>
 </nav>
 
@@ -239,13 +239,13 @@ footer{background:var(--navy);padding:60px 60px 30px}
         <h4>Company</h4>
         <a href="https://biolabsresearch.co/index.html?from=nav#science">Our Science</a>
         <a href="../index.html#how">How It Works</a>
-        <a href="/contact.html">Contact Us</a>
+        <a href="/contact">Contact Us</a>
       </div>
       <div class="footer-col">
         <h4>Support</h4>
         <a href="#" onclick="openCOARequest(currentProductName||'');return false" style="cursor:pointer">Request COA</a>
-        <a href="/checkout.html Inquiry">Place Order</a>
-        <a href="/checkout.html Inquiry">Shipping Info</a>
+        <a href="/checkout Inquiry">Place Order</a>
+        <a href="/checkout Inquiry">Shipping Info</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -439,7 +439,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
     var cartBtn = document.querySelector('.cart-btn');
     if(cartBtn){
       cartBtn.addEventListener('click', function(){
-        window.location.href = '/checkout.html';
+        window.location.href = '/checkout';
       });
     }
   }

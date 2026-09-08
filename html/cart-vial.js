@@ -94,7 +94,7 @@ var _trackCartTouch = (function(){
   var HASH_KEY  = 'biolabs_track_h';  /* cart already reported */
   var CO_KEY    = 'biolabs_track_co'; /* last checkout_started, ms */
   var CE_KEY    = 'biolabs_track_ce'; /* address already sent to /api/checkout-identify */
-  var CART_URL  = 'https://biolabsresearch.co/checkout.html';
+  var CART_URL  = 'https://biolabsresearch.co/checkout';
   var DEBOUNCE_MS = 5000;
   var CHECKOUT_EVERY_MS = 1800000;    /* 30 min */
   var MAX_ITEMS = 30;
@@ -840,7 +840,7 @@ function addSuggest(slug, name, price){
   else paint();
   window.addEventListener('storage', paint);
   if (typeof window.toggleCart !== 'function') {
-    window.toggleCart = function(){ window.location.href = '/checkout.html'; };
+    window.toggleCart = function(){ window.location.href = '/checkout'; };
   }
   window.toggleMenu = function(){
       var m = document.getElementById('navMenu');

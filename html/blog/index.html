@@ -50,7 +50,7 @@
 .blog-empty{grid-column:1/-1;text-align:center;color:var(--ink-muted);padding:40px 20px}
 @media(max-width:768px){.blog-grid{padding:24px;gap:16px}.blog-header{padding:60px 20px 20px}.blog-header h1{font-size:32px}.blog-filters{padding:0 20px 8px}}
 </style>
-<script src="/cart-vial.js?v=127"></script>
+<script src="/cart-vial.js?v=128"></script>
 <script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
@@ -75,11 +75,11 @@
     <a class="nav-util" href="/#catalog" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16.2 16.2L20 20"/></svg></a>
     <span class="nav-sep" aria-hidden="true">|</span>
     <div class="nav-links-right">
-      <a href="https://biolabsresearch.co/science.html">Science</a>
+      <a href="https://biolabsresearch.co/science">Science</a>
       <a href="/blog/">Blog</a>
-      <a href="/shipping.html">Shipping</a>
-          <a href="/tools.html">Tools</a>
-      <a href="/coa.html">COA Library</a>
+      <a href="/shipping">Shipping</a>
+          <a href="/tools">Tools</a>
+      <a href="/coa">COA Library</a>
     </div>
 <button class="nav-cart" onclick="toggleCart()" type="button" aria-label="Cart"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg><span class="nav-cart-count" id="cartCount">0</span></button>
     <button class="nav-hamburger" onclick="toggleMenu()" type="button">
@@ -91,15 +91,15 @@
 <div class="nav-menu" id="navMenu">
   <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
   <a href="/#catalog" onclick="toggleMenu()">Catalog</a>
-  <a href="/science.html" onclick="toggleMenu()">Science</a>
+  <a href="/science" onclick="toggleMenu()">Science</a>
   <a href="/blog/" onclick="toggleMenu()">Blog</a>
-  <a href="/shipping.html" onclick="toggleMenu()">Shipping</a>
-  <a href="/tools.html" onclick="toggleMenu()">Tools</a>
-  <a href="/coa.html" onclick="toggleMenu()">COA Library</a>
-  <a href="/contact.html" onclick="toggleMenu()">Contact</a>
-  <a href="/terms-and-conditions.html" onclick="toggleMenu()">Terms</a>
-  <a href="/privacy-policy.html" onclick="toggleMenu()">Privacy</a>
-  <a href="/returns.html" onclick="toggleMenu()">Returns</a>
+  <a href="/shipping" onclick="toggleMenu()">Shipping</a>
+  <a href="/tools" onclick="toggleMenu()">Tools</a>
+  <a href="/coa" onclick="toggleMenu()">COA Library</a>
+  <a href="/contact" onclick="toggleMenu()">Contact</a>
+  <a href="/terms-and-conditions" onclick="toggleMenu()">Terms</a>
+  <a href="/privacy-policy" onclick="toggleMenu()">Privacy</a>
+  <a href="/returns" onclick="toggleMenu()">Returns</a>
 </div>
 
 <div class="blog-header">
@@ -117,7 +117,7 @@
 </div>
 
 <div class="blog-grid" id="blogGrid">
-<a href="/blog/shipping-cold-chain-research-reagents.html" class="blog-card" data-tag="Shipping" data-title="shipping cold-chain for research reagents" data-excerpt="temperature-sensitive research lots leave the warehouse with cold-chain packing when the sku requires it. that packing rides on the same carrier options shown…">
+<a href="/blog/shipping-cold-chain-research-reagents" class="blog-card" data-tag="Shipping" data-title="shipping cold-chain for research reagents" data-excerpt="temperature-sensitive research lots leave the warehouse with cold-chain packing when the sku requires it. that packing rides on the same carrier options shown…">
   <div class="blog-card-img"><img src="/media/tile-shipping.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Shipping</span>
@@ -126,7 +126,7 @@
     <div class="meta">Sep 04, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/one-vial-two-cas-numbers.html" class="blog-card" data-tag="Identity" data-title="one vial, two cas numbers" data-excerpt="cas registry numbers index defined substances (or defined salts), not storefront mix names. when two peptides share one vial, the correct label is…">
+<a href="/blog/one-vial-two-cas-numbers" class="blog-card" data-tag="Identity" data-title="one vial, two cas numbers" data-excerpt="cas registry numbers index defined substances (or defined salts), not storefront mix names. when two peptides share one vial, the correct label is…">
   <div class="blog-card-img"><img src="/media/blog-topic/one-vial-two-cas-numbers-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -135,7 +135,7 @@
     <div class="meta">Sep 04, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/lot-coa-not-purity-percentage.html" class="blog-card" data-tag="COA" data-title="lot coa, not a purity percentage" data-excerpt="a certificate of analysis (coa) is lot paper, not a marketing badge. it is tied to a batch identifier. the useful fields are…">
+<a href="/blog/lot-coa-not-purity-percentage" class="blog-card" data-tag="COA" data-title="lot coa, not a purity percentage" data-excerpt="a certificate of analysis (coa) is lot paper, not a marketing badge. it is tied to a batch identifier. the useful fields are…">
   <div class="blog-card-img"><img src="/media/coa-trace.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">COA</span>
@@ -144,7 +144,7 @@
     <div class="meta">Sep 04, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/dac-vs-no-dac-formula-difference.html" class="blog-card" data-tag="Identity" data-title="dac vs no-dac is a formula difference" data-excerpt="“dac” in peptide listings usually points to a drug affinity complex-style chemical modification — commonly a maleimidopropionyl handle on a lysine — that…">
+<a href="/blog/dac-vs-no-dac-formula-difference" class="blog-card" data-tag="Identity" data-title="dac vs no-dac is a formula difference" data-excerpt="“dac” in peptide listings usually points to a drug affinity complex-style chemical modification — commonly a maleimidopropionyl handle on a lysine — that…">
   <div class="blog-card-img"><img src="/media/blog-topic/dac-vs-no-dac-formula-difference-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -153,7 +153,7 @@
     <div class="meta">Sep 04, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/catalog-skus-vs-research-analogues.html" class="blog-card" data-tag="Identity" data-title="catalog skus vs research analogues" data-excerpt="this storefront lists a fixed set of research reagents. a name that circulates in the wider research literature is not automatically a sku…">
+<a href="/blog/catalog-skus-vs-research-analogues" class="blog-card" data-tag="Identity" data-title="catalog skus vs research analogues" data-excerpt="this storefront lists a fixed set of research reagents. a name that circulates in the wider research literature is not automatically a sku…">
   <div class="blog-card-img"><img src="/media/blog-topic/catalog-skus-vs-research-analogues-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -162,7 +162,7 @@
     <div class="meta">Sep 04, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/thymosin-alpha-1-thymalfasin-identity.html" class="blog-card" data-tag="Identity" data-title="thymosin alpha-1 is the 28-residue n-acetyl peptide, not tb-500" data-excerpt="thymosin alpha-1 is a 28-residue peptide with an n-acetyl serine: ac-sdaavdtsseittkdlkekkevveeaen. the international nonproprietary name is thymalfasin. it is chemically unrelated to thymosin…">
+<a href="/blog/thymosin-alpha-1-thymalfasin-identity" class="blog-card" data-tag="Identity" data-title="thymosin alpha-1 is the 28-residue n-acetyl peptide, not tb-500" data-excerpt="thymosin alpha-1 is a 28-residue peptide with an n-acetyl serine: ac-sdaavdtsseittkdlkekkevveeaen. the international nonproprietary name is thymalfasin. it is chemically unrelated to thymosin…">
   <div class="blog-card-img"><img src="/media/blog-topic/thymosin-alpha-1-thymalfasin-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -171,7 +171,7 @@
     <div class="meta">Aug 31, 2026 · 10 min read</div>
   </div>
 </a>
-<a href="/blog/tesamorelin-ipamorelin-blend-identity.html" class="blog-card" data-tag="Identity" data-title="tesamorelin / ipamorelin: two cas numbers on one vial" data-excerpt="one catalog sku can still be two chemicals. tesamorelin / ipamorelin on this site is a blend listing: two cas numbers, two sequences,…">
+<a href="/blog/tesamorelin-ipamorelin-blend-identity" class="blog-card" data-tag="Identity" data-title="tesamorelin / ipamorelin: two cas numbers on one vial" data-excerpt="one catalog sku can still be two chemicals. tesamorelin / ipamorelin on this site is a blend listing: two cas numbers, two sequences,…">
   <div class="blog-card-img"><img src="/media/blog-topic/tesamorelin-ipamorelin-blend-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -180,7 +180,7 @@
     <div class="meta">Aug 31, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/tb-500-vs-thymosin-beta-4-identity.html" class="blog-card" data-tag="Identity" data-title="tb-500 vs thymosin β4: which sequence is on the vial" data-excerpt="two different molecules share the shop name “tb-500.” full-length thymosin β4 is a 43-residue actin-binding peptide, commonly indexed as cas 77591-33-4. biolabs research…">
+<a href="/blog/tb-500-vs-thymosin-beta-4-identity" class="blog-card" data-tag="Identity" data-title="tb-500 vs thymosin β4: which sequence is on the vial" data-excerpt="two different molecules share the shop name “tb-500.” full-length thymosin β4 is a 43-residue actin-binding peptide, commonly indexed as cas 77591-33-4. biolabs research…">
   <div class="blog-card-img"><img src="/media/blog-topic/tb-500-vs-thymosin-beta-4-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -189,7 +189,7 @@
     <div class="meta">Aug 31, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/semax-acth-4-7-pgp-identity.html" class="blog-card" data-tag="Identity" data-title="semax is acth(4–7)-pgp, sequence mehfpgp" data-excerpt="semax is a synthetic heptapeptide built as acth(4–7) with a c-terminal pro-gly-pro (pgp) extension. the one-letter sequence is mehfpgp: met-glu-his-phe-pro-gly-pro. it is not…">
+<a href="/blog/semax-acth-4-7-pgp-identity" class="blog-card" data-tag="Identity" data-title="semax is acth(4–7)-pgp, sequence mehfpgp" data-excerpt="semax is a synthetic heptapeptide built as acth(4–7) with a c-terminal pro-gly-pro (pgp) extension. the one-letter sequence is mehfpgp: met-glu-his-phe-pro-gly-pro. it is not…">
   <div class="blog-card-img"><img src="/media/blog-topic/semax-acth-4-7-pgp-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -198,7 +198,7 @@
     <div class="meta">Aug 31, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/melanotan-ii-identity.html" class="blog-card" data-tag="Identity" data-title="melanotan ii is a cyclic α-msh analogue, not a catalog sku" data-excerpt="melanotan ii (mt-ii) is a synthetic cyclic lactam analogue of α-melanocyte-stimulating hormone (α-msh). purchasing teams see the name on forums, po templates, and…">
+<a href="/blog/melanotan-ii-identity" class="blog-card" data-tag="Identity" data-title="melanotan ii is a cyclic α-msh analogue, not a catalog sku" data-excerpt="melanotan ii (mt-ii) is a synthetic cyclic lactam analogue of α-melanocyte-stimulating hormone (α-msh). purchasing teams see the name on forums, po templates, and…">
   <div class="blog-card-img"><img src="/media/blog-topic/melanotan-ii-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -207,7 +207,7 @@
     <div class="meta">Aug 31, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/kisspeptin-10-kiss1-fragment-identity.html" class="blog-card" data-tag="Identity" data-title="kisspeptin-10 is the c-terminal kiss1 decapeptide amide" data-excerpt="laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical…">
+<a href="/blog/kisspeptin-10-kiss1-fragment-identity" class="blog-card" data-tag="Identity" data-title="kisspeptin-10 is the c-terminal kiss1 decapeptide amide" data-excerpt="laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical…">
   <div class="blog-card-img"><img src="/media/blog-topic/kisspeptin-10-kiss1-fragment-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -216,7 +216,7 @@
     <div class="meta">Aug 31, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/kpv-alpha-msh-11-13-identity.html" class="blog-card" data-tag="Identity" data-title="kpv is α-msh 11–13, not the whole hormone" data-excerpt="catalog cards often print “kpv” as if that three-letter code were a hormone. it is not. kpv is the c-terminal tripeptide of α-melanocyte-stimulating…">
+<a href="/blog/kpv-alpha-msh-11-13-identity" class="blog-card" data-tag="Identity" data-title="kpv is α-msh 11–13, not the whole hormone" data-excerpt="catalog cards often print “kpv” as if that three-letter code were a hormone. it is not. kpv is the c-terminal tripeptide of α-melanocyte-stimulating…">
   <div class="blog-card-img"><img src="/media/blog-topic/kpv-alpha-msh-11-13-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -225,7 +225,7 @@
     <div class="meta">Aug 31, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/hplc-area-percent-vs-net-peptide-content.html" class="blog-card" data-tag="COA" data-title="hplc area percent is not net peptide content" data-excerpt="a catalog line that says “98% pure” is not a mass of peptide. on a reversed-phase hplc trace, that number is almost always…">
+<a href="/blog/hplc-area-percent-vs-net-peptide-content" class="blog-card" data-tag="COA" data-title="hplc area percent is not net peptide content" data-excerpt="a catalog line that says “98% pure” is not a mass of peptide. on a reversed-phase hplc trace, that number is almost always…">
   <div class="blog-card-img"><img src="/media/blog-topic/hplc-area-percent-vs-net-peptide-content-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">COA</span>
@@ -234,7 +234,7 @@
     <div class="meta">Aug 31, 2026 · 11 min read</div>
   </div>
 </a>
-<a href="/blog/glow-70-named-blend-identity.html" class="blog-card" data-tag="Identity" data-title="glow 70 is a named catalog blend, not a cas number" data-excerpt="glow 70 is a named catalog blend. it is not a cas number. a trade name on a vial does not mint a…">
+<a href="/blog/glow-70-named-blend-identity" class="blog-card" data-tag="Identity" data-title="glow 70 is a named catalog blend, not a cas number" data-excerpt="glow 70 is a named catalog blend. it is not a cas number. a trade name on a vial does not mint a…">
   <div class="blog-card-img"><img src="/media/blog-topic/glow-70-named-blend-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -243,7 +243,7 @@
     <div class="meta">Aug 31, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/curcumin-phytosome-identity.html" class="blog-card" data-tag="Identity" data-title="curcumin phytosome is a complex, not a peptide cas" data-excerpt="curcumin phytosome is not a peptide and it does not have a peptide cas. curcumin itself is diferuloylmethane, a diarylheptanoid polyphenol. a phytosome,…">
+<a href="/blog/curcumin-phytosome-identity" class="blog-card" data-tag="Identity" data-title="curcumin phytosome is a complex, not a peptide cas" data-excerpt="curcumin phytosome is not a peptide and it does not have a peptide cas. curcumin itself is diferuloylmethane, a diarylheptanoid polyphenol. a phytosome,…">
   <div class="blog-card-img"><img src="/media/blog-topic/curcumin-phytosome-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -252,7 +252,7 @@
     <div class="meta">Aug 31, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/cjc-1295-dac-vs-modified-grf-identity.html" class="blog-card" data-tag="Identity" data-title="cjc-1295 with dac and without dac are different molecules" data-excerpt="“cjc-1295” is used for two backbones. one carries a c-terminal lys with a maleimidopropionyl (dac) handle. the other is tetrasubstituted grf(1–29) amide without…">
+<a href="/blog/cjc-1295-dac-vs-modified-grf-identity" class="blog-card" data-tag="Identity" data-title="cjc-1295 with dac and without dac are different molecules" data-excerpt="“cjc-1295” is used for two backbones. one carries a c-terminal lys with a maleimidopropionyl (dac) handle. the other is tetrasubstituted grf(1–29) amide without…">
   <div class="blog-card-img"><img src="/media/blog-topic/cjc-1295-dac-vs-modified-grf-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -261,7 +261,7 @@
     <div class="meta">Aug 31, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/bpc-157-tb-500-blend-identity.html" class="blog-card" data-tag="Identity" data-title="bpc-157 / tb-500 blend: two sequences, two masses" data-excerpt="a bpc-157 / tb-500 blend is two peptides in one vial, not a new substance. bpc-157 is a 15-residue gastric-derived fragment with its…">
+<a href="/blog/bpc-157-tb-500-blend-identity" class="blog-card" data-tag="Identity" data-title="bpc-157 / tb-500 blend: two sequences, two masses" data-excerpt="a bpc-157 / tb-500 blend is two peptides in one vial, not a new substance. bpc-157 is a 15-residue gastric-derived fragment with its…">
   <div class="blog-card-img"><img src="/media/blog-topic/bpc-157-tb-500-blend-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -270,7 +270,7 @@
     <div class="meta">Aug 31, 2026 · 9 min read</div>
   </div>
 </a>
-<a href="/blog/aod-9604-hgh-fragment-identity.html" class="blog-card" data-tag="Identity" data-title="aod-9604 vs hgh 177–191: match the sequence on the vial" data-excerpt="catalog names in this class get reused until they stop meaning anything. “aod-9604,” “hgh 177–191,” “hgh 176–191,” and “fragment 176–191” are not automatically…">
+<a href="/blog/aod-9604-hgh-fragment-identity" class="blog-card" data-tag="Identity" data-title="aod-9604 vs hgh 177–191: match the sequence on the vial" data-excerpt="catalog names in this class get reused until they stop meaning anything. “aod-9604,” “hgh 177–191,” “hgh 176–191,” and “fragment 176–191” are not automatically…">
   <div class="blog-card-img"><img src="/media/blog-topic/aod-9604-hgh-fragment-identity-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -279,7 +279,7 @@
     <div class="meta">Aug 31, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/what-is-bpc-157-research-overview.html" class="blog-card" data-tag="Identity" data-title="what is bpc-157? a research overview" data-excerpt="bpc-157 (body protection compound-157) is a synthetic pentadecapeptide derived from a sequence found in human gastric juice. composed of 15 amino acids, it…">
+<a href="/blog/what-is-bpc-157-research-overview" class="blog-card" data-tag="Identity" data-title="what is bpc-157? a research overview" data-excerpt="bpc-157 (body protection compound-157) is a synthetic pentadecapeptide derived from a sequence found in human gastric juice. composed of 15 amino acids, it…">
   <div class="blog-card-img"><img src="/media/blog-topic/what-is-bpc-157-research-overview-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -288,7 +288,7 @@
     <div class="meta">Aug 26, 2026 · 7 min read</div>
   </div>
 </a>
-<a href="/blog/tb-500-thymosin-beta-4-research.html" class="blog-card" data-tag="Identity" data-title="tb-500 (thymosin beta-4) research overview" data-excerpt="tb-500 is a synthetic fragment of thymosin beta-4 (tβ4), a 43-amino acid peptide naturally found in many tissues. tb-500 has been studied extensively…">
+<a href="/blog/tb-500-thymosin-beta-4-research" class="blog-card" data-tag="Identity" data-title="tb-500 (thymosin beta-4) research overview" data-excerpt="tb-500 is a synthetic fragment of thymosin beta-4 (tβ4), a 43-amino acid peptide naturally found in many tissues. tb-500 has been studied extensively…">
   <div class="blog-card-img"><img src="/media/blog-topic/tb-500-thymosin-beta-4-research-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -297,7 +297,7 @@
     <div class="meta">Aug 26, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/retatrutide-metabolic-research.html" class="blog-card" data-tag="Research" data-title="r3ta (retatrutide): metabolic research overview" data-excerpt="r3ta (retatrutide, ly3437943) is a triple hormone receptor agonist that simultaneously targets glp-1 (glucagon-like peptide-1), gip (glucose-dependent insulinotropic polypeptide), and glucagon receptors. it…">
+<a href="/blog/retatrutide-metabolic-research" class="blog-card" data-tag="Research" data-title="r3ta (retatrutide): metabolic research overview" data-excerpt="r3ta (retatrutide, ly3437943) is a triple hormone receptor agonist that simultaneously targets glp-1 (glucagon-like peptide-1), gip (glucose-dependent insulinotropic polypeptide), and glucagon receptors. it…">
   <div class="blog-card-img"><img src="/media/blog-topic/retatrutide-metabolic-research-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Research</span>
@@ -306,7 +306,7 @@
     <div class="meta">Aug 26, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/peptide-purity-and-coa-explained.html" class="blog-card" data-tag="COA" data-title="peptide purity and coa explained" data-excerpt="laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical…">
+<a href="/blog/peptide-purity-and-coa-explained" class="blog-card" data-tag="COA" data-title="peptide purity and coa explained" data-excerpt="laboratory purchasing note: keep identity fields (sequence or structure, registry numbers when applicable, and observed mass) on the same record as the physical…">
   <div class="blog-card-img"><img src="/media/blog-topic/peptide-purity-and-coa-explained-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">COA</span>
@@ -315,7 +315,7 @@
     <div class="meta">Aug 26, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/nad-plus-research-applications.html" class="blog-card" data-tag="Research" data-title="nad+ research applications: a biochemical overview" data-excerpt="nicotinamide adenine dinucleotide (nad+) is one of the most studied coenzymes in biochemistry. first discovered in 1906, it plays a central role in…">
+<a href="/blog/nad-plus-research-applications" class="blog-card" data-tag="Research" data-title="nad+ research applications: a biochemical overview" data-excerpt="nicotinamide adenine dinucleotide (nad+) is one of the most studied coenzymes in biochemistry. first discovered in 1906, it plays a central role in…">
   <div class="blog-card-img"><img src="/media/blog-topic/nad-plus-research-applications-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Research</span>
@@ -324,7 +324,7 @@
     <div class="meta">Aug 26, 2026 · 6 min read</div>
   </div>
 </a>
-<a href="/blog/mots-c-mitochondrial-research-peptide.html" class="blog-card" data-tag="Research" data-title="mots-c: mitochondrial research peptide overview" data-excerpt="mots-c (mitochondrial orf of the twelve s rrna type-c) is a 16-amino acid mitochondrial-derived peptide encoded by the mitochondrial genome. discovered in 2015,…">
+<a href="/blog/mots-c-mitochondrial-research-peptide" class="blog-card" data-tag="Research" data-title="mots-c: mitochondrial research peptide overview" data-excerpt="mots-c (mitochondrial orf of the twelve s rrna type-c) is a 16-amino acid mitochondrial-derived peptide encoded by the mitochondrial genome. discovered in 2015,…">
   <div class="blog-card-img"><img src="/media/blog-topic/mots-c-mitochondrial-research-peptide-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Research</span>
@@ -333,7 +333,7 @@
     <div class="meta">Aug 26, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/ghk-cu-copper-peptide-research.html" class="blog-card" data-tag="Research" data-title="ghk-cu copper peptide: research overview" data-excerpt="ghk-cu (glycyl-l-histidyl-l-lysine copper complex) is a naturally occurring copper-binding tripeptide first isolated from human plasma in 1973. it has been extensively studied in…">
+<a href="/blog/ghk-cu-copper-peptide-research" class="blog-card" data-tag="Research" data-title="ghk-cu copper peptide: research overview" data-excerpt="ghk-cu (glycyl-l-histidyl-l-lysine copper complex) is a naturally occurring copper-binding tripeptide first isolated from human plasma in 1973. it has been extensively studied in…">
   <div class="blog-card-img"><img src="/media/blog-topic/ghk-cu-copper-peptide-research-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Research</span>
@@ -342,7 +342,7 @@
     <div class="meta">Aug 26, 2026 · 6 min read</div>
   </div>
 </a>
-<a href="/blog/epithalon-aging-research-peptide.html" class="blog-card" data-tag="Research" data-title="epithalon: aging research overview" data-excerpt="epithalon (also spelled epitalon) is a synthetic tetrapeptide (ala-glu-asp-gly) derived from the pineal gland peptide epithalamin. it has been studied primarily in the…">
+<a href="/blog/epithalon-aging-research-peptide" class="blog-card" data-tag="Research" data-title="epithalon: aging research overview" data-excerpt="epithalon (also spelled epitalon) is a synthetic tetrapeptide (ala-glu-asp-gly) derived from the pineal gland peptide epithalamin. it has been studied primarily in the…">
   <div class="blog-card-img"><img src="/media/blog-topic/epithalon-aging-research-peptide-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Research</span>
@@ -351,7 +351,7 @@
     <div class="meta">Aug 26, 2026 · 8 min read</div>
   </div>
 </a>
-<a href="/blog/buying-research-peptides-online-guide-2026.html" class="blog-card" data-tag="Identity" data-title="buying research peptides online: a 2026 sourcing guide" data-excerpt="sourcing research peptides online has become increasingly common for laboratories, universities, and independent researchers. however, the market is fragmented and quality varies dramatically…">
+<a href="/blog/buying-research-peptides-online-guide-2026" class="blog-card" data-tag="Identity" data-title="buying research peptides online: a 2026 sourcing guide" data-excerpt="sourcing research peptides online has become increasingly common for laboratories, universities, and independent researchers. however, the market is fragmented and quality varies dramatically…">
   <div class="blog-card-img"><img src="/media/blog-topic/buying-research-peptides-online-guide-2026-1.png" alt="" loading="lazy"></div>
   <div class="blog-card-body">
     <span class="blog-tag">Identity</span>
@@ -406,7 +406,7 @@
   m.classList.toggle('open', open);
   if (o) o.classList.toggle('open', open);
   try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
-})();
+}
 </script>
 <script src="/promo-bar.js?v=12"></script>
 <script src="/mg-picker.js?v=8"></script>
