@@ -4,6 +4,10 @@
   var s = document.createElement('style');
   s.id = 'cart-addmore-css';
   s.textContent = [
+    '/* Stage4 cart-close tap */',
+    '.cart-close{min-width:44px !important;min-height:44px !important;width:44px !important;height:44px !important;display:inline-flex !important;align-items:center !important;justify-content:center !important;padding:0 !important}',
+    '.cart-drawer{height:100dvh !important;max-height:100dvh !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}',
+    '.cart-drawer .cart-items{flex:1 1 0% !important;min-height:0 !important;overflow-y:auto !important;-webkit-overflow-scrolling:touch}',
     /* P0 scroll: drawer + items flex so .cart-items is the vertical scroller */
     '.cart-drawer{height:100dvh !important;max-height:100dvh !important;min-height:0 !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}',
     '.cart-drawer .cart-items{flex:1 1 0% !important;min-height:0 !important;overflow-y:auto !important;overscroll-behavior:contain !important;-webkit-overflow-scrolling:touch;padding:16px 20px !important}',

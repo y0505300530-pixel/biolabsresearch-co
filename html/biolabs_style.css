@@ -5830,3 +5830,179 @@ body.nav-open{overflow:hidden !important;}
 @media (max-width:480px){
   .cf-submit{min-height:44px;height:44px}
 }
+
+/* ===== Stage 4 mobile + CLS harden 2026-09-08 ===== */
+html, body { overflow-x: hidden; max-width: 100%; }
+img, video, svg { max-width: 100%; height: auto; }
+.bl-video-frame, .bl-video-pdp .bl-video-frame, .bl-video-tools .bl-video-frame {
+  aspect-ratio: 1344 / 768;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+.bl-video video, .bl-video-tools video { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* #6 INSIDER25 promo tap target — bar grows to fit 44px */
+.promo-bar,
+.promo-stack .promo-bar {
+  height: auto !important;
+  min-height: 44px !important;
+  max-height: none !important;
+  overflow: hidden !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 !important;
+}
+.promo-track,
+.promo-group {
+  height: 44px !important;
+  min-height: 44px !important;
+  max-height: none !important;
+  align-items: center !important;
+}
+.promo-seg {
+  line-height: 1.2 !important;
+  height: 44px !important;
+  align-items: center !important;
+}
+.promo-code,
+.promo-seg .promo-code,
+button.promo-code {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  height: 44px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 14px !important;
+  font-size: 12px !important;
+  line-height: 1 !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.nav { top: 44px !important; }
+html { scroll-padding-top: 108px; }
+
+/* Cart drawer: scroll, close hit area, no clip at 375 */
+.cart-drawer,
+#cartDrawer {
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box !important;
+}
+.cart-drawer .cart-items,
+#cartItems {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch;
+}
+.cart-header,
+.cart-footer,
+#cartProgress {
+  flex: 0 0 auto !important;
+}
+.cart-close {
+  min-width: 44px !important;
+  min-height: 44px !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.cart-item,
+.cart-item-info {
+  min-width: 0;
+  max-width: 100%;
+}
+.cart-item-name,
+.ci-name {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Tap targets: ATC / nav / qty */
+@media (max-width: 480px) {
+  .nav-hamburger,
+  .nav-cart,
+  .nav-util {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    box-sizing: border-box !important;
+  }
+  .product-card-atc,
+  .pdp-atc,
+  .atc-btn,
+  .btn-order,
+  .coming-pdp-cta,
+  .btn-checkout,
+  .btn-continue,
+  .cart-footer .btn-continue {
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+  }
+  .ci-qty button,
+  .cart-item-qty button {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex: 0 0 44px !important;
+  }
+  .product-card-mg {
+    min-height: 44px !important;
+    padding: 10px 12px !important;
+    box-sizing: border-box !important;
+  }
+  .product-title,
+  .pdp-name,
+  .product-name,
+  .sku-title,
+  .buy-panel h1,
+  .product-hero-name {
+    font-size: clamp(28px, 8vw, 40px) !important;
+    letter-spacing: -1px !important;
+    overflow-wrap: anywhere;
+  }
+  .hero-headline {
+    overflow-wrap: anywhere;
+  }
+  .chem-table-wrap,
+  .table-scroll {
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Images in cards / COA tiles stay contained */
+.product-card-img img,
+.cat-photo img,
+.split-photo img,
+.jrnl-card img,
+.blog-card-img img,
+.article-img,
+.related-card img {
+  max-width: 100%;
+  height: auto;
+}
