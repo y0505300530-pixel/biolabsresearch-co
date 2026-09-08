@@ -7642,7 +7642,7 @@ body:has(.cart-drawer.open) #promoStack {
   white-space: nowrap !important;
   overflow: hidden !important;
   text-overflow: ellipsis !important;
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 700 !important;
   line-height: 1.2 !important;
   margin: 0 !important;

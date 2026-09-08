@@ -55,7 +55,7 @@
     '.cart-item.ci-bac,.cart-drawer .cart-item.ci-bac{min-height:48px !important;height:48px !important;max-height:48px !important;padding:0 10px !important;margin:0 -14px !important;gap:8px !important;align-items:center !important;background:#F7F1E4 !important;border-bottom:0 !important;border-top:1px solid #E6DCC8 !important;overflow:hidden !important;box-sizing:border-box !important}',
     '.cart-item.ci-bac .ci-img,.cart-item.ci-bac .ci-remove,.cart-drawer .cart-item.ci-bac .ci-img,.cart-drawer .cart-item.ci-bac .ci-remove{display:none !important;width:0 !important;height:0 !important;min-width:0 !important;min-height:0 !important;max-width:0 !important;max-height:0 !important;overflow:hidden !important;flex:0 0 0 !important;padding:0 !important;margin:0 !important;border:0 !important}',
     '.cart-item.ci-bac .ci-info{display:flex !important;flex-direction:row !important;flex-wrap:nowrap !important;align-items:center !important;gap:8px !important;width:100% !important;min-width:0 !important;grid-template-columns:none !important;grid-template-areas:none !important}',
-    '.cart-item.ci-bac .ci-name{flex:1 1 auto !important;min-width:0 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;font-size:13px !important;font-weight:700 !important;line-height:1.2 !important;margin:0 !important}',
+    '.cart-item.ci-bac .ci-name{flex:1 1 auto !important;min-width:0 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important;font-size:12px !important;font-weight:700 !important;line-height:1.2 !important;margin:0 !important}',
     '.cart-item.ci-bac .ci-mg{display:none !important}',
     '.cart-item.ci-bac .ci-rec-badge{flex:0 0 auto !important;grid-area:auto !important;font-size:9px !important;padding:2px 5px !important;text-transform:none !important;letter-spacing:0 !important}',
     '.cart-item.ci-bac .ci-qty{flex:0 0 auto !important;grid-area:auto !important;display:flex !important;align-items:center !important;height:32px !important;margin:0 !important;gap:0 !important}',
@@ -1711,7 +1711,10 @@ function addSuggest(slug, name, price, mg){
           var rm = rows[i].querySelector('.ci-remove');
           if (rm) rm.setAttribute('hidden', '');
           var nameEl = info.querySelector('.ci-name');
-          if (nameEl) nameEl.textContent = BAC_DISPLAY_NAME;
+          if (nameEl) {
+            nameEl.textContent = BAC_DISPLAY_NAME;
+            nameEl.setAttribute('title', BAC_DISPLAY_NAME);
+          }
           if (!existing) {
             var b = document.createElement('span');
             b.className = 'ci-rec-badge';
