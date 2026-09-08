@@ -80,7 +80,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=252">
+<link rel="stylesheet" href="/biolabs_style.css?v=253">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -321,7 +321,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
           <figure class="bl-video bl-video-pdp">
   <div class="bl-video-frame" style="aspect-ratio:1344/768">
     <video autoplay muted loop playsinline preload="metadata"
-      aria-label="Research-use vial close-up loop">
+      poster="/media/video/product-closeup-loop-poster.webp"
+      aria-label="Research-use vial close-up loop — sealed peptide vial on sand studio backdrop">
       <source src="/media/video/product-closeup-loop.mp4" type="video/mp4">
     </video>
   </div>
@@ -579,7 +580,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         '<div class="product-img-section">' +
           '<figure class="bl-video bl-video-pdp">' +
             '<div class="bl-video-frame" style="aspect-ratio:1344/768">' +
-              '<video autoplay muted loop playsinline preload="metadata" aria-label="Research-use vial close-up loop">' +
+              '<video autoplay muted loop playsinline preload="metadata" poster="/media/video/product-closeup-loop-poster.webp" aria-label="Research-use vial close-up loop — sealed peptide vial on sand studio backdrop">' +
                 '<source src="/media/video/product-closeup-loop.mp4" type="video/mp4">' +
               '</video>' +
             '</div>' +
@@ -1329,5 +1330,6 @@ document.addEventListener('keydown', function(e) {
 <script src="/product-marquee.js?v=20"></script>
 <script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>
 
+<script src="/tools-video.js?v=2"></script>
 </body>
 </html>
