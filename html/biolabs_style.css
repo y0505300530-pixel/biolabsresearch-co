@@ -5501,8 +5501,7 @@ a.nav-logo{
   height:40px!important;
 }
 .nav .nav-util,
-.nav .nav-cart,
-.nav .nav-hamburger{
+.nav .nav-cart{
   display:inline-flex!important;
   align-items:center!important;
   justify-content:center!important;
@@ -5511,6 +5510,23 @@ a.nav-logo{
   margin:0!important;
   box-sizing:border-box!important;
   transform:none!important;
+}
+.nav .nav-hamburger{
+  align-items:center!important;
+  justify-content:center!important;
+  box-sizing:border-box!important;
+  transform:none!important;
+}
+@media (max-width:800px){
+  .nav .nav-hamburger{
+    display:inline-flex!important;
+    width:40px!important;
+    height:40px!important;
+    margin:0!important;
+  }
+}
+@media (min-width:801px){
+  .nav .nav-hamburger{display:none!important;width:0!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;}
 }
 @media (max-width:800px){
   nav.nav,.nav{padding:14px 16px!important;gap:12px!important;min-height:56px!important}
@@ -5750,9 +5766,16 @@ a.nav-logo{
 .nav-hamburger{
   position:relative;z-index:10060 !important;
   min-width:44px;min-height:44px;
-  display:inline-flex !important;align-items:center;justify-content:center;
+  align-items:center;justify-content:center;
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
+}
+/* display only on mobile — desktop hide wins below */
+@media (max-width:800px){
+  .nav-hamburger{display:inline-flex !important;}
+}
+@media (min-width:801px){
+  .nav-hamburger,.nav .nav-hamburger{display:none !important;}
 }
 .nav-overlay{z-index:10070 !important;}
 .nav-menu{z-index:10080 !important;}
@@ -6475,5 +6498,27 @@ button.promo-code:focus-visible,
     width: 44px !important;
     height: 44px !important;
     pointer-events: auto !important;
+  }
+}
+/* === FIX 2026-09-08: hard hide desktop hamburger === */
+@media (min-width: 801px) {
+  nav.nav .nav-hamburger,
+  .nav .nav-hamburger,
+  button.nav-hamburger,
+  .nav-hamburger {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    left: -9999px !important;
   }
 }
