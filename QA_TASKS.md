@@ -42,6 +42,8 @@ was closed.
 | M16 | The `support-status` dot in the footer stays empty everywhere except the home page: the script that fills it is inline in `index.html` | pages | open |
 | M17 | On checkout, the plus and minus on the free BAC-water line call `saveCart()`, which does not exist on that page, so the click throws | pages | open |
 | M18 | Four scripts each fetch `/api/products` on every page view: `cart-vial`, `mg-picker`, `prices-sync` and, on product pages, `product-marquee`. One shared request would do | infra | open |
+| M19 | `guide-reading-coa.html` carries no research-use-only line anywhere on the page | pages | open |
+| M20 | Two different footers are in use: the home page, the product pages and the blog carry `<footer class="footer" id="site-footer">`, while 23 other pages carry a slimmer `<div class="footer">`. Pick one | pages | open |
 
 ## Needs a decision from the owner
 
