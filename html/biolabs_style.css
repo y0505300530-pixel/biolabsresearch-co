@@ -6984,3 +6984,25 @@ a.cart-inquiry-perk {
 @media (max-width:720px){
   .jrnl-cta{margin-top:20px}
 }
+
+/* Checkout sticky chrome: promo + nav stay together on scroll */
+.site-sticky-chrome{
+  position:sticky !important;
+  top:0 !important;
+  z-index:12000 !important;
+  background:#F5F2EC;
+}
+.site-sticky-chrome .promo-stack{
+  position:relative !important;
+  top:auto !important;
+  z-index:auto !important;
+}
+.site-sticky-chrome .nav{
+  position:relative !important;
+  top:auto !important;
+  z-index:auto !important;
+}
+.site-sticky-chrome .nav-logo-mark,
+.site-sticky-chrome .nav-logo-text{
+  font-family:var(--font-logo),'Fraunces',Georgia,serif !important;
+}
