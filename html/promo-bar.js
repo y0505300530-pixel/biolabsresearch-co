@@ -1,8 +1,18 @@
-/* INSIDER25 promo + countdown. Fixed end: 2026-09-14T23:59:59+03:00 (Asia/Jerusalem). */
+/* INSIDER25 promo + countdown. Fixed end: 2026-09-14T23:59:59+03:00 (Asia/Jerusalem).
+   Marquee is rAF-driven (not CSS animation) so live timer updates don't hitch the loop. */
 (function(){
   var CODE = "INSIDER25";
   var END_ISO = "2026-09-14T23:59:59+03:00";
   var END_MS = Date.parse(END_ISO);
+  var LOOP_SEC = 93;
+  var _raf = 0;
+  var _x = 0;
+  var _halfW = 0;
+  var _last = 0;
+  var _track = null;
+  var _half = null;
+  var _resizeT = 0;
+
   function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
   function format(left){
     var h = left / 36e5, m = (left % 36e5) / 6e4, s = (left % 6e4) / 1e3;
@@ -14,22 +24,58 @@
     var i, text;
     if (left <= 0) {
       text = "Offer ended";
-      for (i = 0; i < nodes.length; i++) {
-        nodes[i].setAttribute("data-end", END_ISO);
-        nodes[i].textContent = text;
-      }
-      return;
+    } else {
+      text = format(left);
     }
-    text = format(left);
     for (i = 0; i < nodes.length; i++) {
       nodes[i].setAttribute("data-end", END_ISO);
-      nodes[i].textContent = text;
+      if (nodes[i].textContent !== text) nodes[i].textContent = text;
     }
   }
   function saveCode(){
     try { localStorage.setItem("biolabs_coupon", CODE); } catch (e) {}
   }
-  function wire(){
+
+  function stopMarquee(){
+    if (_raf) { try { cancelAnimationFrame(_raf); } catch (e) {} _raf = 0; }
+  }
+
+  function measureHalf(){
+    if (!_half) return 0;
+    return Math.max(1, Math.round(_half.getBoundingClientRect().width));
+  }
+
+  function frame(now){
+    if (!_track || !_half) return;
+    if (!_last) _last = now;
+    var dt = Math.min(0.05, (now - _last) / 1000);
+    _last = now;
+    var halfW = _halfW || measureHalf();
+    _halfW = halfW;
+    var speed = halfW / LOOP_SEC;
+    _x -= speed * dt;
+    /* wrap without jump — exact half width */
+    if (_x <= -halfW) _x += halfW;
+    if (_x > 0) _x -= halfW;
+    _track.style.transform = "translate3d(" + _x.toFixed(2) + "px,0,0)";
+    _raf = requestAnimationFrame(frame);
+  }
+
+  function startMarquee(){
+    stopMarquee();
+    _track = document.querySelector(".promo-track");
+    _half = _track && _track.querySelector(".promo-half");
+    if (!_track || !_half) return;
+    _track.style.animation = "none";
+    _track.style.willChange = "transform";
+    _halfW = measureHalf();
+    _last = 0;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      _track.style.transform = "translate3d(0,0,0)";
+      return;
+    }
+    _raf = requestAnimationFrame(frame);
+  }
 
   function fillMarquee(){
     var track = document.querySelector(".promo-track");
@@ -37,42 +83,55 @@
     if (!track || !bar) return;
     var groups = track.querySelectorAll(".promo-group");
     if (!groups.length) return;
-    // Keep first group as template; rebuild two equal halves that cover >= bar width
     var template = groups[0].cloneNode(true);
-    var fragA = document.createDocumentFragment();
-    var fragB = document.createDocumentFragment();
-    var guard = 0;
     var minW = Math.max(bar.clientWidth || 0, window.innerWidth || 0, 1200);
-    // clear
     track.innerHTML = "";
-    var half = document.createElement("div");
-    half.className = "promo-half";
-    half.style.display = "flex";
-    half.style.alignItems = "center";
-    half.style.flex = "0 0 auto";
-    var a = half.cloneNode(false);
-    var b = half.cloneNode(false);
+    track.style.animation = "none";
+    track.style.display = "flex";
+    track.style.alignItems = "center";
+    track.style.flexWrap = "nowrap";
+    track.style.width = "max-content";
+    track.style.transform = "translate3d(0,0,0)";
+
+    function makeHalf(){
+      var half = document.createElement("div");
+      half.className = "promo-half";
+      half.style.display = "flex";
+      half.style.alignItems = "center";
+      half.style.flex = "0 0 auto";
+      half.style.flexWrap = "nowrap";
+      return half;
+    }
+    var a = makeHalf();
+    var guard = 0;
     do {
       a.appendChild(template.cloneNode(true));
       guard++;
-    } while (a.scrollWidth < minW && guard < 24);
-    // measure after attach
+    } while (guard < 2);
     track.appendChild(a);
-    // force layout
-    var need = Math.max(a.scrollWidth, minW);
-    while (a.scrollWidth < need && guard < 48) {
+    while (a.scrollWidth < minW && guard < 40) {
       a.appendChild(template.cloneNode(true));
       guard++;
     }
+    var b = makeHalf();
     b.innerHTML = a.innerHTML;
     track.appendChild(b);
-    // ensure animation targets -50% of full track (two equal halves)
-    track.style.width = "max-content";
+    _x = 0;
+    _halfW = 0;
+    startMarquee();
   }
 
+  function wire(){
     saveCode();
     try { fillMarquee(); } catch (e) {}
-    try { window.addEventListener("resize", function(){ try { fillMarquee(); } catch (e2) {} }); } catch (e3) {}
+    try {
+      window.addEventListener("resize", function(){
+        clearTimeout(_resizeT);
+        _resizeT = setTimeout(function(){
+          try { fillMarquee(); } catch (e2) {}
+        }, 200);
+      });
+    } catch (e3) {}
     try {
       localStorage.removeItem("insider25_end");
       localStorage.removeItem("promo_end");

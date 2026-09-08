@@ -7006,3 +7006,28 @@ a.cart-inquiry-perk {
 .site-sticky-chrome .nav-logo-text{
   font-family:var(--font-logo),'Fraunces',Georgia,serif !important;
 }
+
+/* === FIX 2026-09-08: promo ticker no hitch ===
+   JS rAF marquee owns motion; disable CSS anim + hover-pause (felt like a 1s stick). */
+.promo-bar .promo-track,
+.promo-track {
+  animation: none !important;
+  will-change: transform;
+  transform: translate3d(0,0,0);
+}
+.promo-bar:hover .promo-track {
+  animation-play-state: running !important;
+}
+.promo-half {
+  display: flex !important;
+  align-items: center !important;
+  flex: 0 0 auto !important;
+  flex-wrap: nowrap !important;
+}
+.promo-seg .cutoff-timer,
+.cutoff-timer {
+  font-variant-numeric: tabular-nums !important;
+  display: inline-block !important;
+  min-width: 9ch !important;
+  text-align: left !important;
+}
