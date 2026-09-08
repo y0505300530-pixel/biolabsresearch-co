@@ -6781,3 +6781,153 @@ a.cart-inquiry-perk {
   overflow: visible !important;
   text-overflow: clip !important;
 }
+
+/* === FIX 2026-09-08: homepage science block — shipping-card polish, links to /science === */
+.science-home {
+  background: #F5F2EC !important;
+  padding: 64px 48px 72px !important;
+  border-top: 1px solid #E6E0D6 !important;
+  border-bottom: 1px solid #E6E0D6 !important;
+  overflow: visible !important;
+}
+.science-home-inner { max-width: var(--maxw, 1180px) !important; margin: 0 auto !important; }
+.science-home-head { text-align: center !important; max-width: 640px !important; margin: 0 auto 28px !important; }
+.science-home-tag {
+  display: inline-block !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  letter-spacing: .16em !important;
+  text-transform: uppercase !important;
+  color: #9A6D2A !important;
+  border: 1px solid #C9A46A !important;
+  border-radius: 999px !important;
+  padding: 8px 14px !important;
+  margin: 0 0 18px !important;
+  background: #fff !important;
+}
+.science-home-head h2 {
+  font-size: clamp(28px, 3.6vw, 42px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -.03em !important;
+  line-height: 1.1 !important;
+  margin: 0 0 14px !important;
+  color: #0d2137 !important;
+}
+.science-home-head p {
+  margin: 0 auto !important;
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  color: #5a5348 !important;
+}
+.science-home-stats {
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 14px !important;
+  margin: 0 0 10px !important;
+}
+.science-stat {
+  background: #fff !important;
+  border: 1px solid #e8dfcf !important;
+  border-radius: 16px !important;
+  padding: 22px 18px !important;
+  text-align: center !important;
+  box-shadow: 0 8px 28px rgba(13, 33, 55, .04) !important;
+}
+.science-stat-num {
+  font-size: clamp(28px, 3vw, 40px) !important;
+  font-weight: 800 !important;
+  letter-spacing: -.03em !important;
+  line-height: 1 !important;
+  color: #0d2137 !important;
+  margin: 0 0 8px !important;
+}
+.science-stat-label {
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  color: #5a5348 !important;
+}
+.science-home-note {
+  margin: 0 0 28px !important;
+  font-size: 12px !important;
+  color: #8A8A8A !important;
+  text-align: center !important;
+}
+.science-home-cards {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 18px !important;
+}
+.science-card {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  background: #fff !important;
+  border: 1px solid #e8dfcf !important;
+  border-radius: 16px !important;
+  padding: 26px 22px 22px !important;
+  text-decoration: none !important;
+  color: inherit !important;
+  box-shadow: 0 8px 28px rgba(13, 33, 55, .05) !important;
+  transition: transform .18s ease, border-color .18s ease !important;
+  min-height: 220px !important;
+}
+.science-card:hover {
+  transform: translateY(-4px) !important;
+  border-color: #B08D57 !important;
+}
+.science-card-ico {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 999px !important;
+  background: #0d2137 !important;
+  color: #F2D191 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin: 0 0 6px !important;
+}
+.science-card strong {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #0d2137 !important;
+  letter-spacing: -.02em !important;
+}
+.science-card p {
+  margin: 0 !important;
+  font-size: 14.5px !important;
+  line-height: 1.55 !important;
+  color: #5a5348 !important;
+  flex: 1 !important;
+}
+.science-card-cta {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #9A6D2A !important;
+  min-height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+}
+.science-home-cta {
+  display: flex !important;
+  justify-content: center !important;
+  margin-top: 28px !important;
+}
+.science-home-cta-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  padding: 12px 24px !important;
+  border-radius: 999px !important;
+  background: #0d2137 !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  font-size: 14px !important;
+  text-decoration: none !important;
+}
+.science-home-cta-btn:hover { opacity: .92 !important; }
+@media (max-width: 900px) {
+  .science-home { padding: 48px 20px 56px !important; }
+  .science-home-stats { grid-template-columns: 1fr 1fr !important; }
+  .science-home-cards { grid-template-columns: 1fr !important; }
+}
