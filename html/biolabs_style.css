@@ -6522,3 +6522,77 @@ button.promo-code:focus-visible,
     left: -9999px !important;
   }
 }
+
+/* === FIX 2026-09-08: Tools + COA Library in desktop left cluster, then | search/cart === */
+.nav-links-right { display: none !important; }
+@media (min-width: 901px) {
+  .nav-left {
+    display: flex !important;
+    align-items: center !important;
+    gap: 18px !important;
+    flex: 1 1 auto !important;
+    flex-wrap: nowrap !important;
+  }
+  .nav-left a {
+    font-size: 14px !important;
+    white-space: nowrap !important;
+  }
+  .nav .nav-sep,
+  .nav-sep {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: rgba(13, 33, 55, 0.38) !important;
+    font-size: 18px !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+    padding: 0 8px !important;
+    margin: 0 !important;
+    user-select: none !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    position: static !important;
+    left: auto !important;
+    pointer-events: none !important;
+  }
+  nav.nav .nav-hamburger,
+  .nav .nav-hamburger,
+  button.nav-hamburger,
+  .nav-hamburger {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+}
+@media (min-width: 901px) and (max-width: 1180px) {
+  .nav { padding: 14px 24px !important; gap: 14px !important; }
+  .nav-left { gap: 12px !important; }
+  .nav-left a { font-size: 13px !important; }
+}
+@media (max-width: 900px) {
+  .nav-left,
+  .nav .nav-sep,
+  .nav-sep { display: none !important; }
+  nav.nav .nav-hamburger,
+  .nav .nav-hamburger,
+  button.nav-hamburger,
+  .nav-hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    left: auto !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+  }
+}
