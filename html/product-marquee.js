@@ -58,7 +58,7 @@
     return null;
   }
 
-  function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v=155'; } return '/media/vial-'+slug+'.png?v=155'; }
+  function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v=159'; } return '/media/vial-'+slug+'.png?v=159'; }
 
   /* The page's own addToCart knows nothing about strengths, so the line it just wrote says only "$62".
      Name the strength the card showed; a line that already names one is left alone. */

@@ -529,7 +529,7 @@ function productUrl(item){
 function vialImg(item){
   if (item && (item.gift || item.slug === 'research-solvent')) return '/media/research-solvent.png?v=2';
   var slug = productSlug(item);
-  return '/media/vial-'+(slug)+'.png?v=155';
+  return '/media/vial-'+(slug)+'.png?v=159';
 }
 var CART_SUGGEST = [
   {slug:'bpc-157', name:'BPC-157', price:89},
@@ -569,7 +569,7 @@ function addMoreHtml(cart){
     var mgSafe = d ? String(d.mg).replace(/[^0-9A-Za-z. ]/g, '') : '';
     var mgArg = mgSafe ? ',\'' + mgSafe + '\'' : '';
     html += '<div class="cart-addcard">' +
-      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=155" alt="' + p.name + '" width="84" height="64"></a>' +
+      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=159" alt="' + p.name + '" width="84" height="64"></a>' +
       '<div class="cart-addcard-name">' + p.name + '</div>' +
       '<div class="cart-addcard-price">' + (mgSafe ? _blrPrettyMg(mgSafe) + ' · ' : '') + '$' + price + '</div>' +
       '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + price + mgArg + ')">Add to inquiry</button>' +
@@ -668,7 +668,7 @@ function addSuggest(slug, name, price, mg){
     var c = getCart();
     var ex = c.find(function(i){ return _sameCartLine(i, slug, name, mg); });
     if (ex) { ex.qty += 1; ex.name = _baseCartName(ex.name) || name; if (slug) ex.slug = slug; if (mg && !ex.mg) ex.mg = mg; }
-    else c.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
+    else c.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=159'});
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch (e) { try { saveCart(); } catch(e2){} }
     } else {
@@ -683,7 +683,7 @@ function addSuggest(slug, name, price, mg){
   if (typeof cart !== 'undefined') {
     var ex2 = cart.find(function(i){ return _sameCartLine(i, slug, name, mg); });
     if (ex2) { ex2.qty += 1; ex2.name = _baseCartName(ex2.name) || name; if (slug) ex2.slug = slug; if (mg && !ex2.mg) ex2.mg = mg; }
-    else cart.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=155'});
+    else cart.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=159'});
     if (typeof saveCart === 'function') saveCart();
     else _writeCartLS(cart);
     if (typeof updateBadge === 'function') updateBadge();
