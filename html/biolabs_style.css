@@ -7031,3 +7031,46 @@ a.cart-inquiry-perk {
   min-width: 9ch !important;
   text-align: left !important;
 }
+
+
+/* Yehuda: ticker timer baseline — stop floating numbers */
+.promo-bar .promo-seg,
+.promo-seg {
+  display: inline-flex !important;
+  align-items: center !important;
+  line-height: 1 !important;
+}
+.promo-bar .cutoff-timer,
+.promo-seg .cutoff-timer,
+span.cutoff-timer,
+.cutoff-timer {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  transform: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  align-self: center !important;
+  vertical-align: middle !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  line-height: 1 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: 0 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums !important;
+  color: #F2D191 !important;
+  background: transparent !important;
+}
+.promo-bar .promo-code::before,
+.promo-seg .promo-code::before,
+button.promo-code::before {
+  /* hit-area only — never affect timer layout */
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
