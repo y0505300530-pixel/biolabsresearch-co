@@ -6448,3 +6448,32 @@ button.promo-code:focus-visible,
 .promo-group {
   flex: 0 0 auto !important;
 }
+
+/* === FIX 2026-09-08: desktop nav trim — Tools/COA in menu only; no hamburger desktop === */
+.nav-left {
+  gap: 28px !important;
+}
+@media (min-width: 801px) {
+  .nav .nav-hamburger,
+  .nav-hamburger {
+    display: none !important;
+    visibility: hidden !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    pointer-events: none !important;
+  }
+}
+@media (max-width: 800px) {
+  .nav-left { display: none !important; }
+  .nav .nav-hamburger,
+  .nav-hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    width: 44px !important;
+    height: 44px !important;
+    pointer-events: auto !important;
+  }
+}
