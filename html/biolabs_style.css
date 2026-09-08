@@ -5000,7 +5000,7 @@ img.so-thumb,
 .cart-drawer{z-index:10050!important}
 #cartOverlay.cart-overlay,.cart-overlay{z-index:10040!important}
 .cart-header{padding-top:max(16px,env(safe-area-inset-top))!important}
-#cartAddMore{max-height:168px!important;overflow:visible!important}
+#cartAddMore{max-height:150px!important;overflow:hidden!important}
 /* cart header under sticky promo */
 .cart-drawer .cart-header{padding-top:max(28px, calc(env(safe-area-inset-top) + 12px)) !important}
 
@@ -6930,4 +6930,49 @@ a.cart-inquiry-perk {
   .science-home { padding: 48px 20px 56px !important; }
   .science-home-stats { grid-template-columns: 1fr 1fr !important; }
   .science-home-cards { grid-template-columns: 1fr !important; }
+}
+
+/* === FIX 2026-09-08: cart items not clipped by Add to this order === */
+.cart-drawer,
+#cartDrawer {
+  display: flex !important;
+  flex-direction: column !important;
+  overflow: hidden !important;
+  min-height: 0 !important;
+}
+.cart-drawer .cart-items,
+#cartItems {
+  flex: 1 1 0% !important;
+  min-height: 0 !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain !important;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 20px 32px !important;
+  position: relative !important;
+  z-index: 1 !important;
+}
+.cart-drawer .cart-item:last-child {
+  margin-bottom: 8px !important;
+  padding-bottom: 12px !important;
+}
+#cartAddMore,
+.cart-addmore-slot {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 2 !important;
+  max-height: 150px !important;
+  overflow: hidden !important;
+  background: #fff !important;
+  border-top: 1px solid #E6E0D6 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+}
+.cart-footer {
+  flex: 0 0 auto !important;
+  flex-shrink: 0 !important;
+  position: relative !important;
+  z-index: 3 !important;
+  background: #F5F2EC !important;
 }
