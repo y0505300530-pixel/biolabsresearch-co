@@ -195,6 +195,14 @@
   .shp-methods{grid-template-columns:1fr}
   .shp-wrap{padding:0 20px}
 }
+
+/* Yehuda: no caption strip under shipping hero media */
+.shp-hero-visual .bl-video-caption{display:none!important}
+.shp-hero-visual .bl-video{margin:0}
+.shp-hero-visual .bl-video-frame{border-radius:0;height:100%;aspect-ratio:auto!important}
+.shp-hero-visual{display:flex;align-items:stretch}
+.shp-hero-visual .bl-video{flex:1;width:100%;display:flex;flex-direction:column}
+.shp-hero-visual video{width:100%;height:100%;object-fit:cover}
 </style>
 
 <main class="shp" id="top">
@@ -219,7 +227,6 @@
       <source src="/media/video/shipping-loop.mp4" type="video/mp4">
     </video>
   </div>
-  <figcaption class="bl-video-caption">Sealed, tracked, and on its way to your lab.</figcaption>
 </figure>
       </div>
     </div>
