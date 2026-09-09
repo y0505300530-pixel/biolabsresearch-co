@@ -1,10 +1,10 @@
 {
-  "version": "1.17",
+  "version": "1.18",
   "released": "2026-09-09",
-  "codename": "mobile-sales-type",
+  "codename": "entry-gate-mobile",
   "highlights": [
-    "Mobile \u2264640: shrink hero display/H1 ~30% (H1 kept for SEO)",
-    "Keeps inquiry CTAs, Lot docs on request chips, RUO line \u2014 tighter sales density",
-    "css?v=335"
+    "RUO entry gate: fix broken checkbox label wrapping on mobile (flex text nodes \u2192 wrapped span)",
+    "Tighter modal, full-width Enter CTA, readable checklist \u2014 RUO copy unchanged",
+    "css?v=336"
   ]
 }
