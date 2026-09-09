@@ -1,13 +1,10 @@
 {
-  "version": "1.19",
+  "version": "1.20",
   "released": "2026-09-09",
-  "codename": "mobile-sales-focus",
+  "codename": "show-all-visible",
   "highlights": [
-    "Remove duplicate Listed. Tested. Documented. (kept Science section H2 + RUO slogan)",
-    "Promo timer shows days when \u226524h (no more 127:xx:xx)",
-    "Hero secondary CTA forced outline; primary stays filled",
-    "Mobile catalog: 8 cards + Show all compounds",
-    "Mobile logo nowrap smaller; footer links \u226544px tap; mg chips nowrap / equal card body",
-    "css?v=337"
+    "Fix: mobile Show all compounds was inside catalog-grid and not reliably visible \u2014 moved outside grid + forced display \u2264800px",
+    "Keeps v1.19 sales focus (8 cards, timer days, LTD dupe, outline CTA)",
+    "css?v=338"
   ]
 }
