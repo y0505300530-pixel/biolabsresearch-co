@@ -1,10 +1,8 @@
-# biolabsresearch.co — Version 1.35
+# biolabsresearch.co — Version 1.36
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- ELITE FAIL fix: remove duplicate Request this lot file from PDP story — one View lot COA only
-- Ship note already Processing 1–2 business days (v1.33+); ELITE FAIL was on stale v1.31
-- Logo version: Indian v1.34 — footer + version.json only
-- css?v=351 · pdp-story.js?v=40
+- BPC-157 amounts: 10 mg ($88) and 20 mg ($105) — catalog + PDP + API
+- mg-picker.js?v=15 · catalog-mg.js?v=21 · css?v=351

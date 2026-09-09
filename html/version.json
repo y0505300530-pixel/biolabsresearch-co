@@ -1,11 +1,9 @@
 {
-  "version": "1.35",
+  "version": "1.36",
   "released": "2026-09-09",
-  "codename": "one-coa-cta",
+  "codename": "bpc-10-20",
   "highlights": [
-    "ELITE FAIL fix: remove duplicate Request this lot file from PDP story \u2014 one View lot COA only",
-    "Ship note already Processing 1\u20132 business days (v1.33+); ELITE FAIL was on stale v1.31",
-    "Logo version: Indian v1.34 \u2014 footer + version.json only",
-    "css?v=351 \u00b7 pdp-story.js?v=40"
+    "BPC-157 amounts: 10 mg ($88) and 20 mg ($105) \u2014 catalog + PDP + API",
+    "mg-picker.js?v=15 \u00b7 catalog-mg.js?v=21 \u00b7 css?v=351"
   ]
 }

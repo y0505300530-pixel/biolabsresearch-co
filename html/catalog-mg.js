@@ -37,11 +37,9 @@
       original_price: 145
     },
     "bpc-157": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 44, "10mg": 89 },
-      strength_originals: { "5mg": 54, "10mg": 109 },
-      price: 89,
-      original_price: 109
+      strengths: ["10mg", "20mg"],
+      strength_prices: { "10mg": 88, "20mg": 105 },
+      strength_originals: { "10mg": 105, "20mg": 125 },
     },
     "glow-70": {
       strengths: ["70mg"],

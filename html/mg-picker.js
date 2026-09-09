@@ -6,7 +6,7 @@
     "aod-9604": ["5mg", "10mg"],
     "curcumin-phytosome": ["500mg"],
     "tesamorelin-ipamorelin": ["5mg", "10mg"],
-    "bpc-157": ["5mg", "10mg"],
+    "bpc-157": ["10mg", "20mg"],
     "glow-70": ["70mg"],
     "epithalon": ["5mg", "10mg"],
     "ghk-cu": ["5mg", "10mg"],
