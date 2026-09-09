@@ -1,9 +1,10 @@
 {
-  "version": "1.66",
+  "version": "1.67",
   "released": "2026-09-09",
-  "codename": "cart-reprice-sot",
+  "codename": "mobile-footer-dock",
   "highlights": [
-    "Cart: when a line already has mg, rewrite price from live SoT (fixes stale BPC 10mg $89 in localStorage \u2192 $88)",
-    "cart-vial.js?v=325"
+    "Mobile: force footer to 1-col (stop 404px clip on shipping/tools)",
+    "More bottom padding + catalog clearance so sticky View cart dock doesn\u2019t cover Add to inquiry",
+    "css?v=358 (keeps CRM cart-vial SoT reprice)"
   ]
 }

@@ -10540,3 +10540,54 @@ html body .nav-logo-mark,
     max-width: 100% !important;
   }
 }
+
+
+/* === MOBILE-CLIP-v1.67: home dock over Add + footer 404px clip === */
+@media (max-width: 800px) {
+  /* kill 4-col footer that spills past 375 */
+  .footer-top,
+  html body .footer-top {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  .footer,
+  .footer-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  .footer-col,
+  .footer-brand-desc,
+  .footer-disclaimer,
+  .footer-chip {
+    max-width: 100% !important;
+    width: auto !important;
+    box-sizing: border-box !important;
+  }
+  /* clear sticky cart dock over last catalog CTAs */
+  body:not(.has-pdp-sticky):not(.cart-open):not(.checkout-page-open):not(:has(.checkout-page)) {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .catalog-section,
+  .catalog-grid,
+  .catalog-show-all-wrap {
+    padding-bottom: 24px !important;
+  }
+  .catalog-show-all-wrap {
+    margin-bottom: 24px !important;
+  }
+  html body .sticky-cart-dock {
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    max-width: calc(100vw - 24px) !important;
+  }
+}
