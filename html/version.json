@@ -1,11 +1,10 @@
 {
-  "version": "1.54",
+  "version": "1.55",
   "released": "2026-09-09",
-  "codename": "semaglutide",
+  "codename": "semaglutide-vial",
   "highlights": [
-    "New: Semaglutide \u2014 5 mg $60 \u00b7 10 mg $90 (API + PDP + home + sitemap)",
-    "RUO copy only \u2014 no weight-loss / therapy claims (Marketing)",
-    "Interim vial \u2014 @Indian labeled Semaglutide art",
-    "mg-picker.js?v=28 \u00b7 catalog-mg.js?v=34"
+    "Semaglutide labeled gold-crimp vial (not Tirzepatide clone)",
+    "RUO PDP/meta: research compound 5/10 mg from $60; CAS 910463-68-2; no weight-loss/Ozempic claims",
+    "vial?v=162 \u00b7 css?v=357"
   ]
 }
