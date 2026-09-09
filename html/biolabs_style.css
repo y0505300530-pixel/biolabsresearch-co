@@ -9771,3 +9771,14 @@ button.nav-util {
   font-size: 22px !important;
   line-height: 1 !important;
 }
+
+
+/* === BLOG-LOAD-MORE-v1.24 === */
+.blog-load-more-wrap{display:flex;justify-content:center;padding:8px 24px 48px}
+.blog-load-more{
+  min-height:44px;padding:12px 22px;border-radius:999px;
+  border:1.5px solid #0d2137;background:#fff;color:#0d2137;
+  font-weight:700;font-size:14px;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;touch-action:manipulation;
+}
+.blog-load-more:hover{background:#0d2137;color:#fff}

@@ -27,7 +27,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=341">
+<link rel="stylesheet" href="/biolabs_style.css?v=342">
 <style>
 .blog-grid{max-width:1080px;margin:0 auto;padding:32px 48px 80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
 .blog-card{background:var(--bg-warm);border-radius:var(--radius);overflow:hidden;transition:var(--transition);text-decoration:none;color:inherit;display:flex;flex-direction:column}
@@ -47,7 +47,10 @@
 .blog-chip.active,.blog-chip:hover{background:#0d2137;color:#fff;border-color:#0d2137}
 .blog-search{flex:1;min-width:180px;border:1px solid #E8E2D8;border-radius:999px;padding:10px 16px;font-size:14px;background:#fff;color:#0d2137}
 .blog-empty{grid-column:1/-1;text-align:center;color:var(--ink-muted);padding:40px 20px}
-@media(max-width:768px){.blog-grid{padding:24px;gap:16px}.blog-header{padding:60px 20px 20px}.blog-header h1{font-size:32px}.blog-filters{padding:0 20px 8px}}
+.blog-load-more-wrap{display:flex;justify-content:center;padding:8px 24px 48px}
+.blog-load-more{min-height:44px;padding:12px 22px;border-radius:999px;border:1.5px solid #0d2137;background:#fff;color:#0d2137;font-weight:700;font-size:14px;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.blog-load-more:hover{background:#0d2137;color:#fff}
+@media(max-width:768px){.blog-grid{padding:24px;gap:16px}.blog-header{padding:60px 20px 20px}.blog-header h1{font-size:32px}.blog-filters{padding:0 20px 8px}.blog-card-body .meta{font-size:13px}}
 </style>
 <script src="/cart-vial.js?v=294"></script>
 <script src="/search-overlay.js?v=26"></script>
@@ -55,7 +58,7 @@
 <meta name="twitter:title" content="Research Notes and Guides — Bio Labs Research">
 <meta name="twitter:description" content="Identity notes, COA reading, and catalog-scope articles for laboratory purchasers. Posts describe listed reagents and do not invent lot statistics.">
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://biolabsresearch.co/blog/"}]}</script>
-<meta name="app-version" content="1.23">
+<meta name="app-version" content="1.24">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -74,7 +77,7 @@
 </div>
 
 <nav class="nav">
-<a href="/" class="nav-logo" aria-label="BioLabs Research"><span class="nav-logo-mark">B</span><span class="nav-logo-stack"><span class="nav-logo-text">iolabs research</span><span class="nav-logo-version" data-site-version="1.23">v1.23</span></span></a>
+<a href="/" class="nav-logo" aria-label="BioLabs Research"><span class="nav-logo-mark">B</span><span class="nav-logo-stack"><span class="nav-logo-text">iolabs research</span><span class="nav-logo-version" data-site-version="1.24">v1.24</span></span></a>
   <div class="nav-left">
     <a href="/#catalog">Catalog</a>
     <a href="/science">Science</a>
@@ -370,15 +373,23 @@
 </a>
 </div>
 
+<div class="blog-load-more-wrap">
+  <button type="button" class="blog-load-more" id="blogLoadMore" aria-expanded="false">Load more notes</button>
+</div>
 <script>
 (function(){
   var grid=document.getElementById('blogGrid');
   var chips=document.querySelectorAll('.blog-chip');
   var search=document.getElementById('blogSearch');
+  var moreBtn=document.getElementById('blogLoadMore');
+  var moreWrap=document.querySelector('.blog-load-more-wrap');
   var active='All';
+  var PAGE=6;
+  var limit=PAGE;
   function apply(){
     var q=(search.value||'').toLowerCase().trim();
     var cards=grid.querySelectorAll('.blog-card');
+    var match=0;
     var shown=0;
     for(var i=0;i<cards.length;i++){
       var c=cards[i];
@@ -386,24 +397,44 @@
       var hay=(c.getAttribute('data-title')||'')+' '+(c.getAttribute('data-excerpt')||'');
       var okTag=active==='All'||tag===active;
       var okQ=!q||hay.indexOf(q)!==-1;
-      var show=okTag&&okQ;
-      c.style.display=show?'':'none';
-      if(show) shown++;
+      var isMatch=okTag&&okQ;
+      if(isMatch){
+        match++;
+        var show=match<=limit;
+        c.style.display=show?'':'none';
+        if(show) shown++;
+      } else {
+        c.style.display='none';
+      }
     }
     var empty=document.getElementById('blogEmpty');
-    if(!shown){
+    if(!match){
       if(!empty){ empty=document.createElement('div'); empty.id='blogEmpty'; empty.className='blog-empty'; empty.textContent='No notes match these filters.'; grid.appendChild(empty); }
       empty.style.display='block';
     } else if(empty){ empty.style.display='none'; }
+    if(moreWrap && moreBtn){
+      var left=match-shown;
+      moreWrap.style.display=left>0?'flex':'none';
+      moreBtn.textContent=left>0?('Load more notes ('+left+' left)'):'Load more notes';
+      moreBtn.setAttribute('aria-expanded', left>0?'false':'true');
+    }
   }
   for(var i=0;i<chips.length;i++){
     chips[i].addEventListener('click', function(){
       active=this.getAttribute('data-filter');
+      limit=PAGE;
       for(var j=0;j<chips.length;j++) chips[j].classList.toggle('active', chips[j]===this);
       apply();
     });
   }
-  search.addEventListener('input', apply);
+  search.addEventListener('input', function(){ limit=PAGE; apply(); });
+  if(moreBtn){
+    moreBtn.addEventListener('click', function(){
+      limit+=PAGE;
+      apply();
+    });
+  }
+  apply();
 })();
 </script>
 
@@ -461,7 +492,7 @@
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.23" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.23</p>
+<p class="site-version" data-site-version="1.24" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.24</p>
 </footer>
 <script src="/promo-bar.js?v=281"></script>
 <script src="/mg-picker.js?v=8"></script>
