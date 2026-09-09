@@ -6546,11 +6546,20 @@ button.promo-code:focus-visible,
   white-space: nowrap !important;
   vertical-align: middle !important;
 }
-.nav-left,
-.nav-right,
-.nav-links-right {
-  display: flex !important;
-  align-items: center !important;
+/* desktop-only: do NOT force nav-left/links-right flex on mobile (was causing ~490px overflow) */
+@media (min-width: 801px) {
+  .nav-left,
+  .nav-right,
+  .nav-links-right {
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+@media (max-width: 800px) {
+  .nav-right {
+    display: flex !important;
+    align-items: center !important;
+  }
 }
 .nav-left a,
 .nav-links-right a {
@@ -8375,3 +8384,81 @@ html body .cart-drawer.is-empty #cartSubtotalRow {
   pointer-events: auto !important;
 }
 .site-version{text-align:center;color:inherit}
+
+
+/* === MOBILE-NAV-OVERFLOW-v1.03: keep hamburger on-screen at 375 === */
+@media (max-width: 800px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  .nav-left,
+  .nav-links-right,
+  .nav-sep,
+  nav.nav .nav-left,
+  .nav .nav-left,
+  nav.nav .nav-links-right,
+  .nav .nav-links-right {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    pointer-events: none !important;
+  }
+  nav.nav,
+  .nav {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+  .nav-logo {
+    min-width: 0 !important;
+    flex: 1 1 auto !important;
+    max-width: calc(100% - 120px) !important;
+  }
+  .nav-logo-text {
+    font-size: 15px !important;
+    letter-spacing: -.02em !important;
+  }
+  .nav-logo-mark {
+    font-size: 18px !important;
+  }
+  .nav-right {
+    flex: 0 0 auto !important;
+    margin-left: auto !important;
+    gap: 6px !important;
+    max-width: none !important;
+  }
+  nav.nav .nav-hamburger,
+  .nav .nav-hamburger,
+  button.nav-hamburger,
+  .nav-hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: auto !important;
+    flex: 0 0 auto !important;
+    opacity: 1 !important;
+  }
+  .promo-bar .promo-code,
+  .promo-bar button,
+  #promoBar .promo-code,
+  a.promo-code {
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+  }
+}

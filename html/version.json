@@ -1,10 +1,11 @@
 {
-  "version": "1.02",
+  "version": "1.03",
   "released": "2026-09-09",
-  "codename": "atc-syntax-fix",
+  "codename": "mobile-nav-overflow",
   "highlights": [
-    "Fix: cart-vial.js syntax error (stray })();) broke all cart JS \u2014 Add to inquiry did nothing",
-    "Restores Add to inquiry + drawer render after v1.01",
-    "Keeps v1.01 hydrate/BAC fixes and v1.00 cart footer + Inquiry Rewards"
+    "Fix: mobile header overflow (~490px) \u2014 desktop SoT block re-forced .nav-left/.nav-links-right flex on all viewports, pushing hamburger offscreen at 375",
+    "Hide Catalog/Science/Blog/Shipping/Tools/COA text links under 800px; keep search/cart/hamburger on-screen",
+    "Shrink mobile wordmark; overflow-x clamp; INSIDER25 min 44px tap target",
+    "css cache biolabs_style.css?v=321"
   ]
 }
