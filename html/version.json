@@ -1,10 +1,10 @@
 {
-  "version": "1.60",
+  "version": "1.61",
   "released": "2026-09-09",
-  "codename": "fix-catalog-mg",
+  "codename": "card-marks",
   "highlights": [
-    "Fix: catalog strength chips click again (catalog-mg.js was syntax-broken since v1.49)",
-    "Restored hydrate/select handlers; FALLBACK matches live API SoT",
-    "catalog-mg.js?v=39"
+    "Cart Proceed CTA: Visa / Mastercard / Amex / Discover marks under the button",
+    "Checkout screen: same card marks + clearer settle-later copy (still inquiry-only on page)",
+    "biolabs_style.css?v=354 \u00b7 cart-vial.js?v=320"
   ]
 }

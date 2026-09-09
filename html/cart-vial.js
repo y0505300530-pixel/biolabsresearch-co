@@ -2206,3 +2206,45 @@ function addSuggest(slug, name, price, mg){
     boot();
   }
 })();
+
+
+/* v1.61 — card marks under Proceed CTA */
+(function(){
+  var HTML = '<div class="cart-pay-marks" aria-label="Cards accepted when settling with our team">'
+    + '<span class="pay-mark visa">Visa</span>'
+    + '<span class="pay-mark mc">Mastercard</span>'
+    + '<span class="pay-mark amex">Amex</span>'
+    + '<span class="pay-mark discover">Discover</span>'
+    + '</div>';
+  function ensure(){
+    var drawer = document.getElementById('cartDrawer');
+    if (!drawer) return;
+    var btn = drawer.querySelector('.btn-checkout');
+    if (!btn || !btn.parentNode) return;
+    var marks = drawer.querySelector('.cart-pay-marks');
+    if (!marks) {
+      marks = document.createElement('div');
+      marks.innerHTML = HTML;
+      marks = marks.firstChild;
+      btn.insertAdjacentElement('afterend', marks);
+    }
+    var empty = drawer.classList.contains('is-empty');
+    marks.style.display = empty ? 'none' : '';
+  }
+  function wrap(){
+    if (typeof window.renderCart === 'function' && !window.renderCart.__payMarks) {
+      var orig = window.renderCart;
+      window.renderCart = function(){
+        var r = orig.apply(this, arguments);
+        try { ensure(); } catch(e){}
+        return r;
+      };
+      window.renderCart.__payMarks = true;
+    }
+    ensure();
+  }
+  var n=0;(function tick(){ wrap(); if(++n<60) setTimeout(tick,120); })();
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', wrap);
+  else wrap();
+})();
+

@@ -10384,3 +10384,56 @@ html body .nav-logo-mark,
   min-width: 0 !important;
   height: auto !important;
 }
+
+
+/* v1.61 — accepted card marks (cart CTA + checkout trust) */
+.cart-pay-marks,
+.checkout-pay-marks{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  margin:10px 0 4px;
+}
+.cart-pay-marks{margin-top:8px;margin-bottom:2px}
+.pay-mark{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:22px;
+  padding:3px 8px;
+  border-radius:4px;
+  font-size:9px;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-family:system-ui,sans-serif;
+  line-height:1;
+  color:#fff;
+}
+.pay-mark.visa{background:#1A1F71}
+.pay-mark.mc{background:#EB001B}
+.pay-mark.amex{background:#007BC1}
+.pay-mark.discover{background:#FF6000}
+.pay-mark.note{
+  width:100%;
+  background:transparent;
+  color:#6B7280;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none;
+  padding:4px 0 0;
+  min-height:0;
+}
+.checkout-pay-marks-wrap{
+  margin-top:14px;
+  padding-top:12px;
+  border-top:1px solid #E8E2D8;
+}
+.checkout-pay-marks-wrap .pay-mark.note{
+  color:#4A4A4A;
+  font-size:12px;
+  margin-bottom:6px;
+}

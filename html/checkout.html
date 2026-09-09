@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Form — Bio Labs Research">
 <meta name="twitter:description" content="Submit a research-use catalog inquiry. No payment is collected here. Lines stay tied to listed SKUs, and fulfillment follows the published shipping policy.">
-<link rel="stylesheet" href="/biolabs_style.css?v=357">
+<link rel="stylesheet" href="/biolabs_style.css?v=354">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -237,10 +237,10 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 @media(max-width:960px){.checkout-page{grid-template-columns:1fr;padding:32px 20px}}
 @media(max-width:640px){.form-row{grid-template-columns:1fr}}
 </style>
-<script src="/cart-vial.js?v=294"></script>
+<script src="/cart-vial.js?v=320"></script>
 <script src="/search-overlay.js?v=26"></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="1.60">
+<meta name="app-version" content="1.61">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -440,6 +440,15 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         <div style="background:#F5F2ED;border:1px solid #E8E2D8;border-radius:12px;padding:20px;margin-top:16px;">
           <div style="font-size:14px;font-weight:600;color:#1F1F1F;margin-bottom:8px;">Inquiry-Based Ordering</div>
           <div style="font-size:13px;color:#4A4A4A;line-height:1.6;">No payment is collected at checkout. After you submit your order, our team will contact you within 24 hours to confirm availability, shipping, and payment options.</div>
+        <div class="checkout-pay-marks-wrap">
+          <div class="pay-mark note">Payment options when our team follows up include major cards:</div>
+          <div class="checkout-pay-marks" aria-label="Accepted cards">
+            <span class="pay-mark visa">Visa</span>
+            <span class="pay-mark mc">Mastercard</span>
+            <span class="pay-mark amex">Amex</span>
+            <span class="pay-mark discover">Discover</span>
+          </div>
+        </div>
         </div>
 
         <div class="terms-block">
@@ -469,6 +478,13 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
           Inquiry only · No payment collected on this page
         </p>
+        <div class="checkout-pay-marks" style="margin-top:12px" aria-label="Accepted cards">
+          <span class="pay-mark visa">Visa</span>
+          <span class="pay-mark mc">Mastercard</span>
+          <span class="pay-mark amex">Amex</span>
+          <span class="pay-mark discover">Discover</span>
+        </div>
+        <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:6px;font-family:var(--font, system-ui, sans-serif)">Visa · Mastercard · Amex · Discover available when settling with our team</p>
       </div>
     </div>
 
@@ -494,7 +510,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         <div class="trust-strip">
           <div class="trust-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            Inquiry only — no card payment
+            Inquiry now · settle later by Visa / Mastercard / Amex / Discover
           </div>
           <div class="trust-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -843,7 +859,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.60" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.60</p>
+<p class="site-version" data-site-version="1.61" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.61</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

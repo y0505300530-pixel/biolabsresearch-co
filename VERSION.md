@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 1.60
+# biolabsresearch.co — Version 1.61
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Fix: catalog strength chips click again (catalog-mg.js was syntax-broken since v1.49)
-- Restored hydrate/select handlers; FALLBACK matches live API SoT
-- catalog-mg.js?v=39
+- Cart Proceed CTA: Visa / Mastercard / Amex / Discover marks under the button
+- Checkout screen: same card marks + clearer settle-later copy (still inquiry-only on page)
+- biolabs_style.css?v=354 · cart-vial.js?v=320
