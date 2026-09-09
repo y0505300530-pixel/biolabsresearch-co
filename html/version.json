@@ -1,9 +1,10 @@
 {
-  "version": "1.21",
+  "version": "1.22",
   "released": "2026-09-09",
-  "codename": "cart-no-x-overflow",
+  "codename": "sticky-cart-dock",
   "highlights": [
-    "Cart drawer: kill horizontal overflow at 375 \u2014 clamp items/addmore, ellipsis names, remove BAC negative margin",
-    "Keeps compressed footer from v1.10; cart-vial.js?v=293 + css?v=339"
+    "Mobile sticky View cart dock (fixed bottom pill) while scrolling catalog \u2014 opens drawer, shows count, hides when drawer open",
+    "Keeps CRM v1.21 cart no-x-overflow",
+    "css?v=340 / cart-vial.js?v=294"
   ]
 }

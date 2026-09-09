@@ -2137,3 +2137,72 @@ function addSuggest(slug, name, price, mg){
     (document.head||document.documentElement).appendChild(s);
   } catch(e){}
 })();
+
+
+/* === STICKY-CART-DOCK-v1.22 === */
+(function () {
+  if (window.__stickyCartDockV122) return;
+  window.__stickyCartDockV122 = true;
+
+  function ensureDock() {
+    var el = document.getElementById('stickyCartDock');
+    if (el) return el;
+    el = document.createElement('button');
+    el.id = 'stickyCartDock';
+    el.type = 'button';
+    el.className = 'sticky-cart-dock';
+    el.setAttribute('aria-label', 'View cart');
+    el.innerHTML =
+      '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg>' +
+      '<span>View cart</span>' +
+      '<span class="sticky-cart-dock-count" id="stickyCartDockCount"></span>';
+    el.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (typeof window.toggleCart === 'function') window.toggleCart();
+    });
+    document.body.appendChild(el);
+    return el;
+  }
+
+  function syncDock() {
+    var dock = ensureDock();
+    var nEl = document.getElementById('cartCount');
+    var count = nEl ? parseInt(String(nEl.textContent || '0'), 10) || 0 : 0;
+    var badge = document.getElementById('stickyCartDockCount');
+    if (badge) badge.textContent = count > 0 ? String(count) : '';
+    dock.classList.toggle('has-items', count > 0);
+    var drawer = document.getElementById('cartDrawer');
+    var open = !!(drawer && drawer.classList.contains('open'));
+    dock.classList.toggle('is-hidden', open);
+  }
+
+  function boot() {
+    ensureDock();
+    syncDock();
+    var countEl = document.getElementById('cartCount');
+    if (countEl && window.MutationObserver) {
+      new MutationObserver(syncDock).observe(countEl, {
+        childList: true,
+        characterData: true,
+        subtree: true,
+      });
+    }
+    var drawer = document.getElementById('cartDrawer');
+    if (drawer && window.MutationObserver) {
+      new MutationObserver(syncDock).observe(drawer, {
+        attributes: true,
+        attributeFilter: ['class'],
+      });
+    }
+    document.addEventListener('click', function () {
+      setTimeout(syncDock, 50);
+    }, true);
+    setInterval(syncDock, 1500);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
