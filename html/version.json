@@ -1,11 +1,10 @@
 {
-  "version": "1.49",
+  "version": "1.50",
   "released": "2026-09-09",
-  "codename": "tesamorelin-r3ta",
+  "codename": "tesamorelin-vial",
   "highlights": [
-    "New: Tesamorelin \u2014 10 mg $85 \u00b7 20 mg $130 (API + PDP + home)",
-    "R3TA: 10 mg $85 \u00b7 20 mg $135 \u00b7 50 mg $300 (SoT from Indian)",
-    "Interim Tesamorelin vial from blend art \u2014 @Indian labeled when ready",
-    "mg-picker.js?v=25 \u00b7 catalog-mg.js?v=31"
+    "Tesamorelin labeled gold-crimp vial (not blend-art clone)",
+    "Keeps CRM v1.49 Tesamorelin 10/$85 \u00b7 20/$130 and R3TA SoT",
+    "vial?v=161 \u00b7 css?v=355"
   ]
 }
