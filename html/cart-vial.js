@@ -267,9 +267,16 @@ function _blrFillMg(i){
   var slug = productSlug(i);
   if (!slug) return;
   if (i.mg) {
-    /* it already says which vial; all that can be wrong is the struck-through price beside it */
+    /* vial is named — reprice from live SoT so stale localStorage (e.g. BPC 10mg $89) cannot stick */
     var known = (typeof window.blrStrengthFor === 'function') ? window.blrStrengthFor(slug, i.mg) : null;
-    if (known && known.original !== null && known.original !== undefined && known.original > i.price) i.original_price = known.original;
+    if (known && known.price !== null && known.price !== undefined) {
+      if (i.price !== known.price) i.price = known.price;
+      if (known.original !== null && known.original !== undefined && known.original > known.price) {
+        i.original_price = known.original;
+      }
+    } else if (known && known.original !== null && known.original !== undefined && known.original > i.price) {
+      i.original_price = known.original;
+    }
     return;
   }
   if (typeof window.blrStrengthByPrice !== 'function') return;
@@ -277,8 +284,8 @@ function _blrFillMg(i){
   if (!s && typeof window.blrStrengthNearestPrice === 'function') s = window.blrStrengthNearestPrice(slug, i.price);
   if (!s) return;
   i.mg = s.mg;
-  /* the drawer's struck-through price comes from a hard-coded map of `original_price`, which is the LAST
-     strength's: a 5 mg line showed "$34" beside "$85". Carry this strength's own old price with the line. */
+  /* Guessing mg from a stale price: keep the stored price (do not invent a new charge). Once mg is stamped,
+     the next normalize pass above will reprice from SoT. */
   if (s.original !== null && s.original !== undefined && s.original > i.price) i.original_price = s.original;
 }
 

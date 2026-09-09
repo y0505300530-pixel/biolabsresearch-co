@@ -1,11 +1,9 @@
 {
-  "version": "1.65",
+  "version": "1.66",
   "released": "2026-09-09",
-  "codename": "checkout-marks-clip",
+  "codename": "cart-reprice-sot",
   "highlights": [
-    "Hide sticky View cart dock on checkout so Apply coupon isn\u2019t covered",
-    "Checkout/cart card marks wrap on 375 \u2014 no right-edge clip",
-    "Copy: Major cards accepted after inquiry accepted \u2014 settle with our team",
-    "css?v=357 \u00b7 cart-vial.js?v=324"
+    "Cart: when a line already has mg, rewrite price from live SoT (fixes stale BPC 10mg $89 in localStorage \u2192 $88)",
+    "cart-vial.js?v=325"
   ]
 }
