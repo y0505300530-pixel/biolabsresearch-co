@@ -6301,9 +6301,9 @@ button.promo-code,
   font-weight: 800 !important;
   font-size: 12px !important;
   letter-spacing: .06em !important;
-  height: 28px !important;
-  min-height: 28px !important;
-  max-height: 28px !important;
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
   min-width: 96px !important;
   padding: 0 14px !important;
   margin: 0 4px !important;
@@ -8553,3 +8553,88 @@ video.hero-video{
   .nav-logo-version{ font-size: 9px !important; }
 }
 
+
+
+/* === PHONE-SWEEP-v1.07: phone tap targets + a11y wave 2 === */
+.promo-code,
+.promo-seg .promo-code,
+button.promo-code,
+.promo-bar button.promo-code {
+  height: 40px !important;
+  min-height: 40px !important;
+  max-height: 40px !important;
+  padding: 0 16px !important;
+}
+.blog-chip,
+button.blog-chip {
+  min-height: 44px !important;
+  min-width: 44px !important;
+  padding: 10px 16px !important;
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.blog-search {
+  min-height: 44px !important;
+  box-sizing: border-box !important;
+}
+a.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -100px;
+  z-index: 100000;
+  background: #0d2137;
+  color: #fff !important;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+}
+a.skip-link:focus,
+a.skip-link:focus-visible {
+  top: 12px;
+  outline: 3px solid #F2D191;
+  outline-offset: 2px;
+}
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+.nav-hamburger:focus-visible,
+.nav-cart:focus-visible,
+.nav-util:focus-visible {
+  outline: 3px solid #B08D57 !important;
+  outline-offset: 2px !important;
+}
+.lab-team-card:focus-visible {
+  outline: 3px solid #B08D57 !important;
+  outline-offset: 2px !important;
+}
+@media (max-width: 800px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  .nav-left,
+  .nav-links-right,
+  .nav-sep {
+    display: none !important;
+  }
+  .nav-hamburger,
+  .nav .nav-hamburger,
+  button.nav-hamburger {
+    display: inline-flex !important;
+    visibility: visible !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    pointer-events: auto !important;
+  }
+}
