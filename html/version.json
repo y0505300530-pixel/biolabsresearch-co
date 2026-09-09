@@ -1,10 +1,10 @@
 {
-  "version": "1.50",
+  "version": "1.51",
   "released": "2026-09-09",
-  "codename": "tesamorelin-vial",
+  "codename": "nad-500-1000",
   "highlights": [
-    "Tesamorelin labeled gold-crimp vial (not blend-art clone)",
-    "Keeps CRM v1.49 Tesamorelin 10/$85 \u00b7 20/$130 and R3TA SoT",
-    "vial?v=161 \u00b7 css?v=355"
+    "NAD+: 500 mg $99 \u00b7 1000 mg $130 (was 500 mg only)",
+    "API + catalog + PDP + homepage (SoT from API)",
+    "mg-picker.js?v=26 \u00b7 catalog-mg.js?v=32"
   ]
 }

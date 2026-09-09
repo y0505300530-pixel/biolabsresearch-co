@@ -2,7 +2,7 @@
 (function () {
   var STRENGTHS = {
     "bpc-157-tb-500-blend": ["20mg"],
-    "nad-plus": ["500mg"],
+    "nad-plus": ["500mg", "1000mg"],
     "aod-9604": ["5mg", "10mg"],
     "curcumin-phytosome": ["500mg"],
     "tesamorelin-ipamorelin": ["5mg", "10mg"],

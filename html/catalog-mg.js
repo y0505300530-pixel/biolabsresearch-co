@@ -9,11 +9,11 @@
       original_price: 150
     },
     "nad-plus": {
-      strengths: ["500mg"],
-      strength_prices: { "500mg": 99 },
-      strength_originals: { "500mg": 119 },
-      price: 99,
-      original_price: 119
+      strengths: ["500mg", "1000mg"],
+      strength_prices: { "500mg": 99, "1000mg": 130 },
+      strength_originals: { "500mg": 119, "1000mg": 155 },
+      price: 130,
+      original_price: 155
     },
     "aod-9604": {
       strengths: ["5mg", "10mg"],
