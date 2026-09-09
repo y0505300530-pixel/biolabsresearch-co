@@ -76,7 +76,7 @@
 <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&family=Heebo:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Baloo+2:wght@700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/vial-bpc-157-tb-500-blend.png?v=155" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=321">
+<link rel="stylesheet" href="/biolabs_style.css?v=322">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -96,7 +96,7 @@
 
 <script src="/cart-vial.js?v=291"></script>
 <script src="/search-overlay.js?v=27"></script>
-<meta name="app-version" content="1.02">
+<meta name="app-version" content="1.04">
 </head>
 <body>
 <div class="promo-stack" id="promoStack">
@@ -173,15 +173,14 @@ with lot documentation.</h1>
       <p class="nl-trust">In stock · Lot docs on request · Research use only</p>
     </div>
     <div class="nl-stage">
-      <figure class="bl-video">
-  <div class="bl-video-frame" style="aspect-ratio:1344/768">
-    <video autoplay muted loop playsinline preload="metadata"
-      poster="/media/video/vial-hero-loop-v2-poster.webp"
-      aria-label="Research vial hero loop — sealed RUO vial on sand studio backdrop">
-      <source src="/media/video/vial-hero-loop-v2.mp4" type="video/mp4">
-    </video>
-  </div>
-</figure>
+      <video class="hero-video" id="heroCinematic"
+        poster="/media/video/hero-cinematic.jpg?v=1"
+        muted loop playsinline autoplay preload="metadata"
+        width="1344" height="768"
+        aria-label="BIO LABS vial with gold cap and lot-documented label">
+        <source src="/media/video/hero-cinematic.webm?v=1" type="video/webm">
+        <source src="/media/video/hero-cinematic.mp4?v=1" type="video/mp4">
+      </video>
     </div>
   </div>
 
@@ -527,7 +526,7 @@ with lot documentation.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.03" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.03</p>
+<p class="site-version" data-site-version="1.04" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.04</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->
@@ -938,6 +937,33 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
 })();
 </script>
 
-<script src="/tools-video.js?v=2"></script>
+<script src="/tools-video.js?v=12"></script>
+
+<script>
+/* hero-video: play when visible, pause offscreen; reduced-motion = poster only */
+(function(){
+  var v = document.getElementById('heroCinematic') || document.querySelector('video.hero-video');
+  if (!v) return;
+  try { v.muted = true; v.defaultMuted = true; v.playsInline = true; } catch(e){}
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    v.removeAttribute('autoplay');
+    try { v.pause(); v.currentTime = 0; } catch(e){}
+    return;
+  }
+  if (!('IntersectionObserver' in window)) {
+    if (v.play) v.play().catch(function(){});
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if (en.isIntersecting) { if (v.play) v.play().catch(function(){}); }
+      else { try { v.pause(); } catch(e){} }
+    });
+  }, { threshold: 0.25 });
+  io.observe(v);
+})();
+</script>
+
 </body>
 </html>

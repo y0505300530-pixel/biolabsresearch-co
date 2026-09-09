@@ -1,11 +1,13 @@
 {
-  "version": "1.03",
+  "version": "1.04",
   "released": "2026-09-09",
-  "codename": "mobile-nav-overflow",
+  "codename": "hero-cinematic",
   "highlights": [
-    "Fix: mobile header overflow (~490px) \u2014 desktop SoT block re-forced .nav-left/.nav-links-right flex on all viewports, pushing hamburger offscreen at 375",
-    "Hide Catalog/Science/Blog/Shipping/Tools/COA text links under 800px; keep search/cart/hamburger on-screen",
-    "Shrink mobile wordmark; overflow-x clamp; INSIDER25 min 44px tap target",
-    "css cache biolabs_style.css?v=321"
+    "Homepage hero: replace right-column product still with cinematic vial video (hero-cinematic mp4+webm+poster)",
+    "Hero text column: align-items center + padding-top 72px",
+    "Video: 16/9, radius 20px, gold border, object-fit cover, zero CLS",
+    "IntersectionObserver play/pause; prefers-reduced-motion = poster only",
+    "Mobile \u2264640px: video above text, max-height 220px, CTAs 48px",
+    "/media/video/ already Cache-Control immutable (nginx)"
   ]
 }

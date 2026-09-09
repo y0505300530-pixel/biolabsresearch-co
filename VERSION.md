@@ -1,9 +1,12 @@
-# biolabsresearch.co — Version 1.02
+# biolabsresearch.co — Version 1.04
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Fix: cart-vial.js syntax error (stray })();) broke all cart JS — Add to inquiry did nothing
-- Restores Add to inquiry + drawer render after v1.01
-- Keeps v1.01 hydrate/BAC fixes and v1.00 cart footer + Inquiry Rewards
+- Homepage hero: replace right-column product still with cinematic vial video (hero-cinematic mp4+webm+poster)
+- Hero text column: align-items center + padding-top 72px
+- Video: 16/9, radius 20px, gold border, object-fit cover, zero CLS
+- IntersectionObserver play/pause; prefers-reduced-motion = poster only
+- Mobile ≤640px: video above text, max-height 220px, CTAs 48px
+- /media/video/ already Cache-Control immutable (nginx)

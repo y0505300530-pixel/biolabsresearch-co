@@ -8462,3 +8462,62 @@ html body .cart-drawer.is-empty #cartSubtotalRow {
     padding-bottom: 10px !important;
   }
 }
+
+
+/* === HERO cinematic v1.04 (Yehuda) === */
+.nl-hero{
+  align-items: center !important;
+}
+.nl-copy{
+  padding-top: 72px !important;
+}
+.hero-video,
+video.hero-video{
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9 !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(176,141,87,.35) !important;
+  object-fit: cover !important;
+  background: #F5F0E6 !important;
+  box-sizing: border-box !important;
+}
+.nl-stage{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-video,
+  video.hero-video{
+    /* poster only — JS strips autoplay */
+  }
+}
+@media (max-width: 640px) {
+  .nl-hero{
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .nl-stage{
+    order: -1 !important; /* video above text */
+    width: 100% !important;
+  }
+  .nl-copy{
+    padding-top: 12px !important;
+    max-width: none !important;
+  }
+  .hero-video,
+  video.hero-video{
+    width: 100% !important;
+    max-height: 220px !important;
+    border-radius: 16px !important;
+  }
+  .nl-btn{
+    min-height: 48px !important;
+    padding: 14px 22px !important;
+  }
+}
+

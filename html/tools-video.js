@@ -52,7 +52,7 @@
     if (root && root.matches && root.matches("video") && root.closest(".bl-video")) {
       setupOne(root);
     }
-    var videos = scope.querySelectorAll(".bl-video video");
+    var videos = scope.querySelectorAll(".bl-video video, video.hero-video");
     for (var i = 0; i < videos.length; i++) setupOne(videos[i]);
   }
 
