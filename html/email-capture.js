@@ -53,9 +53,10 @@
     if (!out) return;
     out.hidden = false;
     out.innerHTML =
-      '<span class="insider-code-chip">Code: <strong id="insiderCodeVal">' + CODE + "</strong></span>" +
+      '<p class="insider-out-label">Your code</p>' +
+      '<div class="insider-code-chip" role="status"><strong id="insiderCodeVal">' + CODE + "</strong></div>" +
       '<button type="button" class="insider-copy" id="insiderCopy">Copy code</button>' +
-      "<span>Subscription saved.</span>";
+      '<span class="insider-out-note">Also sent to your email · valid 30 days</span>';
     var copyBtn = document.getElementById("insiderCopy");
     if (copyBtn) {
       copyBtn.addEventListener("click", function () {
@@ -71,9 +72,13 @@
       });
     }
     if (btn) {
-      btn.disabled = false;
-      btn.innerHTML = 'Subscribed <span class="insider-go-arrow" aria-hidden="true">✓</span>';
+      btn.disabled = true;
+      btn.innerHTML = 'Code sent <span class="insider-go-arrow" aria-hidden="true">✓</span>';
     }
+    var form = document.getElementById("insiderClub");
+    if (form) form.classList.add("is-done");
+    var note = document.querySelector(".insider-club-note");
+    if (note) note.hidden = true;
     try { localStorage.setItem(STORAGE_KEY, "1"); } catch (e) {}
   }
   function wireClub() {
