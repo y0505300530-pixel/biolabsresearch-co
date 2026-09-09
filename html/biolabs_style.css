@@ -8888,3 +8888,42 @@ textarea:focus-visible,
     background:#EDE4CF url("/media/video/insider-premium-loop-poster.jpg?v=1") center/cover no-repeat !important;
   }
 }
+
+
+/* === CRM v1.10 — cart footer compress ~30% (Yehuda marked Total→Continue) === */
+@media (max-width: 900px) {
+  html body .cart-drawer .cart-footer,
+  html body #cartDrawer .cart-footer {
+    padding: 5px 12px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+    gap: 4px !important;
+  }
+  html body .cart-drawer .cart-subtotal,
+  html body #cartDrawer .cart-subtotal,
+  html body .cart-drawer #cartSubtotalRow {
+    min-height: 26px !important;
+    margin: 0 !important;
+    padding: 2px 0 4px !important;
+    gap: 4px 10px !important;
+  }
+  html body .cart-drawer .cart-subtotal-amount,
+  html body #cartDrawer #cartTotal,
+  html body .cart-drawer #cartTotal {
+    font-size: 18px !important;
+    line-height: 1.1 !important;
+  }
+  html body .cart-drawer .btn-checkout,
+  html body #cartDrawer .btn-checkout {
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+    font-size: 14px !important;
+  }
+  html body .cart-drawer .btn-continue,
+  html body #cartDrawer .btn-continue,
+  html body .cart-drawer button.btn-continue {
+    min-height: 0 !important;
+    padding: 0 4px 2px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+}

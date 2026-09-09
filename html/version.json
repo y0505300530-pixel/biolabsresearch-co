@@ -1,10 +1,9 @@
 {
-  "version": "1.09",
+  "version": "1.10",
   "released": "2026-09-09",
-  "codename": "insider-new-visual-plus-welcome-mail",
+  "codename": "cart-footer-compress",
   "highlights": [
-    "Insider card: brand-new premium vial video (insider-premium-loop) \u2014 not a reused site loop",
-    "Subscribe API: send confirmation email with INSIDER25 code via Customer.io on signup (lead was already saving)",
-    "Email field polish: clearer border, focus ring, invalid state"
+    "Cart drawer footer (Total + Proceed + Continue) compressed ~30% on mobile \u2014 less padding/gap, 42px CTA, tighter Total \u2014 more scroll room for items",
+    "cart-vial.js?v=292 + css?v=328"
   ]
 }
