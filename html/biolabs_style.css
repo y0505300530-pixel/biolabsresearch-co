@@ -8521,3 +8521,35 @@ video.hero-video{
   }
 }
 
+
+/* === NAV version under wordmark (v1.05) === */
+.nav-logo{
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0 !important;
+  text-decoration: none !important;
+}
+.nav-logo-stack{
+  display: inline-flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  line-height: 1 !important;
+  gap: 2px !important;
+}
+.nav-logo-version{
+  display: block !important;
+  font-family: Inter, system-ui, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 700 !important;
+  letter-spacing: .08em !important;
+  color: #9A6D2A !important;
+  line-height: 1 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-transform: none !important;
+}
+@media (max-width: 800px){
+  .nav-logo-version{ font-size: 9px !important; }
+}
+
