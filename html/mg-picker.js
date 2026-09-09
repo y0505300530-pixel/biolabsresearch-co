@@ -1,7 +1,7 @@
 /* Strengths from CRM API (placeholder until Yehuda edits). */
 (function () {
   var STRENGTHS = {
-    "bpc-157-tb-500-blend": ["5mg", "10mg"],
+    "bpc-157-tb-500-blend": ["20mg"],
     "nad-plus": ["500mg"],
     "aod-9604": ["5mg", "10mg"],
     "curcumin-phytosome": ["500mg"],
@@ -15,7 +15,7 @@
     "semax": ["10mg", "30mg"],
     "kisspeptin-10": ["10mg"],
     "thymosin-alpha-1": ["10mg"],
-    "tb-500": ["5mg", "10mg"],
+    "tb-500": ["10mg"],
     "retatrutide": ["10mg", "20mg"]
   };
   function slugFromPath() {
