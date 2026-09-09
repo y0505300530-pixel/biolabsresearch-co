@@ -1,8 +1,9 @@
-# biolabsresearch.co — Version 1.36
+# biolabsresearch.co — Version 1.38
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- BPC-157 amounts: 10 mg ($88) and 20 mg ($105) — catalog + PDP + API
-- mg-picker.js?v=15 · catalog-mg.js?v=21 · css?v=351
+- Logo: remove navy/black filled box on the B mark (text wordmark again)
+- PDP gallery: drop mismatched label-upright + amber pack thumbs; use clear gold-crimp vial / strength variants only
+- biolabs_style.css?v=353

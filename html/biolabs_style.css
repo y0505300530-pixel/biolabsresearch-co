@@ -10366,3 +10366,21 @@ span.nav-logo-version {
 button.pdp-coa-btn {
   display: none !important;
 }
+
+
+/* v1.38 — logo mark is text, not a filled badge (fixes black/navy blob on B) */
+.nav-logo-mark,
+.nav .nav-logo-mark,
+html body .nav-logo-mark,
+.site-sticky-chrome .nav-logo-mark {
+  background: transparent !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  color: #0d2137 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+}

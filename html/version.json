@@ -1,12 +1,10 @@
 {
-  "version": "1.37",
+  "version": "1.38",
   "released": "2026-09-09",
-  "codename": "drop-curcumin",
+  "codename": "logo-thumbs-clean",
   "highlights": [
-    "Remove Curcumin Phytosome from homepage catalog, science, footers, sitemap",
-    "301 /products/curcumin-phytosome and blog identity note \u2192 catalog / blog index",
-    "Copy: Fifteen catalog reagents; BPC compare-at aligned to $105",
-    "Keeps CRM v1.36 BPC-157 10mg/$88 \u00b7 20mg/$105",
-    "css?v=352"
+    "Logo: remove navy/black filled box on the B mark (text wordmark again)",
+    "PDP gallery: drop mismatched label-upright + amber pack thumbs; use clear gold-crimp vial / strength variants only",
+    "biolabs_style.css?v=353"
   ]
 }
