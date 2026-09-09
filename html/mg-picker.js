@@ -10,7 +10,7 @@
     "glow-70": ["70mg"],
     "epithalon": ["10mg", "50mg"],
     "ghk-cu": ["100mg"],
-    "mots-c": ["5mg", "10mg"],
+    "mots-c": ["10mg", "40mg"],
     "kpv": ["5mg", "10mg"],
     "semax": ["5mg", "10mg"],
     "kisspeptin-10": ["5mg", "10mg"],

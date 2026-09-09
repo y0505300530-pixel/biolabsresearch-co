@@ -1,10 +1,10 @@
-# biolabsresearch.co — Version 1.40
+# biolabsresearch.co — Version 1.41
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Epithalon: 10 mg $45 · 50 mg $120 (was 5/10 mg)
-- API + catalog + PDP + homepage
-- mg-picker.js?v=17 · catalog-mg.js?v=23
-- Keeps GHK-Cu 100 mg/$100 · BPC-157 10/$88 · 20/$105 · v1.38 logo/thumbs
+- MOTS-c: 10 mg $95 · 40 mg $135 (was 5/10 mg)
+- API + catalog + PDP + homepage — SoT home/PDP/cart/schema via products API
+- mg-picker.js?v=18 · catalog-mg.js?v=24
+- Locked stack: GHK 100/$100 · Epithalon 10/$45 · 50/$120 · BPC 10/$88 · 20/$105
