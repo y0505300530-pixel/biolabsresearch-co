@@ -10258,3 +10258,91 @@ button.pdp-coa-link {
 .related-products h2 {
   content: none;
 }
+
+
+/* === CRM v1.33 — PDP trust + mobile buy-first === */
+.price-launch-note {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  color: #9A6D2A !important;
+}
+.mg-picker .mg-btn {
+  min-height: 44px !important;
+  padding: 10px 14px !important;
+  font-size: 13px !important;
+}
+.btn-coa-secondary,
+a.btn-coa-secondary,
+button.btn-coa-secondary {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  min-height: 48px !important;
+  margin: 0 0 12px !important;
+  padding: 12px 18px !important;
+  border-radius: 999px !important;
+  border: 1.5px solid #0d2137 !important;
+  background: #fff !important;
+  color: #0d2137 !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  text-decoration: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+.btn-coa-secondary:hover { background: #F5F2ED !important; }
+.pdp-coa-link { display: none !important; } /* legacy */
+/* Age gate: cream/black/gold only — no green ring */
+.tc-check-label input[type="checkbox"] {
+  accent-color: #9A6D2A !important;
+  width: 20px !important;
+  height: 20px !important;
+}
+.tc-modal-badge {
+  background: #F5F2ED !important;
+  color: #9A6D2A !important;
+  border: 1px solid #E6E0D6 !important;
+}
+.tc-enter-btn:not(:disabled) {
+  background: #0d2137 !important;
+  color: #F2D191 !important;
+}
+.nav-logo-mark {
+  background: #0d2137 !important;
+  color: #F2D191 !important;
+  box-shadow: none !important;
+  border: 1px solid #0d2137 !important;
+}
+@media (max-width: 800px) {
+  .product-hero {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .product-hero .pdp-buy-col {
+    order: 1 !important;
+  }
+  .product-hero .product-img-section {
+    order: 2 !important;
+    margin-top: 16px !important;
+  }
+  .product-img-main {
+    aspect-ratio: 1 / 1 !important;
+    max-height: 280px !important;
+  }
+  /* sticky below chrome; don't eat title */
+  .pdp-sticky-buy {
+    z-index: 9000 !important;
+  }
+  .product-title {
+    font-size: clamp(22px, 6vw, 28px) !important;
+  }
+  .price-section {
+    position: relative;
+    z-index: 2;
+  }
+  /* room above sticky so last lines aren't clipped */
+  .pdp-buy-col {
+    padding-bottom: 12px !important;
+  }
+}

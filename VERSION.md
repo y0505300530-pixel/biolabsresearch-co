@@ -1,13 +1,14 @@
-# biolabsresearch.co — Version 1.32
+# biolabsresearch.co — Version 1.33
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- PDP ship note = Processing 1–2 business days (Shipping SoT)
-- Catalog shows From $ lowest strength (matches PDP default Amount) — fixes BPC/blend home vs PDP mismatch
-- catalog-mg defaults to lowest strength; ATC uses From $ price
-- /coa-library → 301 /coa; /tools/dilution → 301 /tools/solution-dilution
-- Blog product links stripped of .html (301 already existed)
-- OG images on PDPs + blog posts + legal
-- css?v=348 · catalog-mg.js?v=20
+- Launch price shows ends Sep 14, 2026 (same SoT as INSIDER25)
+- Ticker shows Ends Sep 14 — no live day counter that felt fake
+- Amount pills show price (5 mg · $62 / 10 mg · $125)
+- Empty CAS/Formula/MW/Identity cells hidden; blend CAS+identity filled
+- View lot COA is a real outline secondary button
+- Ship note: Processing 1–2 days · USPS free · UPS from $18.99
+- Mobile: name/price above gallery; age-gate accents gold not green
+- css?v=349 · mg-picker?v=14 · promo-bar?v=282

@@ -167,13 +167,16 @@
       opts
         .map(function (mg, i) {
           var on = norm(mg) === norm(MG) || (!MG && i === 0);
+          var slug = slugFromPath();
+          var pr = priceForMg(slug, mg, null);
+          var priceBit = (pr !== null) ? (' · $' + pr) : '';
           return (
             '<button type="button" class="mg-btn' +
             (on ? " active on" : "") +
             '" data-mg="' +
             mg +
-            '">' +
-            pretty(mg) +
+            '" aria-label="' + pretty(mg) + (pr !== null ? (' ' + pr + ' dollars') : '') + '">' +
+            pretty(mg) + priceBit +
             "</button>"
           );
         })

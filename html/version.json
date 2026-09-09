@@ -1,14 +1,15 @@
 {
-  "version": "1.32",
+  "version": "1.33",
   "released": "2026-09-09",
-  "codename": "price-sot-seo",
+  "codename": "pdp-trust-mobile",
   "highlights": [
-    "PDP ship note = Processing 1\u20132 business days (Shipping SoT)",
-    "Catalog shows From $ lowest strength (matches PDP default Amount) \u2014 fixes BPC/blend home vs PDP mismatch",
-    "catalog-mg defaults to lowest strength; ATC uses From $ price",
-    "/coa-library \u2192 301 /coa; /tools/dilution \u2192 301 /tools/solution-dilution",
-    "Blog product links stripped of .html (301 already existed)",
-    "OG images on PDPs + blog posts + legal",
-    "css?v=348 \u00b7 catalog-mg.js?v=20"
+    "Launch price shows ends Sep 14, 2026 (same SoT as INSIDER25)",
+    "Ticker shows Ends Sep 14 \u2014 no live day counter that felt fake",
+    "Amount pills show price (5 mg \u00b7 $62 / 10 mg \u00b7 $125)",
+    "Empty CAS/Formula/MW/Identity cells hidden; blend CAS+identity filled",
+    "View lot COA is a real outline secondary button",
+    "Ship note: Processing 1\u20132 days \u00b7 USPS free \u00b7 UPS from $18.99",
+    "Mobile: name/price above gallery; age-gate accents gold not green",
+    "css?v=349 \u00b7 mg-picker?v=14 \u00b7 promo-bar?v=282"
   ]
 }

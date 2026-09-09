@@ -34,7 +34,7 @@
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://biolabsresearch.co/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Curcumin Phytosome", "item": "https://biolabsresearch.co/products/curcumin-phytosome"}]}</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=348">
+<link rel="stylesheet" href="/biolabs_style.css?v=349">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -213,7 +213,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/cart-vial.js?v=294"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=26"></script>
-<meta name="app-version" content="1.32">
+<meta name="app-version" content="1.33">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -232,7 +232,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 </div>
 
 <nav class="nav">
-<a href="/" class="nav-logo" aria-label="BioLabs Research"><span class="nav-logo-mark">B</span><span class="nav-logo-stack"><span class="nav-logo-text">iolabs research</span><span class="nav-logo-version" data-site-version="1.32">v1.32</span></span></a>
+<a href="/" class="nav-logo" aria-label="BioLabs Research"><span class="nav-logo-mark">B</span><span class="nav-logo-stack"><span class="nav-logo-text">iolabs research</span><span class="nav-logo-version" data-site-version="1.33">v1.33</span></span></a>
   <div class="nav-left">
     <a href="/#catalog">Catalog</a>
     <a href="/science">Science</a>
@@ -364,7 +364,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.32" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.32</p>
+<p class="site-version" data-site-version="1.33" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.33</p>
 </footer>
 
 <script>
@@ -475,14 +475,14 @@ footer{background:var(--ink);padding:60px 60px 30px}
         }).join('')+'</div>';
     }
     var origHtml = (p.original_price && parseFloat(p.original_price) > parseFloat(p.price))
-      ? '<span class="price-compare"><span class="price-original">$'+p.original_price+'</span><span class="price-launch-note">Launch price</span></span>' : '';
+      ? '<span class="price-compare"><span class="price-original">$'+p.original_price+'</span><span class="price-launch-note">Launch price · ends Sep 14, 2026</span></span>' : '';
     var storageHtml = p.storage
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
       ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
     var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<a class="pdp-coa-link" href="/coa?q='+encodeURIComponent(p.slug)+'">View lot COA</a>'
-      : '<button type="button" class="pdp-coa-link" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
+      ? '<a class="btn-coa-secondary" href="/coa?q='+encodeURIComponent(p.slug)+'">View lot COA</a>'
+      : '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero">' +
         '<div class="product-img-section">' +
@@ -493,8 +493,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
             '<button type="button" class="pdp-thumb" data-full="/media/ship-pack-biolabs.webp" aria-label="Packing"><img src="/media/ship-pack-biolabs.webp" alt=""></button>' +
           '</div>' +
         '</div>' +
-        '<div>' +
-          '<div class="product-category-label">'+(p.category||'Compound')+'</div>' +
+        '<div class=\"pdp-buy-col\">' +
+          '<div class=\"product-category-label\">'+(p.category||'Compound')+'</div>' +
           '<h1 class="product-title">'+p.name+'</h1>' +
           (p.tagline?'<div class="product-subtitle">'+p.tagline+'</div>':'') +
           '<div class="product-purity-row">' +
@@ -513,7 +513,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
               '</div>' +
               '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Add to inquiry</button>' +
             '</div>' +
-            '<p class="pdp-ship-note">Processing 1–2 business days.</p>' +
+            '<p class="pdp-ship-note">Processing 1–2 business days · USPS Ground free · UPS 2nd Day from $18.99</p>' +
             '<p class="pdp-atc-note">After you add: we review the inquiry and email next steps — no charge until confirmed.</p>' +
             coaBtn +
             '<div class="trust-items">' +
@@ -1008,9 +1008,12 @@ function researchNoteHtml(slug){
 function specStripHtml(slug){
   var ids = PUB_IDS[slug] || {};
   function cell(label, val){
-    return '<div><dt>'+label+'</dt><dd>'+(val && String(val).trim() ? val : '\u2014')+'</dd></div>';
+    if (!val || !String(val).trim()) return '';
+    return '<div><dt>'+label+'</dt><dd>'+val+'</dd></div>';
   }
-  return '<dl class="spec-strip">'+cell('CAS', ids.cas)+cell('Formula', ids.formula)+cell('MW', ids.mw)+cell('Identity', ids.seq)+
+  var body = cell('CAS', ids.cas)+cell('Formula', ids.formula)+cell('MW', ids.mw)+cell('Identity', ids.seq);
+  if (!body) return '';
+  return '<dl class="spec-strip">'+body+
     '</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity lives on the lot COA when issued.</p>';
 }
 
@@ -1203,8 +1206,8 @@ document.addEventListener('keydown', function(e) {
 
 <script src="/email-capture.js?v=5"></script>
 <script src="/enhance-schema.js"></script>
-<script src="/promo-bar.js?v=281"></script>
-<script src="/mg-picker.js?v=13"></script>
+<script src="/promo-bar.js?v=282"></script>
+<script src="/mg-picker.js?v=14"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/product-marquee.js?v=20"></script>
 <script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>
