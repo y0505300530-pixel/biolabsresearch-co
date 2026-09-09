@@ -1,9 +1,10 @@
-# biolabsresearch.co — Version 1.52
+# biolabsresearch.co — Version 1.54
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- New: Tirzepatide — 5 mg $55 · 10 mg $90 (API + PDP + home + sitemap)
-- Interim gold-crimp vial (R3TA clone) — @Indian labeled Tirzepatide when ready
-- mg-picker.js?v=27 · catalog-mg.js?v=33 · vial?v=160
+- New: Semaglutide — 5 mg $60 · 10 mg $90 (API + PDP + home + sitemap)
+- RUO copy only — no weight-loss / therapy claims (Marketing)
+- Interim vial — @Indian labeled Semaglutide art
+- mg-picker.js?v=28 · catalog-mg.js?v=34

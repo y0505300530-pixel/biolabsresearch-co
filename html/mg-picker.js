@@ -19,6 +19,7 @@
     "ipamorelin": ["10mg"],
     "tesamorelin": ["10mg", "20mg"],
     "tirzepatide": ["5mg", "10mg"],
+    "semaglutide": ["5mg", "10mg"],
     "retatrutide": ["10mg", "20mg", "50mg"]
   };
   function slugFromPath() {

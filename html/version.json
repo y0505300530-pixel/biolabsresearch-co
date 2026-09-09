@@ -1,11 +1,11 @@
 {
-  "version": "1.53",
+  "version": "1.54",
   "released": "2026-09-09",
-  "codename": "tirzepatide-vial",
+  "codename": "semaglutide",
   "highlights": [
-    "Tirzepatide labeled gold-crimp vial (not R3TA clone)",
-    "RUO PDP/meta: research compound 5/10 mg from $55 \u2014 removed hGH-fragment/$85 leftover; CAS 2023788-19-2",
-    "No weight-loss/GLP claims",
-    "vial?v=161 \u00b7 css?v=356"
+    "New: Semaglutide \u2014 5 mg $60 \u00b7 10 mg $90 (API + PDP + home + sitemap)",
+    "RUO copy only \u2014 no weight-loss / therapy claims (Marketing)",
+    "Interim vial \u2014 @Indian labeled Semaglutide art",
+    "mg-picker.js?v=28 \u00b7 catalog-mg.js?v=34"
   ]
 }
