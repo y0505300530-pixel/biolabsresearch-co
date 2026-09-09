@@ -1888,8 +1888,6 @@ function addSuggest(slug, name, price, mg){
   var n=0; (function tick(){ showTotal(); if(++n<40) setTimeout(tick,100); })();
 })();
 
-if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', killRewards);
-  else killRewards();
 })();
 
 /* Footer v4: Total row was/now/−N% via renderCart wrap (all pages) */
