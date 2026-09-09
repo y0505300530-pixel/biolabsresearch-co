@@ -1,12 +1,9 @@
-# biolabsresearch.co — Version 1.23
+# biolabsresearch.co — Version 1.25
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Nav search: replace href=# dead link with button (aria-label Search)
-- Contact viewport unified to initial-scale=1.0
-- FAQ: promo-code aria-labels; menu close 44px + aria-label
-- Shipping: 44px step CTAs; one primary Email catalog desk button
-- Mobile readable floor ~13px; cookie/close targets 44px
-- css?v=341 — remaining: blog load-more, PDP sticky buy, PDP price clarity (next)
+- Homepage hero: remove trust chips + In stock line (Yehuda mark)
+- PDP: Unit price label; mobile sticky Add to inquiry bar with unit price
+- css?v=343

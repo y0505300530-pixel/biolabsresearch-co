@@ -9782,3 +9782,99 @@ button.nav-util {
   -webkit-tap-highlight-color:transparent;touch-action:manipulation;
 }
 .blog-load-more:hover{background:#0d2137;color:#fff}
+
+
+/* === CRM v1.25 — drop hero trust chips; PDP unit price + sticky ATC === */
+.nl-trust-row,
+.nl-trust {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+.price-unit-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+.price-unit-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #9A6D2A;
+}
+.price-row .price-original {
+  align-self: flex-end;
+  margin-left: 10px;
+}
+.size-label {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #6B6354;
+  margin: 0 0 8px;
+}
+.size-options .size-btn {
+  font-size: 13px;
+}
+.pdp-sticky-buy {
+  display: none;
+}
+@media (max-width: 800px) {
+  .pdp-sticky-buy {
+    display: flex !important;
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    z-index: 10020 !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    background: rgba(255,255,255,.96) !important;
+    backdrop-filter: blur(10px);
+    border-top: 1px solid #E6E0D6 !important;
+    box-shadow: 0 -8px 24px rgba(13,33,55,.08);
+  }
+  body.cart-open .pdp-sticky-buy {
+    display: none !important;
+  }
+  .pdp-sticky-price {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+  .pdp-sticky-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #9A6D2A;
+  }
+  .pdp-sticky-price strong {
+    font-size: 18px;
+    font-weight: 800;
+    color: #0d2137;
+  }
+  .pdp-sticky-atc {
+    flex: 1 1 auto;
+    min-height: 48px !important;
+    border: 0 !important;
+    border-radius: 999px !important;
+    background: #0d2137 !important;
+    color: #F2D191 !important;
+    font-weight: 800 !important;
+    font-size: 15px !important;
+    cursor: pointer;
+  }
+  /* room above sticky bar */
+  .product-hero,
+  #product-container {
+    padding-bottom: 84px !important;
+  }
+}

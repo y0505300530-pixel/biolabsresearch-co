@@ -1,10 +1,10 @@
 {
-  "version": "1.24",
+  "version": "1.25",
   "released": "2026-09-09",
-  "codename": "blog-load-more",
+  "codename": "hero-drop-trust-pdp-sticky",
   "highlights": [
-    "Blog index: show 6 notes then Load more (works with filters/search) \u2014 cuts ~18-screen mobile wall",
-    "Keeps CRM v1.23 a11y wave 1",
-    "css?v=342"
+    "Homepage hero: remove trust chips + In stock line (Yehuda mark)",
+    "PDP: Unit price label; mobile sticky Add to inquiry bar with unit price",
+    "css?v=343"
   ]
 }
