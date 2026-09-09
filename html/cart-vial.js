@@ -19,6 +19,7 @@
     '.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:6px !important;overflow-x:auto !important;overflow-y:visible !important;-webkit-overflow-scrolling:touch !important;touch-action:pan-x !important;overscroll-behavior-x:contain !important;padding:0 12px 6px;scrollbar-width:thin;pointer-events:auto !important}',
     'body.cart-open{overflow:hidden !important}',
     'body.cart-open .promo-stack,body.cart-open #promoStack{display:none!important;height:0!important;min-height:0!important;max-height:0!important;overflow:hidden!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;margin:0!important;padding:0!important;border:0!important}',
+    '#cartProgress,#cartProgress.on{display:none !important;height:0 !important;min-height:0 !important;max-height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important}',,
     '.cart-header,.cart-footer,#cartProgress{flex:0 0 auto !important}',
     '.cart-header{padding:18px 20px 12px !important;padding-top:max(28px, calc(env(safe-area-inset-top) + 12px)) !important;overflow:visible !important}',
     '.cart-title{font-size:20px !important;font-weight:800 !important;line-height:1.2 !important;padding-top:2px !important}',
@@ -1883,4 +1884,23 @@ function addSuggest(slug, name, price, mg){
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showTotal);
   else showTotal();
   var n=0; (function tick(){ showTotal(); if(++n<40) setTimeout(tick,100); })();
+})();
+
+/* Yehuda: remove Inquiry Rewards bar from cart */
+(function(){
+  function killRewards(){
+    var el = document.getElementById('cartProgress');
+    if (!el) return;
+    el.style.cssText = 'display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;border:0!important;opacity:0!important;visibility:hidden!important;';
+    el.setAttribute('hidden','');
+    el.innerHTML = '';
+  }
+  var n=0; (function tick(){
+    killRewards();
+    if (typeof window.renderProgress === 'function' && !window.renderProgress.__killed) {
+      window.renderProgress = function(){ killRewards(); };
+      window.renderProgress.__killed = true;
+    }
+    if (++n < 80) setTimeout(tick, 100);
+  })();
 })();
