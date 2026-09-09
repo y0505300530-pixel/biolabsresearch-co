@@ -1,10 +1,10 @@
 {
-  "version": "1.58",
+  "version": "1.59",
   "released": "2026-09-09",
-  "codename": "tirz-10-only",
+  "codename": "tesa-ipa-10",
   "highlights": [
-    "Tirzepatide: single 10 mg at $90 (5 mg removed \u2014 Marketing SoT)",
-    "MOTS-c remains 10/$95 \u00b7 20/$110 from v1.57",
-    "mg-picker.js?v=31 \u00b7 catalog-mg.js?v=37"
+    "Tesamorelin / Ipamorelin Blend: single 10 mg at $119 (5 mg and 15 mg removed)",
+    "API + catalog + PDP + homepage",
+    "mg-picker.js?v=32 \u00b7 catalog-mg.js?v=38"
   ]
 }

@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 1.58
+# biolabsresearch.co — Version 1.59
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Tirzepatide: single 10 mg at $90 (5 mg removed — Marketing SoT)
-- MOTS-c remains 10/$95 · 20/$110 from v1.57
-- mg-picker.js?v=31 · catalog-mg.js?v=37
+- Tesamorelin / Ipamorelin Blend: single 10 mg at $119 (5 mg and 15 mg removed)
+- API + catalog + PDP + homepage
+- mg-picker.js?v=32 · catalog-mg.js?v=38
