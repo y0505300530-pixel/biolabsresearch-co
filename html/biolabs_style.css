@@ -9126,3 +9126,27 @@ html body .insider-club .insider-club-note {
     margin-right: 0 !important;
   }
 }
+
+
+/* === CRM v1.14 — PDP: catalog vial only (Marketing) === */
+.product-img-section .bl-video-pdp,
+.product-img-section .pdp-review,
+.bl-video-pdp,
+.pdp-review {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+.product-img-section .product-img-main {
+  margin: 0 !important;
+}
+.product-img-section .product-img-main img {
+  width: 100% !important;
+  max-width: 520px !important;
+  height: auto !important;
+  display: block !important;
+  margin: 0 auto !important;
+}
