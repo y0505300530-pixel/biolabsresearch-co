@@ -9237,3 +9237,64 @@ html body .insider-club .insider-club-note {
     white-space: normal !important;
   }
 }
+
+
+/* === CRM v1.17 — sales-focused mobile: display/H1 ~30% smaller ≤640 === */
+@media (max-width: 640px) {
+  html body .nl-hero {
+    padding: 14px 16px 10px !important;
+    gap: 10px !important;
+  }
+  html body .nl-copy {
+    padding-top: 8px !important;
+  }
+  html body .nl-kicker {
+    font-size: 10px !important;
+    padding: 5px 10px !important;
+    margin: 0 0 8px !important;
+  }
+  /* ~30% under prior mobile H1 (~32–44 → ~22–31) — H1 kept for SEO */
+  html body .nl-title {
+    font-size: clamp(22px, 6.2vw, 30px) !important;
+    line-height: 1.12 !important;
+    margin: 0 0 8px !important;
+    letter-spacing: -.02em !important;
+  }
+  html body .nl-sub {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+    margin: 0 0 8px !important;
+  }
+  html body .nl-price {
+    font-size: 14px !important;
+    margin: 0 0 10px !important;
+  }
+  html body .nl-actions {
+    gap: 8px !important;
+    margin: 0 0 10px !important;
+  }
+  html body .nl-btn,
+  html body .nl-btn-primary,
+  html body .nl-btn-secondary {
+    font-size: 14px !important;
+    padding: 12px 18px !important;
+  }
+  html body .nl-trust-row {
+    margin: 8px 0 4px !important;
+  }
+  html body .nl-trust-row li {
+    font-size: 10px !important;
+    padding: 4px 9px !important;
+  }
+  html body .nl-trust {
+    font-size: 11px !important;
+  }
+  /* catalog title density too — sales focus */
+  html body .catalog-title {
+    font-size: clamp(22px, 6vw, 28px) !important;
+    margin: 0 0 8px !important;
+  }
+  html body .section-kicker {
+    font-size: 10px !important;
+  }
+}

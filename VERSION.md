@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 1.16
+# biolabsresearch.co — Version 1.17
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Mobile: fix header wordmark overlap with search/cart/hamburger (ellipsis + reserved icon rail)
-- Mobile hero: compact trust chips (no full-width stack) + remove duplicate “Lot docs” line
-- css?v=334
+- Mobile ≤640: shrink hero display/H1 ~30% (H1 kept for SEO)
+- Keeps inquiry CTAs, Lot docs on request chips, RUO line — tighter sales density
+- css?v=335
