@@ -7809,3 +7809,14 @@ body:has(.cart-drawer.open) #promoStack {
     max-height: 108px !important;
   }
 }
+
+
+/* Unlocked perk = status only (not a second checkout CTA) */
+.cart-inquiry-perk,
+a.cart-inquiry-perk,
+div.cart-inquiry-perk {
+  pointer-events: none !important;
+  cursor: default !important;
+  text-decoration: none !important;
+}
+
