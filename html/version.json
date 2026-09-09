@@ -1,10 +1,10 @@
 {
-  "version": "1.47",
+  "version": "1.48",
   "released": "2026-09-09",
-  "codename": "ipamorelin",
+  "codename": "ipamorelin-vial",
   "highlights": [
-    "New: Ipamorelin \u2014 single 10 mg at $80 (API + PDP + catalog + homepage)",
-    "Interim gold-crimp vial art (clone) \u2014 @Indian labeled vial when ready",
-    "mg-picker.js?v=24 \u00b7 catalog-mg.js?v=30 \u00b7 vial?v=160"
+    "Ipamorelin labeled gold-crimp vial (not KPV byte-clone)",
+    "PDP/meta copy fixed: research peptide 10 mg $80 \u2014 not alpha-MSH/KPV leftover",
+    "vial?v=161 \u00b7 css?v=354"
   ]
 }
