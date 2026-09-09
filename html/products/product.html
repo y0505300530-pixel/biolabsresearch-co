@@ -802,7 +802,7 @@ function checkout() {
         <div id="coa-modal-title" style="font-size:15px;font-weight:700;color:#0d2137;margin-top:2px"></div>
       </div>
       <div style="display:flex;align-items:center;gap:10px">
-        <a id="coa-download-btn" href="#" download style="display:inline-flex;align-items:center;gap:6px;background:#1d5c3a;color:white;padding:8px 16px;border-radius:var(--radius-sm);font-size:12px;font-weight:700;text-decoration:none;font-family:"Montserrat",sans-serif">
+        <a id="coa-download-btn" href="#" download style="display:inline-flex;align-items:center;gap:6px;background:#1d5c3a;color:white;padding:8px 16px;border-radius:var(--radius-sm);font-size:12px;font-weight:700;text-decoration:none;font-family:Montserrat,sans-serif">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download PDF
         </a>
@@ -1015,7 +1015,7 @@ function openCOAModal(slug) {
   if (entries.length > 1) {
     tabs.style.display = 'flex';
     tabs.innerHTML = entries.map(function(e, i) {
-      return '<button onclick="loadCOAEntry(COA_DATA[\''+slug+'\']['+i+'], this)" style="padding:6px 14px;border-radius:var(--radius-sm) 6px 0 0;border:1px solid #d4e4d8;border-bottom:none;background:'+(i===0?'white':'#f7f9f5')+';color:'+(i===0?'#0d2137':'#4a6358')+';font-size:12px;font-weight:700;cursor:pointer;font-family:"Montserrat",sans-serif">' + e.label + '</button>';
+      return '<button onclick="loadCOAEntry(COA_DATA[\''+slug+'\']['+i+'], this)" style="padding:6px 14px;border-radius:var(--radius-sm) 6px 0 0;border:1px solid #d4e4d8;border-bottom:none;background:'+(i===0?'white':'#f7f9f5')+';color:'+(i===0?'#0d2137':'#4a6358')+';font-size:12px;font-weight:700;cursor:pointer;font-family:Montserrat,sans-serif">' + e.label + '</button>';
     }).join('');
     mountAddMore(cart);
   } else {
