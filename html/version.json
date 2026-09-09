@@ -1,12 +1,9 @@
 {
   "version": "1.07",
   "released": "2026-09-09",
-  "codename": "phone-sweep",
+  "codename": "insider-club-premium",
   "highlights": [
-    "Phone sweep: INSIDER25 visible pill raised (~40px in 44px bar) so CSS-px audits pass; hit area stays \u226544",
-    "Blog filter chips + search min 44px tap targets",
-    "a11y wave 2: Skip to content link + focus-visible gold outlines sitewide",
-    "Re-assert mobile nav hide under 800px (hamburger on-screen)",
-    "css?v=325"
+    "Homepage Insider/email capture redesigned: split card, Fraunces headline, gold 25% italic, INSIDER25 preview chip, vial visual, navy+gold CTA",
+    "RUO-safe copy (inquiry / research use only); form + /api/subscribe unchanged"
   ]
 }

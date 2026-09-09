@@ -1,8 +1,8 @@
-# biolabsresearch.co — Version 1.06
+# biolabsresearch.co — Version 1.07
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Homepage: remove Research Catalog “The compounds. Nothing else.” band (compounds-section)
-- Keeps catalog grid, hero cinematic, version under wordmark
+- Homepage Insider/email capture redesigned: split card, Fraunces headline, gold 25% italic, INSIDER25 preview chip, vial visual, navy+gold CTA
+- RUO-safe copy (inquiry / research use only); form + /api/subscribe unchanged

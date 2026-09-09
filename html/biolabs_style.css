@@ -8638,3 +8638,187 @@ textarea:focus-visible,
     pointer-events: auto !important;
   }
 }
+
+
+/* === CRM v1.07 — Insider club premium card === */
+.insider-club{
+  max-width:920px !important;
+  width:calc(100% - 48px) !important;
+  margin:48px auto 72px !important;
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(242,209,145,.55), transparent 55%),
+    linear-gradient(165deg, #F7F1E4 0%, #E8D9B4 100%) !important;
+  color:#0d2137 !important;
+  border-radius:28px !important;
+  padding:0 !important;
+  display:block !important;
+  grid-template-columns:unset !important;
+  box-sizing:border-box;
+  box-shadow:0 18px 48px rgba(13,33,55,.12), inset 0 1px 0 rgba(255,255,255,.65);
+  border:1px solid rgba(13,33,55,.08);
+  overflow:hidden;
+  min-height:0 !important;
+}
+.insider-club-inner{
+  display:grid !important;
+  grid-template-columns:1.15fr .85fr;
+  align-items:center;
+  gap:0;
+  width:100%;
+  text-align:left !important;
+}
+.insider-club-copy{
+  padding:40px 36px 36px 40px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.insider-club-badge{
+  display:inline-flex !important;
+  align-items:center;
+  gap:8px;
+  background:#0d2137 !important;
+  color:#F2D191 !important;
+  font-size:10px !important;
+  font-weight:700 !important;
+  letter-spacing:.16em !important;
+  text-transform:uppercase;
+  padding:8px 14px !important;
+  border-radius:999px !important;
+  margin:0 0 18px !important;
+  border:0 !important;
+}
+.insider-club h3{
+  margin:0 0 12px !important;
+  font-family:var(--font-logo),Fraunces,Georgia,serif !important;
+  font-size:clamp(32px,4.2vw,44px) !important;
+  line-height:1.08 !important;
+  font-weight:500 !important;
+  letter-spacing:-.02em;
+  color:#0d2137 !important;
+  max-width:12ch;
+}
+.insider-club h3 em,.insider-club h3 .insider-off{
+  color:#8B6914 !important;
+  background:transparent !important;
+  padding:0 !important;
+  border-radius:0 !important;
+  display:inline !important;
+  font-weight:500 !important;
+  font-style:italic !important;
+}
+.insider-club-sub{
+  display:block !important;
+  margin:0 0 18px !important;
+  font-size:15px !important;
+  line-height:1.45 !important;
+  color:#3D4A55 !important;
+  opacity:1 !important;
+  max-width:34ch;
+  text-align:left !important;
+}
+.insider-code-preview{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin:0 0 18px;
+  padding:10px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.72);
+  border:1px dashed rgba(13,33,55,.22);
+  font-size:12px;
+  color:#5A5346;
+}
+.insider-code-preview strong{
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:15px;
+  letter-spacing:.06em;
+  color:#0d2137;
+  font-weight:800;
+}
+.insider-club-form{
+  display:flex !important;
+  flex-direction:row !important;
+  gap:10px !important;
+  width:100% !important;
+  max-width:420px !important;
+  flex-wrap:wrap !important;
+}
+.insider-club input{
+  flex:1 1 180px !important;
+  width:auto !important;
+  min-width:0 !important;
+  height:52px !important;
+  border:1.5px solid rgba(13,33,55,.12) !important;
+  border-radius:999px !important;
+  padding:0 18px !important;
+  font-size:15px !important;
+  background:#fff !important;
+  color:#0d2137 !important;
+  box-sizing:border-box;
+  box-shadow:0 1px 2px rgba(13,33,55,.04);
+}
+.insider-club input:focus{
+  outline:none;
+  border-color:#0d2137 !important;
+  box-shadow:0 0 0 3px rgba(242,209,145,.55);
+}
+.insider-club button{
+  flex:0 0 auto !important;
+  width:auto !important;
+  height:52px !important;
+  border:0 !important;
+  border-radius:999px !important;
+  background:#0d2137 !important;
+  color:#F2D191 !important;
+  font-weight:800 !important;
+  font-size:15px !important;
+  padding:0 22px !important;
+  cursor:pointer;
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  white-space:nowrap;
+  transition:transform .15s ease, background .15s ease;
+}
+.insider-club button:hover{background:#162a40 !important;transform:translateY(-1px)}
+.insider-club-note{
+  display:block !important;
+  margin:14px 0 0 !important;
+  font-size:12px !important;
+  line-height:1.4 !important;
+  color:#6B6354 !important;
+  opacity:1 !important;
+  text-align:left !important;
+}
+.insider-club-visual{
+  margin:0;
+  padding:28px 28px 28px 8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:280px;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255,255,255,.55), transparent 60%);
+}
+.insider-club-visual img{
+  width:min(240px, 70%);
+  height:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 22px 36px rgba(13,33,55,.18));
+  transform:rotate(-6deg);
+}
+.insider-out{color:#0d2137 !important;margin-top:14px;text-align:left !important}
+.insider-club-proof{display:none !important}
+@media (max-width:780px){
+  .insider-club{width:calc(100% - 28px) !important;margin:32px auto 56px !important}
+  .insider-club-inner{grid-template-columns:1fr !important}
+  .insider-club-copy{padding:28px 22px 8px;align-items:center;text-align:center !important}
+  .insider-club h3,.insider-club-sub,.insider-club-note{text-align:center !important;margin-left:auto;margin-right:auto}
+  .insider-club-form{flex-direction:column !important;max-width:100% !important}
+  .insider-club input,.insider-club button{width:100% !important}
+  .insider-club-visual{padding:4px 22px 28px;min-height:0}
+  .insider-club-visual img{width:min(180px,55%);transform:none}
+  .insider-code-preview{margin-left:auto;margin-right:auto}
+}
