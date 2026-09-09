@@ -1188,26 +1188,43 @@ function addSuggest(slug, name, price, mg){
   (function tick(){ wire(); if (++n < 40) setTimeout(tick, 100); })();
 })();
 
-/* ELITE P0: lock body scroll while cart open + hide promo ticker */
+/* ELITE P0 + CRM: cart open hides INSIDER25 ticker (like search) */
 (function(){
   function setPromoHidden(hide){
-    var nodes = document.querySelectorAll('.promo-stack, #promoStack');
-    for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      if (hide) {
-        el.setAttribute('data-cart-hidden', '1');
-        el.style.setProperty('display', 'none', 'important');
-        el.style.setProperty('height', '0', 'important');
-        el.style.setProperty('visibility', 'hidden', 'important');
-        el.style.setProperty('opacity', '0', 'important');
-        el.style.setProperty('pointer-events', 'none', 'important');
-      } else if (el.getAttribute('data-cart-hidden') === '1') {
-        el.removeAttribute('data-cart-hidden');
-        el.style.removeProperty('display');
-        el.style.removeProperty('height');
-        el.style.removeProperty('visibility');
-        el.style.removeProperty('opacity');
-        el.style.removeProperty('pointer-events');
+    var sels = ['.promo-stack', '#promoStack', '.promo-bar', '.promo-track'];
+    for (var s = 0; s < sels.length; s++) {
+      var nodes = document.querySelectorAll(sels[s]);
+      for (var i = 0; i < nodes.length; i++) {
+        var el = nodes[i];
+        if (hide) {
+          el.setAttribute('data-cart-hidden', '1');
+          el.setAttribute('hidden', '');
+          el.style.setProperty('display', 'none', 'important');
+          el.style.setProperty('height', '0', 'important');
+          el.style.setProperty('min-height', '0', 'important');
+          el.style.setProperty('max-height', '0', 'important');
+          el.style.setProperty('overflow', 'hidden', 'important');
+          el.style.setProperty('visibility', 'hidden', 'important');
+          el.style.setProperty('opacity', '0', 'important');
+          el.style.setProperty('pointer-events', 'none', 'important');
+          el.style.setProperty('margin', '0', 'important');
+          el.style.setProperty('padding', '0', 'important');
+          el.style.setProperty('border', '0', 'important');
+        } else if (el.getAttribute('data-cart-hidden') === '1') {
+          el.removeAttribute('data-cart-hidden');
+          el.removeAttribute('hidden');
+          el.style.removeProperty('display');
+          el.style.removeProperty('height');
+          el.style.removeProperty('min-height');
+          el.style.removeProperty('max-height');
+          el.style.removeProperty('overflow');
+          el.style.removeProperty('visibility');
+          el.style.removeProperty('opacity');
+          el.style.removeProperty('pointer-events');
+          el.style.removeProperty('margin');
+          el.style.removeProperty('padding');
+          el.style.removeProperty('border');
+        }
       }
     }
   }
@@ -1216,15 +1233,20 @@ function addSuggest(slug, name, price, mg){
     var d = document.getElementById('cartDrawer');
     var open = !!(d && d.classList.contains('open'));
     document.body.classList.toggle('cart-open', open);
+    document.documentElement.classList.toggle('cart-open', open);
     document.body.style.overflow = open ? 'hidden' : '';
     setPromoHidden(open);
   }
+  window.__biolabsSyncCartChrome = syncBody;
   function wrapToggle(){
-    if (typeof window.toggleCart !== 'function' || window.toggleCart.__bodyLock) return false;
+    if (typeof window.toggleCart !== 'function') return false;
+    /* index.html may redefine toggleCart after this file — always re-wrap latest */
+    if (window.toggleCart.__bodyLock) return true;
     var orig = window.toggleCart;
     window.toggleCart = function(){
       var r = orig.apply(this, arguments);
       syncBody();
+      setTimeout(syncBody, 0);
       return r;
     };
     window.toggleCart.__bodyLock = true;
@@ -1232,18 +1254,41 @@ function addSuggest(slug, name, price, mg){
   }
   function watchDrawer(){
     var d = document.getElementById('cartDrawer');
-    if (!d || d.__promoHideObs) return !!d;
-    var obs = new MutationObserver(function(){ syncBody(); });
-    obs.observe(d, { attributes: true, attributeFilter: ['class'] });
-    d.__promoHideObs = true;
+    if (!d) return false;
+    if (!d.__promoHideObs) {
+      var obs = new MutationObserver(function(){ syncBody(); });
+      obs.observe(d, { attributes: true, attributeFilter: ['class'] });
+      d.__promoHideObs = true;
+    }
     return true;
   }
-  var n=0; (function hook(){
+  var n = 0;
+  (function hook(){
+    /* clear wrap flag if page redefined toggleCart without our wrapper */
+    if (typeof window.toggleCart === 'function' && !window.toggleCart.__bodyLock) {
+      /* leave flag false so wrapToggle attaches */
+    }
     wrapToggle();
     watchDrawer();
     syncBody();
-    if(++n<80) setTimeout(hook,100);
+    if (++n < 120) setTimeout(hook, 100);
   })();
+  document.addEventListener('DOMContentLoaded', function(){
+    /* index.html defines toggleCart in a later script — re-wrap after parse */
+    if (window.toggleCart && window.toggleCart.__bodyLock) {
+      /* already wrapped from a prior definition; if index replaced it, flag is gone */
+    }
+    try { delete window.toggleCart.__bodyLock; } catch (e) { if (window.toggleCart) window.toggleCart.__bodyLock = false; }
+    if (window.toggleCart) window.toggleCart.__bodyLock = false;
+    wrapToggle();
+    watchDrawer();
+    syncBody();
+  });
+  window.addEventListener('load', function(){
+    if (window.toggleCart) window.toggleCart.__bodyLock = false;
+    wrapToggle();
+    syncBody();
+  });
 })();
 
 /* Gift solvent: force qty 1, block +/- */
@@ -1784,4 +1829,20 @@ function addSuggest(slug, name, price, mg){
   if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',hidePerk);
   else hidePerk();
   setInterval(hidePerk,800);
+})();
+
+/* CRM: keep ticker hidden whenever cart stays open through re-renders */
+(function(){
+  function wrapRender(){
+    if (typeof window.renderCart !== 'function' || window.renderCart.__promoSync) return false;
+    var orig = window.renderCart;
+    window.renderCart = function(){
+      var r = orig.apply(this, arguments);
+      if (window.__biolabsSyncCartChrome) window.__biolabsSyncCartChrome();
+      return r;
+    };
+    window.renderCart.__promoSync = true;
+    return true;
+  }
+  var n=0; (function tick(){ wrapRender(); if(++n<80) setTimeout(tick,100); })();
 })();

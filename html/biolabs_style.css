@@ -8128,3 +8128,36 @@ div.cart-inquiry-perk,
   pointer-events: none !important;
 }
 
+
+/* === CART OPEN: kill INSIDER25 ticker completely (search parity) === */
+html.cart-open .promo-stack,
+html.cart-open #promoStack,
+html.cart-open .promo-bar,
+html.cart-open .promo-track,
+body.cart-open .promo-stack,
+body.cart-open #promoStack,
+body.cart-open .promo-bar,
+body.cart-open .promo-track,
+html body.cart-open .promo-stack,
+html body.cart-open #promoStack,
+html body.cart-open .promo-bar,
+body:has(#cartDrawer.open) .promo-stack,
+body:has(#cartDrawer.open) #promoStack,
+body:has(#cartDrawer.open) .promo-bar,
+body:has(.cart-drawer.open) .promo-stack,
+body:has(.cart-drawer.open) #promoStack,
+body:has(.cart-drawer.open) .promo-bar {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
