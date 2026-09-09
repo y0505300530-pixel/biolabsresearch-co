@@ -52,7 +52,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=351">
+<link rel="stylesheet" href="/biolabs_style.css?v=352">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script src="/cart-vial.js?v=294"></script>
 <style id="sci-notes-restore">
@@ -83,7 +83,7 @@
 .sci-body .id-dl div{min-width:0;}
 </style>
 <script src="/search-overlay.js?v=26"></script>
-<meta name="app-version" content="1.36">
+<meta name="app-version" content="1.37">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -231,258 +231,6 @@
       </div>
     </div>
     <div class="calc-explain">
-      <article class="sci-card">
-        <div class="sci-card-k">Definition</div>
-        <h3>Mass over volume</h3>
-        <p>Labeled milligrams divided by milliliters of solvent. Units mg/mL. That is the concentration of the stock you just made.</p>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Limits</div>
-        <h3>Not purity, not identity</h3>
-        <p>This box does not use HPLC area percent, net peptide content, or observed mass. Those remain on the lot COA.</p>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Use</div>
-        <h3>Reproducible dilutions</h3>
-        <p>A stated mg/mL lets later dilutions be written into the notebook. Identity and purity are still the COA.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="sci-band sci-band-cream" id="trace">
-  <div class="sci-wrap">
-    <header class="sci-head">
-      <p class="section-kicker">01 · HPLC</p>
-      <h2>Reading a chromatogram</h2>
-    </header>
-  </div>
-  <figure class="sci-bleed">
-    <picture><source srcset="/media/explain-hplc.webp" type="image/webp"><img src="/media/explain-hplc.png" alt="Annotated HPLC chromatogram illustration showing baseline, retention time, main peak, and area percent"></picture>
-    <figcaption>Annotated HPLC chromatogram (schematic). Method illustration, not a lot certificate.</figcaption>
-  </figure>
-  <div class="sci-wrap">
-    <div class="sci-anno">
-      <article class="sci-card">
-        <div class="sci-card-k">Baseline</div>
-        <h3>Mobile-phase floor</h3>
-        <p>Detector signal with only mobile phase flowing. A stable baseline is required before a peak can be integrated. Drift and noise are method notes.</p>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Retention time</div>
-        <h3>When the species elutes</h3>
-        <p>Each UV-active species leaves the column at a characteristic time under a stated method. Retention time depends on that method. It is not identity on its own.</p>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Main peak</div>
-        <h3>The assigned UV-active species</h3>
-        <p>The dominant peak is assigned to the listed compound after identity work, not instead of it. Other peaks are other UV-active species at that wavelength.</p>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Area percent</div>
-        <h3>A ratio of peak areas</h3>
-        <p>HPLC purity is main-peak area divided by total detected peak area at a stated wavelength. An area ratio, not a weighing of the vial.</p>
-      </article>
-    </div>
-    <div class="sci-prose">
-      <p>The calculation is:</p>
-      <p class="sci-formula">HPLC purity = (main-peak area) ÷ (sum of detected peak areas) at a stated λ</p>
-      <p>Related peptides, leftover protecting groups, and process impurities appear as extra UV peaks when they elute and absorb at that wavelength. They are other species, not a second purity number.</p>
-      <p>Counter-ions and residual water are often invisible at 214 nm. A high area percent can still sit on a cake that is partly TFA and moisture. Net peptide content is a separate measurement (typically amino-acid analysis or nitrogen) and belongs on the COA when it is run.</p>
-    </div>
-  </div>
-</section>
-
-<section class="sci-band" id="two-questions">
-  <div class="sci-wrap">
-    <header class="sci-head">
-      <p class="section-kicker">02 · HPLC and MS</p>
-      <h2>Purity and identity are separate measurements</h2>
-    </header>
-    <div class="sci-split">
-      <figure class="sci-photo">
-        <picture><source srcset="/media/explain-hplc-ms.webp" type="image/webp"><img src="/media/explain-hplc-ms.png" alt="Side-by-side illustration of an HPLC trace and a mass spectrum"></picture>
-        <figcaption>HPLC chromatogram and mass spectrum (schematic).</figcaption>
-      </figure>
-      <div class="sci-prose">
-        <p>A complete lot record answers two questions.</p>
-        <p><strong>What share of the UV-active material is the main peak?</strong> Chromatography (typically reversed-phase HPLC). It does not name the molecule.</p>
-        <p><strong>Is that species the listed compound?</strong> Mass spectrometry: theoretical mass from the public formula versus observed mass. Agreement supports identity. A mismatch is not rescued by area percent.</p>
-        <p>Purity of the wrong molecule is still the wrong molecule. Theoretical and observed mass, with the ionization method, belong on the COA.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sci-band sci-band-cream" id="five-fields">
-  <div class="sci-wrap">
-    <header class="sci-head">
-      <p class="section-kicker">03 · Certificate of analysis</p>
-      <h2>Five fields that belong on a COA</h2>
-      <p>A certificate of analysis is a laboratory record for one lot. These five fields make it usable as a record, not a brochure.</p>
-    </header>
-        <div class="sci-video-row">
-      <figure class="bl-video">
-  <div class="bl-video-frame" style="aspect-ratio:1344/768">
-    <video autoplay muted loop playsinline preload="metadata"
-      aria-label="Certificate of analysis documents loop">
-      <source src="/media/video/coa-loop.mp4" type="video/mp4">
-    </video>
-  </div>
-  <figcaption class="bl-video-caption">Download hosted certificates from our COA Library.</figcaption>
-</figure>
-    </div>
-<ol class="sci-fields">
-      <li>
-        <span>01</span>
-        <h3>Lot</h3>
-        <p>The same identifier as the vial label. If the PDF and the label disagree, the record is not matched.</p>
-      </li>
-      <li>
-        <span>02</span>
-        <h3>Date</h3>
-        <p>Test date or report date. A sheet with no year is incomplete.</p>
-      </li>
-      <li>
-        <span>03</span>
-        <h3>Lab name</h3>
-        <p>The laboratory that ran the work. A table without a lab is not a certificate.</p>
-      </li>
-      <li>
-        <span>04</span>
-        <h3>Method</h3>
-        <p>HPLC column and wavelength, MS ionization mode, residual-solvent method when reported. A percentage with no method is not an HPLC result.</p>
-      </li>
-      <li>
-        <span>05</span>
-        <h3>Chromatogram or peak list</h3>
-        <p>The chromatogram, or a table of retention times and area percent. Without one of those, the integration is not visible.</p>
-      </li>
-    </ol>
-    <div class="sci-prose">
-      <p>A COA is incomplete when it is missing:</p>
-    </div>
-    <ul class="sci-weak">
-      <li>No lot on the PDF, or a lot that does not match the vial.</li>
-      <li>No laboratory name.</li>
-      <li>A percentage with no method and no wavelength.</li>
-      <li>The same generic PDF reused for every SKU.</li>
-      <li>A stale year that never updates when the catalog does.</li>
-    </ul>
-  </div>
-</section>
-
-<section class="sci-band" id="crude-net">
-  <div class="sci-wrap">
-    <header class="sci-head">
-      <p class="section-kicker">04 · Net peptide</p>
-      <h2>Area percent is not the mass that is peptide</h2>
-    </header>
-    <div class="sci-split">
-      <div class="sci-card sci-card-wide">
-        <svg class="net-svg" viewBox="0 0 640 220" role="img" aria-label="Schematic stacked bars comparing HPLC area percent with net peptide content">
-          <text x="0" y="22" fill="#9A6D2A" font-size="12" font-family="Inter,sans-serif" font-weight="700" letter-spacing="1.1">SCHEMATIC · NOT A LOT</text>
-          <text x="0" y="64" fill="#1F1F1F" font-size="14" font-family="Inter,sans-serif" font-weight="600">HPLC area (UV)</text>
-          <rect x="0" y="76" width="640" height="36" rx="8" fill="#EFE9E0"/>
-          <rect x="0" y="76" width="500" height="36" rx="8" fill="#FBCF87"/>
-          <rect x="500" y="76" width="140" height="36" fill="#C4A574"/>
-          <text x="16" y="100" fill="#3E2B20" font-size="13" font-family="Inter,sans-serif" font-weight="600">Main peak</text>
-          <text x="516" y="100" fill="#3E2B20" font-size="11" font-family="Inter,sans-serif">Other UV</text>
-          <text x="0" y="148" fill="#1F1F1F" font-size="14" font-family="Inter,sans-serif" font-weight="600">Same vial, by mass</text>
-          <rect x="0" y="160" width="640" height="36" rx="8" fill="#EFE9E0"/>
-          <rect x="0" y="160" width="360" height="36" rx="8" fill="#3E2B20"/>
-          <rect x="360" y="160" width="280" height="36" fill="#9A6D2A"/>
-          <text x="16" y="184" fill="#fff" font-size="13" font-family="Inter,sans-serif" font-weight="600">Peptide</text>
-          <text x="380" y="184" fill="#fff" font-size="12" font-family="Inter,sans-serif">Water + counter-ion</text>
-        </svg>
-        <p class="chem-note">Schematic. Bar lengths are teaching marks, not lot measurements, and not a purity claim for any SKU.</p>
-      </div>
-      <div class="sci-prose">
-        <p>Lyophilized peptide is a cake of sequence plus counter-ion plus residual water. HPLC at 214 nm usually does not see the salt or the moisture.</p>
-        <p>Two numbers can sit on one certificate: HPLC area percent for the main UV peak, and net peptide content for the fraction of weighed mass that is peptide. They answer different questions. A single homepage percentage collapses them.</p>
-        <p>See also <a href="/blog/hplc-area-percent-vs-net-peptide-content">HPLC area percent vs net peptide content</a>.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="sci-band sci-band-cream" id="identity">
-  <div class="sci-wrap">
-    <header class="sci-head">
-      <p class="section-kicker">05 · Chemical identity</p>
-      <h2>Public identifiers for listed compounds</h2>
-      <p>CAS, sequence, and formula below are literature identity for the named listing. Lot confirmation is the observed mass on that lot’s COA.</p>
-    </header>
-    <div class="id-grid">
-      <article class="sci-card">
-        <div class="sci-card-k">Pentadecapeptide</div>
-        <h3>BPC-157</h3>
-        <dl class="id-dl">
-          <div><dt>Residues</dt><dd>15 amino acids</dd></div>
-          <div><dt>Sequence</dt><dd>GEPPPGKPADDAGLV</dd></div>
-          <div><dt>Formula</dt><dd>C<sub>62</sub>H<sub>98</sub>N<sub>16</sub>O<sub>22</sub></dd></div>
-          <div><dt>Public MW</dt><dd>~1419.5 Da</dd></div>
-          <div><dt>CAS</dt><dd>137525-51-0</dd></div>
-        </dl>
-        <p>Literature identity for the pentadecapeptide. Lot confirmation is observed mass on the COA.</p>
-        <a class="split-link" href="products/bpc-157.html">Open the SKU →</a>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Nucleotide — not a peptide</div>
-        <h3>NAD+</h3>
-        <dl class="id-dl">
-          <div><dt>Class</dt><dd>Nicotinamide adenine dinucleotide</dd></div>
-          <div><dt>Formula</dt><dd>C<sub>21</sub>H<sub>27</sub>N<sub>7</sub>O<sub>14</sub>P<sub>2</sub></dd></div>
-          <div><dt>Public MW</dt><dd>~663.4 Da</dd></div>
-          <div><dt>CAS</dt><dd>53-84-9</dd></div>
-          <div><dt>Sequence</dt><dd>None — not a peptide</dd></div>
-        </dl>
-        <p>A dinucleotide cofactor. There is no peptide sequence.</p>
-        <a class="split-link" href="products/nad-plus.html">Open the SKU →</a>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Tyr-hGH 177–191</div>
-        <h3>AOD-9604</h3>
-        <dl class="id-dl">
-          <div><dt>CAS</dt><dd>221231-10-3</dd></div>
-          <div><dt>Sequence</dt><dd>YLRIVQCRSVEGSCGF</dd></div>
-          <div><dt>Identity</dt><dd>Tyr-hGH 177–191 analogue</dd></div>
-        </dl>
-        <p>Published fragment identity. Unmodified hGH 177–191 starts with Phe, not Tyr. <a href="/blog/aod-9604-hgh-fragment-identity">Identity note</a>.</p>
-        <a class="split-link" href="products/aod-9604.html">Open the SKU →</a>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Fragment listing</div>
-        <h3>TB-500</h3>
-        <dl class="id-dl">
-          <div><dt>CAS (this catalog)</dt><dd>885340-09-2</dd></div>
-          <div><dt>Identity</dt><dd>Ac-LKKTETQ</dd></div>
-          <div><dt>Not</dt><dd>Full thymosin β4 (CAS 77591-33-4)</dd></div>
-        </dl>
-        <p>Heptapeptide fragment, not the 43-residue protein. <a href="/blog/tb-500-vs-thymosin-beta-4-identity">TB-500 vs Tβ4</a>.</p>
-        <a class="split-link" href="products/tb-500.html">Open the SKU →</a>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Two named compounds</div>
-        <h3>Tesamorelin / Ipamorelin</h3>
-        <dl class="id-dl">
-          <div><dt>Tesamorelin</dt><dd>CAS 218949-48-5</dd></div>
-          <div><dt>Ipamorelin</dt><dd>CAS 170851-70-4 · ~711.9 Da</dd></div>
-          <div><dt>Blend</dt><dd>Two masses on the lot COA</dd></div>
-        </dl>
-        <p>A blend is two molecules. The COA should show both observed masses. <a href="/blog/tesamorelin-ipamorelin-blend-identity">Identity note</a>.</p>
-        <a class="split-link" href="products/tesamorelin-ipamorelin.html">Open the SKU →</a>
-      </article>
-      <article class="sci-card">
-        <div class="sci-card-k">Botanical complex</div>
-        <h3>Curcumin Phytosome</h3>
-        <dl class="id-dl">
-          <div><dt>Class</dt><dd>Phytosome curcumin complex (Meriva)</dd></div>
-          <div><dt>Sequence</dt><dd>None — not a peptide</dd></div>
-        </dl>
-        <p>Curcuminoids complexed with phospholipid. Curcumin CAS 458-37-7. Not a peptide. <a href="/blog/curcumin-phytosome-identity">Identity note</a>.</p>
-        <a class="split-link" href="products/curcumin-phytosome.html">Open the SKU →</a>
-      </article>
     </div>
   </div>
 </section>
@@ -507,8 +255,7 @@
     <text x="0" y="124" fill="#1F1F1F" font-size="13" font-weight="600">NAD+</text>
     <rect x="210" y="110" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="110" width="324" height="18" rx="9" fill="#D4A85C"/>
     <text x="544" y="124" fill="#1F1F1F" font-size="13" font-weight="700">$99</text>
-    <text x="0" y="162" fill="#1F1F1F" font-size="13" font-weight="600">Curcumin Phytosome</text>
-    <rect x="210" y="148" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="148" width="378" height="18" rx="9" fill="#C49248"/>
+<rect x="210" y="148" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="148" width="378" height="18" rx="9" fill="#C49248"/>
     <text x="598" y="162" fill="#1F1F1F" font-size="13" font-weight="700">$109</text>
     <text x="0" y="200" fill="#1F1F1F" font-size="13" font-weight="600">Tesamorelin / Ipamorelin</text>
     <rect x="210" y="186" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="186" width="419" height="18" rx="9" fill="#9A6D2A"/>
@@ -519,7 +266,7 @@
   </g>
 </svg>
     </div>
-    <p class="chem-note">AOD-9604 $85 · BPC-157 $89 · NAD+ $99 · Curcumin Phytosome $109 · Tesamorelin / Ipamorelin $119 · BPC-157 / TB-500 Blend $125. Catalog prices, not a quality ranking.</p>
+    <p class="chem-note">AOD-9604 $85 · BPC-157 $89 · NAD+ $99 · Tesamorelin / Ipamorelin $119 · BPC-157 / TB-500 Blend $125. Catalog prices, not a quality ranking.</p>
   </div>
 </section>
 
@@ -645,8 +392,7 @@
         <a href="https://biolabsresearch.co/products/kisspeptin-10.html">Kisspeptin-10</a>
         <a href="https://biolabsresearch.co/products/thymosin-alpha-1.html">Thymosin Alpha-1</a>
         <a href="https://biolabsresearch.co/products/retatrutide.html">R3TA</a>
-        <a href="https://biolabsresearch.co/products/curcumin-phytosome.html">Curcumin Phytosome</a>
-      </div>
+        </div>
       <div class="footer-col">
         <h4>Company</h4>
         <a href="https://biolabsresearch.co/science">Science</a>
@@ -671,10 +417,10 @@
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.36" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.36</p>
+<p class="site-version" data-site-version="1.37" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.37</p>
 </footer>
 <script>
-window.COMPARE_AT = {"aod-9604":105,"AOD-9604":105,"bpc-157-tb-500-blend":155,"BPC-157 / TB-500 Blend":155,"bpc-157":109,"BPC-157":109,"curcumin-phytosome":135,"Curcumin Phytosome":135,"epithalon":99,"Epithalon":99,"ghk-cu":85,"GHK-Cu":85,"glow-70":169,"GLOW 70":169,"kisspeptin-10":119,"Kisspeptin-10":119,"kpv":95,"KPV":95,"mots-c":115,"MOTS-c":115,"MOTS-C":115,"nad-plus":119,"NAD+":119,"retatrutide":169,"R3TA":169,"semax":109,"Semax":109,"tb-500":119,"TB-500":119,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"thymosin-alpha-1":135,"Thymosin Alpha-1":135};
+window.COMPARE_AT = {"aod-9604":105,"AOD-9604":105,"bpc-157-tb-500-blend":155,"BPC-157 / TB-500 Blend":155,"bpc-157":105,"BPC-157":105,"epithalon":99,"Epithalon":99,"ghk-cu":85,"GHK-Cu":85,"glow-70":169,"GLOW 70":169,"kisspeptin-10":119,"Kisspeptin-10":119,"kpv":95,"KPV":95,"mots-c":115,"MOTS-c":115,"MOTS-C":115,"nad-plus":119,"NAD+":119,"retatrutide":169,"R3TA":169,"semax":109,"Semax":109,"tb-500":119,"TB-500":119,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"thymosin-alpha-1":135,"Thymosin Alpha-1":135};
 window.compareAtPrice = function(item){
   var p = parseFloat(item.price) || 0;
   var w = parseFloat(item.original_price || item.compare || 0) || 0;

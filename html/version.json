@@ -1,9 +1,12 @@
 {
-  "version": "1.36",
+  "version": "1.37",
   "released": "2026-09-09",
-  "codename": "bpc-10-20",
+  "codename": "drop-curcumin",
   "highlights": [
-    "BPC-157 amounts: 10 mg ($88) and 20 mg ($105) \u2014 catalog + PDP + API",
-    "mg-picker.js?v=15 \u00b7 catalog-mg.js?v=21 \u00b7 css?v=351"
+    "Remove Curcumin Phytosome from homepage catalog, science, footers, sitemap",
+    "301 /products/curcumin-phytosome and blog identity note \u2192 catalog / blog index",
+    "Copy: Fifteen catalog reagents; BPC compare-at aligned to $105",
+    "Keeps CRM v1.36 BPC-157 10mg/$88 \u00b7 20mg/$105",
+    "css?v=352"
   ]
 }
