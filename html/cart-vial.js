@@ -28,9 +28,9 @@
     /* Yehuda cart footer: hide Subtotal forever; footer perk is the unlock line */
     '.cart-subtotal{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important}',
     '#cartProgress .cp-unlocked{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
-    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:8px !important;min-height:36px !important;margin:4px 0 6px !important;padding:6px 10px !important;border-radius:12px !important;background:#F7F1E4 !important;border:1px solid #E2D3B3 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:visible !important;position:relative !important;z-index:3 !important;box-shadow:none !important}',
+    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:6px !important;min-height:28px !important;height:28px !important;margin:0 0 4px !important;padding:0 8px !important;border-radius:8px !important;background:#F7F1E4 !important;border:1px solid #E2D3B3 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:hidden !important;position:relative !important;z-index:3 !important;box-shadow:none !important;box-sizing:border-box !important}',
     '.cart-inquiry-perk-icon{flex:0 0 auto !important;color:#7A5520 !important;display:block !important;width:16px !important;height:16px !important}',
-    '.cart-inquiry-perk-text{flex:1 1 auto !important;font-size:14.5px !important;font-weight:600 !important;line-height:1.2 !important;color:#7A5520 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}',
+    '.cart-inquiry-perk-text{flex:1 1 auto !important;font-size:11px !important;font-weight:700 !important;line-height:28px !important;color:#7A5520 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}',
 
     '.cart-footer .btn-continue{margin:0 auto !important;background:none !important;border:0 !important;box-shadow:none !important;min-height:28px !important;height:auto !important;padding:2px 4px !important;text-decoration:underline !important;text-transform:none !important;font-size:13px !important;font-weight:600 !important;color:#0d2137 !important;letter-spacing:0 !important}',
     '.cart-drawer{z-index:10050 !important}',
@@ -45,11 +45,11 @@
     '.cart-addcard-btn{background:#fff !important;color:#111 !important;border:1.5px solid #111 !important;border-radius:999px !important;padding:3px 10px !important;font-size:10px !important;font-weight:700 !important;cursor:pointer}',
     '.cart-addmore-row,.cart-addmore-all,.cart-addmore-btn,.cart-addmore-info{display:none !important}',
     /* compact Inquiry rewards while cart open */
-    '#cartProgress.on{padding:12px 14px !important}',
+    '#cartProgress.on{padding:8px 12px 6px !important}',
     '#cartProgress .cp-msg{font-size:12px !important;margin:0 0 6px !important;line-height:1.25 !important}',
     '#cartProgress .cp-kicker{font-size:10px !important;margin:0 0 2px !important}',
     '#cartProgress .cp-track{height:6px !important;margin:6px 4px 22px !important}',
-    '#cartProgress .cp-unlocked{display:block !important;margin:18px 0 0 !important;padding:8px 10px !important;font-size:12.5px !important;font-weight:700 !important;line-height:1.35 !important;border-radius:10px !important;background:#fff !important;border:1px solid #d9cbae !important;position:relative !important;z-index:1 !important;clear:both !important}',
+    '#cartProgress .cp-unlocked{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
     '.ci-mg{font-weight:600;color:#6b6254;font-size:0.85em}',
     /* BAC compact add-on row — no thumbnail, one 48px line, last above carousel */
     '.cart-item.ci-bac,.cart-drawer .cart-item.ci-bac{min-height:48px !important;height:48px !important;max-height:48px !important;padding:0 10px !important;margin:0 -14px !important;gap:8px !important;align-items:center !important;background:#F7F1E4 !important;border-bottom:0 !important;border-top:1px solid #E6DCC8 !important;overflow:hidden !important;box-sizing:border-box !important}',

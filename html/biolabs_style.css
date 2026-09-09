@@ -7698,3 +7698,104 @@ body:has(.cart-drawer.open) #promoStack {
   white-space: nowrap !important;
   align-self: center !important;
 }
+
+
+/* === CART MOBILE v2.3 — reclaim vertical space so quick-add stays visible === */
+@media (max-width: 667px) {
+  /* tighter Your order / Inquiry Rewards */
+  .cart-header,
+  #cartDrawer .cart-header {
+    flex: 0 0 48px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    padding: 0 12px !important;
+  }
+  #cartProgress,
+  #cartProgress.on {
+    padding: 8px 12px 6px !important;
+  }
+  #cartProgress .cp-kicker {
+    margin: 0 0 1px !important;
+    font-size: 9px !important;
+    letter-spacing: .06em !important;
+  }
+  #cartProgress .cp-msg {
+    margin: 0 0 4px !important;
+    font-size: 11px !important;
+    line-height: 1.2 !important;
+  }
+  #cartProgress .cp-track {
+    height: 5px !important;
+    margin: 4px 4px 16px !important; /* room for $ labels, not 22px waste */
+  }
+  #cartProgress .cp-tick .lbl {
+    top: 10px !important;
+    font-size: 8px !important;
+  }
+  #cartProgress .cp-unlocked {
+    display: none !important; /* footer perk only — never both */
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+  }
+
+  /* footer: unlocked as thin one-liner so Add-to-order isn’t buried */
+  .cart-footer {
+    max-height: 108px !important;
+    padding: 4px 12px calc(4px + env(safe-area-inset-bottom, 0px)) !important;
+    gap: 3px !important;
+  }
+  .cart-inquiry-perk,
+  a.cart-inquiry-perk {
+    min-height: 28px !important;
+    height: 28px !important;
+    max-height: 28px !important;
+    margin: 0 !important;
+    padding: 0 8px !important;
+    gap: 6px !important;
+    border-radius: 8px !important;
+    box-sizing: border-box !important;
+  }
+  .cart-inquiry-perk-icon {
+    width: 12px !important;
+    height: 12px !important;
+  }
+  .cart-inquiry-perk-text {
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    line-height: 28px !important;
+  }
+  .cart-footer .btn-checkout,
+  .btn-checkout {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+  }
+  .cart-footer .btn-continue,
+  .btn-continue {
+    min-height: 24px !important;
+    padding: 0 !important;
+    font-size: 12px !important;
+  }
+
+  /* keep add-more compact but fully above footer */
+  #cartAddMore,
+  .cart-addmore-slot {
+    max-height: 128px !important;
+    height: 128px !important;
+    flex: 0 0 128px !important;
+    padding: 4px 0 6px !important;
+    overflow: visible !important; /* don’t clip Add buttons */
+  }
+  .cart-addmore-track {
+    height: 108px !important;
+    max-height: 108px !important;
+  }
+  .cart-addcard,
+  .cart-addmore .cart-addcard {
+    height: 108px !important;
+    max-height: 108px !important;
+  }
+}
