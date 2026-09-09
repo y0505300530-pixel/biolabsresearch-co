@@ -1,0 +1,13 @@
+{
+  "version": "1.00",
+  "released": "2026-09-09",
+  "codename": "stable",
+  "highlights": [
+    "Cart footer v4: Total (was + sale + gold \u2212%) + Proceed + Continue; no shipping line / no Unlocked footer perk",
+    "Inquiry Rewards progress bar restored ($100 / $250 / $375 / $500)",
+    "INSIDER25 ticker hides when cart open (search parity); checkout timer fixed (no stuck 00:00:00)",
+    "Empty cart: Continue only (no Proceed/Total)",
+    "Homepage: Research Map removed; hero Lot docs on request (not Lot COA)",
+    "Checkout inquiry still saves CRM Order + Lead; live pay blocked on Tagada storeId (#15 / Zack)"
+  ]
+}

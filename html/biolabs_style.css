@@ -8267,23 +8267,6 @@ html body .cart-drawer .cart-addmore-slot {
 .cart-total-sr-only { /* obsolete */ }
 
 
-/* === CART: Yehuda — remove Inquiry Rewards (#cartProgress) entirely === */
-#cartProgress,
-#cartProgress.on,
-.cart-drawer #cartProgress,
-body.cart-open #cartProgress {
-  display: none !important;
-  visibility: hidden !important;
-  height: 0 !important;
-  min-height: 0 !important;
-  max-height: 0 !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  border: 0 !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
 
 
 /* === CART v4.1: never show shipping note; empty cart = Continue only === */
@@ -8380,3 +8363,15 @@ html body .cart-drawer.is-empty #cartSubtotalRow {
   overflow: hidden !important;
 }
 
+/* === CART v1.00: restore Inquiry Rewards visible === */
+#cartProgress.on {
+  display: block !important;
+  visibility: visible !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  pointer-events: auto !important;
+}
+.site-version{text-align:center;color:inherit}
