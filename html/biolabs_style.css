@@ -8927,3 +8927,63 @@ textarea:focus-visible,
     line-height: 1.2 !important;
   }
 }
+
+
+/* === CHECKOUT-OVERFLOW-v1.11: phone checkout body must not grow with promo marquee / grid === */
+html:has(.checkout-page),
+body:has(.checkout-page) {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+}
+.checkout-page {
+  width: 100% !important;
+  max-width: 1200px !important;
+  box-sizing: border-box !important;
+  min-width: 0 !important;
+}
+.checkout-page h1,
+.checkout-page h2,
+.checkout-page .form-card,
+.checkout-page .order-summary,
+.checkout-page .pm-option,
+.checkout-page .form-group input,
+.checkout-page .form-group select {
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+@media (max-width: 800px) {
+  .checkout-page {
+    grid-template-columns: 1fr !important;
+    padding: 24px 16px !important;
+    gap: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  .checkout-page h1 {
+    font-size: 22px !important;
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em !important;
+    margin: 0 0 12px !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+  }
+  .checkout-page .form-row {
+    grid-template-columns: 1fr !important;
+  }
+  .checkout-page .form-card {
+    padding: 20px 16px !important;
+  }
+}
+/* promo marquee must never expand document width (checkout + sitewide) */
+.promo-stack,
+.promo-bar {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+.promo-track {
+  max-width: none; /* keep marquee */
+}

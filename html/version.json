@@ -1,9 +1,10 @@
 {
-  "version": "1.10",
+  "version": "1.11",
   "released": "2026-09-09",
-  "codename": "cart-footer-compress",
+  "codename": "checkout-overflow",
   "highlights": [
-    "Cart drawer footer (Total + Proceed + Continue) compressed ~30% on mobile \u2014 less padding/gap, 42px CTA, tighter Total \u2014 more scroll room for items",
-    "cart-vial.js?v=292 + css?v=328"
+    "Fix: /checkout mobile horizontal overflow (~1272px body) \u2014 contain promo marquee + checkout grid/h1 on \u2264800px",
+    "Keeps CRM v1.10 cart footer compress",
+    "css?v=329"
   ]
 }
