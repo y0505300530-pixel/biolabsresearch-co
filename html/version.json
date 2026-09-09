@@ -1,9 +1,9 @@
 {
-  "version": "1.05",
+  "version": "1.06",
   "released": "2026-09-09",
-  "codename": "nav-version",
+  "codename": "drop-compounds-band",
   "highlights": [
-    "Show site version under the Biolabs research wordmark in the header (reads current release)",
-    "Keeps v1.04 hero cinematic + prior cart/header fixes"
+    "Homepage: remove Research Catalog \u201cThe compounds. Nothing else.\u201d band (compounds-section)",
+    "Keeps catalog grid, hero cinematic, version under wordmark"
   ]
 }

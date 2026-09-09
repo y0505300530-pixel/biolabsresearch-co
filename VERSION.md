@@ -1,8 +1,8 @@
-# biolabsresearch.co — Version 1.05
+# biolabsresearch.co — Version 1.06
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Show site version under the Biolabs research wordmark in the header (reads current release)
-- Keeps v1.04 hero cinematic + prior cart/header fixes
+- Homepage: remove Research Catalog “The compounds. Nothing else.” band (compounds-section)
+- Keeps catalog grid, hero cinematic, version under wordmark
