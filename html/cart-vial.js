@@ -584,22 +584,26 @@ function vialImg(item){
   return '/media/vial-'+(slug)+'.png?v=159';
 }
 var CART_SUGGEST = [
-  {slug:'bpc-157', name:'BPC-157', price:89},
-  {slug:'tb-500', name:'TB-500', price:99},
+  {slug:'bpc-157', name:'BPC-157', price:88},
+  {slug:'tb-500', name:'TB-500', price:105},
   {slug:'bpc-157-tb-500-blend', name:'BPC-157 / TB-500 Blend', price:125},
   {slug:'nad-plus', name:'NAD+', price:99},
-  {slug:'ghk-cu', name:'GHK-Cu', price:69},
+  {slug:'ghk-cu', name:'GHK-Cu', price:100},
   {slug:'aod-9604', name:'AOD-9604', price:85},
   {slug:'glow-70', name:'GLOW 70', price:139},
-  {slug:'epithalon', name:'Epithalon', price:79},
+  {slug:'epithalon', name:'Epithalon', price:45},
   {slug:'mots-c', name:'MOTS-c', price:95},
   {slug:'kpv', name:'KPV', price:79},
-  {slug:'semax', name:'Semax', price:89},
+  {slug:'semax', name:'Semax', price:99},
   {slug:'kisspeptin-10', name:'Kisspeptin-10', price:99},
   {slug:'thymosin-alpha-1', name:'Thymosin Alpha-1', price:109},
   {slug:'tesamorelin-ipamorelin', name:'Tesamorelin / Ipamorelin', price:119},
   {slug:'curcumin-phytosome', name:'Curcumin Phytosome', price:109},
-  {slug:'retatrutide', name:'R3TA', price:139}
+  {slug:'retatrutide', name:'R3TA', price:85},
+  {slug:'ipamorelin', name:'Ipamorelin', price:80},
+  {slug:'tesamorelin', name:'Tesamorelin', price:85},
+  {slug:'tirzepatide', name:'Tirzepatide', price:90},
+  {slug:'semaglutide', name:'Semaglutide', price:60}
 ];
 function addMoreHtml(cart){
   cart = cart || [];
@@ -612,7 +616,7 @@ function addMoreHtml(cart){
   if (!list.length) return '';
   var html = '<div class="cart-addmore"><div class="cart-addmore-title">Add to this order</div><div class="cart-addmore-track">';
   list.forEach(function(p){
-    /* the card printed the catalog's `price`, which here is the LAST strength: the drawer offered "BPC-157 $89"
+    /* the card printed the catalog's `price`, which here is the LAST strength: the drawer offered "BPC-157 $89" (stale; SoT 10mg is $88)
        and dropped a 10 mg vial in the cart while every other surface showed 5 mg for $44 */
     var d = (typeof window.blrDefaultStrength === 'function') ? window.blrDefaultStrength(p.slug) : null;
     var price = d ? d.price : p.price;

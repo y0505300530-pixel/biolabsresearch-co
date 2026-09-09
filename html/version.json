@@ -1,11 +1,10 @@
 {
-  "version": "1.63",
+  "version": "1.64",
   "released": "2026-09-09",
-  "codename": "mobile-clip-fix",
+  "codename": "bpc-88-hydrate",
   "highlights": [
-    "Fix mobile page clipping: overflow-x clamp on catalog cards + footer",
-    "Hide sticky View cart dock when PDP sticky buy is present (no overlap)",
-    "Body bottom padding so dock doesn\u2019t cover CTAs on home/shipping/tools",
-    "css?v=356 \u00b7 cart-vial.js?v=322"
+    "BPC-157: kill stale $89 \u2014 PDP unit/meta/JSON-LD + cart CART_SUGGEST now $88 (SoT 10/$88 \u00b7 20/$105)",
+    "Sync cart Add-more fallback prices to current SoT lows",
+    "cart-vial.js?v=323"
   ]
 }
