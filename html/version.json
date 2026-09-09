@@ -1,10 +1,10 @@
 {
-  "version": "1.70",
+  "version": "1.71",
   "released": "2026-09-09",
-  "codename": "settle-line-wrap",
+  "codename": "settle-br-wrap",
   "highlights": [
-    "ELITE FAIL fix: inquiry settle copy wraps at 375 (line above marks; trust-row text wraps)",
-    "Desktop side-by-side pay-mark-line only from 900px+",
-    "css?v=361"
+    "Settle copy: hard line-break + inline wrap styles (checkout + cart-vial)",
+    "Stop form-card overflow-x:hidden masking wide parents at 375",
+    "css?v=362 cart-vial.js?v=326"
   ]
 }

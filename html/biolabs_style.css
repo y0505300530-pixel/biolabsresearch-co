@@ -10535,9 +10535,12 @@ html body .nav-logo-mark,
   }
   .checkout-page,
   .checkout-page .form-card,
-  .checkout-page .order-summary {
-    overflow-x: hidden !important;
+  .checkout-page .order-summary,
+  .checkout-page .summary-card {
+    overflow-x: visible !important;
     max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
   }
 }
 
@@ -10735,5 +10738,44 @@ html body .nav-logo-mark,
   .trust-row-text {
     flex: 1 1 auto !important;
     min-width: 0 !important;
+  }
+}
+
+
+/* === SETTLE-WRAP-v1.71: force settle copy wrap; stop parent clip masquerading as nowrap === */
+@media (max-width: 899px) {
+  html, body {
+    overflow-x: clip !important;
+    max-width: 100vw !important;
+  }
+  .checkout-page,
+  .checkout-page * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .checkout-page .pay-mark,
+  .checkout-page svg,
+  .checkout-page img {
+    max-width: none !important; /* badges/icons keep intrinsic size */
+  }
+  .checkout-page .pay-mark {
+    max-width: 100% !important;
+  }
+  .checkout-inquiry-box {
+    padding: 14px !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+  }
+  p.pay-mark-line,
+  .pay-mark-line {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    white-space: normal !important;
+    overflow: visible !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    line-height: 1.45 !important;
   }
 }

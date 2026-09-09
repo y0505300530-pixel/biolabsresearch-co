@@ -2234,7 +2234,7 @@ function addSuggest(slug, name, price, mg){
     + '<span class="pay-mark mc">Mastercard</span>'
     + '<span class="pay-mark amex">Amex</span>'
     + '<span class="pay-mark discover">Discover</span>'
-    + '<p class="pay-mark-line">Major cards accepted after inquiry accepted — settle with our team</p>'
+    + '<p class="pay-mark-line" style="display:block;width:100%;max-width:100%;min-width:0;white-space:normal;overflow-wrap:anywhere;word-break:break-word;line-height:1.45;margin:0 0 8px">Major cards accepted after inquiry accepted.<br>Settle with our team</p>'
     + '</div>';
   function ensure(){
     var drawer = document.getElementById('cartDrawer');
