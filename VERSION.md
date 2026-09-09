@@ -1,10 +1,9 @@
-# biolabsresearch.co — Version 1.26
+# biolabsresearch.co — Version 1.27
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Cookie banner no longer auto-shows on any page (consent.js + CSS hide; privacy Cookie settings still works)
-- Mobile type floor ≥13px on home/blog/shared chrome
-- ≥44px tap targets: nav, ticker, footer, catalog, shipping, tools, blog load more
-- css?v=344
+- PDP sticky Unit price now tracks size selection (was stuck on catalog base price)
+- v1.26 cookie/type/44px unchanged
+- css?v=344 (no CSS change)

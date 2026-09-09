@@ -1,11 +1,10 @@
 {
-  "version": "1.26",
+  "version": "1.27",
   "released": "2026-09-09",
-  "codename": "a11y-cookie-type-taps",
+  "codename": "pdp-sticky-price-sync",
   "highlights": [
-    "Cookie banner no longer auto-shows on any page (consent.js + CSS hide; privacy Cookie settings still works)",
-    "Mobile type floor \u226513px on home/blog/shared chrome",
-    "\u226544px tap targets: nav, ticker, footer, catalog, shipping, tools, blog load more",
-    "css?v=344"
+    "PDP sticky Unit price now tracks size selection (was stuck on catalog base price)",
+    "v1.26 cookie/type/44px unchanged",
+    "css?v=344 (no CSS change)"
   ]
 }
