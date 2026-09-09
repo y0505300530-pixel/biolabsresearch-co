@@ -1,11 +1,9 @@
-# biolabsresearch.co — Version 1.46
+# biolabsresearch.co — Version 1.47
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- BPC-157 / TB-500 Blend: single 20 mg at $125 (was 5/10 mg)
-- TB-500: single 10 mg at $105 (was 5/10 mg)
-- API + catalog + PDP + homepage (SoT from API)
-- mg-picker.js?v=23 · catalog-mg.js?v=29
-- Plain BPC-157 still 10/$88 · 20/$105
+- New: Ipamorelin — single 10 mg at $80 (API + PDP + catalog + homepage)
+- Interim gold-crimp vial art (clone) — @Indian labeled vial when ready
+- mg-picker.js?v=24 · catalog-mg.js?v=30 · vial?v=160

@@ -104,6 +104,13 @@
       price: 105,
       original_price: 125
     },
+    "ipamorelin": {
+      strengths: ["10mg"],
+      strength_prices: { "10mg": 80 },
+      strength_originals: { "10mg": 96 },
+      price: 80,
+      original_price: 96
+    },
     "retatrutide": {
       strengths: ["10mg", "20mg"],
       strength_prices: { "10mg": 70, "20mg": 139 },

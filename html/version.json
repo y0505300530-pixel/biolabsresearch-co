@@ -1,12 +1,10 @@
 {
-  "version": "1.46",
+  "version": "1.47",
   "released": "2026-09-09",
-  "codename": "blend-tb500",
+  "codename": "ipamorelin",
   "highlights": [
-    "BPC-157 / TB-500 Blend: single 20 mg at $125 (was 5/10 mg)",
-    "TB-500: single 10 mg at $105 (was 5/10 mg)",
-    "API + catalog + PDP + homepage (SoT from API)",
-    "mg-picker.js?v=23 \u00b7 catalog-mg.js?v=29",
-    "Plain BPC-157 still 10/$88 \u00b7 20/$105"
+    "New: Ipamorelin \u2014 single 10 mg at $80 (API + PDP + catalog + homepage)",
+    "Interim gold-crimp vial art (clone) \u2014 @Indian labeled vial when ready",
+    "mg-picker.js?v=24 \u00b7 catalog-mg.js?v=30 \u00b7 vial?v=160"
   ]
 }

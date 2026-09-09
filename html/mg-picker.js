@@ -16,6 +16,7 @@
     "kisspeptin-10": ["10mg"],
     "thymosin-alpha-1": ["10mg"],
     "tb-500": ["10mg"],
+    "ipamorelin": ["10mg"],
     "retatrutide": ["10mg", "20mg"]
   };
   function slugFromPath() {
