@@ -11,7 +11,7 @@
     /* P0 scroll: drawer + items flex so .cart-items is the vertical scroller */
     '.cart-drawer{height:100dvh !important;max-height:100dvh !important;min-height:0 !important;overflow:hidden !important;display:flex !important;flex-direction:column !important}',
     '.cart-drawer .cart-items{flex:1 1 0% !important;min-height:0 !important;overflow-y:auto !important;overflow-x:hidden !important;overscroll-behavior:contain !important;-webkit-overflow-scrolling:touch;padding:16px 20px 28px !important;position:relative !important;z-index:1 !important}',
-    '#cartAddMore,.cart-addmore-slot{flex:0 0 168px !important;position:relative !important;background:#fff !important;z-index:5 !important;border-top:1px solid #E6E0D6;max-width:100%;overflow:visible !important;max-height:none !important;height:168px !important;min-height:168px !important;flex-shrink:0 !important;pointer-events:auto !important}',
+    '#cartAddMore,.cart-addmore-slot{flex:0 0 168px !important;position:relative !important;background:#fff !important;z-index:5 !important;border-top:1px solid #E6E0D6;max-width:100%;overflow:visible !important;max-height:none !important;height:168px !important;min-height:168px !important;flex-shrink:0 !important;pointer-events:auto !important;margin-bottom:12px !important;padding-bottom:14px !important}',
     '@media (max-width:667px){#cartAddMore,.cart-addmore-slot{flex:0 0 168px !important;max-height:none !important;height:168px !important;overflow:visible !important}.cart-addmore-track{height:140px !important;max-height:140px !important;overflow-x:auto !important;overflow-y:visible !important;touch-action:pan-x !important;-webkit-overflow-scrolling:touch !important;pointer-events:auto !important}.cart-addmore .cart-addcard,.cart-addcard{height:140px !important;max-height:140px !important;overflow:visible !important}.cart-addcard-btn{min-height:28px !important;height:28px !important;padding:0 10px !important;font-size:11px !important;pointer-events:auto !important;position:relative !important;z-index:6 !important}}',
     '#cartAddMore:empty,.cart-addmore-slot:empty{display:none}',
     '.cart-addmore{margin:0;padding:8px 0 2px;border:0}',
@@ -1845,4 +1845,25 @@ function addSuggest(slug, name, price, mg){
     return true;
   }
   var n=0; (function tick(){ wrapRender(); if(++n<80) setTimeout(tick,100); })();
+})();
+
+/* CART v2.6 ticker stay dead while cart open (even on scroll-up) */
+(function(){
+  function forceHide(){
+    if (!document.body || !document.body.classList.contains('cart-open')) return;
+    if (window.__biolabsSyncCartChrome) window.__biolabsSyncCartChrome();
+    var nodes = document.querySelectorAll('.promo-stack, #promoStack, .promo-bar, .promo-track');
+    for (var i = 0; i < nodes.length; i++) {
+      var el = nodes[i];
+      el.style.setProperty('display', 'none', 'important');
+      el.style.setProperty('height', '0', 'important');
+      el.style.setProperty('visibility', 'hidden', 'important');
+      el.style.setProperty('opacity', '0', 'important');
+      el.setAttribute('hidden', '');
+    }
+  }
+  window.addEventListener('scroll', forceHide, true);
+  window.addEventListener('resize', forceHide);
+  document.addEventListener('touchmove', forceHide, { passive: true, capture: true });
+  setInterval(forceHide, 400);
 })();

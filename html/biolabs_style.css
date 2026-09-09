@@ -8161,3 +8161,70 @@ body:has(.cart-drawer.open) .promo-bar {
   transform: none !important;
 }
 
+
+/* === CART v2.6 — gap under Add carousel + ticker stays dead while cart open === */
+html.cart-open .promo-stack,
+html.cart-open #promoStack,
+html.cart-open .promo-bar,
+html.cart-open .promo-track,
+html.cart-open .promo-group,
+body.cart-open .promo-stack,
+body.cart-open #promoStack,
+body.cart-open .promo-bar,
+body.cart-open .promo-track,
+body.cart-open .promo-group,
+html body.cart-open .promo-stack,
+html body.cart-open #promoStack,
+html body.cart-open .promo-bar {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: -1 !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  transform: none !important;
+}
+
+/* Clear air between Add-to-this-order and Proceed footer */
+html body .cart-drawer #cartAddMore,
+html body .cart-drawer .cart-addmore-slot,
+html body #cartDrawer #cartAddMore {
+  margin-bottom: 12px !important;
+  padding-bottom: 14px !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+html body .cart-drawer .cart-addmore-track {
+  padding-bottom: 10px !important;
+  margin-bottom: 0 !important;
+}
+html body .cart-drawer .cart-footer,
+html body #cartDrawer .cart-footer {
+  margin-top: 0 !important;
+  padding-top: 12px !important;
+  border-top: 1px solid #E6E0D6 !important;
+  background: #F5F2EC !important;
+  position: relative !important;
+  z-index: 4 !important;
+  clear: both !important;
+}
+/* scrollbar must not sit on Proceed — keep track inside addmore only */
+html body .cart-drawer .cart-addmore-track::-webkit-scrollbar {
+  height: 4px !important;
+}
+html body .cart-drawer #cartAddMore,
+html body .cart-drawer .cart-addmore-slot {
+  overflow: visible !important;
+  isolation: isolate !important;
+}
+
