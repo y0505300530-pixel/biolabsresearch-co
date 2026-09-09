@@ -70,9 +70,9 @@
       original_price: 160
     },
     "kpv": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 40, "10mg": 79 },
-      strength_originals: { "5mg": 48, "10mg": 95 },
+      strengths: ["10mg"],
+      strength_prices: { "10mg": 79 },
+      strength_originals: { "10mg": 95 },
       price: 79,
       original_price: 95
     },

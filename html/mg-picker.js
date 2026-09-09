@@ -11,7 +11,7 @@
     "epithalon": ["10mg", "50mg"],
     "ghk-cu": ["100mg"],
     "mots-c": ["10mg", "40mg"],
-    "kpv": ["5mg", "10mg"],
+    "kpv": ["10mg"],
     "semax": ["10mg", "30mg"],
     "kisspeptin-10": ["5mg", "10mg"],
     "thymosin-alpha-1": ["5mg", "10mg"],

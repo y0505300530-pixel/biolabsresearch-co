@@ -1,11 +1,11 @@
 {
-  "version": "1.42",
+  "version": "1.43",
   "released": "2026-09-09",
-  "codename": "semax-10-30",
+  "codename": "kpv-10",
   "highlights": [
-    "Semax: 10 mg $99 \u00b7 30 mg $119 (was 5/10 mg)",
+    "KPV: single amount 10 mg at $79 (was 5/10 mg)",
     "API + catalog + PDP + homepage (SoT from API)",
-    "mg-picker.js?v=19 \u00b7 catalog-mg.js?v=25",
-    "Stack: BPC 10/$88\u00b720/$105 \u00b7 GHK 100/$100 \u00b7 Epithalon 10/$45\u00b750/$120 \u00b7 MOTS-c 10/$95\u00b740/$135 \u00b7 Semax 10/$99\u00b730/$119"
+    "mg-picker.js?v=20 \u00b7 catalog-mg.js?v=26",
+    "Adds to locked stack with Semax 10/$99\u00b730/$119"
   ]
 }
