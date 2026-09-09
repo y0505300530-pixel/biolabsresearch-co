@@ -92,6 +92,12 @@
     return fallback;
   }
   var MG = "";
+  function syncStickyPrice(price) {
+    /* CRM v1.29: sticky Add bar must track Amount, not catalog base */
+    var sp = document.getElementById("pdpStickyPrice");
+    if (!sp || price === null || price === undefined || !isFinite(Number(price))) return;
+    sp.textContent = "$" + Number(price);
+  }
   function setImgs(mg) {
     var slug = slugFromPath();
     if (!slug) return;
@@ -99,6 +105,7 @@
     var priceEl = document.getElementById("current-price") || document.querySelector(".price-main");
     var selectedPrice = priceForMg(slug, mg, null);
     if (priceEl && selectedPrice !== null) priceEl.textContent = "$" + selectedPrice;
+    syncStickyPrice(selectedPrice);
     setOriginal(priceEl, slug, mg, selectedPrice);
     document.querySelectorAll("img").forEach(function (img) {
       var s = img.getAttribute("src") || "";
