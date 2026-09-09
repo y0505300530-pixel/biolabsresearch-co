@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Form — Bio Labs Research">
 <meta name="twitter:description" content="Submit a research-use catalog inquiry. No payment is collected here. Lines stay tied to listed SKUs, and fulfillment follows the published shipping policy.">
-<link rel="stylesheet" href="/biolabs_style.css?v=359">
+<link rel="stylesheet" href="/biolabs_style.css?v=360">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -241,15 +241,15 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
   .ship-opt{flex-wrap:wrap}
   .ship-opt-copy{min-width:0;flex:1}
   .ship-opt-name,.ship-opt-meta{white-space:normal;overflow-wrap:anywhere}
-  .checkout-pay-marks{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:8px!important;width:100%!important}
-  .checkout-pay-marks .pay-mark{width:100%;justify-content:center;box-sizing:border-box}
-  .pay-mark-line{white-space:normal!important;overflow-wrap:anywhere!important;word-break:break-word!important}
+  .checkout-pay-marks{display:flex!important;flex-wrap:wrap!important;gap:8px!important;width:100%!important;align-items:center}
+  .checkout-pay-marks .pay-mark{display:inline-flex!important;width:auto!important;min-width:52px;min-height:28px;padding:6px 10px;font-size:11px!important;font-weight:800;color:#fff!important;box-sizing:border-box}
+  .pay-mark-line{white-space:normal!important;overflow-wrap:anywhere!important;flex:1 1 100%!important}
 }
 </style>
 <script src="/cart-vial.js?v=325"></script>
 <script src="/search-overlay.js?v=26"></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="1.68">
+<meta name="app-version" content="1.69">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -453,7 +453,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
           <p class="pay-mark-line">Major cards accepted after inquiry accepted — settle with our team</p>
           <div class="checkout-pay-marks" aria-label="Accepted cards">
             <span class="pay-mark visa">Visa</span>
-            <span class="pay-mark mc">MC</span>
+            <span class="pay-mark mc">Mastercard</span>
             <span class="pay-mark amex">Amex</span>
             <span class="pay-mark discover">Discover</span>
           </div>
@@ -489,7 +489,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         </p>
         <div class="checkout-pay-marks" style="margin-top:12px" aria-label="Accepted cards">
           <span class="pay-mark visa">Visa</span>
-          <span class="pay-mark mc">MC</span>
+          <span class="pay-mark mc">Mastercard</span>
           <span class="pay-mark amex">Amex</span>
           <span class="pay-mark discover">Discover</span>
           <p class="pay-mark-line">Major cards accepted after inquiry accepted — settle with our team</p>
@@ -868,7 +868,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.68" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.68</p>
+<p class="site-version" data-site-version="1.69" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.69</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

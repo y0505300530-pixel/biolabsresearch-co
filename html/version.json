@@ -1,10 +1,9 @@
 {
-  "version": "1.68",
+  "version": "1.69",
   "released": "2026-09-09",
-  "codename": "checkout-375-marks",
+  "codename": "checkout-marks-labels",
   "highlights": [
-    "Checkout 375: 2\u00d72 card-mark grid (no right clip of Amex/Discover)",
-    "Shipping option + pay-mark-line wrap; tighter mobile padding",
-    "css?v=359"
+    "ELITE FAIL fix: checkout card marks back to compact labeled chips (Visa/Mastercard/Amex/Discover) \u2014 not unlabeled 2\u00d72 bars",
+    "css?v=360"
   ]
 }
