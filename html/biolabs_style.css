@@ -8109,3 +8109,22 @@ div.cart-inquiry-perk {
   }
 }
 
+
+/* === CART: Yehuda — remove Unlocked perk box entirely === */
+.cart-inquiry-perk,
+a.cart-inquiry-perk,
+div.cart-inquiry-perk,
+#cartInquiryPerk {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+

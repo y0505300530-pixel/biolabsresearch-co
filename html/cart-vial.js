@@ -29,7 +29,7 @@
     /* Yehuda cart footer: hide Subtotal forever; footer perk is the unlock line */
     '.cart-subtotal{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important}',
     '#cartProgress .cp-unlocked{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
-    '.cart-inquiry-perk{display:flex !important;align-items:center !important;gap:6px !important;min-height:28px !important;height:28px !important;margin:0 0 4px !important;padding:0 8px !important;border-radius:8px !important;background:#F3E6C8 !important;border:1px solid #D4B56A !important;color:#6B4A12 !important;white-space:nowrap !important;overflow:hidden !important;position:relative !important;z-index:3 !important;box-shadow:none !important;box-sizing:border-box !important;pointer-events:none !important;cursor:default !important;text-decoration:none !important}',
+    '.cart-inquiry-perk,#cartInquiryPerk{display:none !important;height:0 !important;min-height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important;opacity:0 !important;pointer-events:none !important}',
     '.cart-inquiry-perk-icon{flex:0 0 auto !important;color:#7A5520 !important;display:block !important;width:16px !important;height:16px !important}',
     '.cart-inquiry-perk-text{flex:1 1 auto !important;font-size:12px !important;font-weight:800 !important;line-height:30px !important;color:#6B4A12 !important;white-space:nowrap !important;overflow:hidden !important;text-overflow:ellipsis !important}',
 
@@ -1770,4 +1770,18 @@ function addSuggest(slug, name, price, mg){
     return true;
   }
   var n=0; (function hook(){ wrap(); if(++n<50) setTimeout(hook,100); })();
+})();
+
+/* Yehuda: hide Unlocked perk box entirely */
+(function(){
+  function hidePerk(){
+    var el=document.getElementById('cartInquiryPerk');
+    if(!el) return;
+    el.style.cssText='display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;border:0!important;opacity:0!important;';
+    el.setAttribute('hidden','');
+    el.setAttribute('aria-hidden','true');
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',hidePerk);
+  else hidePerk();
+  setInterval(hidePerk,800);
 })();
