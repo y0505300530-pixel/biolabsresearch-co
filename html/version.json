@@ -1,15 +1,10 @@
 {
-  "version": "1.33",
+  "version": "1.34",
   "released": "2026-09-09",
-  "codename": "pdp-trust-mobile",
+  "codename": "version-footer-only",
   "highlights": [
-    "Launch price shows ends Sep 14, 2026 (same SoT as INSIDER25)",
-    "Ticker shows Ends Sep 14 \u2014 no live day counter that felt fake",
-    "Amount pills show price (5 mg \u00b7 $62 / 10 mg \u00b7 $125)",
-    "Empty CAS/Formula/MW/Identity cells hidden; blend CAS+identity filled",
-    "View lot COA is a real outline secondary button",
-    "Ship note: Processing 1\u20132 days \u00b7 USPS free \u00b7 UPS from $18.99",
-    "Mobile: name/price above gallery; age-gate accents gold not green",
-    "css?v=349 \u00b7 mg-picker?v=14 \u00b7 promo-bar?v=282"
+    "Remove version under wordmark (Marketing/Yehuda) \u2014 keep footer .site-version + /version.json only",
+    "USPS Ground free / UPS 2nd Day $18.99 remains SoT from Shipping (CRM ship note OK)",
+    "css?v=350"
   ]
 }

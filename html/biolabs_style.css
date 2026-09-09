@@ -10346,3 +10346,16 @@ button.btn-coa-secondary {
     padding-bottom: 12px !important;
   }
 }
+
+
+/* === HIDE-NAV-VERSION-v1.34: version only in footer + /version.json === */
+.nav-logo-version,
+.nav .nav-logo-version,
+span.nav-logo-version {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
