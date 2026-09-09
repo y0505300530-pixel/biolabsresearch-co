@@ -12,7 +12,7 @@
     "ghk-cu": ["100mg"],
     "mots-c": ["10mg", "40mg"],
     "kpv": ["5mg", "10mg"],
-    "semax": ["5mg", "10mg"],
+    "semax": ["10mg", "30mg"],
     "kisspeptin-10": ["5mg", "10mg"],
     "thymosin-alpha-1": ["5mg", "10mg"],
     "tb-500": ["5mg", "10mg"],

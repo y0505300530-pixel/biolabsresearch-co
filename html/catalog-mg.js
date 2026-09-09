@@ -77,11 +77,11 @@
       original_price: 95
     },
     "semax": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 44, "10mg": 89 },
-      strength_originals: { "5mg": 54, "10mg": 109 },
-      price: 89,
-      original_price: 109
+      strengths: ["10mg", "30mg"],
+      strength_prices: { "10mg": 99, "30mg": 119 },
+      strength_originals: { "10mg": 119, "30mg": 145 },
+      price: 119,
+      original_price: 145
     },
     "kisspeptin-10": {
       strengths: ["5mg", "10mg"],
