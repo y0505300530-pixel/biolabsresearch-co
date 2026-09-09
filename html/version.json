@@ -1,11 +1,10 @@
 {
-  "version": "1.01",
+  "version": "1.02",
   "released": "2026-09-09",
-  "codename": "cart-render-fix",
+  "codename": "atc-syntax-fix",
   "highlights": [
-    "Fix: cart could show empty while badge still had items/total \u2014 hydrate from localStorage on every render",
-    "Fix: _isBacItem no longer treats every gift/recommended flag as BAC (that dropped real lines in sanitize)",
-    "Fix: is-empty / Total / Inquiry Rewards visibility when cart has lines",
-    "Keeps v1.00: Inquiry Rewards bar, Total was+sale+%, no shipping/Unlocked perk, Research Map off home, Lot docs wording"
+    "Fix: cart-vial.js syntax error (stray })();) broke all cart JS \u2014 Add to inquiry did nothing",
+    "Restores Add to inquiry + drawer render after v1.01",
+    "Keeps v1.01 hydrate/BAC fixes and v1.00 cart footer + Inquiry Rewards"
   ]
 }

@@ -1900,8 +1900,6 @@ function addSuggest(slug, name, price, mg){
   var n=0; (function tick(){ showTotal(); if(++n<40) setTimeout(tick,100); })();
 })();
 
-})();
-
 /* Footer v4: Total row was/now/−N% via renderCart wrap (all pages) */
 (function(){
   function volumePct(merch){
