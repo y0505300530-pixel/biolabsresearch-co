@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 1.56
+# biolabsresearch.co — Version 1.57
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Tesamorelin / Ipamorelin Blend: added 15 mg at $120 (keeps 5 mg $60 · 10 mg $119)
-- API + catalog + PDP Amount + homepage chips
-- mg-picker.js?v=29 · catalog-mg.js?v=35
+- MOTS-c: 10 mg $95 · 20 mg $110 (40 mg removed)
+- API + catalog + PDP + homepage
+- mg-picker.js?v=30 · catalog-mg.js?v=36

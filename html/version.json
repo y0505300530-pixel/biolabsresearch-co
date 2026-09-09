@@ -1,10 +1,10 @@
 {
-  "version": "1.56",
+  "version": "1.57",
   "released": "2026-09-09",
-  "codename": "tesa-ipa-15",
+  "codename": "mots-20",
   "highlights": [
-    "Tesamorelin / Ipamorelin Blend: added 15 mg at $120 (keeps 5 mg $60 \u00b7 10 mg $119)",
-    "API + catalog + PDP Amount + homepage chips",
-    "mg-picker.js?v=29 \u00b7 catalog-mg.js?v=35"
+    "MOTS-c: 10 mg $95 \u00b7 20 mg $110 (40 mg removed)",
+    "API + catalog + PDP + homepage",
+    "mg-picker.js?v=30 \u00b7 catalog-mg.js?v=36"
   ]
 }

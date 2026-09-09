@@ -63,11 +63,11 @@
       original_price: 120
     },
     "mots-c": {
-      strengths: ["10mg", "40mg"],
-      strength_prices: { "10mg": 95, "40mg": 135 },
-      strength_originals: { "10mg": 115, "40mg": 160 },
-      price: 135,
-      original_price: 160
+      strengths: ["10mg", "20mg"],
+      strength_prices: { "10mg": 95, "20mg": 110 },
+      strength_originals: { "10mg": 115, "20mg": 135 },
+      price: 110,
+      original_price: 135
     },
     "kpv": {
       strengths: ["10mg"],
