@@ -7963,3 +7963,149 @@ div.cart-inquiry-perk {
   }
 }
 
+
+/* === CART MOBILE v2.5 — nuclear: column footer, Add tappable, Unlocked full line === */
+@media (max-width: 900px) {
+  html body .cart-drawer,
+  html body #cartDrawer {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  html body .cart-drawer .cart-footer,
+  html body #cartDrawer .cart-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    position: relative !important; /* never sticky-over carousel */
+    bottom: auto !important;
+    z-index: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    gap: 6px !important;
+    padding: 8px 12px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    background: #F5F2EC !important;
+    overflow: visible !important;
+  }
+  html body .cart-drawer .cart-inquiry-perk,
+  html body .cart-drawer #cartInquiryPerk,
+  html body #cartDrawer .cart-inquiry-perk {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: stretch !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    margin: 0 !important;
+    padding: 0 10px !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+    background: #F3E6C8 !important;
+    border: 1px solid #D4B56A !important;
+    border-radius: 8px !important;
+  }
+  html body .cart-drawer .cart-inquiry-perk-text {
+    display: block !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    line-height: 32px !important;
+    color: #6B4A12 !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  html body .cart-drawer .btn-checkout,
+  html body #cartDrawer .btn-checkout {
+    display: flex !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: stretch !important;
+    height: 48px !important;
+    min-height: 48px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  html body .cart-drawer .btn-continue,
+  html body #cartDrawer .btn-continue,
+  html body .cart-drawer button.btn-continue {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    align-self: stretch !important;
+    text-align: center !important;
+    margin: 0 !important;
+    min-height: 32px !important;
+    height: auto !important;
+    padding: 6px 8px !important;
+    box-sizing: border-box !important;
+  }
+  /* Add-to-this-order ABOVE footer — never covered, buttons fully visible */
+  html body .cart-drawer #cartAddMore,
+  html body .cart-drawer .cart-addmore-slot,
+  html body #cartDrawer #cartAddMore {
+    flex: 0 0 168px !important;
+    height: 168px !important;
+    min-height: 168px !important;
+    max-height: none !important;
+    overflow: visible !important;
+    position: relative !important;
+    z-index: 2 !important;
+    background: #fff !important;
+    pointer-events: auto !important;
+    padding: 6px 0 10px !important;
+    border-top: 1px solid #E6E0D6 !important;
+  }
+  html body .cart-drawer .cart-addmore-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    height: 140px !important;
+    max-height: 140px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    pointer-events: auto !important;
+    padding: 0 12px 8px !important;
+    gap: 8px !important;
+  }
+  html body .cart-drawer .cart-addcard,
+  html body .cart-drawer .cart-addmore .cart-addcard {
+    flex: 0 0 104px !important;
+    width: 104px !important;
+    min-width: 104px !important;
+    height: 140px !important;
+    max-height: 140px !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 3px !important;
+    padding-bottom: 6px !important;
+  }
+  html body .cart-drawer .cart-addcard img {
+    height: 46px !important;
+    max-height: 46px !important;
+  }
+  html body .cart-drawer .cart-addcard-btn {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 32px !important;
+    height: 32px !important;
+    padding: 0 14px !important;
+    font-size: 12px !important;
+    font-weight: 800 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    z-index: 3 !important;
+    position: relative !important;
+  }
+}
+
