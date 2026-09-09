@@ -10359,3 +10359,10 @@ span.nav-logo-version {
   margin: 0 !important;
   padding: 0 !important;
 }
+
+
+/* === CRM v1.35 — one COA CTA only === */
+.pdp-doc-art .pdp-coa-btn,
+button.pdp-coa-btn {
+  display: none !important;
+}

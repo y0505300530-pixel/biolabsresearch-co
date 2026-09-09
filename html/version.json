@@ -1,10 +1,11 @@
 {
-  "version": "1.34",
+  "version": "1.35",
   "released": "2026-09-09",
-  "codename": "version-footer-only",
+  "codename": "one-coa-cta",
   "highlights": [
-    "Remove version under wordmark (Marketing/Yehuda) \u2014 keep footer .site-version + /version.json only",
-    "USPS Ground free / UPS 2nd Day $18.99 remains SoT from Shipping (CRM ship note OK)",
-    "css?v=350"
+    "ELITE FAIL fix: remove duplicate Request this lot file from PDP story \u2014 one View lot COA only",
+    "Ship note already Processing 1\u20132 business days (v1.33+); ELITE FAIL was on stale v1.31",
+    "Logo version: Indian v1.34 \u2014 footer + version.json only",
+    "css?v=351 \u00b7 pdp-story.js?v=40"
   ]
 }

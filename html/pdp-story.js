@@ -157,7 +157,7 @@
       + '<div class="pdp-docs">'
       + '<article><div class="pdp-doc-art">'+figHplc+'</div><h3>HPLC chromatogram</h3><p>The '+name+' lot trace. Main-peak area at the wavelength written on the COA, when a file exists.</p></article>'
       + '<article><div class="pdp-doc-art">'+figMs+'</div><h3>Mass spectrum</h3><p>Observed mass for this listing against the named compound. Lot data, not a homepage percentage.</p></article>'
-      + '<article><div class="pdp-doc-art">'+figCoa+'</div><h3>Certificate of Analysis</h3><p>Lot number, date, laboratory, and method for this '+name+' vial.</p><button type="button" class="pdp-coa-btn" onclick="openCOARequest(\''+esc+'\')">Request this lot file</button></article>'
+      + '<article><div class="pdp-doc-art">'+figCoa+'</div><h3>Certificate of Analysis</h3><p>Lot number, date, laboratory, and method for this '+name+' vial. Use <strong>View lot COA</strong> above the inquiry button.</p></article>'
       + '</div></div></section>'
       ;
   };
