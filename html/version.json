@@ -1,10 +1,13 @@
 {
-  "version": "1.22",
+  "version": "1.23",
   "released": "2026-09-09",
-  "codename": "sticky-cart-dock",
+  "codename": "a11y-audit-wave1",
   "highlights": [
-    "Mobile sticky View cart dock (fixed bottom pill) while scrolling catalog \u2014 opens drawer, shows count, hides when drawer open",
-    "Keeps CRM v1.21 cart no-x-overflow",
-    "css?v=340 / cart-vial.js?v=294"
+    "Nav search: replace href=# dead link with button (aria-label Search)",
+    "Contact viewport unified to initial-scale=1.0",
+    "FAQ: promo-code aria-labels; menu close 44px + aria-label",
+    "Shipping: 44px step CTAs; one primary Email catalog desk button",
+    "Mobile readable floor ~13px; cookie/close targets 44px",
+    "css?v=341 \u2014 remaining: blog load-more, PDP sticky buy, PDP price clarity (next)"
   ]
 }

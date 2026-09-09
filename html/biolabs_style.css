@@ -9685,3 +9685,89 @@ html body a.nl-btn-secondary:hover {
 @media (min-width: 801px) {
   .sticky-cart-dock { display: none !important; }
 }
+
+
+/* === CRM v1.23 — a11y/UX audit wave (Yehuda list) === */
+button.nav-util {
+  background: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: inherit !important;
+}
+@media (max-width: 800px) {
+  /* readable floor */
+  body, .nl-sub, .nl-trust, .product-card-tagline, .blog-card p, .blog-excerpt,
+  .shp-step p, .shp-method p, .footer, .footer p, .footer a {
+    font-size: max(13px, 1em) !important;
+  }
+  .product-card-tagline, .nl-trust-row li, .section-kicker, .tools-kicker {
+    font-size: 12px !important; /* kickers stay slightly smaller but >=12 */
+  }
+  .nav-menu-close,
+  button.nav-menu-close {
+    min-width: 44px !important;
+    min-height: 44px !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 22px !important;
+  }
+  .cookie-banner button,
+  .bl-cookie button,
+  #cookieBanner button,
+  [data-cookie-banner] button {
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+}
+/* shipping step CTAs — 44px tap */
+.shp-step-cta {
+  display: inline-flex !important;
+  align-items: center !important;
+  min-height: 44px !important;
+  padding: 10px 4px !important;
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  color: #9A6D2A !important;
+  text-decoration: none !important;
+}
+.shp-mail-btn {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 48px !important;
+  padding: 12px 22px !important;
+  margin: 0 0 10px !important;
+  border-radius: 999px !important;
+  background: #0d2137 !important;
+  color: #F2D191 !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  text-decoration: none !important;
+}
+.shp-mail-note {
+  font-size: 13px !important;
+  color: #6B6354 !important;
+}
+/* FAQ accordion: accessible expand control */
+.faq-item summary {
+  min-height: 44px !important;
+  gap: 12px !important;
+}
+.faq-item summary::after {
+  content: "+" !important;
+  flex: 0 0 auto !important;
+  width: 44px !important;
+  height: 44px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 22px !important;
+  line-height: 1 !important;
+}
