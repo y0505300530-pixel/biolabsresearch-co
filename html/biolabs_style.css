@@ -8967,8 +8967,8 @@ body:has(.checkout-page) {
     letter-spacing: -0.02em !important;
     margin: 0 0 12px !important;
     white-space: normal !important;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
   }
   .checkout-page .form-row {
     grid-template-columns: 1fr !important;
@@ -9362,7 +9362,7 @@ html body .insider-club .insider-club-note {
   text-align: left !important;
   white-space: normal !important;
   word-break: normal !important;
-  overflow-wrap: anywhere !important;
+  overflow-wrap: break-word !important;
   line-height: 1.4 !important;
 }
 .tc-enter-btn {
@@ -10524,8 +10524,8 @@ html body .nav-logo-mark,
     flex: 1 1 100% !important;
     max-width: 100% !important;
     white-space: normal !important;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
     text-align: left !important;
     font-size: 12px !important;
   }
@@ -10628,7 +10628,7 @@ html body .nav-logo-mark,
   .ship-opt-name,
   .ship-opt-meta {
     white-space: normal !important;
-    overflow-wrap: anywhere !important;
+    overflow-wrap: break-word !important;
   }
   .checkout-pay-marks-wrap,
   .checkout-pay-marks,
@@ -10682,8 +10682,8 @@ html body .nav-logo-mark,
     width: 100% !important;
     max-width: 100% !important;
     white-space: normal !important;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
     text-align: left !important;
     font-size: 12px !important;
     line-height: 1.4 !important;
@@ -10714,7 +10714,7 @@ html body .nav-logo-mark,
     white-space: normal !important;
     overflow: visible !important;
     overflow-wrap: break-word !important;
-    word-break: break-word !important;
+    word-break: normal !important;
     hyphens: auto !important;
     box-sizing: border-box !important;
   }
@@ -10731,7 +10731,7 @@ html body .nav-logo-mark,
   .trust-row {
     white-space: normal !important;
     overflow-wrap: break-word !important;
-    word-break: break-word !important;
+    word-break: normal !important;
     min-width: 0 !important;
     max-width: 100% !important;
   }
@@ -10774,8 +10774,18 @@ html body .nav-logo-mark,
     min-width: 0 !important;
     white-space: normal !important;
     overflow: visible !important;
-    overflow-wrap: anywhere !important;
-    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
     line-height: 1.45 !important;
+  }
+}
+
+
+/* === SETTLE-WRAP-v1.72: no mid-word break on settle; keep full wrap, no clip === */
+@media (max-width: 899px) {
+  p.pay-mark-line, .pay-mark-line {
+    word-break: normal !important;
+    overflow-wrap: break-word !important;
+    hyphens: none !important;
   }
 }

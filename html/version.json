@@ -1,10 +1,9 @@
 {
-  "version": "1.71",
+  "version": "1.72",
   "released": "2026-09-09",
-  "codename": "settle-br-wrap",
+  "codename": "settle-no-midword",
   "highlights": [
-    "Settle copy: hard line-break + inline wrap styles (checkout + cart-vial)",
-    "Stop form-card overflow-x:hidden masking wide parents at 375",
-    "css?v=362 cart-vial.js?v=326"
+    "Settle: shorter first line + no mid-word break (2 clean lines, no clip)",
+    "css?v=363 cart-vial.js?v=327"
   ]
 }
