@@ -1,9 +1,8 @@
-# biolabsresearch.co — Version 1.12
+# biolabsresearch.co — Version 1.13
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Insider card: remove video entirely (text + form only)
-- INSIDER25 code no longer shown before signup — appears only after email submit (and in confirmation email)
-- email-capture.js?v=5 + css?v=330
+- Insider card: shrink to content (~480px), cut dead right space + tighter padding
+- Stacked email + CTA full width; keeps code-only-after-submit from v1.12

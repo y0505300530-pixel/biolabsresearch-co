@@ -9058,3 +9058,71 @@ body:has(.checkout-page) {
   .insider-club-copy{padding:28px 22px 26px !important;align-items:center;text-align:center !important}
   .insider-out{align-items:center}
 }
+
+
+/* === CRM v1.13 — Insider card hug content (no dead right space) === */
+html body .insider-club,
+html body #insiderClubWrap.insider-club {
+  max-width: 480px !important;
+  width: calc(100% - 32px) !important;
+  margin: 28px auto 48px !important;
+  padding: 0 !important;
+}
+html body .insider-club .insider-club-inner {
+  max-width: 100% !important;
+  margin: 0 !important;
+  display: block !important;
+}
+html body .insider-club .insider-club-copy {
+  padding: 22px 22px 20px !important;
+  align-items: stretch !important;
+  text-align: left !important;
+}
+html body .insider-club .insider-club-badge {
+  margin: 0 0 10px !important;
+  padding: 6px 12px !important;
+}
+html body .insider-club h3 {
+  margin: 0 0 6px !important;
+  font-size: clamp(26px, 5vw, 34px) !important;
+  max-width: none !important;
+}
+html body .insider-club .insider-club-sub {
+  margin: 0 0 14px !important;
+  font-size: 13px !important;
+  max-width: none !important;
+}
+html body .insider-club .insider-club-form {
+  flex-direction: column !important;
+  gap: 8px !important;
+  max-width: 100% !important;
+  width: 100% !important;
+}
+html body .insider-club input,
+html body .insider-club button {
+  width: 100% !important;
+  flex: none !important;
+  height: 46px !important;
+}
+html body .insider-club .insider-club-note {
+  margin: 10px 0 0 !important;
+  font-size: 11px !important;
+}
+@media (max-width: 780px) {
+  html body .insider-club {
+    width: calc(100% - 24px) !important;
+    margin: 24px auto 40px !important;
+  }
+  html body .insider-club .insider-club-copy {
+    padding: 20px 18px 18px !important;
+    align-items: stretch !important;
+    text-align: left !important;
+  }
+  html body .insider-club h3,
+  html body .insider-club .insider-club-sub,
+  html body .insider-club .insider-club-note {
+    text-align: left !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
