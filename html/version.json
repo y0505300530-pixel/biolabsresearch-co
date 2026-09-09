@@ -1,10 +1,10 @@
 {
-  "version": "1.57",
+  "version": "1.58",
   "released": "2026-09-09",
-  "codename": "mots-20",
+  "codename": "tirz-10-only",
   "highlights": [
-    "MOTS-c: 10 mg $95 \u00b7 20 mg $110 (40 mg removed)",
-    "API + catalog + PDP + homepage",
-    "mg-picker.js?v=30 \u00b7 catalog-mg.js?v=36"
+    "Tirzepatide: single 10 mg at $90 (5 mg removed \u2014 Marketing SoT)",
+    "MOTS-c remains 10/$95 \u00b7 20/$110 from v1.57",
+    "mg-picker.js?v=31 \u00b7 catalog-mg.js?v=37"
   ]
 }

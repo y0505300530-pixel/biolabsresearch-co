@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 1.57
+# biolabsresearch.co — Version 1.58
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- MOTS-c: 10 mg $95 · 20 mg $110 (40 mg removed)
-- API + catalog + PDP + homepage
-- mg-picker.js?v=30 · catalog-mg.js?v=36
+- Tirzepatide: single 10 mg at $90 (5 mg removed — Marketing SoT)
+- MOTS-c remains 10/$95 · 20/$110 from v1.57
+- mg-picker.js?v=31 · catalog-mg.js?v=37
