@@ -91,11 +91,11 @@
       original_price: 119
     },
     "thymosin-alpha-1": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 54, "10mg": 109 },
-      strength_originals: { "5mg": 68, "10mg": 135 },
+      strengths: ["10mg"],
+      strength_prices: { "10mg": 109 },
+      strength_originals: { "10mg": 129 },
       price: 109,
-      original_price: 135
+      original_price: 129
     },
     "tb-500": {
       strengths: ["5mg", "10mg"],
