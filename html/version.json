@@ -1,10 +1,16 @@
 {
-  "version": "1.27",
+  "version": "1.28",
   "released": "2026-09-09",
-  "codename": "pdp-sticky-price-sync",
+  "codename": "yehuda-a11y-wave",
   "highlights": [
-    "PDP sticky Unit price now tracks size selection (was stuck on catalog base price)",
-    "v1.26 cookie/type/44px unchanged",
-    "css?v=344 (no CSS change)"
+    "FAQ: standard nav (killed legacy header); summaries have aria-labels for screen readers",
+    "Viewport unified sitewide (viewport-fit=cover) incl. contact",
+    "Home Catalog uses /#catalog; COA download is a button not href=#",
+    "Mobile type floor \u226513px on home/blog/shared chrome",
+    "Shipping: step CTAs \u226544px; one big Email catalog desk (no triple tiny mailto)",
+    "Cart/menu/search closes \u226544px + aria-label Close cart",
+    "PDP size pills show size only \u2014 Unit price is the clear product price",
+    "Cookie settings kept on Privacy; auto-banner still off",
+    "css?v=345"
   ]
 }

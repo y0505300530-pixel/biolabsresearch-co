@@ -10,7 +10,7 @@
   gtag('config', 'G-KCMPHP783M');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Catalog FAQ — Bio Labs Research</title>
 <link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
@@ -26,7 +26,7 @@
 <meta name="twitter:title" content="Catalog FAQ — Bio Labs Research">
 <meta name="twitter:description" content="Answers on research-use listings, lot certificates, inquiry checkout, and shipping windows from the shipping policy. No clinical advice is given.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=344">
+<link rel="stylesheet" href="/biolabs_style.css?v=345">
 <link rel="icon" href="/biolabsresearch-logo.png" type="image/png">
 <script type="application/ld+json">
 {
@@ -188,7 +188,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
   .faq-item summary{font-size:16px}
 }
 </style>
-<meta name="app-version" content="1.27">
+<meta name="app-version" content="1.28">
+<script src="/cart-vial.js?v=295"></script>
+<script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -206,20 +208,38 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
 
 </div>
 
-<div class="header">
-  <div class="nav">
-    <a class="nav-brand" href="https://biolabsresearch.co/index.html?from=nav"><span>biolabs research</span></a>
-    <div class="nav-links">
-      <a href="https://biolabsresearch.co/index.html?from=nav">Catalog</a>
-      <a href="/science">Science</a>
-      <a href="/faq" style="font-weight:600">FAQ</a>
-      <a class="nav-cart" href="/checkout" aria-label="Cart"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg></a>
-      <a href="/tools">Tools</a>
-  <a href="/coa">COA Library</a>
-</div>
+<nav class="nav">
+<a href="/" class="nav-logo" aria-label="BioLabs Research"><span class="nav-logo-mark">B</span><span class="nav-logo-stack"><span class="nav-logo-text">iolabs research</span><span class="nav-logo-version" data-site-version="1.28">v1.28</span></span></a>
+  <div class="nav-left">
+    <a href="/#catalog">Catalog</a>
+    <a href="/science">Science</a>
+    <a href="/blog/">Blog</a>
+    <a href="/shipping">Shipping</a>
   </div>
+  <div class="nav-right">
+    <div class="nav-links-right">
+      <a href="/tools">Tools</a>
+      <a href="/coa">COA Library</a>
+    </div>
+    <span class="nav-sep" aria-hidden="true">|</span>
+    <button type="button" class="nav-util" data-open-search="1" aria-label="Search"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16.2 16.2L20 20"/></svg></button>
+    <button class="nav-cart" onclick="toggleCart()" type="button" aria-label="Cart"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="20" r="1.35"/><circle cx="17" cy="20" r="1.35"/><path d="M3 5h2l2.1 10.4A1.8 1.8 0 0 0 8.9 17h8.3a1.8 1.8 0 0 0 1.8-1.45L21 8H7"/></svg><span class="nav-cart-count" id="cartCount">0</span></button>
+    <button class="nav-hamburger" onclick="toggleMenu()" type="button" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <button type="button" class="nav-menu-close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+  <a href="/#catalog" onclick="toggleMenu()">Catalog</a>
+  <a href="/science" onclick="toggleMenu()">Science</a>
+  <a href="/blog/" onclick="toggleMenu()">Blog</a>
+  <a href="/shipping" onclick="toggleMenu()">Shipping</a>
+  <a href="/tools" onclick="toggleMenu()">Tools</a>
+  <a href="/coa" onclick="toggleMenu()">COA Library</a>
+  <a href="/faq" onclick="toggleMenu()">FAQ</a>
+  <a href="/contact" onclick="toggleMenu()">Contact</a>
+  <a href="/privacy-policy" onclick="toggleMenu()">Privacy</a>
 </div>
-
 <div class="faq-hero">
   <h1>Frequently asked questions.</h1>
   <p>Everything about research compounds, certificates of analysis, ordering, and what RUO actually means for your lab. Support: 8:00 AM – 9:00 PM ET.</p>
@@ -227,84 +247,84 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
 
 <div class="faq-section">
   <details class="faq-item" open>
-    <summary>What does RUO (Research Use Only) mean?</summary>
+    <summary aria-label="Show answer: What does RUO (Research Use Only) mean?">What does RUO (Research Use Only) mean?</summary>
     <div class="faq-answer">
       <p>RUO stands for <strong>Research Use Only</strong>. It means the reagents and compounds listed in our catalog are sold exclusively for laboratory research, in-vitro testing, and analytical purposes. They are not intended for human consumption, clinical diagnosis, therapeutic use, or any application governed by medical or food safety regulations. All BioLabs Research products carry a RUO label and are accompanied by documentation that supports research-grade use.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>What is a Certificate of Analysis (COA)?</summary>
+    <summary aria-label="Show answer: What is a Certificate of Analysis (COA)?">What is a Certificate of Analysis (COA)?</summary>
     <div class="faq-answer">
       <p>A <strong>Certificate of Analysis</strong> is a laboratory document for a specific production lot. BioLabs Research issues a lot COA on request when a file exists for that lot. A COA is only as strong as the method, wavelength, laboratory name, and lot ID printed on it. This page does not invent HPLC, MS, residual-solvent, or endotoxin results.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>How are your peptides tested?</summary>
+    <summary aria-label="Show answer: How are your peptides tested?">How are your peptides tested?</summary>
     <div class="faq-answer">
       <p>Analytical results live on the lot COA when a file is issued. Until that file is published for a SKU, we do not claim HPLC, mass spectrometry, residual-solvent, or endotoxin testing on this site. See the <a href="https://biolabsresearch.co/science">Science notes</a> for how to read a lot document.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>What is HPLC and why does it matter?</summary>
+    <summary aria-label="Show answer: What is HPLC and why does it matter?">What is HPLC and why does it matter?</summary>
     <div class="faq-answer">
       <p><strong>HPLC</strong> separates components of a sample; peak area is a method-dependent estimate, not a universal purity grade. BioLabs Research does not publish a catalog-wide purity number (including 98% or higher) without a lot, method, and wavelength. Read the <a href="https://biolabsresearch.co/science">Science notes</a> before treating any area% as identity.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>How should research peptides be stored?</summary>
+    <summary aria-label="Show answer: How should research peptides be stored?">How should research peptides be stored?</summary>
     <div class="faq-answer">
       <p>Lyophilized (freeze-dried) peptides should be stored at <strong>-20C</strong> in a sealed container, protected from light and moisture. Once reconstituted with the appropriate solvent (as directed in the COA), the working solution should be aliquoted and stored at -20C or below. Avoid repeated freeze-thaw cycles. Always follow the storage instructions provided with each lot's COA.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>How do I reconstitute lyophilized peptides?</summary>
+    <summary aria-label="Show answer: How do I reconstitute lyophilized peptides?">How do I reconstitute lyophilized peptides?</summary>
     <div class="faq-answer">
       <p>Reconstitution is a standard bench procedure. Add the appropriate volume of <strong>sterile solvent</strong> (typically bacteriostatic water, sterile acetic acid, or PBS, depending on the peptide) to the vial. Allow the lyophilized cake to dissolve gently without vigorous shaking. The specific solvent and concentration are noted on the COA for each lot. This is a laboratory procedure to be performed only by qualified research personnel.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>What is the minimum order quantity?</summary>
+    <summary aria-label="Show answer: What is the minimum order quantity?">What is the minimum order quantity?</summary>
     <div class="faq-answer">
       <p>BioLabs Research accepts <strong>single-vial orders</strong> for research evaluation. Volume pricing is available for orders of 10 or more vials of the same SKU. For institutional bulk orders (50+ vials), contact us directly for a custom quote and lead time estimate.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>How are orders shipped?</summary>
+    <summary aria-label="Show answer: How are orders shipped?">How are orders shipped?</summary>
     <div class="faq-answer">
       <p>Confirmed inquiries are processed within <strong>1–2 business days</strong>. Catalog fulfillment ships from the US. USPS Ground is 3–5 business days within the US. UPS 2nd Day Air is approximately 2 business days without a delivery guarantee. Temperature-sensitive lots may use cold-chain packing. International shipping is available on request after inquiry confirmation. Tracking is sent after dispatch.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>Can I get a COA before placing an order?</summary>
+    <summary aria-label="Show answer: Can I get a COA before placing an order?">Can I get a COA before placing an order?</summary>
     <div class="faq-answer">
       <p>Yes. We provide COAs and specifications on request for any lot in our current inventory. Contact us at <strong>admin@biolabsresearch.co</strong> with the SKU and lot number you need documentation for, and we will send the relevant certificates.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>Do you ship internationally?</summary>
+    <summary aria-label="Show answer: Do you ship internationally?">Do you ship internationally?</summary>
     <div class="faq-answer">
       <p>We ship to research institutions and laboratories <strong>worldwide</strong>, subject to local import regulations for research reagents. Customers are responsible for ensuring compliance with their jurisdiction's import requirements. Contact us to confirm shipping availability to your location.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>What payment methods do you accept?</summary>
+    <summary aria-label="Show answer: What payment methods do you accept?">What payment methods do you accept?</summary>
     <div class="faq-answer">
       <p>BioLabs Research currently operates on an <strong>inquiry-based ordering model</strong>. After submitting an inquiry through the product page, our team will provide a proforma invoice with available payment options. Institutional purchase orders are accepted from verified research organizations.</p>
     </div>
   </details>
 
   <details class="faq-item">
-    <summary>Are these peptides FDA approved?</summary>
+    <summary aria-label="Show answer: Are these peptides FDA approved?">Are these peptides FDA approved?</summary>
     <div class="faq-answer">
       <p><strong>No.</strong> BioLabs Research compounds are sold exclusively for research use only (RUO). They are not FDA approved, not intended for human use, and not represented as dietary supplements, drugs, or medical products. Any research use must comply with applicable institutional and regulatory guidelines.</p>
     </div>
@@ -335,5 +355,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
 <script src="/promo-bar.js?v=281"></script>
 <script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
+<script>
+function toggleMenu(){
+  var m=document.getElementById('navMenu');
+  var o=document.getElementById('navOverlay');
+  if(!m) return;
+  var on=m.classList.toggle('open');
+  if(o) o.classList.toggle('open', on);
+  document.body.classList.toggle('menu-open', on);
+}
+</script>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <link rel="icon" type="image/x-icon" href="/favicon-b.ico?v=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>How a Lot Is Specified — Bio Labs Research</title>
 <meta name="description" content="Public catalog identity versus lot results on a certificate of analysis. HPLC and mass data belong on the lot file when issued, not as invented statistics.">
 <link rel="canonical" href="https://biolabsresearch.co/science">
@@ -52,7 +52,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=344">
+<link rel="stylesheet" href="/biolabs_style.css?v=345">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script src="/cart-vial.js?v=294"></script>
 <style id="sci-notes-restore">
@@ -83,7 +83,7 @@
 .sci-body .id-dl div{min-width:0;}
 </style>
 <script src="/search-overlay.js?v=26"></script>
-<meta name="app-version" content="1.27">
+<meta name="app-version" content="1.28">
 </head>
 <body class="sci-body">
 <a class="skip-link" href="#main">Skip to content</a>
@@ -102,7 +102,7 @@
 </div>
 
 <nav class="nav">
-<a href="/" class="nav-logo" aria-label="BioLabs Research"><span class="nav-logo-mark">B</span><span class="nav-logo-stack"><span class="nav-logo-text">iolabs research</span><span class="nav-logo-version" data-site-version="1.27">v1.27</span></span></a>
+<a href="/" class="nav-logo" aria-label="BioLabs Research"><span class="nav-logo-mark">B</span><span class="nav-logo-stack"><span class="nav-logo-text">iolabs research</span><span class="nav-logo-version" data-site-version="1.28">v1.28</span></span></a>
   <div class="nav-left">
     <a href="/#catalog">Catalog</a>
     <a href="/science">Science</a>
@@ -666,7 +666,7 @@
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.27" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.27</p>
+<p class="site-version" data-site-version="1.28" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.28</p>
 </footer>
 <script>
 window.COMPARE_AT = {"aod-9604":105,"AOD-9604":105,"bpc-157-tb-500-blend":155,"BPC-157 / TB-500 Blend":155,"bpc-157":109,"BPC-157":109,"curcumin-phytosome":135,"Curcumin Phytosome":135,"epithalon":99,"Epithalon":99,"ghk-cu":85,"GHK-Cu":85,"glow-70":169,"GLOW 70":169,"kisspeptin-10":119,"Kisspeptin-10":119,"kpv":95,"KPV":95,"mots-c":115,"MOTS-c":115,"MOTS-C":115,"nad-plus":119,"NAD+":119,"retatrutide":169,"R3TA":169,"semax":109,"Semax":109,"tb-500":119,"TB-500":119,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"thymosin-alpha-1":135,"Thymosin Alpha-1":135};
@@ -686,7 +686,7 @@ window.compareAtPrice = function(item){
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-header">
     <div class="cart-title">Your order <span id="cartOrderCount" class="cart-count-label"></span></div>
-    <button class="cart-close" onclick="toggleCart()">✕</button>
+    <button type="button" class="cart-close" onclick="toggleCart()" aria-label="Close cart">✕</button>
   </div>
   <div class="cart-items" id="cartItems">
     <div class="cart-empty">
