@@ -118,6 +118,13 @@
       price: 130,
       original_price: 155
     },
+    "tirzepatide": {
+      strengths: ["5mg", "10mg"],
+      strength_prices: { "5mg": 55, "10mg": 90 },
+      strength_originals: { "5mg": 70, "10mg": 110 },
+      price: 90,
+      original_price: 110
+    },
     "retatrutide": {
       strengths: ["10mg", "20mg", "50mg"],
       strength_prices: { "10mg": 85, "20mg": 135, "50mg": 300 },
