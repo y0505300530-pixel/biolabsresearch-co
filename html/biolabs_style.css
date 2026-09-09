@@ -10454,3 +10454,45 @@ html body .nav-logo-mark,
 }
 .pay-mark.note{display:none!important} /* replaced by .pay-mark-line */
 
+
+
+/* === MOBILE-CLIP-v1.63: Yehuda "pages clipped" on phone === */
+@media (max-width: 800px) {
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+  .catalog-grid,
+  .product-card,
+  .product-card-body,
+  .product-card-row,
+  .product-card-atc,
+  .footer,
+  .footer-inner,
+  .footer-top,
+  .footer-col {
+    max-width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .product-card-row {
+    flex-wrap: wrap !important;
+  }
+  .footer-inner,
+  .footer-top {
+    overflow-x: hidden !important;
+  }
+  /* leave room for sticky cart dock so CTAs aren't covered */
+  body:not(.has-pdp-sticky):not(.cart-open) {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  /* hide catalog dock when PDP sticky buy is on screen */
+  body.has-pdp-sticky .sticky-cart-dock,
+  body:has(#pdpStickyBuy) .sticky-cart-dock {
+    display: none !important;
+  }
+  #pdpStickyBuy {
+    z-index: 9300 !important;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+}

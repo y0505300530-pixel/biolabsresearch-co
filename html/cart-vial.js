@@ -2165,6 +2165,11 @@ function addSuggest(slug, name, price, mg){
   }
 
   function syncDock() {
+    try {
+      var stickyBuy = document.getElementById('pdpStickyBuy');
+      document.body.classList.toggle('has-pdp-sticky', !!(stickyBuy && stickyBuy.offsetParent !== null));
+    } catch (e) {}
+
     var dock = ensureDock();
     var nEl = document.getElementById('cartCount');
     var count = nEl ? parseInt(String(nEl.textContent || '0'), 10) || 0 : 0;
@@ -2173,7 +2178,8 @@ function addSuggest(slug, name, price, mg){
     dock.classList.toggle('has-items', count > 0);
     var drawer = document.getElementById('cartDrawer');
     var open = !!(drawer && drawer.classList.contains('open'));
-    dock.classList.toggle('is-hidden', open);
+    var hide = open || document.body.classList.contains('has-pdp-sticky');
+    dock.classList.toggle('is-hidden', hide);
   }
 
   function boot() {

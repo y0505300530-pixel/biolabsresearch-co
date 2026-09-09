@@ -1,10 +1,11 @@
 {
-  "version": "1.62",
+  "version": "1.63",
   "released": "2026-09-09",
-  "codename": "card-marks-line",
+  "codename": "mobile-clip-fix",
   "highlights": [
-    "Card marks: add copy line beside symbols \u2014 \"Major cards accepted when you settle with our team\" (Marketing)",
-    "Cart Proceed + checkout Step 3",
-    "biolabs_style.css?v=355 \u00b7 cart-vial.js?v=321"
+    "Fix mobile page clipping: overflow-x clamp on catalog cards + footer",
+    "Hide sticky View cart dock when PDP sticky buy is present (no overlap)",
+    "Body bottom padding so dock doesn\u2019t cover CTAs on home/shipping/tools",
+    "css?v=356 \u00b7 cart-vial.js?v=322"
   ]
 }
