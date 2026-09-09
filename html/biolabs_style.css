@@ -10385,15 +10385,15 @@ html body .nav-logo-mark,
   height: auto !important;
 }
 
-
 /* v1.61 — accepted card marks (cart CTA + checkout trust) */
+/* v1.62 — copy line beside the marks (Marketing) */
 .cart-pay-marks,
 .checkout-pay-marks{
   display:flex;
   flex-wrap:wrap;
   align-items:center;
   justify-content:center;
-  gap:6px;
+  gap:6px 8px;
   margin:10px 0 4px;
 }
 .cart-pay-marks{margin-top:8px;margin-bottom:2px}
@@ -10416,24 +10416,41 @@ html body .nav-logo-mark,
 .pay-mark.mc{background:#EB001B}
 .pay-mark.amex{background:#007BC1}
 .pay-mark.discover{background:#FF6000}
-.pay-mark.note{
-  width:100%;
-  background:transparent;
-  color:#6B7280;
+.pay-mark-line{
+  flex:1 1 100%;
+  text-align:center;
   font-size:11px;
   font-weight:600;
+  color:#4A4A4A;
   letter-spacing:0;
-  text-transform:none;
-  padding:4px 0 0;
-  min-height:0;
+  line-height:1.35;
+  margin:0;
+  padding:2px 0 0;
+}
+@media (min-width:480px){
+  .cart-pay-marks .pay-mark-line,
+  .checkout-pay-marks .pay-mark-line{
+    flex:1 1 auto;
+    text-align:left;
+    margin:0;
+    padding:0 0 0 4px;
+    min-width:140px;
+  }
+  .cart-pay-marks,
+  .checkout-pay-marks{justify-content:flex-start}
+  .cart-footer .cart-pay-marks{justify-content:center}
+  .cart-footer .pay-mark-line{text-align:center;flex:1 1 100%}
 }
 .checkout-pay-marks-wrap{
   margin-top:14px;
   padding-top:12px;
   border-top:1px solid #E8E2D8;
 }
-.checkout-pay-marks-wrap .pay-mark.note{
-  color:#4A4A4A;
+.checkout-pay-marks-wrap > .pay-mark-line{
   font-size:12px;
-  margin-bottom:6px;
+  color:#4A4A4A;
+  margin:0 0 8px;
+  text-align:left;
 }
+.pay-mark.note{display:none!important} /* replaced by .pay-mark-line */
+

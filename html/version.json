@@ -1,10 +1,10 @@
 {
-  "version": "1.61",
+  "version": "1.62",
   "released": "2026-09-09",
-  "codename": "card-marks",
+  "codename": "card-marks-line",
   "highlights": [
-    "Cart Proceed CTA: Visa / Mastercard / Amex / Discover marks under the button",
-    "Checkout screen: same card marks + clearer settle-later copy (still inquiry-only on page)",
-    "biolabs_style.css?v=354 \u00b7 cart-vial.js?v=320"
+    "Card marks: add copy line beside symbols \u2014 \"Major cards accepted when you settle with our team\" (Marketing)",
+    "Cart Proceed + checkout Step 3",
+    "biolabs_style.css?v=355 \u00b7 cart-vial.js?v=321"
   ]
 }
