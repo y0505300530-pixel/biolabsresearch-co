@@ -1,10 +1,10 @@
 {
-  "version": "1.15",
+  "version": "1.16",
   "released": "2026-09-09",
-  "codename": "drop-insider-home",
+  "codename": "mobile-nav-trust-fix",
   "highlights": [
-    "Homepage: remove Insider / NEW LABS email-capture card (Marketing + Yehuda mark)",
-    "Subscribe API + welcome email remain for other entry points; homepage form gone",
-    "css?v=333"
+    "Mobile: fix header wordmark overlap with search/cart/hamburger (ellipsis + reserved icon rail)",
+    "Mobile hero: compact trust chips (no full-width stack) + remove duplicate \u201cLot docs\u201d line",
+    "css?v=334"
   ]
 }

@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 1.15
+# biolabsresearch.co — Version 1.16
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Homepage: remove Insider / NEW LABS email-capture card (Marketing + Yehuda mark)
-- Subscribe API + welcome email remain for other entry points; homepage form gone
-- css?v=333
+- Mobile: fix header wordmark overlap with search/cart/hamburger (ellipsis + reserved icon rail)
+- Mobile hero: compact trust chips (no full-width stack) + remove duplicate “Lot docs” line
+- css?v=334

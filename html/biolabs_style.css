@@ -9150,3 +9150,90 @@ html body .insider-club .insider-club-note {
   display: block !important;
   margin: 0 auto !important;
 }
+
+
+/* === CRM v1.16 — mobile nav no-overlap + compact hero trust === */
+@media (max-width: 800px) {
+  html body nav.nav,
+  html body .nav {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    gap: 8px !important;
+    padding: 10px 12px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  html body .nav-logo {
+    flex: 1 1 0% !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 148px) !important;
+    overflow: hidden !important;
+    align-items: center !important;
+  }
+  html body .nav-logo-stack {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow: hidden !important;
+  }
+  html body .nav-logo-text {
+    display: block !important;
+    max-width: 100% !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  html body .nav-logo-mark {
+    font-size: 17px !important;
+    flex: 0 0 auto !important;
+  }
+  html body .nav-logo-version {
+    font-size: 8px !important;
+  }
+  html body .nav-right {
+    flex: 0 0 auto !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 4px !important;
+    margin-left: 0 !important;
+    min-width: 140px !important;
+    justify-content: flex-end !important;
+  }
+  html body .nav-util,
+  html body .nav-cart,
+  html body .nav-hamburger {
+    width: 40px !important;
+    height: 40px !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+    flex: 0 0 40px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* hero trust: wrap as compact chips, not full-width stack */
+  html body .nl-trust-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+    margin: 10px 0 6px !important;
+  }
+  html body .nl-trust-row li {
+    flex: 0 1 auto !important;
+    width: auto !important;
+    max-width: 100% !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 5px 10px !important;
+    line-height: 1.2 !important;
+    white-space: nowrap !important;
+  }
+  html body .nl-trust {
+    font-size: 11px !important;
+    line-height: 1.35 !important;
+    margin: 0 !important;
+    white-space: normal !important;
+  }
+}
