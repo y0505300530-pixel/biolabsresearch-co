@@ -9878,3 +9878,98 @@ button.nav-util {
     padding-bottom: 84px !important;
   }
 }
+
+
+/* === CRM v1.26 — kill cookie banner surface; type floor; 44px taps === */
+#blr-consent {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  overflow: hidden !important;
+}
+@media (max-width: 800px) {
+  /* Readable floor: home + blog + shared chrome */
+  body,
+  p, li, label, td, th,
+  .nl-sub, .product-card-tagline, .blog-card p, .blog-excerpt, .blog-meta,
+  .shp-step p, .shp-method p, .footer, .footer p, .footer a, .footer-copy,
+  .footer-disclaimer, .fine-print, .legal-tiny, .ruo-bar, .hero-legal,
+  .section-kicker, .tools-kicker, .tools-card p, .tools-card li,
+  .catalog-card p, .pr-card-meta, .cutoff-copy, .cutoff-copy span,
+  .promo-ticker, .promo-ticker a, .nav-logo-version + *,
+  .article-body p, .article-body li, .post-meta, .blog-index-meta {
+    font-size: max(13px, 1em) !important;
+  }
+  .section-kicker, .tools-kicker, .price-unit-label, .pdp-sticky-label,
+  .promo-kicker, .spec-strip dt, .id-dl dt {
+    font-size: 12px !important; /* kickers only — still ≥12 */
+    line-height: 1.35 !important;
+  }
+  /* Tap targets ≥44 — home / shipping / tools / shared nav */
+  a.nav-link,
+  .nav-menu a,
+  .nav-util,
+  button.nav-util,
+  .nav-cart,
+  .nav-search,
+  .promo-ticker a,
+  .promo-ticker button,
+  .footer-col a,
+  .footer-bottom a,
+  .footer a,
+  .footer-social a,
+  .nl-actions a,
+  .nl-actions button,
+  .catalog-show-all,
+  button.catalog-show-all,
+  .product-card a,
+  .pr-card-atc,
+  .blog-card a,
+  .blog-load-more,
+  button.blog-load-more,
+  .shp-step-cta,
+  .shp-mail-btn,
+  .shp-method a,
+  .shp-faq a,
+  .tools-card a,
+  .tools-card button,
+  .tools-cta,
+  .tools-link,
+  .tool-btn,
+  .science-card a,
+  .faq-item summary,
+  .size-btn,
+  button.size-btn,
+  .qty-btn,
+  button.qty-btn {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    box-sizing: border-box !important;
+  }
+  .nav-util,
+  button.nav-util,
+  .nav-cart,
+  .footer-social a {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px !important;
+  }
+  .promo-ticker a,
+  .promo-ticker button {
+    display: inline-flex !important;
+    align-items: center !important;
+    padding: 10px 12px !important;
+  }
+  .size-btn, button.size-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px 14px !important;
+  }
+  /* Cookie banner buttons if reopen ever used */
+  #blr-consent .blr-c-btn {
+    min-height: 44px !important;
+  }
+}

@@ -1,10 +1,11 @@
 {
-  "version": "1.25",
+  "version": "1.26",
   "released": "2026-09-09",
-  "codename": "hero-drop-trust-pdp-sticky",
+  "codename": "a11y-cookie-type-taps",
   "highlights": [
-    "Homepage hero: remove trust chips + In stock line (Yehuda mark)",
-    "PDP: Unit price label; mobile sticky Add to inquiry bar with unit price",
-    "css?v=343"
+    "Cookie banner no longer auto-shows on any page (consent.js + CSS hide; privacy Cookie settings still works)",
+    "Mobile type floor \u226513px on home/blog/shared chrome",
+    "\u226544px tap targets: nav, ticker, footer, catalog, shipping, tools, blog load more",
+    "css?v=344"
   ]
 }
