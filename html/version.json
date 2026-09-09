@@ -1,9 +1,10 @@
 {
-  "version": "1.72",
+  "version": "1.73",
   "released": "2026-09-09",
-  "codename": "settle-no-midword",
+  "codename": "inquiry-blurb-short",
   "highlights": [
-    "Settle: shorter first line + no mid-word break (2 clean lines, no clip)",
-    "css?v=363 cart-vial.js?v=327"
+    "Checkout 375: Marketing short inquiry blurb (was clipping mid-sentence)",
+    "Copy: No payment on this page. We confirm availability, shipping, and card payment after your inquiry.",
+    "css?v=364 (keeps v1.72 settle two-line)"
   ]
 }

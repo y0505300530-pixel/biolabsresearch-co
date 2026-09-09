@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Form — Bio Labs Research">
 <meta name="twitter:description" content="Submit a research-use catalog inquiry. No payment is collected here. Lines stay tied to listed SKUs, and fulfillment follows the published shipping policy.">
-<link rel="stylesheet" href="/biolabs_style.css?v=363">
+<link rel="stylesheet" href="/biolabs_style.css?v=364">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -252,7 +252,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 <script src="/cart-vial.js?v=327"></script>
 <script src="/search-overlay.js?v=26"></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="1.72">
+<meta name="app-version" content="1.73">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -451,7 +451,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         <!-- Inquiry-only notice (no PSP yet) -->
         <div class="checkout-inquiry-box" style="background:#F5F2ED;border:1px solid #E8E2D8;border-radius:12px;padding:14px;margin-top:16px;max-width:100%;box-sizing:border-box;overflow:visible;">
           <div style="font-size:14px;font-weight:600;color:#1F1F1F;margin-bottom:8px;">Inquiry-Based Ordering</div>
-          <div style="font-size:13px;color:#4A4A4A;line-height:1.6;">No payment is collected at checkout. After you submit your order, our team will contact you within 24 hours to confirm availability, shipping, and payment options.</div>
+          <div class="checkout-inquiry-blurb" style="font-size:13px;color:#4A4A4A;line-height:1.45;white-space:normal;overflow-wrap:break-word;word-break:normal;max-width:100%;min-width:0">No payment on this page. We confirm availability, shipping, and card payment after your inquiry.</div>
         <div class="checkout-pay-marks-wrap">
           <p class="pay-mark-line" style="display:block;width:100%;max-width:100%;min-width:0;white-space:normal;overflow-wrap:break-word;word-break:normal;line-height:1.45;margin:0 0 8px">Major cards accepted after inquiry.<br>Settle with our team</p>
           <div class="checkout-pay-marks" aria-label="Accepted cards">
@@ -873,7 +873,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.72" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.72</p>
+<p class="site-version" data-site-version="1.73" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.73</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

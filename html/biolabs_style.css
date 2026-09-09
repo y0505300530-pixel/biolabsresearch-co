@@ -10789,3 +10789,16 @@ html body .nav-logo-mark,
     hyphens: none !important;
   }
 }
+
+
+/* === INQUIRY-BLURB-v1.73: short Marketing inquiry blurb + wrap at 375 === */
+@media (max-width: 899px) {
+  .checkout-inquiry-blurb,
+  .checkout-inquiry-box > div {
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
