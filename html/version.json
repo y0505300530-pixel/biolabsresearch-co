@@ -1,10 +1,11 @@
 {
-  "version": "1.52",
+  "version": "1.53",
   "released": "2026-09-09",
-  "codename": "tirzepatide",
+  "codename": "tirzepatide-vial",
   "highlights": [
-    "New: Tirzepatide \u2014 5 mg $55 \u00b7 10 mg $90 (API + PDP + home + sitemap)",
-    "Interim gold-crimp vial (R3TA clone) \u2014 @Indian labeled Tirzepatide when ready",
-    "mg-picker.js?v=27 \u00b7 catalog-mg.js?v=33 \u00b7 vial?v=160"
+    "Tirzepatide labeled gold-crimp vial (not R3TA clone)",
+    "RUO PDP/meta: research compound 5/10 mg from $55 \u2014 removed hGH-fragment/$85 leftover; CAS 2023788-19-2",
+    "No weight-loss/GLP claims",
+    "vial?v=161 \u00b7 css?v=356"
   ]
 }
