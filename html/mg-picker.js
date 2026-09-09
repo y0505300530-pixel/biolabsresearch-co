@@ -9,7 +9,7 @@
     "bpc-157": ["10mg", "20mg"],
     "glow-70": ["70mg"],
     "epithalon": ["5mg", "10mg"],
-    "ghk-cu": ["5mg", "10mg"],
+    "ghk-cu": ["100mg"],
     "mots-c": ["5mg", "10mg"],
     "kpv": ["5mg", "10mg"],
     "semax": ["5mg", "10mg"],

@@ -56,11 +56,11 @@
       original_price: 99
     },
     "ghk-cu": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 34, "10mg": 69 },
-      strength_originals: { "5mg": 42, "10mg": 85 },
-      price: 69,
-      original_price: 85
+      strengths: ["100mg"],
+      strength_prices: { "100mg": 100 },
+      strength_originals: { "100mg": 120 },
+      price: 100,
+      original_price: 120
     },
     "mots-c": {
       strengths: ["5mg", "10mg"],
