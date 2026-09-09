@@ -10496,3 +10496,47 @@ html body .nav-logo-mark,
     padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
   }
 }
+
+
+/* === CHECKOUT-CLIP-v1.65: ELITE FAIL — card marks clip + dock over Apply === */
+@media (max-width: 800px) {
+  body:has(.checkout-page) .sticky-cart-dock,
+  body.checkout-page-open .sticky-cart-dock,
+  html body .checkout-page ~ .sticky-cart-dock {
+    display: none !important;
+  }
+  body:has(.checkout-page) {
+    padding-bottom: 0 !important;
+  }
+  .checkout-pay-marks,
+  .cart-pay-marks,
+  .checkout-pay-marks-wrap {
+    max-width: 100% !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow: visible !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 6px !important;
+  }
+  .checkout-pay-marks-wrap > .pay-mark-line,
+  .pay-mark-line {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+    word-break: break-word !important;
+    text-align: left !important;
+    font-size: 12px !important;
+  }
+  .pay-mark {
+    flex: 0 0 auto !important;
+    max-width: 100% !important;
+  }
+  .checkout-page,
+  .checkout-page .form-card,
+  .checkout-page .order-summary {
+    overflow-x: hidden !important;
+    max-width: 100% !important;
+  }
+}

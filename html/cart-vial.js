@@ -2182,7 +2182,9 @@ function addSuggest(slug, name, price, mg){
     dock.classList.toggle('has-items', count > 0);
     var drawer = document.getElementById('cartDrawer');
     var open = !!(drawer && drawer.classList.contains('open'));
-    var hide = open || document.body.classList.contains('has-pdp-sticky');
+    var onCheckout = !!(document.querySelector('.checkout-page') || /\/checkout\/?$/.test(location.pathname));
+    try { document.body.classList.toggle('checkout-page-open', onCheckout); } catch (e) {}
+    var hide = open || document.body.classList.contains('has-pdp-sticky') || onCheckout;
     dock.classList.toggle('is-hidden', hide);
   }
 
@@ -2225,7 +2227,7 @@ function addSuggest(slug, name, price, mg){
     + '<span class="pay-mark mc">Mastercard</span>'
     + '<span class="pay-mark amex">Amex</span>'
     + '<span class="pay-mark discover">Discover</span>'
-    + '<p class="pay-mark-line">Major cards accepted when you settle with our team</p>'
+    + '<p class="pay-mark-line">Major cards accepted after inquiry accepted — settle with our team</p>'
     + '</div>';
   function ensure(){
     var drawer = document.getElementById('cartDrawer');

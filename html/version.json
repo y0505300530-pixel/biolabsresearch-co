@@ -1,10 +1,11 @@
 {
-  "version": "1.64",
+  "version": "1.65",
   "released": "2026-09-09",
-  "codename": "bpc-88-hydrate",
+  "codename": "checkout-marks-clip",
   "highlights": [
-    "BPC-157: kill stale $89 \u2014 PDP unit/meta/JSON-LD + cart CART_SUGGEST now $88 (SoT 10/$88 \u00b7 20/$105)",
-    "Sync cart Add-more fallback prices to current SoT lows",
-    "cart-vial.js?v=323"
+    "Hide sticky View cart dock on checkout so Apply coupon isn\u2019t covered",
+    "Checkout/cart card marks wrap on 375 \u2014 no right-edge clip",
+    "Copy: Major cards accepted after inquiry accepted \u2014 settle with our team",
+    "css?v=357 \u00b7 cart-vial.js?v=324"
   ]
 }
