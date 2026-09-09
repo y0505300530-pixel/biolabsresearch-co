@@ -28,7 +28,7 @@
     '.cart-footer .btn-checkout,.cart-footer .btn-continue,.cart-footer #cartInquiryPerk,.cart-footer .cart-inquiry-perk{width:100% !important;max-width:100% !important;align-self:stretch !important;box-sizing:border-box !important}',
 
     /* Yehuda: show Subtotal in cart footer */
-    '.cart-subtotal,#cartSubtotalRow{display:flex !important;align-items:center !important;justify-content:space-between !important;gap:10px !important;width:100% !important;margin:0 !important;padding:0 0 2px !important;border-bottom:0 !important}',
+    '.cart-subtotal,#cartSubtotalRow{display:flex !important;align-items:center !important;justify-content:space-between !important;flex-wrap:wrap !important;gap:8px 12px !important;width:100% !important;height:auto !important;min-height:36px !important;max-height:none !important;margin:0 0 8px !important;padding:6px 0 10px !important;overflow:visible !important;visibility:visible !important;opacity:1 !important;clip:auto !important;border:0 !important;position:relative !important;z-index:5 !important}',
     '.cart-subtotal-label{font-size:15px !important;font-weight:700 !important;color:#0d2137 !important}',
     '.cart-total-prices{display:inline-flex !important;align-items:center !important;gap:8px !important;flex-wrap:wrap !important;justify-content:flex-end !important}',
     '.cart-total-was,#cartTotalWas{font-size:13px !important;font-weight:600 !important;color:#8a8276 !important;text-decoration:line-through !important}',
@@ -2105,3 +2105,13 @@ function addSuggest(slug, name, price, mg){
   else wrap();
 })();
 
+
+/* CART v4.2 total unclip */
+(function(){
+  try {
+    var s = document.createElement('style');
+    s.id = 'cart-total-unclip-v42';
+    s.textContent = 'html body #cartDrawer .cart-subtotal,html body #cartDrawer #cartSubtotalRow{display:flex!important;height:auto!important;min-height:36px!important;overflow:visible!important;visibility:visible!important;opacity:1!important;clip:auto!important;padding:6px 0 10px!important;margin:0 0 8px!important;z-index:5!important}html body #cartDrawer.is-empty .cart-subtotal,html body #cartDrawer.is-empty #cartSubtotalRow{display:none!important;height:0!important;min-height:0!important;padding:0!important;margin:0!important;overflow:hidden!important}';
+    (document.head||document.documentElement).appendChild(s);
+  } catch(e){}
+})();

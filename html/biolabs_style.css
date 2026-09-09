@@ -5630,8 +5630,7 @@ a.nav-logo{
   .blog-filters{padding:0 20px 8px}
 }
 
-/* cart-inquiry-perk */
-.cart-subtotal{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important}
+/* cart-inquiry-perk — Total row must stay visible (was clipped by height:0 on .cart-subtotal) */
 .cart-inquiry-perk{
   display:flex;align-items:center;gap:8px;
   min-height:40px;box-sizing:border-box;
@@ -8315,5 +8314,69 @@ p.cart-subtotal-note {
 .cart-footer .btn-continue span[aria-hidden],
 .cart-footer .btn-continue svg {
   display: none !important;
+}
+
+
+/* === CART v4.2: Total row never clipped above Proceed (ELITE FAIL) === */
+html body .cart-drawer .cart-subtotal,
+html body #cartDrawer .cart-subtotal,
+html body .cart-drawer #cartSubtotalRow,
+html body #cartDrawer #cartSubtotalRow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: wrap !important;
+  gap: 8px 12px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 36px !important;
+  max-height: none !important;
+  margin: 0 0 8px !important;
+  padding: 6px 0 10px !important;
+  overflow: visible !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  clip: auto !important;
+  border: 0 !important;
+  border-bottom: 0 !important;
+  position: relative !important;
+  z-index: 5 !important;
+}
+html body .cart-drawer .cart-total-prices,
+html body #cartDrawer .cart-total-prices {
+  display: inline-flex !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  justify-content: flex-end !important;
+  max-width: 100% !important;
+  overflow: visible !important;
+  height: auto !important;
+  min-height: 28px !important;
+}
+html body .cart-drawer .cart-subtotal-amount,
+html body #cartDrawer #cartTotal,
+html body .cart-drawer #cartTotal {
+  height: auto !important;
+  min-height: 1.1em !important;
+  overflow: visible !important;
+  line-height: 1.15 !important;
+  font-size: 22px !important;
+}
+html body .cart-drawer .cart-footer,
+html body #cartDrawer .cart-footer {
+  overflow: visible !important;
+  padding: 10px 12px 12px !important;
+  gap: 8px !important;
+}
+html body .cart-drawer.is-empty .cart-subtotal,
+html body .cart-drawer.is-empty #cartSubtotalRow {
+  display: none !important;
+  height: 0 !important;
+  min-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
 }
 
