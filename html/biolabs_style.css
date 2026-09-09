@@ -8264,14 +8264,7 @@ html body .cart-drawer .cart-addmore-slot {
   color: #0d2137 !important;
   white-space: nowrap !important;
 }
-.cart-subtotal-note {
-  display: block !important;
-  margin: 0 0 10px !important;
-  padding: 0 !important;
-  font-size: 12px !important;
-  line-height: 1.3 !important;
-  color: #6b6254 !important;
-}
+.cart-subtotal-note,.cart-footer .cart-subtotal-note{display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;border:0!important;visibility:hidden!important}
 .cart-total-sr-only { /* obsolete */ }
 
 
@@ -8291,5 +8284,36 @@ body.cart-open #cartProgress {
   border: 0 !important;
   opacity: 0 !important;
   pointer-events: none !important;
+}
+
+
+/* === CART v4.1: never show shipping note; empty cart = Continue only === */
+.cart-subtotal-note,
+.cart-footer .cart-subtotal-note,
+p.cart-subtotal-note {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  visibility: hidden !important;
+  border: 0 !important;
+}
+.cart-drawer.is-empty .cart-subtotal,
+.cart-drawer.is-empty #cartSubtotalRow,
+.cart-drawer.is-empty .btn-checkout,
+.cart-drawer.is-empty #cartAddMore {
+  display: none !important;
+  height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  border: 0 !important;
+}
+.cart-footer .btn-checkout svg,
+.cart-footer .btn-checkout .chev,
+.cart-footer .btn-continue span[aria-hidden],
+.cart-footer .btn-continue svg {
+  display: none !important;
 }
 

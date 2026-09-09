@@ -2057,3 +2057,51 @@ function addSuggest(slug, name, price, mg){
   } catch (e) {}
 })();
 
+/* CART v4.1: empty drawer — hide Total + Proceed; strip shipping notes + chevrons */
+(function(){
+  function scrubFooter(){
+    var drawer = document.getElementById('cartDrawer');
+    if (!drawer) return;
+    var empty = false;
+    try {
+      var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
+      empty = !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0 && !i.gift; }) && !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
+      // treat fully empty including gifts-only as empty for CTA purposes if no paid lines
+      var paid = c.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0 && !(i.gift || i.slug==='research-solvent'); });
+      empty = paid.length === 0 && !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0 && !i.gift && i.slug!=='research-solvent'; });
+      if (!c.length) empty = true;
+      else {
+        empty = !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
+      }
+    } catch(e){ empty = true; }
+    drawer.classList.toggle('is-empty', !!empty);
+    drawer.querySelectorAll('.cart-subtotal-note,.cart-note,.cart-inquiry-perk,#cartInquiryPerk').forEach(function(n){ try{ n.remove(); }catch(e){} });
+    var btn = drawer.querySelector('.btn-checkout');
+    if (btn) {
+      btn.querySelectorAll('svg,.chev').forEach(function(n){ try{ n.remove(); }catch(e){} });
+      if (/Proceed to checkout/i.test(btn.textContent||'')) btn.textContent = 'Proceed to checkout';
+      btn.disabled = !!empty;
+    }
+    var cont = drawer.querySelector('.btn-continue');
+    if (cont) {
+      cont.querySelectorAll('svg,span[aria-hidden]').forEach(function(n){ try{ n.remove(); }catch(e){} });
+      cont.textContent = 'Continue shopping';
+    }
+  }
+  function wrap(){
+    if (typeof window.renderCart === 'function' && !window.renderCart.__emptyFooter) {
+      var orig = window.renderCart;
+      window.renderCart = function(){
+        var r = orig.apply(this, arguments);
+        scrubFooter();
+        return r;
+      };
+      window.renderCart.__emptyFooter = true;
+    }
+    scrubFooter();
+  }
+  var n=0;(function tick(){ wrap(); if(++n<60) setTimeout(tick,120); })();
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', wrap);
+  else wrap();
+})();
+
