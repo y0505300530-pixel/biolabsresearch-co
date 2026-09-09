@@ -15,7 +15,13 @@
 
   function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
   function format(left){
-    var h = left / 36e5, m = (left % 36e5) / 6e4, s = (left % 6e4) / 1e3;
+    var days = Math.floor(left / 864e5);
+    var h = Math.floor((left % 864e5) / 36e5);
+    var m = Math.floor((left % 36e5) / 6e4);
+    var s = Math.floor((left % 6e4) / 1e3);
+    if (days >= 1) {
+      return days + (days === 1 ? " day " : " days ") + pad(h) + ":" + pad(m);
+    }
     return pad(h) + ":" + pad(m) + ":" + pad(s);
   }
   function tick(){

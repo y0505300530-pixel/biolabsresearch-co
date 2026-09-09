@@ -1,10 +1,13 @@
 {
-  "version": "1.18",
+  "version": "1.19",
   "released": "2026-09-09",
-  "codename": "entry-gate-mobile",
+  "codename": "mobile-sales-focus",
   "highlights": [
-    "RUO entry gate: fix broken checkbox label wrapping on mobile (flex text nodes \u2192 wrapped span)",
-    "Tighter modal, full-width Enter CTA, readable checklist \u2014 RUO copy unchanged",
-    "css?v=336"
+    "Remove duplicate Listed. Tested. Documented. (kept Science section H2 + RUO slogan)",
+    "Promo timer shows days when \u226524h (no more 127:xx:xx)",
+    "Hero secondary CTA forced outline; primary stays filled",
+    "Mobile catalog: 8 cards + Show all compounds",
+    "Mobile logo nowrap smaller; footer links \u226544px tap; mg chips nowrap / equal card body",
+    "css?v=337"
   ]
 }

@@ -9397,3 +9397,151 @@ html body .insider-club .insider-club-note {
     font-size: 12.5px !important;
   }
 }
+
+
+/* === MOBILE-SALES-v1.19: Marketing mobile sales focus === */
+/* Hero: secondary = outline only (not twin filled) */
+html body .nl-btn-secondary,
+html body a.nl-btn-secondary {
+  background: transparent !important;
+  color: #0d2137 !important;
+  border: 1.5px solid #0d2137 !important;
+  box-shadow: none !important;
+}
+html body .nl-btn-secondary:hover,
+html body a.nl-btn-secondary:hover {
+  background: #0d2137 !important;
+  color: #fff !important;
+}
+
+/* Catalog: show 8 on mobile, rest behind Show all */
+@media (max-width: 800px) {
+  .catalog-grid > .product-card:nth-child(n+9) {
+    display: none !important;
+  }
+  html.catalog-expanded .catalog-grid > .product-card:nth-child(n+9) {
+    display: flex !important;
+  }
+  .catalog-show-all-wrap {
+    display: flex !important;
+    justify-content: center;
+    padding: 8px 16px 28px;
+  }
+  .catalog-show-all {
+    min-height: 44px;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 1.5px solid #0d2137;
+    background: #fff;
+    color: #0d2137;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  .product-card-strengths {
+    flex-wrap: nowrap !important;
+    min-height: 28px;
+    align-items: center;
+  }
+  .product-card-mg {
+    white-space: nowrap !important;
+    flex: 0 0 auto;
+  }
+  .product-card {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .product-card-body {
+    display: flex !important;
+    flex-direction: column !important;
+    flex: 1 1 auto !important;
+    min-height: 168px;
+  }
+  .product-card-row {
+    margin-top: auto !important;
+  }
+  /* Mobile logo: one line, smaller — stop B / iolabs wrap */
+  .nav-logo-stack {
+    display: inline-flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 160px) !important;
+  }
+  .nav-logo {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 2px !important;
+    min-width: 0 !important;
+    max-width: calc(100vw - 140px) !important;
+  }
+  .nav-logo-mark,
+  .nav-logo-text {
+    white-space: nowrap !important;
+    display: inline !important;
+  }
+  .nav-logo-text {
+    font-size: 14px !important;
+    letter-spacing: -0.03em !important;
+  }
+  .nav-logo-mark {
+    font-size: 16px !important;
+  }
+  .nav-logo-version {
+    font-size: 10px !important;
+    line-height: 1 !important;
+  }
+  /* Footer links ≥44px tap */
+  .footer-col a,
+  .footer-bottom a,
+  .footer a {
+    min-height: 44px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    box-sizing: border-box !important;
+  }
+  /* Slim cookie/privacy bar if present */
+  .cookie-banner,
+  .bl-cookie,
+  #cookieBanner,
+  [data-cookie-banner] {
+    padding: 8px 12px !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    font-size: 12px !important;
+    line-height: 1.3 !important;
+  }
+  .cookie-banner p,
+  .bl-cookie p {
+    margin: 0 !important;
+    flex: 1 1 160px !important;
+  }
+  .cookie-banner button,
+  .bl-cookie button {
+    min-height: 40px !important;
+    padding: 8px 14px !important;
+  }
+}
+@media (min-width: 801px) {
+  .catalog-show-all-wrap { display: none !important; }
+}
+/* Hide empty black slogan band if only RUO left — tighten */
+.slogan-band {
+  padding: 36px 24px !important;
+}
+@media (max-width: 800px) {
+  .slogan-band {
+    padding: 28px 16px !important;
+  }
+  .slogan-line {
+    font-size: clamp(20px, 5.5vw, 28px) !important;
+  }
+}
