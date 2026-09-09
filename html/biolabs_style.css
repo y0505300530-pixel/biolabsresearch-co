@@ -7881,3 +7881,85 @@ div.cart-inquiry-perk {
     padding-right: 12px !important;
   }
 }
+
+
+/* === CART MOBILE v2.4 — Add-to-this-order fully tappable above footer === */
+@media (max-width: 667px) {
+  #cartAddMore,
+  .cart-addmore-slot {
+    flex: 0 0 156px !important;
+    height: 156px !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 4px 0 8px !important;
+    z-index: 5 !important;
+    pointer-events: auto !important;
+    background: #fff !important;
+  }
+  .cart-addmore-title {
+    margin: 0 0 4px !important;
+    padding: 0 12px !important;
+    font-size: 11px !important;
+  }
+  .cart-addmore-track {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    height: 132px !important;
+    max-height: 132px !important;
+    overflow-x: auto !important;
+    overflow-y: visible !important;
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    overscroll-behavior-x: contain !important;
+    pointer-events: auto !important;
+    padding: 0 12px 4px !important;
+    gap: 8px !important;
+  }
+  .cart-addcard,
+  .cart-addmore .cart-addcard {
+    flex: 0 0 100px !important;
+    width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
+    height: 132px !important;
+    max-height: 132px !important;
+    overflow: visible !important;
+    pointer-events: auto !important;
+    padding: 0 0 4px !important;
+    gap: 2px !important;
+  }
+  .cart-addcard img,
+  .cart-addmore .cart-addcard img {
+    height: 48px !important;
+    max-height: 48px !important;
+  }
+  .cart-addcard-name {
+    font-size: 10px !important;
+    max-height: 24px !important;
+    line-height: 1.15 !important;
+  }
+  .cart-addcard-price { font-size: 11px !important; }
+  .cart-addcard-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    padding: 0 12px !important;
+    font-size: 11px !important;
+    font-weight: 800 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    position: relative !important;
+    z-index: 6 !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  /* footer sits below addmore in flex — never cover carousel taps */
+  .cart-footer {
+    position: relative !important;
+    z-index: 4 !important;
+    flex: 0 0 auto !important;
+  }
+}
+
