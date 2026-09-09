@@ -10102,3 +10102,116 @@ button.nav-util {
     object-fit: contain !important;
   }
 }
+
+
+/* === CRM v1.31 — PDP polish (Yehuda) === */
+.price-compare {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  margin-left: 10px;
+}
+.price-launch-note {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: .04em;
+  color: #9A6D2A !important;
+  text-transform: none !important;
+}
+html body .price-original::before { content: none !important; }
+.price-main.price-flash {
+  animation: pdpPriceFlash .55s ease;
+}
+@keyframes pdpPriceFlash {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.08); color: #9A6D2A; }
+  100% { transform: scale(1); }
+}
+/* one background — no frame-in-frame */
+.product-img-main {
+  background: #F5F2ED !important;
+  border: 1px solid #E6E0D6 !important;
+  border-radius: 16px !important;
+  overflow: hidden !important;
+  aspect-ratio: 1 / 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.product-img-main img,
+#pdpMainImg {
+  background: transparent !important;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center !important;
+  padding: 8% !important;
+  box-sizing: border-box !important;
+}
+.pdp-thumbs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 10px;
+}
+.pdp-thumb {
+  border: 1.5px solid #E6E0D6;
+  border-radius: 12px;
+  background: #F5F2ED;
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1;
+  min-height: 64px;
+}
+.pdp-thumb.on {
+  border-color: #0d2137;
+}
+.pdp-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  background: transparent;
+}
+.pdp-coa-link,
+button.pdp-coa-link {
+  display: inline-flex !important;
+  align-items: center !important;
+  width: auto !important;
+  max-width: 100%;
+  margin: 4px 0 14px !important;
+  padding: 8px 0 !important;
+  min-height: 44px !important;
+  border: 0 !important;
+  background: transparent !important;
+  color: #9A6D2A !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+.pdp-coa-link:hover { color: #0d2137 !important; }
+.pdp-ship-note {
+  margin: 0 0 4px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #0d2137 !important;
+  line-height: 1.35 !important;
+}
+.pdp-atc-note {
+  margin: 0 0 10px !important;
+  font-size: 12px !important;
+  color: #6B6354 !important;
+  line-height: 1.4 !important;
+}
+/* hide leftover See COA badge if static HTML still has it */
+.purity-badge { display: none !important; }
+@media (max-width: 800px) {
+  .pdp-thumbs { gap: 6px; }
+  .pdp-thumb { min-height: 56px; border-radius: 10px; }
+  .price-launch-note { font-size: 12px !important; }
+}

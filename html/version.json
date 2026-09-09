@@ -1,11 +1,13 @@
 {
-  "version": "1.30",
+  "version": "1.31",
   "released": "2026-09-09",
-  "codename": "og-webp-share",
+  "codename": "pdp-polish-yehuda",
   "highlights": [
-    "OG/Twitter image on tools, shipping, blog, contact, FAQ, science, COA, checkout, returns",
-    "Homepage catalog vials prefer .webp + sizes (lighter WhatsApp/share + faster mobile)",
-    "Re-assert mobile catalog 8 + Show all",
-    "css?v=346 \u2014 CRM sticky/taps/cookie stay as in v1.29"
+    "PDP: Launch price note next to struck compare-at",
+    "One COA path (removed duplicate See COA badge; View lot COA is a text link)",
+    "Clean single vial frame + 3 thumbs (vial/label/pack)",
+    "Amount change flashes Unit price; sticky already synced (v1.29)",
+    "Under Add: ships-today cutoff + what happens after inquiry",
+    "css?v=347 \u00b7 mg-picker.js?v=13"
   ]
 }

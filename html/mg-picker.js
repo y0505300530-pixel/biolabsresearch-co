@@ -71,13 +71,17 @@
     var shown = (price === null || price === undefined)
       ? parseFloat(String((priceEl && priceEl.textContent) || "").replace(/[^0-9.]/g, ""))
       : Number(price);
+    var showOrig = !(orig === null || !isFinite(shown) || orig <= shown);
     scope.querySelectorAll(".price-original, .was, .price-old").forEach(function (el) {
-      if (orig === null || !isFinite(shown) || orig <= shown) {
+      if (!showOrig) {
         el.style.display = "none";
       } else {
         el.textContent = "$" + orig;
         el.style.display = "";
       }
+    });
+    scope.querySelectorAll(".price-launch-note, .price-compare").forEach(function (el) {
+      el.style.display = showOrig ? "" : "none";
     });
   }
   function priceForMg(slug, mg, fallback) {
@@ -104,7 +108,12 @@
     var src = fileFor(slug);
     var priceEl = document.getElementById("current-price") || document.querySelector(".price-main");
     var selectedPrice = priceForMg(slug, mg, null);
-    if (priceEl && selectedPrice !== null) priceEl.textContent = "$" + selectedPrice;
+    if (priceEl && selectedPrice !== null) {
+      priceEl.textContent = "$" + selectedPrice;
+      priceEl.classList.remove("price-flash");
+      void priceEl.offsetWidth;
+      priceEl.classList.add("price-flash");
+    }
     syncStickyPrice(selectedPrice);
     setOriginal(priceEl, slug, mg, selectedPrice);
     document.querySelectorAll("img").forEach(function (img) {
@@ -284,6 +293,19 @@
     mount();
   }
   function boot() {
+    if (!window.__pdpThumbsBound) {
+      window.__pdpThumbsBound = 1;
+      document.addEventListener("click", function (e) {
+        var t = e.target && e.target.closest && e.target.closest(".pdp-thumb");
+        if (!t) return;
+        var full = t.getAttribute("data-full");
+        var main = document.getElementById("pdpMainImg") || document.querySelector(".product-img-main img");
+        if (!full || !main) return;
+        main.src = full;
+        var wrap = t.parentNode;
+        if (wrap) wrap.querySelectorAll(".pdp-thumb").forEach(function (x) { x.classList.toggle("on", x === t); });
+      });
+    }
     mount();
     patch();
   }
