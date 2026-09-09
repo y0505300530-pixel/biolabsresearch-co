@@ -8228,3 +8228,49 @@ html body .cart-drawer .cart-addmore-slot {
   isolation: isolate !important;
 }
 
+
+/* === CART: visible Subtotal (Yehuda — show inquiry total) === */
+.cart-subtotal,
+#cartSubtotalRow {
+  display: flex !important;
+  align-items: baseline !important;
+  justify-content: space-between !important;
+  gap: 12px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  margin: 0 0 4px !important;
+  padding: 4px 0 8px !important;
+  border-top: 0 !important;
+  border-bottom: 1px dashed #D9D0C3 !important;
+}
+.cart-subtotal-label {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+  color: #0d2137 !important;
+  letter-spacing: -0.02em !important;
+}
+.cart-subtotal-amount,
+#cartTotal.cart-subtotal-amount,
+#cartTotal {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  clip: auto !important;
+  overflow: visible !important;
+  font-size: 20px !important;
+  font-weight: 800 !important;
+  color: #0d2137 !important;
+  white-space: nowrap !important;
+}
+.cart-subtotal-note {
+  display: block !important;
+  margin: 0 0 10px !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  line-height: 1.3 !important;
+  color: #6b6254 !important;
+}
+.cart-total-sr-only { /* obsolete */ }
+

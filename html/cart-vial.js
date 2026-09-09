@@ -26,8 +26,11 @@
     '.cart-footer{display:flex !important;flex-direction:column !important;align-items:stretch !important;flex-wrap:nowrap !important;position:relative !important;bottom:auto !important;z-index:1 !important;padding:8px 12px 12px !important;gap:6px !important;width:100% !important;box-sizing:border-box !important}',
     '.cart-footer .btn-checkout,.cart-footer .btn-continue,.cart-footer #cartInquiryPerk,.cart-footer .cart-inquiry-perk{width:100% !important;max-width:100% !important;align-self:stretch !important;box-sizing:border-box !important}',
 
-    /* Yehuda cart footer: hide Subtotal forever; footer perk is the unlock line */
-    '.cart-subtotal{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important}',
+    /* Yehuda: show Subtotal in cart footer */
+    '.cart-subtotal,#cartSubtotalRow{display:flex !important;align-items:baseline !important;justify-content:space-between !important;gap:12px !important;width:100% !important;margin:0 0 4px !important;padding:4px 0 8px !important;border-bottom:1px dashed #D9D0C3 !important}',
+    '.cart-subtotal-label{font-size:18px !important;font-weight:800 !important;color:#0d2137 !important}',
+    '.cart-subtotal-amount,#cartTotal{position:static !important;width:auto !important;height:auto !important;margin:0 !important;padding:0 !important;clip:auto !important;overflow:visible !important;font-size:20px !important;font-weight:800 !important;color:#0d2137 !important}',
+    '.cart-subtotal-note{display:block !important;margin:0 0 10px !important;font-size:12px !important;color:#6b6254 !important}',
     '#cartProgress .cp-unlocked{display:none !important;height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important}',
     '.cart-inquiry-perk,#cartInquiryPerk{display:none !important;height:0 !important;min-height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important;opacity:0 !important;pointer-events:none !important}',
     '.cart-inquiry-perk-icon{flex:0 0 auto !important;color:#7A5520 !important;display:block !important;width:16px !important;height:16px !important}',
@@ -1866,4 +1869,18 @@ function addSuggest(slug, name, price, mg){
   window.addEventListener('resize', forceHide);
   document.addEventListener('touchmove', forceHide, { passive: true, capture: true });
   setInterval(forceHide, 400);
+})();
+
+/* CART show subtotal: unhide #cartTotal if legacy hidden attr remains */
+(function(){
+  function showTotal(){
+    var el = document.getElementById('cartTotal');
+    if (!el) return;
+    el.removeAttribute('hidden');
+    el.classList.remove('cart-total-sr-only');
+    if (!el.classList.contains('cart-subtotal-amount')) el.classList.add('cart-subtotal-amount');
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', showTotal);
+  else showTotal();
+  var n=0; (function tick(){ showTotal(); if(++n<40) setTimeout(tick,100); })();
 })();
