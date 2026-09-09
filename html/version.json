@@ -1,9 +1,10 @@
 {
-  "version": "1.08",
+  "version": "1.09",
   "released": "2026-09-09",
-  "codename": "insider-vial-video",
+  "codename": "insider-new-visual-plus-welcome-mail",
   "highlights": [
-    "Insider card: replace static vial still with product-closeup-loop video (muted, loop, play-when-visible via bl-video)",
-    "Reduced-motion falls back to poster; form/copy unchanged from v1.07"
+    "Insider card: brand-new premium vial video (insider-premium-loop) \u2014 not a reused site loop",
+    "Subscribe API: send confirmation email with INSIDER25 code via Customer.io on signup (lead was already saving)",
+    "Email field polish: clearer border, focus ring, invalid state"
   ]
 }

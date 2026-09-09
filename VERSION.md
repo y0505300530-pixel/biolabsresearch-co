@@ -1,8 +1,9 @@
-# biolabsresearch.co — Version 1.08
+# biolabsresearch.co — Version 1.09
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Insider card: replace static vial still with product-closeup-loop video (muted, loop, play-when-visible via bl-video)
-- Reduced-motion falls back to poster; form/copy unchanged from v1.07
+- Insider card: brand-new premium vial video (insider-premium-loop) — not a reused site loop
+- Subscribe API: send confirmation email with INSIDER25 code via Customer.io on signup (lead was already saving)
+- Email field polish: clearer border, focus ring, invalid state
