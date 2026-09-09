@@ -1,10 +1,10 @@
 {
-  "version": "1.67",
+  "version": "1.68",
   "released": "2026-09-09",
-  "codename": "mobile-footer-dock",
+  "codename": "checkout-375-marks",
   "highlights": [
-    "Mobile: force footer to 1-col (stop 404px clip on shipping/tools)",
-    "More bottom padding + catalog clearance so sticky View cart dock doesn\u2019t cover Add to inquiry",
-    "css?v=358 (keeps CRM cart-vial SoT reprice)"
+    "Checkout 375: 2\u00d72 card-mark grid (no right clip of Amex/Discover)",
+    "Shipping option + pay-mark-line wrap; tighter mobile padding",
+    "css?v=359"
   ]
 }
