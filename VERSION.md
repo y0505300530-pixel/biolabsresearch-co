@@ -1,9 +1,8 @@
-# biolabsresearch.co — Version 1.18
+# biolabsresearch.co — Version 1.21
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- RUO entry gate: fix broken checkbox label wrapping on mobile (flex text nodes → wrapped span)
-- Tighter modal, full-width Enter CTA, readable checklist — RUO copy unchanged
-- css?v=336
+- Cart drawer: kill horizontal overflow at 375 — clamp items/addmore, ellipsis names, remove BAC negative margin
+- Keeps compressed footer from v1.10; cart-vial.js?v=293 + css?v=339

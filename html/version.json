@@ -1,10 +1,9 @@
 {
-  "version": "1.20",
+  "version": "1.21",
   "released": "2026-09-09",
-  "codename": "show-all-visible",
+  "codename": "cart-no-x-overflow",
   "highlights": [
-    "Fix: mobile Show all compounds was inside catalog-grid and not reliably visible \u2014 moved outside grid + forced display \u2264800px",
-    "Keeps v1.19 sales focus (8 cards, timer days, LTD dupe, outline CTA)",
-    "css?v=338"
+    "Cart drawer: kill horizontal overflow at 375 \u2014 clamp items/addmore, ellipsis names, remove BAC negative margin",
+    "Keeps compressed footer from v1.10; cart-vial.js?v=293 + css?v=339"
   ]
 }
