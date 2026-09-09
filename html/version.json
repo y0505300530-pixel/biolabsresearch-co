@@ -1,11 +1,11 @@
 {
-  "version": "1.43",
+  "version": "1.44",
   "released": "2026-09-09",
-  "codename": "kpv-10",
+  "codename": "kisspeptin-10",
   "highlights": [
-    "KPV: single amount 10 mg at $79 (was 5/10 mg)",
+    "Kisspeptin-10: single amount 10 mg at $99 (was 5/10 mg)",
     "API + catalog + PDP + homepage (SoT from API)",
-    "mg-picker.js?v=20 \u00b7 catalog-mg.js?v=26",
-    "Adds to locked stack with Semax 10/$99\u00b730/$119"
+    "mg-picker.js?v=21 \u00b7 catalog-mg.js?v=27",
+    "Keeps KPV 10/$79 and prior locked stack"
   ]
 }

@@ -84,9 +84,9 @@
       original_price: 145
     },
     "kisspeptin-10": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 50, "10mg": 99 },
-      strength_originals: { "5mg": 60, "10mg": 119 },
+      strengths: ["10mg"],
+      strength_prices: { "10mg": 99 },
+      strength_originals: { "10mg": 119 },
       price: 99,
       original_price: 119
     },

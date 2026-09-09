@@ -13,7 +13,7 @@
     "mots-c": ["10mg", "40mg"],
     "kpv": ["10mg"],
     "semax": ["10mg", "30mg"],
-    "kisspeptin-10": ["5mg", "10mg"],
+    "kisspeptin-10": ["10mg"],
     "thymosin-alpha-1": ["5mg", "10mg"],
     "tb-500": ["5mg", "10mg"],
     "retatrutide": ["10mg", "20mg"]
