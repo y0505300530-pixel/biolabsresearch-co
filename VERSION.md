@@ -1,16 +1,14 @@
-# biolabsresearch.co — Version 1.00
+# biolabsresearch.co — Version 1.01
 
 Released 2026-09-09 (Asia/Jerusalem).
 
 ## What this version improves
 
-- Cart footer v4: Total (was + sale + gold −%) + Proceed + Continue; no shipping line / no Unlocked footer perk
-- Inquiry Rewards progress bar restored ($100 / $250 / $375 / $500)
-- INSIDER25 ticker hides when cart open (search parity); checkout timer fixed (no stuck 00:00:00)
-- Empty cart: Continue only (no Proceed/Total)
-- Homepage: Research Map removed; hero Lot docs on request (not Lot COA)
-- Checkout inquiry still saves CRM Order + Lead; live pay blocked on Tagada storeId (#15 / Zack)
+- Fix: cart could show empty while badge still had items/total — hydrate from localStorage on every render
+- Fix: _isBacItem no longer treats every gift/recommended flag as BAC (that dropped real lines in sanitize)
+- Fix: is-empty / Total / Inquiry Rewards visibility when cart has lines
+- Keeps v1.00: Inquiry Rewards bar, Total was+sale+%, no shipping/Unlocked perk, Research Map off home, Lot docs wording
 
-## Process
+## Prior
 
-From 1.00 onward: every release bumps the site version, updates `html/version.json`, commits/pushes git, and Yehuda is notified in ALL BIOLAB.
+See git tag `v1.00`.

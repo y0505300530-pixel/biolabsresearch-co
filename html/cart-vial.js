@@ -96,8 +96,13 @@ var BAC_DISMISS_KEY = 'biolabs_bac_dismissed';
 var BAC_DISPLAY_NAME = 'Bacteriostatic Water 30ml';
 var BAC_BADGE = 'Research solvent';
 function _isBacItem(i){
-  return !!(i && (i.slug === 'research-solvent' || i.gift || i.recommended ||
-    /bac water|bacteriostatic|research solvent/i.test(String(i.name || ''))));
+  if (!i) return false;
+  var slug = String(i.slug || '');
+  var name = String(i.name || '');
+  if (slug === 'research-solvent') return true;
+  if (/bac water|bacteriostatic|research solvent/i.test(name)) return true;
+  /* gift/recommended alone is not enough — that used to wipe real cart lines in _sanitizeCart */
+  return false;
 }
 function _bacDismissed(){
   try { return sessionStorage.getItem(BAC_DISMISS_KEY) === '1'; } catch (e) { return false; }
@@ -1411,9 +1416,16 @@ function addSuggest(slug, name, price, mg){
     if (typeof window.renderCart === 'function' && !window.renderCart.__syncGiftsFirst) {
       var orig = window.renderCart;
       window.renderCart = function(){
+        try {
+          if (typeof _readCartLS === 'function') {
+            var fromLs = _readCartLS();
+            if (typeof cart !== 'undefined') cart = Array.isArray(fromLs) ? fromLs : [];
+          }
+        } catch (eHydrate) {}
         runSync();
         if (typeof cart !== 'undefined' && Array.isArray(cart) && typeof _sanitizeCart === 'function') {
           cart = _sanitizeCart(cart);
+          try { if (typeof _writeCartLS === 'function') _writeCartLS(cart); } catch (eW) {}
         }
         return orig.apply(this, arguments);
       };
@@ -2055,31 +2067,43 @@ function addSuggest(slug, name, price, mg){
   function scrubFooter(){
     var drawer = document.getElementById('cartDrawer');
     if (!drawer) return;
-    var empty = false;
+    var empty = true;
     try {
-      var c = (typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : [];
-      empty = !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0 && !i.gift; }) && !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
-      // treat fully empty including gifts-only as empty for CTA purposes if no paid lines
-      var paid = c.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0 && !(i.gift || i.slug==='research-solvent'); });
-      empty = paid.length === 0 && !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0 && !i.gift && i.slug!=='research-solvent'; });
-      if (!c.length) empty = true;
-      else {
-        empty = !c.some(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
+      var c = [];
+      try {
+        if (typeof _readCartLS === 'function') c = _readCartLS() || [];
+      } catch (e0) { c = []; }
+      if ((!c || !c.length) && typeof cart !== 'undefined' && Array.isArray(cart)) c = cart;
+      if (typeof cart !== 'undefined') {
+        try { cart = Array.isArray(c) ? c.slice() : []; } catch (e1) {}
       }
-    } catch(e){ empty = true; }
+      empty = !(Array.isArray(c) && c.some(function(i){
+        return i && (parseInt(i.qty, 10) || 0) > 0;
+      }));
+    } catch (e) { empty = true; }
     drawer.classList.toggle('is-empty', !!empty);
+    if (!empty) drawer.classList.remove('is-empty');
     drawer.querySelectorAll('.cart-subtotal-note,.cart-note,.cart-inquiry-perk,#cartInquiryPerk').forEach(function(n){ try{ n.remove(); }catch(e){} });
     var btn = drawer.querySelector('.btn-checkout');
     if (btn) {
       btn.querySelectorAll('svg,.chev').forEach(function(n){ try{ n.remove(); }catch(e){} });
       if (/Proceed to checkout/i.test(btn.textContent||'')) btn.textContent = 'Proceed to checkout';
       btn.disabled = !!empty;
+      btn.style.display = empty ? 'none' : '';
     }
     var cont = drawer.querySelector('.btn-continue');
     if (cont) {
       cont.querySelectorAll('svg,span[aria-hidden]').forEach(function(n){ try{ n.remove(); }catch(e){} });
       cont.textContent = 'Continue shopping';
     }
+    /* if items exist but #cartItems shows empty shell, force re-render once */
+    try {
+      var itemsEl = document.getElementById('cartItems');
+      if (!empty && itemsEl && itemsEl.querySelector('.cart-empty') && typeof window.renderCart === 'function' && !window.__blrForceRenderOnce) {
+        window.__blrForceRenderOnce = true;
+        setTimeout(function(){ try { window.__blrForceRenderOnce = false; window.renderCart(); } catch(e){} }, 0);
+      }
+    } catch (e2) {}
   }
   function wrap(){
     if (typeof window.renderCart === 'function' && !window.renderCart.__emptyFooter) {
