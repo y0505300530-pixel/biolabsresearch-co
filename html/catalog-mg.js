@@ -30,10 +30,10 @@
       original_price: 135
     },
     "tesamorelin-ipamorelin": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 60, "10mg": 119 },
-      strength_originals: { "5mg": 72, "10mg": 145 },
-      price: 119,
+      strengths: ["5mg", "10mg", "15mg"],
+      strength_prices: { "5mg": 60, "10mg": 119, "15mg": 120 },
+      strength_originals: { "5mg": 72, "10mg": 145, "15mg": 145 },
+      price: 120,
       original_price: 145
     },
     "bpc-157": {

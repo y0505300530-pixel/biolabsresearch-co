@@ -5,7 +5,7 @@
     "nad-plus": ["500mg", "1000mg"],
     "aod-9604": ["5mg", "10mg"],
     "curcumin-phytosome": ["500mg"],
-    "tesamorelin-ipamorelin": ["5mg", "10mg"],
+    "tesamorelin-ipamorelin": ["5mg", "10mg", "15mg"],
     "bpc-157": ["10mg", "20mg"],
     "glow-70": ["70mg"],
     "epithalon": ["10mg", "50mg"],

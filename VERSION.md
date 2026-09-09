@@ -1,10 +1,9 @@
-# biolabsresearch.co — Version 1.54
+# biolabsresearch.co — Version 1.56
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- New: Semaglutide — 5 mg $60 · 10 mg $90 (API + PDP + home + sitemap)
-- RUO copy only — no weight-loss / therapy claims (Marketing)
-- Interim vial — @Indian labeled Semaglutide art
-- mg-picker.js?v=28 · catalog-mg.js?v=34
+- Tesamorelin / Ipamorelin Blend: added 15 mg at $120 (keeps 5 mg $60 · 10 mg $119)
+- API + catalog + PDP Amount + homepage chips
+- mg-picker.js?v=29 · catalog-mg.js?v=35

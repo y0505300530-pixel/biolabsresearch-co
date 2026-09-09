@@ -1,10 +1,10 @@
 {
-  "version": "1.55",
+  "version": "1.56",
   "released": "2026-09-09",
-  "codename": "semaglutide-vial",
+  "codename": "tesa-ipa-15",
   "highlights": [
-    "Semaglutide labeled gold-crimp vial (not Tirzepatide clone)",
-    "RUO PDP/meta: research compound 5/10 mg from $60; CAS 910463-68-2; no weight-loss/Ozempic claims",
-    "vial?v=162 \u00b7 css?v=357"
+    "Tesamorelin / Ipamorelin Blend: added 15 mg at $120 (keeps 5 mg $60 \u00b7 10 mg $119)",
+    "API + catalog + PDP Amount + homepage chips",
+    "mg-picker.js?v=29 \u00b7 catalog-mg.js?v=35"
   ]
 }
