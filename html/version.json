@@ -1,10 +1,10 @@
 {
-  "version": "1.59",
+  "version": "1.60",
   "released": "2026-09-09",
-  "codename": "tesa-ipa-10",
+  "codename": "fix-catalog-mg",
   "highlights": [
-    "Tesamorelin / Ipamorelin Blend: single 10 mg at $119 (5 mg and 15 mg removed)",
-    "API + catalog + PDP + homepage",
-    "mg-picker.js?v=32 \u00b7 catalog-mg.js?v=38"
+    "Fix: catalog strength chips click again (catalog-mg.js was syntax-broken since v1.49)",
+    "Restored hydrate/select handlers; FALLBACK matches live API SoT",
+    "catalog-mg.js?v=39"
   ]
 }
