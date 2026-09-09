@@ -1,9 +1,10 @@
 {
-  "version": "1.69",
+  "version": "1.70",
   "released": "2026-09-09",
-  "codename": "checkout-marks-labels",
+  "codename": "settle-line-wrap",
   "highlights": [
-    "ELITE FAIL fix: checkout card marks back to compact labeled chips (Visa/Mastercard/Amex/Discover) \u2014 not unlabeled 2\u00d72 bars",
-    "css?v=360"
+    "ELITE FAIL fix: inquiry settle copy wraps at 375 (line above marks; trust-row text wraps)",
+    "Desktop side-by-side pay-mark-line only from 900px+",
+    "css?v=361"
   ]
 }
