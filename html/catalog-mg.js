@@ -187,12 +187,12 @@
       }
     }
 
-    // Prefer highest strength (usually 10mg / 20mg matching SSR list price)
-    var best = null, bestN = -1;
+    // CRM v1.32: prefer LOWEST strength (matches PDP mg-picker default / From $)
+    var best = null, bestN = Infinity;
     for (i = 0; i < strengths.length; i++) {
       k = norm(strengths[i]);
       var n = mgNum(strengths[i]);
-      if (n >= bestN) {
+      if (n > 0 && n < bestN) {
         bestN = n;
         best = k;
       }

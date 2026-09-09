@@ -1,12 +1,13 @@
-# biolabsresearch.co — Version 1.31
+# biolabsresearch.co — Version 1.32
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- PDP: Launch price note next to struck compare-at
-- One COA path (removed duplicate See COA badge; View lot COA is a text link)
-- Clean single vial frame + 3 thumbs (vial/label/pack)
-- Amount change flashes Unit price; sticky already synced (v1.29)
-- Under Add: ships-today cutoff + what happens after inquiry
-- css?v=347 · mg-picker.js?v=13
+- PDP ship note = Processing 1–2 business days (Shipping SoT)
+- Catalog shows From $ lowest strength (matches PDP default Amount) — fixes BPC/blend home vs PDP mismatch
+- catalog-mg defaults to lowest strength; ATC uses From $ price
+- /coa-library → 301 /coa; /tools/dilution → 301 /tools/solution-dilution
+- Blog product links stripped of .html (301 already existed)
+- OG images on PDPs + blog posts + legal
+- css?v=348 · catalog-mg.js?v=20
