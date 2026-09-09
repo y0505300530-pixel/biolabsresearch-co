@@ -7743,9 +7743,10 @@ body:has(.cart-drawer.open) #promoStack {
 
   /* footer: unlocked as thin one-liner so Add-to-order isn’t buried */
   .cart-footer {
-    max-height: 108px !important;
-    padding: 4px 12px calc(4px + env(safe-area-inset-bottom, 0px)) !important;
-    gap: 3px !important;
+    max-height: none !important; /* never clip Continue shopping */
+    padding: 4px 12px calc(6px + env(safe-area-inset-bottom, 0px)) !important;
+    gap: 2px !important;
+    overflow: visible !important;
   }
   .cart-inquiry-perk,
   a.cart-inquiry-perk {
@@ -7769,15 +7770,24 @@ body:has(.cart-drawer.open) #promoStack {
   }
   .cart-footer .btn-checkout,
   .btn-checkout {
-    height: 48px !important;
-    min-height: 48px !important;
-    max-height: 48px !important;
+    height: 46px !important;
+    min-height: 46px !important;
+    max-height: 46px !important;
   }
   .cart-footer .btn-continue,
-  .btn-continue {
-    min-height: 24px !important;
-    padding: 0 !important;
+  .btn-continue,
+  html body .cart-drawer .btn-continue {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 28px !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 2px 0 4px !important;
+    margin: 0 auto !important;
     font-size: 12px !important;
+    line-height: 1.2 !important;
+    overflow: visible !important;
   }
 
   /* keep add-more compact but fully above footer */
