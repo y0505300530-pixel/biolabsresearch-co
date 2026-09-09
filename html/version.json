@@ -1,10 +1,10 @@
 {
-  "version": "1.14",
+  "version": "1.15",
   "released": "2026-09-09",
-  "codename": "pdp-catalog-vial-only",
+  "codename": "drop-insider-home",
   "highlights": [
-    "All PDPs: remove lifestyle/closeup video + review cards \u2014 catalog vial only (Marketing RUO/D2)",
-    "Static HTML + renderProduct JS cleaned; CSS hide as safety net",
-    "css?v=332"
+    "Homepage: remove Insider / NEW LABS email-capture card (Marketing + Yehuda mark)",
+    "Subscribe API + welcome email remain for other entry points; homepage form gone",
+    "css?v=333"
   ]
 }
