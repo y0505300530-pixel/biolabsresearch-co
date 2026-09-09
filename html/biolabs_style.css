@@ -10083,3 +10083,22 @@ button.nav-util {
   list-style: none !important;
 }
 .faq-item summary::-webkit-details-marker { display: none !important; }
+
+
+/* === OG-WEBP-v1.30 === */
+@media (max-width: 800px) {
+  .catalog-grid > .product-card:nth-child(n+9) { display: none !important; }
+  html.catalog-expanded .catalog-grid > .product-card:nth-child(n+9) { display: flex !important; }
+  html body .catalog-show-all-wrap {
+    display: flex !important;
+    visibility: visible !important;
+    justify-content: center !important;
+    width: 100% !important;
+    padding: 12px 16px 28px !important;
+  }
+  .product-card-img img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+}

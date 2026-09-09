@@ -1,10 +1,11 @@
 {
-  "version": "1.29",
+  "version": "1.30",
   "released": "2026-09-09",
-  "codename": "sticky-sync-mg-picker",
+  "codename": "og-webp-share",
   "highlights": [
-    "FIX (ELITE FAIL): sticky Unit price + Add now track Amount (mg-picker) \u2014 was stuck on catalog base",
-    "mg-picker.js?v=12 syncs #pdpStickyPrice whenever strength changes",
-    "css?v=345 unchanged"
+    "OG/Twitter image on tools, shipping, blog, contact, FAQ, science, COA, checkout, returns",
+    "Homepage catalog vials prefer .webp + sizes (lighter WhatsApp/share + faster mobile)",
+    "Re-assert mobile catalog 8 + Show all",
+    "css?v=346 \u2014 CRM sticky/taps/cookie stay as in v1.29"
   ]
 }
