@@ -2,11 +2,11 @@
 (function () {
   var FALLBACK = {
     "bpc-157-tb-500-blend": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 62, "10mg": 125 },
-      strength_originals: { "5mg": 78, "10mg": 155 },
+      strengths: ["20mg"],
+      strength_prices: { "20mg": 125 },
+      strength_originals: { "20mg": 150 },
       price: 125,
-      original_price: 155
+      original_price: 150
     },
     "nad-plus": {
       strengths: ["500mg"],
@@ -98,11 +98,11 @@
       original_price: 129
     },
     "tb-500": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 50, "10mg": 99 },
-      strength_originals: { "5mg": 60, "10mg": 119 },
-      price: 99,
-      original_price: 119
+      strengths: ["10mg"],
+      strength_prices: { "10mg": 105 },
+      strength_originals: { "10mg": 125 },
+      price: 105,
+      original_price: 125
     },
     "retatrutide": {
       strengths: ["10mg", "20mg"],

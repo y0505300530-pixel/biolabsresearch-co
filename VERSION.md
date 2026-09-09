@@ -1,10 +1,11 @@
-# biolabsresearch.co — Version 1.45
+# biolabsresearch.co — Version 1.46
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- Thymosin Alpha-1: single amount 10 mg at $109 (was 5/10 mg)
+- BPC-157 / TB-500 Blend: single 20 mg at $125 (was 5/10 mg)
+- TB-500: single 10 mg at $105 (was 5/10 mg)
 - API + catalog + PDP + homepage (SoT from API)
-- mg-picker.js?v=22 · catalog-mg.js?v=28
-- Blend stays 5/$62·10/$125; BPC alone 10/$88·20/$105
+- mg-picker.js?v=23 · catalog-mg.js?v=29
+- Plain BPC-157 still 10/$88 · 20/$105
