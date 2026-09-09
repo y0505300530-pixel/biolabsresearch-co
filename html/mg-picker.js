@@ -8,7 +8,7 @@
     "tesamorelin-ipamorelin": ["5mg", "10mg"],
     "bpc-157": ["10mg", "20mg"],
     "glow-70": ["70mg"],
-    "epithalon": ["5mg", "10mg"],
+    "epithalon": ["10mg", "50mg"],
     "ghk-cu": ["100mg"],
     "mots-c": ["5mg", "10mg"],
     "kpv": ["5mg", "10mg"],

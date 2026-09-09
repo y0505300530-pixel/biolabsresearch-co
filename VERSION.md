@@ -1,10 +1,10 @@
-# biolabsresearch.co — Version 1.39
+# biolabsresearch.co — Version 1.40
 
 Released 2026-09-09.
 
 ## What this version improves
 
-- GHK-Cu: single amount 100 mg at $100 (was 5/10 mg)
-- API + catalog + PDP + homepage card
-- mg-picker.js?v=16 · catalog-mg.js?v=22
-- Keeps v1.38 logo + gold-crimp thumbs; BPC-157 10/$88 · 20/$105
+- Epithalon: 10 mg $45 · 50 mg $120 (was 5/10 mg)
+- API + catalog + PDP + homepage
+- mg-picker.js?v=17 · catalog-mg.js?v=23
+- Keeps GHK-Cu 100 mg/$100 · BPC-157 10/$88 · 20/$105 · v1.38 logo/thumbs

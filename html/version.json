@@ -1,11 +1,11 @@
 {
-  "version": "1.39",
+  "version": "1.40",
   "released": "2026-09-09",
-  "codename": "ghk-100",
+  "codename": "epithalon-10-50",
   "highlights": [
-    "GHK-Cu: single amount 100 mg at $100 (was 5/10 mg)",
-    "API + catalog + PDP + homepage card",
-    "mg-picker.js?v=16 \u00b7 catalog-mg.js?v=22",
-    "Keeps v1.38 logo + gold-crimp thumbs; BPC-157 10/$88 \u00b7 20/$105"
+    "Epithalon: 10 mg $45 \u00b7 50 mg $120 (was 5/10 mg)",
+    "API + catalog + PDP + homepage",
+    "mg-picker.js?v=17 \u00b7 catalog-mg.js?v=23",
+    "Keeps GHK-Cu 100 mg/$100 \u00b7 BPC-157 10/$88 \u00b7 20/$105 \u00b7 v1.38 logo/thumbs"
   ]
 }

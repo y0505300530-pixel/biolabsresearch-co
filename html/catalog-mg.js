@@ -49,11 +49,11 @@
       original_price: 169
     },
     "epithalon": {
-      strengths: ["5mg", "10mg"],
-      strength_prices: { "5mg": 40, "10mg": 79 },
-      strength_originals: { "5mg": 50, "10mg": 99 },
-      price: 79,
-      original_price: 99
+      strengths: ["10mg", "50mg"],
+      strength_prices: { "10mg": 45, "50mg": 120 },
+      strength_originals: { "10mg": 55, "50mg": 145 },
+      price: 120,
+      original_price: 145
     },
     "ghk-cu": {
       strengths: ["100mg"],
