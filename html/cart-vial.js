@@ -19,7 +19,7 @@
     '.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:6px !important;overflow-x:auto !important;overflow-y:visible !important;-webkit-overflow-scrolling:touch !important;touch-action:pan-x !important;overscroll-behavior-x:contain !important;padding:0 12px 6px;scrollbar-width:thin;pointer-events:auto !important}',
     'body.cart-open{overflow:hidden !important}',
     'body.cart-open .promo-stack,body.cart-open #promoStack{display:none!important;height:0!important;min-height:0!important;max-height:0!important;overflow:hidden!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;margin:0!important;padding:0!important;border:0!important}',
-    '#cartProgress,#cartProgress.on{display:none !important;height:0 !important;min-height:0 !important;max-height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important}',,
+    '#cartProgress,#cartProgress.on{display:none !important;height:0 !important;min-height:0 !important;max-height:0 !important;margin:0 !important;padding:0 !important;overflow:hidden !important;border:0 !important;opacity:0 !important;visibility:hidden !important;pointer-events:none !important}',
     '.cart-header,.cart-footer,#cartProgress{flex:0 0 auto !important}',
     '.cart-header{padding:18px 20px 12px !important;padding-top:max(28px, calc(env(safe-area-inset-top) + 12px)) !important;overflow:visible !important}',
     '.cart-title{font-size:20px !important;font-weight:800 !important;line-height:1.2 !important;padding-top:2px !important}',
@@ -968,7 +968,7 @@ function addSuggest(slug, name, price, mg){
     s.id = 'cart-progress-css';
     s.textContent = [
       '#cartProgress{display:none;margin:0;padding:10px 14px 18px;background:linear-gradient(180deg,#FBF6EA 0%,#F4EFE4 100%);border-bottom:1px solid #eadfca;flex:0 0 auto;overflow:visible}',
-      '#cartProgress.on{display:block}',
+      '#cartProgress.on{display:none !important}',
       '.cp-kicker{font-size:10px;font-weight:800;letter-spacing:.12em;color:#0d2137;margin:0 0 2px;text-transform:uppercase}',
       '.cp-msg{font-size:12px;font-weight:700;color:#0d2137;line-height:1.25;margin:0 0 6px}',
       '.cp-msg em{font-style:normal;color:#9A6D2A}',
@@ -1904,3 +1904,14 @@ function addSuggest(slug, name, price, mg){
     if (++n < 80) setTimeout(tick, 100);
   })();
 })();
+
+/* FINAL: Yehuda kill Inquiry Rewards — must be last inject rule */
+(function(){
+  try {
+    var s = document.createElement('style');
+    s.id = 'kill-cart-progress-final';
+    s.textContent = '#cartProgress,#cartProgress.on,.cart-drawer #cartProgress,body.cart-open #cartProgress{display:none!important;visibility:hidden!important;height:0!important;min-height:0!important;max-height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;border:0!important;opacity:0!important;pointer-events:none!important}';
+    (document.head || document.documentElement).appendChild(s);
+  } catch (e) {}
+})();
+
