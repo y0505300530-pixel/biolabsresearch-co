@@ -1,10 +1,10 @@
 {
-  "version": "1.75",
+  "version": "1.76",
   "released": "2026-09-10",
-  "codename": "real-card-logos",
+  "codename": "cart-logos-row-375",
   "highlights": [
-    "Real Visa / Mastercard / Discover / Amex logos (Yehuda asset) replace text badges on cart + checkout",
-    "Order matches asset: Visa \u00b7 Mastercard \u00b7 Discover \u00b7 Amex",
-    "biolabs_style.css?v=366 \u00b7 cart-vial.js?v=326 \u00b7 media/card-*.webp"
+    "375 cart: force Visa/MC/Discover/Amex logos into one row (override column stack that clipped marks)",
+    "Smaller logo height 22px in cart footer; settle copy one compact line",
+    "css?v=367 \u00b7 cart-vial.js?v=327"
   ]
 }
