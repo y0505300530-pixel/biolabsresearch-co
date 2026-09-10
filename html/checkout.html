@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Form — Bio Labs Research">
 <meta name="twitter:description" content="Submit a research-use catalog inquiry. No payment is collected here. Lines stay tied to listed SKUs, and fulfillment follows the published shipping policy.">
-<link rel="stylesheet" href="/biolabs_style.css?v=365">
+<link rel="stylesheet" href="/biolabs_style.css?v=366">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -242,7 +242,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
   .ship-opt-copy{min-width:0;flex:1}
   .ship-opt-name,.ship-opt-meta{white-space:normal;overflow-wrap:break-word}
   .checkout-pay-marks{display:flex!important;flex-wrap:wrap!important;gap:8px!important;width:100%!important;align-items:center}
-  .checkout-pay-marks .pay-mark{display:inline-flex!important;width:auto!important;min-width:52px;min-height:28px;padding:6px 10px;font-size:11px!important;font-weight:800;color:#fff!important;box-sizing:border-box}
+  .checkout-pay-marks .pay-mark-img{display:block!important;height:28px!important;width:auto!important;max-width:52px;object-fit:contain}
   .pay-mark-line{display:block!important;white-space:normal!important;overflow-wrap:break-word!important;word-break:normal!important;width:100%!important;max-width:100%!important;min-width:0!important;flex:none!important}
   .trust-row{align-items:flex-start!important;flex-wrap:wrap!important}
   .trust-row-text{flex:1;min-width:0;white-space:normal!important;overflow-wrap:break-word!important}
@@ -260,7 +260,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
   .ship-opt-copy{min-width:0;flex:1}
   .ship-opt-name,.ship-opt-meta{white-space:normal;overflow-wrap:break-word}
   .checkout-pay-marks{display:flex!important;flex-wrap:wrap!important;gap:8px!important;width:100%!important;align-items:center}
-  .checkout-pay-marks .pay-mark{display:inline-flex!important;width:auto!important;min-width:52px;min-height:28px;padding:6px 10px;font-size:11px!important;font-weight:800;color:#fff!important;box-sizing:border-box}
+  .checkout-pay-marks .pay-mark-img{display:block!important;height:28px!important;width:auto!important;max-width:52px;object-fit:contain}
   .pay-mark-line{display:block!important;white-space:normal!important;overflow-wrap:break-word!important;word-break:normal!important;width:100%!important;max-width:100%!important;min-width:0!important;flex:none!important}
   .trust-row{align-items:flex-start!important;flex-wrap:wrap!important}
   .trust-row-text{flex:1;min-width:0;white-space:normal!important;overflow-wrap:break-word!important}
@@ -268,10 +268,10 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
   /* CHECKOUT-CONTAINER-INLINE-v174 */
 }
 </style>
-<script src="/cart-vial.js?v=327"></script>
+<script src="/cart-vial.js?v=326"></script>
 <script src="/search-overlay.js?v=26"></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="1.74">
+<meta name="app-version" content="1.75">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -474,10 +474,10 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         <div class="checkout-pay-marks-wrap">
           <p class="pay-mark-line" style="display:block;width:100%;max-width:100%;min-width:0;white-space:normal;overflow-wrap:break-word;word-break:normal;line-height:1.45;margin:0 0 8px">Major cards accepted after inquiry.<br>Settle with our team</p>
           <div class="checkout-pay-marks" aria-label="Accepted cards">
-            <span class="pay-mark visa">Visa</span>
-            <span class="pay-mark mc">Mastercard</span>
-            <span class="pay-mark amex">Amex</span>
-            <span class="pay-mark discover">Discover</span>
+            <img class="pay-mark-img" src="/media/card-visa.webp?v=175" alt="Visa" width="45" height="28" loading="lazy" decoding="async">
+            <img class="pay-mark-img" src="/media/card-mastercard.webp?v=175" alt="Mastercard" width="44" height="28" loading="lazy" decoding="async">
+            <img class="pay-mark-img" src="/media/card-discover.webp?v=175" alt="Discover" width="44" height="28" loading="lazy" decoding="async">
+            <img class="pay-mark-img" src="/media/card-amex.webp?v=175" alt="American Express" width="44" height="28" loading="lazy" decoding="async">
           </div>
         </div>
         </div>
@@ -512,10 +512,10 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         <div class="checkout-pay-marks-wrap" style="margin-top:12px;border-top:none;padding-top:0">
           <p class="pay-mark-line" style="display:block;width:100%;max-width:100%;min-width:0;white-space:normal;overflow-wrap:break-word;word-break:normal;line-height:1.45;margin:0 0 8px">Major cards accepted after inquiry.<br>Settle with our team</p>
           <div class="checkout-pay-marks" aria-label="Accepted cards">
-            <span class="pay-mark visa">Visa</span>
-            <span class="pay-mark mc">Mastercard</span>
-            <span class="pay-mark amex">Amex</span>
-            <span class="pay-mark discover">Discover</span>
+            <img class="pay-mark-img" src="/media/card-visa.webp?v=175" alt="Visa" width="45" height="28" loading="lazy" decoding="async">
+            <img class="pay-mark-img" src="/media/card-mastercard.webp?v=175" alt="Mastercard" width="44" height="28" loading="lazy" decoding="async">
+            <img class="pay-mark-img" src="/media/card-discover.webp?v=175" alt="Discover" width="44" height="28" loading="lazy" decoding="async">
+            <img class="pay-mark-img" src="/media/card-amex.webp?v=175" alt="American Express" width="44" height="28" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
@@ -892,7 +892,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.74" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.74</p>
+<p class="site-version" data-site-version="1.75" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.75</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

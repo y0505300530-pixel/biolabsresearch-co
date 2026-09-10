@@ -1,10 +1,10 @@
 {
-  "version": "1.74",
-  "released": "2026-09-09",
-  "codename": "checkout-container-375",
+  "version": "1.75",
+  "released": "2026-09-10",
+  "codename": "real-card-logos",
   "highlights": [
-    "Checkout 375: display:block (kill grid bleed), 100% width cards/inquiry box, overflow contained",
-    "Promo ticker max-width 100vw on checkout",
-    "css?v=365"
+    "Real Visa / Mastercard / Discover / Amex logos (Yehuda asset) replace text badges on cart + checkout",
+    "Order matches asset: Visa \u00b7 Mastercard \u00b7 Discover \u00b7 Amex",
+    "biolabs_style.css?v=366 \u00b7 cart-vial.js?v=326 \u00b7 media/card-*.webp"
   ]
 }

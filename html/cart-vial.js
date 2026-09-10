@@ -2230,10 +2230,7 @@ function addSuggest(slug, name, price, mg){
 /* v1.61 — card marks under Proceed CTA */
 (function(){
   var HTML = '<div class="cart-pay-marks" aria-label="Cards accepted when settling with our team">'
-    + '<span class="pay-mark visa">Visa</span>'
-    + '<span class="pay-mark mc">Mastercard</span>'
-    + '<span class="pay-mark amex">Amex</span>'
-    + '<span class="pay-mark discover">Discover</span>'
+    + '<img class="pay-mark-img" src="/media/card-visa.webp?v=175" alt="Visa" width="45" height="28" loading="lazy" decoding="async"><img class="pay-mark-img" src="/media/card-mastercard.webp?v=175" alt="Mastercard" width="44" height="28" loading="lazy" decoding="async"><img class="pay-mark-img" src="/media/card-discover.webp?v=175" alt="Discover" width="44" height="28" loading="lazy" decoding="async"><img class="pay-mark-img" src="/media/card-amex.webp?v=175" alt="American Express" width="44" height="28" loading="lazy" decoding="async">'
     + '<p class="pay-mark-line" style="display:block;width:100%;max-width:100%;min-width:0;white-space:normal;overflow-wrap:break-word;word-break:normal;line-height:1.45;margin:0 0 8px">Major cards accepted after inquiry.<br>Settle with our team</p>'
     + '</div>';
   function ensure(){

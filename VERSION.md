@@ -1,8 +1,9 @@
-# biolabsresearch.co — Version 1.66
+# biolabsresearch.co — Version 1.75
 
-Released 2026-09-09.
+Released 2026-09-10.
 
 ## What this version improves
 
-- Cart: when a line already has mg, rewrite price from live SoT (fixes stale BPC 10mg $89 in localStorage → $88)
-- cart-vial.js?v=325
+- Real Visa / Mastercard / Discover / Amex logos (Yehuda asset) replace text badges on cart + checkout
+- Order matches asset: Visa · Mastercard · Discover · Amex
+- biolabs_style.css?v=366 · cart-vial.js?v=326 · media/card-*.webp
