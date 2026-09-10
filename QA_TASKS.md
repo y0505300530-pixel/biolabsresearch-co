@@ -62,3 +62,9 @@ Four items raised by the visual review did not survive a live check and should n
 promo bar covering article headings on a small iPhone, a uniquely broken 404 page, the site menu
 appearing instead of the cart, and the closed cart panel showing at the right edge. The first two came
 from low-resolution thumbnails; the third was an artefact of the test tooling.
+
+## Standing constraints
+
+| # | Rule | Owner | Status |
+|---|---|---|---|
+| C1 | Keep `id="faq"` on the Science FAQ section. CRM Site texts writes into that block. | pages | standing (infra, 2026-09-10) |

@@ -67,6 +67,10 @@ Wide tables and long link text are the usual causes.
 **No invented facts.** No purity percentages, no fabricated reviews, no dosing or human-use advice.
 Certificates are "on request" unless a real file exists.
 
+**Science FAQ is filled from CRM.** Keep `id="faq"` on the FAQ section in `science.html`.
+A script injects the live copy from `/api/site-copy`. If the id is removed, visitors see the old
+hardcoded cards and edits in CRM Site texts do not appear.
+
 ## Working here
 
 - Small commits with a readable prefix: `fix:`, `feat:`, `content:`, `Shop fix:` (infra).
