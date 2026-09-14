@@ -1132,6 +1132,7 @@ function addSuggest(slug, name, price, mg){
   var open = m ? !m.classList.contains('open') : (o ? !o.classList.contains('open') : false);
   if (m) m.classList.toggle('open', open);
   if (o) o.classList.toggle('open', open);
+  try { document.body.classList.toggle('nav-open', open); } catch(e){}
   try { document.body.style.overflow = open ? 'hidden' : ''; } catch(e){}
 };
 })();

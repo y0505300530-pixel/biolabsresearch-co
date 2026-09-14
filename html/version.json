@@ -5,6 +5,7 @@
   "highlights": [
     "Mobile menu: drawer above sticky header (Catalog no longer under search/cart)",
     "Safe-area padding for menu close + first links",
-    "css?v=373"
+    "css?v=373",
+    "toggleMenu sets body.nav-open so sticky header drops under drawer"
   ]
 }
