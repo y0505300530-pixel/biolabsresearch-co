@@ -1,10 +1,10 @@
 {
-  "version": "1.87",
+  "version": "1.88",
   "released": "2026-09-14",
-  "codename": "sitemap-cookie-policy",
+  "codename": "blog-b2c-ruo-three",
   "highlights": [
-    "sitemap.xml: added /cookie-policy",
-    "sitemap.xml: added /products/tesamorelin (standalone PDP)",
-    "url count 67"
+    "3 B2C RUO-locked blog posts live",
+    "which-one GLP trio \u00b7 retatrutide storage rewrite \u00b7 bacteriostatic vs sterile water",
+    "sitemap + blog index updated"
   ]
 }
