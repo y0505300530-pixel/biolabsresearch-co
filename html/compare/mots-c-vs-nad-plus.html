@@ -122,7 +122,7 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Product", "name": "MOTS-c", "url": "https://biolabsresearch.co/products/mots-c"}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Product", "name": "NAD+", "url": "https://biolabsresearch.co/products/nad-plus"}}]}
 </script>
-<meta name="app-version" content="1.95">
+<meta name="app-version" content="1.96">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -235,8 +235,20 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.95" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.95</p>
+<p class="site-version" data-site-version="1.96" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.96</p>
 </footer>
 <script src="/promo-bar.js?v=282"></script>
+
+<script>
+(function(){
+  try {
+    var slug = (location.pathname || '').replace(/^\/compare\//,'').replace(/\/$/,'').replace(/\.html$/,'');
+    if (!slug || slug.indexOf('/') >= 0) return;
+    if (typeof window.blrTrack === 'function') {
+      window.blrTrack('compare_view', { slug: slug, pair_id: slug });
+    }
+  } catch (e) {}
+})();
+</script>
 </body>
 </html>
