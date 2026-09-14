@@ -1,10 +1,9 @@
 {
-  "version": "1.82",
+  "version": "1.83",
   "released": "2026-09-14",
-  "codename": "ga-funnel-events",
+  "codename": "ga-card-sim-ids",
   "highlights": [
-    "GA4 funnel events (after Cookie Accept only): inquiry, card_sim, crypto_select, checkout_start, checkout_complete",
-    "blrTrack helper in cookie-consent.js?v=2",
-    "cart-vial.js?v=328 \u00b7 checkout wired"
+    "Fix card_sim GA hook to real simulator field ids (#cardInputArea / simCard*)",
+    "Keeps v1.82 funnel: inquiry \u00b7 card_sim \u00b7 crypto_select \u00b7 checkout_start \u00b7 checkout_complete (Accept only)"
   ]
 }
