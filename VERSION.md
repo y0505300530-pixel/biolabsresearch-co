@@ -1,9 +1,8 @@
-# biolabsresearch.co — Version 1.76
+# biolabsresearch.co — Version 1.77
 
-Released 2026-09-10.
+Released 2026-09-14.
 
 ## What this version improves
 
-- 375 cart: force Visa/MC/Discover/Amex logos into one row (override column stack that clipped marks)
-- Smaller logo height 22px in cart footer; settle copy one compact line
-- css?v=367 · cart-vial.js?v=327
+- Checkout Step 3: Terms & Privacy + RUO checkboxes checked by default (Yehuda)
+- Submit still requires both remain checked
