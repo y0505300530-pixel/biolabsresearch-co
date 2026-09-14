@@ -129,6 +129,26 @@
     document.getElementById('blrCEssential').addEventListener('click', onEssential);
   }
 
+
+  /* Fire GA4 custom events only after Accept (consent=all). No-ops on Essential / no choice. */
+  window.blrHasAnalytics = function () {
+    return getConsent() === 'all';
+  };
+  window.blrTrack = function (name, params) {
+    if (!name || getConsent() !== 'all') return;
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.gtag =
+        window.gtag ||
+        function () {
+          window.dataLayer.push(arguments);
+        };
+      var p = params && typeof params === 'object' ? params : {};
+      p.event_category = p.event_category || 'checkout_funnel';
+      window.gtag('event', String(name), p);
+    } catch (e) {}
+  };
+
   function boot() {
     buildBanner();
     var c = getConsent();

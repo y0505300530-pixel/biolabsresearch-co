@@ -1,11 +1,10 @@
 {
-  "version": "1.81",
+  "version": "1.82",
   "released": "2026-09-14",
-  "codename": "cookie-consent-gate",
+  "codename": "ga-funnel-events",
   "highlights": [
-    "Subtle cookie bar: Accept / Essential only (Marketing copy)",
-    "GA4 loads only after Accept; Consent Mode default denied",
-    "New /cookie-policy page + Cookies footer link + Privacy Cookie settings",
-    "cookie-consent.js?v=1 \u00b7 css?v=370"
+    "GA4 funnel events (after Cookie Accept only): inquiry, card_sim, crypto_select, checkout_start, checkout_complete",
+    "blrTrack helper in cookie-consent.js?v=2",
+    "cart-vial.js?v=328 \u00b7 checkout wired"
   ]
 }

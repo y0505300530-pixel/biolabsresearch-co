@@ -1155,6 +1155,11 @@ function addSuggest(slug, name, price, mg){
        opened the same way afterwards; every other Add stays with the page's own function. */
     if (mg && _blrOtherStrengthInCart(slug, mg)) {
       addSuggest(slug, name, price, mg);
+      try {
+        if (typeof window.blrTrack === 'function') {
+          window.blrTrack('inquiry', { item_name: name, item_slug: slug, value: parseFloat(price)||0, currency: 'USD', strength: mg });
+        }
+      } catch (e) {}
       var d = document.getElementById('cartDrawer');
       if (d && !d.classList.contains('open') && typeof window.toggleCart === 'function') window.toggleCart();
       return;
@@ -1162,6 +1167,11 @@ function addSuggest(slug, name, price, mg){
     if (typeof window.addToCart === 'function') {
       window.addToCart(name, price, img, slug);
     }
+    try {
+      if (typeof window.blrTrack === 'function') {
+        window.blrTrack('inquiry', { item_name: name, item_slug: slug, value: parseFloat(price)||0, currency: 'USD' });
+      }
+    } catch (e) {}
   }, false);
 })();
 
@@ -2263,5 +2273,42 @@ function addSuggest(slug, name, price, mg){
   var n=0;(function tick(){ wrap(); if(++n<60) setTimeout(tick,120); })();
   if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', wrap);
   else wrap();
+})();
+
+/* GA: wrap PDP Add to inquiry (addToCartTemplate / addToCart) once */
+(function(){
+  if (window.__blrTrackInquiryWrap) return;
+  window.__blrTrackInquiryWrap = true;
+  function fire(name, slug, price){
+    try {
+      if (typeof window.blrTrack === 'function') {
+        window.blrTrack('inquiry', { item_name: name||'', item_slug: slug||'', value: parseFloat(price)||0, currency: 'USD' });
+      }
+    } catch(e){}
+  }
+  function wrapFn(key){
+    var fn = window[key];
+    if (typeof fn !== 'function' || fn.__blrTracked) return;
+    window[key] = function(){
+      var r = fn.apply(this, arguments);
+      try {
+        if (key === 'addToCart') {
+          fire(arguments[0], arguments[3], arguments[1]);
+        } else {
+          var priceEl = document.getElementById('current-price')||document.querySelector('.price-main');
+          var price = priceEl ? (priceEl.textContent||'').replace(/[^0-9.]/g,'') : '';
+          var slug = (document.body.getAttribute('data-slug')||location.pathname.split('/').pop()||'').replace(/\.html$/,'');
+          var nameEl = document.querySelector('h1, .product-title, .pdp-title');
+          fire(nameEl ? nameEl.textContent.trim() : slug, slug, price);
+        }
+      } catch(e){}
+      return r;
+    };
+    window[key].__blrTracked = true;
+  }
+  function tryWrap(){ wrapFn('addToCart'); wrapFn('addToCartTemplate'); }
+  tryWrap();
+  setTimeout(tryWrap, 500);
+  setTimeout(tryWrap, 1500);
 })();
 
