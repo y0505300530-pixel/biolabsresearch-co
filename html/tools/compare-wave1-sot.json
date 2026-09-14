@@ -1,0 +1,186 @@
+{
+  "version": "1.0",
+  "ruo": true,
+  "cta": "Inquire only \u2014 no buy/order/dose language",
+  "wave1_pairs": [
+    {
+      "id": "semaglutide-vs-tirzepatide",
+      "a": "semaglutide",
+      "b": "tirzepatide",
+      "path": "/tools/compare/semaglutide-vs-tirzepatide"
+    },
+    {
+      "id": "tirzepatide-vs-retatrutide",
+      "a": "tirzepatide",
+      "b": "retatrutide",
+      "path": "/tools/compare/tirzepatide-vs-retatrutide"
+    },
+    {
+      "id": "semaglutide-vs-retatrutide",
+      "a": "semaglutide",
+      "b": "retatrutide",
+      "path": "/tools/compare/semaglutide-vs-retatrutide"
+    },
+    {
+      "id": "bpc-157-vs-tb-500",
+      "a": "bpc-157",
+      "b": "tb-500",
+      "path": "/tools/compare/bpc-157-vs-tb-500"
+    },
+    {
+      "id": "tesamorelin-vs-ipamorelin",
+      "a": "tesamorelin",
+      "b": "ipamorelin",
+      "path": "/tools/compare/tesamorelin-vs-ipamorelin",
+      "also": "tesamorelin-ipamorelin"
+    },
+    {
+      "id": "bacteriostatic-vs-sterile",
+      "a": "research-solvent",
+      "b": "sterile-water",
+      "note": "BAC water in catalog as research-solvent; sterile may be content-only + blog link",
+      "blog": "/blog/bacteriostatic-water-vs-sterile-water",
+      "path": "/tools/compare/bacteriostatic-water-vs-sterile-water"
+    },
+    {
+      "id": "ghk-cu-vs-epithalon",
+      "a": "ghk-cu",
+      "b": "epithalon",
+      "path": "/tools/compare/ghk-cu-vs-epithalon"
+    },
+    {
+      "id": "mots-c-vs-nad-plus",
+      "a": "mots-c",
+      "b": "nad-plus",
+      "path": "/tools/compare/mots-c-vs-nad-plus"
+    }
+  ],
+  "products": {
+    "semaglutide": {
+      "name": "Semaglutide",
+      "cas": "910463-68-2",
+      "strengths": {
+        "5mg": 60,
+        "10mg": 90
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/semaglutide"
+    },
+    "tirzepatide": {
+      "name": "Tirzepatide",
+      "cas": "2023788-19-2",
+      "strengths": {
+        "10mg": 90
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/tirzepatide"
+    },
+    "retatrutide": {
+      "name": "R3TA (Retatrutide)",
+      "cas": "2381089-83-2",
+      "strengths": {
+        "10mg": 85,
+        "20mg": 135,
+        "50mg": 300
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/retatrutide"
+    },
+    "bpc-157": {
+      "name": "BPC-157",
+      "cas": "137525-51-0",
+      "strengths": {
+        "10mg": 88,
+        "20mg": 105
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/bpc-157"
+    },
+    "tb-500": {
+      "name": "TB-500",
+      "cas": "885340-09-2",
+      "strengths": {
+        "10mg": 105
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/tb-500"
+    },
+    "tesamorelin": {
+      "name": "Tesamorelin",
+      "cas": "218949-48-5",
+      "strengths": {
+        "10mg": 85,
+        "20mg": 130
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/tesamorelin"
+    },
+    "ipamorelin": {
+      "name": "Ipamorelin",
+      "cas": "170851-70-4",
+      "strengths": {
+        "10mg": 80
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/ipamorelin"
+    },
+    "tesamorelin-ipamorelin": {
+      "name": "Tesamorelin / Ipamorelin Blend",
+      "cas": "218949-48-5 \u00b7 170851-70-4",
+      "strengths": {
+        "10mg": 119
+      },
+      "form": "Lyophilized blend",
+      "pdp": "/products/tesamorelin-ipamorelin"
+    },
+    "ghk-cu": {
+      "name": "GHK-Cu",
+      "cas": "89030-95-5",
+      "strengths": {
+        "100mg": 100
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/ghk-cu"
+    },
+    "epithalon": {
+      "name": "Epithalon",
+      "cas": "307297-39-8",
+      "strengths": {
+        "10mg": 45,
+        "50mg": 120
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/epithalon"
+    },
+    "mots-c": {
+      "name": "MOTS-c",
+      "cas": "1627580-64-6",
+      "strengths": {
+        "10mg": 95,
+        "20mg": 110
+      },
+      "form": "Lyophilized peptide",
+      "pdp": "/products/mots-c"
+    },
+    "nad-plus": {
+      "name": "NAD+",
+      "cas": "53-84-9",
+      "strengths": {
+        "500mg": 99,
+        "1000mg": 130
+      },
+      "form": "Research reagent",
+      "pdp": "/products/nad-plus"
+    },
+    "research-solvent": {
+      "name": "Research solvent (BAC water)",
+      "cas": null,
+      "strengths": {
+        "10mL": 0
+      },
+      "form": "Bacteriostatic diluent (0.9% benzyl alcohol)",
+      "pdp": null,
+      "note": "Catalog add-on / solvent SKU"
+    }
+  }
+}

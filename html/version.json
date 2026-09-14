@@ -1,11 +1,10 @@
 {
-  "version": "1.90",
+  "version": "1.91",
   "released": "2026-09-14",
-  "codename": "nav-menu-zindex",
+  "codename": "ipamorelin-cas-lock",
   "highlights": [
-    "Mobile menu: drawer above sticky header (Catalog no longer under search/cart)",
-    "Safe-area padding for menu close + first links",
-    "css?v=373",
-    "toggleMenu sets body.nav-open so sticky header drops under drawer"
+    "Ipamorelin CAS locked to 170851-70-4 (was wrong 67727-97-3 on PDP/JSON-LD)",
+    "Fixed mislabeled Ipamorelin identity blurb that described KPV",
+    "compare-wave1-sot.json updated for Wave-1 compare pages"
   ]
 }
