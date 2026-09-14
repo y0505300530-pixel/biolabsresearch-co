@@ -22,7 +22,7 @@
 <meta name="twitter:title" content="Fallback Compound Listing — Bio Labs Research">
 <meta name="twitter:description" content="Fallback template used when a SKU file is missing. Prefer a dedicated product path from the catalog. Research use only and sold by inquiry, not checkout.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=370">
+<link rel="stylesheet" href="/biolabs_style.css?v=371">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -355,41 +355,49 @@ footer{background:var(--ink);padding:60px 60px 30px}
     el.textContent = JSON.stringify(obj);
   }
   function applyProductSeo(p){
-    var url = 'https://biolabsresearch.co/products/' + p.slug + '.html';
+    var url = 'https://biolabsresearch.co/products/' + p.slug;
     var title = document.title;
-    var descEl = document.querySelector('meta[name=\"description\"]');
+    var descEl = document.querySelector('meta[name="description"]');
     var desc = descEl ? descEl.getAttribute('content') : (p.name + ' research reagent.');
     setCanonical(url);
     setMetaByProp('og:title', title);
     setMetaByProp('og:description', desc);
-    /* Stage 2: do not invent or overwrite og:image from API */
+    /* Keep static 1200x630 og:image; do not overwrite from API vial URL */
     setMetaByProp('og:url', url);
     setMetaByProp('og:type', 'product');
     setMetaByName('twitter:card', 'summary_large_image');
     setMetaByName('twitter:title', title);
     setMetaByName('twitter:description', desc);
-    var LIVE_API_SLUGS = ['bpc-157-tb-500-blend','nad-plus','aod-9604','curcumin-phytosome','tesamorelin-ipamorelin','bpc-157','glow-70','epithalon','ghk-cu','mots-c','kpv','semax','kisspeptin-10','thymosin-alpha-1','tb-500','retatrutide'];
-    if (LIVE_API_SLUGS.indexOf(p.slug) === -1 || p.price == null || p.price === '') {
-      var el = document.getElementById('product-jsonld');
-      if (el) el.remove();
-      return;
+    var el = document.getElementById('product-jsonld');
+    var data = {};
+    try { if (el && el.textContent) data = JSON.parse(el.textContent); } catch (e) { data = {}; }
+    data["@context"] = "https://schema.org";
+    data["@type"] = "Product";
+    if (!data.name) data.name = p.name;
+    data.description = desc;
+    data.url = url;
+    if (!data.sku) data.sku = p.slug;
+    if (!data.brand) data.brand = {"@type":"Brand","name":"Bio Labs Research"};
+    var price = p.price;
+    var sp = p.strength_prices || {};
+    var st = p.strengths || [];
+    if (st.length) {
+      var k0 = String(st[0]).replace(/\s+/g,'').toLowerCase();
+      Object.keys(sp).forEach(function(x){
+        if (String(x).replace(/\s+/g,'').toLowerCase()===k0) price = sp[x];
+      });
     }
-    var inStock = String(p.stock_status||'').toLowerCase().indexOf('in stock') !== -1 || p.is_active === true;
-    var data = {
-      "@context": "https://schema.org",
-      "@type": "Product",
-      "name": p.name,
-      "image": (p.image_url || "/media/label-upright-v2.webp"),
-      "description": desc,
-      "manufacturer": {"@type":"Brand","name":"BioLabs Research"},
-      "offers": {
-        "@type": "Offer",
-        "url": url,
-        "priceCurrency": "USD",
-        "price": String(p.price),
-        "availability": inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock"
+    if (price != null && price !== '') {
+      data.offers = data.offers && typeof data.offers === 'object' ? data.offers : {"@type":"Offer"};
+      data.offers["@type"] = "Offer";
+      data.offers.priceCurrency = "USD";
+      data.offers.price = String(price);
+      data.offers.url = url;
+      var inStock = String(p.stock_status||'').toLowerCase().indexOf('in stock') !== -1 || p.is_active === true;
+      if (p.stock_status || p.is_active === true || p.is_active === false) {
+        data.offers.availability = inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock";
       }
-    };
+    }
     setProductJsonLd(data);
   }
 
@@ -480,7 +488,7 @@ storageHtml + presentationHtml +
       '</div>';
   }
 
-  fetch('https://biolabsresearch.co/api/products')
+  fetch('/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
       (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });

@@ -579,6 +579,48 @@ PAGES.update({
     ),
 })
 
+# Overlay Yehuda PDP pack: "<Compound> <mg> — Bio Labs Research", 1200x630 share image, SoT first-strength price.
+try:
+    from apply_pdp_seo_a11y import OG as SHARE_OG, PDPS as PDP_PACK
+except ImportError:
+    SHARE_OG = f"{HOST}/media/og-share.jpg"
+    PDP_PACK = {}
+
+for slug, rec in PDP_PACK.items():
+    path = f"html/products/{slug}.html"
+    base = PAGES.get(path, {
+        "crumbs": [
+            ("Home", f"{HOST}/"),
+            ("Catalog", f"{HOST}/#catalog"),
+            (rec["name"], f"{HOST}/products/{slug}"),
+        ],
+        "kind": "product",
+    })
+    base.update({
+        "topic": f"{rec['name']} {rec['mg']}",
+        "description": rec["desc"],
+        "canonical": f"{HOST}/products/{slug}",
+        "og_type": "product",
+        "og_image": SHARE_OG,
+        "jsonld_name": rec["name"],
+        "slug": slug,
+        "price": rec["price"],
+        "kind": "product",
+    })
+    PAGES[path] = base
+
+# Category hub (not a PDP)
+if "html/research-peptides.html" not in PAGES:
+    PAGES["html/research-peptides.html"] = {
+        "topic": "Research Peptides",
+        "description": "Laboratory peptide listings for inquiry, with lot papers on request and the COA library beside the catalog. Research use only; not for human or veterinary use.",
+        "canonical": f"{HOST}/research-peptides",
+        "og_type": "website",
+        "og_image": f"{HOST}/media/og-preview.jpg",
+        "crumbs": [("Home", f"{HOST}/"), ("Research Peptides", f"{HOST}/research-peptides")],
+        "kind": "page",
+    }
+
 
 def title_for(rec):
     return rec["topic"] + SUFFIX
