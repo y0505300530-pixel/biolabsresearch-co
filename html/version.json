@@ -1,11 +1,9 @@
 {
-  "version": "1.79",
+  "version": "1.80",
   "released": "2026-09-14",
-  "codename": "shipping-address-autofill",
+  "codename": "address-suggest-domfix",
   "highlights": [
-    "Shipping Address: browser autofill tokens (street/city/state/postal/country)",
-    "Fast street suggestions (Photon) fill city/state/postal \u2014 no key required",
-    "Optional Google Places when window.BLR_GOOGLE_PLACES_KEY is set",
-    "checkout-address.js?v=2 \u00b7 css?v=368"
+    "Fix address suggestion dropdown (DOM-ready bind)",
+    "checkout-address.js?v=3 at end of body"
   ]
 }
