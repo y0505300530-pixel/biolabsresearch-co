@@ -556,12 +556,12 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
           <div id="couponNote" aria-live="polite" style="margin-top:6px;font-size:12px;line-height:1.5;min-height:16px"></div>
         </div>
 <button class="btn-submit" id="placeOrderBtn" onclick="placeOrder()">
-          <span id="submitBtnText">Pay with Card</span>
+          <span id="submitBtnText">Continue (card simulation)</span>
           <div class="spinner" id="submitSpinner"></div>
         </button>
         <p id="ctaMicrocopy">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          <span id="ctaMicrocopyText">Card simulation · not charged on this page · RUO catalog only</span>
+          <span id="ctaMicrocopyText">Simulation only · no charge on this page · settle after inquiry</span>
         </p>
       </div>
     </div>
@@ -614,11 +614,11 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
   <div class="success-icon-wrap">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <h2>Inquiry submitted</h2>
+  <h2>Order received</h2>
   <p>Card simulation does not charge your card. Crypto orders use the address shown — team confirms receipt.</p>
   <p id="successPaymentNote" style="margin-top:10px"></p>
   <div class="order-ref" id="orderRefDisplay"></div>
-  <p style="font-size:13px;color:var(--muted)">We will reply to <strong id="successEmail"></strong> about availability and how to pay, if we accept the request.</p>
+  <p style="font-size:13px;color:var(--muted)">We will reply to <strong id="successEmail"></strong> about availability and next steps (card settle after inquiry, or crypto confirmation).</p>
   <a href="https://biolabsresearch.co/index.html?from=nav" class="btn-back">← Continue Shopping</a>
 </div>
 
@@ -759,8 +759,8 @@ function selectPaymentMethod(pm) {
   var btnText = document.getElementById('submitBtnText');
   var micro = document.getElementById('ctaMicrocopyText');
   if (selectedPaymentMethod === 'card') {
-    if (btnText) btnText.textContent = 'Pay with Card';
-    if (micro) micro.textContent = 'Card simulation · not charged on this page · RUO catalog only';
+    if (btnText) btnText.textContent = 'Continue (card simulation)';
+    if (micro) micro.textContent = 'Simulation only · no charge on this page · settle after inquiry';
   } else {
     if (btnText) btnText.textContent = 'Continue to Crypto Payment';
     if (micro) micro.textContent = 'Crypto USDT/USDC · payment address provided · RUO catalog only';
@@ -958,7 +958,7 @@ function submitOrderWithMethod(paymentMethod, last4) {
     } else {
       setSubmitBusy(false);
       var bt = document.getElementById('submitBtnText');
-      if (bt) bt.textContent = selectedPaymentMethod === 'crypto' ? 'Continue to Crypto Payment' : 'Pay with Card';
+      if (bt) bt.textContent = selectedPaymentMethod === 'crypto' ? 'Continue to Crypto Payment' : 'Continue (card simulation)';
       alert('We could not deliver the order automatically. Please send the email draft so we receive your request.');
     }
   });
