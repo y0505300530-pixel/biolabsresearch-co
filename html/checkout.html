@@ -32,7 +32,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Form — Bio Labs Research">
 <meta name="twitter:description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
-<link rel="stylesheet" href="/biolabs_style.css?v=367">
+<link rel="stylesheet" href="/biolabs_style.css?v=368">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -283,11 +283,22 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
   .check-row{white-space:normal!important;overflow-wrap:break-word!important;max-width:100%;min-width:0}
   /* CHECKOUT-CONTAINER-INLINE-v174 */
 }
+
+/* shipping address suggestions */
+.ship-autofill-hint{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.4}
+.blr-place-dd{position:absolute;z-index:50;left:0;right:0;top:100%;background:#fff;border:1.5px solid var(--border);border-radius:10px;box-shadow:0 12px 28px rgba(13,33,55,.12);max-height:240px;overflow:auto;display:none;margin-top:4px}
+.blr-place-dd.open{display:block}
+.blr-place-opt{display:block;width:100%;text-align:left;padding:10px 12px;border:0;background:#fff;cursor:pointer;font-size:13px;color:var(--navy);font-family:var(--font,system-ui,sans-serif);border-bottom:1px solid var(--border2)}
+.blr-place-opt:last-child{border-bottom:0}
+.blr-place-opt:hover,.blr-place-opt[aria-selected="true"]{background:#F5F2ED}
+.form-group.blr-place-wrap{position:relative}
+
 </style>
 <script src="/cart-vial.js?v=327"></script>
+<script src="/checkout-address.js?v=2"></script>
 <script src="/search-overlay.js?v=26"></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="1.78">
+<meta name="app-version" content="1.79">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -358,60 +369,61 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         <div class="form-row">
           <div class="form-group">
             <label>First Name *</label>
-            <input type="text" id="firstName" placeholder="First name" autocomplete="off">
+            <input type="text" id="firstName" name="given-name" placeholder="First name" autocomplete="shipping given-name">
             <div class="err-msg">Required</div>
           </div>
           <div class="form-group">
             <label>Last Name *</label>
-            <input type="text" id="lastName" placeholder="Last name" autocomplete="off">
+            <input type="text" id="lastName" name="family-name" placeholder="Last name" autocomplete="shipping family-name">
             <div class="err-msg">Required</div>
           </div>
         </div>
         <div class="form-group">
           <label>Email Address *</label>
-          <input type="email" id="email" placeholder="you@lab.org" autocomplete="off">
+          <input type="email" id="email" name="email" placeholder="you@lab.org" autocomplete="shipping email">
           <div class="err-msg">Valid email required</div>
         </div>
         <div class="form-group">
           <label>Phone</label>
-          <input type="tel" id="phone" placeholder="+1 234 567 8900" autocomplete="off">
+          <input type="tel" id="phone" name="tel" placeholder="+1 234 567 8900" autocomplete="shipping tel">
         </div>
       </div>
 
       <!-- SHIPPING ADDRESS -->
-      <div class="form-card">
+      <div class="form-card" id="shippingAddressCard">
         <div class="section-label">Step 2</div>
         <h2>Shipping Address</h2>
+        <p class="ship-autofill-hint" id="shipAutofillHint">Type your street — browser autofill + address suggestions fill city, state, and postal code.</p>
         <div class="form-group">
           <label>Address Line 1 *</label>
-          <input type="text" id="address1" placeholder="123 Main Street">
+          <input type="text" id="address1" name="address-line1" placeholder="Start typing your street address" autocomplete="shipping address-line1">
           <div class="err-msg">Required</div>
         </div>
         <div class="form-group">
           <label>Address Line 2</label>
-          <input type="text" id="address2" placeholder="Apt, Suite, etc. (optional)">
+          <input type="text" id="address2" name="address-line2" placeholder="Apt, Suite, etc. (optional)" autocomplete="shipping address-line2">
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>City *</label>
-            <input type="text" id="city" placeholder="New York">
+            <input type="text" id="city" name="address-level2" placeholder="New York" autocomplete="shipping address-level2">
             <div class="err-msg">Required</div>
           </div>
           <div class="form-group">
             <label>State / Region *</label>
-            <input type="text" id="state" placeholder="NY">
+            <input type="text" id="state" name="address-level1" placeholder="NY" autocomplete="shipping address-level1">
             <div class="err-msg">Required</div>
           </div>
         </div>
         <div class="form-row">
           <div class="form-group">
             <label>Postal Code *</label>
-            <input type="text" id="zip" placeholder="10001">
+            <input type="text" id="zip" name="postal-code" placeholder="10001" autocomplete="shipping postal-code">
             <div class="err-msg">Required</div>
           </div>
           <div class="form-group">
             <label>Country *</label>
-            <select id="country">
+            <select id="country" name="country" autocomplete="shipping country">
               <option value="">Select country</option>
               <option value="US">United States</option>
               <option value="GB">United Kingdom</option>
@@ -1143,7 +1155,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.78" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.78</p>
+<p class="site-version" data-site-version="1.79" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.79</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->
