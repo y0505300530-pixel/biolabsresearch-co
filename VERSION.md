@@ -1,10 +1,10 @@
-# biolabsresearch.co — Version 1.93
+# biolabsresearch.co — Version 1.95
 
 Released 2026-09-14.
 
 ## What this version improves
 
-- Wave-1 compare hub: eight `/compare/{slug}` pages from CRM SoT (RUO inquire-only)
-- Semaglutide and tirzepatide marked as catalog SKUs; Ipamorelin CAS locked at 170851-70-4
-- Tools hub lists all 8 Wave-1 pairs + orphans; sitemap lastmod refresh
-- nginx 301 `/tools/compare/{slug}` → `/compare/{slug}`
+- Wave-2 interactive compare selector at `/tools/compare` (searchable chips from Wave-1 SoT)
+- Exact nginx `/tools/compare` → `compare.html`; slug 301s `/tools/compare/{slug}` → `/compare/{slug}` unchanged
+- Tools hub prominently opens the selector under “Compare research compounds”
+- Unmatched pairs: Inquire CTA + nearest related Wave-1 pair when possible
