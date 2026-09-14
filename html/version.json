@@ -1,9 +1,11 @@
 {
-  "version": "1.80",
+  "version": "1.81",
   "released": "2026-09-14",
-  "codename": "address-suggest-domfix",
+  "codename": "cookie-consent-gate",
   "highlights": [
-    "Fix address suggestion dropdown (DOM-ready bind)",
-    "checkout-address.js?v=3 at end of body"
+    "Subtle cookie bar: Accept / Essential only (Marketing copy)",
+    "GA4 loads only after Accept; Consent Mode default denied",
+    "New /cookie-policy page + Cookies footer link + Privacy Cookie settings",
+    "cookie-consent.js?v=1 \u00b7 css?v=370"
   ]
 }
