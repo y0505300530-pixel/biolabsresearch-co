@@ -1,10 +1,10 @@
 {
-  "version": "1.85",
+  "version": "1.86",
   "released": "2026-09-14",
-  "codename": "pdp-seo-a11y",
+  "codename": "gsc-meta-verify",
   "highlights": [
-    "PDP SEO/a11y pack on top of v1.84 crypto-select fix (checkout showSuccess brace kept)",
-    "Unique Compound mg titles, Product JSON-LD, 1200x630 og-share.jpg",
-    "Vial alts, 44px tap targets, gold-on-cream contrast, relative /api/products"
+    "Google Search Console meta verification sitewide",
+    "Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU",
+    "Keeps Marketing SEO from 1.85; css?v=372"
   ]
 }
