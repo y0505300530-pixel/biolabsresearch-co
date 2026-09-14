@@ -4,7 +4,7 @@
   "codename": "sitemap-cookie-policy",
   "highlights": [
     "sitemap.xml: added /cookie-policy",
-    "included /products/tesamorelin if it was missing",
-    "url count 66"
+    "sitemap.xml: added /products/tesamorelin (standalone PDP)",
+    "url count 67"
   ]
 }
