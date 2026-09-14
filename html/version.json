@@ -1,10 +1,10 @@
 {
-  "version": "1.86",
+  "version": "1.87",
   "released": "2026-09-14",
-  "codename": "gsc-meta-verify",
+  "codename": "sitemap-cookie-policy",
   "highlights": [
-    "Google Search Console meta verification sitewide",
-    "Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU",
-    "Keeps Marketing SEO from 1.85; css?v=372"
+    "sitemap.xml: added /cookie-policy",
+    "included /products/tesamorelin if it was missing",
+    "url count 66"
   ]
 }
