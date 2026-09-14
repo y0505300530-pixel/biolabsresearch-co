@@ -1,9 +1,10 @@
 {
-  "version": "1.84",
+  "version": "1.85",
   "released": "2026-09-14",
-  "codename": "fix-crypto-select-js",
+  "codename": "pdp-seo-a11y",
   "highlights": [
-    "Fix checkout JS syntax (broken showSuccess) that blocked selectPaymentMethod \u2014 Crypto selectable again",
-    "Root cause: v1.82 GA patch truncated the main checkout script"
+    "PDP SEO/a11y pack on top of v1.84 crypto-select fix (checkout showSuccess brace kept)",
+    "Unique Compound mg titles, Product JSON-LD, 1200x630 og-share.jpg",
+    "Vial alts, 44px tap targets, gold-on-cream contrast, relative /api/products"
   ]
 }
