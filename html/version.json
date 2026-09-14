@@ -1,10 +1,9 @@
 {
-  "version": "1.88",
+  "version": "1.89",
   "released": "2026-09-14",
-  "codename": "blog-b2c-ruo-three",
+  "codename": "blog-marketing-ruo-lock",
   "highlights": [
-    "3 B2C RUO-locked blog posts live",
-    "which-one GLP trio \u00b7 retatrutide storage rewrite \u00b7 bacteriostatic vs sterile water",
-    "sitemap + blog index updated"
+    "Replaced 3 blog posts with Marketing locked RUO markdown",
+    "same URLs; sitemap already has them"
   ]
 }
