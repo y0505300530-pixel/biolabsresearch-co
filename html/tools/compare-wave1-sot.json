@@ -7,31 +7,31 @@
       "id": "semaglutide-vs-tirzepatide",
       "a": "semaglutide",
       "b": "tirzepatide",
-      "path": "/tools/compare/semaglutide-vs-tirzepatide"
+      "path": "/compare/semaglutide-vs-tirzepatide"
     },
     {
       "id": "tirzepatide-vs-retatrutide",
       "a": "tirzepatide",
       "b": "retatrutide",
-      "path": "/tools/compare/tirzepatide-vs-retatrutide"
+      "path": "/compare/tirzepatide-vs-retatrutide"
     },
     {
       "id": "semaglutide-vs-retatrutide",
       "a": "semaglutide",
       "b": "retatrutide",
-      "path": "/tools/compare/semaglutide-vs-retatrutide"
+      "path": "/compare/semaglutide-vs-retatrutide"
     },
     {
       "id": "bpc-157-vs-tb-500",
       "a": "bpc-157",
       "b": "tb-500",
-      "path": "/tools/compare/bpc-157-vs-tb-500"
+      "path": "/compare/bpc-157-vs-tb-500"
     },
     {
       "id": "tesamorelin-vs-ipamorelin",
       "a": "tesamorelin",
       "b": "ipamorelin",
-      "path": "/tools/compare/tesamorelin-vs-ipamorelin",
+      "path": "/compare/tesamorelin-vs-ipamorelin",
       "also": "tesamorelin-ipamorelin"
     },
     {
@@ -40,19 +40,19 @@
       "b": "sterile-water",
       "note": "BAC water in catalog as research-solvent; sterile may be content-only + blog link",
       "blog": "/blog/bacteriostatic-water-vs-sterile-water",
-      "path": "/tools/compare/bacteriostatic-water-vs-sterile-water"
+      "path": "/compare/bacteriostatic-water-vs-sterile-water"
     },
     {
       "id": "ghk-cu-vs-epithalon",
       "a": "ghk-cu",
       "b": "epithalon",
-      "path": "/tools/compare/ghk-cu-vs-epithalon"
+      "path": "/compare/ghk-cu-vs-epithalon"
     },
     {
       "id": "mots-c-vs-nad-plus",
       "a": "mots-c",
       "b": "nad-plus",
-      "path": "/tools/compare/mots-c-vs-nad-plus"
+      "path": "/compare/mots-c-vs-nad-plus"
     }
   ],
   "products": {

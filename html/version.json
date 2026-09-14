@@ -1,9 +1,10 @@
 {
-  "version": "1.92",
+  "version": "1.93",
   "released": "2026-09-14",
-  "codename": "restore-kpv-cas",
+  "codename": "compare-wave1",
   "highlights": [
-    "Restore KPV CAS 67727-97-3 after accidental overwrite during Ipamorelin CAS lock",
-    "Ipamorelin remains locked at 170851-70-4 for Wave-1 compare SoT"
+    "Wave-1 compare hub: 8 /compare/{slug} pages from CRM SoT",
+    "Semaglutide & tirzepatide marked as catalog SKUs; Ipamorelin CAS 170851-70-4",
+    "nginx 301 /tools/compare/{slug} \u2192 /compare/{slug}; tools hub + sitemap refresh"
   ]
 }
