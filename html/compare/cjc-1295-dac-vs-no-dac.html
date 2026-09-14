@@ -74,6 +74,40 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   .seo-grid,.seo-form,.seo-cta-row{grid-template-columns:1fr}
   .seo-table{display:block;overflow-x:auto}
 }
+
+/* v1.94 mobile compare table — scroll + wrap, keep full molecule names */
+.compare-table-scroller{
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  margin:18px 0 28px;
+  border-radius:10px;
+}
+.compare-table-scroller .quick-table{
+  margin:0;
+  min-width:520px;
+  overflow:visible;
+}
+.quick-table th,.quick-table td{
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:manual;
+  vertical-align:top;
+}
+@media (max-width:860px){
+  .seo-wrap{overflow-x:hidden;}
+  .compare-table-scroller{
+    margin-left:-4px;
+    margin-right:-4px;
+    padding-bottom:4px;
+  }
+  .quick-table{font-size:13px;}
+  .quick-table th,.quick-table td{padding:8px 10px;}
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -140,10 +174,10 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   <p>Catalog and forum language often collapses “CJC-1295” into one name, but with-DAC and without-DAC (Modified GRF 1–29) are different molecular constructions. This comparison follows the identity framing used in our blog posts — not a medical recommendation — and points to PubChem/CAS resources for registry checks.</p>
 <p>Neither CJC-1295 with DAC nor Modified GRF (1–29) is currently a standalone SKU in the BioLabs Research live catalog. Treat this page as an identity primer and follow the linked blog articles for formula-difference detail.</p>
   <h2>Quick comparison</h2>
-  <table class="quick-table">
+  <div class="compare-table-scroller"><table class="quick-table">
     <thead><tr><th>Field</th><th>First</th><th>Second</th></tr></thead>
     <tbody><tr><th>Common name</th><td>CJC-1295 with DAC</td><td>CJC-1295 no DAC / Mod GRF 1–29</td></tr><tr><th>Key structural idea</th><td>GHRH analogue + Drug Affinity Complex (albumin-binding motif)</td><td>Modified GRF (1–29) without DAC</td></tr><tr><th>Illustrative CAS</th><td>863288-34-0 (with DAC listings)</td><td>Verify Mod GRF listing on PubChem/lot COA</td></tr><tr><th>Catalog SKU on this site</th><td>Not listed as standalone</td><td>Not listed as standalone</td></tr></tbody>
-  </table>
+  </table></div>
   <h2>CJC-1295 with DAC</h2>
 <p>CJC-1295 with DAC refers to a tetrasubstituted GHRH analogue conjugated to a Drug Affinity Complex intended to extend circulating half-life via albumin binding in published research descriptions. Public registry entries commonly cite CAS 863288-34-0 for CJC-1295-type constructs; always confirm the exact structure against the supplier COA because naming collisions are common.</p>
 <p>Identity reading: <a href="/blog/cjc-1295-dac-vs-modified-grf-identity">CJC-1295 DAC vs Modified GRF identity</a> and <a href="/blog/dac-vs-no-dac-formula-difference">DAC vs no-DAC formula difference</a>.</p>

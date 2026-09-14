@@ -68,14 +68,49 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
 .seo-cta{display:block;text-align:center;padding:16px;border-radius:10px;background:var(--ink);color:#fff;text-decoration:none;font-weight:700}
 .seo-cta.alt{background:var(--gold)}
 .seo-refs a{color:var(--gold)}
-.quick-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.quick-table{width:100%;border-collapse:collapse;margin:18px 0 28px;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:10px;overflow:visible}
 .quick-table th,.quick-table td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left}
 .quick-table th{background:#F4EFE4;color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
 @media (max-width:860px){
   .seo-wrap{padding:32px 18px 72px}
   .seo-grid,.seo-form,.seo-cta-row{grid-template-columns:1fr}
-  .seo-table{display:block;overflow-x:auto}
+  .seo-table,.compare-table-scroller{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .quick-table{width:100%}
 }
+
+/* v1.94 mobile compare table — scroll + wrap, keep full molecule names */
+.compare-table-scroller{
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  margin:18px 0 28px;
+  border-radius:10px;
+}
+.compare-table-scroller .quick-table{
+  margin:0;
+  min-width:520px;
+  overflow:visible;
+}
+.quick-table th,.quick-table td{
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:manual;
+  vertical-align:top;
+}
+@media (max-width:860px){
+  .seo-wrap{overflow-x:hidden;}
+  .compare-table-scroller{
+    margin-left:-4px;
+    margin-right:-4px;
+    padding-bottom:4px;
+  }
+  .quick-table{font-size:13px;}
+  .quick-table th,.quick-table td{padding:8px 10px;}
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -87,7 +122,7 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
 <script type="application/ld+json">
 {"@context": "https://schema.org", "@type": "ItemList", "itemListElement": [{"@type": "ListItem", "position": 1, "item": {"@type": "Product", "name": "Semaglutide", "url": "https://biolabsresearch.co/products/semaglutide"}}, {"@type": "ListItem", "position": 2, "item": {"@type": "Product", "name": "R3TA (Retatrutide)", "url": "https://biolabsresearch.co/products/retatrutide"}}]}
 </script>
-<meta name="app-version" content="1.93">
+<meta name="app-version" content="1.94">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -144,10 +179,10 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   <h1>Semaglutide vs Retatrutide for research</h1>
   <p>Semaglutide (GLP-1 analogue) and R3TA / retatrutide (triple-agonist framing) are both catalog research peptides here. Use this side-by-side for CAS, form, and listed strengths before you request a lot for a named protocol.</p>
   <h2>Quick comparison</h2>
-  <table class="quick-table">
+  <div class="compare-table-scroller"><table class="quick-table">
     <thead><tr><th>Field</th><th>Semaglutide</th><th>R3TA (Retatrutide)</th></tr></thead>
     <tbody><tr><th>Name</th><td><a href="/products/semaglutide">Semaglutide</a></td><td><a href="/products/retatrutide">R3TA (Retatrutide)</a></td></tr><tr><th>CAS</th><td>910463-68-2</td><td>2381089-83-2</td></tr><tr><th>Form</th><td>Lyophilized peptide</td><td>Lyophilized peptide</td></tr><tr><th>Listed strengths</th><td>5mg · $60 list — inquire for a lot<br>10mg · $90 list — inquire for a lot</td><td>10mg · $85 list — inquire for a lot<br>20mg · $135 list — inquire for a lot<br>50mg · $300 list — inquire for a lot</td></tr><tr><th>Catalog note</th><td>List prices shown — inquire for a lot</td><td>List prices shown — inquire for a lot</td></tr><tr><th>Lot / COA</th><td>On request</td><td>On request</td></tr><tr><th>RUO</th><td>Research use only</td><td>Research use only</td></tr></tbody>
-  </table>
+  </table></div>
   
   <h2>What differs at the molecular level</h2>
   <p>Semaglutide (CAS 910463-68-2) is a GLP-1 receptor agonist analogue with a well-documented public registry record. Catalog strengths on this site include 5 mg and 10 mg lyophilized vials — inquire for a lot.</p>
@@ -200,7 +235,7 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="1.93" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.93</p>
+<p class="site-version" data-site-version="1.94" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v1.94</p>
 </footer>
 <script src="/promo-bar.js?v=282"></script>
 </body>

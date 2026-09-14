@@ -1,10 +1,9 @@
 {
-  "version": "1.93",
+  "version": "1.94",
   "released": "2026-09-14",
-  "codename": "compare-wave1",
+  "codename": "compare-table-mobile",
   "highlights": [
-    "Wave-1 compare hub: 8 /compare/{slug} pages from CRM SoT",
-    "Semaglutide & tirzepatide marked as catalog SKUs; Ipamorelin CAS 170851-70-4",
-    "nginx 301 /tools/compare/{slug} \u2192 /compare/{slug}; tools hub + sitemap refresh"
+    "ELITE FAIL fix: compare quick-tables scroll/wrap at 390 without clipping molecule names",
+    "compare-table-scroller on all Wave-1 (+ orphan) compare pages"
   ]
 }

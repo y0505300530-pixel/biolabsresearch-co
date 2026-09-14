@@ -74,6 +74,40 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   .seo-grid,.seo-form,.seo-cta-row{grid-template-columns:1fr}
   .seo-table{display:block;overflow-x:auto}
 }
+
+/* v1.94 mobile compare table — scroll + wrap, keep full molecule names */
+.compare-table-scroller{
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  margin:18px 0 28px;
+  border-radius:10px;
+}
+.compare-table-scroller .quick-table{
+  margin:0;
+  min-width:520px;
+  overflow:visible;
+}
+.quick-table th,.quick-table td{
+  white-space:normal;
+  overflow-wrap:anywhere;
+  word-break:normal;
+  hyphens:manual;
+  vertical-align:top;
+}
+@media (max-width:860px){
+  .seo-wrap{overflow-x:hidden;}
+  .compare-table-scroller{
+    margin-left:-4px;
+    margin-right:-4px;
+    padding-bottom:4px;
+  }
+  .quick-table{font-size:13px;}
+  .quick-table th,.quick-table td{padding:8px 10px;}
+}
+
 </style>
 
 <script type="application/ld+json">
@@ -139,10 +173,10 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   <h1>GHK-Cu vs BPC-157: research comparison</h1>
   <p>GHK-Cu and BPC-157 are both present in the BioLabs Research catalog but represent unrelated chemical identities. GHK-Cu is a copper(II)–tripeptide complex; BPC-157 is a pentadecapeptide. Comparing them is useful for procurement clarity, not because they share a pathway label in marketing copy.</p>
   <h2>Quick comparison</h2>
-  <table class="quick-table">
+  <div class="compare-table-scroller"><table class="quick-table">
     <thead><tr><th>Field</th><th>First</th><th>Second</th></tr></thead>
     <tbody><tr><th>CAS</th><td>89030-95-5</td><td>137525-51-0</td></tr><tr><th>Formula</th><td>C14H22CuN6O4</td><td>C62H98N16O22</td></tr><tr><th>MW (approx.)</th><td>~403.9 Da</td><td>~1419.5 Da</td></tr><tr><th>Sequence / identity</th><td>GHK·Cu</td><td>GEPPPGKPADDAGLV</td></tr><tr><th>Catalog</th><td>Yes — GHK-Cu</td><td>Yes — BPC-157</td></tr></tbody>
-  </table>
+  </table></div>
   <h2>GHK-Cu</h2>
 <p>GHK-Cu (CAS 89030-95-5) is listed with formula C14H22CuN6O4 and approximate MW ~403.9 Da on site identity strips. The copper complexation is part of the identity — a copper-free GHK listing would be a different reagent. Research literature often places GHK-Cu in extracellular matrix and copper-handling model systems.</p>
 <p>See <a href="/blog/ghk-cu-copper-peptide-research">GHK-Cu copper peptide research</a> and <a href="/products/ghk-cu">GHK-Cu product</a>. GLOW 70 is a separate named blend SKU that should not be confused with neat GHK-Cu.</p>
