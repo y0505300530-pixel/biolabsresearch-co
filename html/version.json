@@ -1,9 +1,10 @@
 {
-  "version": "1.89",
+  "version": "1.90",
   "released": "2026-09-14",
-  "codename": "blog-marketing-ruo-lock",
+  "codename": "nav-menu-zindex",
   "highlights": [
-    "Replaced 3 blog posts with Marketing locked RUO markdown",
-    "same URLs; sitemap already has them"
+    "Mobile menu: drawer above sticky header (Catalog no longer under search/cart)",
+    "Safe-area padding for menu close + first links",
+    "css?v=373"
   ]
 }

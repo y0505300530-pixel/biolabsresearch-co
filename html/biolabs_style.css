@@ -11078,3 +11078,28 @@ button.linkish{background:none;border:0;padding:0;color:#6B4A12;text-decoration:
     box-sizing: border-box !important;
   }
 }
+
+/* v1.90 — mobile nav drawer above sticky header (was under .nav z-index 12000) */
+html body .nav-overlay{
+  z-index:13040 !important;
+}
+html body .nav-menu,
+html body #navMenu{
+  z-index:13050 !important;
+  padding-top: max(72px, calc(56px + env(safe-area-inset-top, 0px))) !important;
+  padding-right: 24px !important;
+  padding-left: 24px !important;
+  box-sizing: border-box !important;
+}
+html body .nav-menu-close,
+html body button.nav-menu-close{
+  top: max(12px, env(safe-area-inset-top, 0px)) !important;
+  right: 12px !important;
+  z-index: 2 !important;
+}
+/* while open, keep sticky chrome from covering Catalog */
+body.nav-open .nav,
+html body.nav-open .nav{
+  z-index: 1000 !important;
+}
+
