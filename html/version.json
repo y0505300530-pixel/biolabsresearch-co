@@ -5,6 +5,7 @@
   "highlights": [
     "Wave-2 interactive compare selector at /tools/compare (SoT SKU picker)",
     "Exact /tools/compare serves selector; /tools/compare/{slug} 301s unchanged",
-    "Tools hub links Compare research compounds to the selector"
+    "Tools hub links Compare research compounds to the selector",
+    "compare page footers aligned to v1.95 (ELITE note)"
   ]
 }
