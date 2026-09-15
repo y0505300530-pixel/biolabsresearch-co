@@ -148,12 +148,10 @@
         (mg
           ? '<p class="pr-card-spec">' + esc(mg) + " · Lot docs on request</p>"
           : '<p class="pr-card-spec">Lot docs on request</p>') +
-        (inquiry
-          ? '<p class="pr-card-price pr-card-price-inquire">Quote on request</p>'
-          : '<p class="pr-card-price">$' + price.toFixed(0) + "</p>") +
+        '<p class="pr-card-price">$' + price.toFixed(0) + "</p>" +
         '<div class="pr-card-actions">' +
           '<a class="pr-card-view" href="' + href + '">View</a>' +
-          '<button type="button" class="pr-card-atc" data-name="' + esc(p.name) + '" data-price="' + esc(price) + '" data-img="' + esc(img) + '" data-slug="' + esc(p.slug) + '"' + (mg ? ' data-mg="' + esc(mg) + '"' : '') + '>' + (inquiry ? 'Request quote' : 'ADD TO CART') + '</button>' +
+          '<button type="button" class="pr-card-atc" data-name="' + esc(p.name) + '" data-price="' + esc(price) + '" data-img="' + esc(img) + '" data-slug="' + esc(p.slug) + '"' + (mg ? ' data-mg="' + esc(mg) + '"' : '') + '>ADD TO CART</button>' +
         "</div>" +
       "</article>"
     );
@@ -191,9 +189,7 @@
       rail.hidden = true;
       return;
     }
-    var inquiry = rail.getAttribute("data-inquiry") === "1" ||
-      /^(tirzepatide|semaglutide|retatrutide)$/.test(exclude);
-    var html = list.map(function (p) { return card(p, inquiry); }).join("");
+    var html = list.map(function (p) { return card(p, false); }).join("");
     rail.hidden = false;
     rail.innerHTML =
       '<div class="pr-head">' +

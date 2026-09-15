@@ -4638,8 +4638,33 @@ a.footer-brand{
   .pr-card-atc{font-size:10px}
 }
 @media (max-width:390px){
-  .pr-viewport{padding:0 12px}
-  .pr-card{width:178px}
+  /* v2.43: clip left overhang + clear scroll affordance */
+  .product-rail{overflow:hidden;padding-left:0;padding-right:0}
+  .pr-head{padding:0 16px;margin-bottom:12px}
+  .pr-viewport{
+    padding:0 0 0 16px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    scroll-padding-inline:16px;
+    overscroll-behavior-x:contain;
+    scrollbar-width:thin;
+    max-width:100%;
+    box-sizing:border-box;
+    -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%);
+    mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 36px),transparent 100%);
+  }
+  .pr-track{
+    animation:none;
+    transform:none!important;
+    will-change:auto;
+    padding-right:16px;
+  }
+  .pr-group{gap:12px;padding:4px 0}
+  .pr-group + .pr-group{display:none} /* hide marquee duplicate when scroll mode */
+  .pr-card{width:168px;scroll-snap-align:start;flex:0 0 168px}
+  .pr-card-atc{font-size:10px;padding:0 8px}
 }
 
 
@@ -11608,13 +11633,3 @@ p.footer-col-title{
 }
 
 
-/* v2.42: regulated GLP inquiry PDPs — hide list $ while CTA is Request quote */
-html[data-inquiry-pdp="1"] .price-main,
-html[data-inquiry-pdp="1"] .price-original,
-html[data-inquiry-pdp="1"] .price-compare,
-html[data-inquiry-pdp="1"] .pdp-sticky-price strong,
-html[data-inquiry-pdp="1"] .pdp-inquiry-buy .price-original{ }
-html[data-inquiry-pdp="1"] .price-original,
-html[data-inquiry-pdp="1"] .price-compare{display:none!important}
-html[data-inquiry-pdp="1"] .pr-card-price:not(.pr-card-price-inquire){display:none}
-.pr-card-price-inquire{font-size:14px!important;font-weight:700!important;color:#6B6354!important}
