@@ -11971,7 +11971,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   accent-color: #9A6D2A !important;
 }
 
-/* === v2.59 rsay-no-lab-note === */
+/* === v2.60 rsay-49-agg === */
 .rsay-section[hidden],
 .rsay-section[data-rsay-state="awaiting-marketing"]{
   display:none!important;
