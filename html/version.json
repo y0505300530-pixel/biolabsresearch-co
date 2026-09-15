@@ -1,12 +1,11 @@
 {
-  "version": "2.29",
+  "version": "2.30",
   "released": "2026-09-15",
-  "codename": "image-opt",
+  "codename": "blog-p2-compounds-seo",
   "highlights": [
-    "Image audit pass: meaningful alts, width/height for CLS, WebP src where PNG twin exists",
-    "Homepage LCP: first 4 catalog vials loading=eager + fetchpriority=high; rest lazy",
-    "Shipping/blog logos prefer WebP; cart drawer img templates get dims + lazy",
-    "Filenames already descriptive (vial-*, ship-*, blog-topic-*); no mass rename (URL/cache safe)",
-    "AVIF deferred (no avifenc on server); WebP covers modern browsers"
+    "Blog P2: research-compounds terminology; unique titles/meta/OG; prose RUO closer",
+    "Deduped shared purchasing-note openings; stronger References on scientific posts",
+    "og:image fallback https://biolabsresearch.co/media/og-share.jpg on blog articles",
+    "Rebased onto v2.29 image-opt (alts/WebP/LCP); does not regress those assets"
   ]
 }

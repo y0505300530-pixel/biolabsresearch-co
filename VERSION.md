@@ -1,8 +1,10 @@
-# biolabsresearch.co — Version 2.25
+# biolabsresearch.co — Version 2.30
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- Age-gate Enter: reliable enable on checkbox tap, dismiss + tc-ok hardened
-- Modal scroll + 44px checkbox hits + Enter always reachable on mobile
+- Marketing Blog P2: primary term is research compounds; peptide wording stays on peptide-specific posts
+- Unique titles/meta/OG (og-share.jpg when a share image was missing); one prose RUO closer
+- Deduplicated shared boilerplate openings; stronger References where scientific and thin
+- Rebased onto v2.29 image-opt (alts/WebP/LCP)
