@@ -1123,7 +1123,23 @@ function addSuggest(slug, name, price, mg){
   else paint();
   window.addEventListener('storage', paint);
   if (typeof window.toggleCart !== 'function') {
-    window.toggleCart = function(){ window.location.href = '/checkout'; };
+    window.toggleCart = function(){
+      var d = document.getElementById('cartDrawer');
+      var o = document.getElementById('cartOverlay');
+      if (d) {
+        d.classList.toggle('open');
+        if (o) o.classList.toggle('open');
+        try { if (typeof window.renderCart === 'function') window.renderCart(); } catch (e) {}
+        try {
+          document.body.classList.toggle('cart-open', d.classList.contains('open'));
+          document.documentElement.classList.toggle('cart-open', d.classList.contains('open'));
+          document.body.style.overflow = d.classList.contains('open') ? 'hidden' : '';
+        } catch (e) {}
+        return;
+      }
+      /* pages with no drawer (legal) */
+      window.location.href = '/checkout';
+    };
   }
   window.toggleMenu = function toggleMenu(){
   var m = document.getElementById('navMenu');

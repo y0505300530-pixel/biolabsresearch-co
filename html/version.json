@@ -1,11 +1,10 @@
 {
-  "version": "2.35",
+  "version": "2.36",
   "released": "2026-09-15",
-  "codename": "spec-strip-gutters",
+  "codename": "atc-open-drawer",
   "highlights": [
-    "PDP .spec-strip: 3-col (CAS|Formula|MW) instead of 2-col that left a huge gap",
-    "Static SSR strip matches product-hero gutters (60px/20px) \u2014 stops CAS/MW first-letter clip at viewport edge",
-    "Reset dl/dd UA margins; minmax(0,1fr) cells; 1-col under 900px",
-    "Buy-col hydrated strip keeps column padding (no full-bleed)"
+    "Fix PDP ADD TO CART jumping to /checkout: broken quote in renderCart img onerror killed the toggleCart script",
+    "cart-vial fallback now opens #cartDrawer when present instead of redirecting",
+    "Escaped vial-fallback onerror quotes across all product PDPs"
   ]
 }
