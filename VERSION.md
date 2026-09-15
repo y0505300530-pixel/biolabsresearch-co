@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.68
+
+Released 2026-09-15.
+
+Codename: claim-lot-docs-accurate
+
+## Highlights
+
+- **Compliance**: Replace “Twenty research compounds with lot documentation available on request” with issued-lot wording
+- **Home**: Hero H1 → lot COA on request; COA card no universal vial→COA map; Lot stat “when issued” (not “matched”)
+- **Shipping**: Step title “Confirmed lot identity” (COA/SDS available when required)
+- science.html meta already accurate — no every-compound lot-docs claim
+
+---
+
 # biolabsresearch.co — Version 2.67
 
 Released 2026-09-15.
