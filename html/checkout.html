@@ -988,9 +988,9 @@ function submitOrderWithMethod(paymentMethod, last4) {
 
       var note;
       if (paymentMethod === 'card-simulation') {
-        note = 'Order received (card simulation). No charge was processed on this page. Our team will follow up at the email you provided.';
+        note = 'Request received (card simulation). No charge was processed on this page. Our team will follow up at the email you provided.';
       } else {
-        note = 'Order received. Crypto payment address was provided (' + (orderData.crypto && orderData.crypto.chain === 'trc' ? 'Tron TRC-20' : 'Ethereum ERC-20') + '). Our team will confirm receipt and follow up at your email.';
+        note = 'Request received. Crypto payment address was provided (' + (orderData.crypto && orderData.crypto.chain === 'trc' ? 'Tron TRC-20' : 'Ethereum ERC-20') + '). Our team will confirm receipt and follow up at your email.';
       }
       showSuccess(orderData, note);
     } else {
