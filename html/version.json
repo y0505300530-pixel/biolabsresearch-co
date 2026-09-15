@@ -1,10 +1,10 @@
 {
-  "version": "2.80",
+  "version": "2.81",
   "released": "2026-09-16",
-  "codename": "promo-chrome-strip",
+  "codename": "glow70-label-blackname",
   "highlights": [
-    "Empty #promoStack / promo-bar INSIDER25 markup on all HTML (match home hidden empty shell)",
-    "PDPs: no .price-original / .price-launch-note / INSIDER25 strike when promo inactive; origHtml gated off",
-    "promo-bar.js remains noop stub (no 404); ATC and product prices unchanged"
+    "GLOW 70 vial art: black name + gold 70 MG bar (ELITE Soft-QA PASS / Indian+Marketing SoT)",
+    "Replaced live vial-glow-70.webp/png + 70mg variants; cache-bust ?v=173",
+    "Held BPC-skeleton alt aside (not ship) unless Yehuda overrides"
   ]
 }
