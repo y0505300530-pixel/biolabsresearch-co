@@ -16,18 +16,30 @@
   function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
   function format(left){
     /* v1.33: fixed calendar end — live day counters felt fake on every reload */
-    if (left <= 0) return "Offer ended";
+    if (left <= 0) return "";
     return "Ends Sep 14";
+  }
+  function hideEndedPromo(){
+    var el = document.getElementById("promoStack");
+    if (el) {
+      el.style.display = "none";
+      el.classList.add("promo-ended");
+    }
+    var stacks = document.querySelectorAll(".promo-stack");
+    for (var i = 0; i < stacks.length; i++) {
+      stacks[i].style.display = "none";
+      stacks[i].classList.add("promo-ended");
+    }
+    try { stopMarquee(); } catch (e) {}
   }
   function tick(){
     var left = END_MS - Date.now();
-    var nodes = document.querySelectorAll(".cutoff-timer");
-    var i, text;
     if (left <= 0) {
-      text = "Offer ended";
-    } else {
-      text = format(left);
+      hideEndedPromo();
+      return;
     }
+    var nodes = document.querySelectorAll(".cutoff-timer");
+    var i, text = format(left);
     for (i = 0; i < nodes.length; i++) {
       nodes[i].setAttribute("data-end", END_ISO);
       if (nodes[i].textContent !== text) nodes[i].textContent = text;
@@ -103,6 +115,10 @@
   }
 
   function fillMarquee(){
+    if (Date.now() >= END_MS) {
+      hideEndedPromo();
+      return;
+    }
     var track = document.querySelector(".promo-track");
     var bar = document.querySelector(".promo-bar");
     if (!track || !bar) return;
@@ -158,6 +174,10 @@
   }
 
   function wire(){
+    if (Date.now() >= END_MS) {
+      hideEndedPromo();
+      return;
+    }
     saveCode();
     try { fillMarquee(); } catch (e) {}
     try { normalizeAll(); } catch (eN) {}

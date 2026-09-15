@@ -9398,14 +9398,15 @@ html body .insider-club .insider-club-note {
 }
 
 
-/* Indian v2.00 — hide chrome until age-gate enter */
-html:not(.tc-ok) .nav,
-html:not(.tc-ok) .promo-stack,
-html:not(.tc-ok) .sticky-cart-dock {
+/* v2.02 — hide chrome until age-gate enter (only on gated pages) */
+html.has-age-gate:not(.tc-ok) .nav,
+html.has-age-gate:not(.tc-ok) .promo-stack,
+html.has-age-gate:not(.tc-ok) .sticky-cart-dock {
   display: none !important;
   visibility: hidden !important;
   pointer-events: none !important;
 }
+.promo-stack.promo-ended{display:none!important}
 .tc-overlay {
   z-index: 11000 !important; /* above cookie banner ~10050 */
 }

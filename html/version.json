@@ -1,10 +1,10 @@
 {
-  "version": "2.01",
+  "version": "2.02",
   "released": "2026-09-15",
-  "codename": "coa-copy-soften",
+  "codename": "promo-end-hide-agegate",
   "highlights": [
-    "Softened absolute COA/purity claims on /guide-reading-coa + related blog posts",
-    "Purity table: no invented grade bans \u2014 depends on analytical application and lab specification",
-    "Removed 'single most important' / 'not research grade' / 'should not be sold' language"
+    "Hide ended INSIDER25 promo banner when past END_MS",
+    "Scope age-gate chrome hide to html.has-age-gate pages",
+    "Repair app-version/og:image meta corruption from v2.01"
   ]
 }

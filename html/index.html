@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){try{var a=localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1;if(a){document.documentElement.classList.add('tc-ok');}}catch(e){}})();</script>
-<style>html:not(.tc-ok) .nav,html:not(.tc-ok) .promo-stack,html:not(.tc-ok) .sticky-cart-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}html.tc-ok .tc-overlay{display:none!important;visibility:hidden!important;pointer-events:none!important}.tc-overlay{display:none}.tc-overlay.active{display:flex}</style>
+<script>(function(){try{document.documentElement.classList.add('has-age-gate');var a=localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1;if(a){document.documentElement.classList.add('tc-ok');}}catch(e){}})();</script>
+<style>html.has-age-gate:not(.tc-ok) .nav,html.has-age-gate:not(.tc-ok) .promo-stack,html.has-age-gate:not(.tc-ok) .sticky-cart-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}html.tc-ok .tc-overlay{display:none!important;visibility:hidden!important;pointer-events:none!important}.tc-overlay{display:none}.tc-overlay.active{display:flex}</style>
 <script src="/cookie-consent.js?v=3" defer></script>
 
 <meta charset="UTF-8">
@@ -16,8 +16,8 @@
 <meta property="og:title" content="BioLabs Research | RUO Catalog">
 <meta property="og:description" content="RUO research compounds. Inquiry catalog. Lot docs on request.">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
-<meta property="og:image:width" content="2.01">
-<meta property="og:image:height" content="2.01">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://biolabsresearch.co/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
@@ -69,7 +69,7 @@
 <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/video/hero-cinematic.jpg?v=2" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=375">
+<link rel="stylesheet" href="/biolabs_style.css?v=376">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -89,7 +89,7 @@
 
 <script src="/cart-vial.js?v=330" defer></script>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.01"">
+<meta name="app-version" content="2.02">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -506,7 +506,7 @@ with lot documentation.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="content="2.01" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.01</p>
+<p class="site-version" data-site-version="2.02" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.02</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->
@@ -884,7 +884,7 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
 </script>
 
 <script src="/auth.js?v=2" defer></script>
-<script src="/promo-bar.js?v=283"></script>
+<script src="/promo-bar.js?v=284"></script>
 <script src="/mg-picker.js?v=32" defer></script>
 <script src="/prices-sync.js?v=2" defer></script>
 <script src="/catalog-mg.js?v=39" defer></script>
