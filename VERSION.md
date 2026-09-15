@@ -1,8 +1,8 @@
-# biolabsresearch.co — Version 2.20
+# biolabsresearch.co — Version 2.21
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- Mobile sticky View cart no longer covers Add / Request this lot CTAs
-- Hide catalog dock on PDP sticky buy + when primary CTA is in bottom safe zone
+- PDP SSR includes sizes, ADD TO CART, RUO badge, COA — full details without waiting on JS
+- Footer More: full product names (no truncate); clean /products/{slug} URLs

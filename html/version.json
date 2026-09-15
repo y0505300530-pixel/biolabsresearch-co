@@ -1,9 +1,9 @@
 {
-  "version": "2.20",
+  "version": "2.21",
   "released": "2026-09-15",
-  "codename": "sticky-cart-cta-clear",
+  "codename": "pdp-ssr-full-details",
   "highlights": [
-    "Mobile sticky View cart no longer covers Add / Request this lot CTAs",
-    "Hide catalog dock on PDP sticky buy + when primary CTA is in bottom safe zone"
+    "PDP SSR includes sizes, ADD TO CART, RUO badge, COA \u2014 full details without waiting on JS",
+    "Footer More: full product names (no truncate); clean /products/{slug} URLs"
   ]
 }

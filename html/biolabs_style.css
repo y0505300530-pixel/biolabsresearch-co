@@ -11329,3 +11329,17 @@ html body .footer-top,
     box-sizing: border-box !important;
   }
 }
+
+
+/* FOOTER MORE NO-TRUNCATE v2.21 */
+.footer-col a,
+.footer-top .footer-col a {
+  white-space: normal !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  word-break: break-word !important;
+  overflow-wrap: anywhere !important;
+  max-width: 100% !important;
+  height: auto !important;
+  line-height: 1.35 !important;
+}
