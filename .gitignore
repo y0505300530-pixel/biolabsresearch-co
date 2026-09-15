@@ -4,3 +4,4 @@ html/**/*.bak-*
 *.bak
 __pycache__/
 *.pyc
+html/media/video/.bak-pre-perf-20260915/

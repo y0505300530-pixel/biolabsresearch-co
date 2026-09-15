@@ -1,11 +1,11 @@
-# biolabsresearch.co — Version 1.97
+# biolabsresearch.co — Version 1.98
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- Speed (mobile/social): trim promo ticker HTML from ~17 clones to 2; cap JS fillMarquee clones
-- Defer head JS: cookie-consent, cart-vial, search-overlay (non-blocking parse)
-- Hero video: preload=none, no autoplay attr (IO still plays when visible); mp4 before webm
-- LCP preload: hero poster instead of unused blend webp
-- nginx: gzip already on for CSS/JS/HTML; static cache headers unchanged (no brotli module yet)
+- Compressed homepage hero video (mp4 ~2.0MB→764KB, webm ~3.2MB→1.3MB); originals on server under media/video/.bak-pre-perf-20260915/
+- Compressed tools dilution loop (~2.6MB→44KB)
+- PDP main vial images now WebP (~15–45KB vs 200–640KB PNG); main image eager + fetchpriority=high for LCP
+- Shipping step images as WebP; hero poster webp added
+- Continues v1.97: deferred head JS, slim Inter+Fraunces fonts, promo DOM trim, hero preload=none

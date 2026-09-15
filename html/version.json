@@ -1,11 +1,12 @@
 {
-  "version": "1.97",
+  "version": "1.98",
   "released": "2026-09-15",
-  "codename": "mobile-speed-wins",
+  "codename": "mobile-media-weight",
   "highlights": [
-    "Promo ticker HTML clones 17→2; fillMarquee guard capped",
-    "Defer cookie-consent / cart-vial / search-overlay in head",
-    "Hero video preload=none, mp4-first; poster is LCP preload",
-    "gzip confirmed; brotli left for CRM/infra"
+    "Compressed hero video: mp4 2.0MB\u2192764KB, webm 3.2MB\u21921.3MB (bak kept on server)",
+    "Compressed tools-dilution loop: 2.6MB\u219244KB",
+    "PDP main vials: serve WebP instead of 200\u2013640KB PNGs; LCP eager+fetchpriority",
+    "Ship-step images as WebP; hero poster webp available",
+    "Builds on v1.97 defer/fonts/promo DOM wins"
   ]
 }
