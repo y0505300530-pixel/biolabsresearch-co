@@ -11808,22 +11808,10 @@ p.footer-col-title{
   .pdp-thumbs .pdp-thumb { min-height: 56px !important; }
 }
 
-/* === v2.46 catalog cards: contain + flex center (Yehuda) === */
-/* Live: .product-card-media / .product-card-img — NOT PDP main (stays cover) */
-.product-card-media,
-.product-card-img {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
-.product-card-media img,
-.product-card-img img,
-.product-card .product-card-img img {
-  object-fit: contain !important;
-  object-position: center !important;
-  width: 100% !important;
-  height: 100% !important;
-  max-width: 100% !important;
-}
-/* === end v2.46 === */
+/* === end v2.46 (PDP thumbs / true 1:1 only; catalog contain removed in v2.47) === */
+
+/* === v2.47 home/catalog card imgs revert (Yehuda) === */
+/* Removed v2.46 .product-card-media/.product-card-img flex+contain override.
+   Prior cover rules (cart-no-square / popular-search-v141) apply again. */
+/* === end v2.47 === */
 
