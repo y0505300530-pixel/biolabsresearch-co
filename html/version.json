@@ -1,10 +1,10 @@
 {
-  "version": "2.64",
+  "version": "2.65",
   "released": "2026-09-15",
-  "codename": "dose-chips-44",
+  "codename": "vial-frame-normalize",
   "highlights": [
-    "Mobile dose/strength chips min-width AND min-height ≥44px @max-width 800px",
-    "Selectors: .product-card-mg, .size-btn, .mg-picker .mg-btn, .size-chip, .dose-chip",
-    "Age-gate untouched; CSS ?v=357; cart untouched; rsay carousel untouched"
+    "Catalog/PDP vial assets normalized in-place to 1200x1200 on #F2EFE9; bottle ~70% centered",
+    "WebP q~82 all under 150KB; PNG twins kept for existing refs; mg variants included",
+    "CRM CSS frames / cart-vial untouched; media ?v=170 cache bust"
   ]
 }
