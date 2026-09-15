@@ -1,10 +1,10 @@
 {
-  "version": "2.81",
+  "version": "2.82",
   "released": "2026-09-16",
-  "codename": "glow70-label-blackname",
+  "codename": "glow70-locked-mg",
   "highlights": [
-    "GLOW 70 vial art: black name + gold 70 MG bar (ELITE Soft-QA PASS / Indian+Marketing SoT)",
-    "Replaced live vial-glow-70.webp/png + 70mg variants; cache-bust ?v=173",
-    "Held BPC-skeleton alt aside (not ship) unless Yehuda overrides"
+    "Yehuda SoT override: GLOW 70 = locked-mg gold-band (white name on band + 70 mg box) \u2014 ELITE Soft-QA PASS",
+    "Replaced live glow media + 5/10/70mg thumbs + so-glow-70; bust ?v=174",
+    "Black-name draft retired from live"
   ]
 }
