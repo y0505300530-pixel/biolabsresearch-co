@@ -89,7 +89,7 @@
 
 <script src="/cart-vial.js?v=330" defer></script>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.02">
+<meta name="app-version" content="2.03">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -506,7 +506,7 @@ with lot documentation.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.02" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.02</p>
+<p class="site-version" data-site-version="2.03" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.03</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->
@@ -733,7 +733,12 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
     'thymosin-alpha-1': '/products/thymosin-alpha-1',
     'tb-500': '/products/tb-500',
     'retatrutide': '/products/retatrutide',
-    'bpc-157': '/products/bpc-157'
+    'bpc-157': '/products/bpc-157',
+    'ipamorelin': '/products/ipamorelin',
+    'tesamorelin': '/products/tesamorelin',
+    'semaglutide': '/products/semaglutide',
+    'tirzepatide': '/products/tirzepatide',
+    'curcumin-phytosome': '/products/curcumin-phytosome'
   };
 
   
@@ -786,7 +791,7 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
     grid.innerHTML = '';
     list.forEach(function(p) {
       var href = SLUG_MAP[p.slug] || ('/products/' + p.slug);
-      var vial = (p.image_url && String(p.image_url).indexOf('/media/')===0) ? String(p.image_url).replace(/\?v=\d+/, '?v=159') : ('/media/vial-' + p.slug + '.png?v=159');
+      var vial = (p.image_url && String(p.image_url).indexOf('/media/')===0) ? String(p.image_url).replace(/\?v=\d+/, '?v=159') : ('/media/vial-' + p.slug + '.webp?v=159');
       if (vial.indexOf('?v=')===-1 && vial.indexOf('/media/')===0) vial += '?v=159';
       var badgeHtml = p.badge
         ? '<div class="product-card-badge">' + escAttr(p.badge) + '</div>'
@@ -852,20 +857,31 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
 
   function loadCatalog() {
     var grid = document.getElementById('products-grid');
-    if (grid && !grid.querySelector('.product-card')) {
-      grid.innerHTML = '';
+    var hadSSR = !!(grid && grid.querySelector('.product-card'));
+    /* Never wipe SSR cards up-front — only replace after a successful render */
+    if (grid && !hadSSR && !grid.querySelector('[data-catalog-status]')) {
+      grid.innerHTML = '<div data-catalog-status="1" style="grid-column:1/-1;text-align:center;padding:48px 0;color:var(--ink-muted);font-size:15px">Loading catalog…</div>';
     }
-    fetch('/api/products')
+    var ctrl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+    var timer = setTimeout(function(){ try { if (ctrl) ctrl.abort(); } catch (e) {} }, 8000);
+    var opts = ctrl ? { signal: ctrl.signal } : {};
+    fetch('/api/products', opts)
       .then(function(r){
         if (!r.ok) throw new Error('api ' + r.status);
         return r.json();
       })
       .then(function(products) {
+        clearTimeout(timer);
         (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });
         try { localStorage.setItem('biolabs_products', JSON.stringify(products)); } catch (e) {}
-        renderProducts(products);
+        try {
+          renderProducts(products);
+        } catch (err) {
+          if (!hadSSR) showCatalogMsg('Catalog temporarily unavailable. Please try again.', true);
+        }
       })
       .catch(function() {
+        clearTimeout(timer);
         var cached = null;
         try { cached = localStorage.getItem('biolabs_products')||localStorage.getItem('biofirst_products'); } catch (e) {}
         if (cached) {
@@ -876,6 +892,8 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
             return;
           } catch (e2) {}
         }
+        /* Keep SSR cards if present; only show error when grid is empty */
+        if (grid && grid.querySelector('.product-card')) return;
         showCatalogMsg('Catalog temporarily unavailable. Please try again.', true);
       });
   }

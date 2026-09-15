@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 2.01
+# biolabsresearch.co — Version 2.03
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- Softened absolute COA/purity claims on /guide-reading-coa + related blog posts
-- Purity table: no invented grade bans — depends on analytical application and lab specification
-- Removed 'single most important' / 'not research grade' / 'should not be sold' language
+- Popular peptides: keep SSR cards until API render succeeds (no wipe-on-fetch)
+- 8s fetch timeout + error/retry only if grid empty; Loading… only when no SSR
+- SLUG_MAP adds Ipamorelin, Tesamorelin, Semaglutide, Tirzepatide, Curcumin

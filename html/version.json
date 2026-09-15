@@ -1,10 +1,10 @@
 {
-  "version": "2.02",
+  "version": "2.03",
   "released": "2026-09-15",
-  "codename": "promo-end-hide-agegate",
+  "codename": "catalog-loading-harden",
   "highlights": [
-    "Hide ended INSIDER25 promo banner when past END_MS",
-    "Scope age-gate chrome hide to html.has-age-gate pages",
-    "Repair app-version/og:image meta corruption from v2.01"
+    "Popular peptides: keep SSR cards until API render succeeds (no wipe-on-fetch)",
+    "8s fetch timeout + error/retry only if grid empty; Loading\u2026 only when no SSR",
+    "SLUG_MAP adds Ipamorelin, Tesamorelin, Semaglutide, Tirzepatide, Curcumin"
   ]
 }
