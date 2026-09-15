@@ -1,10 +1,10 @@
 {
-  "version": "2.04",
+  "version": "2.05",
   "released": "2026-09-15",
-  "codename": "insider25-timer-restore",
+  "codename": "insider25-12h-loop",
   "highlights": [
-    "INSIDER25 banner restored (was hidden after Sep 14 cutoff)",
-    "Live countdown again (Dd HH:MM:SS / HH:MM:SS) \u2014 no --:--:-- stuck state",
-    "New SoT end: 2026-09-30 23:59 IL \u2014 change if Yehuda wants another date"
+    "INSIDER25 countdown is a rolling 12-hour timer (HH:MM:SS)",
+    "At 00:00:00 it resets to 12:00:00 \u2014 continuous, never ends",
+    "Banner stays visible; no Offer ended / hide path"
   ]
 }

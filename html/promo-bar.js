@@ -1,9 +1,8 @@
-/* INSIDER25 promo + countdown. Fixed end: 2026-09-30T23:59:59+03:00 (Asia/Jerusalem).
+/* INSIDER25 promo + countdown. Rolling 12h window — resets at 00:00:00 (never ends).
    Marquee is rAF-driven (not CSS animation) so live timer updates don't hitch the loop. */
 (function(){
   var CODE = "INSIDER25";
-  var END_ISO = "2026-09-30T23:59:59+03:00";
-  var END_MS = Date.parse(END_ISO);
+  var WINDOW_MS = 12 * 60 * 60 * 1000;
   var LOOP_SEC = 93;
   var _raf = 0;
   var _x = 0;
@@ -14,14 +13,18 @@
   var _resizeT = 0;
 
   function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
+  function windowLeft(){
+    var now = Date.now();
+    var left = WINDOW_MS - (now % WINDOW_MS);
+    if (left <= 0 || left > WINDOW_MS) left = WINDOW_MS;
+    return left;
+  }
   function format(left){
-    if (left <= 0) return "00:00:00";
+    if (left <= 0) left = WINDOW_MS;
     var totalSec = Math.floor(left / 1000);
-    var d = Math.floor(totalSec / 86400);
-    var h = Math.floor((totalSec % 86400) / 3600);
+    var h = Math.floor(totalSec / 3600);
     var m = Math.floor((totalSec % 3600) / 60);
     var s = totalSec % 60;
-    if (d > 0) return d + "d " + pad(h) + ":" + pad(m) + ":" + pad(s);
     return pad(h) + ":" + pad(m) + ":" + pad(s);
   }
   function showPromo(){
@@ -36,29 +39,13 @@
       stacks[i].classList.remove("promo-ended");
     }
   }
-  function hideEndedPromo(){
-    var el = document.getElementById("promoStack");
-    if (el) {
-      el.style.display = "none";
-      el.classList.add("promo-ended");
-    }
-    var stacks = document.querySelectorAll(".promo-stack");
-    for (var i = 0; i < stacks.length; i++) {
-      stacks[i].style.display = "none";
-      stacks[i].classList.add("promo-ended");
-    }
-    try { stopMarquee(); } catch (e) {}
-  }
   function tick(){
-    var left = END_MS - Date.now();
-    if (left <= 0) {
-      hideEndedPromo();
-      return;
-    }
+    var left = windowLeft();
     var nodes = document.querySelectorAll(".cutoff-timer");
-    var i, text = format(left);
-    for (i = 0; i < nodes.length; i++) {
-      nodes[i].setAttribute("data-end", END_ISO);
+    var text = format(left);
+    for (var i = 0; i < nodes.length; i++) {
+      nodes[i].removeAttribute("data-end");
+      nodes[i].setAttribute("data-window", "12h");
       if (nodes[i].textContent !== text) nodes[i].textContent = text;
     }
   }
@@ -84,7 +71,6 @@
     _halfW = halfW;
     var speed = halfW / LOOP_SEC;
     _x -= speed * dt;
-    /* wrap without jump — exact half width */
     if (_x <= -halfW) _x += halfW;
     if (_x > 0) _x -= halfW;
     _track.style.transform = "translate3d(" + _x.toFixed(2) + "px,0,0)";
@@ -107,18 +93,15 @@
     _raf = requestAnimationFrame(frame);
   }
 
-  
   function normalizeSeg(seg){
     if (!seg || seg.getAttribute("data-norm")==="1") return;
     var timer = seg.querySelector(".cutoff-timer");
     var codeBtn = seg.querySelector(".promo-code");
     if (!timer || !codeBtn) return;
-    // Rebuild: "25% OFF — CODE" + button + " · " + timer (same baseline, no floating)
     var wrap = document.createElement("span");
     wrap.className = "promo-ends-wrap";
     wrap.appendChild(document.createTextNode(" · "));
     wrap.appendChild(timer);
-    // clear seg and rebuild cleanly
     var label = document.createTextNode("25% OFF — CODE ");
     seg.innerHTML = "";
     seg.appendChild(label);
@@ -132,25 +115,16 @@
   }
 
   function fillMarquee(){
-    if (Date.now() >= END_MS) {
-      hideEndedPromo();
-      return;
-    }
     var track = document.querySelector(".promo-track");
     var bar = document.querySelector(".promo-bar");
     if (!track || !bar) return;
     var groups = track.querySelectorAll(".promo-group");
     if (!groups.length) return;
     var template = groups[0].cloneNode(true);
-    // SoT CODE: always INSIDER25 on ticker pills
     var codeBtns = template.querySelectorAll('.promo-code');
     for (var ci = 0; ci < codeBtns.length; ci++) {
       codeBtns[ci].setAttribute('data-code', CODE);
       codeBtns[ci].textContent = CODE;
-    }
-    var segs = template.querySelectorAll('.promo-seg');
-    for (var si = 0; si < segs.length; si++) {
-      /* keep structure; code button already forced */
     }
     var minW = Math.max(bar.clientWidth || 0, window.innerWidth || 0, 1200);
     track.innerHTML = "";
@@ -160,84 +134,66 @@
     track.style.flexWrap = "nowrap";
     track.style.width = "max-content";
     track.style.transform = "translate3d(0,0,0)";
-
-    function makeHalf(){
-      var half = document.createElement("div");
-      half.className = "promo-half";
-      half.style.display = "flex";
-      half.style.alignItems = "center";
-      half.style.flex = "0 0 auto";
-      half.style.flexWrap = "nowrap";
-      return half;
-    }
-    var a = makeHalf();
+    var halfA = document.createElement("div");
+    halfA.className = "promo-half";
+    halfA.style.display = "flex";
+    halfA.style.alignItems = "center";
+    halfA.style.flexWrap = "nowrap";
+    halfA.style.flexShrink = "0";
     var guard = 0;
-    do {
-      a.appendChild(template.cloneNode(true));
+    while (halfA.scrollWidth < minW + 80 && guard < 40) {
+      halfA.appendChild(template.cloneNode(true));
       guard++;
-    } while (guard < 2);
-    track.appendChild(a);
-    while (a.scrollWidth < minW && guard < 12) {
-      a.appendChild(template.cloneNode(true));
-      guard++;
+      if (!halfA.scrollWidth) break;
     }
-    var b = makeHalf();
-    b.innerHTML = a.innerHTML;
-    track.appendChild(b);
-    try { normalizeAll(); } catch (eN2) {}
-    _x = 0;
+    if (!halfA.children.length) halfA.appendChild(template.cloneNode(true));
+    var halfB = halfA.cloneNode(true);
+    track.appendChild(halfA);
+    track.appendChild(halfB);
+    _track = track;
+    _half = halfA;
     _halfW = 0;
+    normalizeAll();
+    tick();
     startMarquee();
   }
 
+  function onResize(){
+    clearTimeout(_resizeT);
+    _resizeT = setTimeout(function(){
+      try { fillMarquee(); } catch (e) {}
+    }, 180);
+  }
+
   function wire(){
-    if (Date.now() >= END_MS) {
-      hideEndedPromo();
-      return;
-    }
     showPromo();
     saveCode();
     try { fillMarquee(); } catch (e) {}
     try { normalizeAll(); } catch (eN) {}
-    try {
-      window.addEventListener("resize", function(){
-        clearTimeout(_resizeT);
-        _resizeT = setTimeout(function(){
-          try { fillMarquee(); } catch (e2) {}
-        }, 200);
-      });
-    } catch (e3) {}
-    try {
-      localStorage.removeItem("insider25_end");
-      localStorage.removeItem("promo_end");
-      localStorage.removeItem("cutoff_end");
-      sessionStorage.removeItem("insider25_end");
-    } catch (e) {}
-    var btns = document.querySelectorAll(".promo-code");
-    for (var i = 0; i < btns.length; i++) {
-      (function(btn){
-        if (btn._wired) return;
-        btn._wired = true;
-        btn.addEventListener("click", function(e){
-          e.preventDefault();
-          e.stopPropagation();
-          saveCode();
-          var t = btn.getAttribute("data-code") || CODE;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(t).then(function(){
-              var old = btn.textContent;
-              btn.textContent = "COPIED";
-              setTimeout(function(){ btn.textContent = old; }, 1200);
-            }).catch(function(){});
-          }
-        });
-      })(btns[i]);
-    }
-    var field = document.getElementById("couponCode") || document.querySelector("[name=coupon]");
-    if (field && !field.value) field.value = CODE;
     tick();
-    if (!window._promoTick) window._promoTick = setInterval(tick, 1000);
+    setInterval(tick, 1000);
+    window.addEventListener("resize", onResize);
+    document.addEventListener("click", function(e){
+      var btn = e.target && e.target.closest && e.target.closest(".promo-code");
+      if (!btn) return;
+      e.preventDefault();
+      saveCode();
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(CODE);
+        }
+      } catch (err) {}
+      btn.classList.add("copied");
+      var prev = btn.textContent;
+      btn.textContent = "COPIED";
+      setTimeout(function(){ btn.textContent = prev; btn.classList.remove("copied"); }, 1200);
+    });
+    try { localStorage.removeItem("cutoff_end"); } catch (e2) {}
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
-  else wire();
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", wire);
+  } else {
+    wire();
+  }
 })();
