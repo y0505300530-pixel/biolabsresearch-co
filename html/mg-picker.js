@@ -120,10 +120,9 @@
     }
     syncStickyPrice(selectedPrice);
     setOriginal(priceEl, slug, mg, selectedPrice);
-    document.querySelectorAll("img").forEach(function (img) {
-      var s = img.getAttribute("src") || "";
-      if (s.indexOf("vial-" + slug) !== -1) img.src = src;
-    });
+    /* v2.46: only swap main vial — never overwrite/hide .pdp-thumbs strip */
+    var mainImg = document.getElementById("pdpMainImg") || document.querySelector(".product-img-section .product-img-main img, .product-img-main > img");
+    if (mainImg) mainImg.src = src;
   }
   function hideNativeSize() {
     document.querySelectorAll(".size-options, .size-label").forEach(function (el) {
@@ -305,12 +304,18 @@
       document.addEventListener("click", function (e) {
         var t = e.target && e.target.closest && e.target.closest(".pdp-thumb");
         if (!t) return;
+        e.preventDefault();
         var full = t.getAttribute("data-full");
-        var main = document.getElementById("pdpMainImg") || document.querySelector(".product-img-main img");
+        var main = document.getElementById("pdpMainImg") || document.querySelector(".product-img-section .product-img-main img, .product-img-main > img");
         if (!full || !main) return;
         main.src = full;
-        var wrap = t.parentNode;
-        if (wrap) wrap.querySelectorAll(".pdp-thumb").forEach(function (x) { x.classList.toggle("on", x === t); });
+        var wrap = t.closest(".pdp-thumbs") || t.parentNode;
+        if (wrap && wrap.classList && wrap.classList.contains("pdp-thumbs")) {
+          wrap.querySelectorAll(".pdp-thumb").forEach(function (x) { x.classList.toggle("on", x === t); });
+          /* ensure strip stays in DOM and visible after swap */
+          wrap.style.display = "";
+          wrap.hidden = false;
+        }
       });
     }
     mount();

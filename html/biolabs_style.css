@@ -4598,11 +4598,13 @@ a.footer-brand{
   padding-top:4px;
 }
 .pr-card-view{
-  flex:1;
+  flex:0.9;
+  min-width:0;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  height:40px;
+  height:auto;
+  min-height:40px;
   border:1.5px solid #0d2137;
   border-radius:999px;
   color:#0d2137;
@@ -4610,11 +4612,15 @@ a.footer-brand{
   font-weight:700;
   text-decoration:none;
   background:#fff;
+  box-sizing:border-box;
+  padding:6px 8px;
 }
 .pr-card-view:hover{background:#F5F2EC}
 .pr-card-atc{
   flex:1.2;
-  height:40px;
+  height:auto;
+  min-height:40px;
+  min-width:0;
   border:0;
   border-radius:999px;
   background:#0d2137;
@@ -4622,9 +4628,17 @@ a.footer-brand{
   font-size:11px;
   font-weight:800;
   letter-spacing:.03em;
-  padding:0 10px;
+  padding:6px 10px;
   cursor:pointer;
-  white-space:nowrap;
+  white-space:normal;
+  line-height:1.15;
+  text-align:center;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  overflow:visible;
+  text-overflow:clip;
+  box-sizing:border-box;
 }
 .pr-card-atc:hover{background:#091826}
 @keyframes pr-marquee{
@@ -4635,7 +4649,8 @@ a.footer-brand{
   .pr-head{padding:0 16px;margin-bottom:14px}
   .pr-viewport{padding:0 16px}
   .pr-card{width:200px}
-  .pr-card-atc{font-size:10px}
+  .pr-card-atc{font-size:10px;padding:6px 8px;white-space:normal;line-height:1.15}
+  .pr-card-view{font-size:12px;padding:6px 8px}
 }
 @media (max-width:390px){
   /* v2.43: clip left overhang + clear scroll affordance */
@@ -4664,7 +4679,34 @@ a.footer-brand{
   .pr-group{gap:12px;padding:4px 0}
   .pr-group + .pr-group{display:none} /* hide marquee duplicate when scroll mode */
   .pr-card{width:168px;scroll-snap-align:start;flex:0 0 168px}
-  .pr-card-atc{font-size:10px;padding:0 8px}
+  /* v2.45: full ADD TO CART — stack View+ATC on narrow rail cards */
+  .pr-card-actions{
+    flex-direction:column;
+    gap:6px;
+  }
+  .pr-card-view,
+  .pr-card-atc{
+    flex:none;
+    width:100%;
+    min-width:0;
+  }
+  .pr-card-view{
+    font-size:12px;
+    padding:8px 10px;
+    height:auto;
+    min-height:40px;
+  }
+  .pr-card-atc{
+    font-size:11px;
+    padding:8px 10px;
+    height:auto;
+    min-height:40px;
+    white-space:normal !important;
+    line-height:1.2;
+    letter-spacing:.02em;
+    overflow:visible;
+    text-overflow:clip;
+  }
 }
 
 
@@ -10366,9 +10408,12 @@ button.btn-coa-secondary {
     order: 2 !important;
     margin-top: 16px !important;
   }
+  /* v2.46: true 1:1 — do NOT cap height (was max-height:280 → ~335×280) */
   .product-img-main {
     aspect-ratio: 1 / 1 !important;
-    max-height: 280px !important;
+    max-height: none !important;
+    height: auto !important;
+    width: 100% !important;
   }
   /* sticky below chrome; don't eat title */
   .pdp-sticky-buy {
@@ -11659,3 +11704,126 @@ p.footer-col-title{
   object-position: center !important;
 }
 /* === end v2.44 === */
+
+/* === v2.45 pairs-rail ATC full label @390 (Yehuda/ELITE) === */
+/* Scope: .pr-card-* only — do not touch .product-card-atc home catalog */
+@media (max-width:390px){
+  .product-rail .pr-card-actions{
+    flex-direction:column !important;
+    gap:6px !important;
+  }
+  .product-rail .pr-card-view,
+  .product-rail .pr-card-atc{
+    flex:none !important;
+    width:100% !important;
+    min-width:0 !important;
+    height:auto !important;
+    white-space:normal !important;
+    overflow:visible !important;
+    text-overflow:clip !important;
+    text-align:center !important;
+  }
+  .product-rail .pr-card-atc{
+    font-size:11px !important;
+    line-height:1.2 !important;
+    padding:8px 10px !important;
+    letter-spacing:.02em !important;
+  }
+}
+/* === end v2.45 === */
+
+/* === v2.46 PDP thumbs outside overflow square (ELITE/Yehuda) === */
+/* ONLY .product-img-main is the square crop box — never the gallery column */
+.product-img-section {
+  overflow: visible !important;
+  aspect-ratio: auto !important;
+  height: auto !important;
+  max-height: none !important;
+}
+/* True 1:1 main frame: width drives height; kill caps/padding that collapse to ~335×280 */
+.product-img-section .product-img-main,
+.product-img-main {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  min-height: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+  display: block !important; /* not flex — flex+align can collapse used height */
+}
+.product-img-section .product-img-main img,
+.product-img-main img,
+#pdpMainImg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  display: block !important;
+}
+/* Thumbs live as siblings BELOW main — keep visible after swap */
+.product-img-section > .pdp-thumbs,
+.pdp-thumbs {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)) !important;
+  gap: 8px !important;
+  margin-top: 10px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  height: auto !important;
+  max-height: none !important;
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 2 !important;
+  pointer-events: auto !important;
+}
+.pdp-thumbs .pdp-thumb {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  aspect-ratio: 1 !important;
+  min-height: 64px !important;
+  overflow: hidden !important;
+  cursor: pointer !important;
+}
+@media (max-width: 800px) {
+  .product-img-section {
+    overflow: visible !important;
+    max-height: none !important;
+  }
+  .product-img-section .product-img-main,
+  .product-img-main {
+    aspect-ratio: 1 / 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important; /* critical: was 280px → non-square */
+    padding: 0 !important;
+  }
+  .pdp-thumbs .pdp-thumb { min-height: 56px !important; }
+}
+
+/* === v2.46 catalog cards: contain + flex center (Yehuda) === */
+/* Live: .product-card-media / .product-card-img — NOT PDP main (stays cover) */
+.product-card-media,
+.product-card-img {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.product-card-media img,
+.product-card-img img,
+.product-card .product-card-img img {
+  object-fit: contain !important;
+  object-position: center !important;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+}
+/* === end v2.46 === */
+
