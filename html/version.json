@@ -1,10 +1,8 @@
 {
-  "version": "2.76",
+  "version": "2.77",
   "released": "2026-09-15",
-  "codename": "aod-bpc-locked-mg-normalize",
+  "codename": "home-catalog-vial-bust-172",
   "highlights": [
-    "AOD-9604 + BPC-157 (+blend/hero/fallback): normalize from locked-mg masters to 1200x1200 #F2EFE9 ~70%",
-    "Media cache bust ?v=172",
-    "Remove html/media/_qa-tmp"
+    "Home renderProducts: stop forcing ?v=170 after /api/products \u2014 use ?v=172 like PDP/static cards"
   ]
 }

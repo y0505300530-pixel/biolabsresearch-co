@@ -53,7 +53,7 @@
 
 <script src="/cart-vial.js?v=305" defer></script>
 <script src="/search-overlay.js?v=29" defer></script>
-<meta name="app-version" content="2.76">
+<meta name="app-version" content="2.77">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -792,7 +792,7 @@ with lot COA on request.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.76" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.76</p>
+<p class="site-version" data-site-version="2.77" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.77</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->
@@ -1156,8 +1156,8 @@ document.getElementById('cartCount').textContent = String(Math.max(0, cart.reduc
     grid.innerHTML = '';
     list.forEach(function(p) {
       var href = SLUG_MAP[p.slug] || ('/products/' + p.slug);
-      var vial = (p.image_url && String(p.image_url).indexOf('/media/')===0) ? String(p.image_url).replace(/\?v=\d+/, '?v=170') : ('/media/vial-' + p.slug + '.webp?v=172');
-      if (vial.indexOf('?v=')===-1 && vial.indexOf('/media/')===0) vial += '?v=170';
+      var vial = (p.image_url && String(p.image_url).indexOf('/media/')===0) ? String(p.image_url).replace(/\?v=\d+/, '?v=172') : ('/media/vial-' + p.slug + '.webp?v=172');
+      if (vial.indexOf('?v=')===-1 && vial.indexOf('/media/')===0) vial += '?v=172';
       var badgeHtml = p.badge
         ? '<div class="product-card-badge">' + escAttr(p.badge) + '</div>'
         : '<div class="product-card-badge product-card-badge-spacer">&nbsp;</div>';
