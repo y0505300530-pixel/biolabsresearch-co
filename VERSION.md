@@ -1,12 +1,14 @@
-# biolabsresearch.co — Version 2.48
+# biolabsresearch.co — Version 2.53
 
 Released 2026-09-15.
 
-Codename: pdp-main-only-yehuda
+Codename: home-researchers-say
 
 ## Highlights
 
-- HIDE: PDP `.pdp-thumbs` / `.pdp-thumb` strip sitewide (CSS `display:none`) — main `.product-img-main` / `#pdpMainImg` only
-- mg-picker: stop thumb-click binding / no force-show of strip; strength swaps still update main img only
-- KEEP: PDP true 1:1 cover (v2.46); home catalog card cover (v2.47); pairs rail ATC (v2.45)
-- CSS cache bust ?v=340; mg-picker.js?v=34
+- Homepage section **What researchers say** — verified-order style carousel (packaging / COA / seal / label clarity only; RUO-safe)
+- Social proof: stars + “Verified research orders” — **no invented 4.9 / review-count metrics**
+- Native horizontal scroll-snap + soft edge fade; minimal pointer-drag helper
+- Placement: after `#ship-facts`, before `#research` (blogs) / footer
+- CSS cache bust `biolabs_style.css?v=344`
+- Cart drawer: untouched (Yehuda stop)
