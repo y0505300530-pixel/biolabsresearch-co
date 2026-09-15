@@ -12353,3 +12353,199 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
 .rsay-dist-pct{
   display:none!important;
 }
+
+
+/* === v2.78 catalog-product-grid-polish === */
+/* Responsive grid: 4 / 3 / 2 / 1 — no horizontal scroll; centered max-width */
+.catalog-section{
+  max-width: var(--maxw);
+  margin-left: auto;
+  margin-right: auto;
+  overflow-x: clip;
+}
+.catalog-grid{
+  display: grid !important;
+  grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+@media (max-width: 1100px){
+  .catalog-grid{ grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 14px !important; }
+}
+@media (max-width: 800px){
+  .catalog-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
+}
+@media (max-width: 380px){
+  .catalog-grid{ grid-template-columns: 1fr !important; gap: 12px !important; }
+}
+
+.catalog-header{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 36px;
+}
+.catalog-header .catalog-title{
+  margin: 0;
+}
+.catalog-ruo{
+  margin: 0;
+  max-width: 42rem;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-muted, #8A8A8A);
+}
+.catalog-view-all{
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--bronze, #9A6D2A);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.catalog-view-all:hover{ color: var(--ink, #1F1F1F); }
+.catalog-view-all:focus-visible{
+  outline: 2px solid #0d2137;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Card flex stack: image → badge → title → chips → desc → price/CTA bottom */
+.catalog-grid > .product-card,
+.product-card{
+  display: flex !important;
+  flex-direction: column !important;
+  min-width: 0;
+  height: 100%;
+}
+.product-card-body{
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 auto !important;
+  min-height: 0;
+  padding: 4px 2px 10px !important;
+}
+.product-card-body .product-card-row{
+  margin-top: auto !important;
+}
+
+/* Images: keep assets; #F2EFE9; 1:1 contain (catalog cards only — not pairs rail) */
+.catalog-grid .product-card-media,
+.catalog-grid .product-card-img,
+#products-grid .product-card-media,
+#products-grid .product-card-img{
+  aspect-ratio: 1 / 1 !important;
+  background: #F2EFE9 !important;
+  overflow: hidden !important;
+}
+.catalog-grid .product-card-media img,
+.catalog-grid .product-card-img img,
+#products-grid .product-card-media img,
+#products-grid .product-card-img img{
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: transparent !important;
+}
+
+/* Badge: consistent size / placement; never overlap image/title */
+.product-card-badge,
+.product-card-badge-spacer{
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-height: 22px;
+  max-height: 22px;
+  margin: 8px 0 6px !important;
+  padding: 0 10px !important;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+  letter-spacing: .06em !important;
+  text-transform: uppercase !important;
+  line-height: 1 !important;
+  border-radius: 999px !important;
+  width: fit-content;
+  max-width: 100%;
+  position: static !important;
+}
+.product-card-badge-spacer{
+  visibility: hidden !important;
+  background: transparent !important;
+  pointer-events: none;
+}
+
+/* Title 2-line clamp */
+.product-card-body .product-card-name,
+.catalog-grid .product-card-name{
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+  min-height: 2.3em !important;
+  max-height: 2.3em !important;
+  margin: 0 0 8px !important;
+  line-height: 1.15 !important;
+  background: none !important;
+  padding: 0 !important;
+}
+
+/* Strength chips row: fixed height band */
+.product-card-strengths{
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center;
+  gap: 6px !important;
+  min-height: 40px;
+  margin: 0 0 8px !important;
+}
+.product-card-mg:focus-visible,
+button.product-card-mg:focus-visible{
+  outline: 2px solid #0d2137 !important;
+  outline-offset: 2px !important;
+}
+.product-card-atc:focus-visible{
+  outline: 2px solid #0d2137 !important;
+  outline-offset: 2px !important;
+}
+
+/* Description / tagline 2-line clamp */
+.product-card-tagline{
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  -webkit-line-clamp: 2 !important;
+  overflow: hidden !important;
+  min-height: 2.6em !important;
+  max-height: 2.6em !important;
+  margin: 0 0 10px !important;
+}
+/* Keep long research desc hidden; tagline is the catalog blurb */
+.product-card-desc{ display: none !important; }
+
+/* Prices row */
+.product-card-prices{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+}
+.product-card-from{
+  display: block;
+  width: 100%;
+}
+
+/* No expired promo chrome */
+.promo-stack[hidden],
+.promo-stack.promo-ended{
+  display: none !important;
+}
+/* === end v2.78 === */

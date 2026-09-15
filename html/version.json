@@ -1,10 +1,10 @@
 {
-  "version": "2.77",
-  "released": "2026-09-15",
-  "codename": "home-catalog-vial-bust-172",
+  "version": "2.78",
+  "released": "2026-09-16",
+  "codename": "home-catalog-grid-polish",
   "highlights": [
-    "Home renderProducts: stop forcing ?v=170 after /api/products \u2014 use ?v=172 like PDP/static cards",
-    "products-data.json + /api/products image_url vial busts bumped 171\u2192172 sitewide (AOD/BPC included)",
-    "cart-vial.js vial media already on ?v=172; static home/shop cards ?v=172"
+    "Homepage #catalog product grid: 4/3/2/1 responsive, card flex CTA align, 1:1 contain on #F2EFE9",
+    "Catalog header: Research compounds + RUO line + View all compounds; KEEP ADD TO CART",
+    "Strip expired INSIDER25 promo copy; hide strike originals (no active promo); alts/title clamp a11y"
   ]
 }

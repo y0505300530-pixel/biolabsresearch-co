@@ -240,11 +240,12 @@
         .map(function (s) {
           var k = norm(s);
           var on = k === selectedKey ? " on active" : "";
+          var pressed = k === selectedKey ? ' aria-pressed="true"' : ' aria-pressed="false"';
           var op = pack.originals[k];
           return (
             '<button type="button" class="product-card-mg size-chip dose-chip' +
             on +
-            '" data-mg="' +
+            '"' + pressed + ' data-mg="' +
             esc(k) +
             '" data-price="' +
             esc(pack.prices[k]) +
@@ -259,22 +260,32 @@
     } else {
       Array.prototype.forEach.call(card.querySelectorAll(".product-card-mg"), function (btn) {
         var k = norm(btn.getAttribute("data-mg") || btn.textContent);
-        btn.classList.toggle("on", k === selectedKey);
-        btn.classList.toggle("active", k === selectedKey);
+        var on = k === selectedKey;
+        btn.classList.toggle("on", on);
+        btn.classList.toggle("active", on);
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
       });
     }
 
     var priceEl = card.querySelector(".product-card-price");
     var origEl = card.querySelector(".product-card-original");
+    var fromEl = card.querySelector(".product-card-from");
+    var ACTIVE_PROMO = false; /* INSIDER25 ended — no strike */
     if (priceEl) priceEl.textContent = "$" + price;
     if (origEl) {
-      if (orig != null && Number(orig) > Number(price)) {
+      if (ACTIVE_PROMO && orig != null && Number(orig) > Number(price)) {
         origEl.textContent = "$" + orig;
         origEl.style.display = "";
       } else {
         origEl.textContent = "";
         origEl.style.display = "none";
       }
+    }
+    /* Multi-variant: keep From until user picks a chip; then exact price */
+    if (fromEl) {
+      var multi = (pack.strengths || []).length > 1;
+      var userPicked = card.getAttribute("data-mg-picked") === "1";
+      fromEl.style.display = (multi && !userPicked) ? "" : "none";
     }
 
     var atc = card.querySelector(".product-card-atc");
