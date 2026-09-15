@@ -11115,3 +11115,26 @@ html body.nav-open .nav{
   z-index: 1000 !important;
 }
 
+/* v2.06 promo marquee breathing room */
+html body .promo-bar,
+html body .promo-stack .promo-bar {
+  overflow: hidden !important;
+}
+html body .promo-track {
+  gap: 0 !important;
+  padding-left: 16px !important;
+}
+html body .promo-group {
+  margin-right: 56px !important;
+  gap: 0 !important;
+}
+html body .promo-seg {
+  gap: 10px !important;
+  padding: 0 4px !important;
+  letter-spacing: .06em !important;
+  font-size: 12px !important;
+}
+html body .promo-sep {
+  margin: 0 0 0 8px !important;
+  opacity: .7 !important;
+}

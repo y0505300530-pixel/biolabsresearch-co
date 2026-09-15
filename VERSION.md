@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 2.05
+# biolabsresearch.co — Version 2.06
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- INSIDER25 countdown is a rolling 12-hour timer (HH:MM:SS)
-- At 00:00:00 it resets to 12:00:00 — continuous, never ends
-- Banner stays visible; no Offer ended / hide path
+- INSIDER25 marquee: wider gaps between repeats (56px), less packing
+- Slower scroll (140s), left padding so text isn’t clipped mid-word
+- Dedupe jammed SSR segments inside each promo-group

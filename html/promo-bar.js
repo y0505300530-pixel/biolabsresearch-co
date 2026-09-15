@@ -3,7 +3,7 @@
 (function(){
   var CODE = "INSIDER25";
   var WINDOW_MS = 12 * 60 * 60 * 1000;
-  var LOOP_SEC = 93;
+  var LOOP_SEC = 140;
   var _raf = 0;
   var _x = 0;
   var _halfW = 0;
@@ -120,12 +120,25 @@
     if (!track || !bar) return;
     var groups = track.querySelectorAll(".promo-group");
     if (!groups.length) return;
+    /* One clean segment per group — drop duplicate segs jammed in SSR */
     var template = groups[0].cloneNode(true);
-    var codeBtns = template.querySelectorAll('.promo-code');
+    var segs = template.querySelectorAll(".promo-seg");
+    for (var si = segs.length - 1; si >= 1; si--) segs[si].parentNode.removeChild(segs[si]);
+    var seps = template.querySelectorAll(".promo-sep");
+    for (var sj = seps.length - 1; sj >= 1; sj--) seps[sj].parentNode.removeChild(seps[sj]);
+    if (!template.querySelector(".promo-sep")) {
+      var sep = document.createElement("span");
+      sep.className = "promo-sep";
+      sep.setAttribute("aria-hidden", "true");
+      sep.textContent = "·";
+      template.appendChild(sep);
+    }
+    var codeBtns = template.querySelectorAll(".promo-code");
     for (var ci = 0; ci < codeBtns.length; ci++) {
-      codeBtns[ci].setAttribute('data-code', CODE);
+      codeBtns[ci].setAttribute("data-code", CODE);
       codeBtns[ci].textContent = CODE;
     }
+    template.style.marginRight = "56px";
     var minW = Math.max(bar.clientWidth || 0, window.innerWidth || 0, 1200);
     track.innerHTML = "";
     track.style.animation = "none";
@@ -134,6 +147,7 @@
     track.style.flexWrap = "nowrap";
     track.style.width = "max-content";
     track.style.transform = "translate3d(0,0,0)";
+    track.style.paddingLeft = "24px";
     var halfA = document.createElement("div");
     halfA.className = "promo-half";
     halfA.style.display = "flex";
@@ -141,8 +155,11 @@
     halfA.style.flexWrap = "nowrap";
     halfA.style.flexShrink = "0";
     var guard = 0;
-    while (halfA.scrollWidth < minW + 80 && guard < 40) {
-      halfA.appendChild(template.cloneNode(true));
+    /* Aim for ~1.2× viewport — not packed edge-to-edge */
+    while (halfA.scrollWidth < minW * 1.15 && guard < 24) {
+      var node = template.cloneNode(true);
+      node.style.marginRight = "56px";
+      halfA.appendChild(node);
       guard++;
       if (!halfA.scrollWidth) break;
     }
