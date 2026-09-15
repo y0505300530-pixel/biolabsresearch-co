@@ -1,8 +1,10 @@
 {
-  "version": "2.74",
+  "version": "2.76",
   "released": "2026-09-15",
-  "codename": "search-footer-catalog",
+  "codename": "aod-bpc-locked-mg-normalize",
   "highlights": [
-    "Search overlay footer: OPEN COMPOUND \u2192 \u2192 CATALOG \u2190 linking to /#catalog"
+    "AOD-9604 + BPC-157 (+blend/hero/fallback): normalize from locked-mg masters to 1200x1200 #F2EFE9 ~70%",
+    "Media cache bust ?v=172",
+    "Remove html/media/_qa-tmp"
   ]
 }

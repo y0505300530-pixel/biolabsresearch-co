@@ -33,7 +33,7 @@
       var q = u.indexOf("?");
       return (q === -1 ? u.replace(/\.webp$/, ".png") : u.slice(0, q).replace(/\.webp$/, ".png")) + "?v=150";
     }
-    return "/media/vial-" + slug + ".png?v=171";
+    return "/media/vial-" + slug + ".png?v=172";
   }
   function catalog(list) {
     return (list || []).filter(function (p) {
