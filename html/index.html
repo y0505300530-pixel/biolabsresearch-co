@@ -33,7 +33,7 @@
 <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/video/hero-cinematic.jpg?v=2" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=343">
+<link rel="stylesheet" href="/biolabs_style.css?v=344">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -51,9 +51,9 @@
 })();
 </script>
 
-<script src="/cart-vial.js?v=303" defer></script>
+<script src="/cart-vial.js?v=304" defer></script>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.50">
+<meta name="app-version" content="2.51">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -478,7 +478,7 @@ with lot documentation.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.50" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.50</p>
+<p class="site-version" data-site-version="2.51" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.51</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->
@@ -586,7 +586,7 @@ window.compareAtPrice = function(item){
 <div class="cart-drawer" id="cartDrawer">
   <div class="cart-header">
     <div class="cart-title">Your order <span id="cartOrderCount" class="cart-count-label"></span></div>
-    <button type="button" class="cart-close" onclick="toggleCart()" aria-label="Close cart">✕</button>
+    <button aria-label="Close" type="button" class="cart-close" onclick="toggleCart()">✕</button>
   </div>
   <div class="cart-items" id="cartItems">
     <div class="cart-empty">
@@ -653,10 +653,12 @@ function updateQtyByIndex(idx, delta) {
     if (d <= -99) d = -1;
     item.qty = (parseInt(item.qty,10)||1) + d;
     if (item.qty <= 0) cart.splice(idx, 1);
+  } else if (d < 0 && d > -99 && (parseInt(item.qty,10)||0) <= 1) {
+    cart.splice(idx, 1); /* − at 1 becomes remove; never below 1 */
   } else if (d <= -99 || (parseInt(item.qty,10)||0) + d <= 0) {
     cart.splice(idx, 1);
   } else {
-    item.qty = (parseInt(item.qty,10)||1) + d;
+    item.qty = Math.max(1, (parseInt(item.qty,10)||1) + d);
   }
   cart = cart.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
   saveCart();
@@ -715,12 +717,12 @@ function renderCart() {
         '<div class="ci-name">' + item.name + (item.mg ? ' <span class="ci-mg">' + String(item.mg).replace(/mg/i,' mg') + '</span>' : '') + '</div>' +
         '<div class="ci-price">$' + (parseFloat(item.price) || 0).toFixed(2) + (window.compareAtPrice && window.compareAtPrice(item) > (parseFloat(item.price)||0) ? ' <span class="was">$' + window.compareAtPrice(item).toFixed(2) + '</span>' : '') + '</div>' +
         '<div class="ci-qty">' +
-          '<button type="button" class="ci-qty-btn" data-idx="' + idx + '" data-delta="-1">−</button>' +
-          '<span>' + item.qty + '</span>' +
-          '<button type="button" class="ci-qty-btn" data-idx="' + idx + '" data-delta="1">+</button>' +
+          '<button type="button" class="ci-qty-btn" data-idx="' + idx + '" data-delta="-1" aria-label="Decrease quantity of ' + String(item.name||'').replace(/"/g,'&quot;') + '">−</button>' +
+          '<span aria-live="polite">' + item.qty + '</span>' +
+          '<button type="button" class="ci-qty-btn" data-idx="' + idx + '" data-delta="1" aria-label="Increase quantity of ' + String(item.name||'').replace(/"/g,'&quot;') + '">+</button>' +
         '</div>' +
       '</div>' +
-      '<button type="button" class="ci-remove" data-idx="' + idx + '" data-delta="-99">✕</button>' +
+      '<button type="button" class="ci-remove" data-idx="' + idx + '" data-delta="-99" aria-label="Remove ' + String(item.name||'').replace(/"/g,'&quot;') + '">✕</button>' +
     '</div>';
   }).join('');
   mountAddMore(cart);

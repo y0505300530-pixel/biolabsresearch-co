@@ -16,7 +16,7 @@
     '#cartAddMore:empty,.cart-addmore-slot:empty{display:none}',
     '.cart-addmore{margin:0;padding:8px 0 2px;border:0}',
     '.cart-addmore-title{text-align:center;font-size:12px;font-weight:800;margin:0 0 6px;padding:0 16px;color:#1a3a2a}',
-    '.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:6px !important;overflow-x:auto !important;overflow-y:visible !important;-webkit-overflow-scrolling:touch !important;touch-action:pan-x !important;overscroll-behavior-x:contain !important;padding:0 12px 6px;scrollbar-width:thin;pointer-events:auto !important}',
+    '.cart-addmore-track{display:flex !important;flex-wrap:nowrap !important;gap:6px !important;overflow-x:auto !important;overflow-y:visible !important;-webkit-overflow-scrolling:touch !important;touch-action:pan-x !important;overscroll-behavior-x:contain !important;padding:0 12px 6px;scrollbar-width:none;pointer-events:auto !important;scroll-snap-type:x mandatory !important;scroll-padding-inline:12px !important}',
     'body.cart-open{overflow:hidden !important}',
     'body.cart-open .promo-stack,body.cart-open #promoStack{display:none!important;height:0!important;min-height:0!important;max-height:0!important;overflow:hidden!important;visibility:hidden!important;opacity:0!important;pointer-events:none!important;margin:0!important;padding:0!important;border:0!important}',
     '.cart-header,.cart-footer,#cartProgress{flex:0 0 auto !important}',
@@ -2402,4 +2402,173 @@ function addSuggest(slug, name, price, mg){
   else stripGift();
   setTimeout(stripGift, 300);
   setTimeout(stripGift, 1200);
+})();
+
+
+/* === v2.51 cart-drawer-ux-a11y === */
+(function(){
+  if (window.__blrCartDrawerUx251) return;
+  window.__blrCartDrawerUx251 = true;
+
+  function esc(s){
+    return String(s || '').replace(/[&<>"']/g, function(ch){
+      return ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[ch];
+    });
+  }
+  function productNameFromRow(row){
+    if (!row) return 'item';
+    var n = row.querySelector('.ci-name');
+    if (!n) return 'item';
+    var clone = n.cloneNode(true);
+    clone.querySelectorAll('.ci-mg,.ci-rec-badge').forEach(function(x){ try{ x.remove(); }catch(e){} });
+    return (clone.textContent || 'item').replace(/\s+/g, ' ').trim() || 'item';
+  }
+  function ensureMeta(){
+    var drawer = document.getElementById('cartDrawer');
+    if (!drawer) return null;
+    var el = document.getElementById('cartDrawerMeta');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'cartDrawerMeta';
+      el.className = 'cart-drawer-meta';
+      el.setAttribute('aria-label', 'Order notes');
+      el.innerHTML =
+        '<p class="cart-meta-title">Before you continue</p>' +
+        '<ul class="cart-meta-list">' +
+          '<li>Est. shipping calculated at inquiry — cold-chain packing available</li>' +
+          '<li>Lot COA available on request for catalog SKUs</li>' +
+          '<li>Research use only — see Shipping &amp; Returns policies</li>' +
+        '</ul>';
+      var add = document.getElementById('cartAddMore');
+      var footer = drawer.querySelector('.cart-footer');
+      if (add && add.parentNode === drawer) drawer.insertBefore(el, add);
+      else if (footer && footer.parentNode === drawer) drawer.insertBefore(el, footer);
+      else drawer.appendChild(el);
+    }
+    return el;
+  }
+  function syncMeta(){
+    var el = ensureMeta();
+    if (!el) return;
+    var items = document.getElementById('cartItems');
+    var empty = !items || !!items.querySelector('.cart-empty') || !(items.querySelector('.cart-item'));
+    if (empty) el.setAttribute('hidden', '');
+    else el.removeAttribute('hidden');
+  }
+  function enhanceRow(row){
+    if (!row || row.classList.contains('ci-bac')) return;
+    var name = productNameFromRow(row);
+    var qtyBtns = row.querySelectorAll('.ci-qty button, .ci-qty-btn');
+    var span = row.querySelector('.ci-qty span');
+    var q = span ? (parseInt(span.textContent, 10) || 1) : 1;
+    qtyBtns.forEach(function(btn){
+      if (!btn.getAttribute('type')) btn.setAttribute('type', 'button');
+      var d = parseInt(btn.getAttribute('data-delta'), 10);
+      var onclick = btn.getAttribute('onclick') || '';
+      var isMinus = (d === -1) || /,\s*-1\s*\)/.test(onclick) || /[−\-]\s*$/.test((btn.textContent || '').trim()) || (btn.textContent || '').trim() === '-' || (btn.textContent || '').trim() === '−';
+      var isPlus = (d === 1) || /,\s*1\s*\)/.test(onclick) || (btn.textContent || '').trim() === '+';
+      if (isMinus) {
+        btn.classList.add('ci-qty-btn');
+        if (q <= 1) {
+          btn.setAttribute('aria-label', 'Remove ' + name);
+          /* keep enabled — − at 1 becomes remove via qty floor wrap */
+        } else {
+          btn.setAttribute('aria-label', 'Decrease quantity of ' + name);
+        }
+        btn.removeAttribute('aria-disabled');
+      } else if (isPlus) {
+        btn.classList.add('ci-qty-btn');
+        btn.setAttribute('aria-label', 'Increase quantity of ' + name);
+      }
+    });
+    var rm = row.querySelector('.ci-remove, .cart-item-remove');
+    if (rm) {
+      if (!rm.getAttribute('type')) rm.setAttribute('type', 'button');
+      rm.setAttribute('aria-label', 'Remove ' + name);
+    }
+  }
+  function enhanceAll(){
+    var drawer = document.getElementById('cartDrawer');
+    if (!drawer) return;
+    var close = drawer.querySelector('.cart-close, [data-cart-close]');
+    if (close) {
+      close.setAttribute('aria-label', 'Close');
+      if (!close.getAttribute('type')) close.setAttribute('type', 'button');
+    }
+    drawer.querySelectorAll('#cartItems .cart-item, .cart-items .cart-item').forEach(enhanceRow);
+    syncMeta();
+    /* snap class on track if present */
+    var track = drawer.querySelector('.cart-addmore-track');
+    if (track) {
+      track.style.scrollSnapType = 'x mandatory';
+    }
+  }
+
+  /* Qty floor: − never leaves qty < 1; at 1, − removes the line */
+  function wrapQtyFloor(name){
+    var fn = window[name];
+    if (typeof fn !== 'function' || fn.__qtyFloor251) return false;
+    var orig = fn;
+    var wrapped = function(){
+      try {
+        if (name === 'updateQtyByIndex') {
+          var idx = parseInt(arguments[0], 10);
+          var delta = parseInt(arguments[1], 10) || 0;
+          var c = (typeof getCart === 'function') ? getCart() : ((typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : null);
+          if (Array.isArray(c) && isFinite(idx) && c[idx] && delta < 0 && delta > -99) {
+            var q = parseInt(c[idx].qty, 10) || 0;
+            if (q <= 1) arguments[1] = -99; /* becomes remove */
+          }
+        } else if (name === 'updateQty') {
+          var delta2 = parseInt(arguments[1], 10) || 0;
+          var nm = arguments[0];
+          var c2 = (typeof getCart === 'function') ? getCart() : ((typeof cart !== 'undefined' && Array.isArray(cart)) ? cart : null);
+          if (Array.isArray(c2) && delta2 < 0 && delta2 > -99) {
+            var base = String(nm||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+            for (var i = 0; i < c2.length; i++) {
+              var it = c2[i];
+              if (!it) continue;
+              var iname = String(it.name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+              if (it.name === nm || iname === base) {
+                var q2 = parseInt(it.qty, 10) || 0;
+                if (q2 <= 1) arguments[1] = -99;
+                break;
+              }
+            }
+          }
+        }
+      } catch(e){}
+      return orig.apply(this, arguments);
+    };
+    wrapped.__qtyFloor251 = true;
+    try {
+      Object.keys(orig).forEach(function(k){ wrapped[k] = orig[k]; });
+    } catch(e){}
+    window[name] = wrapped;
+    return true;
+  }
+
+  function wrapRender(){
+    if (typeof window.renderCart !== 'function' || window.renderCart.__ux251) return false;
+    var orig = window.renderCart;
+    window.renderCart = function(){
+      var r = orig.apply(this, arguments);
+      try { enhanceAll(); } catch(e){}
+      return r;
+    };
+    window.renderCart.__ux251 = true;
+    return true;
+  }
+
+  var tries = 0;
+  function hook(){
+    wrapQtyFloor('updateQtyByIndex');
+    wrapQtyFloor('updateQty');
+    wrapRender();
+    enhanceAll();
+    if (++tries < 50) setTimeout(hook, 120);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', hook);
+  else hook();
+  document.addEventListener('click', function(){ setTimeout(enhanceAll, 0); }, true);
 })();

@@ -1,12 +1,13 @@
 {
-  "version": "2.50",
+  "version": "2.51",
   "released": "2026-09-15",
-  "codename": "card-media-cover-snap",
+  "codename": "cart-drawer-ux-a11y",
   "highlights": [
-    "Pairs rail + catalog card media: object-fit cover + object-position center in 1:1 square (not contain)",
-    "Mapped .product-card__media \u2192 .product-card-media / .product-card-img / .pr-card-media",
-    "Pairs carousel: scroll-snap-type x mandatory on .pr-viewport, scroll-snap-align start on .pr-card; edge-card clip reduced",
-    "PDP sticky gallery (v2.49) and hidden thumbs (v2.48) unchanged; no PNG batch this ship",
-    "CSS cache bust ?v=343"
+    "Cart drawer: kill dead gap between line items and Add to order; meta strip (shipping / COA / policy)",
+    "Remove control enlarged + separated; aria-label Remove {product}; drawer close aria-label Close",
+    "Qty \u2212 never below 1 (becomes remove); +/\u2212 real buttons with accessible labels",
+    "Add-to-order carousel: native scroll-snap, hide grey custom scrollbar, reduce AOD overhang clip",
+    "Optional: home .product-card-media contain again; pairs .pr-card-media keeps cover",
+    "CSS cache bust ?v=344; cart-vial.js ?v=304"
   ]
 }
