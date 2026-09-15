@@ -290,7 +290,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 <script src="/cart-vial.js?v=295" defer></script>
 <script src="/search-overlay.js?v=28" defer></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="2.16">
+<meta name="app-version" content="2.17">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -560,7 +560,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
           <div id="couponNote" aria-live="polite" style="margin-top:6px;font-size:12px;line-height:1.5;min-height:16px"></div>
         </div>
 <button class="btn-submit" id="placeOrderBtn" onclick="placeOrder()">
-          <span id="submitBtnText">Continue (card simulation)</span>
+          <span id="submitBtnText">Continue request</span>
           <div class="spinner" id="submitSpinner"></div>
         </button>
         <p id="ctaMicrocopy">
@@ -795,10 +795,10 @@ function selectPaymentMethod(pm) {
   var btnText = document.getElementById('submitBtnText');
   var micro = document.getElementById('ctaMicrocopyText');
   if (selectedPaymentMethod === 'card') {
-    if (btnText) btnText.textContent = 'Continue (card simulation)';
+    if (btnText) btnText.textContent = 'Continue request';
     if (micro) micro.textContent = 'Simulation only · no charge on this page · settle after inquiry';
   } else {
-    if (btnText) btnText.textContent = 'Continue to Crypto Payment';
+    if (btnText) btnText.textContent = 'Continue request';
     if (micro) micro.textContent = 'Crypto USDT/USDC · payment address provided · RUO catalog only';
   }
 }
@@ -996,7 +996,7 @@ function submitOrderWithMethod(paymentMethod, last4) {
     } else {
       setSubmitBusy(false);
       var bt = document.getElementById('submitBtnText');
-      if (bt) bt.textContent = selectedPaymentMethod === 'crypto' ? 'Continue to Crypto Payment' : 'Continue (card simulation)';
+      if (bt) bt.textContent = selectedPaymentMethod === 'crypto' ? 'Continue request' : 'Continue request';
       alert('We could not deliver the order automatically. Please send the email draft so we receive your request.');
     }
   });
@@ -1176,7 +1176,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.16" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.16</p>
+<p class="site-version" data-site-version="2.17" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.17</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

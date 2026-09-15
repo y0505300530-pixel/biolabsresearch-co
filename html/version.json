@@ -1,9 +1,9 @@
 {
-  "version": "2.16",
+  "version": "2.17",
   "released": "2026-09-15",
-  "codename": "request-language-sot",
+  "codename": "checkout-continue-request",
   "highlights": [
-    "Marketing language SoT sitewide: Request this lot \u00b7 Request lot COA \u00b7 Request received \u00b7 Continue request",
-    "Removed Add to inquiry / Send Request / Proceed to checkout from UI CTAs"
+    "Checkout submit labels aligned to Marketing SoT: Continue request (card + crypto)",
+    "TBD busy state on submit retained for card simulation"
   ]
 }
