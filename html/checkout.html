@@ -1232,7 +1232,7 @@ function showSuccess(orderData, paymentNote) {
         I confirm all products are for <strong>research use only (RUO)</strong> and not for human consumption.
       </label>
     </div>
-    <button class="tc-enter-btn" id="tcEnterBtn" disabled>Enter BioLabs Research</button>
+    <button type="button" class="tc-enter-btn" id="tcEnterBtn" disabled aria-disabled="true">Enter BioLabs Research</button>
     <p class="tc-enter-hint">Tick the three boxes to enter.</p>
     <div class="tc-modal-foot">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioLabs Research.</div>
   </div>
@@ -1240,30 +1240,43 @@ function showSuccess(orderData, paymentNote) {
 
 <script>
 (function(){
-  var overlay = document.getElementById('tcOverlay');
+  var overlay = document.getElementById("tcOverlay");
   if (!overlay) return;
-  if (localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1) {
-    document.documentElement.classList.add('tc-ok');
-    overlay.style.display = 'none';
-    overlay.classList.remove('active');
-    return;
+  var accepted = !!(localStorage.getItem("biolabs_tc_accepted") || localStorage.getItem("biofirst_tc_accepted") || ((document.cookie||"").indexOf("biolabs_tc=1") !== -1));
+  function dismiss(){
+    try { document.documentElement.classList.add("tc-ok"); document.documentElement.classList.remove("tc-need"); } catch (e) {}
+    overlay.classList.remove("active");
+    overlay.style.display = "none";
+    overlay.setAttribute("hidden", "");
+    overlay.setAttribute("aria-hidden", "true");
+    try { document.body.style.overflow = ""; } catch (e2) {}
   }
-  overlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  var c1 = document.getElementById('tcCheck1');
-  var c2 = document.getElementById('tcCheck2');
-  var c3 = document.getElementById('tcCheck3');
-  var btn = document.getElementById('tcEnterBtn');
-  function update(){ btn.disabled = !(c1.checked && c2.checked && c3.checked); }
-  c1.addEventListener('change', update);
-  c2.addEventListener('change', update);
-  c3.addEventListener('change', update);
-  btn.addEventListener('click', function(){
+  if (accepted) { dismiss(); return; }
+  overlay.classList.add("active");
+  overlay.removeAttribute("hidden");
+  overlay.setAttribute("aria-hidden", "false");
+  try { document.body.style.overflow = "hidden"; } catch (e3) {}
+  var c1 = document.getElementById("tcCheck1");
+  var c2 = document.getElementById("tcCheck2");
+  var c3 = document.getElementById("tcCheck3");
+  var btn = document.getElementById("tcEnterBtn");
+  if (!c1 || !c2 || !c3 || !btn) return;
+  function sync(){
+    var ok = !!(c1.checked && c2.checked && c3.checked);
+    btn.disabled = !ok;
+    btn.setAttribute("aria-disabled", ok ? "false" : "true");
+  }
+  ["change","input","click"].forEach(function(ev){
+    [c1,c2,c3].forEach(function(el){ el.addEventListener(ev, sync); });
+  });
+  sync();
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    sync();
     if (btn.disabled) return;
-    localStorage.setItem('biolabs_tc_accepted','true');try{document.cookie='biolabs_tc=1;path=/;max-age=31536000;SameSite=Lax';}catch(e){}
-    document.documentElement.classList.add('tc-ok');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
+    try { localStorage.setItem("biolabs_tc_accepted", "true"); } catch (e4) {}
+    try { document.cookie = "biolabs_tc=1;path=/;max-age=31536000;SameSite=Lax"; } catch (e5) {}
+    dismiss();
   });
 })();
 </script>
