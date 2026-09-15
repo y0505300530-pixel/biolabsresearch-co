@@ -148,8 +148,19 @@ footer{background:var(--navy);padding:60px 60px 30px}
   footer{padding:40px 20px 20px}
   .footer-top{grid-template-columns:1fr 1fr;gap:28px}
 }
+
+/* v2.64 dose-chips-44 */
+@media (max-width:800px){
+  .size-btn,button.size-btn,.size-chip,.dose-chip,.mg-picker .mg-btn,.mg-picker button{
+    min-height:44px!important;min-width:44px!important;height:auto!important;
+    padding:10px 14px!important;box-sizing:border-box!important;
+    display:inline-flex!important;align-items:center!important;justify-content:center!important;
+    line-height:1.2!important;font-size:13px!important;white-space:nowrap!important;
+    -webkit-appearance:none!important;appearance:none!important
+  }
+}
 </style>
-<meta name="app-version" content="2.61">
+<meta name="app-version" content="2.64">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -290,7 +301,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
     if (sizes.length > 1) {
       sizeHtml = '<div class="size-label">Select Size</div><div class="size-options">' +
         sizes.map(function(s,i){
-          return '<button class="size-btn'+(i===0?' active':'')+'" onclick="selectSize(this,\''+s.price+'\')">'+s.label+(s.price?' — '+s.price:'')+'</button>';
+          return '<button class="size-btn size-chip dose-chip'+(i===0?' active':'')+'" onclick="selectSize(this,\''+s.price+'\')">'+s.label+(s.price?' — '+s.price:'')+'</button>';
         }).join('')+'</div>';
     }
     var origHtml = (p.original_price && parseFloat(p.original_price) > parseFloat(p.price))
@@ -683,7 +694,7 @@ document.addEventListener('keydown', function(e) {
 </script>
 
 <script src="/promo-bar.js?v=292"></script>
-<script src="/mg-picker.js?v=34"></script>
+<script src="/mg-picker.js?v=35"></script>
 <script src="/prices-sync.js?v=2"></script>
 </body>
 </html>

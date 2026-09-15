@@ -242,7 +242,7 @@
           var on = k === selectedKey ? " on active" : "";
           var op = pack.originals[k];
           return (
-            '<button type="button" class="product-card-mg' +
+            '<button type="button" class="product-card-mg size-chip dose-chip' +
             on +
             '" data-mg="' +
             esc(k) +

@@ -174,7 +174,7 @@
           var pr = priceForMg(slug, mg, null);
           var priceBit = (pr !== null) ? (' · $' + pr) : '';
           return (
-            '<button type="button" class="mg-btn' +
+            '<button type="button" class="mg-btn size-chip dose-chip' +
             (on ? " active on" : "") +
             '" data-mg="' +
             mg +

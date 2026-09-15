@@ -12235,3 +12235,52 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   box-sizing: border-box !important;
 }
 /* === end v2.63 === */
+
+
+/* === v2.64 dose-chips-44 (Yehuda) === */
+/* Mobile tap targets: min-width AND min-height ≥44px. v2.40 may have lost
+   to later padding / inline PDP .size-btn / inline-level spans (min-height
+   ignored when display:inline). Desktop unchanged. Do not touch .rsay-*. */
+@media (max-width: 800px) {
+  html body .product-card-mg,
+  html body button.product-card-mg,
+  html body span.product-card-mg,
+  html body .size-btn,
+  html body button.size-btn,
+  html body .size-options .size-btn,
+  html body .size-options button,
+  html body .size-chip,
+  html body button.size-chip,
+  html body span.size-chip,
+  html body .dose-chip,
+  html body button.dose-chip,
+  html body span.dose-chip,
+  html body .mg-picker .mg-btn,
+  html body .mg-picker button,
+  html body .mg-picker button[data-mg] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 10px 14px !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1.2 !important;
+    font-size: 13px !important;
+    white-space: nowrap !important;
+    flex: 0 0 auto !important;
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  html body .product-card-strengths,
+  html body .size-options,
+  html body .mg-picker {
+    min-height: 44px !important;
+    align-items: center !important;
+  }
+}
+/* === end v2.64 dose-chips-44 === */

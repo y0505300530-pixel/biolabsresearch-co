@@ -1,11 +1,12 @@
-# biolabsresearch.co — Version 2.63
+# biolabsresearch.co — Version 2.64
 
 Released 2026-09-15.
 
-Codename: rsay-pause-after-drag + product-img-css
+Codename: dose-chips-44
 
 ## Highlights
 
-- **Researchers say...** stay paused after any pointer drag / wheel / touch interaction for the page load (no ~2s idle auto-resume). Auto-run still starts on load (unless prefers-reduced-motion). Marketing quotes/names/4.9 unchanged.
-- **Product image CSS uniformity (Yehuda Part 2):** square 1:1 frames + background `#F2EFE9` on `.product-img-main` / `#pdpMainImg`, `.pdp-thumb`, `.product-card-media` / `.product-card-img`, `.pr-card-media`. PDP main: `object-fit: contain` + center. Cards / pairs rail: `object-fit: cover` + center. PNG asset normalize deferred (Part 1).
-- CSS `biolabs_style.css?v=356`; age-gate + cart untouched
+- **Mobile dose/strength chips ≥44×44px** tap targets under `max-width: 800px` (covers ≤768)
+- Selectors: `.product-card-mg`, `.size-btn`, `.mg-picker .mg-btn` / `.mg-picker button`, `.size-chip`, `.dose-chip` (aliases on catalog + PDP amount pills)
+- Padding 10×14 so labels still fit; desktop look unchanged; researchers-say carousel untouched
+- CSS `biolabs_style.css?v=357`; age-gate + cart untouched
