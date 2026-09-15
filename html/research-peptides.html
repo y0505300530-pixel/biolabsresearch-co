@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-age-gate tc-need">
 <head>
+<script>(function(){try{var h=document.documentElement;h.classList.add("has-age-gate");var ls=function(k){try{return localStorage.getItem(k);}catch(e){return null;}};var ok=(ls("biolabs_gate_ok")==="1")||/(?:^|;\s*)biolabs_gate=1(?:;|$)/.test(document.cookie||"");if(ok){h.classList.add("tc-ok");h.classList.remove("tc-need");}else{h.classList.add("tc-need");h.classList.remove("tc-ok");}}catch(e){try{document.documentElement.classList.add("has-age-gate","tc-need");document.documentElement.classList.remove("tc-ok");}catch(_e){}}})();</script>
+<style>html.has-age-gate:not(.tc-ok) .nav,html.has-age-gate:not(.tc-ok) .promo-stack,html.has-age-gate:not(.tc-ok) .sticky-cart-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}html.tc-ok .tc-overlay,html.tc-ok #tcOverlay{display:none!important;visibility:hidden!important;pointer-events:none!important;opacity:0!important}html.has-age-gate:not(.tc-ok) .tc-overlay,html.has-age-gate:not(.tc-ok) #tcOverlay,.tc-overlay.active{display:flex!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;z-index:11000!important}</style>
 <script src="/cookie-consent.js?v=3" defer></script>
 
 <meta charset="UTF-8">
@@ -9,7 +11,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=300">
+<link rel="stylesheet" href="/biolabs_style.css?v=327">
 <script src="/cart-vial.js?v=299" defer></script>
 <script src="/search-overlay.js?v=28" defer></script>
 
@@ -165,8 +167,69 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.25" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.26</p>
+<p class="site-version" data-site-version="2.27" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.27</p>
 </footer>
 <script src="/promo-bar.js?v=292"></script>
+
+<div class="tc-overlay active" id="tcOverlay" role="dialog" aria-modal="true" aria-label="Age and research use gate">
+  <div class="tc-modal">
+    <h2>Welcome to BioLabs Research</h2>
+    <div class="tc-modal-badge">Research Use Only</div>
+    <div class="tc-modal-text">All products are for laboratory research only. Not for human consumption.</div>
+    <div class="tc-checks">
+      <label class="tc-check-label"><input type="checkbox" id="tcCheck1"><span class="tc-check-text">I am at least <strong>21</strong> and a qualified researcher.</span></label>
+      <label class="tc-check-label"><input type="checkbox" id="tcCheck2"><span class="tc-check-text">I agree to the <a href="https://biolabsresearch.co/terms-and-conditions" target="_blank" rel="noopener">Terms</a>.</span></label>
+      <label class="tc-check-label"><input type="checkbox" id="tcCheck3"><span class="tc-check-text">I confirm this is <strong>RUO</strong>, not for human consumption.</span></label>
+    </div>
+    <button type="button" class="tc-enter-btn" id="tcEnterBtn" disabled aria-disabled="true">Enter BioLabs Research</button>
+    <p class="tc-enter-hint">Tick the three boxes to enter.</p>
+  </div>
+</div>
+<script>
+(function(){
+  var overlay = document.getElementById("tcOverlay");
+  if (!overlay) return;
+  function lsGet(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch (e) {} }
+  var accepted = (lsGet("biolabs_gate_ok") === "1") || /(?:^|;\s*)biolabs_gate=1(?:;|$)/.test(document.cookie || "");
+  function dismiss(){
+    try { document.documentElement.classList.add("tc-ok"); document.documentElement.classList.remove("tc-need"); } catch (e) {}
+    overlay.classList.remove("active");
+    overlay.style.display = "none";
+    overlay.setAttribute("hidden", "");
+    overlay.setAttribute("aria-hidden", "true");
+    try { document.body.style.overflow = ""; } catch (e2) {}
+  }
+  if (accepted) { dismiss(); return; }
+  try { document.documentElement.classList.add("has-age-gate","tc-need"); document.documentElement.classList.remove("tc-ok"); } catch (e3) {}
+  overlay.classList.add("active");
+  overlay.removeAttribute("hidden");
+  overlay.setAttribute("aria-hidden", "false");
+  overlay.style.display = "";
+  try { document.body.style.overflow = "hidden"; } catch (e4) {}
+  var c1 = document.getElementById("tcCheck1");
+  var c2 = document.getElementById("tcCheck2");
+  var c3 = document.getElementById("tcCheck3");
+  var btn = document.getElementById("tcEnterBtn");
+  if (!c1 || !c2 || !c3 || !btn) return;
+  function sync(){
+    var ok = !!(c1.checked && c2.checked && c3.checked);
+    btn.disabled = !ok;
+    btn.setAttribute("aria-disabled", ok ? "false" : "true");
+  }
+  ["change","input","click"].forEach(function(ev){
+    [c1,c2,c3].forEach(function(el){ el.addEventListener(ev, sync); });
+  });
+  sync();
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    sync();
+    if (btn.disabled) return;
+    lsSet("biolabs_gate_ok", "1");
+    try { document.cookie = "biolabs_gate=1;path=/;max-age=31536000;SameSite=Lax"; } catch (e5) {}
+    dismiss();
+  });
+})();
+</script>
 </body>
 </html>

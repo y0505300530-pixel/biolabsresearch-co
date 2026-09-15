@@ -1,10 +1,10 @@
 {
-  "version": "2.26",
+  "version": "2.27",
   "released": "2026-09-15",
-  "codename": "age-gate-enter-all",
+  "codename": "age-gate-fail-closed",
   "highlights": [
-    "Age-gate Enter JS on all gated pages (IIFE-only; PDP cart scripts intact)",
-    "Restored PDPs after bad v2.25b full-script replace",
-    "Enter: change/input/click sync + dismiss + tc-ok hardened"
+    "Age-gate fail-closed: static has-age-gate tc-need on html; storage keys rotated (biolabs_gate)",
+    "Exact cookie parse; old biolabs_tc* ignored so stale Incognito accept cannot skip",
+    "Gate added to main ungated routes (science/blog/contact/shipping/tools/coa/faq/legal)"
   ]
 }

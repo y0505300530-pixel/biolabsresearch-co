@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="has-age-gate tc-need">
 <head>
-<script>(function(){try{document.documentElement.classList.add('has-age-gate');var a=localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1;if(a){document.documentElement.classList.add('tc-ok');}else{document.documentElement.classList.add('tc-need');}}catch(e){document.documentElement.classList.add('has-age-gate');}})();</script>
-<style>html.has-age-gate:not(.tc-ok) .nav,html.has-age-gate:not(.tc-ok) .promo-stack,html.has-age-gate:not(.tc-ok) .sticky-cart-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}html.tc-ok .tc-overlay{display:none!important;visibility:hidden!important;pointer-events:none!important}.tc-overlay{display:none}.tc-overlay.active{display:flex}</style>
+<script>(function(){try{var h=document.documentElement;h.classList.add("has-age-gate");var ls=function(k){try{return localStorage.getItem(k);}catch(e){return null;}};var ok=(ls("biolabs_gate_ok")==="1")||/(?:^|;\s*)biolabs_gate=1(?:;|$)/.test(document.cookie||"");if(ok){h.classList.add("tc-ok");h.classList.remove("tc-need");}else{h.classList.add("tc-need");h.classList.remove("tc-ok");}}catch(e){try{document.documentElement.classList.add("has-age-gate","tc-need");document.documentElement.classList.remove("tc-ok");}catch(_e){}}})();</script>
+<style>html.has-age-gate:not(.tc-ok) .nav,html.has-age-gate:not(.tc-ok) .promo-stack,html.has-age-gate:not(.tc-ok) .sticky-cart-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}html.tc-ok .tc-overlay,html.tc-ok #tcOverlay{display:none!important;visibility:hidden!important;pointer-events:none!important;opacity:0!important}html.has-age-gate:not(.tc-ok) .tc-overlay,html.has-age-gate:not(.tc-ok) #tcOverlay,.tc-overlay.active{display:flex!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;z-index:11000!important}</style>
 <script src="/cookie-consent.js?v=3" defer></script>
 
 <meta charset="UTF-8">
@@ -27,7 +27,7 @@
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://biolabsresearch.co/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Semax", "item": "https://biolabsresearch.co/products/semax"}]}</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=300">
+<link rel="stylesheet" href="/biolabs_style.css?v=327">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -372,7 +372,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.25" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.26</p>
+<p class="site-version" data-site-version="2.27" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.27</p>
 </footer>
 
 <script>
@@ -732,7 +732,9 @@ window.compareAtPrice = function(item){
 (function(){
   var overlay = document.getElementById("tcOverlay");
   if (!overlay) return;
-  var accepted = !!(localStorage.getItem("biolabs_tc_accepted") || localStorage.getItem("biofirst_tc_accepted") || ((document.cookie||"").indexOf("biolabs_tc=1") !== -1));
+  function lsGet(k){ try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k,v){ try { localStorage.setItem(k,v); } catch (e) {} }
+  var accepted = (lsGet("biolabs_gate_ok") === "1") || /(?:^|;\s*)biolabs_gate=1(?:;|$)/.test(document.cookie || "");
   function dismiss(){
     try { document.documentElement.classList.add("tc-ok"); document.documentElement.classList.remove("tc-need"); } catch (e) {}
     overlay.classList.remove("active");
@@ -742,10 +744,12 @@ window.compareAtPrice = function(item){
     try { document.body.style.overflow = ""; } catch (e2) {}
   }
   if (accepted) { dismiss(); return; }
+  try { document.documentElement.classList.add("has-age-gate","tc-need"); document.documentElement.classList.remove("tc-ok"); } catch (e3) {}
   overlay.classList.add("active");
   overlay.removeAttribute("hidden");
   overlay.setAttribute("aria-hidden", "false");
-  try { document.body.style.overflow = "hidden"; } catch (e3) {}
+  overlay.style.display = "";
+  try { document.body.style.overflow = "hidden"; } catch (e4) {}
   var c1 = document.getElementById("tcCheck1");
   var c2 = document.getElementById("tcCheck2");
   var c3 = document.getElementById("tcCheck3");
@@ -764,8 +768,8 @@ window.compareAtPrice = function(item){
     e.preventDefault();
     sync();
     if (btn.disabled) return;
-    try { localStorage.setItem("biolabs_tc_accepted", "true"); } catch (e4) {}
-    try { document.cookie = "biolabs_tc=1;path=/;max-age=31536000;SameSite=Lax"; } catch (e5) {}
+    lsSet("biolabs_gate_ok", "1");
+    try { document.cookie = "biolabs_gate=1;path=/;max-age=31536000;SameSite=Lax"; } catch (e5) {}
     dismiss();
   });
 })();

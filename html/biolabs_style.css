@@ -11422,3 +11422,23 @@ html.tc-ok #tcOverlay {
   background: #F2D191 !important;
   color: #0d2137 !important;
 }
+
+
+/* AGE-GATE FAIL-CLOSED v2.27 */
+html.has-age-gate.tc-need:not(.tc-ok) .tc-overlay,
+html.has-age-gate.tc-need:not(.tc-ok) #tcOverlay,
+html.has-age-gate:not(.tc-ok) .tc-overlay,
+html.has-age-gate:not(.tc-ok) #tcOverlay {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 11000 !important;
+}
+html.tc-ok .tc-overlay,
+html.tc-ok #tcOverlay {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
