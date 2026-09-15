@@ -1,10 +1,8 @@
 {
-  "version": "2.31",
+  "version": "2.32",
   "released": "2026-09-15",
-  "codename": "product-overview-qa",
+  "codename": "itemlist-sot-20",
   "highlights": [
-    "Store-level product overview for AI/merchant Q&A: FAQPage schema answers \u201cwhat do products do?\u201d with RUO copy citing catalog + Science",
-    "Richer Organization/WebSite descriptions; ItemList of active catalog SKUs on homepage",
-    "Visible catalog-overview blurb + FAQ entry; PDP Product JSON-LD/descriptions enriched from API where thin"
+    "ItemList SoT lock: 20 research compounds \u2014 exclude research-solvent (BAC) from catalog ItemList numberOfItems"
   ]
 }
