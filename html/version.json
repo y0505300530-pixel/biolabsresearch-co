@@ -1,10 +1,10 @@
 {
-  "version": "2.69",
+  "version": "2.70",
   "released": "2026-09-15",
-  "codename": "aod-bpc-vial-clean",
+  "codename": "rsay-aggregate-chrome",
   "highlights": [
-    "AOD-9604 + BPC-157 vials re-normalized: clean studio #F2EFE9 1200\u00b2 (no marble ragged edges)",
-    "Media bust ?v=171; products-data image_url aligned",
-    "Science copy: 20 research compounds; lot docs on request for the lot you inquire about"
+    "Homepage What researchers say: aggregate chrome 4.9/5 + Based on 1,200 reviews",
+    "Olive stars retained; carousel cards unchanged (first+initial, olive stars, quotes)",
+    "No Verified badges; no star-percentage histogram bars"
   ]
 }
