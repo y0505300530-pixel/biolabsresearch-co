@@ -46,7 +46,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=379">
+<link rel="stylesheet" href="/biolabs_style.css?v=292">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script src="/cart-vial.js?v=330" defer></script>
 <style id="sci-notes-restore">
@@ -77,7 +77,7 @@
 .sci-body .id-dl div{min-width:0;}
 </style>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.12">
+<meta name="app-version" content="2.13">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -88,13 +88,12 @@
 <body class="sci-body">
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="promo-stack" id="promoStack">
+<div class="promo-stack" id="promoStack" hidden style="display:none!important">
   
   <div class="promo-bar">
     <div class="promo-track">
       <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div></div>
-<script>(function(){/*__blrPromoEarly*/try{var END=Date.parse("2026-09-22T23:59:59+03:00");var left=END-Date.now();var el=document.getElementById("promoStack");if(left<=0){if(el){el.style.display="none";el.hidden=true;}return;}function pad(n){n=Math.floor(Math.max(0,n));return(n<10?"0":"")+n;}var t=Math.floor(left/1000),d=Math.floor(t/86400),h=Math.floor((t%86400)/3600),m=Math.floor((t%3600)/60),s=t%60;var txt=(d>0?d+"d ":"")+pad(h)+":"+pad(m)+":"+pad(s);var nodes=document.querySelectorAll(".cutoff-timer");for(var i=0;i<nodes.length;i++){nodes[i].textContent=txt;nodes[i].setAttribute("data-end","2026-09-22T23:59:59+03:00");}}catch(e){}})();</script>
-    </div>
+</div>
     </div>
   </div>
 </div>
@@ -419,7 +418,7 @@
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.12" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.12</p>
+<p class="site-version" data-site-version="2.13" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.13</p>
 </footer>
 <script>
 window.COMPARE_AT = {"bpc-157-tb-500-blend":150,"BPC-157 / TB-500 Blend":150,"nad-plus":119,"NAD+":119,"aod-9604":52,"AOD-9604":52,"curcumin-phytosome":135,"Curcumin Phytosome (Meriva)":135,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"bpc-157":105,"BPC-157":105,"glow-70":169,"GLOW 70":169,"epithalon":55,"Epithalon":55,"ghk-cu":120,"GHK-Cu":120,"mots-c":115,"MOTS-c":115,"kpv":95,"KPV":95,"semax":119,"Semax":119,"kisspeptin-10":119,"Kisspeptin-10":119,"thymosin-alpha-1":129,"Thymosin Alpha-1":129,"tb-500":125,"TB-500":125,"retatrutide":105,"R3TA":105,"ipamorelin":96,"Ipamorelin":96,"tesamorelin":105,"Tesamorelin":105,"tirzepatide":110,"Tirzepatide":110,"semaglutide":75,"Semaglutide":75,"MOTS-C":115};
@@ -566,7 +565,7 @@ document.addEventListener('DOMContentLoaded', function(){
 <script src="/auth.js?v=2"></script>
 
 <script src="/email-capture.js?v=5"></script>
-<script src="/promo-bar.js?v=291"></script>
+<script src="/promo-bar.js?v=292"></script>
 <script src="/mg-picker.js?v=32"></script>
 <script src="/prices-sync.js?v=2"></script>
 

@@ -145,19 +145,18 @@ footer{background:var(--navy);padding:60px 60px 30px}
   .footer-top{grid-template-columns:1fr 1fr;gap:28px}
 }
 </style>
-<meta name="app-version" content="2.12">
+<meta name="app-version" content="2.13">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="promo-stack" id="promoStack">
+<div class="promo-stack" id="promoStack" hidden style="display:none!important">
   
   <div class="promo-bar">
     <div class="promo-track">
       <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div></div>
-<script>(function(){/*__blrPromoEarly*/try{var END=Date.parse("2026-09-22T23:59:59+03:00");var left=END-Date.now();var el=document.getElementById("promoStack");if(left<=0){if(el){el.style.display="none";el.hidden=true;}return;}function pad(n){n=Math.floor(Math.max(0,n));return(n<10?"0":"")+n;}var t=Math.floor(left/1000),d=Math.floor(t/86400),h=Math.floor((t%86400)/3600),m=Math.floor((t%3600)/60),s=t%60;var txt=(d>0?d+"d ":"")+pad(h)+":"+pad(m)+":"+pad(s);var nodes=document.querySelectorAll(".cutoff-timer");for(var i=0;i<nodes.length;i++){nodes[i].textContent=txt;nodes[i].setAttribute("data-end","2026-09-22T23:59:59+03:00");}}catch(e){}})();</script>
-    </div>
+</div>
     </div>
   </div>
 </div>
@@ -679,7 +678,7 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-<script src="/promo-bar.js?v=291"></script>
+<script src="/promo-bar.js?v=292"></script>
 <script src="/mg-picker.js?v=32"></script>
 <script src="/prices-sync.js?v=2"></script>
 </body>

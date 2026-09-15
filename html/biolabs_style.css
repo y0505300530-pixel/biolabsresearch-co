@@ -11203,3 +11203,18 @@ html.has-age-gate .tc-overlay.active {
   pointer-events: auto !important;
   z-index: 11000 !important;
 }
+
+
+/* PROMO REMOVED v2.13 */
+#promoStack,
+.promo-stack,
+.promo-bar {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+}
