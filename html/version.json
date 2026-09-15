@@ -1,9 +1,9 @@
 {
-  "version": "2.19",
+  "version": "2.20",
   "released": "2026-09-15",
-  "codename": "add-to-cart-cta",
+  "codename": "blog-p1-seo-ruo",
   "highlights": [
-    "Product CTA: ADD TO CART (replaces Request this lot) \u2014 Yehuda",
-    "Request lot COA / Request received / Continue request unchanged"
+    "P1 blog SEO/RUO on five posts (titles, 140-160 meta, distinct H1, References, one closer)",
+    "Rebased onto v2.19 — ADD TO CART / request-language / banner work unchanged"
   ]
 }
