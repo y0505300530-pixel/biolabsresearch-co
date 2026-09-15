@@ -1,11 +1,12 @@
 {
-  "version": "2.48",
+  "version": "2.49",
   "released": "2026-09-15",
-  "codename": "pdp-main-only-yehuda",
+  "codename": "pdp-sticky-img-yehuda",
   "highlights": [
-    "Hide PDP dual thumb strip sitewide — main image only (Yehuda)",
-    ".pdp-thumbs / .pdp-thumb display:none (easy restore)",
-    "mg-picker.js?v=34: strength still updates #pdpMainImg only",
-    "CSS cache bust ?v=340"
+    "PDP gallery .product-img-section sticky on desktop while buy column scrolls",
+    "align-self:start; top:88px; parents overflow visible; body overflow-x:clip (sticky-safe)",
+    "Mobile max-width 900px: position static (no sticky fight)",
+    "Thumbs remain hidden (v2.48)",
+    "CSS cache bust ?v=342"
   ]
 }

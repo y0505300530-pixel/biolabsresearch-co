@@ -11849,3 +11849,34 @@ p.footer-col-title{
   overflow: hidden !important;
   pointer-events: none !important;
 }
+
+/* === v2.49 pdp-sticky-img-yehuda === */
+/* Desktop PDP: left gallery sticks while right buy/details scroll (northline-style).
+   Parent overflow:hidden/clip-x:hidden traps sticky — keep overflow visible on layout ancestors.
+   Thumbs stay hidden (v2.48). Mobile: sticky off below 900px so it doesn't fight scroll. */
+#main,
+#product-container,
+.product-hero {
+  overflow: visible !important;
+}
+/* PDP inline body{overflow-x:hidden} creates a sticky containing block — clip contains x without killing sticky */
+html,
+body {
+  overflow-x: clip !important;
+}
+.product-hero {
+  align-items: start !important;
+}
+.product-img-section {
+  position: sticky !important;
+  top: 88px !important; /* header offset ~72–96px (nav; promo often hidden on PDP) */
+  align-self: start !important;
+  z-index: 2;
+}
+@media (max-width: 900px) {
+  .product-img-section {
+    position: static !important;
+    top: auto !important;
+  }
+}
+/* === end v2.49 === */
