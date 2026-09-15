@@ -11,3 +11,5 @@ Disallow: /*.bak
 Disallow: /*.bak-*
 
 Sitemap: https://biolabsresearch.co/sitemap.xml
+Host: https://biolabsresearch.co
+

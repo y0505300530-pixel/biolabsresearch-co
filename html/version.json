@@ -1,10 +1,10 @@
 {
-  "version": "2.27",
+  "version": "2.28",
   "released": "2026-09-15",
-  "codename": "age-gate-fail-closed",
+  "codename": "cache-compress-meta",
   "highlights": [
-    "Age-gate fail-closed: static has-age-gate tc-need on html; storage keys rotated (biolabs_gate)",
-    "Exact cookie parse; old biolabs_tc* ignored so stale Incognito accept cannot skip",
-    "Gate added to main ungated routes (science/blog/contact/shipping/tools/coa/faq/legal)"
+    "Stronger caching: /media/ immutable 1y; css/images/fonts 365d; gzip_comp_level 5 (JS stays 10m)",
+    "Image compression: recompressed heavy PNGs + regenerated WebP sidecars (backups under media/_bak-pre-v228-compress)",
+    "SEO: homepage meta/OG description expanded (~160 chars); og:image filled on pages that lacked it"
   ]
 }
