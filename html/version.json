@@ -1,10 +1,9 @@
 {
-  "version": "2.72",
+  "version": "2.73",
   "released": "2026-09-15",
-  "codename": "rsay-ftc-strip-verified-dist",
+  "codename": "hero-drop-from45-aod-bpc-locked-mg",
   "highlights": [
-    "Remove \u2713 Verified reviewer from What researchers say cards (FTC risk)",
-    "Remove aggregate star distribution bars (92/6/1/1/0)",
-    "Keep olive stars, 4.9/5, Based on 1,200 reviews, carousel names/quotes"
+    "Hero: remove From $45 price line",
+    "AOD-9604 + BPC-157: renormalize from locked-mg / preview-C gold-band masters to 1200\u00b2 #F2EFE9 (?v=172)"
   ]
 }
