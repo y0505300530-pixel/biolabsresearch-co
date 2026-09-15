@@ -1,10 +1,10 @@
 {
-  "version": "2.03",
+  "version": "2.04",
   "released": "2026-09-15",
-  "codename": "catalog-loading-harden",
+  "codename": "insider25-timer-restore",
   "highlights": [
-    "Popular peptides: keep SSR cards until API render succeeds (no wipe-on-fetch)",
-    "8s fetch timeout + error/retry only if grid empty; Loading\u2026 only when no SSR",
-    "SLUG_MAP adds Ipamorelin, Tesamorelin, Semaglutide, Tirzepatide, Curcumin"
+    "INSIDER25 banner restored (was hidden after Sep 14 cutoff)",
+    "Live countdown again (Dd HH:MM:SS / HH:MM:SS) \u2014 no --:--:-- stuck state",
+    "New SoT end: 2026-09-30 23:59 IL \u2014 change if Yehuda wants another date"
   ]
 }

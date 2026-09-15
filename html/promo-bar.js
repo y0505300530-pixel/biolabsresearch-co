@@ -1,8 +1,8 @@
-/* INSIDER25 promo + countdown. Fixed end: 2026-09-14T23:59:59+03:00 (Asia/Jerusalem).
+/* INSIDER25 promo + countdown. Fixed end: 2026-09-30T23:59:59+03:00 (Asia/Jerusalem).
    Marquee is rAF-driven (not CSS animation) so live timer updates don't hitch the loop. */
 (function(){
   var CODE = "INSIDER25";
-  var END_ISO = "2026-09-14T23:59:59+03:00";
+  var END_ISO = "2026-09-30T23:59:59+03:00";
   var END_MS = Date.parse(END_ISO);
   var LOOP_SEC = 93;
   var _raf = 0;
@@ -15,9 +15,26 @@
 
   function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
   function format(left){
-    /* v1.33: fixed calendar end — live day counters felt fake on every reload */
-    if (left <= 0) return "";
-    return "Ends Sep 14";
+    if (left <= 0) return "00:00:00";
+    var totalSec = Math.floor(left / 1000);
+    var d = Math.floor(totalSec / 86400);
+    var h = Math.floor((totalSec % 86400) / 3600);
+    var m = Math.floor((totalSec % 3600) / 60);
+    var s = totalSec % 60;
+    if (d > 0) return d + "d " + pad(h) + ":" + pad(m) + ":" + pad(s);
+    return pad(h) + ":" + pad(m) + ":" + pad(s);
+  }
+  function showPromo(){
+    var el = document.getElementById("promoStack");
+    if (el) {
+      el.style.display = "";
+      el.classList.remove("promo-ended");
+    }
+    var stacks = document.querySelectorAll(".promo-stack");
+    for (var i = 0; i < stacks.length; i++) {
+      stacks[i].style.display = "";
+      stacks[i].classList.remove("promo-ended");
+    }
   }
   function hideEndedPromo(){
     var el = document.getElementById("promoStack");
@@ -178,6 +195,7 @@
       hideEndedPromo();
       return;
     }
+    showPromo();
     saveCode();
     try { fillMarquee(); } catch (e) {}
     try { normalizeAll(); } catch (eN) {}

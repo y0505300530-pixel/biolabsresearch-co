@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 2.03
+# biolabsresearch.co — Version 2.04
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- Popular peptides: keep SSR cards until API render succeeds (no wipe-on-fetch)
-- 8s fetch timeout + error/retry only if grid empty; Loading… only when no SSR
-- SLUG_MAP adds Ipamorelin, Tesamorelin, Semaglutide, Tirzepatide, Curcumin
+- INSIDER25 banner restored (was hidden after Sep 14 cutoff)
+- Live countdown again (Dd HH:MM:SS / HH:MM:SS) — no --:--:-- stuck state
+- New SoT end: 2026-09-30 23:59 IL — change if Yehuda wants another date
