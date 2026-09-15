@@ -1,10 +1,9 @@
 {
-  "version": "2.15",
+  "version": "2.16",
   "released": "2026-09-15",
-  "codename": "hero-cta-hierarchy",
+  "codename": "request-language-sot",
   "highlights": [
-    "Hero primary CTA: Browse research compounds (was Shop all compounds)",
-    "Secondary stays View sample COA",
-    "One RUO line under CTAs: Research use only \u2014 not for human consumption."
+    "Marketing language SoT sitewide: Request this lot \u00b7 Request lot COA \u00b7 Request received \u00b7 Continue request",
+    "Removed Add to inquiry / Send Request / Proceed to checkout from UI CTAs"
   ]
 }

@@ -1,9 +1,8 @@
-# biolabsresearch.co — Version 2.15
+# biolabsresearch.co — Version 2.16
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- Hero primary CTA: Browse research compounds (was Shop all compounds)
-- Secondary stays View sample COA
-- One RUO line under CTAs: Research use only — not for human consumption.
+- Marketing language SoT sitewide: Request this lot · Request lot COA · Request received · Continue request
+- Removed Add to inquiry / Send Request / Proceed to checkout from UI CTAs

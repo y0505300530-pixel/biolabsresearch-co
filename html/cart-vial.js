@@ -2014,7 +2014,7 @@ function addSuggest(slug, name, price, mg){
     }
     var btn = footer.querySelector('.btn-checkout');
     if (btn) {
-      btn.textContent = 'Proceed to checkout';
+      btn.textContent = 'Continue request';
       btn.querySelectorAll('svg, .chev').forEach(function(n){ n.remove(); });
     }
     var cont = footer.querySelector('.btn-continue');
@@ -2108,7 +2108,7 @@ function addSuggest(slug, name, price, mg){
     var btn = drawer.querySelector('.btn-checkout');
     if (btn) {
       btn.querySelectorAll('svg,.chev').forEach(function(n){ try{ n.remove(); }catch(e){} });
-      if (/Proceed to checkout/i.test(btn.textContent||'')) btn.textContent = 'Proceed to checkout';
+      if (/Continue request/i.test(btn.textContent||'')) btn.textContent = 'Continue request';
       btn.disabled = !!empty;
       btn.style.display = empty ? 'none' : '';
     }
@@ -2276,7 +2276,7 @@ function addSuggest(slug, name, price, mg){
   else wrap();
 })();
 
-/* GA: wrap PDP Add to inquiry (addToCartTemplate / addToCart) once */
+/* GA: wrap PDP Request this lot (addToCartTemplate / addToCart) once */
 (function(){
   if (window.__blrTrackInquiryWrap) return;
   window.__blrTrackInquiryWrap = true;
