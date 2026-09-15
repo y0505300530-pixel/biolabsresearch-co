@@ -372,7 +372,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.22" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.22</p>
+<p class="site-version" data-site-version="2.24" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.24</p>
 </footer>
 
 <script>
@@ -707,7 +707,7 @@ window.compareAtPrice = function(item){
   <div class="cart-items" id="cartItems">
     <div class="cart-empty">
       <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg>
-      <p>Your cart is empty.<br>Browse research reagents.</p>
+      <p>Your cart is empty.<br>Browse research compounds.</p>
     </div>
   </div>
   <div id="cartAddMore" class="cart-addmore-slot"></div>
@@ -780,7 +780,7 @@ function renderCart() {
   if (cl) cl.textContent = nItems ? ('(' + nItems + (nItems===1 ? ' item' : ' items') + ')') : '';
 
   if (!cart.length) {
-    el.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg><p>Your cart is empty.<br>Browse research reagents.</p></div>';
+    el.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg><p>Your cart is empty.<br>Browse research compounds.</p></div>';
     mountAddMore([]);
     return;
   }

@@ -1,10 +1,10 @@
 {
-  "version": "2.22",
+  "version": "2.24",
   "released": "2026-09-15",
-  "codename": "price-sot-agegate",
+  "codename": "term-glossary-compounds",
   "highlights": [
-    "API/products-data: price + original_price = min strength (Epithalon $45 etc.) \u2014 SoT lock",
-    "Home catalog 20/20 product-card aligned",
-    "Age-gate: overlay starts active + CSS force on Incognito until Enter"
+    "Locked Marketing glossary: primary term research compounds sitewide in chrome",
+    "Banned: research materials / catalog compounds / catalog reagents in nav-hero-meta-footer",
+    "research peptides kept for peptide SKU taglines, blog URLs, and peptide-specific FAQ"
   ]
 }
