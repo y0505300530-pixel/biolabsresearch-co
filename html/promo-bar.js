@@ -128,19 +128,15 @@
     for (var si = segs.length - 1; si >= 1; si--) segs[si].parentNode.removeChild(segs[si]);
     var seps = template.querySelectorAll(".promo-sep");
     for (var sj = seps.length - 1; sj >= 1; sj--) seps[sj].parentNode.removeChild(seps[sj]);
-    if (!template.querySelector(".promo-sep")) {
-      var sep = document.createElement("span");
-      sep.className = "promo-sep";
-      sep.setAttribute("aria-hidden", "true");
-      sep.textContent = "·";
-      template.appendChild(sep);
-    }
+    /* no trailing promo-sep — causes empty gap between clones; · lives inside ends-in wrap */
+    var seps2 = template.querySelectorAll(".promo-sep");
+    for (var sk = seps2.length - 1; sk >= 0; sk--) seps2[sk].parentNode.removeChild(seps2[sk]);
     var codeBtns = template.querySelectorAll(".promo-code");
     for (var ci = 0; ci < codeBtns.length; ci++) {
       codeBtns[ci].setAttribute("data-code", CODE);
       codeBtns[ci].textContent = CODE;
     }
-    template.style.marginRight = "28px";
+    template.style.marginRight = "10px";
     var minW = Math.max(bar.clientWidth || 0, window.innerWidth || 0, 1200);
     track.innerHTML = "";
     track.style.animation = "none";
@@ -160,7 +156,7 @@
     /* Aim for ~1.2× viewport — not packed edge-to-edge */
     while (halfA.scrollWidth < minW * 1.6 && guard < 32) {
       var node = template.cloneNode(true);
-      node.style.marginRight = "28px";
+      node.style.marginRight = "10px";
       halfA.appendChild(node);
       guard++;
       if (!halfA.scrollWidth) break;

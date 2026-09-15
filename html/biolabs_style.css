@@ -11176,3 +11176,21 @@ html body button.promo-code::before {
   border: 0 !important;
   box-shadow: none !important;
 }
+
+/* v2.10 ticker: kill dead gap between repeats */
+html body .promo-group {
+  margin-right: 10px !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
+}
+html body .promo-sep {
+  display: none !important; /* separator only inside ends-in text */
+}
+html body .promo-half {
+  gap: 0 !important;
+}
+html body .promo-track {
+  gap: 0 !important;
+  column-gap: 0 !important;
+}

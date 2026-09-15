@@ -1,9 +1,9 @@
 {
-  "version": "2.09",
+  "version": "2.10",
   "released": "2026-09-15",
-  "codename": "promo-empty-pill",
+  "codename": "ticker-dead-gap",
   "highlights": [
-    "Remove hollow empty promo-sep circle / blank half-rectangle on ticker",
-    "Force INSIDER25 label on code pill; restore \u2018ends in\u2019 wording"
+    "INSIDER25 ticker: remove dead gap between repeats (10px, hide promo-sep clones)",
+    "Matches Yehuda arrow on empty stretch between marquee copies"
   ]
 }
