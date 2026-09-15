@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){try{document.documentElement.classList.add('has-age-gate');var a=localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1;if(a){document.documentElement.classList.add('tc-ok');}}catch(e){}})();</script>
+<script>(function(){try{document.documentElement.classList.add('has-age-gate');var a=localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1;if(a){document.documentElement.classList.add('tc-ok');}else{document.documentElement.classList.add('tc-need');}}catch(e){document.documentElement.classList.add('has-age-gate');}})();</script>
 <style>html.has-age-gate:not(.tc-ok) .nav,html.has-age-gate:not(.tc-ok) .promo-stack,html.has-age-gate:not(.tc-ok) .sticky-cart-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}html.tc-ok .tc-overlay{display:none!important;visibility:hidden!important;pointer-events:none!important}.tc-overlay{display:none}.tc-overlay.active{display:flex}</style>
 <script src="/cookie-consent.js?v=3" defer></script>
 
@@ -1201,7 +1201,7 @@ function showSuccess(orderData, paymentNote) {
 @media(max-width:480px){.tc-modal{padding:30px 24px}}
 </style>
 
-<div class="tc-overlay" id="tcOverlay">
+<div class="tc-overlay active" id="tcOverlay">
   <div class="tc-modal">
     <div class="tc-modal-logo">
       <svg viewBox="0 0 60 60" fill="none" width="32" height="32">

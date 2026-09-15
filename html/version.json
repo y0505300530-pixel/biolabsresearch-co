@@ -1,9 +1,10 @@
 {
   "version": "2.22",
   "released": "2026-09-15",
-  "codename": "contact-dock-hide",
+  "codename": "price-sot-agegate",
   "highlights": [
-    "Hide mobile sticky View cart on Contact so it never covers the message textarea",
-    "Catalog dock CTA safe-zone behavior from v2.20 unchanged"
+    "API/products-data: price + original_price = min strength (Epithalon $45 etc.) \u2014 SoT lock",
+    "Home catalog 20/20 product-card aligned",
+    "Age-gate: overlay starts active + CSS force on Incognito until Enter"
   ]
 }
