@@ -11971,7 +11971,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   accent-color: #9A6D2A !important;
 }
 
-/* === v2.58 rsay-manual-scroll === */
+/* === v2.59 rsay-no-lab-note === */
 .rsay-section[hidden],
 .rsay-section[data-rsay-state="awaiting-marketing"]{
   display:none!important;
@@ -12135,13 +12135,9 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   font-size:12px;
   color:#6b6560;
 }
-.rsay-lab-note{
-  display:block!important;
-  margin:2px 0 0;
-  font-size:12px;
-  font-weight:500;
-  color:#6b6560;
-  letter-spacing:.01em;
+.rsay-lab-note,
+.rsay-meta.rsay-lab-note{
+  display:none!important;
 }
 .rsay-fade{
   position:absolute;
