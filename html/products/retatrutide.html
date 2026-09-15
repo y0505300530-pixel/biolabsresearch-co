@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="has-age-gate tc-need">
+<html lang="en" data-inquiry-pdp="1" class="has-age-gate tc-need">
 <head>
 <script>(function(){try{var h=document.documentElement;h.classList.add("has-age-gate");var ls=function(k){try{return localStorage.getItem(k);}catch(e){return null;}};var ok=(ls("biolabs_gate_ok")==="1")||/(?:^|;\s*)biolabs_gate=1(?:;|$)/.test(document.cookie||"");if(ok){h.classList.add("tc-ok");h.classList.remove("tc-need");}else{h.classList.add("tc-need");h.classList.remove("tc-ok");}}catch(e){try{document.documentElement.classList.add("has-age-gate","tc-need");document.documentElement.classList.remove("tc-ok");}catch(_e){}}})();</script>
 <style>html.has-age-gate:not(.tc-ok) .nav,html.has-age-gate:not(.tc-ok) .promo-stack,html.has-age-gate:not(.tc-ok) .sticky-cart-dock{display:none!important;visibility:hidden!important;pointer-events:none!important}html.tc-ok .tc-overlay,html.tc-ok #tcOverlay{display:none!important;visibility:hidden!important;pointer-events:none!important;opacity:0!important}html.has-age-gate:not(.tc-ok) .tc-overlay,html.has-age-gate:not(.tc-ok) #tcOverlay,.tc-overlay.active{display:flex!important;opacity:1!important;visibility:visible!important;pointer-events:auto!important;z-index:11000!important}</style>
@@ -27,7 +27,7 @@
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://biolabsresearch.co/#catalog"}, {"@type": "ListItem", "position": 3, "name": "R3TA", "item": "https://biolabsresearch.co/products/retatrutide"}]}</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=330">
+<link rel="stylesheet" href="/biolabs_style.css?v=334">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -206,7 +206,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/cart-vial.js?v=303" defer></script>
 <script src="/pdp-story.js?v=40"></script>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.39">
+<meta name="app-version" content="2.42">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -284,11 +284,11 @@ footer{background:var(--ink);padding:60px 60px 30px}
             <span class="ruo-badge">RUO — Research Use Only</span>
 </div>
           <p class="product-desc-text">Investigational triple GLP-1/GIP/glucagon receptor agonist studied in metabolic research models.</p>
-          <div class="price-section">
+          <div class="price-section pdp-inquiry-buy">
             <div class="size-label">Select Size</div><div class="size-options"><button type="button" class="size-btn active" onclick="selectSize(this,'$85')" aria-label="10 mg $85">10 mg</button><button type="button" class="size-btn" onclick="selectSize(this,'$135')" aria-label="20 mg $135">20 mg</button><button type="button" class="size-btn" onclick="selectSize(this,'$300')" aria-label="50 mg $300">50 mg</button></div>
             <div class="price-row">
-              <div class="price-unit-wrap"><span class="price-unit-label">From</span><div class="price-main" id="current-price">$85</div></div>
-              <span class="price-original">$105</span>
+              <div class="price-unit-wrap"><span class="price-unit-label">Quote</span><div class="price-main" id="current-price">Inquire</div></div>
+              <span class="price-original" hidden></span>
             </div>
             <div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
@@ -297,7 +297,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
                 <span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>
                 <button type="button" onclick="changePdpQty(1)" aria-label="Increase quantity" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>
               </div>
-              <button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">ADD TO CART</button>
+              <button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Request quote</button>
             </div>
             <p class="pdp-ship-note">Processing 1–2 business days · USPS Ground free · UPS 2nd Day from $18.99</p>
             <p class="pdp-atc-note">After you add: we review the inquiry and email next steps — no charge until confirmed.</p>
@@ -306,6 +306,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         
 <dl class="spec-strip" id="pdp-static-spec">
     <div><dt>CAS</dt><dd>2381089-83-2</dd></div>
+      <div><dt>Identity</dt><dd>Triple GIP/GLP-1/glucagon receptor agonist</dd></div>
   </dl>
   
 </div>
@@ -315,7 +316,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 
 <div id="related-articles" style="max-width:720px;margin:40px auto;padding:0 48px"><h2 style="font-family:Fraunces,serif;font-size:22px;margin-bottom:16px;color:#1F1F1F">Related Research Articles</h2><div style="display:grid;grid-template-columns:1fr 1fr;gap:16px"><a href="/blog/retatrutide-metabolic-research" style="display:block;padding:16px 20px;background:#F5F2ED;border-radius:12px;text-decoration:none;color:#1F1F1F;font-weight:600;font-size:14px">R3TA Research Overview →</a><a href="/blog/buying-research-peptides-online-guide-2026" style="display:block;padding:16px 20px;background:#F5F2ED;border-radius:12px;text-decoration:none;color:#1F1F1F;font-weight:600;font-size:14px">2026 Sourcing Guide →</a></div></div>
 <!-- FOOTER — matches homepage -->
-<section class="product-rail pdp-product-rail" id="productRail" aria-label="Pairs well at the bench" data-exclude-slug="retatrutide"></section>
+<section class="product-rail pdp-product-rail" id="productRail" aria-label="Pairs well at the bench" data-exclude-slug="retatrutide" data-inquiry="1"></section>
 </main>
 <footer class="footer" id="site-footer">
   <div class="footer-inner">
@@ -325,7 +326,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     </div>
     <div class="footer-top">
       <div class="footer-col">
-        <h2>Catalog</h2>
+        <p class="footer-col-title">Catalog</p>
         <a href="https://biolabsresearch.co/products/bpc-157-tb-500-blend">BPC-157 / TB-500 Blend</a>
         <a href="https://biolabsresearch.co/products/nad-plus">NAD+</a>
         <a href="https://biolabsresearch.co/products/aod-9604">AOD-9604</a>
@@ -336,7 +337,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/products/glow-70">GLOW 70</a>
       </div>
       <div class="footer-col">
-        <h2>More</h2>
+        <p class="footer-col-title">More</p>
         <a href="https://biolabsresearch.co/products/epithalon">Epithalon</a>
         <a href="https://biolabsresearch.co/products/mots-c">MOTS-c</a>
         <a href="https://biolabsresearch.co/products/kpv">KPV</a>
@@ -346,7 +347,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/products/retatrutide">R3TA</a>
 </div>
       <div class="footer-col">
-        <h2>Company</h2>
+        <p class="footer-col-title">Company</p>
         <a href="https://biolabsresearch.co/science">Science</a>
         <a href="https://biolabsresearch.co/blog/">Blog</a>
         <a href="https://biolabsresearch.co/shipping">Shipping</a>
@@ -356,7 +357,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/cookie-policy">Cookies</a>
       </div>
       <div class="footer-col footer-col-contact">
-        <h2>Contact</h2>
+        <p class="footer-col-title">Contact</p>
         <a class="footer-chip" href="mailto:admin@biolabsresearch.co">admin@biolabsresearch.co</a>
         <a class="footer-chip footer-wa" href="https://wa.me/48732759035" target="_blank" rel="noopener" aria-label="WhatsApp +48 732 759 035"><svg class="footer-wa-ico" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11 11 0 0 0 2.1 17.6L1 23l5.6-1.5A11 11 0 1 0 20.5 3.5zm-8.5 17a9 9 0 0 1-4.6-1.3l-.3-.2-3.3.9.9-3.2-.2-.3a9 9 0 1 1 7.5 4.1zm5-6.7c-.3-.1-1.6-.8-1.9-.9s-.4-.1-.6.1-.7.9-.8 1-.3.2-.6.1a7.4 7.4 0 0 1-2.2-1.4 8.2 8.2 0 0 1-1.5-1.9c-.2-.3 0-.4.1-.6l.4-.5c.1-.1.2-.3.3-.4s0-.3 0-.4-.6-1.5-.8-2-.2-.5-.5-.5h-.4c-.1 0-.4.1-.6.3a2 2 0 0 0-.6 1.5 3.5 3.5 0 0 0 .7 1.9 8 8 0 0 0 3.1 3 10 10 0 0 0 2 .8 2.4 2.4 0 0 0 1.7-.4 2.8 2.8 0 0 0 1-1.7c.1-.3 0-.5-.1-.6z"/></svg><span>+48 732 759 035</span></a>
         <p class="support-hours"><strong>Support:</strong> 8:00 AM – 9:00 PM ET</p>
@@ -370,7 +371,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.39" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.39</p>
+<p class="site-version" data-site-version="2.42" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.42</p>
 </footer>
 
 <script>
@@ -516,7 +517,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
           '</div>' +
           '<div class="price-section">' +
             sizeHtml +
-            '<div class="price-row"><div class="price-unit-wrap"><span class="price-unit-label">Unit price</span><div class="price-main" id="current-price">$'+p.price+'</div></div>'+origHtml+'</div>' +
+            '<div class="price-row"><div class="price-unit-wrap"><span class="price-unit-label">Quote</span><div class="price-main" id="current-price">$'+p.price+'</div></div>'+origHtml+'</div>' +
             '' +
             '<div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>' +
             '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">' +
@@ -525,7 +526,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
                 '<span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>' +
                 '<button type="button" onclick="changePdpQty(1)" aria-label="Increase quantity" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>' +
               '</div>' +
-              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">ADD TO CART</button>' +
+              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Request quote</button>' +
             '</div>' +
             '<p class="pdp-ship-note">Processing 1–2 business days · USPS Ground free · UPS 2nd Day from $18.99</p>' +
             '<p class="pdp-atc-note">After you add: we review the inquiry and email next steps — no charge until confirmed.</p>' +
@@ -541,9 +542,9 @@ footer{background:var(--ink);padding:60px 60px 30px}
 storageHtml + presentationHtml +
         '</div></div>' +
         (window.pdpStoryHtml ? pdpStoryHtml(p) : '') +
-        '<div class="pdp-sticky-buy" id="pdpStickyBuy" aria-label="ADD TO CART">' +
-          '<div class="pdp-sticky-price"><span class="pdp-sticky-label">Unit</span> <strong id="pdpStickyPrice">$'+p.price+'</strong></div>' +
-          '<button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">ADD TO CART</button>' +
+        '<div class="pdp-sticky-buy" id="pdpStickyBuy" aria-label="Request quote">' +
+          '<div class="pdp-sticky-price"><span class="pdp-sticky-label">Quote</span> <strong id="pdpStickyPrice">Inquire</strong></div>' +
+          '<button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">Request quote</button>' +
         '</div>';
   }
   function renderNotFound() {
@@ -577,7 +578,7 @@ storageHtml + presentationHtml +
   window.selectSize = function(btn, price) {
     document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
-    if (price) { document.getElementById('current-price').textContent = price; var sp=document.getElementById('pdpStickyPrice'); if(sp) sp.textContent = price; }
+    if (price) { var _inq=document.documentElement.getAttribute('data-inquiry-pdp')==='1'; var _lab=_inq?'Inquire':price; var _cp=document.getElementById('current-price'); if(_cp) _cp.textContent=_lab; var sp=document.getElementById('pdpStickyPrice'); if(sp) sp.textContent=_lab; }
   };
 })();
 </script>
@@ -651,7 +652,7 @@ storageHtml + presentationHtml +
 @media(max-width:480px){.tc-modal{padding:30px 24px}}
 </style>
 
-<div class="tc-overlay active" id="tcOverlay">
+<div class="tc-overlay" id="tcOverlay" aria-hidden="true" inert>
   <div class="tc-modal">
     <div class="tc-modal-logo">
       <svg viewBox="0 0 60 60" fill="none" width="32" height="32">
@@ -740,15 +741,40 @@ window.compareAtPrice = function(item){
     overlay.style.display = "none";
     overlay.setAttribute("hidden", "");
     overlay.setAttribute("aria-hidden", "true");
+    try { overlay.inert = true; } catch (eInert) { try { overlay.setAttribute("inert", ""); } catch (_i) {} }
     try { document.body.style.overflow = ""; } catch (e2) {}
+    try { document.body.removeAttribute("aria-hidden"); } catch (e2b) {}
   }
   if (accepted) { dismiss(); return; }
   try { document.documentElement.classList.add("has-age-gate","tc-need"); document.documentElement.classList.remove("tc-ok"); } catch (e3) {}
   overlay.classList.add("active");
   overlay.removeAttribute("hidden");
   overlay.setAttribute("aria-hidden", "false");
+  try { overlay.inert = false; } catch (eInert2) { try { overlay.removeAttribute("inert"); } catch (_i2) {} }
   overlay.style.display = "";
   try { document.body.style.overflow = "hidden"; } catch (e4) {}
+  try { document.body.setAttribute("aria-hidden", "true"); } catch (e4b) {}
+  try {
+    var focusables = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    var first = null, last = null;
+    for (var fi = 0; fi < focusables.length; fi++) {
+      if (!focusables[fi].disabled && focusables[fi].offsetParent !== null) { first = first || focusables[fi]; last = focusables[fi]; }
+    }
+    if (first) try { first.focus(); } catch (_f) {}
+    if (!overlay._trapBound) {
+      overlay._trapBound = true;
+      overlay.addEventListener("keydown", function(ev){
+        if (ev.key !== "Tab" || !overlay.classList.contains("active")) return;
+        var list = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        var els = [];
+        for (var j = 0; j < list.length; j++) { if (!list[j].disabled) els.push(list[j]); }
+        if (!els.length) return;
+        var f = els[0], l = els[els.length - 1];
+        if (ev.shiftKey && document.activeElement === f) { ev.preventDefault(); l.focus(); }
+        else if (!ev.shiftKey && document.activeElement === l) { ev.preventDefault(); f.focus(); }
+      });
+    }
+  } catch (eTrap) {}
   var c1 = document.getElementById("tcCheck1");
   var c2 = document.getElementById("tcCheck2");
   var c3 = document.getElementById("tcCheck3");
@@ -972,7 +998,7 @@ var PUB_IDS = {
     "cas": "2381089-83-2",
     "formula": "",
     "mw": "",
-    "seq": ""
+    "seq": "Triple GIP/GLP-1/glucagon receptor agonist"
   }
 };
 
@@ -1252,7 +1278,7 @@ document.addEventListener('keydown', function(e) {
 <script src="/promo-bar.js?v=292"></script>
 <script src="/mg-picker.js?v=32"></script>
 <script src="/prices-sync.js?v=2"></script>
-<script src="/product-marquee.js?v=20"></script>
+<script src="/product-marquee.js?v=242"></script>
 <script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>
 
 <script src="/tools-video.js?v=2"></script>

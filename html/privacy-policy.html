@@ -22,7 +22,7 @@
 <meta name="twitter:title" content="Privacy Policy — Bio Labs Research">
 <meta name="twitter:description" content="How inquiry names, emails, and ship-to details are used to answer catalog requests. We do not sell personal data. Operated by LEEDS MARKETING GROUP LTD.">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=329">
+<link rel="stylesheet" href="/biolabs_style.css?v=334">
 <style>
 .legal-page{max-width:760px;margin:0 auto;padding:80px 48px 120px}
 .legal-page h1{font-family:'Inter',sans-serif;font-size:36px;font-weight:700;color:#1F1F1F;letter-spacing:-1px;margin-bottom:8px}
@@ -35,7 +35,7 @@
 <script src="/cart-vial.js?v=299" defer></script>
 <script src="/search-overlay.js?v=28" defer></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Privacy Policy", "item": "https://biolabsresearch.co/privacy-policy"}]}</script>
-<meta name="app-version" content="2.39">
+<meta name="app-version" content="2.42">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
@@ -158,7 +158,7 @@
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.39" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.39</p>
+<p class="site-version" data-site-version="2.42" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.42</p>
 </footer>
 
 <script src="/promo-bar.js?v=292"></script>
@@ -192,15 +192,40 @@
     overlay.style.display = "none";
     overlay.setAttribute("hidden", "");
     overlay.setAttribute("aria-hidden", "true");
+    try { overlay.inert = true; } catch (eInert) { try { overlay.setAttribute("inert", ""); } catch (_i) {} }
     try { document.body.style.overflow = ""; } catch (e2) {}
+    try { document.body.removeAttribute("aria-hidden"); } catch (e2b) {}
   }
   if (accepted) { dismiss(); return; }
   try { document.documentElement.classList.add("has-age-gate","tc-need"); document.documentElement.classList.remove("tc-ok"); } catch (e3) {}
   overlay.classList.add("active");
   overlay.removeAttribute("hidden");
   overlay.setAttribute("aria-hidden", "false");
+  try { overlay.inert = false; } catch (eInert2) { try { overlay.removeAttribute("inert"); } catch (_i2) {} }
   overlay.style.display = "";
   try { document.body.style.overflow = "hidden"; } catch (e4) {}
+  try { document.body.setAttribute("aria-hidden", "true"); } catch (e4b) {}
+  try {
+    var focusables = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    var first = null, last = null;
+    for (var fi = 0; fi < focusables.length; fi++) {
+      if (!focusables[fi].disabled && focusables[fi].offsetParent !== null) { first = first || focusables[fi]; last = focusables[fi]; }
+    }
+    if (first) try { first.focus(); } catch (_f) {}
+    if (!overlay._trapBound) {
+      overlay._trapBound = true;
+      overlay.addEventListener("keydown", function(ev){
+        if (ev.key !== "Tab" || !overlay.classList.contains("active")) return;
+        var list = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        var els = [];
+        for (var j = 0; j < list.length; j++) { if (!list[j].disabled) els.push(list[j]); }
+        if (!els.length) return;
+        var f = els[0], l = els[els.length - 1];
+        if (ev.shiftKey && document.activeElement === f) { ev.preventDefault(); l.focus(); }
+        else if (!ev.shiftKey && document.activeElement === l) { ev.preventDefault(); f.focus(); }
+      });
+    }
+  } catch (eTrap) {}
   var c1 = document.getElementById("tcCheck1");
   var c2 = document.getElementById("tcCheck2");
   var c3 = document.getElementById("tcCheck3");

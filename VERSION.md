@@ -1,10 +1,15 @@
-# biolabsresearch.co — Version 2.30
+# biolabsresearch.co — Version 2.42
 
 Released 2026-09-15.
 
-## What this version improves
+Codename: glp-inquiry-sot
 
-- Marketing Blog P2: primary term is research compounds; peptide wording stays on peptide-specific posts
-- Unique titles/meta/OG (og-share.jpg when a share image was missing); one prose RUO closer
-- Deduplicated shared boilerplate openings; stronger References where scientific and thin
-- Rebased onto v2.29 image-opt (alts/WebP/LCP)
+## Highlights
+
+- Tirz/Sema CAS SoT fix (no AOD/hGH placeholders on GLP PDPs)
+- GLP Request quote CTAs + hide rail/$ prices on tirz/sema/reta
+- Footer Catalog/More/Company/Contact H2 → p.footer-col-title
+- Age-gate inert + aria-hidden when closed; focus trap when open
+- Pairs-well rail container align / mobile 390 clip fix
+- Checkout biolabs_style.css bust synced
+- Tesamorelin static CAS aligned to JSON-LD 218949-48-5

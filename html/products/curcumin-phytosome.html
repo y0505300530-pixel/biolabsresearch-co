@@ -58,7 +58,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=330">
+<link rel="stylesheet" href="/biolabs_style.css?v=334">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -347,7 +347,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     </div>
     <div class="footer-top">
       <div class="footer-col">
-        <h4>Catalog</h4>
+        <p class="footer-col-title">Catalog</p>
         <a href="https://biolabsresearch.co/products/bpc-157-tb-500-blend">BPC-157 / TB-500 Blend</a>
         <a href="https://biolabsresearch.co/products/nad-plus">NAD+</a>
         <a href="https://biolabsresearch.co/products/aod-9604">AOD-9604</a>
@@ -358,7 +358,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/products/glow-70">GLOW 70</a>
       </div>
       <div class="footer-col">
-        <h4>More</h4>
+        <p class="footer-col-title">More</p>
         <a href="https://biolabsresearch.co/products/epithalon">Epithalon</a>
         <a href="https://biolabsresearch.co/products/mots-c">MOTS-c</a>
         <a href="https://biolabsresearch.co/products/kpv">KPV</a>
@@ -369,7 +369,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/products/curcumin-phytosome">Curcumin Phytosome</a>
       </div>
       <div class="footer-col">
-        <h4>Company</h4>
+        <p class="footer-col-title">Company</p>
         <a href="https://biolabsresearch.co/science.html">Science</a>
         <a href="https://biolabsresearch.co/blog/">Blog</a>
         <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
@@ -378,7 +378,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
       </div>
       <div class="footer-col footer-col-contact">
-        <h4>Contact</h4>
+        <p class="footer-col-title">Contact</p>
         <a class="footer-chip" href="/checkout.html">admin@biolabsresearch.co</a>
         <p class="footer-address">LEEDS MARKETING GROUP LTD<br>71-75 Shelton Street, Covent Garden<br>London, WC2H 9JQ, UK<br>Companies House #16057409</p>
       </div>
@@ -677,7 +677,7 @@ storageHtml + presentationHtml +
 @media(max-width:480px){.tc-modal{padding:30px 24px}}
 </style>
 
-<div class="tc-overlay active" id="tcOverlay">
+<div class="tc-overlay" id="tcOverlay" aria-hidden="true" inert>
   <div class="tc-modal">
     <div class="tc-modal-logo">
       <svg viewBox="0 0 60 60" fill="none" width="32" height="32">
@@ -764,15 +764,40 @@ window.compareAtPrice = function(item){
     overlay.style.display = "none";
     overlay.setAttribute("hidden", "");
     overlay.setAttribute("aria-hidden", "true");
+    try { overlay.inert = true; } catch (eInert) { try { overlay.setAttribute("inert", ""); } catch (_i) {} }
     try { document.body.style.overflow = ""; } catch (e2) {}
+    try { document.body.removeAttribute("aria-hidden"); } catch (e2b) {}
   }
   if (accepted) { dismiss(); return; }
   try { document.documentElement.classList.add("has-age-gate","tc-need"); document.documentElement.classList.remove("tc-ok"); } catch (e3) {}
   overlay.classList.add("active");
   overlay.removeAttribute("hidden");
   overlay.setAttribute("aria-hidden", "false");
+  try { overlay.inert = false; } catch (eInert2) { try { overlay.removeAttribute("inert"); } catch (_i2) {} }
   overlay.style.display = "";
   try { document.body.style.overflow = "hidden"; } catch (e4) {}
+  try { document.body.setAttribute("aria-hidden", "true"); } catch (e4b) {}
+  try {
+    var focusables = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    var first = null, last = null;
+    for (var fi = 0; fi < focusables.length; fi++) {
+      if (!focusables[fi].disabled && focusables[fi].offsetParent !== null) { first = first || focusables[fi]; last = focusables[fi]; }
+    }
+    if (first) try { first.focus(); } catch (_f) {}
+    if (!overlay._trapBound) {
+      overlay._trapBound = true;
+      overlay.addEventListener("keydown", function(ev){
+        if (ev.key !== "Tab" || !overlay.classList.contains("active")) return;
+        var list = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        var els = [];
+        for (var j = 0; j < list.length; j++) { if (!list[j].disabled) els.push(list[j]); }
+        if (!els.length) return;
+        var f = els[0], l = els[els.length - 1];
+        if (ev.shiftKey && document.activeElement === f) { ev.preventDefault(); l.focus(); }
+        else if (!ev.shiftKey && document.activeElement === l) { ev.preventDefault(); f.focus(); }
+      });
+    }
+  } catch (eTrap) {}
   var c1 = document.getElementById("tcCheck1");
   var c2 = document.getElementById("tcCheck2");
   var c3 = document.getElementById("tcCheck3");
@@ -1285,6 +1310,6 @@ document.addEventListener('keydown', function(e) {
 <script src="/promo-bar.js?v=292"></script>
 <script src="/mg-picker.js?v=11"></script>
 <script src="/prices-sync.js?v=2"></script>
-<script src="/product-marquee.js?v=20"></script>
+<script src="/product-marquee.js?v=242"></script>
 </body>
 </html>

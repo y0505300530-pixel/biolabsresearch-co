@@ -1,10 +1,14 @@
 {
-  "version": "2.39",
+  "version": "2.42",
   "released": "2026-09-15",
-  "codename": "no-bac-auto-gift",
+  "codename": "glp-inquiry-sot",
   "highlights": [
-    "v2.38 confirmed: checkout keeps catalog lines (no more empty Order Summary wipe)",
-    "Kill BAC milestone auto-gift + Inquiry Rewards UI \u2014 badge matches what you added",
-    "Stale gift:true bacteriostatic lines stripped from localStorage on load"
+    "Tirz/Sema CAS SoT fix (no AOD/hGH placeholders on GLP PDPs)",
+    "GLP Request quote CTAs + hide rail/$ prices on tirz/sema/reta",
+    "Footer Catalog/More/Company/Contact H2 \u2192 p.footer-col-title",
+    "Age-gate inert + aria-hidden when closed; focus trap when open",
+    "Pairs-well rail container align / mobile 390 clip fix",
+    "Checkout biolabs_style.css bust synced",
+    "Tesamorelin static CAS aligned to JSON-LD 218949-48-5"
   ]
 }

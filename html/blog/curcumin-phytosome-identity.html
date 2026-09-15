@@ -41,15 +41,40 @@
     overlay.style.display = "none";
     overlay.setAttribute("hidden", "");
     overlay.setAttribute("aria-hidden", "true");
+    try { overlay.inert = true; } catch (eInert) { try { overlay.setAttribute("inert", ""); } catch (_i) {} }
     try { document.body.style.overflow = ""; } catch (e2) {}
+    try { document.body.removeAttribute("aria-hidden"); } catch (e2b) {}
   }
   if (accepted) { dismiss(); return; }
   try { document.documentElement.classList.add("has-age-gate","tc-need"); document.documentElement.classList.remove("tc-ok"); } catch (e3) {}
   overlay.classList.add("active");
   overlay.removeAttribute("hidden");
   overlay.setAttribute("aria-hidden", "false");
+  try { overlay.inert = false; } catch (eInert2) { try { overlay.removeAttribute("inert"); } catch (_i2) {} }
   overlay.style.display = "";
   try { document.body.style.overflow = "hidden"; } catch (e4) {}
+  try { document.body.setAttribute("aria-hidden", "true"); } catch (e4b) {}
+  try {
+    var focusables = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    var first = null, last = null;
+    for (var fi = 0; fi < focusables.length; fi++) {
+      if (!focusables[fi].disabled && focusables[fi].offsetParent !== null) { first = first || focusables[fi]; last = focusables[fi]; }
+    }
+    if (first) try { first.focus(); } catch (_f) {}
+    if (!overlay._trapBound) {
+      overlay._trapBound = true;
+      overlay.addEventListener("keydown", function(ev){
+        if (ev.key !== "Tab" || !overlay.classList.contains("active")) return;
+        var list = overlay.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+        var els = [];
+        for (var j = 0; j < list.length; j++) { if (!list[j].disabled) els.push(list[j]); }
+        if (!els.length) return;
+        var f = els[0], l = els[els.length - 1];
+        if (ev.shiftKey && document.activeElement === f) { ev.preventDefault(); l.focus(); }
+        else if (!ev.shiftKey && document.activeElement === l) { ev.preventDefault(); f.focus(); }
+      });
+    }
+  } catch (eTrap) {}
   var c1 = document.getElementById("tcCheck1");
   var c2 = document.getElementById("tcCheck2");
   var c3 = document.getElementById("tcCheck3");

@@ -518,7 +518,7 @@ a{color:inherit;text-decoration:none}
   color:rgba(255,255,255,.4);
   line-height:1.8;
 }
-.footer-col h2,.footer-col h4{
+.footer-col h2,.footer-col h4,.footer-col-title{
   font-size:13px;
   font-weight:600;
   text-transform:uppercase;
@@ -3565,7 +3565,7 @@ a.footer-brand{
   padding-top:36px;
   border-top:1px solid rgba(255,255,255,.12);
 }
-.footer-col h2,.footer-col h4{
+.footer-col h2,.footer-col h4,.footer-col-title{
   font-size:12px !important;
   font-weight:700 !important;
   letter-spacing:.14em !important;
@@ -4509,7 +4509,8 @@ a.footer-brand{
   color:#0d2137;
   letter-spacing:-.02em;
 }
-.pr-viewport{overflow:hidden;width:100%}
+.pr-viewport{overflow:hidden;width:100%;max-width:1240px;margin:0 auto;padding:0 24px;box-sizing:border-box}
+/* v2.42: pairs rail align to container + mobile scroll affordance */
 .pr-track{
   display:flex;
   width:max-content;
@@ -4517,7 +4518,7 @@ a.footer-brand{
   will-change:transform;
 }
 .product-rail:hover .pr-track{animation-play-state:paused}
-.pr-group{display:flex;gap:16px;padding:4px 12px;flex:0 0 auto}
+.pr-group{display:flex;gap:16px;padding:4px 0;flex:0 0 auto}
 .pr-card{
   flex:0 0 auto;
   width:240px;
@@ -4632,8 +4633,13 @@ a.footer-brand{
 }
 @media (max-width:700px){
   .pr-head{padding:0 16px;margin-bottom:14px}
+  .pr-viewport{padding:0 16px}
   .pr-card{width:200px}
   .pr-card-atc{font-size:10px}
+}
+@media (max-width:390px){
+  .pr-viewport{padding:0 12px}
+  .pr-card{width:178px}
 }
 
 
@@ -11559,3 +11565,56 @@ img[width][height] {
   }
 }
 /* === end CRM v2.37 === */
+
+/* === CRM v2.40 — a11y dose chips 44px + single card link === */
+@media (max-width: 800px) {
+  html body .product-card-mg,
+  html body button.product-card-mg,
+  html body span.product-card-mg,
+  html body .size-btn,
+  html body button.size-btn,
+  html body .mg-picker .mg-btn,
+  html body .mg-picker button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+    padding: 10px 14px !important;
+    box-sizing: border-box !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1.2 !important;
+  }
+}
+/* media is a div now — keep block clickable look */
+.product-card-media {
+  display: block !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+/* === end CRM v2.40 === */
+
+
+/* v2.42: footer col titles as <p> (a11y heading map) */
+.footer-col .footer-col-title,
+p.footer-col-title{
+  font-family:"Montserrat",sans-serif;
+  font-size:10px;
+  font-weight:700;
+  color:rgba(255,255,255,0.4);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin:0 0 16px;
+}
+
+
+/* v2.42: regulated GLP inquiry PDPs — hide list $ while CTA is Request quote */
+html[data-inquiry-pdp="1"] .price-main,
+html[data-inquiry-pdp="1"] .price-original,
+html[data-inquiry-pdp="1"] .price-compare,
+html[data-inquiry-pdp="1"] .pdp-sticky-price strong,
+html[data-inquiry-pdp="1"] .pdp-inquiry-buy .price-original{ }
+html[data-inquiry-pdp="1"] .price-original,
+html[data-inquiry-pdp="1"] .price-compare{display:none!important}
+html[data-inquiry-pdp="1"] .pr-card-price:not(.pr-card-price-inquire){display:none}
+.pr-card-price-inquire{font-size:14px!important;font-weight:700!important;color:#6B6354!important}
