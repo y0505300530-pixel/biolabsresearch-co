@@ -11194,3 +11194,12 @@ html body .promo-track {
   gap: 0 !important;
   column-gap: 0 !important;
 }
+
+/* v2.11 age-gate: force overlay visible when .active (Incognito) */
+html.has-age-gate .tc-overlay.active {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 11000 !important;
+}

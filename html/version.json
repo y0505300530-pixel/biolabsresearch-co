@@ -8,6 +8,7 @@
     "PDP price-main SoT lowest strength: Semaglutide From $60, Tirzepatide $90, Epithalon From $45",
     "COMPARE_AT unified home/science from SoT strength_originals",
     "Restore Curcumin Phytosome PDP; remove nginx 301 to homepage",
-    "COA: honest empty-state + request link; noscript lists hosted PDFs only"
+    "COA: honest empty-state + request link; noscript lists hosted PDFs only",
+    "Age-gate: force .tc-overlay.active visible in Incognito (nav stay hidden until Enter)"
   ]
 }
