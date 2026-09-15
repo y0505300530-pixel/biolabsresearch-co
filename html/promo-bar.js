@@ -1,8 +1,8 @@
-/* INSIDER25 promo + countdown. Rolling 12h window — resets at 00:00:00 (never ends).
-   Marquee is rAF-driven (not CSS animation) so live timer updates don't hitch the loop. */
+/* INSIDER25 promo + countdown. Real fixed end (Asia/Jerusalem). Hide when ended — never "--:--:--" / "Offer ended". */
 (function(){
   var CODE = "INSIDER25";
-  var WINDOW_MS = 12 * 60 * 60 * 1000;
+  var END_ISO = "2026-09-22T23:59:59+03:00";
+  var END_MS = Date.parse(END_ISO);
   var LOOP_SEC = 110;
   var _raf = 0;
   var _x = 0;
@@ -11,57 +11,74 @@
   var _track = null;
   var _half = null;
   var _resizeT = 0;
+  var _tickTimer = 0;
 
   function pad(n){ n = Math.floor(Math.max(0, n)); return (n < 10 ? "0" : "") + n; }
-  function windowLeft(){
-    var now = Date.now();
-    var left = WINDOW_MS - (now % WINDOW_MS);
-    if (left <= 0 || left > WINDOW_MS) left = WINDOW_MS;
-    return left;
-  }
+  function leftMs(){ return END_MS - Date.now(); }
   function format(left){
-    if (left <= 0) left = WINDOW_MS;
+    if (left <= 0) return "00:00:00";
     var totalSec = Math.floor(left / 1000);
-    var h = Math.floor(totalSec / 3600);
+    var d = Math.floor(totalSec / 86400);
+    var h = Math.floor((totalSec % 86400) / 3600);
     var m = Math.floor((totalSec % 3600) / 60);
     var s = totalSec % 60;
+    if (d > 0) return d + "d " + pad(h) + ":" + pad(m) + ":" + pad(s);
     return pad(h) + ":" + pad(m) + ":" + pad(s);
+  }
+  function hideEndedPromo(){
+    var el = document.getElementById("promoStack");
+    if (el) {
+      el.style.display = "none";
+      el.classList.add("promo-ended");
+      el.setAttribute("hidden", "");
+    }
+    var stacks = document.querySelectorAll(".promo-stack");
+    for (var i = 0; i < stacks.length; i++) {
+      stacks[i].style.display = "none";
+      stacks[i].classList.add("promo-ended");
+      stacks[i].setAttribute("hidden", "");
+    }
+    try { stopMarquee(); } catch (e) {}
+    if (_tickTimer) { clearInterval(_tickTimer); _tickTimer = 0; }
   }
   function showPromo(){
     var el = document.getElementById("promoStack");
     if (el) {
       el.style.display = "";
+      el.removeAttribute("hidden");
       el.classList.remove("promo-ended");
     }
     var stacks = document.querySelectorAll(".promo-stack");
     for (var i = 0; i < stacks.length; i++) {
       stacks[i].style.display = "";
+      stacks[i].removeAttribute("hidden");
       stacks[i].classList.remove("promo-ended");
     }
   }
   function tick(){
-    var left = windowLeft();
+    var left = leftMs();
+    if (left <= 0) {
+      hideEndedPromo();
+      return;
+    }
     var nodes = document.querySelectorAll(".cutoff-timer");
     var text = format(left);
     for (var i = 0; i < nodes.length; i++) {
-      nodes[i].removeAttribute("data-end");
-      nodes[i].setAttribute("data-window", "12h");
+      nodes[i].setAttribute("data-end", END_ISO);
+      nodes[i].removeAttribute("data-window");
       if (nodes[i].textContent !== text) nodes[i].textContent = text;
     }
   }
   function saveCode(){
     try { localStorage.setItem("biolabs_coupon", CODE); } catch (e) {}
   }
-
   function stopMarquee(){
     if (_raf) { try { cancelAnimationFrame(_raf); } catch (e) {} _raf = 0; }
   }
-
   function measureHalf(){
     if (!_half) return 0;
     return Math.max(1, Math.round(_half.getBoundingClientRect().width));
   }
-
   function frame(now){
     if (!_track || !_half) return;
     if (!_last) _last = now;
@@ -76,7 +93,6 @@
     _track.style.transform = "translate3d(" + _x.toFixed(2) + "px,0,0)";
     _raf = requestAnimationFrame(frame);
   }
-
   function startMarquee(){
     stopMarquee();
     _track = document.querySelector(".promo-track");
@@ -92,7 +108,6 @@
     }
     _raf = requestAnimationFrame(frame);
   }
-
   function normalizeSeg(seg){
     if (!seg || seg.getAttribute("data-norm")==="1") return;
     var timer = seg.querySelector(".cutoff-timer");
@@ -115,20 +130,16 @@
     var segs = document.querySelectorAll(".promo-seg");
     for (var i=0;i<segs.length;i++) normalizeSeg(segs[i]);
   }
-
   function fillMarquee(){
+    if (leftMs() <= 0) { hideEndedPromo(); return; }
     var track = document.querySelector(".promo-track");
     var bar = document.querySelector(".promo-bar");
     if (!track || !bar) return;
     var groups = track.querySelectorAll(".promo-group");
     if (!groups.length) return;
-    /* One clean segment per group — drop duplicate segs jammed in SSR */
     var template = groups[0].cloneNode(true);
     var segs = template.querySelectorAll(".promo-seg");
     for (var si = segs.length - 1; si >= 1; si--) segs[si].parentNode.removeChild(segs[si]);
-    var seps = template.querySelectorAll(".promo-sep");
-    for (var sj = seps.length - 1; sj >= 1; sj--) seps[sj].parentNode.removeChild(seps[sj]);
-    /* no trailing promo-sep — causes empty gap between clones; · lives inside ends-in wrap */
     var seps2 = template.querySelectorAll(".promo-sep");
     for (var sk = seps2.length - 1; sk >= 0; sk--) seps2[sk].parentNode.removeChild(seps2[sk]);
     var codeBtns = template.querySelectorAll(".promo-code");
@@ -152,8 +163,8 @@
     halfA.style.alignItems = "center";
     halfA.style.flexWrap = "nowrap";
     halfA.style.flexShrink = "0";
+    halfA.style.margin = "0";
     var guard = 0;
-    /* Aim for ~1.2× viewport — not packed edge-to-edge */
     while (halfA.scrollWidth < minW * 1.6 && guard < 32) {
       var node = template.cloneNode(true);
       node.style.marginRight = "10px";
@@ -163,7 +174,6 @@
     }
     if (!halfA.children.length) halfA.appendChild(template.cloneNode(true));
     var halfB = halfA.cloneNode(true);
-    halfA.style.margin = "0";
     halfB.style.margin = "0";
     track.appendChild(halfA);
     track.appendChild(halfB);
@@ -174,21 +184,18 @@
     tick();
     startMarquee();
   }
-
   function onResize(){
     clearTimeout(_resizeT);
-    _resizeT = setTimeout(function(){
-      try { fillMarquee(); } catch (e) {}
-    }, 180);
+    _resizeT = setTimeout(function(){ try { fillMarquee(); } catch (e) {} }, 180);
   }
-
   function wire(){
+    if (leftMs() <= 0) { hideEndedPromo(); return; }
     showPromo();
     saveCode();
     try { fillMarquee(); } catch (e) {}
     try { normalizeAll(); } catch (eN) {}
     tick();
-    setInterval(tick, 1000);
+    _tickTimer = setInterval(tick, 1000);
     window.addEventListener("resize", onResize);
     document.addEventListener("click", function(e){
       var btn = e.target && e.target.closest && e.target.closest(".promo-code");
@@ -196,21 +203,17 @@
       e.preventDefault();
       saveCode();
       try {
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(CODE);
-        }
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(CODE);
       } catch (err) {}
-      btn.classList.add("copied");
       var prev = btn.textContent;
       btn.textContent = "COPIED";
-      setTimeout(function(){ btn.textContent = prev; btn.classList.remove("copied"); }, 1200);
+      setTimeout(function(){ btn.textContent = prev; }, 1200);
     });
     try { localStorage.removeItem("cutoff_end"); } catch (e2) {}
   }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", wire);
-  } else {
-    wire();
-  }
+  // Expose for inline early paint
+  window.__blrPromoTick = tick;
+  window.__blrPromoEnd = END_ISO;
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", wire);
+  else wire();
 })();
