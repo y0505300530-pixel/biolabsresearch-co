@@ -206,7 +206,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/cart-vial.js?v=330" defer></script>
 <script src="/pdp-story.js?v=40"></script>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.10">
+<meta name="app-version" content="2.11">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -285,8 +285,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
           <p class="product-desc-text">Epithalon listed for laboratory research. Identity on the lot COA. Not for human consumption.</p>
           <div class="price-section">
             <div class="price-row">
-              <div class="price-unit-wrap"><span class="price-unit-label">Unit price</span><div class="price-main">$79</div></div>
-              <span class="price-original">$99</span>
+              <div class="price-unit-wrap"><span class="price-unit-label">Unit price</span><div class="price-main">$45</div></div>
+              <span class="price-original">$55</span>
             </div>
             <div class="price-per">This vial — Research Use Only</div>
             <div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>
@@ -361,7 +361,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.10" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.10</p>
+<p class="site-version" data-site-version="2.11" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.11</p>
 </footer>
 
 <script>
@@ -377,6 +377,30 @@ footer{background:var(--ink);padding:60px 60px 30px}
     if (c.includes('hormone')) return '🔬';
     if (c.includes('supply')) return '💉';
     return '🧬';
+  }
+
+  
+  function lowestStrengthPrice(p){
+    var sp = p.strength_prices || {};
+    var vals = Object.keys(sp).map(function(k){ return parseFloat(sp[k]); }).filter(function(n){ return !isNaN(n); });
+    if (vals.length) return Math.min.apply(null, vals);
+    return parseFloat(p.price) || 0;
+  }
+  function sizesFromProduct(p){
+    var sizes = sizesFromProduct(p);
+    var unitPrice = lowestStrengthPrice(p);
+    if (sizes.length) return sizes;
+    var sp = p.strength_prices || {};
+    var st = p.strengths || [];
+    if (!st.length) st = Object.keys(sp);
+    return st.map(function(label){
+      var key = String(label).replace(/\s+/g,'').toLowerCase();
+      var price = null;
+      Object.keys(sp).forEach(function(x){
+        if (String(x).replace(/\s+/g,'').toLowerCase() === key) price = '$' + sp[x];
+      });
+      return {label: label, price: price};
+    }).filter(function(s){ return s.label; });
   }
 
   function parseSizeOptions(str) {
@@ -431,14 +455,10 @@ footer{background:var(--ink);padding:60px 60px 30px}
     data.url = url;
     if (!data.sku) data.sku = p.slug;
     if (!data.brand) data.brand = {"@type":"Brand","name":"Bio Labs Research"};
-    var price = p.price;
+    var price = (typeof lowestStrengthPrice === 'function') ? lowestStrengthPrice(p) : p.price;
     var sp = p.strength_prices || {};
-    var st = p.strengths || [];
-    if (st.length) {
-      var k0 = String(st[0]).replace(/\s+/g,'').toLowerCase();
-      Object.keys(sp).forEach(function(x){
-        if (String(x).replace(/\s+/g,'').toLowerCase()===k0) price = sp[x];
-      });
+    if (sp && Object.keys(sp).length) {
+      price = Math.min.apply(null, Object.keys(sp).map(function(k){ return parseFloat(sp[k]); }).filter(function(n){ return !isNaN(n); }));
     }
     if (price != null && price !== '') {
       data.offers = data.offers && typeof data.offers === 'object' ? data.offers : {"@type":"Offer"};
@@ -471,7 +491,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
     /* Stage 2: keep unique static document.title */
     document.getElementById('breadcrumb-name').textContent = p.name;
     var img = '/media/vial-epithalon.webp?v=155';
-    var sizes = parseSizeOptions(p.size_options);
+    var sizes = sizesFromProduct(p);
+    var unitPrice = lowestStrengthPrice(p);
     var sizeHtml = '';
     if (sizes.length > 1) {
       sizeHtml = '<div class="size-label">Select Size</div><div class="size-options">' +
@@ -479,8 +500,13 @@ footer{background:var(--ink);padding:60px 60px 30px}
           return '<button type="button" class="size-btn'+(i===0?' active':'')+'" onclick="selectSize(this,\''+s.price+'\')" aria-label="'+(s.label||'Size')+' '+(s.price||'')+'">'+s.label+'</button>';
         }).join('')+'</div>';
     }
-    var origHtml = (p.original_price && parseFloat(p.original_price) > parseFloat(p.price))
-      ? '<span class="price-compare"><span class="price-original">$'+p.original_price+'</span><span class="price-launch-note">INSIDER25 · 25% off</span></span>' : '';
+    var lowOrig = (function(){ var so=p.strength_originals||{}; var sp=p.strength_prices||{}; var keys=Object.keys(sp); if(!keys.length) return p.original_price;
+      var mk=keys.sort(function(a,b){return parseFloat(sp[a])-parseFloat(sp[b]);})[0];
+      var nk=String(mk).replace(/\s+/g,'').toLowerCase(); var o=null;
+      Object.keys(so).forEach(function(x){ if(String(x).replace(/\s+/g,'').toLowerCase()===nk) o=so[x]; });
+      return o!=null?o:p.original_price; })();
+    var origHtml = (lowOrig && parseFloat(lowOrig) > parseFloat(unitPrice))
+      ? '<span class="price-compare"><span class="price-original">$'+lowOrig+'</span><span class="price-launch-note">INSIDER25 · 25% off</span></span>' : '';
     var storageHtml = p.storage
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
@@ -506,7 +532,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
           '</div>' +
           '<div class="price-section">' +
             sizeHtml +
-            '<div class="price-row"><div class="price-unit-wrap"><span class="price-unit-label">Unit price</span><div class="price-main" id="current-price">$'+p.price+'</div></div>'+origHtml+'</div>' +
+            '<div class="price-row"><div class="price-unit-wrap"><span class="price-unit-label">'+(sizes.length>1?'From':'Unit price')+'</span><div class="price-main" id="current-price">$'+unitPrice+'</div></div>'+origHtml+'</div>' +
             '<div class="price-per">This vial — Research Use Only</div>' +
             '<div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>' +
             '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">' +
@@ -532,7 +558,7 @@ storageHtml + presentationHtml +
         '</div></div>' +
         (window.pdpStoryHtml ? pdpStoryHtml(p) : '') +
         '<div class="pdp-sticky-buy" id="pdpStickyBuy" aria-label="Add to inquiry">' +
-          '<div class="pdp-sticky-price"><span class="pdp-sticky-label">Unit</span> <strong id="pdpStickyPrice">$'+p.price+'</strong></div>' +
+          '<div class="pdp-sticky-price"><span class="pdp-sticky-label">Unit</span> <strong id="pdpStickyPrice">$'+unitPrice+'</strong></div>' +
           '<button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">Add to inquiry</button>' +
         '</div>';
   }

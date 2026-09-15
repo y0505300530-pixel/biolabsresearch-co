@@ -1,8 +1,12 @@
-# biolabsresearch.co — Version 2.10
+# biolabsresearch.co — Version 2.11
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- INSIDER25 ticker: remove dead gap between repeats (10px, hide promo-sep clones)
-- Matches Yehuda arrow on empty stretch between marquee copies
+- Lock 20 SKU count: home Popular grid + footer + sitemap include full active catalog (excl. solvent)
+- Science chart: BPC-157 $88; label Curcumin $109 bar; chem-note aligned
+- PDP price-main SoT lowest strength: Semaglutide From $60, Tirzepatide $90, Epithalon From $45
+- COMPARE_AT unified home/science from SoT strength_originals
+- Restore Curcumin Phytosome PDP; remove nginx 301 to homepage
+- COA: honest empty-state + request link; noscript lists hosted PDFs only
