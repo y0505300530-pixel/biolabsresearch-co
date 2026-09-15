@@ -10,16 +10,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>How a Lot Is Specified — Bio Labs Research</title>
+<title>How a Lot Is Specified — BioLabs Research</title>
 <meta name="description" content="Public catalog identity versus lot results on a certificate of analysis. HPLC and mass data belong on the lot file when issued, not as invented statistics.">
 <link rel="canonical" href="https://biolabsresearch.co/science">
-<meta property="og:title" content="How a Lot Is Specified — Bio Labs Research">
+<meta property="og:title" content="How a Lot Is Specified — BioLabs Research">
 <meta property="og:description" content="Public catalog identity versus lot results on a certificate of analysis. HPLC and mass data belong on the lot file when issued, not as invented statistics.">
 <meta property="og:url" content="https://biolabsresearch.co/science">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How a Lot Is Specified — Bio Labs Research">
+<meta name="twitter:title" content="How a Lot Is Specified — BioLabs Research">
 <meta name="twitter:description" content="Public catalog identity versus lot results on a certificate of analysis. HPLC and mass data belong on the lot file when issued, not as invented statistics.">
 <script type="application/ld+json">
 {
@@ -79,7 +79,7 @@
 .sci-body .id-dl div{min-width:0;}
 </style>
 <script src="/search-overlay.js?v=29" defer></script>
-<meta name="app-version" content="2.74">
+<meta name="app-version" content="2.75">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -420,7 +420,7 @@
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.72" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.72</p>
+<p class="site-version" data-site-version="2.75" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.75</p>
 </footer>
 <script>
 window.COMPARE_AT = {"bpc-157-tb-500-blend":150,"BPC-157 / TB-500 Blend":150,"nad-plus":119,"NAD+":119,"aod-9604":52,"AOD-9604":52,"curcumin-phytosome":135,"Curcumin Phytosome (Meriva)":135,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"bpc-157":105,"BPC-157":105,"glow-70":169,"GLOW 70":169,"epithalon":55,"Epithalon":55,"ghk-cu":120,"GHK-Cu":120,"mots-c":115,"MOTS-c":115,"kpv":95,"KPV":95,"semax":119,"Semax":119,"kisspeptin-10":119,"Kisspeptin-10":119,"thymosin-alpha-1":129,"Thymosin Alpha-1":129,"tb-500":125,"TB-500":125,"retatrutide":105,"R3TA":105,"ipamorelin":96,"Ipamorelin":96,"tesamorelin":105,"Tesamorelin":105,"tirzepatide":110,"Tirzepatide":110,"semaglutide":75,"Semaglutide":75,"MOTS-C":115};
@@ -605,18 +605,34 @@ document.addEventListener('DOMContentLoaded', function(){
 </script>
 
 
-<div class="tc-overlay active" id="tcOverlay" role="dialog" aria-modal="true" aria-label="Age and research use gate">
+<div class="tc-overlay" id="tcOverlay" aria-hidden="true" inert>
   <div class="tc-modal">
+    <div class="tc-modal-logo">
+      <svg viewBox="0 0 60 60" fill="none" width="32" height="32">
+        <circle cx="30" cy="30" r="28" stroke="#1d5c3a" stroke-width="2" fill="white"/>
+        <circle cx="30" cy="30" r="25" fill="#f0f7f3"/>
+        <path d="M22 30 C22 24 26 20 30 18 C30 18 28 24 26 28 C24 31 22 32 22 30Z" fill="#1d5c3a"/>
+        <path d="M22 30 C22 36 26 40 30 42 C30 42 28 36 26 32 C24 29 22 28 22 30Z" fill="#2d7a52" opacity="0.7"/>
+        <path d="M34 16 C38 20 36 24 34 28 C32 32 36 36 34 44" stroke="#1d5c3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M38 18 C34 22 36 26 38 30 C40 34 36 38 38 42" stroke="#2d7a52" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </div>
     <h2>Welcome to BioLabs Research</h2>
     <div class="tc-modal-badge">Research Use Only</div>
-    <div class="tc-modal-text">All products are for laboratory research only. Not for human consumption.</div>
+    <div class="tc-modal-text">
+      All products sold by BioLabs Research are intended strictly for <strong>laboratory research purposes only</strong>. They are not intended for human consumption, diagnostic, therapeutic, or veterinary use. By entering this site, you acknowledge these restrictions.
+    </div>
     <div class="tc-checks">
-      <label class="tc-check-label"><input type="checkbox" id="tcCheck1"><span class="tc-check-text">I am at least <strong>21</strong> and a qualified researcher.</span></label>
-      <label class="tc-check-label"><input type="checkbox" id="tcCheck2"><span class="tc-check-text">I agree to the <a href="https://biolabsresearch.co/terms-and-conditions" target="_blank" rel="noopener">Terms</a>.</span></label>
-      <label class="tc-check-label"><input type="checkbox" id="tcCheck3"><span class="tc-check-text">I confirm this is <strong>RUO</strong>, not for human consumption.</span></label>
+      <label class="tc-check-label">
+        <input type="checkbox" id="tcCheck1"><span class="tc-check-text">I am at least <strong>21 years of age</strong> and a qualified researcher.</span></label>
+      <label class="tc-check-label">
+        <input type="checkbox" id="tcCheck2"><span class="tc-check-text">I have read and agree to the <a href="https://biolabsresearch.co/terms-and-conditions" target="_blank">Terms &amp; Conditions</a>.</span></label>
+      <label class="tc-check-label">
+        <input type="checkbox" id="tcCheck3"><span class="tc-check-text">I confirm all products are for <strong>research use only (RUO)</strong> and not for human consumption.</span></label>
     </div>
     <button type="button" class="tc-enter-btn" id="tcEnterBtn" disabled aria-disabled="true">Enter BioLabs Research</button>
     <p class="tc-enter-hint">Tick the three boxes to enter.</p>
+    <div class="tc-modal-foot">&copy; 2026 BioLabs Research. All rights reserved.</div>
   </div>
 </div>
 <script>

@@ -13,17 +13,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<title>Catalog Inquiry Form — Bio Labs Research</title>
+<title>Catalog Inquiry Form — BioLabs Research</title>
 <meta name="description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://biolabsresearch.co/checkout">
-<meta property="og:title" content="Catalog Inquiry Form — Bio Labs Research">
+<meta property="og:title" content="Catalog Inquiry Form — BioLabs Research">
 <meta property="og:description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
 <meta property="og:url" content="https://biolabsresearch.co/checkout">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Catalog Inquiry Form — Bio Labs Research">
+<meta name="twitter:title" content="Catalog Inquiry Form — BioLabs Research">
 <meta name="twitter:description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
 <link rel="stylesheet" href="/biolabs_style.css?v=359">
 <style>
@@ -290,7 +290,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 <script src="/cart-vial.js?v=305" defer></script>
 <script src="/search-overlay.js?v=29" defer></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="2.74">
+<meta name="app-version" content="2.75">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -1181,7 +1181,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.72" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.72</p>
+<p class="site-version" data-site-version="2.75" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.75</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->
@@ -1210,11 +1210,11 @@ function showSuccess(orderData, paymentNote) {
   <div class="tc-modal">
     <div class="tc-modal-logo">
       <svg viewBox="0 0 60 60" fill="none" width="32" height="32">
-        <circle cx="30" cy="30" r="28" stroke="#c4a574" stroke-width="2" fill="white"/>
+        <circle cx="30" cy="30" r="28" stroke="#1d5c3a" stroke-width="2" fill="white"/>
         <circle cx="30" cy="30" r="25" fill="#f0f7f3"/>
-        <path d="M22 30 C22 24 26 20 30 18 C30 18 28 24 26 28 C24 31 22 32 22 30Z" fill="#c4a574"/>
+        <path d="M22 30 C22 24 26 20 30 18 C30 18 28 24 26 28 C24 31 22 32 22 30Z" fill="#1d5c3a"/>
         <path d="M22 30 C22 36 26 40 30 42 C30 42 28 36 26 32 C24 29 22 28 22 30Z" fill="#2d7a52" opacity="0.7"/>
-        <path d="M34 16 C38 20 36 24 34 28 C32 32 36 36 34 44" stroke="#c4a574" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <path d="M34 16 C38 20 36 24 34 28 C32 32 36 36 34 44" stroke="#1d5c3a" stroke-width="2" fill="none" stroke-linecap="round"/>
         <path d="M38 18 C34 22 36 26 38 30 C40 34 36 38 38 42" stroke="#2d7a52" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
       </svg>
     </div>
@@ -1225,21 +1225,15 @@ function showSuccess(orderData, paymentNote) {
     </div>
     <div class="tc-checks">
       <label class="tc-check-label">
-        <input type="checkbox" id="tcCheck1">
-        I am at least <strong>21 years of age</strong> and a qualified researcher.
-      </label>
+        <input type="checkbox" id="tcCheck1"><span class="tc-check-text">I am at least <strong>21 years of age</strong> and a qualified researcher.</span></label>
       <label class="tc-check-label">
-        <input type="checkbox" id="tcCheck2">
-        I have read and agree to the <a href="https://biolabsresearch.co/terms-and-conditions" target="_blank">Terms &amp; Conditions</a>.
-      </label>
+        <input type="checkbox" id="tcCheck2"><span class="tc-check-text">I have read and agree to the <a href="https://biolabsresearch.co/terms-and-conditions" target="_blank">Terms &amp; Conditions</a>.</span></label>
       <label class="tc-check-label">
-        <input type="checkbox" id="tcCheck3">
-        I confirm all products are for <strong>research use only (RUO)</strong> and not for human consumption.
-      </label>
+        <input type="checkbox" id="tcCheck3"><span class="tc-check-text">I confirm all products are for <strong>research use only (RUO)</strong> and not for human consumption.</span></label>
     </div>
     <button type="button" class="tc-enter-btn" id="tcEnterBtn" disabled aria-disabled="true">Enter BioLabs Research</button>
     <p class="tc-enter-hint">Tick the three boxes to enter.</p>
-    <div class="tc-modal-foot">&copy; 2026 LEEDS MARKETING GROUP LTD, trading as BioLabs Research.</div>
+    <div class="tc-modal-foot">&copy; 2026 BioLabs Research. All rights reserved.</div>
   </div>
 </div>
 

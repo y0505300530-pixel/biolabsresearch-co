@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.75
+
+Released 2026-09-15.
+
+Codename: agegate-brand-unify
+
+## Highlights
+
+- **Age-gate**: Standardize ALL pages with `#tcOverlay` to full PDP modal (logo SVG, long RUO text, three checks with `tc-check-text`, Enter + hint + © foot)
+- **Age-gate**: Fix short homepage/blog/static modals; fix divergent `curcumin-phytosome` + `checkout` markup
+- **Brand**: Replace visible/meta/title/JSON-LD `Bio Labs Research` → `BioLabs Research` (vial art unchanged)
+- Keep existing gate JS behavior (no autofocus on first checkbox)
+
+---
+
 # biolabsresearch.co — Version 2.72
 
 Released 2026-09-15.
