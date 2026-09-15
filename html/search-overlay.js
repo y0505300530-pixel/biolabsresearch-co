@@ -170,6 +170,10 @@
       show();
       return;
     }
+    if (e.target.closest && e.target.closest("[data-so-catalog]")) {
+      hide();
+      return;
+    }
     if (e.target.closest && e.target.closest("[data-so-close]")) hide();
   }, true);
 
