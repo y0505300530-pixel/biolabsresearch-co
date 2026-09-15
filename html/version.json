@@ -1,10 +1,11 @@
 {
-  "version": "1.99",
+  "version": "2.00",
   "released": "2026-09-15",
-  "codename": "from-price-lock",
+  "codename": "age-gate-hide-chrome",
   "highlights": [
-    "Homepage From price locked to SoT lowest real SKU: Epithalon 10mg $45",
-    "Hero was stale From $34; Science stat was stale $69 \u2014 both now $45",
-    "Catalog cards already matched SoT (Epithalon From $45)"
+    "Hide nav + promo ticker + sticky cart dock until age-gate Enter (html:not(.tc-ok))",
+    "Early head style + biolabs_style.css Indian v2.00 rules prevent chrome flash",
+    "Enter button and cookie short-circuit add documentElement class tc-ok",
+    "tc-overlay z-index 11000 above cookie banner; Cache-bust biolabs_style.css?v=375"
   ]
 }

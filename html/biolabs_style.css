@@ -9398,6 +9398,18 @@ html body .insider-club .insider-club-note {
 }
 
 
+/* Indian v2.00 — hide chrome until age-gate enter */
+html:not(.tc-ok) .nav,
+html:not(.tc-ok) .promo-stack,
+html:not(.tc-ok) .sticky-cart-dock {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+.tc-overlay {
+  z-index: 11000 !important; /* above cookie banner ~10050 */
+}
+
 /* === MOBILE-SALES-v1.19: Marketing mobile sales focus === */
 /* Hero: secondary = outline only (not twin filled) */
 html body .nl-btn-secondary,
