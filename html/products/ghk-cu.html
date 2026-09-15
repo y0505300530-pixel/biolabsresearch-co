@@ -373,7 +373,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.25" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.25</p>
+<p class="site-version" data-site-version="2.25" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.26</p>
 </footer>
 
 <script>
@@ -769,7 +769,488 @@ window.compareAtPrice = function(item){
     dismiss();
   });
 })();
+
+// === CART DRAWER FUNCTIONS ===
+
+function toggleCart() {
+  var drawer = document.getElementById('cartDrawer');
+  var overlay = document.getElementById('cartOverlay');
+  if(!drawer) return;
+  drawer.classList.toggle('open');
+  overlay.classList.toggle('open');
+  renderCart();
+}
+function renderCart() {
+  var el = document.getElementById('cartItems');
+  if(!el) return;
+  var cart = getCart();
+  var total = cart.reduce(function(a, i) { return a + (parseFloat(i.price) || 0) * i.qty; }, 0);
+  var totalEl = document.getElementById('cartTotal');
+  if(totalEl) totalEl.textContent = '$' + total.toFixed(2);
+  var nItems = Math.max(0, cart.reduce(function(a,i){ return a + Math.max(0, parseInt(i.qty,10)||0); }, 0));
+  var cl = document.getElementById('cartOrderCount');
+  if (cl) cl.textContent = nItems ? ('(' + nItems + (nItems===1 ? ' item' : ' items') + ')') : '';
+
+  if (!cart.length) {
+    el.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg><p>Your cart is empty.<br>Browse research compounds.</p></div>';
+    mountAddMore([]);
+    return;
+  }
+  el.innerHTML = cart.map(function(item) {
+    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + '">';
+    return '<div class="cart-item">' +
+      '<div class="ci-img" style="overflow:hidden;padding:0;">' + imgHtml + '</div>' +
+      '<div class="ci-info">' +
+        '<div class="ci-name">' + item.name + (item.mg ? ' <span class="ci-mg">' + String(item.mg).replace(/mg/i,' mg') + '</span>' : '') + '</div>' +
+        '<div class="ci-price">$' + (parseFloat(item.price) || 0).toFixed(2) + (window.compareAtPrice && window.compareAtPrice(item) > (parseFloat(item.price)||0) ? ' <span class="was">$' + window.compareAtPrice(item).toFixed(2) + '</span>' : '') + '</div>' +
+        '<div class="ci-qty">' +
+          '<button onclick="updateQty(\'' + item.name + '\',-1)">-</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button onclick="updateQty(\'' + item.name + '\',1)">+</button>' +
+        '</div>' +
+      '</div>' +
+      '<button class="ci-remove" onclick="updateQty(\'' + item.name + '\',-99)">x</button>' +
+    '</div>';
+  }).join('');
+  mountAddMore(cart);
+}
+function updateQty(name, delta) {
+  var cart = (typeof getCart === 'function') ? getCart() : [];
+  if (!Array.isArray(cart)) cart = [];
+  var base = String(name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+  var item = cart.find(function(i){
+    if (i.name === name) return true;
+    var iname = String(i.name||'').replace(/\s*\([^)]*mg[^)]*\)\s*$/i,'').trim();
+    return iname === base;
+  });
+  if (!item) return;
+  if (item.gift || item.slug === 'research-solvent') {
+    item.qty = 1;
+    saveCart(cart);
+    renderCart();
+    if (typeof updateBadge === 'function') updateBadge();
+    return;
+  }
+  var d = parseInt(delta, 10) || 0;
+  var q = parseInt(item.qty, 10) || 0;
+  if (d <= -99 || q + d <= 0) {
+    cart = cart.filter(function(i){ return i !== item; });
+  } else {
+    item.qty = q + d;
+  }
+  cart = cart.filter(function(i){ return i && (parseInt(i.qty,10)||0) > 0; });
+  saveCart(cart);
+  renderCart();
+  if (typeof updateBadge === 'function') updateBadge();
+}
+function checkout() {
+  var cart = getCart();
+  if (!cart.length) return;
+  window.location.href = '../checkout';
+}
+
 </script>
+
+<!-- COA POPUP MODAL -->
+<div id="coa-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center">
+  <div style="background:white;border-radius:12px;width:90%;max-width:860px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4)">
+    <!-- Header -->
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e8f0ea;background:#f7f9f5">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#1d5c3a;letter-spacing:1px;text-transform:uppercase">Certificate of Analysis</div>
+        <div id="coa-modal-title" style="font-size:15px;font-weight:700;color:#0d2137;margin-top:2px"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <button type="button" id="coa-download-btn" style="display:inline-flex;align-items:center;gap:6px;background:#1d5c3a;color:white;padding:8px 16px;border-radius:var(--radius-sm);font-size:12px;font-weight:700;text-decoration:none;font-family:Montserrat,sans-serif">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </a>
+        <button onclick="closeCOAModal()" style="background:none;border:none;cursor:pointer;padding:6px;color:#4a6358;font-size:20px;line-height:1">&#x2715;</button>
+      </div>
+    </div>
+    <!-- Multi-COA tabs (shown only when product has multiple COAs) -->
+    <div id="coa-tabs" style="display:none;padding:10px 20px 0;border-bottom:1px solid #e8f0ea;gap:8px;flex-direction:row">
+    </div>
+    <!-- PDF Viewer -->
+    <div style="flex:1;overflow:hidden;min-height:500px">
+      <iframe id="coa-iframe" src="" style="width:100%;height:600px;border:none;display:block"></iframe>
+    </div>
+    <!-- Verified badge -->
+    <div style="padding:10px 20px;background:#f7f9f5;border-top:1px solid #e8f0ea;display:flex;align-items:center;gap:8px">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d5c3a" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span style="font-size:11px;color:#1d5c3a;font-weight:700">Lot document — verify the filename and lot number on the PDF</span>
+    </div>
+  </div>
+</div>
+
+<script>
+// COA DATA MAP
+
+var PUB_IDS = {
+  "bpc-157-tb-500-blend": {
+    "cas": "137525-51-0 · 885340-09-2",
+    "formula": "",
+    "mw": "",
+    "seq": "BPC-157 + TB-500 fragment (lot ratio on COA)"
+  },
+  "bpc-157": {
+    "cas": "137525-51-0",
+    "formula": "C62H98N16O22",
+    "mw": "~1419.5 Da",
+    "seq": "GEPPPGKPADDAGLV"
+  },
+  "nad-plus": {
+    "cas": "53-84-9",
+    "formula": "C21H27N7O14P2",
+    "mw": "~663.4 Da",
+    "seq": ""
+  },
+  "aod-9604": {
+    "cas": "221231-10-3",
+    "formula": "",
+    "mw": "",
+    "seq": "hGH 177\u2013191 (fragment listing)"
+  },
+  "ghk-cu": {
+    "cas": "89030-95-5",
+    "formula": "C14H22CuN6O4",
+    "mw": "~403.9 Da",
+    "seq": "GHK\u00b7Cu"
+  },
+  "epithalon": {
+    "cas": "307297-39-8",
+    "formula": "C16H22N4O9",
+    "mw": "~390.3 Da",
+    "seq": "AEDG"
+  },
+  "kpv": {
+    "cas": "67747-97-3",
+    "formula": "C16H30N4O4",
+    "mw": "~342.4 Da",
+    "seq": "KPV"
+  },
+  "semax": {
+    "cas": "80714-61-0",
+    "formula": "C37H51N9O10S",
+    "mw": "~813.9 Da",
+    "seq": "MEHFPGP"
+  },
+  "kisspeptin-10": {
+    "cas": "374675-21-5",
+    "formula": "",
+    "mw": "",
+    "seq": "YNWNSFGLRF-NH2"
+  },
+  "tb-500": {
+    "cas": "885340-09-2",
+    "formula": "",
+    "mw": "",
+    "seq": "Ac-LKKTETQ (TB-500 fragment listing)"
+  },
+  "mots-c": {
+    "cas": "1627580-64-6",
+    "formula": "",
+    "mw": "",
+    "seq": "MRWQEMGYIFYPRKLR"
+  },
+  "thymosin-alpha-1": {
+    "cas": "62304-98-7",
+    "formula": "",
+    "mw": "~3108 Da",
+    "seq": ""
+  },
+  "tesamorelin": {
+    "cas": "218949-48-5",
+    "formula": "",
+    "mw": "",
+    "seq": ""
+  },
+  "retatrutide": {
+    "cas": "2381089-83-2",
+    "formula": "",
+    "mw": "",
+    "seq": ""
+  }
+};
+
+var RESEARCH = {
+  "bpc-157": {
+    "body": "BPC-157 is a pentadecapeptide (GEPPPGKPADDAGLV), CAS 137525-51-0. The sequence is published as a gastric-derived fragment and is used in cell and tissue models of cytoprotection and angiogenesis signaling.",
+    "limit": "Research reagent only. Not a medicine, not a wound protocol, no dose on this page."
+  },
+  "nad-plus": {
+    "body": "NAD+ is nicotinamide adenine dinucleotide, CAS 53-84-9 (C21H27N7O14P2). It is a published redox cofactor used in dehydrogenase and NAD-consuming enzyme assays.",
+    "limit": "Biochemical reference material. Not a supplement claim, no dose on this page."
+  },
+  "aod-9604": {
+    "body": "AOD-9604 is listed in literature as the C-terminal fragment of human growth hormone (residues 177-191), CAS 221231-10-3. It appears in lipid-metabolism models as a fragment listing, not as intact GH.",
+    "limit": "Research fragment only. Not growth-hormone replacement, no dose on this page."
+  },
+  "curcumin-phytosome": {
+    "body": "Curcumin (diferuloylmethane, CAS 458-37-7) in a phospholipid phytosome research formulation. Used in laboratory studies of polyphenol pathways. The catalog name may include a published formulation label; this page does not claim a licensed clinical product.",
+    "limit": "Research formulation. Not a dietary supplement or drug, no outcome on this page."
+  },
+  "tesamorelin-ipamorelin": {
+    "body": "Two named compounds in one SKU. Tesamorelin is a published GHRH analogue (CAS 218949-48-5). Ipamorelin is a published ghrelin-receptor (GHS-R) agonist (CAS 170851-70-4). They are used in GH-axis signaling research. Ratio and fill weight are lot data, not guessed here.",
+    "limit": "Research blend. Not a secretagogue therapy, not a registered drug, no dose on this page."
+  },
+  "bpc-157-tb-500-blend": {
+    "body": "Two named peptides in one SKU: BPC-157 (CAS 137525-51-0, GEPPPGKPADDAGLV) and a TB-500 / thymosin-beta-4 fragment listing (commonly Ac-LKKTETQ). Per-compound amounts belong on the lot document.",
+    "limit": "Research blend. Not a healing protocol, no ratio invented on this page."
+  },
+  "glow-70": {
+    "body": "GLOW 70 is a catalog name for a research blend. This page does not invent a formula, a three-peptide recipe, a ratio, or a purity number. Identity is the names on the label and the lot COA when a file is issued.",
+    "limit": "Named SKU only. Not a cosmetic treatment, no composition guessed here."
+  },
+  "epithalon": {
+    "body": "Epithalon (epitalon) is the tetrapeptide Ala-Glu-Asp-Gly (AEDG), CAS 307297-39-8. It appears in pineal and telomerase-related laboratory literature.",
+    "limit": "Research tetrapeptide. Not an anti-aging drug, no dose on this page."
+  },
+  "ghk-cu": {
+    "body": "GHK-Cu is the copper(II) complex of the tripeptide Gly-His-Lys, CAS 89030-95-5. It is used in extracellular-matrix and copper-binding research.",
+    "limit": "Research complex. Not a cosmetic or skin treatment, no dose on this page."
+  },
+  "mots-c": {
+    "body": "MOTS-c is a mitochondrial open-reading-frame peptide (MRWQEMGYIFYPRKLR), CAS 1627580-64-6. It is studied in metabolic signaling models.",
+    "limit": "Research peptide. Not a metabolic drug, no dose on this page."
+  },
+  "kpv": {
+    "body": "KPV is the tripeptide Lys-Pro-Val, a C-terminal fragment of alpha-MSH, CAS 67747-97-3. It is used in melanocortin-pathway research.",
+    "limit": "Research fragment. Not an anti-inflammatory medicine, no dose on this page."
+  },
+  "semax": {
+    "body": "Semax is the heptapeptide MEHFPGP, an ACTH(4-10) analogue, CAS 80714-61-0. It appears in CNS signaling models in the literature.",
+    "limit": "Research analogue. Not a nootropic product, no dose on this page."
+  },
+  "kisspeptin-10": {
+    "body": "Kisspeptin-10 is the decapeptide YNWNSFGLRF-NH2, a published ligand of KISS1R, CAS 374675-21-5. It is used in reproductive-axis receptor research.",
+    "limit": "Research ligand. Not a fertility treatment, no dose on this page."
+  },
+  "thymosin-alpha-1": {
+    "body": "Thymosin alpha-1 is an acetylated 28-residue thymic peptide, CAS 62304-98-7. It appears in immune-signaling literature.",
+    "limit": "Research peptide. Not an immunotherapy, no dose on this page."
+  },
+  "tb-500": {
+    "body": "TB-500 is a catalog name for a thymosin-beta-4 fragment listing (commonly Ac-LKKTETQ). Public CAS listings for the fragment vs intact T-beta-4 are not the same thing. Identity is the sequence printed on the lot COA when issued.",
+    "limit": "Research fragment listing. Not a healing protocol, no dose on this page."
+  },
+  "retatrutide": {
+    "body": "R3TA (retatrutide, LY3437943) is a published triple agonist at GIP, GLP-1, and glucagon receptors (CAS 2381089-83-2). It is a research reagent for incretin-pathway assays.",
+    "limit": "Research agonist. Not a weight-loss product, no dose on this page."
+  }
+};
+function researchNoteHtml(slug){
+  var n = RESEARCH[slug];
+  if (!n) return '';
+  return '<div class="research-note"><h2>What this listing is</h2><p>'+n.body+'</p><p>'+n.limit+'</p></div>';
+}
+
+function specStripHtml(slug){
+  var ids = PUB_IDS[slug] || {};
+  function cell(label, val){
+    if (!val || !String(val).trim()) return '';
+    return '<div><dt>'+label+'</dt><dd>'+val+'</dd></div>';
+  }
+  var body = cell('CAS', ids.cas)+cell('Formula', ids.formula)+cell('MW', ids.mw)+cell('Identity', ids.seq);
+  if (!body) return '';
+  return '<dl class="spec-strip">'+body+
+    '</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity lives on the lot COA when issued.</p>';
+}
+
+var COA_DATA = {
+  // Live catalog slugs only. Hosted lot PDFs on biolabsresearch.co (same-origin for CSP iframe).
+  'bpc-157-tb-500-blend': [
+    {url:'/media/coa/sample-coa.pdf', filename:'sample-coa.pdf', label:'BPC-157 / TB-500 Blend — Lot ARC-WV10-004'}
+  ],
+  'retatrutide': [
+    {url:'/media/coa/retatrutide-coa.pdf', filename:'retatrutide-coa.pdf', label:'Retatrutide — Certificate of Analysis'}
+  ],
+  'glow-70': [
+    {url:'/media/coa/glow-70-coa.pdf', filename:'glow-70-coa.pdf', label:'GLOW 70 — Certificate of Analysis'}
+  ],
+  'bpc-157': [],
+  'nad-plus': [],
+  'aod-9604': [],
+  'curcumin-phytosome': [],
+  'tesamorelin-ipamorelin': []
+};
+
+function openCOAModal(slug) {
+  var entries = COA_DATA[slug];
+  if (!entries || !entries.length) return;
+  var modal = document.getElementById('coa-modal');
+  var tabs = document.getElementById('coa-tabs');
+
+  // Load first entry
+  loadCOAEntry(entries[0]);
+
+  // Show tabs only if multiple COAs
+  if (entries.length > 1) {
+    tabs.style.display = 'flex';
+    tabs.innerHTML = entries.map(function(e, i) {
+      return '<button onclick="loadCOAEntry(COA_DATA[\''+slug+'\']['+i+'], this)" style="padding:6px 14px;border-radius:var(--radius-sm) 6px 0 0;border:1px solid #d4e4d8;border-bottom:none;background:'+(i===0?'white':'#f7f9f5')+';color:'+(i===0?'#0d2137':'#4a6358')+';font-size:12px;font-weight:700;cursor:pointer;font-family:Montserrat,sans-serif">' + e.label + '</button>';
+    }).join('');
+    mountAddMore(cart);
+  } else {
+    tabs.style.display = 'none';
+    tabs.innerHTML = '';
+  }
+
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function loadCOAEntry(entry, btnEl) {
+  document.getElementById('coa-iframe').src = entry.url;
+  document.getElementById('coa-modal-title').textContent = entry.label;
+  var dl = document.getElementById('coa-download-btn');
+  dl.href = entry.url;
+  dl.download = entry.filename;
+  // Update tab highlight
+  if (btnEl) {
+    var tabs = document.getElementById('coa-tabs');
+    tabs.querySelectorAll('button').forEach(function(b) {
+      b.style.background = '#f7f9f5'; b.style.color = '#4a6358';
+    });
+    btnEl.style.background = 'white'; btnEl.style.color = '#0d2137';
+  }
+}
+
+function closeCOAModal() {
+  document.getElementById('coa-modal').style.display = 'none';
+  document.getElementById('coa-iframe').src = '';
+  document.body.style.overflow = '';
+}
+
+// Close on backdrop click
+document.getElementById('coa-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCOAModal();
+});
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCOAModal();
+});
+</script>
+
+<!-- REQUEST COA POPUP MODAL -->
+<div id="coa-request-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:9998;align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:12px;width:90%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.3)">
+    <!-- Header -->
+    <div style="padding:20px 24px;border-bottom:1px solid #e8f0ea">
+      <div style="display:flex;align-items:center;justify-content:space-between">
+        <div>
+          <div style="font-size:11px;font-weight:700;color:#1d5c3a;letter-spacing:1px;text-transform:uppercase">Certificate of Analysis</div>
+          <div style="font-size:18px;font-weight:700;color:#0d2137;margin-top:2px">Request COA</div>
+        </div>
+        <button type="button" onclick="closeCOARequest()" aria-label="Close certificate request" style="background:none;border:none;cursor:pointer;min-width:44px;min-height:44px;padding:10px;color:#4a6358;font-size:20px;line-height:1">&#x2715;</button>
+      </div>
+      <p style="font-size:13px;color:#6a8270;margin:8px 0 0">Enter your details and we will send the Certificate of Analysis for <strong id="coa-req-product" style="color:#0d2137">this product</strong> directly to your inbox.</p>
+    </div>
+    <!-- Form -->
+    <form id="coa-request-form" onsubmit="submitCOARequest(event)" style="padding:20px 24px;display:flex;flex-direction:column;gap:14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label for="coa-req-first" style="font-family:var(--font-display);font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">First Name *</label>
+          <input type="text" id="coa-req-first" required style="border:1.5px solid #dde7e2;border-radius:var(--radius-sm);padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px">
+          <label for="coa-req-last" style="font-family:var(--font-display);font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Last Name *</label>
+          <input type="text" id="coa-req-last" required style="border:1.5px solid #dde7e2;border-radius:var(--radius-sm);padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label for="coa-req-email" style="font-family:var(--font-display);font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Email *</label>
+        <input type="email" id="coa-req-email" required style="border:1.5px solid #dde7e2;border-radius:var(--radius-sm);padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label for="coa-req-org" style="font-family:var(--font-display);font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Company / Institution</label>
+        <input type="text" id="coa-req-org" style="border:1.5px solid #dde7e2;border-radius:var(--radius-sm);padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'">
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px">
+        <label for="coa-req-msg" style="font-family:var(--font-display);font-size:10px;font-weight:700;color:#0d2137;text-transform:uppercase;letter-spacing:0.8px">Message</label>
+        <textarea id="coa-req-msg" rows="3" placeholder="Any specific lot numbers or batch requirements?" style="border:1.5px solid #dde7e2;border-radius:var(--radius-sm);padding:10px 12px;font-size:14px;font-family:'Inter',sans-serif;color:#0d2137;outline:none;transition:border-color .2s;resize:vertical;line-height:1.5" onfocus="this.style.borderColor='#1d5c3a'" onblur="this.style.borderColor='#dde7e2'"></textarea>
+      </div>
+      <button type="submit" id="coa-req-submit" style="background:#1d5c3a;color:white;border:none;border-radius:var(--radius-sm);padding:13px 28px;font-size:13px;font-weight:700;font-family:var(--font-display);letter-spacing:0.5px;cursor:pointer;transition:all .2s;text-transform:uppercase">
+        <span id="coa-req-btn-text">Request lot COA</span>
+      </button>
+      <div id="coa-req-success" style="display:none;align-items:center;gap:10px;font-size:13px;color:#1d5c3a;font-weight:600;background:#e8f4ee;border-radius:var(--radius-sm);padding:12px 16px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1d5c3a" stroke-width="2"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        Request received. We will email your COA shortly.
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+var coaRequestProduct = '';
+function openCOARequest(productName) {
+  coaRequestProduct = productName || '';
+  document.getElementById('coa-req-product').textContent = productName || 'this product';
+  document.getElementById('coa-request-modal').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+function closeCOARequest() {
+  document.getElementById('coa-request-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+function submitCOARequest(e) {
+  e.preventDefault();
+  var btn = document.getElementById('coa-req-submit');
+  var txt = document.getElementById('coa-req-btn-text');
+  btn.disabled = true;
+  txt.textContent = 'Sending...';
+  var payload = {
+    firstName: document.getElementById('coa-req-first').value,
+    lastName:  document.getElementById('coa-req-last').value,
+    email:     document.getElementById('coa-req-email').value,
+    org:       document.getElementById('coa-req-org').value,
+    subject:   'COA Request - ' + (coaRequestProduct || 'General'),
+    message:   (document.getElementById('coa-req-msg').value || '') + ' [Product: ' + (coaRequestProduct || 'General') + ']'
+  };
+  fetch('https://biolabsresearch.co/api/contact', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify(payload)
+  })
+  .then(function(r) {
+    if (!r.ok) throw new Error('contact ' + r.status);
+    return r.json();
+  })
+  .then(function(data) {
+    btn.disabled = false;
+    txt.textContent = 'Request lot COA';
+    document.getElementById('coa-req-success').style.display = 'flex';
+    document.getElementById('coa-request-form').reset();
+    setTimeout(function() {
+      document.getElementById('coa-req-success').style.display = 'none';
+      closeCOARequest();
+    }, 3000);
+  })
+  .catch(function() {
+    btn.disabled = false;
+    txt.textContent = 'Request lot COA';
+    var mail = 'mailto:admin@biolabsresearch.co?subject=' + encodeURIComponent(payload.subject) +
+      '&body=' + encodeURIComponent('COA request from ' + payload.firstName + ' ' + payload.lastName +
+        '\nEmail: ' + payload.email + '\nOrg: ' + (payload.org||'') + '\n' + payload.message);
+    window.location.href = mail;
+    alert('The COA request could not be sent automatically. Please send the email draft to inquiry form.');
+  });
+}
+document.getElementById('coa-request-modal').addEventListener('click', function(e) {
+  if (e.target === this) closeCOARequest();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeCOARequest();
+});
+</script>
+
+<script src="/email-capture.js?v=5"></script>
+<script src="/enhance-schema.js"></script>
+<script src="/promo-bar.js?v=292"></script>
+<script src="/mg-picker.js?v=32"></script>
+<script src="/prices-sync.js?v=2"></script>
+<script src="/product-marquee.js?v=20"></script>
+<script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>
 
 <script src="/tools-video.js?v=2"></script>
 </body>

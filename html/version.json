@@ -1,9 +1,10 @@
 {
-  "version": "2.25",
+  "version": "2.26",
   "released": "2026-09-15",
-  "codename": "age-gate-enter",
+  "codename": "age-gate-enter-all",
   "highlights": [
-    "Age-gate Enter: reliable enable on checkbox tap, dismiss + tc-ok hardened",
-    "Modal scroll + 44px checkbox hits + Enter always reachable on mobile"
+    "Age-gate Enter JS on all gated pages (IIFE-only; PDP cart scripts intact)",
+    "Restored PDPs after bad v2.25b full-script replace",
+    "Enter: change/input/click sync + dismiss + tc-ok hardened"
   ]
 }
