@@ -11343,3 +11343,22 @@ html body .footer-top,
   height: auto !important;
   line-height: 1.35 !important;
 }
+
+/* === CONTACT-DOCK-HIDE-v2.22: ELITE MINOR FAIL — View cart over Contact textarea @390 === */
+@media (max-width: 800px) {
+  body:has(.contact-page) .sticky-cart-dock,
+  body:has(#contactForm) .sticky-cart-dock,
+  body:has(.cf-form) .sticky-cart-dock,
+  body.contact-page-open .sticky-cart-dock,
+  html body.contact-page .sticky-cart-dock {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  body:has(.contact-page),
+  body:has(#contactForm),
+  body.contact-page-open,
+  html body.contact-page {
+    padding-bottom: 0 !important;
+  }
+}

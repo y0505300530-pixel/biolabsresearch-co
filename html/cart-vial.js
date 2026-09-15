@@ -2227,9 +2227,11 @@ function addSuggest(slug, name, price, mg){
     var open = !!(drawer && drawer.classList.contains('open'));
     var onCheckout = !!(document.querySelector('.checkout-page') || /\/checkout\/?$/.test(location.pathname));
     try { document.body.classList.toggle('checkout-page-open', onCheckout); } catch (e) {}
+    var onContact = !!(document.querySelector('.contact-page, #contactForm, .cf-form') || /\/contact\/?$/.test(location.pathname));
+    try { document.body.classList.toggle('contact-page-open', onContact); } catch (e) {}
     var ctaOverlap = ctaOverlapsDockZone();
     dock.classList.toggle('is-cta-overlap', ctaOverlap);
-    var hide = open || document.body.classList.contains('has-pdp-sticky') || onCheckout || ctaOverlap;
+    var hide = open || document.body.classList.contains('has-pdp-sticky') || onCheckout || onContact || ctaOverlap;
     dock.classList.toggle('is-hidden', hide);
   }
 
