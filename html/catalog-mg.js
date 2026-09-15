@@ -316,6 +316,7 @@
       e.preventDefault();
       e.stopPropagation();
       var key = norm(btn.getAttribute("data-mg") || btn.textContent);
+      card.setAttribute("data-mg-picked", "1");
       __mgApplying = true;
       try {
         applyCard(card, p, key);
