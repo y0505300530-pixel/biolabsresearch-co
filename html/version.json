@@ -1,9 +1,9 @@
 {
-  "version": "2.17",
+  "version": "2.18",
   "released": "2026-09-15",
-  "codename": "checkout-continue-request",
+  "codename": "footer-email-disclaimer",
   "highlights": [
-    "Checkout submit labels aligned to Marketing SoT: Continue request (card + crypto)",
-    "TBD busy state on submit retained for card simulation"
+    "Footer email chip: no truncate/ellipsis \u2014 full admin@biolabsresearch.co",
+    "RUO / Not FDA approved disclaimer: readable size + wrap at all widths"
   ]
 }

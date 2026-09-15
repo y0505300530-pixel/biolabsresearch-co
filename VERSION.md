@@ -1,8 +1,8 @@
-# biolabsresearch.co — Version 2.17
+# biolabsresearch.co — Version 2.18
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- Checkout submit labels aligned to Marketing SoT: Continue request (card + crypto)
-- TBD busy state on submit retained for card simulation
+- Footer email chip: no truncate/ellipsis — full admin@biolabsresearch.co
+- RUO / Not FDA approved disclaimer: readable size + wrap at all widths
