@@ -11971,7 +11971,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   accent-color: #9A6D2A !important;
 }
 
-/* === v2.56 rsay-like-theirs-yehuda === */
+/* === v2.57 rsay-elite-anon === */
 .rsay-section[hidden],
 .rsay-section[data-rsay-state="awaiting-marketing"]{
   display:none!important;
@@ -12118,19 +12118,25 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   font-weight:700;
   letter-spacing:.02em;
 }
-.rsay-name{
-  margin:0;
-  font-size:14px;
-  font-weight:700;
-  color:#1F1F1F;
+.rsay-avatar-anon{
+  background:#D9D2C6;
+  color:#5a554e;
 }
+.rsay-avatar-anon svg{display:block}
+.rsay-name{display:none!important} /* no invented names */
 .rsay-meta{
-  margin:2px 0 0;
+  margin:0;
   font-size:12px;
   color:#6b6560;
 }
-/* kill v2.55 anonymous lab-note footer chrome */
-.rsay-lab-note{display:none!important}
+.rsay-lab-note{
+  display:block!important;
+  margin:0;
+  font-size:12px;
+  font-weight:500;
+  color:#6b6560;
+  letter-spacing:.01em;
+}
 .rsay-fade{
   position:absolute;
   top:0;

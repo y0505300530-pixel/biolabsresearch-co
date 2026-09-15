@@ -1,13 +1,12 @@
-# biolabsresearch.co — Version 2.56
+# biolabsresearch.co — Version 2.57
 
 Released 2026-09-15.
 
-Codename: rsay-like-theirs-yehuda
+Codename: rsay-elite-anon
 
 ## Highlights
 
-- Homepage **Researchers say...** restyled like competitor screenshots (Yehuda): title ellipsis; aggregate **5 green stars** + **4.8 / 1,200+ lab notes**
-- Cards: **5 olive-green stars**, Marketing’s exact 5 RUO lab-note quotes, circular green avatar + bold researcher-style names, `{SKU} · Verified order` (GHK-Cu / NAD+ / BPC-157 / TB-500 / Epithalon)
-- Removed **Example lab note** footer label; infinite-loop carousel kept; age-gate untouched
-- CSS `biolabs_style.css?v=348`
-- Cart: untouched
+- ELITE lock on **Researchers say...**: keep header **4.8 / 1,200+ lab notes** + aggregate green stars, per-card **olive stars**, Marketing’s exact 5 RUO quotes, infinite loop
+- **Removed** invented researcher names and **Verified order** / SKU·Verified lines
+- Anonymous neutral avatar + footer label restored to **Example lab note**
+- CSS `biolabs_style.css?v=349`; age-gate + cart untouched
