@@ -1,10 +1,10 @@
 {
-  "version": "2.13",
+  "version": "2.14",
   "released": "2026-09-15",
-  "codename": "promo-removed",
+  "codename": "ruo-hierarchy",
   "highlights": [
-    "INSIDER25 top banner removed completely (Yehuda)",
-    "promo-bar.js is a kill-switch so old cached tags still hide the bar",
-    "CSS hard-hides #promoStack / .promo-bar"
+    "RUO hierarchy (Marketing lock): one voice, not a chorus",
+    "Kept: footer disclaimer \u00b7 PDP RUO badge by Add \u00b7 checkout/cart \u00b7 age-gate \u00b7 blog/legal",
+    "Stripped: hero nl-sub \u00b7 slogan band \u00b7 Science home repeats \u00b7 PDP duplicate price-per line \u00b7 footer brand double"
   ]
 }
