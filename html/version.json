@@ -1,9 +1,9 @@
 {
-  "version": "2.18",
+  "version": "2.19",
   "released": "2026-09-15",
-  "codename": "footer-email-disclaimer",
+  "codename": "add-to-cart-cta",
   "highlights": [
-    "Footer email chip: no truncate/ellipsis \u2014 full admin@biolabsresearch.co",
-    "RUO / Not FDA approved disclaimer: readable size + wrap at all widths"
+    "Product CTA: ADD TO CART (replaces Request this lot) \u2014 Yehuda",
+    "Request lot COA / Request received / Continue request unchanged"
   ]
 }

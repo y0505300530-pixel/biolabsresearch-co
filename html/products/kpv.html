@@ -27,7 +27,7 @@
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://biolabsresearch.co/#catalog"}, {"@type": "ListItem", "position": 3, "name": "KPV", "item": "https://biolabsresearch.co/products/kpv"}]}</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=296">
+<link rel="stylesheet" href="/biolabs_style.css?v=297">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -203,10 +203,10 @@ footer{background:var(--ink);padding:60px 60px 30px}
 @media(max-width:900px){.cart-drawer{width:100%;right:-100%}}
 
 .spec-strip{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 20px;margin:16px 0;padding:14px 0;border-top:1px solid #e8e2d8;border-bottom:1px solid #e8e2d8}.spec-strip dt{font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#6B4A12}.spec-strip dd{font-size:14px;color:#1F1F1F;font-family:ui-monospace,monospace}.spec-note{font-size:12px;color:#8A8A8A;margin:0 0 16px}.research-note{font-size:14px;line-height:1.55;color:#1F1F1F;margin:8px 0 16px;padding:12px 14px;background:#F4EFE4;border-radius:8px}.research-note h2,.research-note h3{font-size:11px;letter-spacing:.7px;text-transform:uppercase;color:#6B4A12;margin:0 0 8px;font-weight:700}.research-note p{margin:0 0 8px}.research-note p:last-child{margin:0;color:#8A8A8A;font-size:13px}</style>
-<script src="/cart-vial.js?v=295" defer></script>
+<script src="/cart-vial.js?v=297" defer></script>
 <script src="/pdp-story.js?v=40"></script>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.18">
+<meta name="app-version" content="2.19">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -360,7 +360,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.18" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.18</p>
+<p class="site-version" data-site-version="2.19" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.19</p>
 </footer>
 
 <script>
@@ -514,7 +514,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
                 '<span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>' +
                 '<button type="button" onclick="changePdpQty(1)" aria-label="Increase quantity" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>' +
               '</div>' +
-              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">Request this lot</button>' +
+              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">ADD TO CART</button>' +
             '</div>' +
             '<p class="pdp-ship-note">Processing 1–2 business days · USPS Ground free · UPS 2nd Day from $18.99</p>' +
             '<p class="pdp-atc-note">After you add: we review the inquiry and email next steps — no charge until confirmed.</p>' +
@@ -530,9 +530,9 @@ footer{background:var(--ink);padding:60px 60px 30px}
 storageHtml + presentationHtml +
         '</div></div>' +
         (window.pdpStoryHtml ? pdpStoryHtml(p) : '') +
-        '<div class="pdp-sticky-buy" id="pdpStickyBuy" aria-label="Request this lot">' +
+        '<div class="pdp-sticky-buy" id="pdpStickyBuy" aria-label="ADD TO CART">' +
           '<div class="pdp-sticky-price"><span class="pdp-sticky-label">Unit</span> <strong id="pdpStickyPrice">$'+p.price+'</strong></div>' +
-          '<button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">Request this lot</button>' +
+          '<button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">ADD TO CART</button>' +
         '</div>';
   }
   function renderNotFound() {

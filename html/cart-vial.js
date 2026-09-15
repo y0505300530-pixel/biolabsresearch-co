@@ -2276,7 +2276,7 @@ function addSuggest(slug, name, price, mg){
   else wrap();
 })();
 
-/* GA: wrap PDP Request this lot (addToCartTemplate / addToCart) once */
+/* GA: wrap PDP ADD TO CART (addToCartTemplate / addToCart) once */
 (function(){
   if (window.__blrTrackInquiryWrap) return;
   window.__blrTrackInquiryWrap = true;

@@ -5562,7 +5562,7 @@ a.nav-logo{
 .contact-line-ico{width:36px;height:36px;border-radius:999px;border:1px solid #d9cbae;display:inline-flex;align-items:center;justify-content:center;background:#fff;flex:0 0 auto}
 .contact-line-ico svg{width:18px;height:18px}
 
-/* atc-mobile-wrap 2026-09-07: Request this lot must not clip in 2-col catalog */
+/* atc-mobile-wrap 2026-09-07: ADD TO CART must not clip in 2-col catalog */
 @media (max-width:800px){
   .product-card-row{
     flex-direction:column!important;
