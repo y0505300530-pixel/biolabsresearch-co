@@ -956,7 +956,7 @@ function addSuggest(slug, name, price, mg){
     var merch = 0;
     c.forEach(function(i){ if(!i.gift && i.slug!=='research-solvent') merch += (parseFloat(i.price)||0)*(i.qty||1); });
     var has = c.some(function(i){ return _isBacItem(i); });
-    var want = merch >= 100 && !_bacDismissed(); /* milestone gift only — RUO: no Recommended auto-add */
+    var want = false; /* v2.39: BAC milestone gift retired with Inquiry Rewards — no auto-add */
     if (want === has) {
       /* keep badge SoT if present; BAC always last above carousel */
       if (has) {
@@ -975,7 +975,7 @@ function addSuggest(slug, name, price, mg){
     }
     giftLock = true;
     if (want) { var g=Object.assign({},GIFT,{qty:1,badge:BAC_BADGE}); c=c.filter(function(i){return !_isBacItem(i);}); c=_sortBacLast(c.concat([g])); }
-    else c = _sortBacLast(c.filter(function(i){ return !_isBacItem(i); }));
+    else c = _sortBacLast(c.filter(function(i){ return !(_isBacItem(i) && i.gift); })); /* keep paid solvent */
     if (typeof cart !== 'undefined') cart = c;
     try { _writeCartLS(c); } catch(e){}
     if (typeof saveCart === 'function') {
@@ -2376,3 +2376,31 @@ function addSuggest(slug, name, price, mg){
 
 
 /* CRM v2.38 checkout cart wipe: empty in-memory cart must not overwrite LS */
+
+/* CRM v2.39 kill BAC gift + Inquiry Rewards UI */
+(function(){
+  if (window.__blrKillBacGift239) return;
+  window.__blrKillBacGift239 = true;
+  var s = document.createElement('style');
+  s.id = 'blr-kill-bac-gift-239';
+  s.textContent = '#cartProgress,.cp-kicker,.cp-msg,.cp-track,.cp-unlocked{display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;visibility:hidden!important}';
+  (document.head||document.documentElement).appendChild(s);
+  function stripGift(){
+    try {
+      var c = (typeof _readCartLS==='function') ? _readCartLS() : [];
+      if (!Array.isArray(c) || !c.length) return;
+      var next = c.filter(function(i){ return !(i && i.gift && (i.slug==='research-solvent' || /bacteriostatic|research solvent/i.test(String(i.name||'')))); });
+      if (next.length === c.length) return;
+      if (typeof cart !== 'undefined') cart = next;
+      if (typeof _writeCartLS==='function') _writeCartLS(next);
+      else try { localStorage.setItem('biolabs_cart', JSON.stringify(next)); } catch(e){}
+      if (typeof updateBadge==='function') try { updateBadge(); } catch(e){}
+      if (typeof renderSummary==='function') try { renderSummary(); } catch(e){}
+      if (typeof renderCart==='function') try { renderCart(); } catch(e){}
+    } catch(e){}
+  }
+  if (document.readyState==='loading') document.addEventListener('DOMContentLoaded', stripGift);
+  else stripGift();
+  setTimeout(stripGift, 300);
+  setTimeout(stripGift, 1200);
+})();

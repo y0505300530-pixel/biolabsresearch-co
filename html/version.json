@@ -1,10 +1,10 @@
 {
-  "version": "2.38",
+  "version": "2.39",
   "released": "2026-09-15",
-  "codename": "checkout-cart-hydrate",
+  "codename": "no-bac-auto-gift",
   "highlights": [
-    "Fix checkout \u201cNo items in cart\u201d while drawer had items: empty `cart = []` was written over localStorage by cart-vial clampGifts before loadCart",
-    "checkout.html loadCart() runs immediately (not only DOMContentLoaded)",
-    "cart-vial: never persist empty in-memory cart over a non-empty localStorage order"
+    "v2.38 confirmed: checkout keeps catalog lines (no more empty Order Summary wipe)",
+    "Kill BAC milestone auto-gift + Inquiry Rewards UI \u2014 badge matches what you added",
+    "Stale gift:true bacteriostatic lines stripped from localStorage on load"
   ]
 }
