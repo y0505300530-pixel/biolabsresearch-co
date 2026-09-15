@@ -12341,3 +12341,15 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   }
 }
 /* === end v2.64 dose-chips-44 === */
+
+
+/* === v2.72 rsay-ftc-strip-verified-dist === */
+/* Marketing FTC risk reply: remove Verified badge + star % bars from live markup.
+   Neutralize leftover CSS so any cached HTML cannot resurrect the chrome. */
+.rsay-verified,
+.rsay-dist,
+.rsay-dist li,
+.rsay-dist-stars,
+.rsay-dist-pct{
+  display:none!important;
+}

@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.72
+
+Released 2026-09-15.
+
+Codename: rsay-ftc-strip-verified-dist
+
+## Highlights
+
+- **FTC / Marketing**: Remove ✓ Verified reviewer badges from “What researchers say” cards
+- **FTC / Marketing**: Remove star distribution bars (92/6/1/1/0) under aggregate rating
+- **Keep**: olive stars, 4.9/5, “Based on 1,200 reviews”, carousel names/quotes
+- CSS `biolabs_style.css?v=360`
+
+---
+
 # biolabsresearch.co — Version 2.68
 
 Released 2026-09-15.
