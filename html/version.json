@@ -1,12 +1,10 @@
 {
-  "version": "2.50",
+  "version": "2.52",
   "released": "2026-09-15",
-  "codename": "card-media-cover-snap",
+  "codename": "revert-cart-drawer-251",
   "highlights": [
-    "Pairs rail + catalog card media: object-fit cover + object-position center in 1:1 square (not contain)",
-    "Mapped .product-card__media \u2192 .product-card-media / .product-card-img / .pr-card-media",
-    "Pairs carousel: scroll-snap-type x mandatory on .pr-viewport, scroll-snap-align start on .pr-card; edge-card clip reduced",
-    "PDP sticky gallery (v2.49) and hidden thumbs (v2.48) unchanged; no PNG batch this ship",
-    "CSS cache bust ?v=343"
+    "REVERT Yehuda stop: undo v2.51 cart-drawer UX (gap/meta/remove/qty/snap)",
+    "Restore pre-v2.51 cart drawer / cart-vial behavior",
+    "Pairs cover + home contain from prior ships unchanged by this revert"
   ]
 }
