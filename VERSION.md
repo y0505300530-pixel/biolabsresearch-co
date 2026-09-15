@@ -1,8 +1,8 @@
-# biolabsresearch.co — Version 2.07
+# biolabsresearch.co — Version 2.08
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- INSIDER25 ticker: tighter gaps (28px) + denser fill — less dead space
-- Catalog SKU SoT locked to 20 (active excl. BAC) — Science stat + copy were 15/16
+- PDPs: remove stale Launch price · ends Sep 14 note
+- Replaced with INSIDER25 · 25% off (matches rolling promo, no fake end date)

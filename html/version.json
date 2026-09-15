@@ -1,9 +1,9 @@
 {
-  "version": "2.07",
+  "version": "2.08",
   "released": "2026-09-15",
-  "codename": "promo-gap-sku-count",
+  "codename": "pdp-launch-note",
   "highlights": [
-    "INSIDER25 ticker: tighter gaps (28px) + denser fill \u2014 less dead space",
-    "Catalog SKU SoT locked to 20 (active excl. BAC) \u2014 Science stat + copy were 15/16"
+    "PDPs: remove stale Launch price \u00b7 ends Sep 14 note",
+    "Replaced with INSIDER25 \u00b7 25% off (matches rolling promo, no fake end date)"
   ]
 }
