@@ -1,10 +1,10 @@
 {
-  "version": "2.75",
-  "released": "2026-09-15",
-  "codename": "agegate-brand-unify",
+  "version": "2.79",
+  "released": "2026-09-16",
+  "codename": "catalog-cover-marketing-header",
   "highlights": [
-    "Unify age-gate/confirmation modal to full PDP markup on all pages with tcOverlay",
-    "Canonical brand: BioLabs Research (replace Bio Labs Research in titles/meta/JSON-LD)",
-    "Fix curcumin-phytosome + checkout divergent modal markup"
+    "Restore object-fit:cover on catalog / product cards / Pairs / cart; remove v2.78 catalog contain overrides; PDP mains stay contain",
+    "Catalog header Marketing SoT: Popular research compounds + short RUO + View all compounds + lot docs on request",
+    "KEEP ADD TO CART"
   ]
 }

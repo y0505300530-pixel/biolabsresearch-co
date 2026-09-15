@@ -10182,7 +10182,7 @@ button.nav-util {
   .product-card-img img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: contain !important;
+    object-fit: cover !important;
   }
 }
 
@@ -12436,7 +12436,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   margin-top: auto !important;
 }
 
-/* Images: keep assets; #F2EFE9; 1:1 contain (catalog cards only — not pairs rail) */
+/* Images: keep assets; #F2EFE9; 1:1 cover (Yehuda — catalog cards; PDP mains stay contain) */
 .catalog-grid .product-card-media,
 .catalog-grid .product-card-img,
 #products-grid .product-card-media,
@@ -12451,7 +12451,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
 #products-grid .product-card-img img{
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: center center !important;
   background: transparent !important;
 }
@@ -12549,3 +12549,37 @@ button.product-card-mg:focus-visible{
   display: none !important;
 }
 /* === end v2.78 === */
+
+
+/* === v2.79 catalog-cover-restore (Yehuda / Marketing) === */
+/* Catalog / product cards / Pairs / cart: object-fit cover.
+   PDP mains (.product-img-main / #pdpMainImg): stay contain. */
+.catalog-grid .product-card-media img,
+.catalog-grid .product-card-img img,
+#products-grid .product-card-media img,
+#products-grid .product-card-img img,
+.product-card-media img,
+.product-card-img img,
+.pr-card-media img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+}
+.ci-img img,
+.oi-img img,
+.cart-item > img,
+.cart-item img,
+.cart-addcard img,
+.cart-addmore .cart-addcard img {
+  object-fit: cover !important;
+}
+.product-img-section .product-img-main img,
+.product-img-main img,
+#pdpMainImg {
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+/* === end v2.79 === */

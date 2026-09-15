@@ -1,3 +1,17 @@
+# biolabsresearch.co — Version 2.79
+
+Released 2026-09-16.
+
+Codename: catalog-cover-marketing-header
+
+## Highlights
+
+- **Images**: Catalog / product cards / Pairs / cart use `object-fit: cover` again (Yehuda reverted home contain). Remove v2.78 catalog contain overrides. PDP mains stay `contain`.
+- **Catalog header (Marketing SoT)**: Title **Popular research compounds**; short RUO supporting sentence; **View all compounds** link; lot docs available on request (not implying every SKU has a live file).
+- **ATC**: Keep ADD TO CART.
+
+---
+
 # biolabsresearch.co — Version 2.75
 
 Released 2026-09-15.

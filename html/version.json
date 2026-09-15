@@ -1,10 +1,10 @@
 {
-  "version": "2.78",
+  "version": "2.79",
   "released": "2026-09-16",
-  "codename": "home-catalog-grid-polish",
+  "codename": "catalog-cover-marketing-header",
   "highlights": [
-    "Homepage #catalog product grid: 4/3/2/1 responsive, card flex CTA align, 1:1 contain on #F2EFE9",
-    "Catalog header: Research compounds + RUO line + View all compounds; KEEP ADD TO CART",
-    "Strip expired INSIDER25 promo copy; hide strike originals (no active promo); alts/title clamp a11y"
+    "Restore object-fit:cover on catalog / product cards / Pairs / cart; remove v2.78 catalog contain overrides; PDP mains stay contain",
+    "Catalog header Marketing SoT: Popular research compounds + short RUO + View all compounds + lot docs on request",
+    "KEEP ADD TO CART"
   ]
 }
