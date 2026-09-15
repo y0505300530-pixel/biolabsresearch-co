@@ -1,12 +1,10 @@
 {
-  "version": "1.98",
+  "version": "1.99",
   "released": "2026-09-15",
-  "codename": "mobile-media-weight",
+  "codename": "from-price-lock",
   "highlights": [
-    "Compressed hero video: mp4 2.0MB\u2192764KB, webm 3.2MB\u21921.3MB (bak kept on server)",
-    "Compressed tools-dilution loop: 2.6MB\u219244KB",
-    "PDP main vials: serve WebP instead of 200\u2013640KB PNGs; LCP eager+fetchpriority",
-    "Ship-step images as WebP; hero poster webp available",
-    "Builds on v1.97 defer/fonts/promo DOM wins"
+    "Homepage From price locked to SoT lowest real SKU: Epithalon 10mg $45",
+    "Hero was stale From $34; Science stat was stale $69 \u2014 both now $45",
+    "Catalog cards already matched SoT (Epithalon From $45)"
   ]
 }
