@@ -1,10 +1,10 @@
 {
-  "version": "2.65",
+  "version": "2.66",
   "released": "2026-09-15",
-  "codename": "vial-frame-normalize",
+  "codename": "catalog-vial-cache-170",
   "highlights": [
-    "Catalog/PDP vial assets normalized in-place to 1200x1200 on #F2EFE9; bottle ~70% centered",
-    "WebP q~82 all under 150KB; PNG twins kept for existing refs; mg variants included",
-    "CRM CSS frames / cart-vial untouched; media ?v=170 cache bust"
+    "Catalog API render + cart-vial vial URLs use media ?v=170 (was stuck on ?v=159 after normalize)",
+    "Homepage SSR cards already on 170; JS rebuild no longer forces old bust",
+    "PDP normalize from v2.65 unchanged"
   ]
 }
