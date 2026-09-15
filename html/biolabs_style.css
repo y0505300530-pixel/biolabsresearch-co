@@ -11302,3 +11302,30 @@ html body .footer-top,
     line-height: 1.7 !important;
   }
 }
+
+
+/* === STICKY-CART-CTA-CLEAR-v2.20: ELITE FAIL — View cart over Add / Request this lot === */
+@media (max-width: 800px) {
+  /* Bulletproof: never show catalog dock on PDP while sticky buy exists */
+  html body:has(#pdpStickyBuy) .sticky-cart-dock,
+  html body.has-pdp-sticky .sticky-cart-dock,
+  html body .sticky-cart-dock.is-cta-overlap {
+    display: none !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  /* Keep #pdpStickyBuy above any residual dock; tap target ≥44 */
+  #pdpStickyBuy,
+  html body #pdpStickyBuy {
+    z-index: 10030 !important;
+  }
+  #pdpStickyBuy .pdp-sticky-atc,
+  .pdp-sticky-atc {
+    min-height: 48px !important;
+    min-width: 44px !important;
+  }
+  html body .sticky-cart-dock {
+    max-width: calc(100vw - 24px) !important;
+    box-sizing: border-box !important;
+  }
+}

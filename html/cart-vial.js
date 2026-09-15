@@ -2186,10 +2186,35 @@ function addSuggest(slug, name, price, mg){
     return el;
   }
 
+  function ctaOverlapsDockZone() {
+    try {
+      var zoneTop = window.innerHeight - 110;
+      var nodes = document.querySelectorAll('.product-card-atc, #atc-btn, .pdp-sticky-atc, .btn-order, .pr-card-atc');
+      for (var i = 0; i < nodes.length; i++) {
+        var el = nodes[i];
+        if (!el || (el.closest && el.closest('.cart-drawer'))) continue;
+        var r = el.getBoundingClientRect();
+        if (r.width < 24 || r.height < 24) continue;
+        if (r.bottom <= zoneTop || r.top >= window.innerHeight) continue;
+        if (r.right <= 0 || r.left >= window.innerWidth) continue;
+        return true;
+      }
+    } catch (e) {}
+    return false;
+  }
+
   function syncDock() {
     try {
       var stickyBuy = document.getElementById('pdpStickyBuy');
-      document.body.classList.toggle('has-pdp-sticky', !!(stickyBuy && stickyBuy.offsetParent !== null));
+      /* position:fixed → offsetParent is null; use computed visibility instead */
+      var pdpSticky = !!stickyBuy;
+      if (stickyBuy) {
+        try {
+          var cs = window.getComputedStyle(stickyBuy);
+          if (cs && (cs.display === 'none' || cs.visibility === 'hidden')) pdpSticky = false;
+        } catch (e2) {}
+      }
+      document.body.classList.toggle('has-pdp-sticky', pdpSticky);
     } catch (e) {}
 
     var dock = ensureDock();
@@ -2202,7 +2227,9 @@ function addSuggest(slug, name, price, mg){
     var open = !!(drawer && drawer.classList.contains('open'));
     var onCheckout = !!(document.querySelector('.checkout-page') || /\/checkout\/?$/.test(location.pathname));
     try { document.body.classList.toggle('checkout-page-open', onCheckout); } catch (e) {}
-    var hide = open || document.body.classList.contains('has-pdp-sticky') || onCheckout;
+    var ctaOverlap = ctaOverlapsDockZone();
+    dock.classList.toggle('is-cta-overlap', ctaOverlap);
+    var hide = open || document.body.classList.contains('has-pdp-sticky') || onCheckout || ctaOverlap;
     dock.classList.toggle('is-hidden', hide);
   }
 
@@ -2227,6 +2254,12 @@ function addSuggest(slug, name, price, mg){
     document.addEventListener('click', function () {
       setTimeout(syncDock, 50);
     }, true);
+    window.addEventListener('scroll', function () {
+      syncDock();
+    }, { passive: true });
+    window.addEventListener('resize', function () {
+      syncDock();
+    }, { passive: true });
     setInterval(syncDock, 1500);
   }
 
