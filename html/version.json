@@ -1,9 +1,10 @@
 {
-  "version": "2.37",
+  "version": "2.38",
   "released": "2026-09-15",
-  "codename": "logo-320-full",
+  "codename": "checkout-cart-hydrate",
   "highlights": [
-    "320\u2013380px header: full \u201cBiolabs research\u201d wordmark (no ellipsis \u201cBiolabs re\u2026\u201d)",
-    "Tighter nav icon row + 12px wordmark so brand + search/cart/menu fit without clip"
+    "Fix checkout \u201cNo items in cart\u201d while drawer had items: empty `cart = []` was written over localStorage by cart-vial clampGifts before loadCart",
+    "checkout.html loadCart() runs immediately (not only DOMContentLoaded)",
+    "cart-vial: never persist empty in-memory cart over a non-empty localStorage order"
   ]
 }

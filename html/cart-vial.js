@@ -1350,6 +1350,16 @@ function addSuggest(slug, name, price, mg){
         _writeCartLS(ls);
         return;
       }
+      /* Empty in-memory cart + non-empty LS = page declared `cart = []` before loadCart.
+         Hydrate from LS instead of writing [] over the visitor's order (checkout wipe bug). */
+      if (cart.length === 0) {
+        var fromLs = _readCartLS();
+        if (Array.isArray(fromLs) && fromLs.length) {
+          cart = fromLs.slice();
+        } else {
+          return; /* truly empty — do not rewrite LS */
+        }
+      }
       cart = _sanitizeCart(cart);
       var merch = 0;
       cart.forEach(function(i){ if(!_isBacItem(i)) merch += (parseFloat(i.price)||0)*(i.qty||1); });
@@ -2364,3 +2374,5 @@ function addSuggest(slug, name, price, mg){
   setTimeout(tryWrap, 1500);
 })();
 
+
+/* CRM v2.38 checkout cart wipe: empty in-memory cart must not overwrite LS */
