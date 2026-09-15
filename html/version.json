@@ -1,15 +1,16 @@
 {
-  "version": "2.83",
+  "version": "2.84",
   "released": "2026-09-16",
-  "codename": "glow70-locked-mg",
+  "codename": "qa5-glow-clones-live",
   "highlights": [
-    "Yehuda SoT override: GLOW 70 = locked-mg gold-band (white name on band + 70 mg box) — ELITE Soft-QA PASS",
-    "Replaced live glow media + 5/10/70mg thumbs + so-glow-70; bust ?v=174",
-    "Black-name draft retired from live"
+    "Live swap: 5 ELITE-PASS GLOW-chrome text-only vials (Blend 20 / AOD 5 / GHK 100 / Ipa 10 / Tesa 10)",
+    "Cache bust ?v=175 on home/catalog/PDP + products-data",
+    "Tirz/Sema still held; rest of 20-SKU batch pending"
   ],
-  "appVersion": "2.83",
+  "appVersion": "2.84",
   "notes": [
-    "Home/catalog renderProducts + static cards: vial bust ?v=172 → ?v=174 (ELITE Soft-QA FAIL fix for GLOW)",
+    "QA-5 Soft-QA PASS \u2192 live media from _drafts/text-only-20260916",
+    "Home/catalog renderProducts + static cards: vial bust ?v=172 \u2192 ?v=174 (ELITE Soft-QA FAIL fix for GLOW)",
     "products-data.json + /api/products: all image_url bust ?v=174 (0x v=172); complements renderProducts fix"
   ]
 }
