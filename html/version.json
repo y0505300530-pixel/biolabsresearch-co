@@ -1,10 +1,10 @@
 {
-  "version": "2.60",
+  "version": "2.61",
   "released": "2026-09-15",
-  "codename": "rsay-49-agg",
+  "codename": "rsay-visible-autorun",
   "highlights": [
-    "rsay auto-run with pause-on-interact + resume after idle; comfortable manual drag/scroll",
-    "Names + green initials; Example lab note subtitle removed (no Verified/SKU); Marketing 5 RUO quotes + olive stars + 4.9/5 \u00b7 1,200 header",
-    "Age-gate untouched; CSS ?v=354; cart untouched"
+    "rsay visible auto-run: SPEED 1.25 + scrollLeft probe \u2192 transform marquee fallback; pause-on-interact + resume",
+    "Names + green initials; no Example lab note / Verified; Marketing quotes + olive stars + 4.9/5 \u00b7 1,200",
+    "Age-gate untouched; CSS ?v=355; cart untouched"
   ]
 }

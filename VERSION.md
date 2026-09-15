@@ -1,13 +1,13 @@
-# biolabsresearch.co — Version 2.60
+# biolabsresearch.co — Version 2.61
 
 Released 2026-09-15.
 
-Codename: rsay-49-agg
+Codename: rsay-visible-autorun
 
 ## Highlights
 
-- **Researchers say...** auto-run carousel that pauses on pointer/touch/wheel and resumes after idle
-- Comfortable manual drag/scroll (native touch + mouse drag); infinite loop without stealing interaction
-- Names (Lena F. / Ryan P. / Maya S. / Noah K. / Ava R.) + green initial avatars; **no Example lab note** subtitle (no Verified / SKU lines)
-- Marketing 5 RUO quotes, per-card olive stars, header **4.9/5 · 1,200**
-- CSS `biolabs_style.css?v=354`; age-gate + cart untouched
+- **Researchers say...** auto-run made reliably visible: SPEED 1.25 px/frame, scroll-behavior auto, snap disabled while moving
+- Probe scrollLeft; if no-op (clipped overflow), fall back to `transform: translateX` marquee on `.rsay-track`
+- Starts paused only for prefers-reduced-motion; pause on pointer/touch/wheel, resume after idle; never stuck paused on load
+- Content unchanged: names + green initials, Marketing quotes, olive stars, **4.9/5 · 1,200**, no Example lab note / Verified
+- CSS `biolabs_style.css?v=355`; age-gate + cart untouched

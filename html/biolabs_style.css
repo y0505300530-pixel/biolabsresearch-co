@@ -11971,7 +11971,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   accent-color: #9A6D2A !important;
 }
 
-/* === v2.60 rsay-49-agg === */
+/* === v2.61 rsay-visible-autorun === */
 .rsay-section[hidden],
 .rsay-section[data-rsay-state="awaiting-marketing"]{
   display:none!important;
@@ -12039,9 +12039,10 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   position:relative;
   margin:0 -8px;
 }
-.rsay-rail{
+.rsay-rail,
+#rsayRail{
   display:flex;
-  gap:18px;
+  gap:0;
   overflow-x:auto;
   overflow-y:hidden;
   scroll-snap-type:x proximity;
@@ -12055,16 +12056,38 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   outline:none !important;
   box-shadow:none !important;
 }
+#rsayRail{
+  overflow-x:auto;
+  scroll-behavior:auto;
+  touch-action:pan-x;
+}
 .rsay-rail:focus,
-.rsay-rail:focus-visible{
+.rsay-rail:focus-visible,
+#rsayRail:focus,
+#rsayRail:focus-visible{
   outline:none !important;
   box-shadow:none !important;
 }
-.rsay-rail::-webkit-scrollbar{display:none}
-.rsay-rail.is-dragging{
+.rsay-rail::-webkit-scrollbar,
+#rsayRail::-webkit-scrollbar{display:none}
+.rsay-rail.is-dragging,
+#rsayRail.is-dragging{
   cursor:grabbing;
   scroll-snap-type:none;
   user-select:none;
+}
+.rsay-rail.is-marquee,
+#rsayRail.is-marquee{
+  overflow-x:hidden;
+  scroll-snap-type:none;
+}
+.rsay-track{
+  display:flex;
+  flex-direction:row;
+  flex-wrap:nowrap;
+  gap:18px;
+  will-change:transform;
+  transform:translate3d(0,0,0);
 }
 .rsay-card{
   flex:0 0 min(320px,78vw);
@@ -12164,5 +12187,5 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   .rsay-fade{width:28px}
 }
 @media (prefers-reduced-motion:reduce){
-  .rsay-rail{scroll-behavior:auto;scroll-snap-type:x proximity}
+  .rsay-rail,#rsayRail{scroll-behavior:auto;scroll-snap-type:x proximity}
 }
