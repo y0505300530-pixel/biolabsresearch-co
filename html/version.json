@@ -1,10 +1,10 @@
 {
-  "version": "2.54",
+  "version": "2.55",
   "released": "2026-09-15",
-  "codename": "agegate-no-preselect",
+  "codename": "marketing-sot-lab-notes",
   "highlights": [
-    "Age gate: no autofocus/gold ring on first checkbox at open (agegate-no-preselect)",
-    "What researchers say LIVE: 4.8 aggregate + infinite carousel + RUO process quotes",
-    "CSS cache bust ?v=346; cart untouched"
+    "What researchers say: Marketing SoT \u2014 5 anonymous Example lab note cards (no names/avatars/per-card stars/Verified order)",
+    "Stamp sync: app-version + data-site-version/footers \u2192 2.55; kill any age-gate autofocus attrs (JS blur kept)",
+    "CSS cache bust ?v=347; cart untouched"
   ]
 }
