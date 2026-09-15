@@ -144,7 +144,7 @@
       guard++;
     } while (guard < 2);
     track.appendChild(a);
-    while (a.scrollWidth < minW && guard < 40) {
+    while (a.scrollWidth < minW && guard < 12) {
       a.appendChild(template.cloneNode(true));
       guard++;
     }

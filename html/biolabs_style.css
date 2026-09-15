@@ -3061,8 +3061,7 @@ body{font-size:18px;line-height:1.5}
 }
 
 /* ===== v106 — RTL Lab Team section with dark molecular background ===== */
-@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;500;600;700&display=swap');
-
+/* v1.97: removed blocking Google Fonts @import (Assistant) — use Inter stack */
 .lab-team-rtl{
   position:relative;
   direction:rtl;
@@ -3085,21 +3084,21 @@ body{font-size:18px;line-height:1.5}
   text-align:right;
 }
 .lab-team-kicker{
-  font-family:'Assistant',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   font-size:16px;font-weight:500;
   color:#c8ec87;
   margin:0 0 16px;
   letter-spacing:.03em;
 }
 .lab-team-title{
-  font-family:'Assistant',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   font-size:42px;font-weight:700;
   color:#ffffff;
   line-height:1.2;
   margin:0 0 20px;
 }
 .lab-team-desc{
-  font-family:'Assistant',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   font-size:17px;font-weight:400;
   color:rgba(255,255,255,.72);
   line-height:1.6;
@@ -3113,7 +3112,7 @@ body{font-size:18px;line-height:1.5}
   border-radius:50px;
   background:#C6D981;
   color:#1a2e14;
-  font-family:'Assistant',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   font-size:16px;font-weight:600;
   text-decoration:none;
   transition:all .25s ease;
@@ -3157,19 +3156,19 @@ body{font-size:18px;line-height:1.5}
 }
 .lab-team-name{
   display:block;
-  font-family:'Assistant',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   font-size:15px;font-weight:600;
   color:#555;
   margin-bottom:8px;
 }
 .lab-team-card-body h3{
-  font-family:'Assistant',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   font-size:22px;font-weight:700;
   color:#1f4645;
   margin:0 0 10px;
 }
 .lab-team-card-body p{
-  font-family:'Assistant',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   font-size:14px;font-weight:400;
   color:#666;
   line-height:1.5;
@@ -3196,7 +3195,7 @@ body{font-size:18px;line-height:1.5}
   direction:rtl;
   padding:24px;
   overflow:hidden;
-  font-family:'Assistant','Heebo',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
   background:#091512 url('/media/lab-bg-molecular.webp') center/cover no-repeat;
   background-color:#091512;
 }
@@ -3376,7 +3375,7 @@ body{font-size:18px;line-height:1.5}
   border-radius:22px;
   padding:48px 28px 32px;
   text-align:center;
-  font-family:'Assistant','Heebo',sans-serif;
+  font-family:Inter,system-ui,sans-serif;
 }
 .lab-points-ico{
   position:absolute;top:0;left:50%;
@@ -3457,7 +3456,7 @@ body{font-size:18px;line-height:1.5}
 /* balloon bold headings v119 */
 .lab-team-title,
 .jrnl-head h2{
-  font-family:'Baloo 2', 'Assistant', sans-serif !important;
+  font-family:Inter,system-ui,sans-serif !important;
   font-weight:800 !important;
   letter-spacing:.01em;
 }
@@ -4080,7 +4079,7 @@ a.footer-brand{
   background:#0d2137;display:inline-block;flex:0 0 auto;
 }
 .nl-title{
-  font-family:'Saira',var(--font-display),sans-serif;
+  font-family:var(--font-display),Inter,system-ui,sans-serif;
   font-size:clamp(40px,4.8vw,58px);
   line-height:.98;
   font-weight:800;
