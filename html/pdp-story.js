@@ -142,7 +142,7 @@
     var also = rel.map(function(s){
       var pr = PRICE[s] ? '<span class="pdp-also-price">$'+PRICE[s]+'</span>' : '';
       return '<a class="pdp-also-card" href="/products/'+s+'">'
-        + '<img src="/media/vial-'+s+'.webp?v=173" alt="'+NAMES[s]+'">'
+        + '<img src="/media/vial-'+s+'.webp?v=174" alt="'+NAMES[s]+'">'
         + '<strong>'+NAMES[s]+'</strong>'
         + pr
         + '<span class="pdp-also-view">View</span></a>';

@@ -31,9 +31,9 @@
     var u = (p && p.image_url) ? String(p.image_url) : "";
     if (u.indexOf("/media/vial-") === 0) {
       var q = u.indexOf("?");
-      return (q === -1 ? u.replace(/\.webp$/, ".png") : u.slice(0, q).replace(/\.webp$/, ".png")) + "?v=173";
+      return (q === -1 ? u.replace(/\.webp$/, ".png") : u.slice(0, q).replace(/\.webp$/, ".png")) + "?v=174";
     }
-    return "/media/vial-" + slug + ".png?v=173";
+    return "/media/vial-" + slug + ".png?v=174";
   }
   function catalog(list) {
     return (list || []).filter(function (p) {
