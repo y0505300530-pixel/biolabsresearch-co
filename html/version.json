@@ -1,11 +1,10 @@
 {
-  "version": "2.30",
+  "version": "2.31",
   "released": "2026-09-15",
-  "codename": "blog-p2-compounds-seo",
+  "codename": "product-overview-qa",
   "highlights": [
-    "Blog P2: research-compounds terminology; unique titles/meta/OG; prose RUO closer",
-    "Deduped shared purchasing-note openings; stronger References on scientific posts",
-    "og:image fallback https://biolabsresearch.co/media/og-share.jpg on blog articles",
-    "Rebased onto v2.29 image-opt (alts/WebP/LCP); does not regress those assets"
+    "Store-level product overview for AI/merchant Q&A: FAQPage schema answers \u201cwhat do products do?\u201d with RUO copy citing catalog + Science",
+    "Richer Organization/WebSite descriptions; ItemList of active catalog SKUs on homepage",
+    "Visible catalog-overview blurb + FAQ entry; PDP Product JSON-LD/descriptions enriched from API where thin"
   ]
 }
