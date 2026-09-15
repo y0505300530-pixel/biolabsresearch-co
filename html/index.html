@@ -33,7 +33,7 @@
 <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/video/hero-cinematic.jpg?v=2" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=355">
+<link rel="stylesheet" href="/biolabs_style.css?v=356">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -370,7 +370,7 @@ with lot documentation.</h1>
 
 
 
-<!-- v2.61 rsay-visible-autorun -->
+<!-- v2.63 rsay-pause-after-drag + product-img-css -->
 <section class="rsay-section" id="researchers-say" aria-labelledby="rsay-title">
   <div class="rsay-inner">
     <header class="rsay-head">
@@ -486,16 +486,16 @@ with lot documentation.</h1>
     return Math.floor(track.scrollWidth / 2);
   }
 
-  /* Auto-run: visible continuous motion; pause on interact; resume after idle.
-     Only start paused for prefers-reduced-motion — never leave paused=true forever on load. */
+  /* Auto-run: starts on load (unless reduced-motion).
+     After any pointer drag / wheel / touch interact: stay paused for this page load
+     (no idle auto-resume — ELITE FAIL v2.61 ~2s resume). */
   var reduced = false;
   try {
     reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   } catch (_m) {}
   var paused = !!reduced; /* do NOT start paused otherwise */
+  var userStopped = false; /* permanent stop after drag/wheel/interact */
   var dragging = false;
-  var resumeTimer = null;
-  var IDLE_MS = 2800;
   var SPEED = 1.25; /* px per frame — obvious motion (~75px/s) */
   var raf = 0;
   var useTransform = false;
@@ -504,19 +504,10 @@ with lot documentation.</h1>
 
   function pauseAuto() {
     paused = true;
-    if (resumeTimer) { clearTimeout(resumeTimer); resumeTimer = null; }
-  }
-  function scheduleResume() {
-    if (reduced) return;
-    if (resumeTimer) clearTimeout(resumeTimer);
-    resumeTimer = setTimeout(function(){
-      resumeTimer = null;
-      if (!dragging) paused = false;
-    }, IDLE_MS);
   }
   function onUserInteract() {
+    userStopped = true;
     pauseAuto();
-    scheduleResume();
   }
 
   function setSnap(on) {
@@ -652,7 +643,8 @@ with lot documentation.</h1>
     dragging = false;
     rail.classList.remove('is-dragging');
     try { rail.releasePointerCapture(e.pointerId); } catch (_) {}
-    scheduleResume();
+    userStopped = true;
+    pauseAuto(); /* stay paused after drag — no idle resume */
   }
   rail.addEventListener('pointerup', endDrag);
   rail.addEventListener('pointercancel', endDrag);
@@ -661,18 +653,19 @@ with lot documentation.</h1>
     down = false;
     dragging = false;
     rail.classList.remove('is-dragging');
-    scheduleResume();
+    userStopped = true;
+    pauseAuto();
   });
   rail.addEventListener('click', function(e){
     if (moved) { e.preventDefault(); e.stopPropagation(); moved = false; }
   }, true);
 
-  /* visibility: pause while hidden; always scheduleResume on return (never stuck paused) */
+  /* visibility: pause while hidden; resume on return only if user never interacted */
   document.addEventListener('visibilitychange', function(){
     if (document.hidden) {
       pauseAuto();
-    } else if (!reduced) {
-      scheduleResume();
+    } else if (!reduced && !userStopped) {
+      paused = false;
     }
   });
 })();
@@ -798,7 +791,7 @@ with lot documentation.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.61" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.61</p>
+<p class="site-version" data-site-version="2.63" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.63</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->

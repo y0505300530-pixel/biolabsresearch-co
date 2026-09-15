@@ -12189,3 +12189,49 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
 @media (prefers-reduced-motion:reduce){
   .rsay-rail,#rsayRail{scroll-behavior:auto;scroll-snap-type:x proximity}
 }
+
+
+/* === v2.63 product-img-css-uniformity (Yehuda Part 2) === */
+/* Square 1:1 frames + beige #F2EFE9.
+   PDP main (.product-img-main / #pdpMainImg): object-fit contain + center.
+   Cards / pairs rail (.product-card-media / .product-card-img / .pr-card-media): cover + center.
+   .pdp-thumb styled even if hidden (v2.48). PNG normalize = Part 1 later — not this ship. */
+.product-img-section .product-img-main,
+.product-img-main,
+.pdp-thumb,
+.product-card-media,
+.product-card-img,
+.pr-card-media {
+  aspect-ratio: 1 / 1 !important;
+  background: #F2EFE9 !important;
+  overflow: hidden !important;
+}
+.product-img-section .product-img-main img,
+.product-img-main img,
+#pdpMainImg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: transparent !important;
+  display: block !important;
+  box-sizing: border-box !important;
+  padding: 0 !important;
+}
+.pdp-thumbs .pdp-thumb img,
+.pdp-thumb img,
+.product-card-media img,
+.product-card-img img,
+.pr-card-media img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  box-sizing: border-box !important;
+}
+/* === end v2.63 === */
