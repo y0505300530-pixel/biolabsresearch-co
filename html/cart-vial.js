@@ -1364,11 +1364,10 @@ function addSuggest(slug, name, price, mg){
       var merch = 0;
       cart.forEach(function(i){ if(!_isBacItem(i)) merch += (parseFloat(i.price)||0)*(i.qty||1); });
       var has = cart.some(function(i){ return _isBacItem(i); });
-      if (merch >= 100 && !has && !_bacDismissed()) {
-        cart.push(Object.assign({}, {id:'17',name:BAC_DISPLAY_NAME,price:0,qty:1,slug:'research-solvent',gift:true,mg:'10mL',badge:BAC_BADGE,note:'Laboratory use only',imageUrl:'/media/research-solvent.png?v=2'}));
-      }
-      if (merch < 100 && has) {
-        cart = cart.filter(function(i){ return !_isBacItem(i); });
+      /* v2.39: no BAC auto-gift (Inquiry Rewards retired). Strip stale gift lines only. */
+      if (has) {
+        cart = cart.filter(function(i){ return !(_isBacItem(i) && i.gift); });
+        has = cart.some(function(i){ return _isBacItem(i); });
       }
       cart.forEach(function(i){
         if (_isBacItem(i)) {
