@@ -6,9 +6,8 @@ Codename: home-researchers-say
 
 ## Highlights
 
-- Homepage section **What researchers say** — verified-order style carousel (packaging / COA / seal / label clarity only; RUO-safe)
-- Social proof: stars + “Verified research orders” — **no invented 4.9 / review-count metrics**
-- Native horizontal scroll-snap + soft edge fade; minimal pointer-drag helper
-- Placement: after `#ship-facts`, before `#research` (blogs) / footer
-- CSS cache bust `biolabs_style.css?v=344`
-- Cart drawer: untouched (Yehuda stop)
+- Homepage **What researchers say** carousel chrome landed in HTML/CSS but is **HIDDEN** (`hidden` + `data-rsay-state="awaiting-marketing"`) until Marketing supplies real testimonials
+- No visible placeholder quotes, stars, fake names/avatars, or invented review/order counts
+- Placement reserved: after `#ship-facts`, before `#research` (blogs)
+- CSS `biolabs_style.css?v=345`
+- Cart: untouched (Yehuda stop)

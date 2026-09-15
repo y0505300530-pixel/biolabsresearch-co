@@ -3,9 +3,9 @@
   "released": "2026-09-15",
   "codename": "home-researchers-say",
   "highlights": [
-    "Homepage: What researchers say testimonials carousel (RUO-safe lab-order notes)",
-    "Cream section + sage accents; star row + Verified research orders (no invented metrics)",
-    "Native overflow-x scroll-snap cards; optional pointer drag; edge fade",
-    "CSS cache bust ?v=344; homepage only \u2014 cart untouched"
+    "Homepage What researchers say: carousel CHROME only \u2014 section HIDDEN until Marketing SoT",
+    "RUO/Marketing lock: no placeholder quotes, stars, names, avatars, or invented metrics",
+    "Enable later: remove hidden + data-rsay-state, insert real testimonials only",
+    "CSS cache bust ?v=345; cart untouched"
   ]
 }
