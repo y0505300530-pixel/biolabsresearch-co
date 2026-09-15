@@ -11218,3 +11218,18 @@ html.has-age-gate .tc-overlay.active {
   padding: 0 !important;
   border: 0 !important;
 }
+
+
+/* HERO CTA RUO v2.15 */
+.nl-ruo {
+  margin: 12px 0 0;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--ink-muted, #6b6560);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  max-width: 36em;
+}
+@media (max-width: 699px) {
+  .nl-ruo { font-size: 11px; margin-top: 10px; }
+}

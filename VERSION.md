@@ -1,9 +1,9 @@
-# biolabsresearch.co — Version 2.14
+# biolabsresearch.co — Version 2.15
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- RUO hierarchy (Marketing lock): one voice, not a chorus
-- Kept: footer disclaimer · PDP RUO badge by Add · checkout/cart · age-gate · blog/legal
-- Stripped: hero nl-sub · slogan band · Science home repeats · PDP duplicate price-per line · footer brand double
+- Hero primary CTA: Browse research compounds (was Shop all compounds)
+- Secondary stays View sample COA
+- One RUO line under CTAs: Research use only — not for human consumption.

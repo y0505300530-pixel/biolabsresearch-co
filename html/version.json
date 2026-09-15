@@ -1,10 +1,10 @@
 {
-  "version": "2.14",
+  "version": "2.15",
   "released": "2026-09-15",
-  "codename": "ruo-hierarchy",
+  "codename": "hero-cta-hierarchy",
   "highlights": [
-    "RUO hierarchy (Marketing lock): one voice, not a chorus",
-    "Kept: footer disclaimer \u00b7 PDP RUO badge by Add \u00b7 checkout/cart \u00b7 age-gate \u00b7 blog/legal",
-    "Stripped: hero nl-sub \u00b7 slogan band \u00b7 Science home repeats \u00b7 PDP duplicate price-per line \u00b7 footer brand double"
+    "Hero primary CTA: Browse research compounds (was Shop all compounds)",
+    "Secondary stays View sample COA",
+    "One RUO line under CTAs: Research use only \u2014 not for human consumption."
   ]
 }
