@@ -1,10 +1,10 @@
 {
-  "version": "2.66",
+  "version": "2.67",
   "released": "2026-09-15",
-  "codename": "catalog-vial-cache-170",
+  "codename": "seo-rank-22-p0-p1",
   "highlights": [
-    "Catalog API render + cart-vial vial URLs use media ?v=170 (was stuck on ?v=159 after normalize)",
-    "Homepage SSR cards already on 170; JS rebuild no longer forces old bust",
-    "PDP normalize from v2.65 unchanged"
+    "P0: /tools/units 301\u2192unit-converter; dilution/units HTML noindex+canonical",
+    "P0: stubs \u2014 curcumin noindex,follow; products/product noindex,nofollow; blog.html noindex; /product canonical\u2192/research-peptides",
+    "P1: og:image + twitter:image on all compare/* + tools pages (og-preview.jpg?v=2)"
   ]
 }
