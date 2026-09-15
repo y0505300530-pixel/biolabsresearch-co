@@ -1,8 +1,9 @@
 {
-  "version": "2.32",
+  "version": "2.33",
   "released": "2026-09-15",
-  "codename": "itemlist-sot-20",
+  "codename": "drop-catalog-overview-blurb",
   "highlights": [
-    "ItemList SoT lock: 20 research compounds \u2014 exclude research-solvent (BAC) from catalog ItemList numberOfItems"
+    "Removed homepage visible block \u201cWhat these research compounds are for\u201d (Yehuda)",
+    "ItemList SoT 20 unchanged; FAQPage schema kept for merchant Q&A"
   ]
 }
