@@ -58,7 +58,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=359">
+<link rel="stylesheet" href="/biolabs_style.css?v=364">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -250,13 +250,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/search-overlay.js?v=26"></script>
 </head>
 <body>
-<div class="promo-stack" id="promoStack" hidden style="display:none!important">
-  
-  <div class="promo-bar">
-    <div class="promo-track">
-      <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer" data-end="2026-09-22T23:59:59+03:00">06:00:00</span></span><span class="promo-sep" aria-hidden="true">+</span></div>
-    </div>
-</div>
+<div class="promo-stack" id="promoStack" hidden style="display:none!important" aria-hidden="true">
+  <!-- promo ended: insider code / percent-off countdown removed -->
 </div>
 
 </div>
@@ -319,7 +314,6 @@ footer{background:var(--ink);padding:60px 60px 30px}
             
             <div class="price-row">
               <div class="price-unit-wrap"><span class="price-unit-label">Unit price</span><div class="price-main" id="current-price">$109</div></div>
-              <span class="price-original">$135</span>
             </div>
             <div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>
             <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
@@ -533,7 +527,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         }).join('')+'</div>';
     }
     var origHtml = (p.original_price && parseFloat(p.original_price) > parseFloat(p.price))
-      ? '<span class="price-original">$'+p.original_price+'</span>' : '';
+      ? '' : '';
     var storageHtml = p.storage
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
@@ -1327,7 +1321,7 @@ document.addEventListener('keydown', function(e) {
   tick(); setInterval(tick,1000);
 })();
 </script>
-<script src="/promo-bar.js?v=292"></script>
+<script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=35"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/product-marquee.js?v=44"></script>

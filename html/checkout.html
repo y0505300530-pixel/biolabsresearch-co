@@ -25,7 +25,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Catalog Inquiry Form — BioLabs Research">
 <meta name="twitter:description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
-<link rel="stylesheet" href="/biolabs_style.css?v=359">
+<link rel="stylesheet" href="/biolabs_style.css?v=364">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -290,7 +290,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 <script src="/cart-vial.js?v=305" defer></script>
 <script src="/search-overlay.js?v=29" defer></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="2.77">
+<meta name="app-version" content="2.80">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -301,13 +301,9 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="promo-stack" id="promoStack" hidden style="display:none!important">
-  
-  <div class="promo-bar">
-    <div class="promo-track">
-      <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div></div>
-    </div>
-  </div>
+<div class="promo-stack" id="promoStack" hidden style="display:none!important" aria-hidden="true">
+  <!-- promo ended: insider code / percent-off countdown removed -->
+</div>
 </div>
 
 <nav class="nav">
@@ -554,7 +550,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         <div class="form-group" style="margin:12px 0 0">
           <label for="couponCode">Coupon code</label>
           <div style="display:flex;gap:8px;align-items:flex-end">
-            <div style="flex:1 1 auto;min-width:0"><input type="text" name="coupon" id="couponCode" value="" placeholder="INSIDER25" autocomplete="off" style="width:100%;margin-top:6px"></div>
+            <div style="flex:1 1 auto;min-width:0"><input type="text" name="coupon" id="couponCode" value="" placeholder="Enter code if any" autocomplete="off" style="width:100%;margin-top:6px"></div>
             <button type="button" class="btn-submit" id="applyCoupon" style="width:auto;flex:0 0 auto;margin-top:0;padding:0 18px;min-width:96px;min-height:44px;font-size:13px">Apply</button>
           </div>
           <div id="couponNote" aria-live="polite" style="margin-top:6px;font-size:12px;line-height:1.5;min-height:16px"></div>
@@ -1181,7 +1177,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.79" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.79</p>
+<p class="site-version" data-site-version="2.80" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.80</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->
@@ -1324,7 +1320,7 @@ function showSuccess(orderData, paymentNote) {
 })();
 </script>
 <!-- END ENTRY GATE MODAL -->
-<script src="/promo-bar.js?v=292"></script>
+<script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=35"></script>
 <script src="/prices-sync.js?v=2"></script>
 

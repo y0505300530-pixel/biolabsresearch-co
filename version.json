@@ -1,10 +1,10 @@
 {
-  "version": "2.79",
+  "version": "2.80",
   "released": "2026-09-16",
-  "codename": "catalog-cover-marketing-header",
+  "codename": "promo-chrome-strip",
   "highlights": [
-    "Restore object-fit:cover on catalog / product cards / Pairs / cart; remove v2.78 catalog contain overrides; PDP mains stay contain",
-    "Catalog header Marketing SoT: Popular research compounds + short RUO + View all compounds + lot docs on request",
-    "KEEP ADD TO CART"
+    "Empty #promoStack / promo-bar INSIDER25 markup on all HTML (match home hidden empty shell)",
+    "PDPs: no .price-original / .price-launch-note / INSIDER25 strike when promo inactive; origHtml gated off",
+    "promo-bar.js remains noop stub (no 404); ATC and product prices unchanged"
   ]
 }

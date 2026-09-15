@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.80
+
+Released 2026-09-16.
+
+Codename: promo-chrome-strip
+
+## Highlights
+
+- **Promo bar**: Permanently empty `#promoStack` on products/blog/tools/shipping/science/etc. — match home (hidden + comment only). No visible “25% off / INSIDER25 / ends in”.
+- **PDPs**: Stop SSR struck `.price-original` and JS `origHtml` strike + `price-launch-note` when no active promo (`ACTIVE_PROMO = false` / `origHtml = ''`).
+- **promo-bar.js**: Keep noop stub so cached script tags do not 404.
+- **ATC / prices**: Unchanged. v2.79 catalog cover + Popular research compounds kept.
+
+---
+
 # biolabsresearch.co — Version 2.79
 
 Released 2026-09-16.

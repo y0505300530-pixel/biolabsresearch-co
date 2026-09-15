@@ -160,19 +160,15 @@ footer{background:var(--navy);padding:60px 60px 30px}
   }
 }
 </style>
-<meta name="app-version" content="2.77">
+<meta name="app-version" content="2.80">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
-<div class="promo-stack" id="promoStack" hidden style="display:none!important">
-  
-  <div class="promo-bar">
-    <div class="promo-track">
-      <div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div><div class="promo-group"><span class="promo-seg">25% off — code <button type="button" class="promo-code" data-code="INSIDER25">INSIDER25</button> | ends in <span class="cutoff-timer"></span></span><span class="promo-sep" aria-hidden="true">·</span></div></div>
+<div class="promo-stack" id="promoStack" hidden style="display:none!important" aria-hidden="true">
+  <!-- promo ended: insider code / percent-off countdown removed -->
 </div>
-    </div>
   </div>
 </div>
 
@@ -305,7 +301,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
         }).join('')+'</div>';
     }
     var origHtml = (p.original_price && parseFloat(p.original_price) > parseFloat(p.price))
-      ? '<span class="price-original">$'+p.original_price+'</span>' : '';
+      ? '' : '';
     var storageHtml = p.storage
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
@@ -693,7 +689,7 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-<script src="/promo-bar.js?v=292"></script>
+<script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=35"></script>
 <script src="/prices-sync.js?v=2"></script>
 </body>
