@@ -1,8 +1,8 @@
-# biolabsresearch.co — Version 2.08
+# biolabsresearch.co — Version 2.09
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- PDPs: remove stale Launch price · ends Sep 14 note
-- Replaced with INSIDER25 · 25% off (matches rolling promo, no fake end date)
+- Remove hollow empty promo-sep circle / blank half-rectangle on ticker
+- Force INSIDER25 label on code pill; restore ‘ends in’ wording

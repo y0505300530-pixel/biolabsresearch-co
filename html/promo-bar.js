@@ -98,11 +98,13 @@
     var timer = seg.querySelector(".cutoff-timer");
     var codeBtn = seg.querySelector(".promo-code");
     if (!timer || !codeBtn) return;
+    codeBtn.setAttribute("data-code", CODE);
+    codeBtn.textContent = CODE;
     var wrap = document.createElement("span");
     wrap.className = "promo-ends-wrap";
-    wrap.appendChild(document.createTextNode(" · "));
+    wrap.appendChild(document.createTextNode(" ends in "));
     wrap.appendChild(timer);
-    var label = document.createTextNode("25% OFF — CODE ");
+    var label = document.createTextNode("25% off — code ");
     seg.innerHTML = "";
     seg.appendChild(label);
     seg.appendChild(codeBtn);

@@ -11145,3 +11145,34 @@ html body .promo-sep {
   margin: 0 0 0 8px !important;
   opacity: .7 !important;
 }
+
+/* v2.09 kill empty promo shapes */
+html body .promo-sep,
+html body .promo-bar .promo-sep,
+html body span.promo-sep {
+  display: inline !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  min-height: 0 !important;
+  margin: 0 10px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: rgba(242, 209, 145, .85) !important;
+  font-size: 14px !important;
+  line-height: 1 !important;
+  opacity: 1 !important;
+}
+html body .promo-code:empty,
+html body button.promo-code:empty {
+  display: none !important;
+}
+html body .promo-code::before,
+html body .promo-seg .promo-code::before,
+html body button.promo-code::before {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
