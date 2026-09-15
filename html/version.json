@@ -1,9 +1,8 @@
 {
-  "version": "2.73",
+  "version": "2.74",
   "released": "2026-09-15",
-  "codename": "hero-drop-from45-aod-bpc-locked-mg",
+  "codename": "search-footer-catalog",
   "highlights": [
-    "Hero: remove From $45 price line",
-    "AOD-9604 + BPC-157: renormalize from locked-mg / preview-C gold-band masters to 1200\u00b2 #F2EFE9 (?v=172)"
+    "Search overlay footer: OPEN COMPOUND \u2192 \u2192 CATALOG \u2190 linking to /#catalog"
   ]
 }

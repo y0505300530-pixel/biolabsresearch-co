@@ -78,7 +78,7 @@
         '</div>' +
         '<p class="so-kicker" id="soKicker">POPULAR</p>' +
         '<div class="so-list" id="soList"></div>' +
-        '<div class="so-foot"><span>RESEARCH USE ONLY</span><span class="so-foot-right">Open compound →</span></div>' +
+        '<div class="so-foot"><span>RESEARCH USE ONLY</span><a class="so-foot-right" href="/#catalog" data-so-catalog="1">CATALOG ←</a></div>' +
       "</div>";
     document.body.appendChild(wrap);
   }
