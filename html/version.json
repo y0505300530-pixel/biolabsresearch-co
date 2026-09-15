@@ -1,10 +1,10 @@
 {
-  "version": "2.70",
+  "version": "2.71",
   "released": "2026-09-15",
-  "codename": "rsay-aggregate-chrome",
+  "codename": "rsay-verified-dist",
   "highlights": [
-    "Homepage What researchers say: aggregate chrome 4.9/5 + Based on 1,200 reviews",
-    "Olive stars retained; carousel cards unchanged (first+initial, olive stars, quotes)",
-    "No Verified badges; no star-percentage histogram bars"
+    "Homepage What researchers say: per-card ✓ Verified reviewer badge",
+    "Aggregate star distribution under 4.9/5 (92/6/1/1/0)",
+    "Olive stars + Based on 1,200 reviews + carousel cards retained"
   ]
 }

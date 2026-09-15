@@ -11971,6 +11971,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   accent-color: #9A6D2A !important;
 }
 
+/* === v2.71 rsay-verified-dist === */
 /* === v2.70 rsay-aggregate-chrome === */
 /* === v2.61 rsay-visible-autorun === */
 .rsay-section[hidden],
@@ -12197,6 +12198,55 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   .rsay-rail,#rsayRail{scroll-behavior:auto;scroll-snap-type:x proximity}
 }
 
+
+
+/* v2.71: verified reviewer badge + star distribution */
+.rsay-verified{
+  margin:4px 0 0;
+  font-size:12px;
+  font-weight:600;
+  color:#2C4A22;
+  letter-spacing:.01em;
+  line-height:1.3;
+  display:block!important;
+}
+.rsay-dist{
+  list-style:none;
+  margin:10px 0 0;
+  padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  align-items:flex-end;
+  min-width:140px;
+}
+.rsay-dist li{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  margin:0;
+  padding:0;
+  line-height:1.2;
+}
+.rsay-dist-stars{
+  color:#2C4A22;
+  font-size:11px;
+  letter-spacing:1px;
+  font-variant-emoji:text;
+}
+.rsay-dist-pct{
+  font-size:12px;
+  font-weight:600;
+  color:#5a554e;
+  min-width:2.5em;
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+@media (max-width:900px){
+  .rsay-dist{align-items:flex-start}
+  .rsay-dist li{justify-content:flex-start}
+}
 
 /* === v2.63 product-img-css-uniformity (Yehuda Part 2) === */
 /* Square 1:1 frames + beige #F2EFE9.
