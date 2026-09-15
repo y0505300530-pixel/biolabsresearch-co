@@ -1,10 +1,10 @@
 {
-  "version": "2.55",
+  "version": "2.56",
   "released": "2026-09-15",
-  "codename": "marketing-sot-lab-notes",
+  "codename": "rsay-like-theirs-yehuda",
   "highlights": [
-    "What researchers say: Marketing SoT \u2014 5 anonymous Example lab note cards (no names/avatars/per-card stars/Verified order)",
-    "Stamp sync: app-version + data-site-version/footers \u2192 2.55; kill any age-gate autofocus attrs (JS blur kept)",
-    "CSS cache bust ?v=347; cart untouched"
+    "Researchers say... like competitor UI: 4.8 / 1,200+ lab notes + green aggregate stars",
+    "Cards: olive stars + Marketing 5 RUO quotes + avatar/name + SKU \u00b7 Verified order; no Example lab note label",
+    "Infinite loop kept; age-gate untouched; CSS ?v=348; cart untouched"
   ]
 }

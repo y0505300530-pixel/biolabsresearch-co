@@ -1,12 +1,13 @@
-# biolabsresearch.co — Version 2.55
+# biolabsresearch.co — Version 2.56
 
 Released 2026-09-15.
 
-Codename: marketing-sot-lab-notes
+Codename: rsay-like-theirs-yehuda
 
 ## Highlights
 
-- Homepage **What researchers say**: Marketing SoT load — exactly **5 anonymous Example lab note** cards (no fake names, no avatar initials, no per-card stars, no “Verified order”); keep header aggregate **4.8** + green stars + infinite-loop carousel
-- Stamp sync: all HTML `app-version` / `data-site-version` / site-version footers → **2.55**; remove any age-gate `autofocus` attrs (v2.54 JS blur/no-first-focus kept)
-- CSS `biolabs_style.css?v=347`
+- Homepage **Researchers say...** restyled like competitor screenshots (Yehuda): title ellipsis; aggregate **5 green stars** + **4.8 / 1,200+ lab notes**
+- Cards: **5 olive-green stars**, Marketing’s exact 5 RUO lab-note quotes, circular green avatar + bold researcher-style names, `{SKU} · Verified order` (GHK-Cu / NAD+ / BPC-157 / TB-500 / Epithalon)
+- Removed **Example lab note** footer label; infinite-loop carousel kept; age-gate untouched
+- CSS `biolabs_style.css?v=348`
 - Cart: untouched

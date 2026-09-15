@@ -11971,7 +11971,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   accent-color: #9A6D2A !important;
 }
 
-/* researchers-say LIVE — restore full chrome (override v2.53b hide) */
+/* === v2.56 rsay-like-theirs-yehuda === */
 .rsay-section[hidden],
 .rsay-section[data-rsay-state="awaiting-marketing"]{
   display:none!important;
@@ -11996,14 +11996,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   margin-bottom:36px;
   flex-wrap:wrap;
 }
-.rsay-eyebrow{
-  margin:0 0 10px;
-  font-size:12px;
-  font-weight:700;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:#2C4A22;
-}
+.rsay-eyebrow{display:none!important}
 .rsay-title{
   margin:0;
   font-family:var(--font-logo,'Fraunces',Georgia,serif);
@@ -12029,7 +12022,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
 .rsay-stars{
   display:flex;
   gap:3px;
-  color:#2C4A22; /* green stars */
+  color:#2C4A22; /* header: green stars */
 }
 .rsay-proof-label{
   margin:0;
@@ -12043,12 +12036,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   color:#1a3a2a;
   font-size:16px;
 }
-.rsay-proof-sub{
-  margin:0;
-  font-size:12px;
-  font-weight:600;
-  color:#6b7a68;
-}
+.rsay-proof-sub{display:none!important}
 .rsay-rail-wrap{
   position:relative;
   margin:0 -8px;
@@ -12088,7 +12076,6 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   min-height:220px;
   box-sizing:border-box;
 }
-/* no pre-selected first card */
 .rsay-card:first-child,
 .rsay-card:focus,
 .rsay-card:focus-visible,
@@ -12098,8 +12085,8 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   box-shadow:0 4px 24px rgba(31,31,31,.06), 0 1px 3px rgba(31,31,31,.04) !important;
 }
 .rsay-card-stars{
-  color:#2C4A22;
-  font-size:13px;
+  color:#6B7A3A; /* olive-green per-card stars */
+  font-size:12px;
   letter-spacing:2px;
   line-height:1;
 }
@@ -12142,18 +12129,8 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   font-size:12px;
   color:#6b6560;
 }
-.rsay-lab-note{
-  margin-top:auto;
-  font-size:12px;
-  font-weight:600;
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  color:#6b7a68;
-}
-.rsay-card:has(.rsay-lab-note){
-  min-height:180px;
-}
-
+/* kill v2.55 anonymous lab-note footer chrome */
+.rsay-lab-note{display:none!important}
 .rsay-fade{
   position:absolute;
   top:0;
