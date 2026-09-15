@@ -1,12 +1,12 @@
 {
-  "version": "2.49",
+  "version": "2.50",
   "released": "2026-09-15",
-  "codename": "pdp-sticky-img-yehuda",
+  "codename": "card-media-cover-snap",
   "highlights": [
-    "PDP gallery .product-img-section sticky on desktop while buy column scrolls",
-    "align-self:start; top:88px; parents overflow visible; body overflow-x:clip (sticky-safe)",
-    "Mobile max-width 900px: position static (no sticky fight)",
-    "Thumbs remain hidden (v2.48)",
-    "CSS cache bust ?v=342"
+    "Pairs rail + catalog card media: object-fit cover + object-position center in 1:1 square (not contain)",
+    "Mapped .product-card__media \u2192 .product-card-media / .product-card-img / .pr-card-media",
+    "Pairs carousel: scroll-snap-type x mandatory on .pr-viewport, scroll-snap-align start on .pr-card; edge-card clip reduced",
+    "PDP sticky gallery (v2.49) and hidden thumbs (v2.48) unchanged; no PNG batch this ship",
+    "CSS cache bust ?v=343"
   ]
 }
