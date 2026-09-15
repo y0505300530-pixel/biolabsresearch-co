@@ -273,7 +273,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <div class="product-hero">
         <div class="product-img-section">
 <div class="product-img-main">
-            <img src="/media/vial-aod-9604.webp?v=155" alt="Clear glass research vial labeled AOD-9604 with a gold crimp cap" loading="eager" fetchpriority="high" decoding="async" width="400" height="500">
+            <img src="/media/vial-aod-9604.webp?v=155" alt="Clear glass research vial labeled AOD-9604 with a gold crimp cap" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
           </div>
           </div>
         <div class="pdp-buy-col">
@@ -370,7 +370,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.33" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.33</p>
+<p class="site-version" data-site-version="2.34" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.34</p>
 </footer>
 
 <script>
@@ -503,8 +503,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
           '<div class="product-img-main"><img id="pdpMainImg" src="'+img+'" alt="'+p.name+' research vial with gold crimp cap"></div>' +
           '<div class="pdp-thumbs" role="list">' +
             '<button type="button" class="pdp-thumb on" data-full="'+img+'" aria-label="Vial view"><img src="'+img+'" alt="AOD-9604 research vial, front view"></button>' +
-            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-5mg.webp" aria-label="5 mg vial"><img src="/media/vial-aod-9604-5mg.webp" alt="AOD-9604 5 mg research vial" loading="lazy" decoding="async" width="400" height="500"></button>' +
-            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-10mg.webp" aria-label="10 mg vial"><img src="/media/vial-aod-9604-10mg.webp" alt="AOD-9604 10 mg research vial" loading="lazy" decoding="async" width="400" height="500"></button>' +
+            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-5mg.webp" aria-label="5 mg vial"><img src="/media/vial-aod-9604-5mg.webp" alt="AOD-9604 5 mg research vial" loading="lazy" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';"></button>' +
+            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-10mg.webp" aria-label="10 mg vial"><img src="/media/vial-aod-9604-10mg.webp" alt="AOD-9604 10 mg research vial" loading="lazy" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';"></button>' +
           '</div>' +
         '</div>' +
         '<div class=\"pdp-buy-col\">' +
@@ -719,10 +719,10 @@ window.compareAtPrice = function(item){
       </span>
     </div>
     <button class="btn-checkout" onclick="checkout()">Continue request</button>
-    <div class="cart-pay-marks" aria-label="Cards accepted when settling with our team"><img class="pay-mark-img" src="/media/card-visa.webp?v=175" alt="Visa" width="45" height="28" loading="lazy" decoding="async">
-            <img class="pay-mark-img" src="/media/card-mastercard.webp?v=175" alt="Mastercard" width="44" height="28" loading="lazy" decoding="async">
-            <img class="pay-mark-img" src="/media/card-discover.webp?v=175" alt="Discover" width="44" height="28" loading="lazy" decoding="async">
-            <img class="pay-mark-img" src="/media/card-amex.webp?v=175" alt="American Express" width="44" height="28" loading="lazy" decoding="async"><p class="pay-mark-line">Major cards accepted after inquiry accepted — settle with our team</p></div>
+    <div class="cart-pay-marks" aria-label="Cards accepted when settling with our team"><img class="pay-mark-img" src="/media/card-visa.webp?v=175" alt="Visa" width="45" height="28" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+            <img class="pay-mark-img" src="/media/card-mastercard.webp?v=175" alt="Mastercard" width="44" height="28" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+            <img class="pay-mark-img" src="/media/card-discover.webp?v=175" alt="Discover" width="44" height="28" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+            <img class="pay-mark-img" src="/media/card-amex.webp?v=175" alt="American Express" width="44" height="28" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';"><p class="pay-mark-line">Major cards accepted after inquiry accepted — settle with our team</p></div>
     <button type="button" class="btn-continue" onclick="toggleCart()">Continue shopping</button>
   </div>
 </div>
@@ -800,7 +800,7 @@ function renderCart() {
     return;
   }
   el.innerHTML = cart.map(function(item) {
-    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + ' research vial" width="72" height="90" loading="lazy" decoding="async">';
+    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + ' research vial" width="72" height="90" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">';
     return '<div class="cart-item">' +
       '<div class="ci-img" style="overflow:hidden;padding:0;">' + imgHtml + '</div>' +
       '<div class="ci-info">' +

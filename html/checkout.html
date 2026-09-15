@@ -498,9 +498,9 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
               <div class="pm-title">Credit / Debit Card</div>
               <div class="pm-sub">Visa, Mastercard, Amex</div>
               <div class="pm-marks" aria-label="Accepted cards">
-                <img class="pay-mark-img" src="/media/card-visa.webp?v=178" alt="Visa" width="40" height="22" loading="lazy" decoding="async">
-                <img class="pay-mark-img" src="/media/card-mastercard.webp?v=178" alt="Mastercard" width="40" height="22" loading="lazy" decoding="async">
-                <img class="pay-mark-img" src="/media/card-amex.webp?v=178" alt="American Express" width="40" height="22" loading="lazy" decoding="async">
+                <img class="pay-mark-img" src="/media/card-visa.webp?v=178" alt="Visa" width="40" height="22" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+                <img class="pay-mark-img" src="/media/card-mastercard.webp?v=178" alt="Mastercard" width="40" height="22" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+                <img class="pay-mark-img" src="/media/card-amex.webp?v=178" alt="American Express" width="40" height="22" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
               </div>
             </div>
           </div>
@@ -1106,7 +1106,7 @@ function showSuccess(orderData, paymentNote) {
     </div>
 
     <div class="qr-wrap">
-      <img id="cryptoQrImg" src="/media/qr-usdt-erc.webp?v=178" alt="QR code for crypto payment address" width="160" height="160" loading="lazy" decoding="async">
+      <img id="cryptoQrImg" src="/media/qr-usdt-erc.webp?v=178" alt="QR code for crypto payment address" width="160" height="160" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
       <div class="qr-hint">Scan with your wallet app</div>
     </div>
     <p class="crypto-warn">Please make sure to send the correct asset on the correct network. Sending any other asset may result in permanent loss.</p>
@@ -1176,7 +1176,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.33" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.33</p>
+<p class="site-version" data-site-version="2.34" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.34</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

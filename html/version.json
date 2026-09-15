@@ -1,9 +1,11 @@
 {
-  "version": "2.33",
+  "version": "2.34",
   "released": "2026-09-15",
-  "codename": "drop-catalog-overview-blurb",
+  "codename": "broken-media-fix",
   "highlights": [
-    "Removed homepage visible block \u201cWhat these research compounds are for\u201d (Yehuda)",
-    "ItemList SoT 20 unchanged; FAQPage schema kept for merchant Q&A"
+    "Fixed real 404s: /media/vial-nad.png alias \u2192 vial-nad-plus; vial-ipamorelin-10mg.webp generated",
+    "Regenerated undersized content WebPs from PNG twins where needed",
+    "Unified /media/vial-fallback.webp + onerror on catalog/content imgs so cards never show broken icon",
+    "Audit: other Yehuda-listed vial/ship/blog paths already 200 \u2014 main miss was vial-nad vs vial-nad-plus naming"
   ]
 }

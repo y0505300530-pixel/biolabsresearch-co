@@ -293,7 +293,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <div class="product-hero">
         <div class="product-img-section">
 <div class="product-img-main">
-            <img src="/media/vial-curcumin-phytosome.webp?v=155" alt="Clear glass research vial labeled Curcumin Phytosome (Meriva) with a gold crimp cap" loading="eager" fetchpriority="high" decoding="async" width="400" height="500">
+            <img src="/media/vial-curcumin-phytosome.webp?v=155" alt="Clear glass research vial labeled Curcumin Phytosome (Meriva) with a gold crimp cap" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
           </div>
           </div>
         <div class="pdp-buy-col">
@@ -830,7 +830,7 @@ function renderCart() {
     return;
   }
   el.innerHTML = cart.map(function(item) {
-    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + ' research vial" width="72" height="90" loading="lazy" decoding="async">';
+    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + ' research vial" width="72" height="90" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">';
     return '<div class="cart-item">' +
       '<div class="ci-img" style="overflow:hidden;padding:0;">' + imgHtml + '</div>' +
       '<div class="ci-info">' +
