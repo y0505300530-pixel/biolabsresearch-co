@@ -60,7 +60,22 @@
     for (var fi = 0; fi < focusables.length; fi++) {
       if (!focusables[fi].disabled && focusables[fi].offsetParent !== null) { first = first || focusables[fi]; last = focusables[fi]; }
     }
-    if (first) try { first.focus(); } catch (_f) {}
+    /* v2.54 agegate-no-preselect: do NOT autofocus first checkbox (gold ring on load) */
+    try {
+      var ae = document.activeElement;
+      if (ae && overlay.contains(ae) && typeof ae.blur === "function") ae.blur();
+      var boxes = overlay.querySelectorAll('input[type="checkbox"], button, [href]');
+      for (var bi = 0; bi < boxes.length; bi++) {
+        try { if (document.activeElement === boxes[bi]) boxes[bi].blur(); } catch (_bb) {}
+      }
+      var modalEl = overlay.querySelector(".tc-modal");
+      if (modalEl) {
+        if (!modalEl.hasAttribute("tabindex")) modalEl.setAttribute("tabindex", "-1");
+        /* focus container for a11y trap start without painting checkbox gold ring */
+        try { modalEl.focus({preventScroll: true}); } catch (_mf) { try { modalEl.focus(); } catch (_mf2) {} }
+        try { modalEl.blur(); } catch (_mb) {}
+      }
+    } catch (_blur) {}
     if (!overlay._trapBound) {
       overlay._trapBound = true;
       overlay.addEventListener("keydown", function(ev){

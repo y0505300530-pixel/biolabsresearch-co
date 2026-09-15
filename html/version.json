@@ -1,11 +1,10 @@
 {
-  "version": "2.53",
+  "version": "2.54",
   "released": "2026-09-15",
-  "codename": "home-researchers-say",
+  "codename": "agegate-no-preselect",
   "highlights": [
-    "Homepage What researchers say: carousel CHROME only \u2014 section HIDDEN until Marketing SoT",
-    "RUO/Marketing lock: no placeholder quotes, stars, names, avatars, or invented metrics",
-    "Enable later: remove hidden + data-rsay-state, insert real testimonials only",
-    "CSS cache bust ?v=345; cart untouched"
+    "Age gate: no autofocus/gold ring on first checkbox at open (agegate-no-preselect)",
+    "What researchers say LIVE: 4.8 aggregate + infinite carousel + RUO process quotes",
+    "CSS cache bust ?v=346; cart untouched"
   ]
 }

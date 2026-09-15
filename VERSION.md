@@ -1,13 +1,12 @@
-# biolabsresearch.co — Version 2.53
+# biolabsresearch.co — Version 2.54
 
 Released 2026-09-15.
 
-Codename: home-researchers-say
+Codename: agegate-no-preselect
 
 ## Highlights
 
-- Homepage **What researchers say** carousel chrome landed in HTML/CSS but is **HIDDEN** (`hidden` + `data-rsay-state="awaiting-marketing"`) until Marketing supplies real testimonials
-- No visible placeholder quotes, stars, fake names/avatars, or invented review/order counts
-- Placement reserved: after `#ship-facts`, before `#research` (blogs)
-- CSS `biolabs_style.css?v=345`
-- Cart: untouched (Yehuda stop)
+- Age gate: **no autofocus / gold preselect ring** on first checkbox at modal open (`agegate-no-preselect`); boxes match until user tabs/clicks; real checked + keyboard focus kept
+- Homepage **What researchers say** LIVE (Yehuda override of Marketing hide): green stars + bold **4.8** + "out of 5 · 1,200+ verified reviews"; RUO-safe process quotes; infinite-loop carousel; no first-card preselect
+- CSS `biolabs_style.css?v=346`
+- Cart: untouched

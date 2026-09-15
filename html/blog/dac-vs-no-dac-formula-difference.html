@@ -36,7 +36,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=345">
+<link rel="stylesheet" href="/biolabs_style.css?v=346">
 <style>
 .article-hero{padding:80px 48px 40px;text-align:center;max-width:780px;margin:0 auto}
 .article-hero h1{font-family:var(--font-logo);font-size:42px;font-weight:500;line-height:1.2;margin-bottom:16px;color:var(--ink)}
@@ -302,7 +302,7 @@
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.53" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.53</p>
+<p class="site-version" data-site-version="2.54" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.54</p>
 </footer>
 <script src="/promo-bar.js?v=292"></script>
 <script src="/mg-picker.js?v=34"></script>
@@ -354,7 +354,22 @@
     for (var fi = 0; fi < focusables.length; fi++) {
       if (!focusables[fi].disabled && focusables[fi].offsetParent !== null) { first = first || focusables[fi]; last = focusables[fi]; }
     }
-    if (first) try { first.focus(); } catch (_f) {}
+    /* v2.54 agegate-no-preselect: do NOT autofocus first checkbox (gold ring on load) */
+    try {
+      var ae = document.activeElement;
+      if (ae && overlay.contains(ae) && typeof ae.blur === "function") ae.blur();
+      var boxes = overlay.querySelectorAll('input[type="checkbox"], button, [href]');
+      for (var bi = 0; bi < boxes.length; bi++) {
+        try { if (document.activeElement === boxes[bi]) boxes[bi].blur(); } catch (_bb) {}
+      }
+      var modalEl = overlay.querySelector(".tc-modal");
+      if (modalEl) {
+        if (!modalEl.hasAttribute("tabindex")) modalEl.setAttribute("tabindex", "-1");
+        /* focus container for a11y trap start without painting checkbox gold ring */
+        try { modalEl.focus({preventScroll: true}); } catch (_mf) { try { modalEl.focus(); } catch (_mf2) {} }
+        try { modalEl.blur(); } catch (_mb) {}
+      }
+    } catch (_blur) {}
     if (!overlay._trapBound) {
       overlay._trapBound = true;
       overlay.addEventListener("keydown", function(ev){

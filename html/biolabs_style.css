@@ -11946,9 +11946,32 @@ body {
 }
 /* === end v2.50 === */
 
+/* === v2.54 agegate-no-preselect + researchers-say live === */
+/* Age gate: no gold/focus ring on unchecked boxes at rest; keep real checked + keyboard focus */
+.tc-modal:focus,
+.tc-modal:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.tc-check-label input[type="checkbox"]:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+/* Programmatic/open state: suppress ring until user tabs/clicks */
+html.has-age-gate.tc-need .tc-check-label input[type="checkbox"]:focus:not(:focus-visible),
+html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:focus-visible) {
+  outline: none !important;
+  box-shadow: none !important;
+}
+.tc-check-label input[type="checkbox"]:not(:checked) {
+  /* identical resting look — no selected/on chrome */
+  filter: none;
+}
+.tc-check-label input[type="checkbox"]:checked {
+  accent-color: #9A6D2A !important;
+}
 
-/* === v2.53b home-researchers-say HIDDEN (Marketing SoT gate) === */
-/* Section ships chrome-ready but stays off until real testimonials exist. */
+/* researchers-say LIVE — restore full chrome (override v2.53b hide) */
 .rsay-section[hidden],
 .rsay-section[data-rsay-state="awaiting-marketing"]{
   display:none!important;
@@ -11990,7 +12013,46 @@ body {
   line-height:1.1;
   color:#1a3a2a;
 }
-.rsay-rail-wrap{position:relative;margin:0 -8px}
+.rsay-proof{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+  text-align:right;
+}
+.rsay-agg{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:6px;
+}
+.rsay-stars{
+  display:flex;
+  gap:3px;
+  color:#2C4A22; /* green stars */
+}
+.rsay-proof-label{
+  margin:0;
+  font-size:14px;
+  font-weight:500;
+  color:#4a6358;
+  letter-spacing:.01em;
+}
+.rsay-score{
+  font-weight:800;
+  color:#1a3a2a;
+  font-size:16px;
+}
+.rsay-proof-sub{
+  margin:0;
+  font-size:12px;
+  font-weight:600;
+  color:#6b7a68;
+}
+.rsay-rail-wrap{
+  position:relative;
+  margin:0 -8px;
+}
 .rsay-rail{
   display:flex;
   gap:18px;
@@ -12002,7 +12064,13 @@ body {
   padding:8px 8px 20px;
   scrollbar-width:none;
   cursor:grab;
-  outline:none;
+  outline:none !important;
+  box-shadow:none !important;
+}
+.rsay-rail:focus,
+.rsay-rail:focus-visible{
+  outline:none !important;
+  box-shadow:none !important;
 }
 .rsay-rail::-webkit-scrollbar{display:none}
 .rsay-rail.is-dragging{cursor:grabbing;scroll-snap-type:none}
@@ -12017,19 +12085,87 @@ body {
   display:flex;
   flex-direction:column;
   gap:14px;
-  min-height:180px;
+  min-height:220px;
   box-sizing:border-box;
 }
-.rsay-quote{margin:0;flex:1 1 auto;font-size:15px;line-height:1.55;color:#3E2B20}
-.rsay-tag{margin:0;font-size:12px;font-weight:600;color:#4a6358}
-.rsay-fade{position:absolute;top:0;bottom:12px;width:48px;pointer-events:none;z-index:2}
-.rsay-fade-l{left:0;background:linear-gradient(90deg,#F5F2ED 0%,rgba(245,242,237,0) 100%)}
-.rsay-fade-r{right:0;background:linear-gradient(270deg,#F5F2ED 0%,rgba(245,242,237,0) 100%)}
-/* Forbidden chrome kept suppressed even if mistakenly re-enabled with placeholders */
-.rsay-stars,.rsay-proof,.rsay-card-stars,.rsay-author,.rsay-avatar,.rsay-name,.rsay-meta{display:none!important}
+/* no pre-selected first card */
+.rsay-card:first-child,
+.rsay-card:focus,
+.rsay-card:focus-visible,
+.rsay-card:focus-within{
+  outline:none !important;
+  border-color:#EDE7DC !important;
+  box-shadow:0 4px 24px rgba(31,31,31,.06), 0 1px 3px rgba(31,31,31,.04) !important;
+}
+.rsay-card-stars{
+  color:#2C4A22;
+  font-size:13px;
+  letter-spacing:2px;
+  line-height:1;
+}
+.rsay-quote{
+  margin:0;
+  flex:1 1 auto;
+  font-size:15px;
+  line-height:1.55;
+  color:#3E2B20;
+  font-weight:400;
+}
+.rsay-author{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:4px;
+}
+.rsay-avatar{
+  flex:0 0 40px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#2C4A22;
+  color:#F5F2ED;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.02em;
+}
+.rsay-name{
+  margin:0;
+  font-size:14px;
+  font-weight:700;
+  color:#1F1F1F;
+}
+.rsay-meta{
+  margin:2px 0 0;
+  font-size:12px;
+  color:#6b6560;
+}
+.rsay-fade{
+  position:absolute;
+  top:0;
+  bottom:12px;
+  width:48px;
+  pointer-events:none;
+  z-index:2;
+}
+.rsay-fade-l{
+  left:0;
+  background:linear-gradient(90deg,#F5F2ED 0%,rgba(245,242,237,0) 100%);
+}
+.rsay-fade-r{
+  right:0;
+  background:linear-gradient(270deg,#F5F2ED 0%,rgba(245,242,237,0) 100%);
+}
 @media (max-width:900px){
   .rsay-section{padding:56px 0 64px}
   .rsay-inner{padding:0 20px}
-  .rsay-card{flex-basis:min(280px,85vw)}
+  .rsay-head{align-items:flex-start}
+  .rsay-proof,.rsay-agg{align-items:flex-start;text-align:left}
+  .rsay-card{flex-basis:min(280px,85vw);min-height:200px}
   .rsay-fade{width:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  .rsay-rail{scroll-behavior:auto}
 }
