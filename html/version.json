@@ -1,10 +1,10 @@
 {
-  "version": "2.68",
+  "version": "2.69",
   "released": "2026-09-15",
-  "codename": "claim-lot-docs-accurate",
+  "codename": "aod-bpc-vial-clean",
   "highlights": [
-    "Compliance: drop 'Twenty compounds with lot docs' overclaim \u2014 docs on request for issued lots only",
-    "Home: hero/COA card/stat label no longer imply every SKU has a ready lot file",
-    "Shipping step title: Confirmed lot identity (COA when required)"
+    "AOD-9604 + BPC-157 vials re-normalized: clean studio #F2EFE9 1200\u00b2 (no marble ragged edges)",
+    "Media bust ?v=171; products-data image_url aligned",
+    "Science copy: 20 research compounds; lot docs on request for the lot you inquire about"
   ]
 }
