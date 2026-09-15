@@ -1,12 +1,11 @@
 {
-  "version": "2.43",
+  "version": "2.44",
   "released": "2026-09-15",
-  "codename": "atc-sitewide-yehuda",
+  "codename": "pdp-gallery-cover-yehuda",
   "highlights": [
-    "Yehuda override: ADD TO CART sitewide (home/catalog/PDP/sticky/marquee) incl Tirz/Sema/Reta",
-    "Restore visible list prices on GLP cards and PDPs (undo Request quote / Inquire-only)",
-    "Retain v2.42 Tirz/Sema CAS SoT (2023788-19-2 / 910463-68-2) \u2014 not reverted",
-    "Pairs-well rail clip/scroll affordance @390 further improved",
-    "CSS cache bust ?v=335"
+    "PDP gallery square frame + object-fit cover (Yehuda)",
+    "Map .product-gallery__main intent to .product-img-main / #pdpMainImg / .pdp-thumb",
+    "Thumbs keep object-fit cover; non-PDP pages untouched",
+    "CSS cache bust ?v=336"
   ]
 }

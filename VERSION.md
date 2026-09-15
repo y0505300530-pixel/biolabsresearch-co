@@ -1,13 +1,12 @@
-# biolabsresearch.co — Version 2.43
+# biolabsresearch.co — Version 2.44
 
 Released 2026-09-15.
 
-Codename: atc-sitewide-yehuda
+Codename: pdp-gallery-cover-yehuda
 
 ## Highlights
 
-- Yehuda override: ADD TO CART sitewide (home/catalog/PDP/sticky/marquee) incl Tirz/Sema/Reta
-- Restore visible list prices on GLP cards and PDPs (undo Request quote / Inquire-only)
-- Retain v2.42 Tirz/Sema CAS SoT (2023788-19-2 / 910463-68-2) — not reverted
-- Pairs-well rail clip/scroll affordance @390 further improved
-- CSS cache bust ?v=335
+- PDP gallery square frame + object-fit cover (Yehuda)
+- Map `.product-gallery__main` intent to `.product-img-main` / `#pdpMainImg` / `.pdp-thumb`
+- Thumbs keep object-fit cover; non-PDP pages untouched
+- CSS cache bust ?v=336

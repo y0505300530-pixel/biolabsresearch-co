@@ -10184,9 +10184,9 @@ html body .price-original::before { content: none !important; }
   background: transparent !important;
   width: 100% !important;
   height: 100% !important;
-  object-fit: contain !important;
+  object-fit: cover !important;
   object-position: center !important;
-  padding: 8% !important;
+  padding: 0 !important;
   box-sizing: border-box !important;
 }
 .pdp-thumbs {
@@ -11632,4 +11632,30 @@ p.footer-col-title{
   margin:0 0 16px;
 }
 
-
+/* === v2.44 PDP gallery square + object-fit cover (Yehuda) === */
+/* Map Yehuda .product-gallery__main intent → live .product-img-main / #pdpMainImg / .pdp-thumb */
+.product-img-section .product-img-main,
+.product-img-main {
+  aspect-ratio: 1 / 1 !important;
+  width: 100% !important;
+  overflow: hidden !important;
+}
+.product-img-section .product-img-main img,
+.product-img-main img,
+#pdpMainImg {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none !important;
+  object-fit: cover !important;
+  object-position: center !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+.pdp-thumbs .pdp-thumb img,
+.pdp-thumb img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  object-position: center !important;
+}
+/* === end v2.44 === */
