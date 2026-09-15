@@ -1,10 +1,12 @@
 {
-  "version": "2.28",
+  "version": "2.29",
   "released": "2026-09-15",
-  "codename": "cache-compress-meta",
+  "codename": "image-opt",
   "highlights": [
-    "Stronger caching: /media/ immutable 1y; css/images/fonts 365d; gzip_comp_level 5 (JS stays 10m)",
-    "Image compression: recompressed heavy PNGs + regenerated WebP sidecars (backups under media/_bak-pre-v228-compress)",
-    "SEO: homepage meta/OG description expanded (~160 chars); og:image filled on pages that lacked it"
+    "Image audit pass: meaningful alts, width/height for CLS, WebP src where PNG twin exists",
+    "Homepage LCP: first 4 catalog vials loading=eager + fetchpriority=high; rest lazy",
+    "Shipping/blog logos prefer WebP; cart drawer img templates get dims + lazy",
+    "Filenames already descriptive (vial-*, ship-*, blog-topic-*); no mass rename (URL/cache safe)",
+    "AVIF deferred (no avifenc on server); WebP covers modern browsers"
   ]
 }

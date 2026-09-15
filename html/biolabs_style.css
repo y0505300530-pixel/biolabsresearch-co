@@ -11442,3 +11442,10 @@ html.tc-ok #tcOverlay {
   pointer-events: none !important;
   opacity: 0 !important;
 }
+
+
+/* IMG OPT v2.29 — keep intrinsic box from width/height attrs; fluid shrink */
+img[width][height] {
+  max-width: 100%;
+  height: auto;
+}

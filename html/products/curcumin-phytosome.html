@@ -79,7 +79,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=327">
+<link rel="stylesheet" href="/biolabs_style.css?v=329">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -851,7 +851,7 @@ function renderCart() {
     return;
   }
   el.innerHTML = cart.map(function(item) {
-    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + '">';
+    var imgHtml = '<img src="' + vialImg(item) + '" alt="' + item.name + ' research vial" width="72" height="90" loading="lazy" decoding="async">';
     return '<div class="cart-item">' +
       '<div class="ci-img" style="overflow:hidden;padding:0;">' + imgHtml + '</div>' +
       '<div class="ci-info">' +
