@@ -11509,3 +11509,53 @@ img[width][height] {
   }
 }
 /* === end CRM v2.35 spec-strip === */
+
+/* === CRM v2.37 — 320 logo full wordmark (no Biolabs re…) === */
+@media (max-width: 380px) {
+  html body nav.nav,
+  html body .nav {
+    gap: 6px !important;
+    padding: 10px 10px !important;
+    overflow: visible !important;
+  }
+  html body .nav-logo {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    max-width: calc(100% - 118px) !important;
+    overflow: visible !important;
+  }
+  html body .nav-logo-stack {
+    display: inline !important;
+    flex-direction: row !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    overflow: visible !important;
+  }
+  html body .nav-logo-mark {
+    font-size: 15px !important;
+    flex: 0 0 auto !important;
+  }
+  html body .nav-logo-text {
+    display: inline !important;
+    font-size: 12px !important;
+    letter-spacing: -0.04em !important;
+    white-space: nowrap !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    max-width: none !important;
+    width: auto !important;
+  }
+  html body .nav-right {
+    gap: 2px !important;
+    flex-shrink: 0 !important;
+  }
+  html body .nav-util,
+  html body .nav-cart,
+  html body .nav-hamburger {
+    width: 36px !important;
+    height: 36px !important;
+    min-width: 36px !important;
+    min-height: 36px !important;
+  }
+}
+/* === end CRM v2.37 === */
