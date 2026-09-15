@@ -1,11 +1,10 @@
 {
-  "version": "2.00",
+  "version": "2.01",
   "released": "2026-09-15",
-  "codename": "age-gate-hide-chrome",
+  "codename": "coa-copy-soften",
   "highlights": [
-    "Hide nav + promo ticker + sticky cart dock until age-gate Enter (html:not(.tc-ok))",
-    "Early head style + biolabs_style.css Indian v2.00 rules prevent chrome flash",
-    "Enter button and cookie short-circuit add documentElement class tc-ok",
-    "tc-overlay z-index 11000 above cookie banner; Cache-bust biolabs_style.css?v=375"
+    "Softened absolute COA/purity claims on /guide-reading-coa + related blog posts",
+    "Purity table: no invented grade bans \u2014 depends on analytical application and lab specification",
+    "Removed 'single most important' / 'not research grade' / 'should not be sold' language"
   ]
 }

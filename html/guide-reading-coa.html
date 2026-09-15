@@ -143,7 +143,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
   .nav-links{gap:16px}
 }
 </style>
-<meta name="app-version" content="1.99">
+<meta name="app-version" content="2.01"">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -178,7 +178,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
   <div class="article-eyebrow">Science Notes</div>
   <h1>How to read a peptide COA.</h1>
   <div class="article-meta">BioLabs Research Team - August 2026 - 6 min read</div>
-  <p class="lead">A certificate of analysis is the single most important document that accompanies a research peptide. It tells you what is in the vial, how pure it is, and whether the identity matches what was ordered. Here is what to look for.</p>
+  <p class="lead">A certificate of analysis (COA) is a primary lot document for research reagents. It records identity, reported purity, and related analytical results for a specific batch. What follows is how to read common fields — not a universal grade rule.</p>
 </div>
 
 <div class="article-body">
@@ -202,8 +202,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
 
 <div class="stat-row">
   <div class="stat">
-    <div class="num">98%+</div>
-    <div class="label">Research-grade purity</div>
+    <div class="num">HPLC</div>
+    <div class="label">Area % on the COA</div>
   </div>
   <div class="stat">
     <div class="num">1</div>
@@ -218,10 +218,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
 <p>Here is what to look for in the HPLC section of a COA:</p>
 
 <h3>The main peak</h3>
-<p>The chromatogram should show a single dominant peak at a specific retention time. This peak represents the target peptide. The <strong>area under the peak</strong> (expressed as a percentage) is the purity value. For research-grade peptides, this should be <strong>98% or higher</strong>.</p>
+<p>The chromatogram typically shows a dominant peak at a specific retention time for the target peptide. The <strong>area under the peak</strong> (as a percentage) is the reported HPLC purity. Target thresholds depend on the intended analytical application and the laboratory’s own specification — there is no single site-invented cutoff.</p>
 
 <h3>Impurity peaks</h3>
-<p>Smaller peaks at different retention times indicate impurities - typically truncated sequences, deletion sequences, or residual protecting groups from synthesis. These are normal in small amounts but should not exceed 2% combined for a research-grade lot.</p>
+<p>Smaller peaks at different retention times indicate impurities - typically truncated sequences, deletion sequences, or residual protecting groups from synthesis. These can appear in small amounts; acceptable impurity profiles depend on method and lab specification.</p>
 
 <h3>Retention time</h3>
 <p>The retention time should match the reference standard for the specific peptide. A shift in retention time can indicate a wrong sequence or a modified product.</p>
@@ -249,23 +249,23 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
   <tbody>
     <tr>
       <td>99%+</td>
-      <td>Premium research</td>
-      <td>Cell culture, in-vitro studies, sensitive assays</td>
+      <td>Often specified for sensitive work</td>
+      <td>Cell culture, in-vitro studies, sensitive assays — when the lab’s method calls for it</td>
     </tr>
     <tr>
-      <td>98-99%</td>
-      <td>Research grade</td>
-      <td>Standard lab use, analytical work</td>
+      <td>98–99%</td>
+      <td>Common catalog target</td>
+      <td>Many analytical and standard lab protocols</td>
     </tr>
     <tr>
-      <td>95-98%</td>
-      <td>Crude/technical</td>
-      <td>Screening, non-critical applications</td>
+      <td>95–98%</td>
+      <td>May fit screening use</td>
+      <td>Acceptable only if the laboratory specification allows it</td>
     </tr>
     <tr>
       <td>Below 95%</td>
-      <td>Not research grade</td>
-      <td>Should not be sold for research use</td>
+      <td>Check the lab spec</td>
+      <td>Purity requirements depend on the intended analytical application and laboratory specification</td>
     </tr>
   </tbody>
 </table>
@@ -282,9 +282,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-h
 <h2>What to watch out for</h2>
 <ul>
   <li><strong>Missing MS data</strong> - purity without identity is incomplete</li>
-  <li><strong>Self-tested lots</strong> - manufacturer testing without third-party verification is a red flag</li>
+  <li><strong>Self-tested lots</strong> — ask how identity/purity were measured and whether an independent lab was used</li>
   <li><strong>No lot number</strong> - without traceability, the COA is meaningless</li>
-  <li><strong>Purity below 98%</strong> - not research grade</li>
+  <li><strong>Purity vs. the lab’s written spec</strong> — a number alone is not a grade label; match HPLC % to the intended method</li>
   <li><strong>Outdated COAs</strong> - the COA should match the current lot in the vial</li>
 </ul>
 
