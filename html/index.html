@@ -69,7 +69,7 @@
 <link rel="preload" as="font" type="font/woff2" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="/media/video/hero-cinematic.jpg?v=2" fetchpriority="high">
-<link rel="stylesheet" href="/biolabs_style.css?v=299">
+<link rel="stylesheet" href="/biolabs_style.css?v=300">
 <link rel="stylesheet" href="/auth.css?v=1">
 <script>/* cart qty/remove by index */
 (function(){
@@ -89,7 +89,7 @@
 
 <script src="/cart-vial.js?v=299" defer></script>
 <script src="/search-overlay.js?v=28" defer></script>
-<meta name="app-version" content="2.23">
+<meta name="app-version" content="2.25">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -514,7 +514,7 @@ with lot documentation.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.23" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.23</p>
+<p class="site-version" data-site-version="2.25" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.25</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->
@@ -528,7 +528,7 @@ with lot documentation.</h1>
       <label class="tc-check-label"><input type="checkbox" id="tcCheck2"><span class="tc-check-text">I agree to the <a href="https://biolabsresearch.co/terms-and-conditions" target="_blank">Terms</a>.</span></label>
       <label class="tc-check-label"><input type="checkbox" id="tcCheck3"><span class="tc-check-text">I confirm this is <strong>RUO</strong>, not for human consumption.</span></label>
     </div>
-    <button class="tc-enter-btn" id="tcEnterBtn" disabled>Enter BioLabs Research</button>
+    <button type="button" class="tc-enter-btn" id="tcEnterBtn" disabled aria-disabled="true">Enter BioLabs Research</button>
     <p class="tc-enter-hint">Tick the three boxes to enter.</p>
   </div>
 </div>
@@ -536,22 +536,41 @@ with lot documentation.</h1>
 (function(){
   var overlay = document.getElementById("tcOverlay");
   if (!overlay) return;
-  if (localStorage.getItem('biolabs_tc_accepted')||localStorage.getItem('biofirst_tc_accepted')||(document.cookie||'').indexOf('biolabs_tc=1')!==-1) { document.documentElement.classList.add('tc-ok'); overlay.style.display = "none"; return; }
+  var accepted = !!(localStorage.getItem("biolabs_tc_accepted") || localStorage.getItem("biofirst_tc_accepted") || ((document.cookie||"").indexOf("biolabs_tc=1") !== -1));
+  function dismiss(){
+    try { document.documentElement.classList.add("tc-ok"); document.documentElement.classList.remove("tc-need"); } catch (e) {}
+    overlay.classList.remove("active");
+    overlay.style.display = "none";
+    overlay.setAttribute("hidden", "");
+    overlay.setAttribute("aria-hidden", "true");
+    try { document.body.style.overflow = ""; } catch (e2) {}
+  }
+  if (accepted) { dismiss(); return; }
   overlay.classList.add("active");
-  document.body.style.overflow = "hidden";
+  overlay.removeAttribute("hidden");
+  overlay.setAttribute("aria-hidden", "false");
+  try { document.body.style.overflow = "hidden"; } catch (e3) {}
   var c1 = document.getElementById("tcCheck1");
   var c2 = document.getElementById("tcCheck2");
   var c3 = document.getElementById("tcCheck3");
   var btn = document.getElementById("tcEnterBtn");
-  function update(){ btn.disabled = !(c1.checked && c2.checked && c3.checked); }
-  [c1,c2,c3].forEach(function(el){ el.addEventListener("change", update); });
-  btn.addEventListener("click", function(){
+  if (!c1 || !c2 || !c3 || !btn) return;
+  function sync(){
+    var ok = !!(c1.checked && c2.checked && c3.checked);
+    btn.disabled = !ok;
+    btn.setAttribute("aria-disabled", ok ? "false" : "true");
+  }
+  ["change","input","click"].forEach(function(ev){
+    [c1,c2,c3].forEach(function(el){ el.addEventListener(ev, sync); });
+  });
+  sync();
+  btn.addEventListener("click", function(e){
+    e.preventDefault();
+    sync();
     if (btn.disabled) return;
-    localStorage.setItem('biolabs_tc_accepted','true');try{document.cookie='biolabs_tc=1;path=/;max-age=31536000;SameSite=Lax';}catch(e){}
-    document.documentElement.classList.add('tc-ok');
-    overlay.classList.remove("active");
-    overlay.style.display = "none";
-    document.body.style.overflow = "";
+    try { localStorage.setItem("biolabs_tc_accepted", "true"); } catch (e4) {}
+    try { document.cookie = "biolabs_tc=1;path=/;max-age=31536000;SameSite=Lax"; } catch (e5) {}
+    dismiss();
   });
 })();
 </script>

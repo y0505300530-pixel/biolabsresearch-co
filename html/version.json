@@ -1,9 +1,9 @@
 {
-  "version": "2.23",
+  "version": "2.25",
   "released": "2026-09-15",
-  "codename": "pdp-sizes-fix",
+  "codename": "age-gate-enter",
   "highlights": [
-    "Fix sizesFromProduct infinite recursion (Epithalon JS died \u2192 wrong $120 / no ATC)",
-    "Repair doubled spec-strip <dl> markup on PDPs"
+    "Age-gate Enter: reliable enable on checkbox tap, dismiss + tc-ok hardened",
+    "Modal scroll + 44px checkbox hits + Enter always reachable on mobile"
   ]
 }
