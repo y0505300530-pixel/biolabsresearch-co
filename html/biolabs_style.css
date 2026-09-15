@@ -11835,3 +11835,17 @@ p.footer-col-title{
   pointer-events: none !important;
 }
 /* === end v2.48 === */
+
+/* v2.48 pdp-main-only FINAL */
+.product-img-section > .pdp-thumbs,
+.pdp-thumbs,
+.pdp-thumbs .pdp-thumb {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}

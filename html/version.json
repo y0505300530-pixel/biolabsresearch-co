@@ -1,12 +1,11 @@
 {
-  "version": "2.47",
+  "version": "2.48",
   "released": "2026-09-15",
-  "codename": "home-imgs-revert-yehuda",
+  "codename": "pdp-main-only-yehuda",
   "highlights": [
-    "REVERT: homepage/catalog product-card flex-center + object-fit contain from v2.46 (Yehuda)",
-    "Prior cover behavior restored (cart-no-square / popular-search-v141)",
-    "KEEP: PDP product-img-main true 1:1 + cover; thumbs outside; mg-picker.js?v=33",
-    "KEEP: pairs rail ATC full text (v2.45)",
-    "CSS cache bust ?v=339"
+    "Hide PDP dual thumb strip sitewide — main image only (Yehuda)",
+    ".pdp-thumbs / .pdp-thumb display:none (easy restore)",
+    "mg-picker.js?v=34: strength still updates #pdpMainImg only",
+    "CSS cache bust ?v=340"
   ]
 }
