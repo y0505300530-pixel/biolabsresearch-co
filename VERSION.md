@@ -1,13 +1,12 @@
-# biolabsresearch.co — Version 2.47
+# biolabsresearch.co — Version 2.48
 
 Released 2026-09-15.
 
-Codename: home-imgs-revert-yehuda
+Codename: pdp-main-only-yehuda
 
 ## Highlights
 
-- REVERT: homepage/catalog `.product-card-media` / `.product-card-img` flex-center + `object-fit:contain` override from v2.46 (Yehuda)
-- Prior cover behavior restored (cart-no-square / popular-search-v141 rules)
-- KEEP: PDP `.product-img-main` true 1:1 + cover; thumbs outside square; mg-picker.js?v=33 main-only
-- KEEP: pairs rail ATC full text (v2.45)
-- CSS cache bust ?v=339
+- HIDE: PDP `.pdp-thumbs` / `.pdp-thumb` strip sitewide (CSS `display:none`) — main `.product-img-main` / `#pdpMainImg` only
+- mg-picker: stop thumb-click binding / no force-show of strip; strength swaps still update main img only
+- KEEP: PDP true 1:1 cover (v2.46); home catalog card cover (v2.47); pairs rail ATC (v2.45)
+- CSS cache bust ?v=340; mg-picker.js?v=34

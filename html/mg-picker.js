@@ -120,7 +120,7 @@
     }
     syncStickyPrice(selectedPrice);
     setOriginal(priceEl, slug, mg, selectedPrice);
-    /* v2.46: only swap main vial — never overwrite/hide .pdp-thumbs strip */
+    /* v2.46/v2.48: only swap main vial — thumbs hidden sitewide; never touch .pdp-thumbs */
     var mainImg = document.getElementById("pdpMainImg") || document.querySelector(".product-img-section .product-img-main img, .product-img-main > img");
     if (mainImg) mainImg.src = src;
   }
@@ -299,24 +299,11 @@
     mount();
   }
   function boot() {
+    /* v2.48: thumb strip hidden via CSS (.pdp-thumbs display:none).
+       Do not bind click handlers or force strip visible — mg swaps still hit #pdpMainImg only. */
     if (!window.__pdpThumbsBound) {
       window.__pdpThumbsBound = 1;
-      document.addEventListener("click", function (e) {
-        var t = e.target && e.target.closest && e.target.closest(".pdp-thumb");
-        if (!t) return;
-        e.preventDefault();
-        var full = t.getAttribute("data-full");
-        var main = document.getElementById("pdpMainImg") || document.querySelector(".product-img-section .product-img-main img, .product-img-main > img");
-        if (!full || !main) return;
-        main.src = full;
-        var wrap = t.closest(".pdp-thumbs") || t.parentNode;
-        if (wrap && wrap.classList && wrap.classList.contains("pdp-thumbs")) {
-          wrap.querySelectorAll(".pdp-thumb").forEach(function (x) { x.classList.toggle("on", x === t); });
-          /* ensure strip stays in DOM and visible after swap */
-          wrap.style.display = "";
-          wrap.hidden = false;
-        }
-      });
+      /* intentionally no .pdp-thumb click listener */
     }
     mount();
     patch();

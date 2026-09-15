@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KCMPHP783M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KCMPHP783M');
+</script>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico?v=74">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png?v=74">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=74">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How a lot is specified | BioLabs Research</title>
+<meta name="description" content="How a research lot is specified: HPLC, mass spectrometry, and the certificate of analysis. Public identity on the catalog; lot results on the COA. Research use only.">
+<link rel="canonical" href="https://biolabsresearch.co/science.html">
+<meta property="og:title" content="How a Serious Lot Is Read | BioLabs Research Science Notes">
+<meta property="og:description" content="Laboratory notes on HPLC traces, mass spectra, and certificates of analysis. Catalog facts for research peptides. RUO only — no lifestyle claims.">
+<meta property="og:image" content="https://biolabsresearch.co/media/label-box.png">
+<meta property="og:url" content="https://biolabsresearch.co/science.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BioLabs Research">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How a Serious Lot Is Read | BioLabs Research Science Notes">
+<meta name="twitter:description" content="Laboratory notes on HPLC traces, mass spectra, and certificates of analysis. Catalog facts for research peptides. RUO only — no lifestyle claims.">
+<meta name="twitter:image" content="https://biolabsresearch.co/media/label-box.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "How a lot is specified | BioLabs Research",
+  "url": "https://biolabsresearch.co/science.html",
+  "description": "Laboratory notes on HPLC traces, mass spectra, and certificates of analysis. Catalog facts for research peptides. RUO only — no lifestyle claims.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "url": "https://biolabsresearch.co",
+    "name": "BioLabs Research"
+  }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"},
+    {"@type": "ListItem", "position": 2, "name": "Science", "item": "https://biolabsresearch.co/science.html"}
+  ]
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/biofirst_style.css?v=141">
+<link rel="stylesheet" href="/auth.css?v=1">
+<script src="/cart-vial.js?v=92"></script>
+</head>
+<body class="sci-body">
+
+<a class="ship-bar" href="https://biolabsresearch.co/shipping.html">Free shipping</a>
+<nav class="nav">
+  <a href="https://biolabsresearch.co/index.html?from=logo" class="nav-logo">
+    
+    <span class="nav-logo-mark">B</span><span class="nav-logo-text">iolabs research</span>
+  </a>
+  <div class="nav-right">
+        <a href="https://biolabsresearch.co/science.html" class="nav-cart" style="text-decoration:none">Science</a>
+    <a href="/blog/" class="nav-cart" style="text-decoration:none">Blog</a>
+    <button class="nav-cart" onclick="toggleCart()">
+      Cart <span class="nav-cart-count" id="cartCount">0</span>
+    </button>
+    <button class="nav-hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-overlay" id="navOverlay" onclick="toggleMenu()"></div>
+<div class="nav-menu" id="navMenu">
+  <button class="nav-menu-close" onclick="toggleMenu()">✕</button>
+  <a href="https://biolabsresearch.co/science.html">Science</a>
+  <a href="https://biolabsresearch.co/index.html?from=nav#catalog">Catalog</a>
+  <a href="https://biolabsresearch.co/science.html#two-questions">Chemistry</a>
+  <a href="https://biolabsresearch.co/index.html?from=nav#methods">Methods</a>
+  <a href="https://biolabsresearch.co/science.html#five-fields">COA</a>
+  <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a>
+  <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
+  <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
+  <a href="https://biolabsresearch.co/returns.html">Returns</a>
+  <a href="mailto:info@biofirst.co">Contact</a>
+</div>
+
+<section class="sci-hero">
+  <div class="sci-hero-copy">
+    <p class="section-kicker">Methods</p>
+    <h1>How a lot is specified</h1>
+    <p class="sci-lead">CAS and sequence on the catalog page are public identity. Peak area, observed mass, and net peptide content are lot data. They sit on the COA that matches the vial.</p>
+    <ul class="sci-hero-docs">
+      <li><strong>HPLC</strong> Area percent at a stated wavelength</li>
+      <li><strong>Mass spec</strong> Observed mass versus theoretical mass</li>
+      <li><strong>COA</strong> Lot, laboratory, method, chromatogram</li>
+    </ul>
+    <nav class="sci-toc" aria-label="On this page">
+      <a href="#takeaways">Takeaways</a>
+      <a href="#lab-calc">Lab calculator</a>
+      <a href="#trace">Read a trace</a>
+      <a href="#two-questions">HPLC vs MS</a>
+      <a href="#five-fields">Five COA fields</a>
+      <a href="#crude-net">Crude vs net</a>
+      <a href="#identity">Identity sheets</a>
+      <a href="#prices">Catalog prices</a>
+      <a href="#faq">FAQ</a>
+      <a href="#references">References</a>
+    </nav>
+  </div>
+</section>
+
+
+<section class="sci-band sci-band-cream" id="takeaways">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">Overview</p>
+      <h2>What the methods report</h2>
+    </header>
+    <ol class="take-list">
+      <li><strong>HPLC reports area percent.</strong> Main-peak area divided by total detected peak area at a stated wavelength. A chromatogram ratio, not the milligrams in the vial.</li>
+      <li><strong>Mass spectrometry confirms identity.</strong> Observed mass is checked against the theoretical mass of the named sequence. Area percent does not name the molecule.</li>
+      <li><strong>The COA is lot-specific.</strong> Lot number, date, laboratory, method, and a chromatogram or peak table travel with that vial.</li>
+      <li><strong>HPLC percent is not net peptide content.</strong> TFA, acetate, and water are often invisible at 214 nm. Net peptide is a separate assay.</li>
+      <li><strong>Research use only.</strong> In-vitro laboratory reagents. Not medicines, not supplements, not for human use.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="sci-band" id="lab-calc">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">Bench calculation</p>
+      <h2>Working concentration</h2>
+      <p>Labeled milligrams divided by milliliters of solvent. For preparing an in-vitro stock. Not a protocol and not a purity figure.</p>
+    </header>
+    <div class="calc-grid">
+      <form class="calc-form" id="labCalcForm" onsubmit="return false;" novalidate>
+        <label class="calc-field">
+          <span>Labeled amount in vial (mg)</span>
+          <input type="number" id="calcMg" name="mg" inputmode="decimal" min="0" step="any" value="10" aria-describedby="calcNote">
+        </label>
+        <label class="calc-field">
+          <span>Solvent added (mL)</span>
+          <input type="number" id="calcMl" name="ml" inputmode="decimal" min="0" step="any" value="2">
+        </label>
+        <p class="calc-formula">C (mg/mL) = labeled mg ÷ mL solvent</p>
+        <p class="calc-note" id="calcNote">In-vitro stock concentration. Research use only.</p>
+      </form>
+      <div class="calc-result" aria-live="polite">
+        <div class="calc-result-k">Working concentration</div>
+        <div class="calc-result-body">
+          <p class="calc-num" id="calcOut">5.00 <span>mg/mL</span></p>
+          <p class="calc-sub" id="calcSub">10 mg labeled ÷ 2 mL solvent</p>
+          <p class="calc-flag">In-vitro stock concentration. Research use only.</p>
+        </div>
+      </div>
+    </div>
+    <div class="calc-explain">
+      <article class="sci-card">
+        <div class="sci-card-k">Definition</div>
+        <h3>Mass over volume</h3>
+        <p>Labeled milligrams divided by milliliters of solvent. Units mg/mL. That is the concentration of the stock you just made.</p>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Limits</div>
+        <h3>Not purity, not identity</h3>
+        <p>This box does not use HPLC area percent, net peptide content, or observed mass. Those remain on the lot COA.</p>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Use</div>
+        <h3>Reproducible dilutions</h3>
+        <p>A stated mg/mL lets later dilutions be written into the notebook. Identity and purity are still the COA.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sci-band sci-band-cream" id="trace">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">01 · HPLC</p>
+      <h2>Reading a chromatogram</h2>
+    </header>
+  </div>
+  <figure class="sci-bleed">
+    <picture><source srcset="/media/explain-hplc.webp" type="image/webp"><img src="/media/explain-hplc.png" alt="Annotated HPLC chromatogram illustration showing baseline, retention time, main peak, and area percent"></picture>
+    <figcaption>Annotated HPLC chromatogram (schematic). Method illustration, not a lot certificate.</figcaption>
+  </figure>
+  <div class="sci-wrap">
+    <div class="sci-anno">
+      <article class="sci-card">
+        <div class="sci-card-k">Baseline</div>
+        <h3>Mobile-phase floor</h3>
+        <p>Detector signal with only mobile phase flowing. A stable baseline is required before a peak can be integrated. Drift and noise are method notes.</p>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Retention time</div>
+        <h3>When the species elutes</h3>
+        <p>Each UV-active species leaves the column at a characteristic time under a stated method. Retention time depends on that method. It is not identity on its own.</p>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Main peak</div>
+        <h3>The assigned UV-active species</h3>
+        <p>The dominant peak is assigned to the listed compound after identity work, not instead of it. Other peaks are other UV-active species at that wavelength.</p>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Area percent</div>
+        <h3>A ratio of peak areas</h3>
+        <p>HPLC purity is main-peak area divided by total detected peak area at a stated wavelength. An area ratio, not a weighing of the vial.</p>
+      </article>
+    </div>
+    <div class="sci-prose">
+      <p>The calculation is:</p>
+      <p class="sci-formula">HPLC purity = (main-peak area) ÷ (sum of detected peak areas) at a stated λ</p>
+      <p>Related peptides, leftover protecting groups, and process impurities appear as extra UV peaks when they elute and absorb at that wavelength. They are other species, not a second purity number.</p>
+      <p>Counter-ions and residual water are often invisible at 214 nm. A high area percent can still sit on a cake that is partly TFA and moisture. Net peptide content is a separate measurement (typically amino-acid analysis or nitrogen) and belongs on the COA when it is run.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sci-band" id="two-questions">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">02 · HPLC and MS</p>
+      <h2>Purity and identity are separate measurements</h2>
+    </header>
+    <div class="sci-split">
+      <figure class="sci-photo">
+        <picture><source srcset="/media/explain-hplc-ms.webp" type="image/webp"><img src="/media/explain-hplc-ms.png" alt="Side-by-side illustration of an HPLC trace and a mass spectrum"></picture>
+        <figcaption>HPLC chromatogram and mass spectrum (schematic).</figcaption>
+      </figure>
+      <div class="sci-prose">
+        <p>A complete lot record answers two questions.</p>
+        <p><strong>What share of the UV-active material is the main peak?</strong> Chromatography (typically reversed-phase HPLC). It does not name the molecule.</p>
+        <p><strong>Is that species the listed compound?</strong> Mass spectrometry: theoretical mass from the public formula versus observed mass. Agreement supports identity. A mismatch is not rescued by area percent.</p>
+        <p>Purity of the wrong molecule is still the wrong molecule. Theoretical and observed mass, with the ionization method, belong on the COA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sci-band sci-band-cream" id="five-fields">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">03 · Certificate of analysis</p>
+      <h2>Five fields that belong on a COA</h2>
+      <p>A certificate of analysis is a laboratory record for one lot. These five fields make it usable as a record, not a brochure.</p>
+    </header>
+    <ol class="sci-fields">
+      <li>
+        <span>01</span>
+        <h3>Lot</h3>
+        <p>The same identifier as the vial label. If the PDF and the label disagree, the record is not matched.</p>
+      </li>
+      <li>
+        <span>02</span>
+        <h3>Date</h3>
+        <p>Test date or report date. A sheet with no year is incomplete.</p>
+      </li>
+      <li>
+        <span>03</span>
+        <h3>Lab name</h3>
+        <p>The laboratory that ran the work. A table without a lab is not a certificate.</p>
+      </li>
+      <li>
+        <span>04</span>
+        <h3>Method</h3>
+        <p>HPLC column and wavelength, MS ionization mode, residual-solvent method when reported. A percentage with no method is not an HPLC result.</p>
+      </li>
+      <li>
+        <span>05</span>
+        <h3>Chromatogram or peak list</h3>
+        <p>The chromatogram, or a table of retention times and area percent. Without one of those, the integration is not visible.</p>
+      </li>
+    </ol>
+    <div class="sci-prose">
+      <p>A COA is incomplete when it is missing:</p>
+    </div>
+    <ul class="sci-weak">
+      <li>No lot on the PDF, or a lot that does not match the vial.</li>
+      <li>No laboratory name.</li>
+      <li>A percentage with no method and no wavelength.</li>
+      <li>The same generic PDF reused for every SKU.</li>
+      <li>A stale year that never updates when the catalog does.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="sci-band" id="crude-net">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">04 · Net peptide</p>
+      <h2>Area percent is not the mass that is peptide</h2>
+    </header>
+    <div class="sci-split">
+      <div class="sci-card sci-card-wide">
+        <svg class="net-svg" viewBox="0 0 640 220" role="img" aria-label="Schematic stacked bars comparing HPLC area percent with net peptide content">
+          <text x="0" y="22" fill="#9A6D2A" font-size="12" font-family="Inter,sans-serif" font-weight="700" letter-spacing="1.1">SCHEMATIC · NOT A LOT</text>
+          <text x="0" y="64" fill="#1F1F1F" font-size="14" font-family="Inter,sans-serif" font-weight="600">HPLC area (UV)</text>
+          <rect x="0" y="76" width="640" height="36" rx="8" fill="#EFE9E0"/>
+          <rect x="0" y="76" width="500" height="36" rx="8" fill="#FBCF87"/>
+          <rect x="500" y="76" width="140" height="36" fill="#C4A574"/>
+          <text x="16" y="100" fill="#3E2B20" font-size="13" font-family="Inter,sans-serif" font-weight="600">Main peak</text>
+          <text x="516" y="100" fill="#3E2B20" font-size="11" font-family="Inter,sans-serif">Other UV</text>
+          <text x="0" y="148" fill="#1F1F1F" font-size="14" font-family="Inter,sans-serif" font-weight="600">Same vial, by mass</text>
+          <rect x="0" y="160" width="640" height="36" rx="8" fill="#EFE9E0"/>
+          <rect x="0" y="160" width="360" height="36" rx="8" fill="#3E2B20"/>
+          <rect x="360" y="160" width="280" height="36" fill="#9A6D2A"/>
+          <text x="16" y="184" fill="#fff" font-size="13" font-family="Inter,sans-serif" font-weight="600">Peptide</text>
+          <text x="380" y="184" fill="#fff" font-size="12" font-family="Inter,sans-serif">Water + counter-ion</text>
+        </svg>
+        <p class="chem-note">Schematic. Bar lengths are teaching marks, not lot measurements, and not a purity claim for any SKU.</p>
+      </div>
+      <div class="sci-prose">
+        <p>Lyophilized peptide is a cake of sequence plus counter-ion plus residual water. HPLC at 214 nm usually does not see the salt or the moisture.</p>
+        <p>Two numbers can sit on one certificate: HPLC area percent for the main UV peak, and net peptide content for the fraction of weighed mass that is peptide. They answer different questions. A single homepage percentage collapses them.</p>
+        <p>See also <a href="/blog/hplc-area-percent-vs-net-peptide-content.html">HPLC area percent vs net peptide content</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sci-band sci-band-cream" id="identity">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">05 · Chemical identity</p>
+      <h2>Public identifiers for listed compounds</h2>
+      <p>CAS, sequence, and formula below are literature identity for the named listing. Lot confirmation is the observed mass on that lot’s COA.</p>
+    </header>
+    <div class="id-grid">
+      <article class="sci-card">
+        <div class="sci-card-k">Pentadecapeptide</div>
+        <h3>BPC-157</h3>
+        <dl class="id-dl">
+          <div><dt>Residues</dt><dd>15 amino acids</dd></div>
+          <div><dt>Sequence</dt><dd>GEPPPGKPADDAGLV</dd></div>
+          <div><dt>Formula</dt><dd>C<sub>62</sub>H<sub>98</sub>N<sub>16</sub>O<sub>22</sub></dd></div>
+          <div><dt>Public MW</dt><dd>~1419.5 Da</dd></div>
+          <div><dt>CAS</dt><dd>137525-51-0</dd></div>
+        </dl>
+        <p>Literature identity for the pentadecapeptide. Lot confirmation is observed mass on the COA.</p>
+        <a class="split-link" href="products/bpc-157.html">Open the SKU →</a>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Nucleotide — not a peptide</div>
+        <h3>NAD+</h3>
+        <dl class="id-dl">
+          <div><dt>Class</dt><dd>Nicotinamide adenine dinucleotide</dd></div>
+          <div><dt>Formula</dt><dd>C<sub>21</sub>H<sub>27</sub>N<sub>7</sub>O<sub>14</sub>P<sub>2</sub></dd></div>
+          <div><dt>Public MW</dt><dd>~663.4 Da</dd></div>
+          <div><dt>CAS</dt><dd>53-84-9</dd></div>
+          <div><dt>Sequence</dt><dd>None — not a peptide</dd></div>
+        </dl>
+        <p>A dinucleotide cofactor. There is no peptide sequence.</p>
+        <a class="split-link" href="products/nad-plus.html">Open the SKU →</a>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Tyr-hGH 177–191</div>
+        <h3>AOD-9604</h3>
+        <dl class="id-dl">
+          <div><dt>CAS</dt><dd>221231-10-3</dd></div>
+          <div><dt>Sequence</dt><dd>YLRIVQCRSVEGSCGF</dd></div>
+          <div><dt>Identity</dt><dd>Tyr-hGH 177–191 analogue</dd></div>
+        </dl>
+        <p>Published fragment identity. Unmodified hGH 177–191 starts with Phe, not Tyr. <a href="/blog/aod-9604-hgh-fragment-identity.html">Identity note</a>.</p>
+        <a class="split-link" href="products/aod-9604.html">Open the SKU →</a>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Fragment listing</div>
+        <h3>TB-500</h3>
+        <dl class="id-dl">
+          <div><dt>CAS (this catalog)</dt><dd>885340-09-2</dd></div>
+          <div><dt>Identity</dt><dd>Ac-LKKTETQ</dd></div>
+          <div><dt>Not</dt><dd>Full thymosin β4 (CAS 77591-33-4)</dd></div>
+        </dl>
+        <p>Heptapeptide fragment, not the 43-residue protein. <a href="/blog/tb-500-vs-thymosin-beta-4-identity.html">TB-500 vs Tβ4</a>.</p>
+        <a class="split-link" href="products/tb-500.html">Open the SKU →</a>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Two named compounds</div>
+        <h3>Tesamorelin / Ipamorelin</h3>
+        <dl class="id-dl">
+          <div><dt>Tesamorelin</dt><dd>CAS 218949-48-5</dd></div>
+          <div><dt>Ipamorelin</dt><dd>CAS 170851-70-4 · ~711.9 Da</dd></div>
+          <div><dt>Blend</dt><dd>Two masses on the lot COA</dd></div>
+        </dl>
+        <p>A blend is two molecules. The COA should show both observed masses. <a href="/blog/tesamorelin-ipamorelin-blend-identity.html">Identity note</a>.</p>
+        <a class="split-link" href="products/tesamorelin-ipamorelin.html">Open the SKU →</a>
+      </article>
+      <article class="sci-card">
+        <div class="sci-card-k">Botanical complex</div>
+        <h3>Curcumin Phytosome</h3>
+        <dl class="id-dl">
+          <div><dt>Class</dt><dd>Phytosome curcumin complex (Meriva)</dd></div>
+          <div><dt>Sequence</dt><dd>None — not a peptide</dd></div>
+        </dl>
+        <p>Curcuminoids complexed with phospholipid. Curcumin CAS 458-37-7. Not a peptide. <a href="/blog/curcumin-phytosome-identity.html">Identity note</a>.</p>
+        <a class="split-link" href="products/curcumin-phytosome.html">Open the SKU →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sci-band" id="prices">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">06 · Catalog</p>
+      <h2>Listed prices</h2>
+      <p>USD list prices for the SKUs below. The bar length is price, not purity.</p>
+    </header>
+    <div class="sci-card sci-card-wide">
+      <svg class="price-bars" viewBox="0 0 800 280" role="img" aria-label="Catalog prices as horizontal bars. Not a quality ranking.">
+  <text x="0" y="14" fill="#9A6D2A" font-size="11" font-family="Inter,sans-serif" font-weight="700" letter-spacing="1.2">CATALOG PRICE · USD</text>
+  <g font-family="Inter,sans-serif">
+    <text x="0" y="48" fill="#1F1F1F" font-size="13" font-weight="600">AOD-9604</text>
+    <rect x="210" y="34" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="34" width="257" height="18" rx="9" fill="#FBCF87"/>
+    <text x="477" y="48" fill="#1F1F1F" font-size="13" font-weight="700">$95</text>
+    <text x="0" y="86" fill="#1F1F1F" font-size="13" font-weight="600">BPC-157</text>
+    <rect x="210" y="72" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="72" width="297" height="18" rx="9" fill="#E8C27A"/>
+    <text x="517" y="86" fill="#1F1F1F" font-size="13" font-weight="700">$110</text>
+    <text x="0" y="124" fill="#1F1F1F" font-size="13" font-weight="600">NAD+</text>
+    <rect x="210" y="110" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="110" width="324" height="18" rx="9" fill="#D4A85C"/>
+    <text x="544" y="124" fill="#1F1F1F" font-size="13" font-weight="700">$120</text>
+    <text x="0" y="162" fill="#1F1F1F" font-size="13" font-weight="600">Curcumin Phytosome</text>
+    <rect x="210" y="148" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="148" width="378" height="18" rx="9" fill="#C49248"/>
+    <text x="598" y="162" fill="#1F1F1F" font-size="13" font-weight="700">$140</text>
+    <text x="0" y="200" fill="#1F1F1F" font-size="13" font-weight="600">Tesamorelin / Ipamorelin</text>
+    <rect x="210" y="186" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="186" width="419" height="18" rx="9" fill="#9A6D2A"/>
+    <text x="639" y="200" fill="#1F1F1F" font-size="13" font-weight="700">$155</text>
+    <text x="0" y="238" fill="#1F1F1F" font-size="13" font-weight="600">BPC-157 / TB-500 Blend</text>
+    <rect x="210" y="224" width="500" height="18" rx="9" fill="#EFE9E0"/><rect x="210" y="224" width="500" height="18" rx="9" fill="#3E2B20"/>
+    <text x="720" y="238" fill="#1F1F1F" font-size="13" font-weight="700">$185</text>
+  </g>
+</svg>
+    </div>
+    <p class="chem-note">AOD-9604 $95 · BPC-157 $110 · NAD+ $120 · Curcumin Phytosome $140 · Tesamorelin / Ipamorelin $155 · BPC-157 / TB-500 Blend $185. Catalog prices, not a quality ranking.</p>
+  </div>
+</section>
+
+<section class="sci-band sci-band-cream" id="faq">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">07 · FAQ</p>
+      <h2>Questions</h2>
+    </header>
+
+    <div class="faq-cluster">
+      <h3 class="faq-cluster-title">Use and limits</h3>
+      <div class="faq-list">
+        <article class="sci-card">
+          <h3>What is RUO?</h3>
+          <p>Research Use Only. These materials are sold for in-vitro and laboratory research. They are not approved medicines, not supplements, and not for human consumption, self-administration, or therapeutic use.</p>
+        </article>
+        <article class="sci-card">
+          <h3>Do you dose?</h3>
+          <p>No. No body-weight charts, injection instructions, or treatment advice. The calculator on this page is bench arithmetic (mg/mL) for in-vitro stocks.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="faq-cluster">
+      <h3 class="faq-cluster-title">Documents</h3>
+      <div class="faq-list">
+        <article class="sci-card">
+          <h3>Why two tests?</h3>
+          <p>HPLC reports how UV-active peak area splits. Mass spectrometry checks whether the species matches the expected mass. A complete lot record uses both.</p>
+        </article>
+        <article class="sci-card">
+          <h3>Why is there no purity percent on the homepage?</h3>
+          <p>A percentage without lot, method, and wavelength is not a result. Those figures are issued on the COA for that lot.</p>
+        </article>
+        <article class="sci-card">
+          <h3>What is a lot?</h3>
+          <p>A manufacturing batch. The lot on the vial should match the lot on the certificate. Different lots of the same SKU are different records.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="faq-cluster">
+      <h3 class="faq-cluster-title">Fulfilment</h3>
+      <div class="faq-list">
+        <article class="sci-card">
+          <h3>What does cold-chain mean?</h3>
+          <p>Temperature-sensitive compounds ship with cold-chain packaging rather than as ambient shelf stock. Packaging method, not a stability claim for a named lot.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sci-band" id="references">
+  <div class="sci-wrap">
+    <header class="sci-head">
+      <p class="section-kicker">References</p>
+      <h2>Sources</h2>
+      <p>Method literature and public registries. Lot HPLC, MS, and net peptide figures remain on the matching COA.</p>
+    </header>
+    <ol class="ref-list">
+      <li>
+        <span>D’Hondt M, et al. Related impurities in peptide medicines. <em>J Pharm Biomed Anal.</em> 2014;101:2–30.</span>
+        <span><a href="https://doi.org/10.1016/j.jpba.2014.06.012">https://doi.org/10.1016/j.jpba.2014.06.012</a></span>
+      </li>
+      <li>
+        <span>Verbeke F, et al. Quality evaluation of synthetic quorum sensing peptides used in R&amp;D. <em>J Pharm Anal.</em> 2015;5(3):169–181.</span>
+        <span><a href="https://doi.org/10.1016/j.jpha.2014.12.002">https://doi.org/10.1016/j.jpha.2014.12.002</a></span>
+      </li>
+      <li>
+        <span>ICH Q3C. Impurities: Guideline for Residual Solvents.</span>
+        <span><a href="https://www.ich.org/page/quality-guidelines">https://www.ich.org/page/quality-guidelines</a></span>
+      </li>
+      <li>
+        <span>IUPAC Gold Book, L03578 — high-performance liquid chromatography.</span>
+        <span><a href="https://goldbook.iupac.org/terms/view/L03578">https://goldbook.iupac.org/terms/view/L03578</a></span>
+      </li>
+      <li>
+        <span>CAS 137525-51-0, BPC-157 sequence GEPPPGKPADDAGLV (literature identity).</span>
+        <span>Lot identity remains the observed mass on the COA.</span>
+      </li>
+      <li>
+        <span>PubChem CID 71300630 / CAS 221231-10-3, AOD-9604.</span>
+        <span><a href="https://pubchem.ncbi.nlm.nih.gov/compound/71300630">https://pubchem.ncbi.nlm.nih.gov/compound/71300630</a></span>
+      </li>
+    </ol>
+  </div>
+</section>
+<section class="sci-band">
+  <div class="sci-wrap">
+    <div class="sci-prose">
+      <p><strong>Research use only.</strong> Not FDA approved. Not for human consumption, self-administration, or therapeutic use. Chromatograms and bar charts on this page are schematics. Sequences, CAS numbers, and molecular weights are public literature identity. Lot HPLC, MS, and net peptide content are issued on the matching COA.</p>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="site-footer">
+  <div class="footer-inner">
+    <div class="footer-hero">
+      <a class="footer-brand" href="https://biolabsresearch.co/">biolabs research</a>
+      <p class="footer-brand-desc">Science Now. Research Always. Research use only.</p>
+    </div>
+    <div class="footer-top">
+      <div class="footer-col">
+        <h4>Catalog</h4>
+        <a href="https://biolabsresearch.co/products/bpc-157-tb-500-blend.html">BPC-157 / TB-500 Blend</a>
+        <a href="https://biolabsresearch.co/products/nad-plus.html">NAD+</a>
+        <a href="https://biolabsresearch.co/products/aod-9604.html">AOD-9604</a>
+        <a href="https://biolabsresearch.co/products/tesamorelin-ipamorelin.html">Tesamorelin / Ipamorelin</a>
+        <a href="https://biolabsresearch.co/products/bpc-157.html">BPC-157</a>
+        <a href="https://biolabsresearch.co/products/tb-500.html">TB-500</a>
+        <a href="https://biolabsresearch.co/products/ghk-cu.html">GHK-Cu</a>
+        <a href="https://biolabsresearch.co/products/glow-70.html">GLOW 70</a>
+      </div>
+      <div class="footer-col">
+        <h4>More</h4>
+        <a href="https://biolabsresearch.co/products/epithalon.html">Epithalon</a>
+        <a href="https://biolabsresearch.co/products/mots-c.html">MOTS-c</a>
+        <a href="https://biolabsresearch.co/products/kpv.html">KPV</a>
+        <a href="https://biolabsresearch.co/products/semax.html">Semax</a>
+        <a href="https://biolabsresearch.co/products/kisspeptin-10.html">Kisspeptin-10</a>
+        <a href="https://biolabsresearch.co/products/thymosin-alpha-1.html">Thymosin Alpha-1</a>
+        <a href="https://biolabsresearch.co/products/retatrutide.html">Retatrutide</a>
+        <a href="https://biolabsresearch.co/products/curcumin-phytosome.html">Curcumin Phytosome</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="https://biolabsresearch.co/science.html">Science</a>
+        <a href="https://biolabsresearch.co/blog/">Blog</a>
+        <a href="https://biolabsresearch.co/shipping.html">Shipping</a>
+        <a href="https://biolabsresearch.co/returns.html">Returns</a>
+        <a href="https://biolabsresearch.co/terms-and-conditions.html">Terms</a>
+        <a href="https://biolabsresearch.co/privacy-policy.html">Privacy</a>
+      </div>
+      <div class="footer-col footer-col-contact">
+        <h4>Contact</h4>
+        <a class="footer-chip" href="mailto:info@biofirst.co">info@biofirst.co</a>
+        <a class="footer-chip" href="https://wa.me/48732759035">WhatsApp</a>
+        <p class="footer-address">LEEDS MARKETING GROUP LTD<br>71-75 Shelton Street, Covent Garden<br>London, WC2H 9JQ, UK<br>Companies House #16057409</p>
+      </div>
+    </div>
+    <div class="footer-wordmark" aria-hidden="true">biolabs research</div>
+    <div class="footer-bottom">
+      <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
+    </div>
+  </div>
+</footer>
+<script>
+window.COMPARE_AT = {"aod-9604":120,"AOD-9604":120,"bpc-157-tb-500-blend":220,"BPC-157 / TB-500 Blend":220,"bpc-157":135,"BPC-157":135,"curcumin-phytosome":175,"Curcumin Phytosome":175,"epithalon":150,"Epithalon":150,"ghk-cu":125,"GHK-Cu":125,"glow-70":210,"GLOW 70":210,"kisspeptin-10":155,"Kisspeptin-10":155,"kpv":115,"KPV":115,"mots-c":165,"MOTS-c":165,"MOTS-C":165,"nad-plus":150,"NAD+":150,"retatrutide":230,"Retatrutide":230,"semax":130,"Semax":130,"tb-500":145,"TB-500":145,"tesamorelin-ipamorelin":190,"Tesamorelin / Ipamorelin":190,"thymosin-alpha-1":175,"Thymosin Alpha-1":175};
+window.compareAtPrice = function(item){
+  var p = parseFloat(item.price) || 0;
+  var w = parseFloat(item.original_price || item.compare || 0) || 0;
+  if (w > p) return w;
+  var keys = [item.slug, item.name];
+  for (var i = 0; i < keys.length; i++) {
+    if (keys[i] && window.COMPARE_AT[keys[i]]) return window.COMPARE_AT[keys[i]];
+  }
+  return 0;
+};
+</script>
+
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">Your order <span id="cartOrderCount" class="cart-count-label"></span></div>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg>
+      <p>Your cart is empty.</p>
+    </div>
+  </div>
+  <div id="cartAddMore" class="cart-addmore-slot"></div>
+  <div class="cart-footer">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <strong id="cartTotal">$0</strong>
+    </div>
+    <button class="btn-checkout" onclick="checkout()">Proceed to checkout →</button>
+    <div class="cart-note">Secure inquiry — we'll confirm availability</div>
+    <button type="button" class="btn-continue" onclick="toggleCart()">Continue shopping <span aria-hidden="true">→</span></button>
+  </div>
+</div>
+<script>
+let cart = JSON.parse(localStorage.getItem('biofirst_cart') || '[]');
+function toggleCart() {
+  document.getElementById('cartDrawer').classList.toggle('open');
+  document.getElementById('cartOverlay').classList.toggle('open');
+  renderCart();
+}
+function toggleMenu() {
+  document.getElementById('navMenu').classList.toggle('open');
+  document.getElementById('navOverlay').classList.toggle('open');
+}
+function saveCart() {
+  localStorage.setItem('biofirst_cart', JSON.stringify(cart));
+  document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+}
+function renderCart() {
+  var el = document.getElementById('cartItems');
+  var total = cart.reduce(function(a,i){ return a + (parseFloat(i.price) || 0) * i.qty; }, 0);
+  document.getElementById('cartTotal').textContent = '$' + total.toFixed(2);
+  var nItems = cart.reduce(function(a,i){ return a + (i.qty||0); }, 0);
+  var cl = document.getElementById('cartOrderCount');
+  if (cl) cl.textContent = nItems ? ('(' + nItems + (nItems===1 ? ' item' : ' items') + ')') : '';
+
+  if (!cart.length) {
+    el.innerHTML = '<div class="cart-empty"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="22"/><path d="M16 20h16l-2 12H18L16 20z"/><path d="M21 20v-4a3 3 0 016 0v4"/></svg><p>Your cart is empty.</p></div>';
+    mountAddMore([]);
+    return;
+  }
+  el.innerHTML = cart.map(function(item) {
+    var imgHtml = '<a href="' + productUrl(item) + '"><img src="' + vialImg(item) + '" alt="' + item.name + '" width="88" height="88"></a>';
+    return '<div class="cart-item">' +
+      '<div class="ci-img" style="overflow:hidden;padding:0;">' + imgHtml + '</div>' +
+      '<div class="ci-info">' +
+        '<div class="ci-name">' + item.name + '</div>' +
+        '<div class="ci-price">$' + (parseFloat(item.price) || 0).toFixed(2) + (window.compareAtPrice && window.compareAtPrice(item) > (parseFloat(item.price)||0) ? ' <span class="was">$' + window.compareAtPrice(item).toFixed(2) + '</span>' : '') + '</div>' +
+        '<div class="ci-qty">' +
+          '<button type="button" onclick="updateQty(\'' + item.name + '\',-1)">−</button>' +
+          '<span>' + item.qty + '</span>' +
+          '<button type="button" onclick="updateQty(\'' + item.name + '\',1)">+</button>' +
+        '</div>' +
+      '</div>' +
+      '<button type="button" class="ci-remove" onclick="updateQty(\'' + item.name + '\',-99)">✕</button>' +
+    '</div>';
+  }).join('') + mountAddMore(cart);
+}
+function updateQty(name, delta) {
+  var item = cart.find(function(i){ return i.name === name; });
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) cart = cart.filter(function(i){ return i.name !== name; });
+  saveCart();
+  renderCart();
+}
+function checkout() {
+  if (!cart.length) return;
+  window.location.href = 'checkout.html';
+}
+document.getElementById('cartCount').textContent = cart.reduce(function(a,i){ return a + i.qty; }, 0);
+
+function updateLabCalc(){
+  var mgEl = document.getElementById('calcMg');
+  var mlEl = document.getElementById('calcMl');
+  var out = document.getElementById('calcOut');
+  var sub = document.getElementById('calcSub');
+  if (!mgEl || !mlEl || !out) return;
+  var mg = parseFloat(mgEl.value);
+  var ml = parseFloat(mlEl.value);
+  if (!isFinite(mg) || !isFinite(ml) || mg < 0 || ml <= 0){
+    out.innerHTML = '— <span>mg/mL</span>';
+    if (sub) sub.textContent = 'Enter labeled mg and a solvent volume greater than 0.';
+    return;
+  }
+  var c = mg / ml;
+  var shown = (Math.abs(c) >= 100) ? c.toFixed(1) : c.toFixed(2);
+  out.innerHTML = shown + ' <span>mg/mL</span>';
+  if (sub) sub.textContent = mg + ' mg labeled ÷ ' + ml + ' mL solvent';
+}
+document.addEventListener('DOMContentLoaded', function(){
+  var mgEl = document.getElementById('calcMg');
+  var mlEl = document.getElementById('calcMl');
+  if (mgEl) mgEl.addEventListener('input', updateLabCalc);
+  if (mlEl) mlEl.addEventListener('input', updateLabCalc);
+  updateLabCalc();
+});
+</script>
+<script src="/auth.js?v=2"></script>
+
+<script src="/email-capture.js"></script>
+</body>
+</html>

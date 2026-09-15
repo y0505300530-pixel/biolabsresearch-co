@@ -1,0 +1,47 @@
+/* Pairs well at the bench — infinite product rail for PDP (RUO-safe) */
+(function () {
+  var EXCLUDE_ALWAYS = { "research-solvent": 1 };
+
+  function esc(s) {
+    return String(s == null ? "" : s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function currentSlug() {
+    var rail = document.getElementById("productRail");
+    if (rail && rail.getAttribute("data-exclude-slug")) {
+      return String(rail.getAttribute("data-exclude-slug") || "");
+    }
+    var m = location.pathname.match(/\/products\/([^\/\.]+)/);
+    return m ? decodeURIComponent(m[1]) : "";
+  }
+
+  function strengthLine(p) {
+    var s = p.strengths;
+    if (Array.isArray(s) && s.length) return String(s[0]);
+    if (typeof s === "string" && s) return s;
+    return "";
+  }
+
+  function categoryLabel(p) {
+    var c = String(p.category || "").trim();
+    return c ? c.toUpperCase() : "RESEARCH COMPOUND";
+  }
+
+  function isInStock(p) {
+    var stock = String(p.stock_status || "").trim();
+    if (!stock) return null;
+    if (/out\s*of\s*stock|sold\s*out|unavailable/i.test(stock)) return false;
+    if (/in\s*stock|available/i.test(stock)) return true;
+    return null;
+  }
+
+  function vialImg(p) {
+    var slug = (p && p.slug) || '';
+    var mg = ((p && p.mg) || '').toString().toLowerCase().replace(/\s+/g,'');
+    if (slug && mg) return '/media/vial-' + slug + '-' + mg + '.webp?v=130';
+    if (slug) return '/media/vial-' + slug + '.webp?v=130';
+    return (p && p.image_url) || '/media/vial-bpc-157.webp?v=130';
+  }

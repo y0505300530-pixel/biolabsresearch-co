@@ -11815,3 +11815,23 @@ p.footer-col-title{
    Prior cover rules (cart-no-square / popular-search-v141) apply again. */
 /* === end v2.47 === */
 
+/* === v2.48 pdp-main-only-yehuda === */
+/* Yehuda: hide PDP thumb strip sitewide — main #pdpMainImg / .product-img-main only.
+   CSS-only so easy to restore; does not remove HTML or break mg-picker main swaps. */
+.product-img-section > .pdp-thumbs,
+.pdp-thumbs {
+  display: none !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  max-height: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+  gap: 0 !important;
+}
+.pdp-thumbs .pdp-thumb {
+  display: none !important;
+  pointer-events: none !important;
+}
+/* === end v2.48 === */
