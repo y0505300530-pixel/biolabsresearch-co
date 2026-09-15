@@ -1,10 +1,9 @@
 {
-  "version": "2.24",
+  "version": "2.23",
   "released": "2026-09-15",
-  "codename": "term-glossary-compounds",
+  "codename": "pdp-sizes-fix",
   "highlights": [
-    "Locked Marketing glossary: primary term research compounds sitewide in chrome",
-    "Banned: research materials / catalog compounds / catalog reagents in nav-hero-meta-footer",
-    "research peptides kept for peptide SKU taglines, blog URLs, and peptide-specific FAQ"
+    "Fix sizesFromProduct infinite recursion (Epithalon JS died \u2192 wrong $120 / no ATC)",
+    "Repair doubled spec-strip <dl> markup on PDPs"
   ]
 }
