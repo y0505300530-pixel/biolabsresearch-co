@@ -3,8 +3,8 @@
   "released": "2026-09-15",
   "codename": "rsay-manual-scroll",
   "highlights": [
-    "rsay manual scroll: delete infinite loop/wrap + any auto; native overflow-x + scroll-snap",
-    "Keep v2.57 content: 4.8 header, olive stars, anon avatar, Example lab note, Marketing quotes",
-    "Age-gate untouched; CSS ?v=350; cart untouched"
+    "rsay manual scroll: no loop/auto; native overflow-x + scroll-snap",
+    "Restore names + green initial avatars + SKU \u00b7 Verified order; keep Marketing 5 RUO quotes + olive stars + 4.8 header",
+    "Age-gate untouched; CSS ?v=351; cart untouched"
   ]
 }
