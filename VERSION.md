@@ -1,12 +1,12 @@
-# biolabsresearch.co — Version 2.57
+# biolabsresearch.co — Version 2.58
 
 Released 2026-09-15.
 
-Codename: rsay-elite-anon
+Codename: rsay-manual-scroll
 
 ## Highlights
 
-- ELITE lock on **Researchers say...**: keep header **4.8 / 1,200+ lab notes** + aggregate green stars, per-card **olive stars**, Marketing’s exact 5 RUO quotes, infinite loop
-- **Removed** invented researcher names and **Verified order** / SKU·Verified lines
-- Anonymous neutral avatar + footer label restored to **Example lab note**
-- CSS `biolabs_style.css?v=349`; age-gate + cart untouched
+- **Researchers say...** manual scroll fix: remove infinite clone/wrap that stole scroll; no autoplay/setInterval
+- Native `overflow-x` + `scroll-snap` (proximity); mouse drag optional; touch uses native pan
+- Keep v2.57 content: 4.8 / 1,200+ lab notes, olive stars, anon avatar, Example lab note, Marketing 5 RUO quotes
+- CSS `biolabs_style.css?v=350`; age-gate + cart untouched
