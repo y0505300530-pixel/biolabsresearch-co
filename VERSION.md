@@ -1,9 +1,8 @@
-# biolabsresearch.co — Version 2.06
+# biolabsresearch.co — Version 2.07
 
 Released 2026-09-15.
 
 ## What this version improves
 
-- INSIDER25 marquee: wider gaps between repeats (56px), less packing
-- Slower scroll (140s), left padding so text isn’t clipped mid-word
-- Dedupe jammed SSR segments inside each promo-group
+- INSIDER25 ticker: tighter gaps (28px) + denser fill — less dead space
+- Catalog SKU SoT locked to 20 (active excl. BAC) — Science stat + copy were 15/16

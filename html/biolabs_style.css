@@ -11115,17 +11115,24 @@ html body.nav-open .nav{
   z-index: 1000 !important;
 }
 
+
 /* v2.06 promo marquee breathing room */
+/* v2.07 tighten dead gaps — continuous ticker */
 html body .promo-bar,
 html body .promo-stack .promo-bar {
   overflow: hidden !important;
 }
 html body .promo-track {
   gap: 0 !important;
-  padding-left: 16px !important;
+  padding-left: 0 !important;
+}
+html body .promo-half {
+  margin: 0 !important;
+  padding: 0 !important;
+  gap: 0 !important;
 }
 html body .promo-group {
-  margin-right: 56px !important;
+  margin-right: 28px !important;
   gap: 0 !important;
 }
 html body .promo-seg {

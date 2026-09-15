@@ -3,7 +3,7 @@
 (function(){
   var CODE = "INSIDER25";
   var WINDOW_MS = 12 * 60 * 60 * 1000;
-  var LOOP_SEC = 140;
+  var LOOP_SEC = 110;
   var _raf = 0;
   var _x = 0;
   var _halfW = 0;
@@ -138,7 +138,7 @@
       codeBtns[ci].setAttribute("data-code", CODE);
       codeBtns[ci].textContent = CODE;
     }
-    template.style.marginRight = "56px";
+    template.style.marginRight = "28px";
     var minW = Math.max(bar.clientWidth || 0, window.innerWidth || 0, 1200);
     track.innerHTML = "";
     track.style.animation = "none";
@@ -147,7 +147,7 @@
     track.style.flexWrap = "nowrap";
     track.style.width = "max-content";
     track.style.transform = "translate3d(0,0,0)";
-    track.style.paddingLeft = "24px";
+    track.style.paddingLeft = "0";
     var halfA = document.createElement("div");
     halfA.className = "promo-half";
     halfA.style.display = "flex";
@@ -156,15 +156,17 @@
     halfA.style.flexShrink = "0";
     var guard = 0;
     /* Aim for ~1.2× viewport — not packed edge-to-edge */
-    while (halfA.scrollWidth < minW * 1.15 && guard < 24) {
+    while (halfA.scrollWidth < minW * 1.6 && guard < 32) {
       var node = template.cloneNode(true);
-      node.style.marginRight = "56px";
+      node.style.marginRight = "28px";
       halfA.appendChild(node);
       guard++;
       if (!halfA.scrollWidth) break;
     }
     if (!halfA.children.length) halfA.appendChild(template.cloneNode(true));
     var halfB = halfA.cloneNode(true);
+    halfA.style.margin = "0";
+    halfB.style.margin = "0";
     track.appendChild(halfA);
     track.appendChild(halfB);
     _track = track;

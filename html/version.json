@@ -1,10 +1,9 @@
 {
-  "version": "2.06",
+  "version": "2.07",
   "released": "2026-09-15",
-  "codename": "promo-marquee-spacing",
+  "codename": "promo-gap-sku-count",
   "highlights": [
-    "INSIDER25 marquee: wider gaps between repeats (56px), less packing",
-    "Slower scroll (140s), left padding so text isn\u2019t clipped mid-word",
-    "Dedupe jammed SSR segments inside each promo-group"
+    "INSIDER25 ticker: tighter gaps (28px) + denser fill \u2014 less dead space",
+    "Catalog SKU SoT locked to 20 (active excl. BAC) \u2014 Science stat + copy were 15/16"
   ]
 }
