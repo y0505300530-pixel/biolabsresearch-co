@@ -51,9 +51,9 @@
 })();
 </script>
 
-<script src="/cart-vial.js?v=312" defer></script>
+<script src="/cart-vial.js?v=313" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<meta name="app-version" content="2.92">
+<meta name="app-version" content="2.93">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -803,7 +803,7 @@ with lot COA on request.</h1>
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.92" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.92</p>
+<p class="site-version" data-site-version="2.93" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.93</p>
 </footer>
 
 <!-- CART OVERLAY & DRAWER -->
@@ -927,6 +927,18 @@ with lot COA on request.</h1>
 <script>
 window.COMPARE_AT = {"bpc-157-tb-500-blend":150,"BPC-157 / TB-500 Blend":150,"nad-plus":119,"NAD+":119,"aod-9604":52,"AOD-9604":52,"curcumin-phytosome":135,"Curcumin Phytosome (Meriva)":135,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"bpc-157":105,"BPC-157":105,"glow-70":169,"GLOW 70":169,"epithalon":55,"Epithalon":55,"ghk-cu":120,"GHK-Cu":120,"mots-c":115,"MOTS-c":115,"kpv":95,"KPV":95,"semax":119,"Semax":119,"kisspeptin-10":119,"Kisspeptin-10":119,"thymosin-alpha-1":129,"Thymosin Alpha-1":129,"tb-500":125,"TB-500":125,"retatrutide":105,"R3TA":105,"ipamorelin":96,"Ipamorelin":96,"tesamorelin":105,"Tesamorelin":105,"tirzepatide":110,"Tirzepatide":110,"semaglutide":75,"Semaglutide":75,"MOTS-C":115};
 window.compareAtPrice = function(item){
+  if (item && item.pack_tiers) {
+    var t = item.pack_tiers;
+    if (typeof t === 'string') { try { t = JSON.parse(t); } catch (e) { t = null; } }
+    var packWas = t ? parseFloat(t[1] != null ? t[1] : t['1']) : 0;
+    if (isFinite(packWas) && packWas > 0) return packWas;
+  }
+  var slug = String((item && item.slug) || '').toLowerCase();
+  if (slug === 'semax') {
+    var mg = String((item && (item.mg || item.pack_mg)) || '').replace(/\s+/g,'').toLowerCase();
+    if (/^10(mg)?$/.test(mg)) return 99;
+    if (/^30(mg)?$/.test(mg)) return 119;
+  }
   var p = parseFloat(item.price) || 0;
   var w = parseFloat(item.original_price || item.compare || 0) || 0;
   if (w > p) return w;

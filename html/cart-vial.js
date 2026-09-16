@@ -277,6 +277,66 @@ function _blrPackUnit(i){
   return (isFinite(n) && n > 0) ? n : null;
 }
 
+/* Pack "was" is the 1-bottle unit for that strength (pack_tiers[1]), never COMPARE_AT. */
+function _blrPackCompareAt(i){
+  if (!i || !i.pack_tiers) return 0;
+  var t = i.pack_tiers;
+  if (typeof t === 'string') {
+    try { t = JSON.parse(t); } catch (e) { return 0; }
+  }
+  if (!t || typeof t !== 'object') return 0;
+  var raw = (t[1] != null) ? t[1] : t['1'];
+  var n = parseFloat(raw);
+  return (isFinite(n) && n > 0) ? n : 0;
+}
+
+/* Plain Semax strike = catalog 1-bottle for the line's mg. Stale COMPARE_AT 109 is not a retail. */
+function _blrSemaxCompareAt(i){
+  if (!i) return 0;
+  var slug = String(i.slug || '').toLowerCase().replace(/\.html$/,'');
+  var name = String(i.name || '').toLowerCase().replace(/\s+/g,' ').trim();
+  if (slug !== 'semax' && name !== 'semax') return 0;
+  var mg = String(i.mg || i.pack_mg || '').replace(/\s+/g,'').toLowerCase();
+  if (/^10(mg)?$/.test(mg)) return 99;
+  if (/^30(mg)?$/.test(mg)) return 119;
+  return 0;
+}
+
+function _blrCompareAtPrice(item){
+  var packWas = _blrPackCompareAt(item);
+  if (packWas > 0) return packWas;
+  var semaxWas = _blrSemaxCompareAt(item);
+  if (semaxWas > 0) return semaxWas;
+  var p = parseFloat(item && item.price) || 0;
+  var w = parseFloat((item && (item.original_price || item.compare)) || 0) || 0;
+  if (w > p) return w;
+  var map = window.COMPARE_AT || {};
+  var keys = [item && item.slug, item && item.name];
+  for (var i = 0; i < keys.length; i++) {
+    var k = keys[i];
+    if (!k || map[k] == null) continue;
+    var n = parseFloat(map[k]);
+    if (!isFinite(n) || n <= 0) continue;
+    if (String(k).toLowerCase() === 'semax' && n === 109) continue;
+    return n;
+  }
+  return 0;
+}
+
+/* Pages redefine compareAtPrice after this file; keep pack_tiers / Semax mg SoT on top. */
+(function(){
+  function install(){
+    window.compareAtPrice = _blrCompareAtPrice;
+    window.compareAtPrice.__blrPack = true;
+  }
+  install();
+  var n = 0;
+  (function tick(){
+    if (!window.compareAtPrice || !window.compareAtPrice.__blrPack) install();
+    if (++n < 80) setTimeout(tick, 100);
+  })();
+})();
+
 function _blrFillMg(i){
   if (!i || i.gift || i.slug === 'research-solvent') return;
   var n = parseFloat(i.price);
@@ -1068,12 +1128,18 @@ function addSuggest(slug, name, price, mg){
     var drawer = document.getElementById('cartDrawer');
     if (!drawer) return null;
     var el = document.getElementById('cartProgress');
-    if (el) return el;
-    el = document.createElement('div');
-    el.id = 'cartProgress';
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'cartProgress';
+    }
     var header = drawer.querySelector('.cart-header');
-    if (header && header.nextSibling) drawer.insertBefore(el, header.nextSibling);
-    else drawer.insertBefore(el, drawer.firstChild);
+    if (header) {
+      if (el.parentNode !== drawer || el.previousElementSibling !== header) {
+        drawer.insertBefore(el, header.nextSibling);
+      }
+    } else if (el.parentNode !== drawer) {
+      drawer.insertBefore(el, drawer.firstChild);
+    }
     return el;
   }
 
@@ -1086,11 +1152,18 @@ function addSuggest(slug, name, price, mg){
     if (st.total <= 0){
       el.className = '';
       el.innerHTML = '';
+      el.style.display = 'none';
       lastTier = -1;
       try { localStorage.removeItem('biofirst_volume'); } catch(e){}
       return;
     }
     el.className = 'on';
+    el.style.display = 'block';
+    el.style.visibility = 'visible';
+    el.style.height = 'auto';
+    el.style.maxHeight = 'none';
+    el.style.opacity = '1';
+    el.style.overflow = 'visible';
     var ticks = TIERS.map(function(t,i){
       var left = (t.at / 500) * 100;
       return '<span class="cp-tick'+(st.total>=t.at?' on':'')+'" style="left:'+left+'%"><span class="lbl">$'+t.at+'</span></span>';
@@ -2001,7 +2074,8 @@ function addSuggest(slug, name, price, mg){
     var price = parseFloat(i && i.price) || 0;
     var w = 0;
     try {
-      if (typeof window.compareAtPrice === 'function') w = parseFloat(window.compareAtPrice(i)) || 0;
+      w = _blrPackCompareAt(i) || 0;
+      if (!(w > 0) && typeof window.compareAtPrice === 'function') w = parseFloat(window.compareAtPrice(i)) || 0;
     } catch(e){}
     if (!(w > price)) w = parseFloat((i && (i.original_price || i.compare)) || 0) || 0;
     if (!(w > price)) w = price;
@@ -2407,13 +2481,13 @@ function addSuggest(slug, name, price, mg){
 
 /* CRM v2.38 checkout cart wipe: empty in-memory cart must not overwrite LS */
 
-/* CRM v2.39 kill BAC gift + Inquiry Rewards UI */
+/* CRM v2.39 kill BAC gift only. v2.93: do NOT hide #cartProgress Inquiry rewards. */
 (function(){
   if (window.__blrKillBacGift239) return;
   window.__blrKillBacGift239 = true;
   var s = document.createElement('style');
   s.id = 'blr-kill-bac-gift-239';
-  s.textContent = '#cartProgress,.cp-kicker,.cp-msg,.cp-track,.cp-unlocked{display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important;visibility:hidden!important}';
+  s.textContent = '.cp-unlocked{display:none!important;height:0!important;margin:0!important;padding:0!important;overflow:hidden!important}';
   (document.head||document.documentElement).appendChild(s);
   function stripGift(){
     try {
@@ -2433,4 +2507,17 @@ function addSuggest(slug, name, price, mg){
   else stripGift();
   setTimeout(stripGift, 300);
   setTimeout(stripGift, 1200);
+})();
+
+/* v2.93: Inquiry rewards must paint under the cart header whenever merch > 0 */
+(function(){
+  if (document.getElementById('blr-restore-inquiry-rewards-293')) return;
+  var s = document.createElement('style');
+  s.id = 'blr-restore-inquiry-rewards-293';
+  s.textContent = [
+    'html body #cartDrawer #cartProgress.on,html body #cartProgress.on{display:block!important;visibility:visible!important;height:auto!important;max-height:none!important;min-height:0!important;opacity:1!important;overflow:visible!important;pointer-events:auto!important}',
+    'html body #cartDrawer #cartProgress.on .cp-kicker,html body #cartDrawer #cartProgress.on .cp-msg{display:block!important;visibility:visible!important;height:auto!important;opacity:1!important;overflow:visible!important}',
+    'html body #cartDrawer #cartProgress.on .cp-track{display:block!important;visibility:visible!important;height:6px!important;opacity:1!important;overflow:visible!important}'
+  ].join('');
+  (document.head||document.documentElement).appendChild(s);
 })();

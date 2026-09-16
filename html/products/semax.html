@@ -268,10 +268,10 @@ footer{background:var(--ink);padding:60px 60px 30px}
   .semax-qty-cta-btn{width:100%;justify-content:center}
 }
 </style>
-<script src="/cart-vial.js?v=312" defer></script>
+<script src="/cart-vial.js?v=313" defer></script>
 <script src="/pdp-story.js?v=46"></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<meta name="app-version" content="2.92">
+<meta name="app-version" content="2.93">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -494,7 +494,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.92" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.92</p>
+<p class="site-version" data-site-version="2.93" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.93</p>
 </footer>
 
 <script>
@@ -1009,8 +1009,20 @@ footer{background:var(--ink);padding:60px 60px 30px}
 </div>
 
 <script>
-window.COMPARE_AT = {"aod-9604":105,"AOD-9604":105,"bpc-157-tb-500-blend":155,"BPC-157 / TB-500 Blend":155,"bpc-157":109,"BPC-157":109,"curcumin-phytosome":135,"Curcumin Phytosome":135,"epithalon":99,"Epithalon":99,"ghk-cu":85,"GHK-Cu":85,"glow-70":169,"GLOW 70":169,"kisspeptin-10":119,"Kisspeptin-10":119,"kpv":95,"KPV":95,"mots-c":115,"MOTS-c":115,"MOTS-C":115,"nad-plus":119,"NAD+":119,"retatrutide":169,"R3TA":169,"semax":109,"Semax":109,"tb-500":119,"TB-500":119,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"thymosin-alpha-1":135,"Thymosin Alpha-1":135};
+window.COMPARE_AT = {"aod-9604":105,"AOD-9604":105,"bpc-157-tb-500-blend":155,"BPC-157 / TB-500 Blend":155,"bpc-157":109,"BPC-157":109,"curcumin-phytosome":135,"Curcumin Phytosome":135,"epithalon":99,"Epithalon":99,"ghk-cu":85,"GHK-Cu":85,"glow-70":169,"GLOW 70":169,"kisspeptin-10":119,"Kisspeptin-10":119,"kpv":95,"KPV":95,"mots-c":115,"MOTS-c":115,"MOTS-C":115,"nad-plus":119,"NAD+":119,"retatrutide":169,"R3TA":169,"semax":119,"Semax":119,"tb-500":119,"TB-500":119,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"thymosin-alpha-1":135,"Thymosin Alpha-1":135};
 window.compareAtPrice = function(item){
+  if (item && item.pack_tiers) {
+    var t = item.pack_tiers;
+    if (typeof t === 'string') { try { t = JSON.parse(t); } catch (e) { t = null; } }
+    var packWas = t ? parseFloat(t[1] != null ? t[1] : t['1']) : 0;
+    if (isFinite(packWas) && packWas > 0) return packWas;
+  }
+  var slug = String((item && item.slug) || '').toLowerCase();
+  if (slug === 'semax') {
+    var mg = String((item && (item.mg || item.pack_mg)) || '').replace(/\s+/g,'').toLowerCase();
+    if (/^10(mg)?$/.test(mg)) return 99;
+    if (/^30(mg)?$/.test(mg)) return 119;
+  }
   var p = parseFloat(item.price) || 0;
   var w = parseFloat(item.original_price || item.compare || 0) || 0;
   if (w > p) return w;
