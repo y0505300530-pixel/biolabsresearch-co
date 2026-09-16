@@ -248,7 +248,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/cart-vial.js?v=307"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=33"></script>
-<meta name="app-version" content="2.86b">
+<meta name="app-version" content="2.86c">
 </head>
 <body>
 <div class="promo-stack" id="promoStack" hidden style="display:none!important" aria-hidden="true">
@@ -394,7 +394,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.86b" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.86b</p>
+<p class="site-version" data-site-version="2.86c" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">2.86c</p>
 </footer>
 
 <script>
@@ -515,6 +515,15 @@ footer{background:var(--ink);padding:60px 60px 30px}
       '</div>' +
     '</div>';
   }
+
+  function doseAwareAlt(p) {
+    var dose = "";
+    if (p && p.strengths && p.strengths.length) {
+      dose = String(p.strengths[0]).replace(/\s+/g, "").replace(/mg$/i, "") + " mg";
+    }
+    return dose ? (p.name + " " + dose + " research vial") : (p.name + " research vial");
+  }
+
   function renderProduct(p) {
     applyProductSeo(p);
     document.title = p.name + ' | BioLabs Research';
@@ -540,7 +549,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero">' +
         '<div class="product-img-section">' +
-          '<div class="product-img-main"><img src="'+img+'" alt="'+p.name+'"></div>' +
+          '<div class="product-img-main"><img id="pdpMainImg" src="'+img+'" alt="'+doseAwareAlt(p)+'"></div>' +
           pdpReviewHtml(p, img) +
         '</div>' +
         '<div>' +
@@ -1324,7 +1333,7 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 <script src="/promo-bar.js?v=293"></script>
-<script src="/mg-picker.js?v=37"></script>
+<script src="/mg-picker.js?v=38"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/product-marquee.js?v=46"></script>
 </body>

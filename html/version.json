@@ -1,20 +1,21 @@
 {
-  "version": "2.86b",
+  "version": "2.86c",
   "released": "2026-09-16",
-  "codename": "match1-pdp-alt-og",
+  "codename": "match1-alt-js-keep-dose",
   "highlights": [
-    "MATCH set 1 PDP main-image alts synced to Marketing dose-aware short pattern",
-    "NAD+/BPC/Epithalon OG/twitter image → product vial (Curcumin relative /media pattern)",
-    "Curcumin PDP alt drop Meriva to match index card"
+    "MATCH1 renderProduct alt uses doseAwareAlt (Marketing {Product} {dose} research vial)",
+    "mg-picker setImgs keeps dose in #pdpMainImg alt on chip change",
+    "Curcumin PDP gets id=pdpMainImg + dose-aware alt (was name-only)"
   ],
-  "appVersion": "2.86b",
+  "appVersion": "2.86c",
   "notes": [
+    "v2.86c: fix PDP JS overwrite of Marketing dose-aware alts on MATCH1; mg-picker.js?v=38",
     "v2.86b: MATCH1 PDP alt/OG dose sync (Marketing); stamps 2.86b",
     "Curcumin PDP: add missing app-version meta + footer site-version 2.86 (Soft-QA FAIL soft)",
     "Swap vial-nad-plus / vial-bpc-157 / vial-curcumin-phytosome / vial-epithalon (+ dosevars) from text-only-20260916 drafts",
-    "index.html: static cards + renderProducts whitelist (QA5+GLOW+TesaIpa+MATCH1) → ?v=177",
-    "Shared JS vial bust 176→177 (mg-picker/cart/search/pdp-story/marquee)",
-    "MATCH1 PDPs: main/img/jsonld/productImageUrl → 177; strip dose-variant thumbs (QA-5 pattern)",
+    "index.html: static cards + renderProducts whitelist (QA5+GLOW+TesaIpa+MATCH1) \u2192 ?v=177",
+    "Shared JS vial bust 176\u2192177 (mg-picker/cart/search/pdp-story/marquee)",
+    "MATCH1 PDPs: main/img/jsonld/productImageUrl \u2192 177; strip dose-variant thumbs (QA-5 pattern)",
     "products-data.json image_url bust 177 for MATCH1 + previously-whitelisted SKUs",
     "app-version/footer stamps 2.86"
   ]

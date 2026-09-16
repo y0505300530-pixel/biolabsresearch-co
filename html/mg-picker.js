@@ -122,7 +122,13 @@
     setOriginal(priceEl, slug, mg, selectedPrice);
     /* v2.46/v2.48: only swap main vial — thumbs hidden sitewide; never touch .pdp-thumbs */
     var mainImg = document.getElementById("pdpMainImg") || document.querySelector(".product-img-section .product-img-main img, .product-img-main > img");
-    if (mainImg) mainImg.src = src;
+    if (mainImg) {
+      mainImg.src = src;
+      /* Keep Marketing dose-aware alt after render + chip change: {Product} {dose} research vial */
+      var nameEl = document.querySelector("h1.product-title");
+      var name = nameEl ? nameEl.textContent.trim() : "";
+      if (name && mg) mainImg.alt = name + " " + pretty(mg) + " research vial";
+    }
   }
   function hideNativeSize() {
     document.querySelectorAll(".size-options, .size-label").forEach(function (el) {
