@@ -213,11 +213,46 @@ footer{background:var(--ink);padding:60px 60px 30px}
     -webkit-appearance:none!important;appearance:none!important
   }
 }
+
+/* v2.91 Semax quantity-upsell — page-scoped, not sitewide */
+.product-hero.semax-qty-hero{min-width:0}
+.semax-qty-span{grid-column:1/-1;min-width:0;max-width:100%}
+.semax-mg-mount{position:relative;margin-bottom:8px}
+.semax-atc-mount{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.semax-qty-unit-row{margin-bottom:4px}
+.semax-qty-head{margin:18px 0 12px}
+.semax-qty-title{font-family:var(--font-display);font-size:22px;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin:0 0 4px}
+.semax-qty-sub{margin:0;font-size:14px;color:var(--ink-soft)}
+.semax-qty-grid{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 14px;min-width:0}
+.semax-qty-card{position:relative;display:flex;flex-direction:column;align-items:stretch;width:100%;min-width:0;min-height:44px;margin:0;padding:14px 12px 16px;border:1.5px solid var(--border);border-radius:18px;background:#fff;color:var(--ink);cursor:pointer;text-align:center;font-family:var(--font-display);-webkit-appearance:none;appearance:none;box-sizing:border-box;transition:border-color .15s,box-shadow .15s}
+.semax-qty-card:hover{border-color:#d4c4a8}
+.semax-qty-card[aria-checked="true"]{border-color:#C4A36A;box-shadow:0 0 0 1px #C4A36A;background:#fff}
+.semax-qty-badge{position:absolute;top:10px;left:10px;display:none;padding:3px 8px;border-radius:999px;background:#F2D191;color:#6B4A12;font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.semax-qty-card[aria-checked="true"] .semax-qty-badge{display:inline-flex}
+.semax-qty-radio{position:absolute;top:10px;right:10px;width:22px;height:22px;border-radius:50%;border:1.5px solid #c8c0b4;background:#fff;box-sizing:border-box}
+.semax-qty-card[aria-checked="true"] .semax-qty-radio{border-color:#C4A36A;background:#C4A36A;box-shadow:inset 0 0 0 4px #fff}
+.semax-qty-card picture,.semax-qty-card img{display:block;width:100%;max-width:100%;height:auto;margin:18px auto 8px;object-fit:contain}
+.semax-qty-name{font-size:15px;font-weight:700;margin:4px 0 2px}
+.semax-qty-total{font-size:22px;font-weight:800;letter-spacing:-.03em;line-height:1.15;margin:0}
+.semax-qty-each{font-size:12px;color:var(--ink-soft);margin:4px 0 0}
+.semax-qty-cta{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;max-width:100%;min-width:0;box-sizing:border-box;margin:0 0 14px;padding:10px 14px 10px 18px;background:#111;color:#fff;border-radius:999px}
+.semax-qty-cta-meta{font-size:14px;font-weight:600;min-width:0;flex:1 1 auto}
+.semax-qty-cta-btn{flex:0 0 auto;min-height:44px;min-width:44px;padding:0 18px;border:0;border-radius:999px;background:transparent;color:#fff;font-size:15px;font-weight:700;cursor:pointer;font-family:var(--font-display);display:inline-flex;align-items:center;gap:8px}
+.semax-qty-cta-btn:focus-visible,.semax-qty-card:focus-visible{outline:2px solid #C4A36A;outline-offset:3px}
+.semax-qty-cta-btn::after{content:'→';font-weight:500}
+@media(min-width:720px){
+  .semax-qty-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .semax-qty-title{font-size:26px}
+}
+@media(max-width:719px){
+  .semax-qty-cta{border-radius:16px;flex-wrap:wrap;padding:12px 14px}
+  .semax-qty-cta-btn{width:100%;justify-content:center}
+}
 </style>
-<script src="/cart-vial.js?v=311" defer></script>
+<script src="/cart-vial.js?v=312" defer></script>
 <script src="/pdp-story.js?v=46"></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<meta name="app-version" content="2.87">
+<meta name="app-version" content="2.91">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -277,10 +312,10 @@ footer{background:var(--ink);padding:60px 60px 30px}
 
 <!-- PRODUCT CONTENT — injected by JS -->
 <div id="product-container">
-<div class="product-hero">
+<div class="product-hero semax-qty-hero">
         <div class="product-img-section">
 <div class="product-img-main">
-            <img src="/media/vial-semax.webp?v=178" alt="Semax 10 mg research vial" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+            <img id="pdpMainImg" src="/media/vial-semax.webp?v=178" alt="Semax 10 mg research vial" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
           </div>
           </div>
         <div class="pdp-buy-col">
@@ -291,33 +326,77 @@ footer{background:var(--ink);padding:60px 60px 30px}
             <span class="ruo-badge">RUO — Research Use Only</span>
 </div>
           <p class="product-desc-text">Nootropic peptide studied for BDNF expression, memory consolidation, and neuroprotection research.</p>
-          <div class="price-section">
-            <div class="size-label">Select Size</div><div class="size-options"><button type="button" class="size-btn size-chip dose-chip active" onclick="selectSize(this,'$99')" aria-label="10 mg $99">10 mg</button><button type="button" class="size-btn size-chip dose-chip" onclick="selectSize(this,'$119')" aria-label="30 mg $119">30 mg</button></div>
-            <div class="price-row">
-              <div class="price-unit-wrap"><span class="price-unit-label">From</span><div class="price-main" id="current-price">$99</div></div>
+          <div class="price-section semax-qty-price">
+            <div id="semaxMgMount" class="semax-mg-mount">
+              <div class="size-label">Select size</div>
+              <div class="size-options"><button type="button" class="size-btn size-chip dose-chip active" onclick="selectSize(this,'$99')" aria-label="10 mg $99">10 mg</button><button type="button" class="size-btn size-chip dose-chip" onclick="selectSize(this,'$119')" aria-label="30 mg $119">30 mg</button></div>
+              <button type="button" class="btn-order semax-atc-mount" id="atc-btn" tabindex="-1" aria-hidden="true" onclick="addToCartTemplate()">ADD TO CART</button>
+            </div>
+            <div class="price-row semax-qty-unit-row">
+              <div class="price-unit-wrap"><span class="price-unit-label">Unit price</span><div class="price-main" id="current-price">$99</div></div>
             </div>
             <div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-              <div style="display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:var(--radius-pill);overflow:hidden">
-                <button type="button" onclick="changePdpQty(-1)" aria-label="Decrease quantity" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">−</button>
-                <span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>
-                <button type="button" onclick="changePdpQty(1)" aria-label="Increase quantity" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>
-              </div>
-              <button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">ADD TO CART</button>
-            </div>
-            <p class="pdp-ship-note">Processing 1–2 business days · USPS Ground free · UPS 2nd Day from $18.99</p>
-            <p class="pdp-atc-note">After you add: we review the inquiry and email next steps — no charge until confirmed.</p>
-            <button type="button" class="btn-coa-secondary" onclick="openCOARequest('Semax')">Request lot COA</button>
           </div>
-        
 <dl class="spec-strip" id="pdp-static-spec">
     <div><dt>CAS</dt><dd>80714-61-0</dd></div>
     <div><dt>Formula</dt><dd>C37H51N9O10S</dd></div>
     <div><dt>MW</dt><dd>~813.9 Da</dd></div>
     <div><dt>Identity</dt><dd>MEHFPGP</dd></div>
   </dl>
-  
 </div>
+        <div class="semax-qty-span">
+            <div class="semax-qty-head">
+              <h2 class="semax-qty-title">Choose your quantity</h2>
+              <p class="semax-qty-sub">Select 1, 2 or 3 bottles.</p>
+            </div>
+            <div class="semax-qty-grid" id="semaxQtyPacks" role="radiogroup" aria-label="Choose your quantity">
+              <button type="button" class="semax-qty-card" role="radio" aria-checked="false" data-qty="1" aria-label="1 bottle, $99 total, $99 per bottle">
+                <span class="semax-qty-badge">Selected</span>
+                <span class="semax-qty-radio" aria-hidden="true"></span>
+                <picture>
+                  <source type="image/webp" srcset="/media/semax-qty-1.webp?v=182">
+                  <img src="/media/semax-qty-1.png?v=182" alt="" width="400" height="225" decoding="async">
+                </picture>
+                <span class="semax-qty-name">1 Bottle</span>
+                <span class="semax-qty-total" data-pack-total>$99</span>
+                <span class="semax-qty-each" data-pack-each>$99 per bottle</span>
+              </button>
+              <button type="button" class="semax-qty-card" role="radio" aria-checked="true" data-qty="2" aria-label="2 bottles, $178 total, $89 per bottle">
+                <span class="semax-qty-badge">Selected</span>
+                <span class="semax-qty-radio" aria-hidden="true"></span>
+                <picture>
+                  <source type="image/webp" srcset="/media/semax-qty-2.webp?v=182">
+                  <img src="/media/semax-qty-2.png?v=182" alt="" width="400" height="225" decoding="async">
+                </picture>
+                <span class="semax-qty-name">2 Bottles</span>
+                <span class="semax-qty-total" data-pack-total>$178</span>
+                <span class="semax-qty-each" data-pack-each>$89 per bottle</span>
+              </button>
+              <button type="button" class="semax-qty-card" role="radio" aria-checked="false" data-qty="3" aria-label="3 bottles, $237 total, $79 per bottle">
+                <span class="semax-qty-badge">Selected</span>
+                <span class="semax-qty-radio" aria-hidden="true"></span>
+                <picture>
+                  <source type="image/webp" srcset="/media/semax-qty-3.webp?v=182">
+                  <img src="/media/semax-qty-3.png?v=182" alt="" width="400" height="225" decoding="async">
+                </picture>
+                <span class="semax-qty-name">3 Bottles</span>
+                <span class="semax-qty-total" data-pack-total>$237</span>
+                <span class="semax-qty-each" data-pack-each>$79 per bottle</span>
+              </button>
+            </div>
+            <span id="pdpQty" hidden>2</span>
+            <div class="semax-qty-cta">
+              <span class="semax-qty-cta-meta" id="semaxQtyCtaMeta">2 bottles · $178</span>
+              <button type="button" class="semax-qty-cta-btn" id="semaxQtyAtc" onclick="addToCartTemplate()">Add to cart</button>
+            </div>
+            <p class="pdp-ship-note">Processing 1–2 business days · USPS Ground free · UPS 2nd Day from $18.99</p>
+            <p class="pdp-atc-note">After you add: we review the inquiry and email next steps — no charge until confirmed.</p>
+            <button type="button" class="btn-coa-secondary" onclick="openCOARequest('Semax')">Request lot COA</button>
+        </div>
+        <div class="pdp-sticky-buy" id="pdpStickyBuy" aria-label="ADD TO CART">
+          <div class="pdp-sticky-price"><span class="pdp-sticky-label">Pack</span> <strong id="pdpStickyPrice">$178</strong></div>
+          <button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">ADD TO CART</button>
+        </div>
       </div></div>
 
 </div>
@@ -378,7 +457,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.87" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.87</p>
+<p class="site-version" data-site-version="2.91" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.91</p>
 </footer>
 
 <script>
@@ -486,69 +565,17 @@ footer{background:var(--ink);padding:60px 60px 30px}
   function renderProduct(p) {
     applyProductSeo(p);
     /* Stage 2: keep unique static document.title */
-    document.getElementById('breadcrumb-name').textContent = p.name;
-    var img = '/media/vial-semax.webp?v=178';
-    var sizes = parseSizeOptions(p.size_options);
-    var sizeHtml = '';
-    if (sizes.length > 1) {
-      sizeHtml = '<div class="size-label">Select Size</div><div class="size-options">' +
-        sizes.map(function(s,i){
-          return '<button type="button" class="size-btn size-chip dose-chip'+(i===0?' active':'')+'" onclick="selectSize(this,\''+s.price+'\')" aria-label="'+(s.label||'Size')+' '+(s.price||'')+'">'+s.label+'</button>';
-        }).join('')+'</div>';
+    var bc = document.getElementById('breadcrumb-name');
+    if (bc) bc.textContent = p.name;
+    /* v2.91: static Semax qty cards are the source of truth. Do not rebuild the
+       hero — a template rewrite would wipe the upsell UI on every /api/products hit. */
+    var container = document.getElementById('product-container');
+    if (container && window.pdpStoryHtml && !container.querySelector('.pdp-expect-wrap')) {
+      var hold = document.createElement('div');
+      hold.innerHTML = window.pdpStoryHtml(p);
+      while (hold.firstChild) container.appendChild(hold.firstChild);
     }
-    var ACTIVE_PROMO = false; /* launch promo ended — no strike / launch note */
-    var origHtml = '';
-    var storageHtml = p.storage
-      ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
-    var presentationHtml = p.presentation
-      ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
-    var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<a class="btn-coa-secondary" href="/coa?q='+encodeURIComponent(p.slug)+'">View lot COA</a>'
-      : '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
-    var imgAlt = 'Semax 10 mg research vial';
-    document.getElementById('product-container').innerHTML =
-      '<div class="product-hero">' +
-        '<div class="product-img-section">' +
-          '<div class="product-img-main"><img id="pdpMainImg" src="'+img+'" alt="'+imgAlt+'"></div>' +
-        '</div>' +
-        '<div class=\"pdp-buy-col\">' +
-          '<div class=\"product-category-label\">'+(p.category||'Compound')+'</div>' +
-          '<h1 class="product-title">'+p.name+'</h1>' +
-          (p.tagline?'<div class="product-subtitle">'+p.tagline+'</div>':'') +
-          '<div class="product-purity-row">' +
-            '<span class="ruo-badge">RUO — Research Use Only</span>' +
-          '</div>' +
-          '<div class="price-section">' +
-            sizeHtml +
-            '<div class="price-row"><div class="price-unit-wrap"><span class="price-unit-label">Unit price</span><div class="price-main" id="current-price">$'+p.price+'</div></div>'+origHtml+'</div>' +
-            '' +
-            '<div class="price-note">Lot COA on request. SDS on request. No purity % invented on this page.</div>' +
-            '<div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">' +
-              '<div style="display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:var(--radius-pill);overflow:hidden">' +
-                '<button type="button" onclick="changePdpQty(-1)" aria-label="Decrease quantity" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">\u2212</button>' +
-                '<span id="pdpQty" style="min-width:40px;text-align:center;font-size:16px;font-weight:600;color:var(--ink)">1</span>' +
-                '<button type="button" onclick="changePdpQty(1)" aria-label="Increase quantity" style="background:none;border:none;width:44px;height:44px;font-size:18px;cursor:pointer;color:var(--ink)">+</button>' +
-              '</div>' +
-              '<button class="btn-order" id="atc-btn" style="flex:1;margin:0" onclick="addToCartTemplate()">ADD TO CART</button>' +
-            '</div>' +
-            '<p class="pdp-ship-note">Processing 1–2 business days · USPS Ground free · UPS 2nd Day from $18.99</p>' +
-            '<p class="pdp-atc-note">After you add: we review the inquiry and email next steps — no charge until confirmed.</p>' +
-            coaBtn +
-            '<div class="trust-items">' +
-              '<div class="trust-item">COA on request for the lot</div>' +
-              '<div class="trust-item">Sterile manufacturing</div>' +
-              '<div class="trust-item">Cold-chain packaging</div>' +
-              '<div class="trust-item">US shipping; international on request</div>' +
-            '</div>' +
-          '</div>' +
-          specStripHtml(p.slug) +
-storageHtml + presentationHtml +
-        '</div></div>' +
-        (window.pdpStoryHtml ? pdpStoryHtml(p) : '') +
-        '<div class="pdp-sticky-buy" id="pdpStickyBuy" aria-label="ADD TO CART">' +
-          '<div class="pdp-sticky-price"><span class="pdp-sticky-label">Unit</span> <strong id="pdpStickyPrice">$'+p.price+'</strong></div>' +
-          '<button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">ADD TO CART</button>' +
-        '</div>';
+    if (typeof window.semaxQtyRefresh === 'function') window.semaxQtyRefresh();
   }
   function renderNotFound() {
     document.getElementById('product-container').innerHTML =
@@ -581,7 +608,11 @@ storageHtml + presentationHtml +
   window.selectSize = function(btn, price) {
     document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
-    if (price) { document.getElementById('current-price').textContent = price; var sp=document.getElementById('pdpStickyPrice'); if(sp) sp.textContent = price; }
+    if (price) {
+      var el = document.getElementById('current-price');
+      if (el) el.textContent = price;
+    }
+    if (typeof window.semaxQtyRefresh === 'function') window.semaxQtyRefresh();
   };
 })();
 </script>
@@ -594,42 +625,192 @@ storageHtml + presentationHtml +
     var total = getCart().reduce(function(s,i){return s+i.qty;},0);
     var el = document.getElementById('cartCount') || document.querySelector('.cart-count');
     if(el) el.textContent = total;
-  }
-  window.addToCartTemplate = function(){
-    var name = (document.querySelector('.product-title')||{}).textContent||'Product';
-    name = name.trim();
-    var activeSize = document.querySelector('.size-btn.active');
-    var sizeLabel = activeSize ? activeSize.textContent.split('—')[0].trim() : '';
-    var priceEl = document.getElementById('current-price')||document.querySelector('.price-main');
-    var price = parseFloat((priceEl ? priceEl.textContent : '0').replace(/[^0-9.]/g,''))||0;
-    var slug = window.location.pathname.split('/').pop().replace('.html','');
-    var cartName = sizeLabel ? name+' ('+sizeLabel+')' : name;
-    var imgEl = document.querySelector('.product-img-main img');
-    var productImageUrl = '/media/vial-' + slug + '.png?v=178';
-    var cart = getCart();
-    var ex = cart.find(function(i){return i.name===cartName;});
-    var pdpQty = parseInt(document.getElementById('pdpQty') ? document.getElementById('pdpQty').textContent : '1') || 1;
-    if(ex){ ex.qty += pdpQty; } else { cart.push({name:cartName,price:price,qty:pdpQty,slug:slug,imageUrl:productImageUrl}); }
-    saveCart(cart); updateBadge();
-    var btn = document.getElementById('atc-btn');
-    if(btn){ var o=btn.textContent; btn.textContent='✓ Added!'; btn.style.background='#2a7a4a'; setTimeout(function(){btn.textContent=o;btn.style.background='';},1800); } var _cd=document.getElementById('cartDrawer'); if(_cd && !_cd.classList.contains('open')) toggleCart();
   };
+
+  /* 10 mg pack SoT (Yehuda): $99 / $178 / $237 → $99 / $89 / $79 each.
+     30 mg mirrors the same ratios off the live unit ($119 → $107 / $95). */
+  var PACK10 = {1:99, 2:89, 3:79};
+  function normMg(mg){ return String(mg||'').replace(/\s+/g,'').toLowerCase(); }
+  function currentMg(){
+    var on = document.querySelector('#mgPicker button.on, #mgPicker button.active, .size-btn.active');
+    if (on && on.getAttribute('data-mg')) return on.getAttribute('data-mg');
+    if (window._pdpMg) return window._pdpMg;
+    var lab = on ? String(on.textContent||'') : '';
+    if (/30\s*mg/i.test(lab)) return '30mg';
+    return '10mg';
+  }
+  function catalogUnit(){
+    var p = window._currentProduct;
+    var mg = currentMg();
+    if (p && p.strength_prices) {
+      var sp = p.strength_prices;
+      var want = normMg(mg);
+      if (Array.isArray(sp)) {
+        for (var i=0;i<sp.length;i++){
+          var e = sp[i];
+          if (e && normMg(e.mg||e.strength||e.label)===want && isFinite(Number(e.price))) return Number(e.price);
+        }
+      } else {
+        var keys = Object.keys(sp);
+        for (var k=0;k<keys.length;k++){
+          if (normMg(keys[k])===want && isFinite(Number(sp[keys[k]]))) return Number(sp[keys[k]]);
+        }
+      }
+    }
+    var el = document.getElementById('current-price');
+    var n = parseFloat(el ? String(el.textContent).replace(/[^0-9.]/g,'') : '');
+    if (isFinite(n) && n>0) return n;
+    return 99;
+  }
+  function packTiers(){
+    var unit = catalogUnit();
+    if (Math.abs(unit-99)<0.005) return {1:PACK10[1], 2:PACK10[2], 3:PACK10[3]};
+    return {
+      1: Math.round(unit),
+      2: Math.round(unit * PACK10[2] / PACK10[1]),
+      3: Math.round(unit * PACK10[3] / PACK10[1])
+    };
+  }
+  function selectedQty(){
+    var on = document.querySelector('#semaxQtyPacks [aria-checked="true"]');
+    var q = parseInt(on && on.getAttribute('data-qty'), 10);
+    return (q===1||q===2||q===3) ? q : 2;
+  }
+  function paintPacks(){
+    var tiers = packTiers();
+    var qty = selectedQty();
+    var cards = document.querySelectorAll('#semaxQtyPacks .semax-qty-card');
+    for (var i=0;i<cards.length;i++){
+      var q = parseInt(cards[i].getAttribute('data-qty'), 10) || 1;
+      var unit = tiers[q] != null ? tiers[q] : tiers[1];
+      var total = unit * q;
+      var totEl = cards[i].querySelector('[data-pack-total]');
+      var eachEl = cards[i].querySelector('[data-pack-each]');
+      if (totEl) totEl.textContent = '$' + total;
+      if (eachEl) eachEl.textContent = '$' + unit + ' per bottle';
+      var on = q === qty;
+      cards[i].setAttribute('aria-checked', on ? 'true' : 'false');
+      cards[i].setAttribute('aria-label', (q===1?'1 bottle, ':'') + (q>1? q+' bottles, ' : '') + '$' + total + ' total, $' + unit + ' per bottle');
+    }
+    var pdpQty = document.getElementById('pdpQty');
+    if (pdpQty) pdpQty.textContent = String(qty);
+    var meta = document.getElementById('semaxQtyCtaMeta');
+    var packTotal = (tiers[qty] != null ? tiers[qty] : tiers[1]) * qty;
+    if (meta) meta.textContent = qty + (qty===1?' bottle':' bottles') + ' · $' + packTotal;
+    var sticky = document.getElementById('pdpStickyPrice');
+    if (sticky) sticky.textContent = '$' + packTotal;
+    var stickyLab = document.querySelector('#pdpStickyBuy .pdp-sticky-label');
+    if (stickyLab) stickyLab.textContent = 'Pack';
+    window.semaxPackTiers = packTiers;
+    window.semaxPackUnit = function(){ var t = packTiers(); var q = selectedQty(); return t[q] != null ? t[q] : t[1]; };
+  }
+  window.semaxQtyRefresh = paintPacks;
+
+  function chooseQty(q, card){
+    var grid = document.getElementById('semaxQtyPacks');
+    if (!grid) return;
+    grid.querySelectorAll('.semax-qty-card').forEach(function(b){
+      b.setAttribute('aria-checked', (b===card || parseInt(b.getAttribute('data-qty'),10)===q) ? 'true' : 'false');
+    });
+    paintPacks();
+  }
+
+  window.addToCartTemplate = function(){
+    var nameEl = document.querySelector('.product-title');
+    var name = ((nameEl && nameEl.textContent) || 'Semax').trim();
+    var mg = currentMg();
+    var qty = selectedQty();
+    var tiers = packTiers();
+    var unitPrice = tiers[qty] != null ? tiers[qty] : tiers[1];
+    var slug = 'semax';
+    var cart = getCart();
+    if (!Array.isArray(cart)) cart = [];
+    var ex = cart.find(function(i){
+      return i && !i.gift && i.slug===slug && normMg(i.mg)===normMg(mg);
+    });
+    if (ex) {
+      ex.qty = (parseInt(ex.qty,10)||0) + qty;
+      ex.pack_tiers = tiers;
+      ex.pack_mg = mg;
+      ex.mg = mg;
+      ex.name = name;
+      ex.slug = slug;
+      var nq = parseInt(ex.qty,10)||qty;
+      ex.price = nq>=3 ? tiers[3] : (nq>=2 ? tiers[2] : tiers[1]);
+      ex.imageUrl = '/media/vial-semax.png?v=181';
+    } else {
+      cart.push({
+        name: name,
+        price: unitPrice,
+        qty: qty,
+        slug: slug,
+        mg: mg,
+        pack_tiers: tiers,
+        pack_mg: mg,
+        imageUrl: '/media/vial-semax.png?v=181'
+      });
+    }
+    saveCart(cart);
+    updateBadge();
+    var btn = document.getElementById('semaxQtyAtc') || document.getElementById('atc-btn');
+    if (btn) {
+      var o = btn.textContent;
+      btn.textContent = '✓ Added!';
+      btn.style.background = '#2a7a4a';
+      setTimeout(function(){ btn.textContent = o; btn.style.background = ''; }, 1800);
+    }
+    var _cd = document.getElementById('cartDrawer');
+    if (_cd && !_cd.classList.contains('open') && typeof toggleCart === 'function') toggleCart();
+    else if (typeof renderCart === 'function') renderCart();
+  };
+  window.addToCartTemplate._mg = 1; /* stop mg-picker from wrapping and using catalog unit × qty */
+
   window.selectSize = function(btn, price){
     document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
-    if(price){
-      var el=document.getElementById('current-price');
-      if(el) el.textContent=price;
-      var sp=document.getElementById('pdpStickyPrice');
-      if(sp) sp.textContent=price;
+    if (price) {
+      var el = document.getElementById('current-price');
+      if (el) el.textContent = price;
     }
+    paintPacks();
   };
-  document.addEventListener('DOMContentLoaded',function(){
-    updateBadge();
-    renderCart();
-    // cart-btn onclick="toggleCart()" already in HTML - no redirect needed
+
+  document.addEventListener('click', function(e){
+    var card = e.target && e.target.closest && e.target.closest('#semaxQtyPacks .semax-qty-card');
+    if (card) {
+      e.preventDefault();
+      chooseQty(parseInt(card.getAttribute('data-qty'),10)||2, card);
+      return;
+    }
+    if (e.target && e.target.closest && e.target.closest('#mgPicker button, .size-btn')) {
+      setTimeout(paintPacks, 0);
+    }
   });
-  setTimeout(updateBadge,1500);
+  document.addEventListener('keydown', function(e){
+    var grid = document.getElementById('semaxQtyPacks');
+    if (!grid || !grid.contains(document.activeElement)) return;
+    if (e.key!=='ArrowRight' && e.key!=='ArrowLeft' && e.key!=='ArrowDown' && e.key!=='ArrowUp') return;
+    e.preventDefault();
+    var q = selectedQty();
+    if (e.key==='ArrowRight' || e.key==='ArrowDown') q = Math.min(3, q+1);
+    else q = Math.max(1, q-1);
+    var next = grid.querySelector('[data-qty="'+q+'"]');
+    if (next) { next.focus(); chooseQty(q, next); }
+  });
+
+  document.addEventListener('DOMContentLoaded', function(){
+    updateBadge();
+    if (typeof renderCart === 'function') renderCart();
+    paintPacks();
+  });
+  paintPacks();
+  setTimeout(paintPacks, 400);
+  setTimeout(paintPacks, 1600);
+  setTimeout(updateBadge, 1500);
+  var priceEl = document.getElementById('current-price');
+  if (priceEl && typeof MutationObserver === 'function') {
+    new MutationObserver(function(){ paintPacks(); }).observe(priceEl, {childList:true, characterData:true, subtree:true});
+  }
 })();
 </script>
 

@@ -260,10 +260,41 @@ function _blrPrettyMg(mg){
    moves every saved line would otherwise stop matching and quietly become the cheapest strength — a 10 mg
    order shipped as 5 mg for half the money, with the server's own price check agreeing. Keeping the price
    the visitor saw means the gap reaches `priceCheck`, which flags `price_mismatch` for staff to look at. */
+/* Semax qty-upsell (2026-09-16): a line may carry pack_tiers {1,2,3} unit prices so
+   2×$89 / 3×$79 survive sanitize. Without this, naming the vial (mg) reprices to catalog. */
+function _blrPackUnit(i){
+  if (!i || !i.pack_tiers) return null;
+  var t = i.pack_tiers;
+  if (typeof t === 'string') {
+    try { t = JSON.parse(t); } catch (e) { return null; }
+  }
+  if (!t || typeof t !== 'object') return null;
+  var q = parseInt(i.qty, 10) || 1;
+  var raw = (q >= 3 && t[3] != null) ? t[3]
+          : (q >= 2 && t[2] != null) ? t[2]
+          : (t[1] != null ? t[1] : t['1']);
+  var n = parseFloat(raw);
+  return (isFinite(n) && n > 0) ? n : null;
+}
+
 function _blrFillMg(i){
   if (!i || i.gift || i.slug === 'research-solvent') return;
   var n = parseFloat(i.price);
   if (isFinite(n) && i.price !== n) i.price = n;   /* '125' off a data-attribute is not a price anyone can sum */
+  var packUnit = _blrPackUnit(i);
+  if (packUnit !== null) {
+    i.price = packUnit;
+    if (i.pack_mg && !i.mg) i.mg = i.pack_mg;
+    /* still name the vial from catalog when missing, but do not take catalog unit */
+    if (!i.mg) {
+      var slugPack = productSlug(i);
+      if (slugPack && typeof window.blrStrengthNearestPrice === 'function') {
+        var near = window.blrStrengthNearestPrice(slugPack, packUnit);
+        if (near && near.mg) i.mg = near.mg;
+      }
+    }
+    return;
+  }
   var slug = productSlug(i);
   if (!slug) return;
   if (i.mg) {
