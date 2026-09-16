@@ -1,14 +1,14 @@
 {
-  "version": "2.85",
+  "version": "2.85b",
   "released": "2026-09-16",
-  "codename": "qa5-strip-thumbs",
+  "codename": "shared-js-bust-176",
   "highlights": [
-    "Strip pdp-thumbs from QA-5 PDPs; leave list-dose main webp only",
-    "Bust vial imgs ?v=175 → ?v=176 for blend, aod-9604, ghk-cu, ipamorelin, tesamorelin",
-    "GLOW 70 PDP vial busts (main + dose thumbs) → ?v=176"
+    "Bump shared JS vial busts mg-picker/pdp-story/marquee/search/cart ?v=175\u2192176",
+    "Fixes Soft-QA PDP main src still showing 175 after HTML already on 176"
   ],
-  "appVersion": "2.85",
+  "appVersion": "2.85b",
   "notes": [
+    "Shared JS vial bust 175\u2192176 (mg-picker/cart/search/pdp-story/marquee) \u2014 was stomping PDP main img after v2.85 HTML",
     "Soft-QA follow-up after v2.84c: dose-variant thumbs removed on QA-5 PDPs",
     "products-data.json image_url bust 176 for those 5 SKUs only",
     "index.html: targeted static cards + renderProducts QA5 override to 176; app-version/footer 2.85",
