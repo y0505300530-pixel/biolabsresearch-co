@@ -1,15 +1,17 @@
 {
-  "version": "2.89a",
+  "version": "2.89b",
   "released": "2026-09-16",
-  "codename": "catalog-retatrutide-alt-sync",
+  "codename": "retatrutide-pdp-alt-keep-full-name",
   "highlights": [
-    "Catalog card alt for retatrutide synced to Marketing PDP: Retatrutide 10 mg research vial",
-    "Display name stays R3TA; static SSR + renderProducts CATALOG_ALT map"
+    "Retatrutide PDP: mg-picker ALT_BASE keeps Marketing alt Retatrutide (not R3TA) after dose chip",
+    "Display title/band stay R3TA; alt only uses full INN",
+    "app-version/footer 2.89b; mg-picker bust ?v=42"
   ],
-  "appVersion": "2.89a",
+  "appVersion": "2.89b",
   "notes": [
-    "Soft-QA soft-note: home catalog alt was R3TA 10 mg research vial; PDP locked Retatrutide 10 mg research vial",
-    "index.html: static product-card img alt + renderProducts CATALOG_ALT[retatrutide]",
-    "Card title/name remain R3TA"
+    "Root cause: setImgs built #pdpMainImg.alt from h1.product-title (R3TA) + dose",
+    "Fix: ALT_BASE[retatrutide]=Retatrutide; name = ALT_BASE[slug] || title text",
+    "Parenthetical strip retained (Curcumin Meriva Soft-QA)",
+    "Static HTML + renderProduct imgAlt already correct Retatrutide"
   ]
 }

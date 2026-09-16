@@ -26,6 +26,8 @@
     var m = location.pathname.match(/\/products\/([^/.]+)/);
     return m ? m[1] : "";
   }
+  /* Marketing alt base-name (display title may differ, e.g. R3TA vs Retatrutide) */
+  var ALT_BASE = { retatrutide: "Retatrutide" };
   function listFor(slug) {
     return STRENGTHS[slug] || ["10mg"];
   }
@@ -125,9 +127,10 @@
     if (mainImg) {
       mainImg.src = src;
       /* Keep Marketing dose-aware alt after render + chip change: {Product} {dose} research vial
-         Strip parenthetical brand e.g. (Meriva) so Soft-QA matches Marketing SoT. */
+         Strip parenthetical brand e.g. (Meriva) so Soft-QA matches Marketing SoT.
+         ALT_BASE: display title may be brand short (R3TA) but Marketing alt wants full INN. */
       var nameEl = document.querySelector("h1.product-title");
-      var name = nameEl ? nameEl.textContent.trim() : "";
+      var name = ALT_BASE[slug] || (nameEl ? nameEl.textContent.trim() : "");
       name = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
       if (name && mg) mainImg.alt = name + " " + pretty(mg) + " research vial";
     }
