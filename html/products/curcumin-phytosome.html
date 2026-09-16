@@ -245,7 +245,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
   }
 }
 </style>
-<script src="/cart-vial.js?v=313"></script>
+<script src="/cart-vial.js?v=314"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=37"></script>
 <meta name="app-version" content="2.87a">
@@ -394,7 +394,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.87a" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.87a</p>
+<p class="site-version" data-site-version="2.94" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.94</p>
 </footer>
 
 <script>
@@ -603,7 +603,7 @@ storageHtml + presentationHtml +
       (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });
       localStorage.setItem('biolabs_products', JSON.stringify(products));
       var p = products.find(function(x){return x.slug===slug;});
-      if (p) { window._currentProduct = p; renderProduct(p); } else renderNotFound();
+      if (p) { window._currentProduct = p; renderProduct(p); if (window.qtyUpsellRefresh) window.qtyUpsellRefresh(); } else renderNotFound();
     })
     .catch(function(){
       try {
@@ -1336,6 +1336,7 @@ document.addEventListener('keydown', function(e) {
 </script>
 <script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=43"></script>
+<script src="/qty-upsell.js?v=1"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/product-marquee.js?v=50"></script>
 </body>

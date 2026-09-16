@@ -268,10 +268,10 @@ footer{background:var(--ink);padding:60px 60px 30px}
   .semax-qty-cta-btn{width:100%;justify-content:center}
 }
 </style>
-<script src="/cart-vial.js?v=313" defer></script>
+<script src="/cart-vial.js?v=314" defer></script>
 <script src="/pdp-story.js?v=46"></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<meta name="app-version" content="2.93">
+<meta name="app-version" content="2.94">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -494,7 +494,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.93" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.93</p>
+<p class="site-version" data-site-version="2.94" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.94</p>
 </footer>
 
 <script>
@@ -612,7 +612,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       hold.innerHTML = window.pdpStoryHtml(p);
       while (hold.firstChild) container.appendChild(hold.firstChild);
     }
-    if (typeof window.semaxQtyRefresh === 'function') window.semaxQtyRefresh();
+    if (typeof window.qtyUpsellRefresh === 'function') window.qtyUpsellRefresh(); else if (typeof window.semaxQtyRefresh === 'function') window.semaxQtyRefresh();
   }
   function renderNotFound() {
     document.getElementById('product-container').innerHTML =
@@ -629,7 +629,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });
       localStorage.setItem('biolabs_products', JSON.stringify(products));
       var p = products.find(function(x){return x.slug===slug;});
-      if (p) { window._currentProduct = p; renderProduct(p); } else renderNotFound();
+      if (p) { window._currentProduct = p; renderProduct(p); if (window.qtyUpsellRefresh) window.qtyUpsellRefresh(); } else renderNotFound();
     })
     .catch(function(){
       try {
@@ -649,7 +649,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       var el = document.getElementById('current-price');
       if (el) el.textContent = price;
     }
-    if (typeof window.semaxQtyRefresh === 'function') window.semaxQtyRefresh();
+    if (typeof window.qtyUpsellRefresh === 'function') window.qtyUpsellRefresh(); else if (typeof window.semaxQtyRefresh === 'function') window.semaxQtyRefresh();
   };
 })();
 </script>
@@ -663,295 +663,26 @@ footer{background:var(--ink);padding:60px 60px 30px}
     var el = document.getElementById('cartCount') || document.querySelector('.cart-count');
     if(el) el.textContent = total;
   };
-
-  /* 10 mg pack SoT (Yehuda): $99 / $178 / $237 → $99 / $89 / $79 each.
-     30 mg mirrors the same ratios off the live unit ($119 → $107 / $95). */
-  var PACK10 = {1:99, 2:89, 3:79};
-  function normMg(mg){ return String(mg||'').replace(/\s+/g,'').toLowerCase(); }
-  function prettyMg(mg){ return normMg(mg) === '30mg' ? '30 mg' : '10 mg'; }
-  function currentMg(){
-    var card = document.querySelector('#semaxStrength [aria-checked="true"]');
-    if (card && card.getAttribute('data-mg')) return card.getAttribute('data-mg');
-    if (window._pdpMg) return window._pdpMg;
-    var on = document.querySelector('#mgPicker button.on, #mgPicker button.active, .size-btn.active');
-    if (on && on.getAttribute('data-mg')) return on.getAttribute('data-mg');
-    var lab = on ? String(on.textContent||'') : '';
-    if (/30\s*mg/i.test(lab)) return '30mg';
-    return '10mg';
-  }
-  function catalogUnitFor(mg){
-    var want = normMg(mg);
-    var p = window._currentProduct;
-    if (p && p.strength_prices) {
-      var sp = p.strength_prices;
-      if (Array.isArray(sp)) {
-        for (var i=0;i<sp.length;i++){
-          var e = sp[i];
-          if (e && normMg(e.mg||e.strength||e.label)===want && isFinite(Number(e.price))) return Number(e.price);
-        }
-      } else {
-        var keys = Object.keys(sp);
-        for (var k=0;k<keys.length;k++){
-          if (normMg(keys[k])===want && isFinite(Number(sp[keys[k]]))) return Number(sp[keys[k]]);
-        }
-      }
-    }
-    return want === '30mg' ? 119 : 99;
-  }
-  function catalogUnit(){ return catalogUnitFor(currentMg()); }
-  function packTiersFor(mg){
-    var unit = catalogUnitFor(mg);
-    if (Math.abs(unit-99)<0.005) return {1:PACK10[1], 2:PACK10[2], 3:PACK10[3]};
-    return {
-      1: Math.round(unit),
-      2: Math.round(unit * PACK10[2] / PACK10[1]),
-      3: Math.round(unit * PACK10[3] / PACK10[1])
-    };
-  }
-  function packTiers(){ return packTiersFor(currentMg()); }
-  function selectedQty(){
-    var on = document.querySelector('#semaxQtyPacks [aria-checked="true"]');
-    var q = parseInt(on && on.getAttribute('data-qty'), 10);
-    return (q===1||q===2||q===3) ? q : 2;
-  }
-  function paintPacks(){
-    var mg = currentMg();
-    var label = prettyMg(mg);
-    var tiers = packTiersFor(mg);
-    var qty = selectedQty();
-    var cards = document.querySelectorAll('#semaxQtyPacks .semax-qty-card');
-    for (var i=0;i<cards.length;i++){
-      var q = parseInt(cards[i].getAttribute('data-qty'), 10) || 1;
-      var unit = tiers[q] != null ? tiers[q] : tiers[1];
-      var total = unit * q;
-      var nameEl = cards[i].querySelector('[data-pack-name]');
-      var totEl = cards[i].querySelector('[data-pack-total]');
-      var eachEl = cards[i].querySelector('[data-pack-each]');
-      if (nameEl) nameEl.textContent = q + ' × ' + label;
-      if (totEl) totEl.textContent = '$' + total;
-      if (eachEl) eachEl.textContent = '$' + unit + ' per bottle';
-      var on = q === qty;
-      cards[i].setAttribute('aria-checked', on ? 'true' : 'false');
-      cards[i].setAttribute('aria-label', q + ' × ' + label + ', $' + total + ' total, $' + unit + ' per bottle');
-    }
-    var sub = document.getElementById('semaxQtySub');
-    if (sub) sub.textContent = 'Each bottle is ' + label + '.';
-    var strCards = document.querySelectorAll('#semaxStrength .semax-str-card');
-    for (var s=0;s<strCards.length;s++){
-      var smg = strCards[s].getAttribute('data-mg') || '10mg';
-      var sUnit = catalogUnitFor(smg);
-      var sOn = normMg(smg) === normMg(mg);
-      var fromEl = strCards[s].querySelector('[data-str-from]');
-      if (fromEl) fromEl.textContent = 'from $' + sUnit + ' / bottle';
-      strCards[s].setAttribute('aria-checked', sOn ? 'true' : 'false');
-      strCards[s].setAttribute('aria-label', prettyMg(smg) + ', from $' + sUnit + ' per bottle');
-    }
-    var pdpQty = document.getElementById('pdpQty');
-    if (pdpQty) pdpQty.textContent = String(qty);
-    var meta = document.getElementById('semaxQtyCtaMeta');
-    var packTotal = (tiers[qty] != null ? tiers[qty] : tiers[1]) * qty;
-    if (meta) meta.textContent = qty + ' × ' + label + ' · $' + packTotal;
-    var sticky = document.getElementById('pdpStickyPrice');
-    if (sticky) sticky.textContent = '$' + packTotal;
-    var stickyLab = document.querySelector('#pdpStickyBuy .pdp-sticky-label');
-    if (stickyLab) stickyLab.textContent = label;
-    window.semaxPackTiers = packTiers;
-    window.semaxPackUnit = function(){ var t = packTiers(); var q = selectedQty(); return t[q] != null ? t[q] : t[1]; };
-  }
-  window.semaxQtyRefresh = paintPacks;
-
-  function chooseQty(q, card){
-    var grid = document.getElementById('semaxQtyPacks');
-    if (!grid) return;
-    grid.querySelectorAll('.semax-qty-card').forEach(function(b){
-      b.setAttribute('aria-checked', (b===card || parseInt(b.getAttribute('data-qty'),10)===q) ? 'true' : 'false');
-    });
-    paintPacks();
-  }
-
-  function stampSemaxPacks(c){
-    if (!Array.isArray(c)) return c;
-    var pageMg = currentMg();
-    c.forEach(function(i){
-      if (!i || i.gift || i.slug !== 'semax') return;
-      var lineMg = i.mg || i.pack_mg || pageMg;
-      if (i.mg && normMg(i.mg) !== normMg(pageMg) && i.pack_tiers) return;
-      var tiers = packTiersFor(lineMg);
-      i.pack_tiers = tiers;
-      i.pack_mg = lineMg;
-      if (!i.mg) i.mg = lineMg;
-      var q = parseInt(i.qty, 10) || 1;
-      i.price = q>=3 ? tiers[3] : (q>=2 ? tiers[2] : tiers[1]);
-    });
-    return c;
-  }
-  function hookSave(){
-    var cur = window.saveCart;
-    if (typeof cur !== 'function' || cur.__semaxPack) return;
-    window.saveCart = function(c){
-      if (typeof c === 'undefined' && typeof cart !== 'undefined') c = cart;
-      c = stampSemaxPacks(Array.isArray(c) ? c : []);
-      return cur.apply(this, arguments);
-    };
-    window.saveCart.__semaxPack = true;
-  }
-  function semaxAddToCart(){
-    var nameEl = document.querySelector('.product-title');
-    var name = ((nameEl && nameEl.textContent) || 'Semax').trim();
-    var mg = currentMg();
-    var qty = selectedQty();
-    var tiers = packTiers();
-    var unitPrice = tiers[qty] != null ? tiers[qty] : tiers[1];
-    var slug = 'semax';
-    hookSave();
+  window.addToCartTemplate = function(){
+    var name = ((document.querySelector('.product-title')||{}).textContent||'Semax').trim();
     var cart = getCart();
-    if (!Array.isArray(cart)) cart = [];
-    var ex = cart.find(function(i){
-      return i && !i.gift && i.slug===slug && normMg(i.mg)===normMg(mg);
-    });
-    if (ex) {
-      ex.qty = (parseInt(ex.qty,10)||0) + qty;
-      ex.pack_tiers = tiers;
-      ex.pack_mg = mg;
-      ex.mg = mg;
-      ex.name = name;
-      ex.slug = slug;
-      var nq = parseInt(ex.qty,10)||qty;
-      ex.price = nq>=3 ? tiers[3] : (nq>=2 ? tiers[2] : tiers[1]);
-      ex.imageUrl = '/media/vial-semax.png?v=181';
-    } else {
-      cart.push({
-        name: name,
-        price: unitPrice,
-        qty: qty,
-        slug: slug,
-        mg: mg,
-        pack_tiers: tiers,
-        pack_mg: mg,
-        imageUrl: '/media/vial-semax.png?v=181'
-      });
-    }
-    stampSemaxPacks(cart);
-    saveCart(cart);
-    updateBadge();
-    var btn = document.getElementById('semaxQtyAtc') || document.getElementById('atc-btn');
-    if (btn) {
-      var o = btn.textContent;
-      btn.textContent = '✓ Added!';
-      btn.style.background = '#2a7a4a';
-      setTimeout(function(){ btn.textContent = o; btn.style.background = ''; }, 1800);
-    }
-    var _cd = document.getElementById('cartDrawer');
-    if (_cd && !_cd.classList.contains('open') && typeof toggleCart === 'function') toggleCart();
-    else if (typeof renderCart === 'function') renderCart();
-  }
-  function installAdd(){
-    window.addToCartTemplate = semaxAddToCart;
-    window.addToCartTemplate._mg = 1; /* mg-picker must not replace this with catalog unit × qty */
-    window.addToCartTemplate.__semaxPack = 1;
-    hookSave();
-  }
-  installAdd();
-  [50, 200, 600, 1200, 2000].forEach(function(t){ setTimeout(installAdd, t); });
-  document.addEventListener('click', function(e){
-    var t = e.target && e.target.closest && e.target.closest('#semaxQtyAtc, #pdpStickyBuy .pdp-sticky-atc');
-    if (!t) return;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    semaxAddToCart();
-  }, true);
-
-  function chooseStrength(mg){
-    mg = normMg(mg) === '30mg' ? '30mg' : '10mg';
-    window._pdpMg = mg;
-    var grid = document.getElementById('semaxStrength');
-    if (grid) {
-      grid.querySelectorAll('.semax-str-card').forEach(function(b){
-        b.setAttribute('aria-checked', normMg(b.getAttribute('data-mg')) === normMg(mg) ? 'true' : 'false');
-      });
-    }
-    var unit = catalogUnitFor(mg);
-    var el = document.getElementById('current-price');
-    if (el) el.textContent = '$' + unit;
-    document.querySelectorAll('#mgPicker button[data-mg]').forEach(function(b){
-      var on = normMg(b.getAttribute('data-mg')) === normMg(mg);
-      b.classList.toggle('on', on);
-      b.classList.toggle('active', on);
-    });
-    document.querySelectorAll('.size-btn').forEach(function(b){
-      var lab = String(b.textContent||'');
-      b.classList.toggle('active', /30/.test(lab) === (mg === '30mg'));
-    });
-    paintPacks();
-  }
-  window.selectSize = function(btn, price){
-    document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
-    if (btn) btn.classList.add('active');
-    var mg = (btn && /30/.test(String(btn.textContent||''))) ? '30mg' : '10mg';
-    if (price) {
-      var el = document.getElementById('current-price');
-      if (el) el.textContent = price;
-    }
-    chooseStrength(mg);
+    var slug = 'semax';
+    var img = '/media/vial-semax.png?v=181';
+    var pdpQty = parseInt(document.getElementById('pdpQty') ? document.getElementById('pdpQty').textContent : '2') || 2;
+    var priceEl = document.getElementById('current-price')||document.querySelector('.price-main');
+    var price = parseFloat((priceEl ? priceEl.textContent : '99').replace(/[^0-9.]/g,''))||99;
+    var ex = cart.find(function(i){return i && i.slug===slug;});
+    if(ex){ ex.qty += pdpQty; } else { cart.push({name:name,price:price,qty:pdpQty,slug:slug,mg:'10mg',imageUrl:img}); }
+    saveCart(cart); updateBadge();
+    var btn = document.getElementById('atc-btn');
+    if(btn){ var o=btn.textContent; btn.textContent='✓ Added!'; btn.style.background='#2a7a4a'; setTimeout(function(){btn.textContent=o;btn.style.background='';},1800); }
+    var _cd=document.getElementById('cartDrawer'); if(_cd && !_cd.classList.contains('open') && typeof toggleCart==='function') toggleCart();
   };
-
-  document.addEventListener('click', function(e){
-    var str = e.target && e.target.closest && e.target.closest('#semaxStrength .semax-str-card');
-    if (str) {
-      e.preventDefault();
-      chooseStrength(str.getAttribute('data-mg'));
-      return;
-    }
-    var card = e.target && e.target.closest && e.target.closest('#semaxQtyPacks .semax-qty-card');
-    if (card) {
-      e.preventDefault();
-      var qn = parseInt(card.getAttribute('data-qty'),10);
-      chooseQty((qn===1||qn===2||qn===3)?qn:2, card);
-      return;
-    }
-    if (e.target && e.target.closest && e.target.closest('#mgPicker button, .size-btn')) {
-      setTimeout(function(){
-        var b = document.querySelector('#mgPicker button.on, #mgPicker button.active, .size-btn.active');
-        if (b && b.getAttribute('data-mg')) chooseStrength(b.getAttribute('data-mg'));
-        else paintPacks();
-      }, 0);
-    }
-  });
-  document.addEventListener('keydown', function(e){
-    if (e.key!=='ArrowRight' && e.key!=='ArrowLeft' && e.key!=='ArrowDown' && e.key!=='ArrowUp') return;
-    var strGrid = document.getElementById('semaxStrength');
-    if (strGrid && strGrid.contains(document.activeElement)) {
-      e.preventDefault();
-      var go30 = (e.key==='ArrowRight' || e.key==='ArrowDown');
-      var nextMg = go30 ? '30mg' : '10mg';
-      var nextS = strGrid.querySelector('[data-mg="'+nextMg+'"]');
-      if (nextS) { nextS.focus(); chooseStrength(nextMg); }
-      return;
-    }
-    var grid = document.getElementById('semaxQtyPacks');
-    if (!grid || !grid.contains(document.activeElement)) return;
-    e.preventDefault();
-    var q = selectedQty();
-    if (e.key==='ArrowRight' || e.key==='ArrowDown') q = Math.min(3, q+1);
-    else q = Math.max(1, q-1);
-    var next = grid.querySelector('[data-qty="'+q+'"]');
-    if (next) { next.focus(); chooseQty(q, next); }
-  });
-
-  document.addEventListener('DOMContentLoaded', function(){
+  document.addEventListener('DOMContentLoaded',function(){
     updateBadge();
     if (typeof renderCart === 'function') renderCart();
-    paintPacks();
   });
-  window._pdpMg = window._pdpMg || '10mg';
-  paintPacks();
-  setTimeout(paintPacks, 400);
-  setTimeout(paintPacks, 1600);
-  setTimeout(updateBadge, 1500);
-  var priceEl = document.getElementById('current-price');
-  if (priceEl && typeof MutationObserver === 'function') {
-    new MutationObserver(function(){ paintPacks(); }).observe(priceEl, {childList:true, characterData:true, subtree:true});
-  }
+  setTimeout(updateBadge,1500);
 })();
 </script>
 
@@ -1629,6 +1360,7 @@ document.addEventListener('keydown', function(e) {
 <script src="/enhance-schema.js"></script>
 <script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=43"></script>
+<script src="/qty-upsell.js?v=1"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/product-marquee.js?v=50"></script>
 <script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>

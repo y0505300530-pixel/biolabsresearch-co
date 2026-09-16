@@ -260,8 +260,8 @@ function _blrPrettyMg(mg){
    moves every saved line would otherwise stop matching and quietly become the cheapest strength — a 10 mg
    order shipped as 5 mg for half the money, with the server's own price check agreeing. Keeping the price
    the visitor saw means the gap reaches `priceCheck`, which flags `price_mismatch` for staff to look at. */
-/* Semax qty-upsell (2026-09-16): a line may carry pack_tiers {1,2,3} unit prices so
-   2×$89 / 3×$79 survive sanitize. Without this, naming the vial (mg) reprices to catalog. */
+/* Qty-upsell pack_tiers {1,2,3} (sitewide v2.94; Semax first 2026-09-16): unit prices so
+   2-pack / 3-pack survive sanitize. Without this, naming the vial (mg) reprices to catalog. */
 function _blrPackUnit(i){
   if (!i || !i.pack_tiers) return null;
   var t = i.pack_tiers;
