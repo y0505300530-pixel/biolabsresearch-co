@@ -124,9 +124,11 @@
     var mainImg = document.getElementById("pdpMainImg") || document.querySelector(".product-img-section .product-img-main img, .product-img-main > img");
     if (mainImg) {
       mainImg.src = src;
-      /* Keep Marketing dose-aware alt after render + chip change: {Product} {dose} research vial */
+      /* Keep Marketing dose-aware alt after render + chip change: {Product} {dose} research vial
+         Strip parenthetical brand e.g. (Meriva) so Soft-QA matches Marketing SoT. */
       var nameEl = document.querySelector("h1.product-title");
       var name = nameEl ? nameEl.textContent.trim() : "";
+      name = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
       if (name && mg) mainImg.alt = name + " " + pretty(mg) + " research vial";
     }
   }

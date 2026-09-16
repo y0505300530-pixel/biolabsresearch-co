@@ -248,7 +248,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/cart-vial.js?v=308"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=34"></script>
-<meta name="app-version" content="2.87">
+<meta name="app-version" content="2.87a">
 </head>
 <body>
 <div class="promo-stack" id="promoStack" hidden style="display:none!important" aria-hidden="true">
@@ -394,7 +394,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.87" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.87</p>
+<p class="site-version" data-site-version="2.87a" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.87a</p>
 </footer>
 
 <script>
@@ -521,7 +521,9 @@ footer{background:var(--ink);padding:60px 60px 30px}
     if (p && p.strengths && p.strengths.length) {
       dose = String(p.strengths[0]).replace(/\s+/g, "").replace(/mg$/i, "") + " mg";
     }
-    return dose ? (p.name + " " + dose + " research vial") : (p.name + " research vial");
+    /* Soft-QA: Marketing alt omits parenthetical brand e.g. (Meriva) */
+    var base = (p && p.name ? String(p.name) : "").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
+    return dose ? (base + " " + dose + " research vial") : (base + " research vial");
   }
 
   function renderProduct(p) {
@@ -1333,7 +1335,7 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 <script src="/promo-bar.js?v=293"></script>
-<script src="/mg-picker.js?v=38"></script>
+<script src="/mg-picker.js?v=39"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/product-marquee.js?v=47"></script>
 </body>
