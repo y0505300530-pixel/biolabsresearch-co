@@ -1,20 +1,22 @@
 {
-  "version": "2.88",
+  "version": "2.89",
   "released": "2026-09-16",
-  "codename": "match3-ta1-glow-chrome-179",
+  "codename": "match4-tb500-r3ta-glow-chrome-180",
   "highlights": [
-    "Live MATCH3 TA1 GLOW-chrome vial (Thymosin Alpha-1) from ELITE Soft-QA PASS draft",
-    "Cache bust ?v=179; shared JS vial busts 178→179; Tirz/Sema held",
-    "PDP: doseAwareAlt / imgAlt Marketing alt (no gold-crimp stomp); dose thumbs stripped"
+    "Live MATCH4 TB-500 + R3TA GLOW-chrome vials from ELITE Soft-QA PASS drafts",
+    "Cache bust ?v=180; shared JS vial busts 179→180; Tirz/Sema held",
+    "PDPs: Marketing alts TB-500 / Retatrutide (full name, not R3TA); no gold-crimp stomp; thumbs stripped"
   ],
-  "appVersion": "2.88",
+  "appVersion": "2.89",
   "notes": [
-    "Swap vial-thymosin-alpha-1 (+ -10mg/-5mg dosevars) from text-only-20260916 drafts",
-    "index.html: static cards + renderProducts whitelist (QA5+GLOW+TesaIpa+MATCH1+MATCH2+TA1) → ?v=179",
-    "Shared JS vial bust 178→179 (mg-picker/cart/search/pdp-story/marquee)",
-    "TA1 PDP: main/img/jsonld/productImageUrl → 179; strip dose-variant thumbs; doseAwareAlt+imgAlt",
-    "products-data.json image_url bust 179 for whitelist SKUs incl. thymosin-alpha-1",
-    "app-version/footer stamps 2.88; script cache tags bumped",
-    "Soft-note (later): shared LOT BL-00009/NO.009 across vials — prefer unique LOT per SKU after full 20-SKU batch"
+    "Swap vial-tb-500 + vial-retatrutide (+ -10mg/-5mg dosevars) from text-only-20260916 drafts",
+    "index.html: static cards + renderProducts whitelist (…+TA1+tb-500+retatrutide) → ?v=180",
+    "Shared JS vial bust 179→180 (mg-picker/cart/search/pdp-story/marquee)",
+    "TB-500 / R3TA PDPs: main/img/jsonld/productImageUrl → 180; strip thumbs; Marketing alts",
+    "Retatrutide PDP imgAlt hardcoded 'Retatrutide 10 mg research vial' (catalog name R3TA; band stays R3TA)",
+    "products-data.json image_url bust 180 for whitelist SKUs incl. tb-500 + retatrutide",
+    "app-version/footer stamps 2.89; script cache tags bumped",
+    "Soft-note (later): shared LOT BL-00009/NO.009 across vials — prefer unique LOT per SKU after full 20-SKU batch",
+    "Soft-note: prior MATCH PDPs may still hardcode older bust in var img= while shared JS is 180"
   ]
 }
