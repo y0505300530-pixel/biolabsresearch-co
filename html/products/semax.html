@@ -216,7 +216,13 @@ footer{background:var(--ink);padding:60px 60px 30px}
 
 /* v2.91 Semax quantity-upsell — page-scoped, not sitewide */
 .product-hero.semax-qty-hero{min-width:0}
-.semax-qty-span{grid-column:1/-1;min-width:0;max-width:100%}
+.product-hero.semax-qty-hero .product-img-section{position:static!important}
+.semax-qty-span{grid-column:1/-1;min-width:0;max-width:100%;position:relative;z-index:2}
+@media(max-width:800px){
+  .product-hero.semax-qty-hero .pdp-buy-col{order:1!important}
+  .product-hero.semax-qty-hero .product-img-section{order:2!important}
+  .product-hero.semax-qty-hero .semax-qty-span{order:3!important}
+}
 .semax-mg-mount{position:relative;margin-bottom:8px}
 .semax-atc-mount{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .semax-qty-unit-row{margin-bottom:4px}
@@ -715,7 +721,31 @@ footer{background:var(--ink);padding:60px 60px 30px}
     paintPacks();
   }
 
-  window.addToCartTemplate = function(){
+  function stampSemaxPacks(c){
+    if (!Array.isArray(c)) return c;
+    var tiers = packTiers();
+    var mg = currentMg();
+    c.forEach(function(i){
+      if (!i || i.gift || i.slug !== 'semax') return;
+      i.pack_tiers = tiers;
+      i.pack_mg = i.mg || mg;
+      if (!i.mg) i.mg = mg;
+      var q = parseInt(i.qty, 10) || 1;
+      i.price = q>=3 ? tiers[3] : (q>=2 ? tiers[2] : tiers[1]);
+    });
+    return c;
+  }
+  function hookSave(){
+    var cur = window.saveCart;
+    if (typeof cur !== 'function' || cur.__semaxPack) return;
+    window.saveCart = function(c){
+      if (typeof c === 'undefined' && typeof cart !== 'undefined') c = cart;
+      c = stampSemaxPacks(Array.isArray(c) ? c : []);
+      return cur.apply(this, arguments);
+    };
+    window.saveCart.__semaxPack = true;
+  }
+  function semaxAddToCart(){
     var nameEl = document.querySelector('.product-title');
     var name = ((nameEl && nameEl.textContent) || 'Semax').trim();
     var mg = currentMg();
@@ -723,6 +753,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     var tiers = packTiers();
     var unitPrice = tiers[qty] != null ? tiers[qty] : tiers[1];
     var slug = 'semax';
+    hookSave();
     var cart = getCart();
     if (!Array.isArray(cart)) cart = [];
     var ex = cart.find(function(i){
@@ -750,6 +781,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         imageUrl: '/media/vial-semax.png?v=181'
       });
     }
+    stampSemaxPacks(cart);
     saveCart(cart);
     updateBadge();
     var btn = document.getElementById('semaxQtyAtc') || document.getElementById('atc-btn');
@@ -762,8 +794,22 @@ footer{background:var(--ink);padding:60px 60px 30px}
     var _cd = document.getElementById('cartDrawer');
     if (_cd && !_cd.classList.contains('open') && typeof toggleCart === 'function') toggleCart();
     else if (typeof renderCart === 'function') renderCart();
-  };
-  window.addToCartTemplate._mg = 1; /* stop mg-picker from wrapping and using catalog unit × qty */
+  }
+  function installAdd(){
+    window.addToCartTemplate = semaxAddToCart;
+    window.addToCartTemplate._mg = 1; /* mg-picker must not replace this with catalog unit × qty */
+    window.addToCartTemplate.__semaxPack = 1;
+    hookSave();
+  }
+  installAdd();
+  [50, 200, 600, 1200, 2000].forEach(function(t){ setTimeout(installAdd, t); });
+  document.addEventListener('click', function(e){
+    var t = e.target && e.target.closest && e.target.closest('#semaxQtyAtc, #pdpStickyBuy .pdp-sticky-atc');
+    if (!t) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    semaxAddToCart();
+  }, true);
 
   window.selectSize = function(btn, price){
     document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
