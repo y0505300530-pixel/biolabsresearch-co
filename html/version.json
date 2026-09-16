@@ -1,14 +1,14 @@
 {
-  "version": "2.84b",
+  "version": "2.84c",
   "released": "2026-09-16",
-  "codename": "qa5-glow-clones-live",
+  "codename": "qa5-dosevar-sync",
   "highlights": [
-    "Live swap: 5 ELITE-PASS GLOW-chrome text-only vials (Blend 20 / AOD 5 / GHK 100 / Ipa 10 / Tesa 10)",
-    "Cache bust ?v=175 on home/catalog/PDP + products-data",
-    "Tirz/Sema still held; rest of 20-SKU batch pending"
+    "Sync stale AOD-10mg + GHK 5/10mg dose-variant files to list-dose locked masters",
+    "Follows v2.84b JS bust fix; thumbs strip still deferred"
   ],
-  "appVersion": "2.84b",
+  "appVersion": "2.84c",
   "notes": [
+    "Soft-QA: dose-variant thumbs can no longer resurrect old 10 mg art",
     "PDP Soft-QA: bump shared JS vial busts (mg-picker/cart/search/pdp-story/marquee) 174\u2192175; fix PDP productImageUrl 155\u2192175 + dose thumb busts",
     "QA-5 Soft-QA PASS \u2192 live media from _drafts/text-only-20260916",
     "Home/catalog renderProducts + static cards: vial bust ?v=172 \u2192 ?v=174 (ELITE Soft-QA FAIL fix for GLOW)",
