@@ -1,13 +1,14 @@
 {
-  "version": "2.85c",
+  "version": "2.85d",
   "released": "2026-09-16",
   "codename": "shared-js-bust-176",
   "highlights": [
     "Bump shared JS vial busts mg-picker/pdp-story/marquee/search/cart ?v=175\u2192176",
     "Fixes Soft-QA PDP main src still showing 175 after HTML already on 176"
   ],
-  "appVersion": "2.85c",
+  "appVersion": "2.85d",
   "notes": [
+    "Home soft-note: Tesa/Ipa duo card + whitelist \u2192 ?v=176 (GLOW already in 2.85c)",
     "Home Soft-QA soft-note: add glow-70 to renderProducts ?v=176 set + static GLOW card bust",
     "Shared JS vial bust 175\u2192176 (mg-picker/cart/search/pdp-story/marquee) \u2014 was stomping PDP main img after v2.85 HTML",
     "Soft-QA follow-up after v2.84c: dose-variant thumbs removed on QA-5 PDPs",
