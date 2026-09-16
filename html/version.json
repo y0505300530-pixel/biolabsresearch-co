@@ -1,17 +1,20 @@
 {
-  "version": "2.87a",
+  "version": "2.88",
   "released": "2026-09-16",
-  "codename": "curcumin-alt-drop-meriva",
+  "codename": "match3-ta1-glow-chrome-179",
   "highlights": [
-    "Curcumin PDP: doseAwareAlt strips parenthetical brand (Meriva) for Marketing Soft-QA alt",
-    "mg-picker: chip/src swap keeps Marketing alt without parenthetical brand",
-    "app-version/footer 2.87a; mg-picker bust ?v=39 on curcumin PDP"
+    "Live MATCH3 TA1 GLOW-chrome vial (Thymosin Alpha-1) from ELITE Soft-QA PASS draft",
+    "Cache bust ?v=179; shared JS vial busts 178→179; Tirz/Sema held",
+    "PDP: doseAwareAlt / imgAlt Marketing alt (no gold-crimp stomp); dose thumbs stripped"
   ],
-  "appVersion": "2.87a",
+  "appVersion": "2.88",
   "notes": [
-    "curcumin-phytosome.html: doseAwareAlt base = name without \\(...\\)",
-    "mg-picker.js: strip all parentheticals when setting #pdpMainImg alt",
-    "Static HTML alt already correct: Curcumin Phytosome 500 mg research vial",
-    "Soft-note (later): shared LOT BL-00009/NO.009 across vials \u2014 prefer unique LOT per SKU after full 20-SKU batch"
+    "Swap vial-thymosin-alpha-1 (+ -10mg/-5mg dosevars) from text-only-20260916 drafts",
+    "index.html: static cards + renderProducts whitelist (QA5+GLOW+TesaIpa+MATCH1+MATCH2+TA1) → ?v=179",
+    "Shared JS vial bust 178→179 (mg-picker/cart/search/pdp-story/marquee)",
+    "TA1 PDP: main/img/jsonld/productImageUrl → 179; strip dose-variant thumbs; doseAwareAlt+imgAlt",
+    "products-data.json image_url bust 179 for whitelist SKUs incl. thymosin-alpha-1",
+    "app-version/footer stamps 2.88; script cache tags bumped",
+    "Soft-note (later): shared LOT BL-00009/NO.009 across vials — prefer unique LOT per SKU after full 20-SKU batch"
   ]
 }
