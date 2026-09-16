@@ -1,17 +1,17 @@
 {
-  "version": "2.84c",
+  "version": "2.85",
   "released": "2026-09-16",
-  "codename": "qa5-dosevar-sync",
+  "codename": "qa5-strip-thumbs",
   "highlights": [
-    "Sync stale AOD-10mg + GHK 5/10mg dose-variant files to list-dose locked masters",
-    "Follows v2.84b JS bust fix; thumbs strip still deferred"
+    "Strip pdp-thumbs from QA-5 PDPs; leave list-dose main webp only",
+    "Bust vial imgs ?v=175 → ?v=176 for blend, aod-9604, ghk-cu, ipamorelin, tesamorelin",
+    "GLOW 70 PDP vial busts (main + dose thumbs) → ?v=176"
   ],
-  "appVersion": "2.84c",
+  "appVersion": "2.85",
   "notes": [
-    "Soft-QA: dose-variant thumbs can no longer resurrect old 10 mg art",
-    "PDP Soft-QA: bump shared JS vial busts (mg-picker/cart/search/pdp-story/marquee) 174\u2192175; fix PDP productImageUrl 155\u2192175 + dose thumb busts",
-    "QA-5 Soft-QA PASS \u2192 live media from _drafts/text-only-20260916",
-    "Home/catalog renderProducts + static cards: vial bust ?v=172 \u2192 ?v=174 (ELITE Soft-QA FAIL fix for GLOW)",
-    "products-data.json + /api/products: all image_url bust ?v=174 (0x v=172); complements renderProducts fix"
+    "Soft-QA follow-up after v2.84c: dose-variant thumbs removed on QA-5 PDPs",
+    "products-data.json image_url bust 176 for those 5 SKUs only",
+    "index.html: targeted static cards + renderProducts QA5 override to 176; app-version/footer 2.85",
+    "Also products/glow-70.html + products-data glow-70 image_url bust 176"
   ]
 }
