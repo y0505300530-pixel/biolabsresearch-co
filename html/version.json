@@ -1,13 +1,15 @@
 {
-  "version": "2.86",
+  "version": "2.86a",
   "released": "2026-09-16",
-  "codename": "match1-glow-chrome-177",
+  "codename": "curcumin-stamp-286",
   "highlights": [
+    "Curcumin PDP stamp synced to 2.86",
     "Live MATCH set 1 GLOW-chrome vials (NAD+/BPC-157/Curcumin/Epithalon) from ELITE Soft-QA PASS drafts",
     "Cache bust ?v=177; shared JS vial busts 176\u2192177; Tirz/Sema held"
   ],
-  "appVersion": "2.86",
+  "appVersion": "2.86a",
   "notes": [
+    "Curcumin PDP: add missing app-version meta + footer site-version 2.86 (Soft-QA FAIL soft)",
     "Swap vial-nad-plus / vial-bpc-157 / vial-curcumin-phytosome / vial-epithalon (+ dosevars) from text-only-20260916 drafts",
     "index.html: static cards + renderProducts whitelist (QA5+GLOW+TesaIpa+MATCH1) \u2192 ?v=177",
     "Shared JS vial bust 176\u2192177 (mg-picker/cart/search/pdp-story/marquee)",
