@@ -1,5 +1,5 @@
 {
-  "version": "2.84",
+  "version": "2.84b",
   "released": "2026-09-16",
   "codename": "qa5-glow-clones-live",
   "highlights": [
@@ -7,8 +7,9 @@
     "Cache bust ?v=175 on home/catalog/PDP + products-data",
     "Tirz/Sema still held; rest of 20-SKU batch pending"
   ],
-  "appVersion": "2.84",
+  "appVersion": "2.84b",
   "notes": [
+    "PDP Soft-QA: bump shared JS vial busts (mg-picker/cart/search/pdp-story/marquee) 174\u2192175; fix PDP productImageUrl 155\u2192175 + dose thumb busts",
     "QA-5 Soft-QA PASS \u2192 live media from _drafts/text-only-20260916",
     "Home/catalog renderProducts + static cards: vial bust ?v=172 \u2192 ?v=174 (ELITE Soft-QA FAIL fix for GLOW)",
     "products-data.json + /api/products: all image_url bust ?v=174 (0x v=172); complements renderProducts fix"

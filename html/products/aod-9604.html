@@ -376,7 +376,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.80" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.84</p>
+<p class="site-version" data-site-version="2.80" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.84b</p>
 </footer>
 
 <script>
@@ -509,8 +509,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
           '<div class="product-img-main"><img id="pdpMainImg" src="'+img+'" alt="'+p.name+' research vial with gold crimp cap"></div>' +
           '<div class="pdp-thumbs" role="list">' +
             '<button type="button" class="pdp-thumb on" data-full="'+img+'" aria-label="Vial view"><img src="'+img+'" alt="AOD-9604 research vial, front view"></button>' +
-            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-5mg.webp" aria-label="5 mg vial"><img src="/media/vial-aod-9604-5mg.webp" alt="AOD-9604 5 mg research vial" loading="lazy" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src=\'/media/vial-fallback.webp\';"></button>' +
-            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-10mg.webp" aria-label="10 mg vial"><img src="/media/vial-aod-9604-10mg.webp" alt="AOD-9604 10 mg research vial" loading="lazy" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src=\'/media/vial-fallback.webp\';"></button>' +
+            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-5mg.webp?v=175" aria-label="5 mg vial"><img src="/media/vial-aod-9604-5mg.webp?v=175" alt="AOD-9604 5 mg research vial" loading="lazy" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src=\'/media/vial-fallback.webp\';"></button>' +
+            '<button type="button" class="pdp-thumb" data-full="/media/vial-aod-9604-10mg.webp?v=175" aria-label="10 mg vial"><img src="/media/vial-aod-9604-10mg.webp?v=175" alt="AOD-9604 10 mg research vial" loading="lazy" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src=\'/media/vial-fallback.webp\';"></button>' +
           '</div>' +
         '</div>' +
         '<div class=\"pdp-buy-col\">' +
@@ -607,7 +607,7 @@ storageHtml + presentationHtml +
     var slug = window.location.pathname.split('/').pop().replace('.html','');
     var cartName = sizeLabel ? name+' ('+sizeLabel+')' : name;
     var imgEl = document.querySelector('.product-img-main img');
-    var productImageUrl = '/media/vial-' + slug + '.png?v=155';
+    var productImageUrl = '/media/vial-' + slug + '.png?v=175';
     var cart = getCart();
     var ex = cart.find(function(i){return i.name===cartName;});
     var pdpQty = parseInt(document.getElementById('pdpQty') ? document.getElementById('pdpQty').textContent : '1') || 1;

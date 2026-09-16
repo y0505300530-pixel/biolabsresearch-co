@@ -380,7 +380,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.80" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.84</p>
+<p class="site-version" data-site-version="2.80" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.84b</p>
 </footer>
 
 <script>
@@ -609,7 +609,7 @@ storageHtml + presentationHtml +
     var slug = window.location.pathname.split('/').pop().replace('.html','');
     var cartName = sizeLabel ? name+' ('+sizeLabel+')' : name;
     var imgEl = document.querySelector('.product-img-main img');
-    var productImageUrl = '/media/vial-' + slug + '.png?v=155';
+    var productImageUrl = '/media/vial-' + slug + '.png?v=175';
     var cart = getCart();
     var ex = cart.find(function(i){return i.name===cartName;});
     var pdpQty = parseInt(document.getElementById('pdpQty') ? document.getElementById('pdpQty').textContent : '1') || 1;
