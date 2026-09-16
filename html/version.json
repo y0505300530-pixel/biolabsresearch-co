@@ -1,22 +1,15 @@
 {
-  "version": "2.89",
+  "version": "2.89a",
   "released": "2026-09-16",
-  "codename": "match4-tb500-r3ta-glow-chrome-180",
+  "codename": "catalog-retatrutide-alt-sync",
   "highlights": [
-    "Live MATCH4 TB-500 + R3TA GLOW-chrome vials from ELITE Soft-QA PASS drafts",
-    "Cache bust ?v=180; shared JS vial busts 179→180; Tirz/Sema held",
-    "PDPs: Marketing alts TB-500 / Retatrutide (full name, not R3TA); no gold-crimp stomp; thumbs stripped"
+    "Catalog card alt for retatrutide synced to Marketing PDP: Retatrutide 10 mg research vial",
+    "Display name stays R3TA; static SSR + renderProducts CATALOG_ALT map"
   ],
-  "appVersion": "2.89",
+  "appVersion": "2.89a",
   "notes": [
-    "Swap vial-tb-500 + vial-retatrutide (+ -10mg/-5mg dosevars) from text-only-20260916 drafts",
-    "index.html: static cards + renderProducts whitelist (…+TA1+tb-500+retatrutide) → ?v=180",
-    "Shared JS vial bust 179→180 (mg-picker/cart/search/pdp-story/marquee)",
-    "TB-500 / R3TA PDPs: main/img/jsonld/productImageUrl → 180; strip thumbs; Marketing alts",
-    "Retatrutide PDP imgAlt hardcoded 'Retatrutide 10 mg research vial' (catalog name R3TA; band stays R3TA)",
-    "products-data.json image_url bust 180 for whitelist SKUs incl. tb-500 + retatrutide",
-    "app-version/footer stamps 2.89; script cache tags bumped",
-    "Soft-note (later): shared LOT BL-00009/NO.009 across vials — prefer unique LOT per SKU after full 20-SKU batch",
-    "Soft-note: prior MATCH PDPs may still hardcode older bust in var img= while shared JS is 180"
+    "Soft-QA soft-note: home catalog alt was R3TA 10 mg research vial; PDP locked Retatrutide 10 mg research vial",
+    "index.html: static product-card img alt + renderProducts CATALOG_ALT[retatrutide]",
+    "Card title/name remain R3TA"
   ]
 }
