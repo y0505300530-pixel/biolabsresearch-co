@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.94
+
+Released 2026-09-16.
+
+Codename: sitewide-qty-upsell-packs
+
+## Highlights
+
+- **Qty packs**: Sitewide 1/2/3 bottle packs on every catalog PDP (Semax-style strength → qty).
+- **Math**: Pack units `U / round(U×89/99) / round(U×79/99)` from live strength list prices.
+- **Chrome**: RUO/catalog only — qty · pack; no consumer save/deal language.
+- **version.json**: Synced to 2.94 (meta/footer already stamped; clears ELITE soft-note vs 2.90).
+
+---
+
 # biolabsresearch.co — Version 2.80
 
 Released 2026-09-16.

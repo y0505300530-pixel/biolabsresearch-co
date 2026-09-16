@@ -1,23 +1,18 @@
 {
-  "version": "2.90",
+  "version": "2.94",
   "released": "2026-09-16",
-  "codename": "match5-tesa-ipa-glow-chrome-181",
+  "codename": "sitewide-qty-upsell-packs",
   "highlights": [
-    "Live MATCH5 Tesamorelin/Ipamorelin duo GLOW-chrome vial from ELITE Soft-QA PASS draft",
-    "Cache bust ?v=181; shared JS vial busts 180→181; Tirz/Sema held",
-    "PDP: Marketing alt Tesamorelin / Ipamorelin 10 mg research vial; no gold-crimp stomp; thumbs stripped"
+    "Sitewide 1/2/3 qty packs on every catalog PDP (Semax-style UI)",
+    "Pack units: U / round(U\u00d789/99) / round(U\u00d779/99) from strength list prices",
+    "RUO/catalog chrome only \u2014 qty \u00b7 pack labels; no consumer save/deal copy",
+    "products-api + products-data expose pack_tiers_by_strength matching live PDP"
   ],
-  "appVersion": "2.90",
+  "appVersion": "2.94",
   "notes": [
-    "Swap vial-tesamorelin-ipamorelin (+ -10mg/-5mg dosevars) from text-only-20260916 drafts",
-    "Band: TESA / IPA BLEND · 10 mg; display name stays Tesamorelin / Ipamorelin",
-    "index.html: static card + renderProducts whitelist (prior MATCH SKUs + tesa-ipa) → ?v=181",
-    "Shared JS vial bust 180→181 (mg-picker/cart/search/pdp-story/marquee)",
-    "PDP: main/img/jsonld/productImageUrl → 181; strip thumbs; doseAwareAlt + Marketing alt",
-    "mg-picker setImgs keeps Marketing alt after picker (display name == Marketing base)",
-    "products-data.json image_url bust 181 for whitelist SKUs",
-    "app-version/footer stamps 2.90; script cache tags bumped",
-    "Soft-note: shared LOT BL-00009/NO.009 across vials — prefer unique LOT per SKU after full batch",
-    "Soft-note: prior MATCH PDPs may still hardcode older bust in var img= while shared JS is 181"
+    "Shared qty-upsell.js (v2.94) drives strength-then-qty for all 20 active SKUs",
+    "Cart lines carry mg + pack_tiers; was-price stays the 1-pack unit",
+    "Tirz/Sema packs OK; MATCH vial art for Tirz/Sema still held",
+    "version.json synced to meta/footer 2.94 (was soft-note stuck on 2.90 MATCH5)"
   ]
 }
