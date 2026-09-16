@@ -1,19 +1,23 @@
 {
-  "version": "2.89b",
+  "version": "2.90",
   "released": "2026-09-16",
-  "codename": "retatrutide-pdp-alt-keep-full-name",
+  "codename": "match5-tesa-ipa-glow-chrome-181",
   "highlights": [
-    "Retatrutide PDP: mg-picker ALT_BASE keeps Marketing alt Retatrutide (not R3TA) after dose chip",
-    "Display title/band stay R3TA; alt only uses full INN",
-    "app-version/footer 2.89b; mg-picker bust ?v=42",
-    "Home index stamps synced to 2.89b (Soft-QA stamp close-out)"
+    "Live MATCH5 Tesamorelin/Ipamorelin duo GLOW-chrome vial from ELITE Soft-QA PASS draft",
+    "Cache bust ?v=181; shared JS vial busts 180→181; Tirz/Sema held",
+    "PDP: Marketing alt Tesamorelin / Ipamorelin 10 mg research vial; no gold-crimp stomp; thumbs stripped"
   ],
-  "appVersion": "2.89b",
+  "appVersion": "2.90",
   "notes": [
-    "Root cause: setImgs built #pdpMainImg.alt from h1.product-title (R3TA) + dose",
-    "Fix: ALT_BASE[retatrutide]=Retatrutide; name = ALT_BASE[slug] || title text",
-    "Parenthetical strip retained (Curcumin Meriva Soft-QA)",
-    "Static HTML + renderProduct imgAlt already correct Retatrutide",
-    "index.html: Soft-QA FAIL home still 2.89a \u2014 meta+footer synced \u2192 2.89b"
+    "Swap vial-tesamorelin-ipamorelin (+ -10mg/-5mg dosevars) from text-only-20260916 drafts",
+    "Band: TESA / IPA BLEND · 10 mg; display name stays Tesamorelin / Ipamorelin",
+    "index.html: static card + renderProducts whitelist (prior MATCH SKUs + tesa-ipa) → ?v=181",
+    "Shared JS vial bust 180→181 (mg-picker/cart/search/pdp-story/marquee)",
+    "PDP: main/img/jsonld/productImageUrl → 181; strip thumbs; doseAwareAlt + Marketing alt",
+    "mg-picker setImgs keeps Marketing alt after picker (display name == Marketing base)",
+    "products-data.json image_url bust 181 for whitelist SKUs",
+    "app-version/footer stamps 2.90; script cache tags bumped",
+    "Soft-note: shared LOT BL-00009/NO.009 across vials — prefer unique LOT per SKU after full batch",
+    "Soft-note: prior MATCH PDPs may still hardcode older bust in var img= while shared JS is 181"
   ]
 }
