@@ -5,13 +5,15 @@
   "highlights": [
     "Retatrutide PDP: mg-picker ALT_BASE keeps Marketing alt Retatrutide (not R3TA) after dose chip",
     "Display title/band stay R3TA; alt only uses full INN",
-    "app-version/footer 2.89b; mg-picker bust ?v=42"
+    "app-version/footer 2.89b; mg-picker bust ?v=42",
+    "Home index stamps synced to 2.89b (Soft-QA stamp close-out)"
   ],
   "appVersion": "2.89b",
   "notes": [
     "Root cause: setImgs built #pdpMainImg.alt from h1.product-title (R3TA) + dose",
     "Fix: ALT_BASE[retatrutide]=Retatrutide; name = ALT_BASE[slug] || title text",
     "Parenthetical strip retained (Curcumin Meriva Soft-QA)",
-    "Static HTML + renderProduct imgAlt already correct Retatrutide"
+    "Static HTML + renderProduct imgAlt already correct Retatrutide",
+    "index.html: Soft-QA FAIL home still 2.89a \u2014 meta+footer synced \u2192 2.89b"
   ]
 }
