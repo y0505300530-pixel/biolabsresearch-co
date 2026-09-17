@@ -1,10 +1,11 @@
 {
-  "version": "2.97g",
+  "version": "2.98",
   "released": "2026-09-17",
-  "codename": "hero-in-stock-photo-badge",
-  "appVersion": "2.97g",
+  "codename": "catalog-filters-card-layout",
+  "appVersion": "2.98",
   "highlights": [
-    "Add only small in stock pill (green dot) upper-left on hero vial photo",
-    "Reuse nl-photo-badge; no other hero/copy changes"
+    "Homepage Popular grid: filter toolbar + white cards on cream",
+    "Card trust: COA on request · Lot docs (no Lot matched / IN STOCK)",
+    "Dual CTAs View details + ADD TO CART; live SKUs/prices/ATC unchanged"
   ]
 }

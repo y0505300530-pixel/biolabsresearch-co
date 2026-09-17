@@ -1,3 +1,19 @@
+# biolabsresearch.co — Version 2.98
+
+Released 2026-09-17.
+
+Codename: catalog-filters-card-layout
+
+## Highlights
+
+- **Popular grid**: competitor-style toolbar (search + Categories / Strengths / Availability / Documentation + Sort) above existing SKUs.
+- **Cards**: cream `#F2EFE9` canvas, white rounded cards, navy/gold chrome; dual CTAs **View details** + **ADD TO CART**.
+- **Trust microcopy**: **COA on request** · **Lot docs**. No Lot matched, IN STOCK, SHIPS TODAY, or stars on cards. Hero in-stock pill unchanged.
+- **Filters**: wired from card/API category, strength chips, `stock_status`. Documentation is a stub (lot docs on request; no per-SKU file flag / no invented counts).
+- CSS `biolabs_style.css?v=385`. Hero + Popular header copy locked.
+
+---
+
 # biolabsresearch.co — Version 2.95
 
 Released 2026-09-17.
