@@ -1,10 +1,9 @@
 {
-  "version": "2.98k",
+  "version": "2.98l",
   "released": "2026-09-17",
-  "codename": "sitewide-version-sync",
-  "appVersion": "2.98k",
+  "codename": "coa-modal-above-nav",
+  "appVersion": "2.98l",
   "highlights": [
-    "Sitewide app-version/footer sync incl. PDPs tools science terms",
-    "COA request force-stack @320"
+    "COA request/PDF modals z-index above sticky nav so Close works"
   ]
 }

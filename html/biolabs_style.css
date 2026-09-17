@@ -13711,3 +13711,41 @@ html body .cart-close {
   }
 }
 /* === end v2.98k === */
+
+/* === v2.98l COA modals above sticky nav (ELITE Close FAIL) === */
+html body #coa-request-modal,
+html body #coa-modal {
+  z-index: 12100 !important;
+}
+html body #coa-request-modal .coa-request-panel,
+html body #coa-modal .coa-modal-panel,
+html body #coa-request-modal > div,
+html body #coa-modal > div {
+  position: relative !important;
+  z-index: 12110 !important;
+}
+html body #coa-request-modal button[onclick*="closeCOARequest"],
+html body #coa-request-modal button[aria-label*="Close"],
+html body #coa-modal .coa-modal-actions,
+html body #coa-modal button[onclick*="closeCOAModal"],
+html body #coa-modal button[aria-label="Close"] {
+  position: relative !important;
+  z-index: 12120 !important;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+/* while COA request/PDF modal open, keep sticky nav from eating clicks */
+html body:has(#coa-request-modal[style*="flex"]) .nav,
+html body:has(#coa-request-modal[style*="display: flex"]) .nav,
+html body:has(#coa-request-modal[style*="display:flex"]) .nav,
+html body:has(#coa-modal[style*="flex"]) .nav,
+html body:has(#coa-modal[style*="display: flex"]) .nav,
+html body:has(#coa-modal[style*="display:flex"]) .nav {
+  z-index: 9000 !important;
+  pointer-events: none !important;
+}
+html body:has(#coa-request-modal[style*="flex"]) .sticky-cart-dock,
+html body:has(#coa-modal[style*="flex"]) .sticky-cart-dock {
+  display: none !important;
+}
+/* === end v2.98l === */
