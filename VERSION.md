@@ -211,3 +211,6 @@ Codename: dose-chips-44
 
 ## v2.98h — 2026-09-17
 - Hide FAB on science/terms; COA modal no overflow @320
+
+## v2.98i — 2026-09-17
+- COA modal mobile: fix overflow + visible Download PDF

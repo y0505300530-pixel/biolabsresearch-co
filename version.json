@@ -1,10 +1,9 @@
 {
-  "version": "2.98h",
+  "version": "2.98i",
   "released": "2026-09-17",
-  "codename": "fab-hide-sci-terms-coa-fix",
-  "appVersion": "2.98h",
+  "codename": "coa-modal-mobile-fix",
+  "appVersion": "2.98i",
   "highlights": [
-    "Hide mobile FAB on science/terms (sci-toc/toc) \u2014 header cart remains",
-    "COA modal stacks header @320 to stop horizontal overflow"
+    "COA modal rebuilt for mobile: no horizontal overflow, Download PDF always visible @320"
   ]
 }

@@ -476,37 +476,31 @@ footer{background:var(--navy);padding:60px 60px 30px}
 
 
 <!-- COA POPUP MODAL -->
-<div id="coa-modal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center">
-  <div style="background:white;border-radius:12px;width:90%;max-width:860px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4)">
-    <!-- Header -->
-    <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid #e8f0ea;background:#f7f9f5">
-      <div>
-        <div style="font-size:11px;font-weight:700;color:#1d5c3a;letter-spacing:1px;text-transform:uppercase">Certificate of Analysis</div>
-        <div id="coa-modal-title" style="font-size:15px;font-weight:700;color:#0d2137;margin-top:2px"></div>
+<div id="coa-modal" style="display:none;position:fixed;inset:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:9999;align-items:center;justify-content:center;padding:8px;box-sizing:border-box;overflow:auto">
+  <div class="coa-modal-panel" style="background:white;border-radius:12px;width:100%;max-width:860px;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.4);box-sizing:border-box">
+    <div class="coa-modal-header" style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;padding:12px 14px;border-bottom:1px solid #E6E0D6;background:#F2EFE9;box-sizing:border-box">
+      <div style="min-width:0;flex:1 1 140px">
+        <div style="font-size:11px;font-weight:700;color:#0d2137;letter-spacing:1px;text-transform:uppercase">Certificate of Analysis</div>
+        <div id="coa-modal-title" style="font-size:15px;font-weight:700;color:#0d2137;margin-top:2px;word-break:break-word"></div>
       </div>
-      <div style="display:flex;align-items:center;gap:10px">
-        <a id="coa-download-btn" href="#" download style="display:inline-flex;align-items:center;gap:6px;background:#1d5c3a;color:white;padding:8px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;font-family:"Montserrat",sans-serif">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="content="2.01"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <div class="coa-modal-actions" style="display:flex;align-items:center;gap:8px;flex:1 1 auto;justify-content:flex-end;min-width:0">
+        <button type="button" id="coa-download-btn" style="display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#0d2137;color:white;padding:10px 14px;border:0;border-radius:8px;font-size:12px;font-weight:700;font-family:Montserrat,sans-serif;min-height:44px;cursor:pointer;white-space:nowrap">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
           Download PDF
-        </a>
-        <button onclick="closeCOAModal()" style="background:none;border:none;cursor:pointer;padding:6px;color:#4a6358;font-size:20px;line-height:1">&#x2715;</button>
+        </button>
+        <button type="button" onclick="closeCOAModal()" aria-label="Close" style="background:none;border:none;cursor:pointer;padding:0;color:#4a6358;font-size:22px;line-height:1;min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center">&#x2715;</button>
       </div>
     </div>
-    <!-- Multi-COA tabs (shown only when product has multiple COAs) -->
-    <div id="coa-tabs" style="display:none;padding:10px 20px 0;border-bottom:1px solid #e8f0ea;gap:8px;flex-direction:row">
+    <div id="coa-tabs" style="display:none;padding:10px 14px 0;border-bottom:1px solid #E6E0D6;gap:8px;flex-direction:row;flex-wrap:wrap;box-sizing:border-box"></div>
+    <div class="coa-modal-viewer" style="flex:1;overflow:auto;min-height:200px;max-height:min(55vh,420px);box-sizing:border-box">
+      <iframe id="coa-iframe" title="COA PDF" src="" style="width:100%;height:100%;min-height:200px;border:none;display:block"></iframe>
     </div>
-    <!-- PDF Viewer -->
-    <div style="flex:1;overflow:hidden;min-height:500px">
-      <iframe id="coa-iframe" src="" style="width:100%;height:600px;border:none;display:block"></iframe>
-    </div>
-    <!-- Verified badge -->
-    <div style="padding:10px 20px;background:#f7f9f5;border-top:1px solid #e8f0ea;display:flex;align-items:center;gap:8px">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1d5c3a" stroke-width="content="2.01"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      <span style="font-size:11px;color:#1d5c3a;font-weight:700">Third-party verified by AccumarkLabs — HPLC tested, sterility confirmed</span>
+    <div style="padding:10px 14px;background:#F2EFE9;border-top:1px solid #E6E0D6;display:flex;align-items:flex-start;gap:8px;box-sizing:border-box">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0d2137" stroke-width="2" aria-hidden="true" style="flex:0 0 auto;margin-top:2px"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span style="font-size:11px;color:#0d2137;font-weight:700;line-height:1.35">Lot document — verify the filename and lot number on the PDF</span>
     </div>
   </div>
 </div>
-
 <script>
 // COA DATA MAP
 var COA_DATA = {
