@@ -1,12 +1,10 @@
 {
-  "version": "2.96",
+  "version": "2.96a",
   "released": "2026-09-17",
-  "codename": "hero-split-brand-mock",
-  "appVersion": "2.96",
+  "codename": "hero-hplc-claim-tighten",
+  "appVersion": "2.96a",
   "highlights": [
-    "Homepage hero redesign: split mock layout in BioLabs navy/gold (no green)",
-    "Our vial image + Lot docs badge (no SHIPS TODAY); feature row RUO-safe",
-    "CTAs: Browse research compounds + View sample COA; trust SoT kept",
-    "Removed unverified researchers carousel 4.9/5 \u00b7 1,200 reviews"
+    "Hero feature: HPLC analysis (drop MS \u2014 sample COAs show HPLC chromatogram, not MS)",
+    "Marketing RUO lock"
   ]
 }
