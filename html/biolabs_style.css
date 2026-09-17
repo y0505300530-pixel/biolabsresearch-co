@@ -12721,3 +12721,21 @@ button.product-card-mg:focus-visible{
   .hero-v296 .nl-feats { margin-bottom: 22px !important; gap: 12px !important; }
   .hero-v296 .nl-actions { margin-bottom: 16px !important; }
 }
+
+
+/* v2.96f: restore cinematic video loop in hero photo wrap */
+.hero-v296 .nl-hero-vial.hero-video,
+.hero-v296 video.nl-hero-vial {
+  position: static !important;
+  inset: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  aspect-ratio: 16 / 9 !important;
+  object-fit: cover !important;
+  object-position: center center !important;
+  display: block !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: #f2efe9 !important;
+}

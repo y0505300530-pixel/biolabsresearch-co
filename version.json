@@ -1,9 +1,10 @@
 {
-  "version": "2.96e",
+  "version": "2.96f",
   "released": "2026-09-17",
-  "codename": "hero-spacing-breathing",
-  "appVersion": "2.96e",
+  "codename": "hero-cinematic-loop-restore",
+  "appVersion": "2.96f",
   "highlights": [
-    "Hero vertical breathing room: title\u2192sub\u21922\u00d72 feats\u2192CTAs\u2192trust like mock (less cramped)"
+    "Restore hero cinematic mp4/webm loop (existing media) with jpg poster",
+    "Keep Lot docs badge + 2.96e spacing; Yehuda: move like before"
   ]
 }
