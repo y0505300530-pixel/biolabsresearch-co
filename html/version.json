@@ -1,10 +1,10 @@
 {
-  "version": "2.94e",
+  "version": "2.94f",
   "released": "2026-09-17",
-  "codename": "hero-trust-marketing-sot",
-  "appVersion": "2.94e",
+  "codename": "hero-trust-visible",
+  "appVersion": "2.94f",
   "highlights": [
-    "Hero under CTAs: 20 research compounds \u00b7 45K+ customers \u00b7 Lot docs on request",
-    "Marketing SoT: no stars/reviews; Same-day held until ops confirms; 20 = live API SKU count"
+    "Unhide Marketing SoT hero trust strip (override CRM v1.25 display:none on .nl-trust)",
+    "Visible: 20 research compounds \u00b7 45K+ customers \u00b7 Lot docs on request"
   ]
 }

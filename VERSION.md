@@ -124,3 +124,6 @@ Codename: dose-chips-44
 
 ## v2.94e — 2026-09-17
 - Hero trust SoT: 20 research compounds · 45K+ customers · Lot docs on request (no ★/reviews; no Same-day)
+
+## v2.94f — 2026-09-17
+- Unhide hero trust SoT (CSS override of v1.25 display:none)

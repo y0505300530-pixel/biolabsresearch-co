@@ -9870,14 +9870,39 @@ button.nav-util {
 .blog-load-more:hover{background:#0d2137;color:#fff}
 
 
-/* === CRM v1.25 — drop hero trust chips; PDP unit price + sticky ATC === */
-.nl-trust-row,
-.nl-trust {
-  display: none !important;
-  height: 0 !important;
-  margin: 0 !important;
+/* === v2.94f — show Marketing SoT hero trust strip (was hidden since CRM v1.25) === */
+.nl-trust-row {
+  display: none !important; /* old chip list unused */
+}
+html body .nl-trust {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-items: center !important;
+  gap: 6px 10px !important;
+  height: auto !important;
+  margin: 14px 0 0 !important;
   padding: 0 !important;
-  overflow: hidden !important;
+  overflow: visible !important;
+  font-size: 13px !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  color: var(--ink, #1a1a1a) !important;
+  letter-spacing: 0.01em !important;
+  max-width: 40em !important;
+  white-space: normal !important;
+  opacity: 1 !important;
+}
+html body .nl-trust .nl-trust-sep {
+  color: var(--ink-muted, #6b6560) !important;
+  font-weight: 500 !important;
+  opacity: 0.7 !important;
+}
+@media (max-width: 699px) {
+  html body .nl-trust {
+    font-size: 12px !important;
+    margin-top: 12px !important;
+    gap: 4px 8px !important;
+  }
 }
 .price-unit-wrap {
   display: flex;
