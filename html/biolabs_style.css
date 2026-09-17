@@ -13872,3 +13872,46 @@ html body:has(#coa-modal[style*="flex"]) .sticky-cart-dock {
   }
 }
 /* === end v2.98n === */
+
+/* === v2.98o home primary CTA clear-zone (tools .tr-* untouched) === */
+@media (max-width: 800px) {
+  /* Hero Browse / View sample COA — keep out from under FAB */
+  html body .hero.hero-v296,
+  html body .nl-hero,
+  html body .nl-hero--split {
+    padding-right: 64px !important;
+    box-sizing: border-box !important;
+  }
+  html body .nl-hero .nl-btn,
+  html body a.nl-btn.nl-btn-primary,
+  html body a.nl-btn.nl-btn-secondary {
+    position: relative !important;
+    z-index: 3 !important;
+    max-width: calc(100vw - 80px) !important;
+  }
+  /* Home catalog — reinforce 2.98f/m clear */
+  html body .catalog-section,
+  html body #catalog {
+    padding-right: 56px !important;
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+    box-sizing: border-box !important;
+  }
+  html body .catalog-grid > .product-card,
+  html body #products-grid > .product-card {
+    padding-bottom: 84px !important;
+  }
+  /* Home teaser CTAs (tools/science/shipping blocks on index) */
+  html body .tools-card-cta,
+  html body .science-home-cta,
+  html body .science-home-cta-btn,
+  html body .ship-home-cta,
+  html body .ship-home-cta-btn,
+  html body .jrnl-cta,
+  html body .jrnl-cta-btn {
+    padding-right: 56px !important;
+    box-sizing: border-box !important;
+    max-width: calc(100% - 8px) !important;
+  }
+  /* Do NOT change .tr-wrap/.tr-cards tools rules from 2.98n */
+}
+/* === end v2.98o === */

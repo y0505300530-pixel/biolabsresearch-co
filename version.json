@@ -1,10 +1,11 @@
 {
-  "version": "2.98n",
+  "version": "2.98o",
   "released": "2026-09-17",
-  "codename": "tools-fab-clear-tr",
-  "appVersion": "2.98n",
+  "codename": "home-cta-fab-clear",
+  "appVersion": "2.98o",
   "highlights": [
-    "Tools FAB clear-zone via .tr-wrap/.tr-cards (2.98m missed)",
-    "Home/catalog clear + COA Close above nav kept"
+    "Home hero/catalog/teaser CTA clear from FAB @320\u2013390",
+    "Tools .tr-cards clear from 2.98n unchanged",
+    "COA Close above nav kept"
   ]
 }

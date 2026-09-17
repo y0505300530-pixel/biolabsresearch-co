@@ -230,3 +230,6 @@ Codename: dose-chips-44
 
 ## v2.98n — 2026-09-17
 - Tools FAB clear-zone for .tr-cards (Soft-QA FAIL on /tools)
+
+## v2.98o — 2026-09-17
+- Home primary CTA / catalog FAB clear-zone without touching tools
