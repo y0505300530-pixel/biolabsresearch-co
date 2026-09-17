@@ -1,9 +1,10 @@
 {
   "version": "2.98k",
   "released": "2026-09-17",
-  "codename": "coa-request-force-stack",
+  "codename": "pdp-version-sync",
   "appVersion": "2.98k",
   "highlights": [
-    "COA request modal: force stacked name fields + full-width panel @320"
+    "All PDP meta/footer synced to 2.98k",
+    "COA request force-stack @320"
   ]
 }
