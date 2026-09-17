@@ -13749,3 +13749,85 @@ html body:has(#coa-modal[style*="flex"]) .sticky-cart-dock {
   display: none !important;
 }
 /* === end v2.98l === */
+
+/* === v2.98m restore FAB clear-zone (ELITE FAIL vs 2.98f/g) === */
+@media (max-width: 800px) {
+  /* Force icon-only corner FAB — beat base centered pill + later max-width rules */
+  html body .sticky-cart-dock,
+  html body a.sticky-cart-dock,
+  html body button.sticky-cart-dock {
+    left: auto !important;
+    right: max(12px, env(safe-area-inset-right, 0px)) !important;
+    transform: none !important;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    width: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    min-height: 48px !important;
+    height: 48px !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    letter-spacing: 0 !important;
+    overflow: visible !important;
+    border-radius: 999px !important;
+    z-index: 9200 !important;
+  }
+  html body .sticky-cart-dock svg {
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 !important;
+  }
+  html body .sticky-cart-dock .sticky-cart-dock-count {
+    position: absolute !important;
+    top: -4px !important;
+    right: -4px !important;
+    min-width: 18px !important;
+    height: 18px !important;
+    font-size: 10px !important;
+    line-height: 18px !important;
+  }
+
+  /* Right gutter so FAB sits in empty margin, not over cards/CTAs */
+  html body .catalog-grid,
+  html body #products-grid,
+  html body .tools-hub,
+  html body .tools-grid,
+  html body .tools-section,
+  html body main > .tools,
+  html body .tool-cards,
+  html body .calc-grid {
+    padding-right: 56px !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Bottom clear under catalog CTAs (2.98f standard, strengthened) */
+  html body .catalog-grid > .product-card,
+  html body #products-grid > .product-card {
+    padding-bottom: 80px !important;
+  }
+  html body .catalog-grid .product-card-actions,
+  html body #products-grid .product-card-actions {
+    position: relative !important;
+    z-index: 5 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Tools / home primary CTAs — bottom clear */
+  html body .catalog-section,
+  html body .tools-hub,
+  html body .tools-grid,
+  html body .tools-section {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  html body .tools-hub .nl-btn,
+  html body .tools-grid a,
+  html body .tool-card,
+  html body .tools-section .nl-btn {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+}
+/* science/terms keep FAB hidden (2.98h) */
+/* === end v2.98m === */

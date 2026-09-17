@@ -224,3 +224,6 @@ Codename: dose-chips-44
 
 ## v2.98l — 2026-09-17
 - Raise COA modals above sticky nav (ELITE Close FAIL)
+
+## v2.98m — 2026-09-17
+- Restore FAB clear-zone: icon FAB + right gutter + catalog CTA padding (ELITE FAIL)

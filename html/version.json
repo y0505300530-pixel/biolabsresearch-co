@@ -1,9 +1,10 @@
 {
-  "version": "2.98l",
+  "version": "2.98m",
   "released": "2026-09-17",
-  "codename": "coa-modal-above-nav",
-  "appVersion": "2.98l",
+  "codename": "fab-clear-zone-restore",
+  "appVersion": "2.98m",
   "highlights": [
-    "COA request/PDF modals z-index above sticky nav so Close works"
+    "Restore FAB icon-only + right gutter clear-zone on home/catalog/tools (ELITE FAIL)",
+    "Keep COA Close above nav from 2.98l"
   ]
 }
