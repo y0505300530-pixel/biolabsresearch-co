@@ -12993,6 +12993,8 @@ html body .catalog-grid{
 
 html body .catalog-grid > .product-card,
 html body #products-grid > .product-card{
+  position:relative;
+  isolation:isolate;
   background:#fff !important;
   border:1px solid #ece7de;
   border-radius:20px;
@@ -13000,15 +13002,26 @@ html body #products-grid > .product-card{
   box-shadow:0 8px 24px rgba(13,33,55,.05);
   box-sizing:border-box;
   min-width:0;
+  transform:none !important;
+  transition:box-shadow .2s ease, border-color .2s ease !important;
 }
-html body .catalog-grid > .product-card:hover{
-  transform:translateY(-4px);
+html body .catalog-grid > .product-card:hover,
+html body #products-grid > .product-card:hover{
+  transform:none !important;
   box-shadow:0 14px 32px rgba(13,33,55,.08);
   border-color:#d6cbb8;
+}
+html body .catalog-grid > .product-card:hover .product-card-img img,
+html body .catalog-grid > .product-card:hover .product-card-media img,
+html body #products-grid > .product-card:hover .product-card-img img,
+html body #products-grid > .product-card:hover .product-card-media img{
+  transform:none !important;
 }
 .catalog-grid .product-card-media,
 #products-grid .product-card-media{
   position:relative !important;
+  z-index:0;
+  flex:0 0 auto;
   border-radius:16px;
   overflow:hidden;
   background:#F2EFE9 !important;
@@ -13055,7 +13068,10 @@ html body .catalog-grid > .product-card:hover{
 
 .catalog-grid .product-card-body,
 #products-grid .product-card-body{
+  position:relative;
+  z-index:2;
   padding:12px 6px 4px !important;
+  pointer-events:auto !important;
 }
 .catalog-grid .product-card-cat,
 #products-grid .product-card-cat,
@@ -13120,6 +13136,8 @@ html body .catalog-grid > .product-card:hover{
 .catalog-grid .product-card-actions,
 #products-grid .product-card-actions{
   order:5;
+  position:relative;
+  z-index:3;
   display:flex;
   flex-wrap:wrap;
   align-items:center;
@@ -13127,6 +13145,7 @@ html body .catalog-grid > .product-card:hover{
   gap:8px;
   margin-top:auto !important;
   min-width:0;
+  pointer-events:auto !important;
 }
 .product-card-trust-item{
   display:inline-flex;
@@ -13161,6 +13180,8 @@ html body .catalog-grid > .product-card:hover{
 }
 .catalog-grid .product-card-view,
 #products-grid .product-card-view{
+  position:relative;
+  z-index:4;
   flex:0 1 auto;
   display:inline-flex;
   align-items:center;
@@ -13178,15 +13199,19 @@ html body .catalog-grid > .product-card:hover{
   font-weight:700;
   text-decoration:none;
   line-height:1.2;
+  pointer-events:auto !important;
+  cursor:pointer;
 }
 .catalog-grid .product-card-view:hover,
 #products-grid .product-card-view:hover{
   background:transparent;
   color:#B08D57 !important;
 }
-.product-card-view-ico{ flex:0 0 auto; }
+.product-card-view-ico{ flex:0 0 auto; pointer-events:none !important; }
 .catalog-grid .product-card-atc,
 #products-grid .product-card-atc{
+  position:relative;
+  z-index:4;
   flex:0 0 auto;
   display:inline-flex !important;
   align-items:center;
@@ -13199,12 +13224,20 @@ html body .catalog-grid > .product-card:hover{
   border-radius:999px !important;
   font-size:12px !important;
   letter-spacing:.02em;
+  pointer-events:auto !important;
+  cursor:pointer !important;
 }
 .catalog-grid .product-card-atc:hover,
 #products-grid .product-card-atc:hover{
   background:#081525 !important;
 }
-.product-card-atc-ico{ flex:0 0 auto; }
+.product-card-atc-ico{ flex:0 0 auto; pointer-events:none !important; }
+.catalog-grid .product-card-view svg,
+.catalog-grid .product-card-atc svg,
+#products-grid .product-card-view svg,
+#products-grid .product-card-atc svg{
+  pointer-events:none !important;
+}
 
 @media (min-width:1100px){
   .catalog-toolbar{
@@ -13236,8 +13269,12 @@ html body .catalog-grid > .product-card:hover{
   }
 }
 @media (prefers-reduced-motion:reduce){
-  html body .catalog-grid > .product-card:hover{
-    transform:none;
+  html body .catalog-grid > .product-card,
+  html body #products-grid > .product-card,
+  html body .catalog-grid > .product-card:hover,
+  html body #products-grid > .product-card:hover{
+    transform:none !important;
+    transition:none !important;
   }
 }
-/* === end v2.98 === */
+/* === end v2.98a === */

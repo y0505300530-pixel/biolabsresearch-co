@@ -1,11 +1,11 @@
 {
-  "version": "2.98",
+  "version": "2.98a",
   "released": "2026-09-17",
-  "codename": "catalog-filters-card-layout",
-  "appVersion": "2.98",
+  "codename": "catalog-atc-view-hover-fix",
+  "appVersion": "2.98a",
   "highlights": [
-    "Homepage Popular grid: filter toolbar + white cards on cream",
-    "Card trust: COA on request · Lot docs (no Lot matched / IN STOCK)",
-    "Dual CTAs View details + ADD TO CART; live SKUs/prices/ATC unchanged"
+    "Catalog cards: ADD TO CART and View details clickable (z-index / pointer-events)",
+    "Hover: shadow/border only — no translateY jitter",
+    "Media click no longer steals ATC / View details"
   ]
 }

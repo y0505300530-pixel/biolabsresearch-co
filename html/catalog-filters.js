@@ -1,4 +1,4 @@
-/* catalog-filters.js — homepage Popular grid toolbar (v2.98)
+/* catalog-filters.js — homepage Popular grid toolbar (v2.98a)
    Progressive enhancement: client-filter existing .product-card nodes.
    Does not rewrite cart-vial / mg-picker / prices-sync. */
 (function () {
@@ -357,9 +357,21 @@
   if (!grid.__catalogMediaNav) {
     grid.__catalogMediaNav = 1;
     grid.addEventListener("click", function (e) {
-      var media = e.target && e.target.closest && e.target.closest(".product-card-media[data-href]");
+      var t = e.target;
+      if (!t || !t.closest) return;
+      /* ATC / View details / chips own their clicks — never steal them for media nav. */
+      if (t.closest(".product-card-atc, .product-card-view, .product-card-actions, a, button")) {
+        var view = t.closest("a.product-card-view");
+        if (view) {
+          var viewHref = view.getAttribute("href") || "";
+          if (viewHref && viewHref !== "#" && e.defaultPrevented) {
+            window.location.href = viewHref;
+          }
+        }
+        return;
+      }
+      var media = t.closest(".product-card-media[data-href]");
       if (!media) return;
-      if (e.target.closest("a, button")) return;
       var href = media.getAttribute("data-href");
       if (href) window.location.href = href;
     });

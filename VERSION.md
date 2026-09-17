@@ -1,3 +1,17 @@
+# biolabsresearch.co — Version 2.98a
+
+Released 2026-09-17.
+
+Codename: catalog-atc-view-hover-fix
+
+## Highlights
+
+- **Catalog ATC + View details**: actions sit above media (`z-index` + `pointer-events: auto`); SVG icons do not eat clicks; media `data-href` nav does not steal button/link clicks.
+- **Hover**: no `translateY` / child `scale` on Popular cards — shadow + border only (kills jitter from `transition:all` + competing transforms).
+- CSS `biolabs_style.css?v=387`. Hero untouched.
+
+---
+
 # biolabsresearch.co — Version 2.98
 
 Released 2026-09-17.
