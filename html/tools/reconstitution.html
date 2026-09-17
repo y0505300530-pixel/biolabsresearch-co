@@ -13,12 +13,12 @@
 <script src="/cart-vial.js?v=314" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
 
-<title>Mass Unit Converter — BioLabs Research</title>
-<meta name="description" content="Convert common laboratory mass units in the browser. Figures are arithmetic only and are not lot certificates or purity claims. Research use only.">
-<link rel="canonical" href="https://biolabsresearch.co/tools/unit-converter">
-<meta property="og:title" content="Mass Unit Converter — BioLabs Research">
-<meta property="og:description" content="Convert common laboratory mass units in the browser. Figures are arithmetic only and are not lot certificates or purity claims. Research use only.">
-<meta property="og:url" content="https://biolabsresearch.co/tools/unit-converter">
+<title>Reconstitution Calculator | BioLabs Research</title>
+<meta name="description" content="Client-side reconstitution math for laboratory research calculations: vial amount (mg) and diluent volume (mL) to concentration (mg/mL). Research use only — not medical advice.">
+<link rel="canonical" href="https://biolabsresearch.co/tools/reconstitution">
+<meta property="og:title" content="Reconstitution Calculator | BioLabs Research">
+<meta property="og:description" content="Client-side reconstitution math for laboratory research calculations: vial amount and diluent volume to concentration. Research use only.">
+<meta property="og:url" content="https://biolabsresearch.co/tools/reconstitution">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
-<meta name="robots" content="noindex,follow">
+<meta name="robots" content="index,follow">
 
 <style>
 :root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
@@ -46,54 +46,56 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-side .tr-example{background:var(--tr-cream);border-radius:12px;padding:16px;margin:14px 0;border:1px solid var(--tr-line)}
 .tr-side .tr-example strong{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-gold);margin:0 0 8px}
 .tr-side a{color:var(--tr-gold);font-weight:600;text-decoration:none}
+.tr-side a:hover{text-decoration:underline}
 .tr-presets{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 18px}
 .tr-chip{appearance:none;border:1px solid var(--tr-line);background:var(--tr-cream);color:var(--tr-ink);padding:8px 14px;border-radius:999px;font-size:13px;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s}
 .tr-chip:hover,.tr-chip.is-active{border-color:var(--tr-gold);background:#fff;color:var(--tr-gold)}
 .tr-form{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .tr-form .full{grid-column:1/-1}
 .tr-form label{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-ink);margin-bottom:8px}
-.tr-form input,.tr-form select{width:100%;height:52px;padding:0 16px;border:1px solid var(--tr-line);border-radius:12px;font-size:15px;background:var(--tr-cream);color:var(--tr-ink);box-sizing:border-box;outline:none;transition:border-color .15s,box-shadow .15s}
-.tr-form input:focus,.tr-form select:focus{border-color:var(--tr-gold);box-shadow:0 0 0 3px rgba(176,141,87,.25)}
-.tr-result{margin-top:20px;padding:22px;background:var(--tr-ink);border-radius:14px;color:#fff}
-.tr-result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
-.tr-result .val{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.05}
-.tr-result .val.tr-flash{animation:trFadeIn .35s}
+.tr-form input{width:100%;height:52px;padding:0 16px;border:1px solid var(--tr-line);border-radius:12px;font-size:15px;background:var(--tr-cream);color:var(--tr-ink);box-sizing:border-box;outline:none;transition:border-color .15s,box-shadow .15s}
+.tr-form input:focus{border-color:var(--tr-gold);box-shadow:0 0 0 3px rgba(176,141,87,.25)}
+.tr-result{margin-top:20px;padding:22px 22px 18px;background:var(--tr-ink);border-radius:14px;color:#fff;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.tr-result-main{min-width:0}
+.tr-result .val{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.05;opacity:1;transition:opacity .25s;word-break:break-word}
+.tr-result .val.tr-flash{opacity:0;animation:trFadeIn .35s forwards}
 @keyframes trFadeIn{from{opacity:0}to{opacity:1}}
 .tr-result .unit{font-size:13px;color:#a8a8a8;margin-top:6px}
-.tr-copy{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+.tr-result .sub{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
+.tr-result .sub .val{font-size:26px}
+.tr-copy{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .tr-copy:hover{border-color:var(--tr-gold);color:var(--tr-gold)}
-.tr-out-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-.tr-out-cell{background:rgba(255,255,255,.06);border-radius:10px;padding:12px 14px}
-.tr-out-cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a8a8a8;margin:0 0 4px}
-.tr-out-cell .v{font-size:18px;font-weight:700;color:#fff}
 .tr-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
 .tr-btn.secondary{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
+a.tr-btn:hover{opacity:.92}
 .tr-related{margin:0 0 24px}
 .tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
 .tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .tr-related a{display:block;background:var(--tr-white);border:1px solid var(--tr-line);border-radius:14px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
 .tr-related a:hover{border-color:var(--tr-gold);transform:translateY(-2px)}
-.tr-related strong{display:block;font-size:14px;margin:0 0 6px}
+.tr-related strong{display:block;font-size:14px;margin:0 0 6px;color:var(--tr-ink)}
 .tr-related span{font-size:13px;color:var(--tr-muted);line-height:1.45}
 .tr-ruo{margin-top:8px;padding:14px 16px;background:#F4EFE4;border-radius:10px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--tr-gold)}
+.tr-ruo-inline{margin:14px 0 0;padding:12px 14px;background:rgba(244,239,228,.12);border-radius:10px;font-size:13px;line-height:1.5;color:#d8d2c6;border-left:3px solid var(--tr-gold)}
 @media (max-width:900px){
   .tr-wrap{padding:32px 18px 72px}
   .tr-layout{grid-template-columns:1fr}
   .tr-side{position:static}
   .tr-form{grid-template-columns:1fr}
   .tr-related-grid{grid-template-columns:1fr}
-  .tr-out-grid{grid-template-columns:1fr}
+  .tr-result{flex-direction:column}
+  .tr-result .val{font-size:36px}
 }
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Mass Unit Converter","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert milligrams, micrograms, and nanograms for laboratory research. Optional IU with declared factor.","url":"https://biolabsresearch.co/tools/unit-converter"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Reconstitution Calculator","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate mg/mL concentration from vial amount and diluent volume for laboratory research calculations.","url":"https://biolabsresearch.co/tools/reconstitution","publisher":{"@type":"Organization","name":"BioLabs Research"}}
 </script>
-<meta name="twitter:title" content="Mass Unit Converter — BioLabs Research">
-<meta name="twitter:description" content="Convert common laboratory mass units in the browser. Figures are arithmetic only and are not lot certificates or purity claims. Research use only.">
-<script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Mass Unit Converter", "item": "https://biolabsresearch.co/tools/units"}]}</script>
-<meta name="app-version" content="2.80">
+<meta name="twitter:title" content="Reconstitution Calculator | BioLabs Research">
+<meta name="twitter:description" content="Client-side reconstitution math for laboratory research calculations: vial amount and diluent volume to concentration. Research use only.">
+<script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Reconstitution Calculator", "item": "https://biolabsresearch.co/tools/reconstitution"}]}</script>
+<meta name="app-version" content="2.95">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -143,58 +145,61 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 <main id="main" class="tr-wrap">
   <div class="tr-hero-with-video">
     <div class="tr-hero-copy">
-      <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools">TOOLS</a> / UNITS</p></div>
-      <h1>Unit converter</h1>
-      <p class="tr-lede">Convert between milligrams (mg), micrograms (mcg), and nanograms (ng). Optional international units (IU) only when you declare the mass-per-IU factor for your reagent — we do not assume a factor.</p>
+      <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools">TOOLS</a> / RECONSTITUTION</p></div>
+      <h1>Reconstitution Calculator</h1>
+      <p class="tr-lede">For laboratory research calculations. Enter vial amount (mg) and diluent volume (mL) to get concentration (mg/mL). Optionally enter an aliquot volume to see mass in that aliquot. Arithmetic runs on this device only — not a protocol and not medical advice.</p>
     </div>
     <figure class="bl-video bl-video-tools">
       <div class="bl-video-frame" style="aspect-ratio:1344/768">
         <video autoplay muted loop playsinline preload="metadata"
-          poster="/media/video/tools-units-loop-poster.jpg"
-          aria-label="Milligram-scale laboratory weighing for mass unit conversion">
-          <source src="/media/video/tools-units-loop.mp4" type="video/mp4">
+          poster="/media/video/tools-dilution-loop-poster.jpg"
+          aria-label="Pipetting diluent into a sealed research vial, illustrating laboratory reconstitution math">
+          <source src="/media/video/tools-dilution-loop.mp4" type="video/mp4">
         </video>
       </div>
-      <figcaption class="bl-video-caption">Milligram-scale weighing. Convert mg, mcg and ng before you plan a lot.</figcaption>
+      <figcaption class="bl-video-caption">Adding diluent to a sealed vial — the same mass ÷ volume this calculator runs.</figcaption>
     </figure>
   </div>
 
   <div class="tr-layout">
     <div class="tr-panel">
-      <div class="tr-presets" role="group" aria-label="Common presets">
-        <button type="button" class="tr-chip" data-val="1" data-unit="mg">1 mg</button>
-        <button type="button" class="tr-chip" data-val="1000" data-unit="mcg">1000 mcg</button>
-        <button type="button" class="tr-chip" data-val="1000000" data-unit="ng">1e6 ng</button>
+      <div class="tr-presets" role="group" aria-label="Common laboratory presets">
+        <button type="button" class="tr-chip" data-mg="5" data-ml="2">5 mg / 2 mL</button>
+        <button type="button" class="tr-chip" data-mg="10" data-ml="2">10 mg / 2 mL</button>
+        <button type="button" class="tr-chip" data-mg="10" data-ml="3">10 mg / 3 mL</button>
       </div>
-      <form class="tr-form" onsubmit="return false">
-        <div><label for="ucVal">Value</label><input id="ucVal" type="number" min="0" step="any" placeholder="1" inputmode="decimal"></div>
-        <div><label for="ucFrom">From</label><select id="ucFrom"><option value="mg">mg</option><option value="mcg">mcg</option><option value="ng">ng</option><option value="iu">IU</option></select></div>
-        <div class="full"><label for="iuFactor">IU factor (mg per 1 IU) — required only if converting IU</label><input id="iuFactor" type="number" min="0" step="any" placeholder="Declare factor, e.g. 0.001" inputmode="decimal"></div>
+      <form class="tr-form" id="recForm" onsubmit="return false">
+        <div><label for="vialMg">Vial amount (mg)</label><input id="vialMg" type="number" min="0" step="any" placeholder="e.g. 10" inputmode="decimal"></div>
+        <div><label for="solvMl">Diluent volume (mL)</label><input id="solvMl" type="number" min="0" step="any" placeholder="e.g. 2" inputmode="decimal"></div>
+        <div class="full"><label for="aliqMl">Optional aliquot volume (mL)</label><input id="aliqMl" type="number" min="0" step="any" placeholder="e.g. 0.1" inputmode="decimal"></div>
       </form>
-      <div class="tr-result" id="ucOut" aria-live="polite">
-        <div class="tr-result-head">
-          <div>
-            <div class="val" id="primaryVal">—</div>
-            <div class="unit" id="primaryUnit">Primary (mg)</div>
+      <div class="tr-result" id="recOut" aria-live="polite">
+        <div class="tr-result-main">
+          <div class="val" id="concVal">—</div>
+          <div class="unit" id="concUnit">Concentration (mg/mL)</div>
+          <div class="sub" id="aliqBlock" hidden>
+            <div class="val" id="aliqVal">—</div>
+            <div class="unit">Mass in aliquot (mg)</div>
           </div>
-          <button type="button" class="tr-copy" id="ucCopy">Copy result</button>
+          <p class="tr-ruo-inline">For research use only. Not for human or veterinary use. Not medical advice.</p>
         </div>
-        <div class="tr-out-grid">
-          <div class="tr-out-cell"><div class="k">mg</div><div class="v" id="outMg">—</div></div>
-          <div class="tr-out-cell"><div class="k">mcg</div><div class="v" id="outMcg">—</div></div>
-          <div class="tr-out-cell"><div class="k">ng</div><div class="v" id="outNg">—</div></div>
-          <div class="tr-out-cell"><div class="k">IU</div><div class="v" id="outIu">—</div></div>
-        </div>
+        <button type="button" class="tr-copy" id="recCopy">Copy result</button>
       </div>
-      <div class="tr-actions"><button type="button" class="tr-btn secondary" id="ucReset">Reset</button></div>
+      <div class="tr-actions">
+        <a class="tr-btn" href="/#catalog" id="recCatalog">Request catalog</a>
+        <a class="tr-btn secondary" href="/contact" id="recInquire">Inquire</a>
+        <button type="button" class="tr-btn secondary" id="recReset">Reset</button>
+      </div>
     </div>
     <aside class="tr-panel tr-side">
       <h2>How it works</h2>
-      <p>1 mg = 1,000 mcg = 1,000,000 ng. IU is not a fixed mass; enter mg per IU for your material if you need an IU line.</p>
+      <p>Concentration (mg/mL) = vial amount (mg) ÷ diluent volume (mL).</p>
+      <p>Aliquot mass (mg) = concentration (mg/mL) × aliquot volume (mL).</p>
       <div class="tr-example">
         <strong>Worked example</strong>
-        <p style="margin:0">1 mg = <strong style="color:#0d0d0d">1,000 mcg</strong> = <strong style="color:#0d0d0d">1,000,000 ng</strong>.</p>
+        <p style="margin:0">10 mg vial amount + 2 mL diluent volume → <strong style="color:#0d0d0d">5 mg/mL</strong>. A 0.1 mL aliquot holds <strong style="color:#0d0d0d">0.5 mg</strong>.</p>
       </div>
+      <p>Need C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub> after a stock exists? Use the <a href="/tools/dilution">dilution calculator</a>.</p>
       <p style="margin:0"><a href="/coa">Browse COA library →</a></p>
     </aside>
   </div>
@@ -202,10 +207,9 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
   <section class="tr-related">
     <h2>Related</h2>
     <div class="tr-related-grid">
-      <a href="/tools/reconstitution"><strong>Reconstitution calculator</strong><span>Vial amount + diluent volume → concentration</span></a>
-      <a href="/tools/dilution"><strong>Dilution calculator</strong><span>C1V1 = C2V2 serial dilution math</span></a>
+      <a href="/tools/dilution"><strong>Dilution calculator</strong><span>C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub> serial dilution math</span></a>
+      <a href="/tools/unit-converter"><strong>Unit converter</strong><span>mg ↔ mcg ↔ ng for lab math</span></a>
       <a href="/tools/compound-comparison"><strong>Compound comparison</strong><span>CAS, MW, sequence side-by-side</span></a>
-      <a href="/blog/tb-500-vs-thymosin-beta-4-identity"><strong>TB-500 vs Thymosin β4</strong><span>Identity notes for researchers</span></a>
     </div>
   </section>
 
@@ -213,30 +217,31 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 </main>
 <script>
 (function(){
-  var val=document.getElementById('ucVal'), from=document.getElementById('ucFrom'), factor=document.getElementById('iuFactor');
-  var outMg=document.getElementById('outMg'), outMcg=document.getElementById('outMcg'), outNg=document.getElementById('outNg'), outIu=document.getElementById('outIu');
-  var primaryVal=document.getElementById('primaryVal');
+  var vial=document.getElementById('vialMg'), solv=document.getElementById('solvMl'), aliq=document.getElementById('aliqMl');
+  var concVal=document.getElementById('concVal'), aliqVal=document.getElementById('aliqVal'), aliqBlock=document.getElementById('aliqBlock');
   var lastTxt='—';
-  function fmt(x){ if(!isFinite(x)) return '—'; var a=Math.abs(x); if(a===0) return '0'; if(a>=1000) return String(Math.round(x*100)/100); if(a>=1) return String(Math.round(x*1e6)/1e6); return x.toExponential(4); }
-  function toMg(v,u,f){
-    if(u==='mg') return v; if(u==='mcg') return v/1000; if(u==='ng') return v/1e6;
-    if(u==='iu'){ if(!(f>0)) return NaN; return v*f; }
-    return NaN;
+  function track(name, params){
+    if (typeof window.blrTrack === 'function') {
+      var p = params && typeof params === 'object' ? params : {};
+      p.event_category = p.event_category || 'tools';
+      window.blrTrack(name, p);
+    }
   }
+  function num(el){ var v=parseFloat(el.value); return isFinite(v)?v:NaN; }
+  function fmt(x){ if(!isFinite(x)) return '—'; if(Math.abs(x)>=100) return String(Math.round(x*100)/100); if(Math.abs(x)>=1) return String(Math.round(x*1000)/1000); return String(Math.round(x*1e6)/1e6); }
   function flash(el){ el.classList.remove('tr-flash'); void el.offsetWidth; el.classList.add('tr-flash'); }
   function update(){
-    var v=parseFloat(val.value); if(!isFinite(v)||v<0){ outMg.textContent=outMcg.textContent=outNg.textContent=outIu.textContent='—'; primaryVal.textContent='—'; lastTxt='—'; return; }
-    var f=parseFloat(factor.value); var mg=toMg(v, from.value, f);
-    if(!isFinite(mg)){ outMg.textContent=outMcg.textContent=outNg.textContent='—'; outIu.textContent=(from.value==='iu'?'Enter IU factor':'—'); primaryVal.textContent='—'; lastTxt='—'; return; }
-    var mgT=fmt(mg), mcgT=fmt(mg*1000), ngT=fmt(mg*1e6);
-    if(outMg.textContent!==mgT){ outMg.textContent=mgT; flash(primaryVal); }
-    outMcg.textContent=mcgT; outNg.textContent=ngT; primaryVal.textContent=mgT;
-    if(f>0) outIu.textContent=fmt(mg/f); else outIu.textContent='(declare factor)';
-    lastTxt=mgT+' mg = '+mcgT+' mcg = '+ngT+' ng';
+    var mg=num(vial), ml=num(solv), a=num(aliq);
+    if(!(mg>=0) || !(ml>0)){ if(concVal.textContent!=='—'){ concVal.textContent='—'; flash(concVal);} aliqBlock.hidden=true; lastTxt='—'; return; }
+    var c=mg/ml; var t=fmt(c);
+    if(concVal.textContent!==t){ concVal.textContent=t; flash(concVal); }
+    lastTxt=t+' mg/mL';
+    if(a>=0 && isFinite(a) && aliq.value!==''){ aliqBlock.hidden=false; var at=fmt(c*a); if(aliqVal.textContent!==at){ aliqVal.textContent=at; flash(aliqVal);} lastTxt=t+' mg/mL; aliquot '+at+' mg'; }
+    else { aliqBlock.hidden=true; }
   }
-  [val,from,factor].forEach(function(el){ el.addEventListener('input', update); el.addEventListener('change', update); });
-  document.getElementById('ucReset').addEventListener('click', function(){ val.value=''; from.value='mg'; factor.value=''; document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');}); update(); });
-  document.getElementById('ucCopy').addEventListener('click', function(){
+  [vial,solv,aliq].forEach(function(el){ el.addEventListener('input', update); });
+  document.getElementById('recReset').addEventListener('click', function(){ vial.value=''; solv.value=''; aliq.value=''; document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');}); update(); });
+  document.getElementById('recCopy').addEventListener('click', function(){
     var btn=this; var txt=(lastTxt && lastTxt!=='—')?lastTxt:'—';
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(function(){ btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy result';},1200); }); }
     else { btn.textContent='Copy unavailable'; setTimeout(function(){btn.textContent='Copy result';},1200); }
@@ -245,10 +250,13 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
     chip.addEventListener('click', function(){
       document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');});
       chip.classList.add('is-active');
-      val.value=chip.getAttribute('data-val'); from.value=chip.getAttribute('data-unit'); update();
+      vial.value=chip.getAttribute('data-mg'); solv.value=chip.getAttribute('data-ml'); update();
     });
   });
-  val.value='1'; update();
+  var inquire=document.getElementById('recInquire');
+  if(inquire){ inquire.addEventListener('click', function(){ track('tool_inquire', { tool: 'reconstitution' }); }); }
+  update();
+  track('reconstitution_calc', { tool: 'reconstitution' });
 })();
 </script>
 
@@ -267,7 +275,7 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.80" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.83</p>
+<p class="site-version" data-site-version="2.95" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.95</p>
 </footer>
 <script src="/tools-video.js?v=1"></script>
 <script src="/promo-bar.js?v=293"></script>

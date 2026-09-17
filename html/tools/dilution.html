@@ -13,12 +13,12 @@
 <script src="/cart-vial.js?v=314" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
 
-<title>Solution Dilution Tool — BioLabs Research</title>
-<meta name="description" content="Work out mg per mL from vial mass and solvent volume on your own machine. This helper is not a protocol and does not replace laboratory SOPs. Research use only.">
-<link rel="canonical" href="https://biolabsresearch.co/tools/solution-dilution">
-<meta property="og:title" content="Solution Dilution Tool — BioLabs Research">
-<meta property="og:description" content="Work out mg per mL from vial mass and solvent volume on your own machine. This helper is not a protocol and does not replace laboratory SOPs. Research use only.">
-<meta property="og:url" content="https://biolabsresearch.co/tools/solution-dilution">
+<title>Dilution Calculator | BioLabs Research</title>
+<meta name="description" content="Client-side C1V1 = C2V2 dilution math for laboratory research calculations. Enter stock concentration, desired concentration, and final volume. Research use only — not medical advice.">
+<link rel="canonical" href="https://biolabsresearch.co/tools/dilution">
+<meta property="og:title" content="Dilution Calculator | BioLabs Research">
+<meta property="og:description" content="C1V1 = C2V2 and serial dilution helper for laboratory research calculations. Research use only — not medical advice.">
+<meta property="og:url" content="https://biolabsresearch.co/tools/dilution">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
@@ -26,7 +26,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
-<meta name="robots" content="noindex,follow">
+<meta name="robots" content="index,follow">
 
 <style>
 :root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
@@ -55,44 +55,55 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-form label{display:block;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-ink);margin-bottom:8px}
 .tr-form input{width:100%;height:52px;padding:0 16px;border:1px solid var(--tr-line);border-radius:12px;font-size:15px;background:var(--tr-cream);color:var(--tr-ink);box-sizing:border-box;outline:none;transition:border-color .15s,box-shadow .15s}
 .tr-form input:focus{border-color:var(--tr-gold);box-shadow:0 0 0 3px rgba(176,141,87,.25)}
-.tr-result{margin-top:20px;padding:22px 22px 18px;background:var(--tr-ink);border-radius:14px;color:#fff;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
-.tr-result-main{min-width:0}
-.tr-result .val{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.05;opacity:1;transition:opacity .25s}
-.tr-result .val.tr-flash{opacity:0;animation:trFadeIn .35s forwards}
+.tr-result{margin-top:20px;padding:22px 22px 18px;background:var(--tr-ink);border-radius:14px;color:#fff}
+.tr-result-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:8px}
+.tr-result .val{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.05;word-break:break-word}
+.tr-result .val.tr-flash{animation:trFadeIn .35s}
 @keyframes trFadeIn{from{opacity:0}to{opacity:1}}
 .tr-result .unit{font-size:13px;color:#a8a8a8;margin-top:6px}
-.tr-result .sub{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.12)}
-.tr-result .sub .val{font-size:26px}
 .tr-copy{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .tr-copy:hover{border-color:var(--tr-gold);color:var(--tr-gold)}
+.tr-out-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+.tr-out-cell{background:rgba(255,255,255,.06);border-radius:10px;padding:12px 14px;min-width:0}
+.tr-out-cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a8a8a8;margin:0 0 4px}
+.tr-out-cell .v{font-size:18px;font-weight:700;color:#fff;word-break:break-word}
+.tr-note{margin-top:12px;font-size:13px;line-height:1.5;color:#c8c2b6}
 .tr-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
 .tr-btn.secondary{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
+a.tr-btn:hover{opacity:.92}
 .tr-related{margin:0 0 24px}
 .tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
 .tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .tr-related a{display:block;background:var(--tr-white);border:1px solid var(--tr-line);border-radius:14px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s,transform .15s}
 .tr-related a:hover{border-color:var(--tr-gold);transform:translateY(-2px)}
-.tr-related strong{display:block;font-size:14px;margin:0 0 6px;color:var(--tr-ink)}
+.tr-related strong{display:block;font-size:14px;margin:0 0 6px}
 .tr-related span{font-size:13px;color:var(--tr-muted);line-height:1.45}
 .tr-ruo{margin-top:8px;padding:14px 16px;background:#F4EFE4;border-radius:10px;font-size:13px;color:#5a5a5a;border-left:3px solid var(--tr-gold)}
+.tr-ruo-inline{margin:14px 0 0;padding:12px 14px;background:rgba(244,239,228,.12);border-radius:10px;font-size:13px;line-height:1.5;color:#d8d2c6;border-left:3px solid var(--tr-gold)}
+.tr-serial{margin-top:18px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tr-serial table{width:100%;border-collapse:collapse;min-width:0;font-size:13px}
+.tr-serial th,.tr-serial td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--tr-line);white-space:nowrap}
+.tr-serial th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--tr-muted)}
+.tr-h3{font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin:22px 0 12px}
 @media (max-width:900px){
   .tr-wrap{padding:32px 18px 72px}
   .tr-layout{grid-template-columns:1fr}
   .tr-side{position:static}
   .tr-form{grid-template-columns:1fr}
   .tr-related-grid{grid-template-columns:1fr}
-  .tr-result{flex-direction:column}
+  .tr-out-grid{grid-template-columns:1fr}
+  .tr-result .val{font-size:36px}
 }
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Solution Dilution Calculator","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate mg/mL concentration from vial amount and solvent volume for laboratory research.","url":"https://biolabsresearch.co/tools/solution-dilution"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dilution Calculator","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"C1V1 = C2V2 and serial dilution math for laboratory research calculations.","url":"https://biolabsresearch.co/tools/dilution","publisher":{"@type":"Organization","name":"BioLabs Research"}}
 </script>
-<meta name="twitter:title" content="Solution Dilution Tool — BioLabs Research">
-<meta name="twitter:description" content="Work out mg per mL from vial mass and solvent volume on your own machine. This helper is not a protocol and does not replace laboratory SOPs. Research use only.">
-<script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Solution Dilution Tool", "item": "https://biolabsresearch.co/tools/dilution"}]}</script>
-<meta name="app-version" content="2.80">
+<meta name="twitter:title" content="Dilution Calculator | BioLabs Research">
+<meta name="twitter:description" content="C1V1 = C2V2 and serial dilution helper for laboratory research calculations. Research use only — not medical advice.">
+<script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Dilution Calculator", "item": "https://biolabsresearch.co/tools/dilution"}]}</script>
+<meta name="app-version" content="2.95">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -143,56 +154,73 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
   <div class="tr-hero-with-video">
     <div class="tr-hero-copy">
       <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools">TOOLS</a> / DILUTION</p></div>
-      <h1>Solution dilution calculator</h1>
-      <p class="tr-lede">Laboratory dilution math only: enter the solid amount in the vial (mg) and the solvent volume you add (mL) to get concentration in mg/mL. Optionally enter an aliquot volume to see mass in that aliquot (mg).</p>
+      <h1>Dilution Calculator</h1>
+      <p class="tr-lede">For laboratory research calculations. This helper applies C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub>: stock concentration, desired concentration, and final volume → stock volume and diluent volume. Optional serial steps show each fold. Not a protocol and not medical advice.</p>
     </div>
     <figure class="bl-video bl-video-tools">
       <div class="bl-video-frame" style="aspect-ratio:1344/768">
         <video autoplay muted loop playsinline preload="metadata"
           poster="/media/video/tools-dilution-loop-poster.jpg"
-          aria-label="Pipetting solvent into a sealed research vial, illustrating laboratory dilution">
+          aria-label="Pipetting in a research setting, illustrating laboratory dilution math">
           <source src="/media/video/tools-dilution-loop.mp4" type="video/mp4">
         </video>
       </div>
-      <figcaption class="bl-video-caption">Pipetting solvent into a sealed vial — the same math this calculator runs.</figcaption>
+      <figcaption class="bl-video-caption">Transfer volume math — C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub> on this device only.</figcaption>
     </figure>
   </div>
 
   <div class="tr-layout">
     <div class="tr-panel">
-      <div class="tr-presets" role="group" aria-label="Common presets">
-        <button type="button" class="tr-chip" data-mg="5" data-ml="2">5mg / 2mL</button>
-        <button type="button" class="tr-chip" data-mg="10" data-ml="2">10mg / 2mL</button>
-        <button type="button" class="tr-chip" data-mg="10" data-ml="3">10mg / 3mL</button>
+      <div class="tr-presets" role="group" aria-label="Common laboratory presets">
+        <button type="button" class="tr-chip" data-c1="5" data-c2="0.5" data-v2="2" data-factor="10" data-steps="1">10× to 2 mL</button>
+        <button type="button" class="tr-chip" data-c1="10" data-c2="1" data-v2="10" data-factor="10" data-steps="1">10× to 10 mL</button>
+        <button type="button" class="tr-chip" data-c1="10" data-c2="0.1" data-v2="1" data-factor="10" data-steps="2">100× serial</button>
       </div>
       <form class="tr-form" id="dilForm" onsubmit="return false">
-        <div><label for="vialMg">Vial amount (mg)</label><input id="vialMg" type="number" min="0" step="any" placeholder="e.g. 10" inputmode="decimal"></div>
-        <div><label for="solvMl">Solvent volume (mL)</label><input id="solvMl" type="number" min="0" step="any" placeholder="e.g. 2" inputmode="decimal"></div>
-        <div class="full"><label for="aliqMl">Optional aliquot volume (mL)</label><input id="aliqMl" type="number" min="0" step="any" placeholder="e.g. 0.1" inputmode="decimal"></div>
+        <div><label for="stockC">Stock concentration (C<sub>1</sub>)</label><input id="stockC" type="number" min="0" step="any" placeholder="e.g. 5" inputmode="decimal"></div>
+        <div><label for="wantC">Desired concentration (C<sub>2</sub>)</label><input id="wantC" type="number" min="0" step="any" placeholder="e.g. 0.5" inputmode="decimal"></div>
+        <div class="full"><label for="finalV">Final volume (V<sub>2</sub>, mL)</label><input id="finalV" type="number" min="0" step="any" placeholder="e.g. 2" inputmode="decimal"></div>
+        <div><label for="foldF">Optional serial fold factor</label><input id="foldF" type="number" min="1" step="any" placeholder="e.g. 10" inputmode="decimal"></div>
+        <div><label for="foldN">Optional serial steps</label><input id="foldN" type="number" min="1" max="12" step="1" placeholder="e.g. 3" inputmode="numeric"></div>
       </form>
       <div class="tr-result" id="dilOut" aria-live="polite">
-        <div class="tr-result-main">
-          <div class="val" id="concVal">—</div>
-          <div class="unit" id="concUnit">Concentration (mg/mL)</div>
-          <div class="sub" id="aliqBlock" hidden>
-            <div class="val" id="aliqVal">—</div>
-            <div class="unit">Mass in aliquot (mg)</div>
+        <div class="tr-result-head">
+          <div>
+            <div class="val" id="v1Val">—</div>
+            <div class="unit">Stock volume V<sub>1</sub> (mL)</div>
           </div>
+          <button type="button" class="tr-copy" id="dilCopy">Copy result</button>
         </div>
-        <button type="button" class="tr-copy" id="dilCopy">Copy result</button>
+        <div class="tr-out-grid">
+          <div class="tr-out-cell"><div class="k">Diluent volume</div><div class="v" id="diluentVal">—</div></div>
+          <div class="tr-out-cell"><div class="k">Dilution factor</div><div class="v" id="factorVal">—</div></div>
+        </div>
+        <p class="tr-note" id="dilNote">Use the same concentration units for C<sub>1</sub> and C<sub>2</sub> (mg/mL shown in examples).</p>
+        <p class="tr-ruo-inline">For research use only. Not for human or veterinary use. Not medical advice.</p>
+      </div>
+      <div class="tr-serial" id="serialWrap" hidden>
+        <h3 class="tr-h3">Serial concentrations</h3>
+        <table>
+          <thead><tr><th>Step</th><th>Factor from stock</th><th>Concentration</th></tr></thead>
+          <tbody id="serialBody"></tbody>
+        </table>
       </div>
       <div class="tr-actions">
+        <a class="tr-btn" href="/#catalog" id="dilCatalog">Request catalog</a>
+        <a class="tr-btn secondary" href="/contact" id="dilInquire">Inquire</a>
         <button type="button" class="tr-btn secondary" id="dilReset">Reset</button>
       </div>
     </div>
     <aside class="tr-panel tr-side">
       <h2>How it works</h2>
-      <p>Concentration (mg/mL) = vial amount (mg) ÷ solvent volume (mL).</p>
-      <p>Aliquot mass (mg) = concentration (mg/mL) × aliquot volume (mL).</p>
+      <p>C<sub>1</sub> × V<sub>1</sub> = C<sub>2</sub> × V<sub>2</sub>, so stock volume V<sub>1</sub> = (C<sub>2</sub> × V<sub>2</sub>) ÷ C<sub>1</sub>.</p>
+      <p>Diluent volume = V<sub>2</sub> − V<sub>1</sub>. Dilution factor = C<sub>1</sub> ÷ C<sub>2</sub>.</p>
+      <p>Serial steps (optional): after <em>n</em> folds of factor <em>f</em>, concentration = C<sub>1</sub> ÷ f<sup>n</sup>.</p>
       <div class="tr-example">
         <strong>Worked example</strong>
-        <p style="margin:0">10 mg vial + 2 mL solvent → <strong style="color:#0d0d0d">5 mg/mL</strong>. A 0.1 mL aliquot holds <strong style="color:#0d0d0d">0.5 mg</strong>.</p>
+        <p style="margin:0">Stock 5 mg/mL, desired concentration 0.5 mg/mL, final volume 2 mL → <strong style="color:#0d0d0d">0.2 mL</strong> stock + <strong style="color:#0d0d0d">1.8 mL</strong> diluent (10×).</p>
       </div>
+      <p>Starting from a dry vial? Use the <a href="/tools/reconstitution">reconstitution calculator</a> (vial amount ÷ diluent volume).</p>
       <p style="margin:0"><a href="/coa">Browse COA library →</a></p>
     </aside>
   </div>
@@ -200,9 +228,9 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
   <section class="tr-related">
     <h2>Related</h2>
     <div class="tr-related-grid">
+      <a href="/tools/reconstitution"><strong>Reconstitution calculator</strong><span>Vial amount + diluent volume → concentration</span></a>
       <a href="/tools/unit-converter"><strong>Unit converter</strong><span>mg ↔ mcg ↔ ng for lab math</span></a>
       <a href="/tools/compound-comparison"><strong>Compound comparison</strong><span>CAS, MW, sequence side-by-side</span></a>
-      <a href="/blog/tb-500-vs-thymosin-beta-4-identity"><strong>TB-500 vs Thymosin β4</strong><span>Identity notes for researchers</span></a>
     </div>
   </section>
 
@@ -210,23 +238,71 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 </main>
 <script>
 (function(){
-  var vial=document.getElementById('vialMg'), solv=document.getElementById('solvMl'), aliq=document.getElementById('aliqMl');
-  var concVal=document.getElementById('concVal'), aliqVal=document.getElementById('aliqVal'), aliqBlock=document.getElementById('aliqBlock');
+  var c1El=document.getElementById('stockC'), c2El=document.getElementById('wantC'), v2El=document.getElementById('finalV');
+  var fEl=document.getElementById('foldF'), nEl=document.getElementById('foldN');
+  var v1Val=document.getElementById('v1Val'), diluentVal=document.getElementById('diluentVal'), factorVal=document.getElementById('factorVal');
+  var note=document.getElementById('dilNote'), serialWrap=document.getElementById('serialWrap'), serialBody=document.getElementById('serialBody');
   var lastTxt='—';
+  function track(name, params){
+    if (typeof window.blrTrack === 'function') {
+      var p = params && typeof params === 'object' ? params : {};
+      p.event_category = p.event_category || 'tools';
+      window.blrTrack(name, p);
+    }
+  }
   function num(el){ var v=parseFloat(el.value); return isFinite(v)?v:NaN; }
   function fmt(x){ if(!isFinite(x)) return '—'; if(Math.abs(x)>=100) return String(Math.round(x*100)/100); if(Math.abs(x)>=1) return String(Math.round(x*1000)/1000); return String(Math.round(x*1e6)/1e6); }
   function flash(el){ el.classList.remove('tr-flash'); void el.offsetWidth; el.classList.add('tr-flash'); }
+  function clearSerial(){ serialWrap.hidden=true; serialBody.innerHTML=''; }
   function update(){
-    var mg=num(vial), ml=num(solv), a=num(aliq);
-    if(!(mg>=0) || !(ml>0)){ if(concVal.textContent!=='—'){ concVal.textContent='—'; flash(concVal);} aliqBlock.hidden=true; lastTxt='—'; return; }
-    var c=mg/ml; var t=fmt(c);
-    if(concVal.textContent!==t){ concVal.textContent=t; flash(concVal); }
-    lastTxt=t+' mg/mL';
-    if(a>=0 && isFinite(a) && aliq.value!==''){ aliqBlock.hidden=false; var at=fmt(c*a); if(aliqVal.textContent!==at){ aliqVal.textContent=at; flash(aliqVal);} lastTxt=t+' mg/mL; aliquot '+at+' mg'; }
-    else { aliqBlock.hidden=true; }
+    var c1=num(c1El), c2=num(c2El), v2=num(v2El), f=num(fEl), n=parseInt(nEl.value,10);
+    if(!(c1>0) || !(c2>0) || !(v2>0)){
+      if(v1Val.textContent!=='—'){ v1Val.textContent='—'; flash(v1Val); }
+      diluentVal.textContent='—'; factorVal.textContent='—'; lastTxt='—';
+      note.textContent='Use the same concentration units for C1 and C2 (mg/mL shown in examples).';
+      clearSerial();
+      return;
+    }
+    if(c2>=c1){
+      v1Val.textContent='—'; diluentVal.textContent='—'; factorVal.textContent='—'; lastTxt='—';
+      note.textContent='Desired concentration must be lower than stock concentration for a dilution.';
+      clearSerial();
+      return;
+    }
+    var v1=(c2*v2)/c1;
+    if(v1>v2){
+      v1Val.textContent='—'; diluentVal.textContent='—'; factorVal.textContent='—'; lastTxt='—';
+      note.textContent='Inputs do not yield a valid transfer volume. Check C1, C2, and V2.';
+      clearSerial();
+      return;
+    }
+    var dil=v2-v1, fac=c1/c2;
+    var t1=fmt(v1), td=fmt(dil), tf=fmt(fac);
+    if(v1Val.textContent!==t1){ v1Val.textContent=t1; flash(v1Val); }
+    diluentVal.textContent=td+' mL';
+    factorVal.textContent=tf+'×';
+    lastTxt='V1 '+t1+' mL stock; diluent '+td+' mL; factor '+tf+'x';
+    note.textContent='V1 = (C2 × V2) ÷ C1. Diluent volume = V2 − V1.';
+    var steps=isFinite(n)?n:NaN;
+    var fold=(f>=1)?f:fac;
+    if(steps>=1 && steps<=12 && fold>1){
+      var html='', i, conc=c1, running=1;
+      for(i=0;i<=steps;i++){
+        html+='<tr><td>'+i+'</td><td>'+fmt(running)+'×</td><td>'+fmt(conc)+'</td></tr>';
+        conc=conc/fold; running=running*fold;
+      }
+      serialBody.innerHTML=html;
+      serialWrap.hidden=false;
+    } else {
+      clearSerial();
+    }
   }
-  [vial,solv,aliq].forEach(function(el){ el.addEventListener('input', update); });
-  document.getElementById('dilReset').addEventListener('click', function(){ vial.value=''; solv.value=''; aliq.value=''; document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');}); update(); });
+  [c1El,c2El,v2El,fEl,nEl].forEach(function(el){ el.addEventListener('input', update); });
+  document.getElementById('dilReset').addEventListener('click', function(){
+    c1El.value=''; c2El.value=''; v2El.value=''; fEl.value=''; nEl.value='';
+    document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');});
+    update();
+  });
   document.getElementById('dilCopy').addEventListener('click', function(){
     var btn=this; var txt=(lastTxt && lastTxt!=='—')?lastTxt:'—';
     if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(txt).then(function(){ btn.textContent='Copied'; setTimeout(function(){btn.textContent='Copy result';},1200); }); }
@@ -236,10 +312,18 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
     chip.addEventListener('click', function(){
       document.querySelectorAll('.tr-chip').forEach(function(c){c.classList.remove('is-active');});
       chip.classList.add('is-active');
-      vial.value=chip.getAttribute('data-mg'); solv.value=chip.getAttribute('data-ml'); update();
+      c1El.value=chip.getAttribute('data-c1');
+      c2El.value=chip.getAttribute('data-c2');
+      v2El.value=chip.getAttribute('data-v2');
+      fEl.value=chip.getAttribute('data-factor')||'';
+      nEl.value=chip.getAttribute('data-steps')||'';
+      update();
     });
   });
+  var inquire=document.getElementById('dilInquire');
+  if(inquire){ inquire.addEventListener('click', function(){ track('tool_inquire', { tool: 'dilution' }); }); }
   update();
+  track('dilution_calc', { tool: 'dilution' });
 })();
 </script>
 
@@ -258,7 +342,7 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.80" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.83</p>
+<p class="site-version" data-site-version="2.95" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.95</p>
 </footer>
 <script src="/tools-video.js?v=1"></script>
 <script src="/promo-bar.js?v=293"></script>
