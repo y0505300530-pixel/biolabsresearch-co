@@ -12411,18 +12411,20 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
-  margin-bottom: 36px;
+  gap: 6px;
+  margin-bottom: 30px;
 }
 .catalog-header .catalog-title{
   margin: 0;
 }
 .catalog-ruo{
   margin: 0;
-  max-width: 42rem;
-  font-size: 14px;
-  line-height: 1.5;
-  color: var(--ink-muted, #8A8A8A);
+  max-width: none;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  color: #8B7355;
 }
 .catalog-view-all{
   display: inline-flex;

@@ -1,10 +1,11 @@
 {
-  "version": "2.97a",
+  "version": "2.97b",
   "released": "2026-09-17",
-  "codename": "restore-plan-your-order-heading",
-  "appVersion": "2.97a",
+  "codename": "catalog-ruo-short-line",
+  "appVersion": "2.97b",
   "highlights": [
-    "Restore homepage tools h2 to Plan your order before you buy",
-    "Drop C1V1 dilution from tools section lead; keep dilution calculator card"
+    "Remove catalog section-kicker Most popular among researchers",
+    "Replace long catalog-ruo copy with short Research use only under h2",
+    "Polish catalog-ruo typography above product grid; tighten header spacing"
   ]
 }
