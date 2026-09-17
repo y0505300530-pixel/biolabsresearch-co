@@ -193,3 +193,6 @@ Codename: dose-chips-44
 
 ## v2.98b — 2026-09-17
 - Remove only Popular `<p class="catalog-ruo">Research use only</p>`
+
+## v2.98c — 2026-09-17
+- Stabilize View details hover (color only; no layout jump)

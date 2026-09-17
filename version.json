@@ -1,10 +1,10 @@
 {
-  "version": "2.98b",
+  "version": "2.98c",
   "released": "2026-09-17",
-  "codename": "drop-catalog-ruo-line",
-  "appVersion": "2.98b",
+  "codename": "view-details-hover-stable",
+  "appVersion": "2.98c",
   "highlights": [
-    "Remove only Popular header Research use only line (catalog-ruo)",
-    "Keep title, filters, cards; hero untouched"
+    "View details hover color-only \u2014 no font-weight/size jump shoving ATC",
+    "Keep 2.98a click z-index + 2.98b catalog-ruo removed"
   ]
 }
