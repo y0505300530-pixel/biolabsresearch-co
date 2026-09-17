@@ -17,10 +17,15 @@
   var emptyEl = document.getElementById("catalogEmpty");
 
   var applying = false;
+  var CHECK =
+    '<svg class="product-card-trust-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5 8.1l2.1 2.1L11.2 5.8"/></svg>';
   var TRUST =
-    '<p class="product-card-trust"><span>COA on request</span>' +
-    '<span class="product-card-trust-sep" aria-hidden="true">·</span>' +
-    "<span>Lot docs</span></p>";
+    '<p class="product-card-trust">' +
+    '<span class="product-card-trust-item">' + CHECK + "<span>COA on request</span></span>" +
+    '<span class="product-card-trust-item">' + CHECK + "<span>Lot-specific</span></span>" +
+    "</p>";
+  var VIEW_CHEV =
+    '<svg class="product-card-view-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" d="M6 3.5L11 8l-5 4.5"/></svg>';
 
   function cards() {
     return Array.prototype.slice.call(grid.querySelectorAll(":scope > .product-card"));
@@ -76,17 +81,18 @@
       card.setAttribute("data-badge", text(badge));
     }
 
+    if (media) {
+      var bodyBadge = card.querySelector(".product-card-body > .product-card-badge:not(.product-card-badge-spacer)");
+      if (bodyBadge && !media.querySelector(".product-card-badge")) {
+        media.insertBefore(bodyBadge, media.firstChild);
+      }
+      Array.prototype.forEach.call(card.querySelectorAll(".product-card-badge-spacer"), function (sp) {
+        if (sp.parentNode) sp.parentNode.removeChild(sp);
+      });
+    }
+
     var body = card.querySelector(".product-card-body");
     if (!body) return;
-
-    if (!body.querySelector(".product-card-cat") && nameEl) {
-      var cat = card.getAttribute("data-category") || "";
-      var catElN = document.createElement("p");
-      catElN.className = "product-card-cat" + (cat ? "" : " product-card-cat-spacer");
-      if (!cat) catElN.setAttribute("aria-hidden", "true");
-      catElN.textContent = cat || "\u00a0";
-      body.insertBefore(catElN, nameEl);
-    }
 
     if (!body.querySelector(".product-card-trust")) {
       var row = body.querySelector(".product-card-row");
@@ -95,6 +101,19 @@
       var trust = wrap.firstChild;
       if (row && row.parentNode) row.parentNode.insertBefore(trust, row.nextSibling);
       else body.appendChild(trust);
+    } else if (!body.querySelector(".product-card-trust-ico")) {
+      body.querySelector(".product-card-trust").outerHTML = TRUST;
+    }
+
+    var viewEl = body.querySelector(".product-card-view");
+    if (viewEl && !viewEl.querySelector(".product-card-view-ico")) {
+      viewEl.insertAdjacentHTML("beforeend", VIEW_CHEV);
+    }
+    if (atc && !atc.querySelector(".product-card-atc-ico")) {
+      atc.insertAdjacentHTML(
+        "afterbegin",
+        '<svg class="product-card-atc-ico" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 6h15l-1.5 9h-12L5 3H2"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="18" cy="20" r="1.4" fill="currentColor"/></svg>'
+      );
     }
 
     var atcBtn = body.querySelector(".product-card-atc");
@@ -104,7 +123,7 @@
       var view = document.createElement("a");
       view.className = "product-card-view";
       view.href = href || "#";
-      view.textContent = "View details";
+      view.innerHTML = "View details" + VIEW_CHEV;
       var parent = atcBtn.parentNode;
       if (parent && parent.classList.contains("product-card-row")) {
         parent.removeChild(atcBtn);
@@ -166,7 +185,7 @@
     );
     fillSelect(
       catEl,
-      "Categories",
+      "All Categories",
       cats.map(function (c) {
         return { value: c, label: c };
       }),
@@ -196,7 +215,7 @@
       if (na !== nb) return na - nb;
       return a.label.localeCompare(b.label);
     });
-    fillSelect(strEl, "Strengths", sOpts, strEl && strEl.value);
+    fillSelect(strEl, "All Strengths", sOpts, strEl && strEl.value);
 
     var hasIn = list.some(function (c) {
       return (c.getAttribute("data-stock") || "") === "in";
