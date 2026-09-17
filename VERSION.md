@@ -113,3 +113,7 @@ Codename: dose-chips-44
 - Selectors: `.product-card-mg`, `.size-btn`, `.mg-picker .mg-btn` / `.mg-picker button`, `.size-chip`, `.dose-chip` (aliases on catalog + PDP amount pills)
 - Padding 10×14 so labels still fit; desktop look unchanged; researchers-say carousel untouched
 - CSS `biolabs_style.css?v=357`; age-gate + cart untouched
+
+## v2.94c — 2026-09-17
+- Hero trust strip under CTAs (4.8★ / 12k+ reviews / 65k+ customers / Same-day dispatch)
+- Replaces former nl-ruo line; RUO kept elsewhere

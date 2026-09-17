@@ -1,18 +1,10 @@
 {
-  "version": "2.94",
-  "released": "2026-09-16",
-  "codename": "sitewide-qty-upsell-packs",
+  "version": "2.94c",
+  "released": "2026-09-17",
+  "codename": "hero-trust-strip",
+  "appVersion": "2.94c",
   "highlights": [
-    "Sitewide 1/2/3 qty packs on every catalog PDP (Semax-style UI)",
-    "Pack units: U / round(U\u00d789/99) / round(U\u00d779/99) from strength list prices",
-    "RUO/catalog chrome only \u2014 qty \u00b7 pack labels; no consumer save/deal copy",
-    "products-api + products-data expose pack_tiers_by_strength matching live PDP"
-  ],
-  "appVersion": "2.94",
-  "notes": [
-    "Shared qty-upsell.js (v2.94) drives strength-then-qty for all 20 active SKUs",
-    "Cart lines carry mg + pack_tiers; was-price stays the 1-pack unit",
-    "Tirz/Sema packs OK; MATCH vial art for Tirz/Sema still held",
-    "version.json synced to meta/footer 2.94 (was soft-note stuck on 2.90 MATCH5)"
+    "Hero CTA strip: 4.8\u2605 \u00b7 12,000+ reviews \u00b7 65k+ customers \u00b7 Same-day dispatch (replaced RUO line under buttons)",
+    "RUO disclaimer remains in age-gate/footer/elsewhere \u2014 not removed sitewide"
   ]
 }
