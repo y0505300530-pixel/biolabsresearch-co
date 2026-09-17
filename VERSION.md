@@ -121,3 +121,6 @@ Codename: dose-chips-44
 ## v2.94d — 2026-09-17
 - Revert unsubstantiated hero social-proof strip (Marketing/ELITE FTC flag)
 - Restore RUO disclaimer under hero CTAs
+
+## v2.94e — 2026-09-17
+- Hero trust SoT: 20 research compounds · 45K+ customers · Lot docs on request (no ★/reviews; no Same-day)

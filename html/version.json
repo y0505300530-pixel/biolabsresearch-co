@@ -1,10 +1,10 @@
 {
-  "version": "2.94d",
+  "version": "2.94e",
   "released": "2026-09-17",
-  "codename": "hero-ruo-restore-ftc",
-  "appVersion": "2.94d",
+  "codename": "hero-trust-marketing-sot",
+  "appVersion": "2.94e",
   "highlights": [
-    "Revert hero trust strip (4.8\u2605 / 12k reviews / 65k customers / same-day) \u2014 FTC/Marketing STOP",
-    "Restore RUO line under CTAs: Research use only \u2014 not for human consumption."
+    "Hero under CTAs: 20 research compounds \u00b7 45K+ customers \u00b7 Lot docs on request",
+    "Marketing SoT: no stars/reviews; Same-day held until ops confirms; 20 = live API SKU count"
   ]
 }
