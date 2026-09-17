@@ -214,3 +214,6 @@ Codename: dose-chips-44
 
 ## v2.98i — 2026-09-17
 - COA modal mobile: fix overflow + visible Download PDF
+
+## v2.98j — 2026-09-17
+- Fix #coa-request-modal overflow @320 (Request lot COA form)

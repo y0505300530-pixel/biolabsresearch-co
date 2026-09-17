@@ -1,9 +1,9 @@
 {
-  "version": "2.98i",
+  "version": "2.98j",
   "released": "2026-09-17",
-  "codename": "coa-modal-mobile-fix",
-  "appVersion": "2.98i",
+  "codename": "coa-request-modal-mobile",
+  "appVersion": "2.98j",
   "highlights": [
-    "COA modal rebuilt for mobile: no horizontal overflow, Download PDF always visible @320"
+    "COA request modal no horizontal overflow @320; stack name fields; navy submit"
   ]
 }

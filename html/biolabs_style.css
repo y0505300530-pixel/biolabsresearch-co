@@ -13623,3 +13623,51 @@ html body .cart-close {
   }
 }
 /* === end v2.98i === */
+
+/* === v2.98j COA request modal mobile (primary Docs CTA) === */
+@media (max-width: 414px) {
+  #coa-request-modal {
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    left: 0 !important;
+    right: 0 !important;
+    align-items: flex-start !important;
+  }
+  #coa-request-modal > div {
+    width: min(100%, calc(100vw - 16px)) !important;
+    max-width: calc(100vw - 16px) !important;
+    margin: 12px auto !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  #coa-request-modal > div > div:first-child,
+  #coa-request-form {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+  }
+  /* First/Last name: stack instead of 2-col grid */
+  #coa-request-form > div[style*="grid-template-columns"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  #coa-request-modal input,
+  #coa-request-modal textarea,
+  #coa-request-modal label,
+  #coa-request-modal button,
+  #coa-request-modal p,
+  #coa-request-modal strong {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #coa-req-submit {
+    background: #0d2137 !important;
+    min-height: 44px !important;
+  }
+}
+/* === end v2.98j === */
