@@ -171,6 +171,9 @@
       if (!buy) return;
       var packs = placePacks(hero, buy);
       placeUnitPrice(buy, packs);
+      buy.querySelectorAll('.price-section').forEach(function (el) {
+        el.style.display = 'none';
+      });
       ensureTrust(buy);
       labelAtc(document.getElementById('qtyAtc'));
       labelAtc(document.getElementById('semaxQtyAtc'));

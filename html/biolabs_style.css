@@ -13511,9 +13511,9 @@ body.product-page,
 #product-container .pdp-split .trust-items {
   display: none !important;
 }
-html.qty-upsell-on .pdp-split .qty-upsell-span .price-row,
-html.qty-upsell-on .pdp-split .semax-qty-span .price-row,
-#product-container .pdp-split .pdp-unit-price {
+html.qty-upsell-on .pdp-split .price-section {
+  display: none !important;
+}
   display: flex !important;
   align-items: baseline;
   gap: 10px;
@@ -13687,12 +13687,14 @@ html.qty-upsell-on .pdp-split .semax-qty-span .price-row,
   max-width: 360px;
 }
 @media (max-width: 800px) {
+  #product-container .pdp-split .qty-str-card .qty-badge,
+  #product-container .pdp-split .semax-str-card .semax-qty-badge {
+    display: none !important;
+  }
   #product-container .pdp-split .qty-str-card,
-  #product-container .pdp-split .qty-pack-card,
-  #product-container .pdp-split .semax-str-card,
-  #product-container .pdp-split .semax-qty-card,
-  #product-container .pdp-split .size-btn,
-  #product-container .pdp-split .dose-chip {
+  #product-container .pdp-split .semax-str-card {
+    padding-right: 40px !important;
+  }
     min-height: 44px !important;
     min-width: 44px !important;
   }
