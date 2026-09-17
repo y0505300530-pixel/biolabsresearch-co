@@ -73,11 +73,13 @@ hardcoded cards and edits in CRM Site texts do not appear.
 
 ## Card payments
 
-**Owner decision (2026-09-17, v2.99b `umg-checkout-hook`):** The storefront card path POSTs
+**Owner decision (2026-09-17, CRM storefront charge SoT):** The storefront card path POSTs
 customer + card fields from the browser to the CRM sidecar
-`https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). The storefront does not call
-`pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`. Infra (Alejandro) reviews before
-customers see live charges — see `QA_TASKS.md` P1.
+`https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). Required key is
+`idempotencyKey` (camelCase; `extOrderId` is an accepted alias — never `idempotency_key`).
+The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
+Visible site tip stays **v2.99a** until Soft-QA authorize; do not stamp 2.99b yet.
+Infra (Alejandro) reviews before customers see live charges — see `QA_TASKS.md` P1.
 
 **No card data on the storefront Node service.** Never add a field, script or route that sends a
 full card number, expiry date or CVV to `/api/*` on this site, the Node service behind it, or a new

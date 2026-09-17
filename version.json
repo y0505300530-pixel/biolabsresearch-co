@@ -1,12 +1,11 @@
 {
-  "version": "2.99b",
+  "version": "2.99a",
   "released": "2026-09-17",
-  "codename": "umg-checkout-hook",
-  "appVersion": "2.99b",
+  "codename": "related-stock-hide-fab-clear",
+  "appVersion": "2.99a",
   "highlights": [
-    "Checkout card path POSTs to CRM UMG sidecar /api/checkout/charge",
-    "Success UI and GA checkout_complete only after ok===true",
-    "Simulation banner removed; crypto path unchanged",
-    "No PAN/CVV in console, localStorage, or storefront /api/*"
+    "Related/pairs cards: remove In stock badges (no invented stock)",
+    "Restore v2.98o FAB clear-zone @320-390 home/catalog/tools (48px icon FAB)",
+    "PDP split/trust/tabs from v2.99 unchanged; science/terms FAB hide + COA Close z-index kept"
   ]
 }

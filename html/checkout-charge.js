@@ -1,5 +1,6 @@
-/*! checkout-charge.js v1 — CRM UMG sidecar hook (v2.99b umg-checkout-hook).
+/*! checkout-charge.js v2 — CRM storefront charge SoT.
    POST https://crm.biolabsresearch.co/api/checkout/charge
+   Required: idempotencyKey (camelCase; extOrderId accepted as alias). Never idempotency_key.
    Never logs or stores full PAN/CVV. Idempotency is stable for one in-flight submit. */
 (function (root) {
   'use strict';
@@ -179,11 +180,13 @@
     var key = idempotencyKey(fp, !!input.rotateKey);
     var body = {
       idempotencyKey: key,
+      extOrderId: key,
       amount: amount,
       currency: 'USD',
       customer: customer,
       items: items,
       card: card,
+      subscriptionStatus: 0,
       notes: String(input.notes || '')
     };
 
