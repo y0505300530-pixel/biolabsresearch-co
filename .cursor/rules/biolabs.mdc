@@ -51,6 +51,27 @@ Relative only: `/api/products`, never `https://biolabsresearch.co/api/...`. The 
 No accounts exist: never write "sign in", "my account" or "track your order". No invented purity
 percentages, no fabricated reviews, no dosing or human-use advice. Certificates are "on request".
 
+# Card payments
+
+Not live yet. Infra reviews any payment code before customers see it.
+
+- No full card number, expiry date or CVV may reach our code: `/api/*`, the Node service, a new
+  endpoint, anything in this repo. Card details go only into the provider's own secure fields or
+  hosted page, for example the Tagada checkout.
+- Do not connect a gateway that takes card data from the merchant server. That includes UMG
+  (`pay.umg.inc/rest/v1/transactions` wants the card number and CVV in the request body) and its
+  WooCommerce plugin; this site is not WordPress. Do not copy the plugin's checkout script: it prints
+  the card number and CVV to the browser console.
+- No payment keys in pages, scripts, commit messages or logs. Secret keys live on the server, with infra.
+- An order keeps only the last four digits and the provider's transaction ID. CVV is never stored or logged.
+- The amount to charge is the server's total, never a number read from the page.
+- An order is paid only after the server confirms status and amount with the provider's API.
+  A redirect or callback alone proves nothing.
+- No Apple Pay or Google Pay logos unless the provider takes them. The checkout "card simulation"
+  sends only the last four digits; keep it that way until real provider fields replace it.
+- Before payment code goes live, add a row to `QA_TASKS.md` with owner `infra`. Exceptions need a
+  written decision by the business owner, recorded in `AGENTS.md`.
+
 # Working here
 
 Small commits with a readable prefix. The server working copy is live and shared: check `git status`

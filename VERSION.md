@@ -13,7 +13,8 @@ Codename: pdp-institutional-split
 - **Chrome**: Yehuda split structure with navy `#0d2137` / gold / `#F2EFE9`. No thumbnail strip. No IN STOCK on PDP media.
 - **Mobile**: photo stacked above buy; 44px tap targets; ATC full-width; floating View cart does not cover ATC.
 - **qty-upsell.js**: packs mount inside `.pdp-buy-col` (no full-width span). Commit note: shared script touched only for layout mount.
-- CSS `biolabs_style.css?v=396`. Homepage hero + Popular catalog cards not restyled.
+- CSS `biolabs_style.css?v=402`. Homepage hero + Popular catalog cards not restyled.
+- **Keeps v2.98o**: FAB clear-zones (home/catalog/tools), `#coa-modal` z-index above sticky nav, science/terms FAB hide.
 
 ---
 
@@ -224,3 +225,31 @@ Codename: dose-chips-44
 
 ## v2.98f — 2026-09-17
 - Catalog card bottom clear-zone + icon-only floating View cart (no CTA overlap @320–414)
+
+## v2.98g — 2026-09-17
+- Sitewide FAB clear-zone; COA modal overflow @320; cart close above nav
+
+## v2.98h — 2026-09-17
+- Hide FAB on science/terms; COA modal no overflow @320
+
+## v2.98i — 2026-09-17
+- COA modal mobile: fix overflow + visible Download PDF
+
+## v2.98j — 2026-09-17
+- Fix #coa-request-modal overflow @320 (Request lot COA form)
+
+## v2.98k — 2026-09-17
+- Force-stack COA request name fields; kill @320 horizontal scroll
+- PDP footer/meta synced sitewide to 2.98k (ELITE version gate)
+
+## v2.98l — 2026-09-17
+- Raise COA modals above sticky nav (ELITE Close FAIL)
+
+## v2.98m — 2026-09-17
+- Restore FAB clear-zone: icon FAB + right gutter + catalog CTA padding (ELITE FAIL)
+
+## v2.98n — 2026-09-17
+- Tools FAB clear-zone for .tr-cards (Soft-QA FAIL on /tools)
+
+## v2.98o — 2026-09-17
+- Home primary CTA / catalog FAB clear-zone without touching tools
