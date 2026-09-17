@@ -7,6 +7,7 @@
   var TRUST = '<li>Research use only</li><li>Lot docs on request</li><li>COA on request</li>';
   var BOUND = false;
   var BUSY = false;
+  var PENDING = false;
 
   function onPdp() {
     return /\/products\//.test(location.pathname);
@@ -141,7 +142,7 @@
       + '<article><p class="pdp-og-kicker">Documentation</p><h3>Lot docs on request</h3><p>Lot identity belongs on the matching lot file when issued. This page does not invent a lot number.</p></article>'
       + '<article><p class="pdp-og-kicker">Certificate</p><h3>COA on request</h3><p>Inquire for the certificate of analysis. No purity % is invented on this page.</p></article>'
       + '<article><p class="pdp-og-kicker">Use</p><h3>Research use only</h3><p>Laboratory research reagent. Not a medicine and not for human consumption.</p></article>'
-      + '<article><p class="pdp-og-kicker">Records</p><h3>Traceable lots</h3><p>Lot-specific records sit on the COA when a file is issued.</p></article>'
+      + '<article><p class="pdp-og-kicker">Records</p><h3>Lot records</h3><p>Lot-specific records sit on the COA when a file is issued.</p></article>'
       + '</div>'
       + '<p class="pdp-ruo-banner">Research use only. Not for human consumption. Not a medicine.</p>';
   }
@@ -215,7 +216,8 @@
     });
   }
   function enhance() {
-    if (!onPdp() || BUSY) return;
+    if (!onPdp()) return;
+    if (BUSY) { PENDING = true; return; }
     var box = document.getElementById('product-container');
     if (!box) return;
     var hero = box.querySelector('.product-hero');
@@ -241,6 +243,10 @@
       adopt(box, hero, buy, tabs);
     } finally {
       BUSY = false;
+      if (PENDING) {
+        PENDING = false;
+        setTimeout(enhance, 0);
+      }
     }
   }
   function observe() {
@@ -249,7 +255,6 @@
     if (typeof MutationObserver !== 'function') return;
     var t = null;
     var obs = new MutationObserver(function () {
-      if (BUSY) return;
       if (t) clearTimeout(t);
       t = setTimeout(enhance, 0);
     });

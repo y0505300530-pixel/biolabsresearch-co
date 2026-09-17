@@ -13515,9 +13515,9 @@ body.product-page .breadcrumb a:hover {
 #product-container .pdp-split .nl-photo-badge,
 #product-container .pdp-split .pdp-ship-note,
 #product-container .pdp-split .pdp-atc-note,
-body.product-page .pdp-review,
-body.product-page .pdp-docs-wrap,
-body.product-page .pdp-expect-wrap {
+.pdp-review,
+.pdp-docs-wrap,
+.pdp-expect-wrap {
   display: none !important;
 }
 #product-container .pdp-split .product-category-label {

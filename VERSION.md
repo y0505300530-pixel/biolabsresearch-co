@@ -13,7 +13,7 @@ Codename: pdp-institutional-split
 - **Chrome**: Yehuda split structure with navy `#0d2137` / gold / `#F2EFE9`. No thumbnail strip. No IN STOCK on PDP media.
 - **Mobile**: photo stacked above buy; 44px tap targets; ATC full-width; floating View cart does not cover ATC.
 - **qty-upsell.js**: packs mount inside `.pdp-buy-col` (no full-width span). Commit note: shared script touched only for layout mount.
-- CSS `biolabs_style.css?v=395`. Homepage hero + Popular catalog cards not restyled.
+- CSS `biolabs_style.css?v=396`. Homepage hero + Popular catalog cards not restyled.
 
 ---
 
