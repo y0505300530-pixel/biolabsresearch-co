@@ -2,7 +2,8 @@
    1/2/3 bottle packs. Pack units from the selected strength's list price U:
      1: U    2: round(U*89/99)    3: round(U*79/99)
    Same ratios as Semax 99→89 / 99→79. Prices come from /api/products only.
-   mg-picker.js is hidden, not rewritten. Cart lines carry mg + pack_tiers. */
+   mg-picker.js is hidden, not rewritten. Cart lines carry mg + pack_tiers.
+   v2.99: mount packs inside .pdp-buy-col (right rail), not as a full-width grid span. */
 (function () {
   var RATIO2 = 89 / 99;
   var RATIO3 = 79 / 99;
@@ -137,13 +138,8 @@
     s.id = CSS_ID;
     s.textContent = [
       '.qty-upsell-hero{min-width:0}',
-      '.qty-upsell-hero .product-img-section{position:static!important}',
-      '.qty-upsell-span{grid-column:1/-1;min-width:0;max-width:100%;position:relative;z-index:2}',
-      '@media(max-width:800px){',
-      '.qty-upsell-hero .pdp-buy-col{order:1!important}',
-      '.qty-upsell-hero .product-img-section{order:2!important}',
-      '.qty-upsell-hero .qty-upsell-span{order:3!important}',
-      '}',
+      '.qty-upsell-span{min-width:0;max-width:100%;position:relative;z-index:2}',
+      '.pdp-split .qty-upsell-span,.pdp-split .semax-qty-span{grid-column:auto!important}',
       '.qty-upsell-on #mgPicker,',
       '.qty-upsell-on .size-label,',
       '.qty-upsell-on .size-options,',
@@ -266,7 +262,10 @@
     if (existing) {
       var have = existing.querySelectorAll('#qtyStrength [data-mg]').length;
       var want = strengths.length >= 2 ? strengths.length : 0;
-      if (have === want) return existing;
+      if (have === want) {
+        placePacksInBuy(hero, existing);
+        return existing;
+      }
       existing.remove();
     }
     if (document.getElementById('semaxQtyPacks')) return null;
@@ -290,13 +289,29 @@
       (document.getElementById('pdpQty') ? '' : '<span id="pdpQty" hidden>' + qty + '</span>') +
       '<div class="qty-cta">' +
         '<span class="qty-cta-meta" id="qtyCtaMeta"></span>' +
-        '<button type="button" class="qty-cta-btn" id="qtyAtc">Add to cart</button>' +
+        '<button type="button" class="qty-cta-btn" id="qtyAtc">ADD TO CART</button>' +
       '</div>';
-    var sticky = hero.querySelector('#pdpStickyBuy, .pdp-sticky-buy');
-    if (sticky) hero.insertBefore(span, sticky);
-    else hero.appendChild(span);
+    placePacksInBuy(hero, span);
     relocateNotes(span);
+    if (typeof window.pdpSplitEnhance === 'function') window.pdpSplitEnhance();
     return span;
+  }
+  function placePacksInBuy(hero, span) {
+    if (!hero || !span) return;
+    var buy = hero.querySelector('.pdp-buy-col');
+    var sticky = hero.querySelector('#pdpStickyBuy, .pdp-sticky-buy');
+    if (buy) {
+      if (span.parentNode !== buy) {
+        var price = buy.querySelector('.price-section');
+        var stickyInBuy = buy.querySelector('#pdpStickyBuy, .pdp-sticky-buy');
+        if (price && price.parentNode === buy) price.insertAdjacentElement('afterend', span);
+        else if (stickyInBuy) buy.insertBefore(span, stickyInBuy);
+        else buy.appendChild(span);
+      }
+      return;
+    }
+    if (sticky) hero.insertBefore(span, sticky);
+    else if (!span.parentNode) hero.appendChild(span);
   }
   function relocateNotes(span) {
     if (!span || span.querySelector('.pdp-ship-note')) return;
@@ -306,8 +321,7 @@
       var el = buy.querySelector('.' + cls);
       if (el) span.appendChild(el);
     });
-    var coa = buy.querySelector('.btn-coa-secondary');
-    if (coa) span.appendChild(coa);
+    /* v2.99: COA stays for Docs tab — do not pull Request lot COA into the pack CTA */
   }
   function paint() {
     var slug = slugFromPath();
@@ -480,7 +494,7 @@
     if (btn) {
       var o = btn.textContent;
       btn.textContent = '✓ Added!';
-      btn.style.background = '#2a7a4a';
+      btn.style.background = '#0d2137';
       setTimeout(function () { btn.textContent = o; btn.style.background = ''; }, 1800);
     }
     var _cd = document.getElementById('cartDrawer');
@@ -557,6 +571,7 @@
     bind();
     installAdd();
     paint();
+    if (typeof window.pdpSplitEnhance === 'function') window.pdpSplitEnhance();
   }
   function adoptApi(items) {
     if (!items || !items.length) return;

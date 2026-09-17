@@ -1,3 +1,21 @@
+# biolabsresearch.co — Version 2.99
+
+Released 2026-09-17.
+
+Codename: pdp-institutional-split
+
+## Highlights
+
+- **PDP split**: Every catalog product page uses an institutional two-column layout — vial photo left (square 1:1, `#F2EFE9`, `object-fit: contain`), buy panel right. No thumbnail strip.
+- **Buy panel**: Product name → strength (mg) → 1/2/3 bottle packs (existing `qty-upsell.js` math) → unit price → **ADD TO CART**. Cart/ATC/pack pricing unchanged.
+- **Trust row** under CTA: Lot docs on request · HPLC · Traceable. No stars, review counts, “In stock”, or “Ships today”.
+- **Tabs** below the split: Overview | Specs | Docs (existing RUO copy, CAS/identity/formula, Request lot COA).
+- **Mobile**: photo stacked above buy; 44px tap targets; ATC full-width; floating View cart does not cover ATC.
+- **qty-upsell.js**: packs mount inside `.pdp-buy-col` (no full-width span). Commit note: shared script touched only for layout mount.
+- CSS `biolabs_style.css?v=393`. Homepage hero + Popular catalog cards not restyled.
+
+---
+
 # biolabsresearch.co — Version 2.98
 
 Released 2026-09-17.

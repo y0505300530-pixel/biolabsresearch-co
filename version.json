@@ -1,9 +1,11 @@
 {
-  "version": "2.98f",
+  "version": "2.99",
   "released": "2026-09-17",
-  "codename": "catalog-clear-floating-cart",
-  "appVersion": "2.98f",
+  "codename": "pdp-institutional-split",
+  "appVersion": "2.99",
   "highlights": [
-    "Mobile: 72px clear under catalog card CTAs + icon-only View cart FAB so dock does not cover View details/ATC"
+    "All SKU PDPs: institutional split (vial media left / buy panel right)",
+    "Strength then 1/2/3 qty packs then unit price then ADD TO CART; cart JS unchanged",
+    "Tabs Overview | Specs | Docs below the split; RUO trust row; no stars / In stock / Ships today"
   ]
 }
