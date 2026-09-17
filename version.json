@@ -1,10 +1,10 @@
 {
-  "version": "2.94c",
+  "version": "2.94d",
   "released": "2026-09-17",
-  "codename": "hero-trust-strip",
-  "appVersion": "2.94c",
+  "codename": "hero-ruo-restore-ftc",
+  "appVersion": "2.94d",
   "highlights": [
-    "Hero CTA strip: 4.8\u2605 \u00b7 12,000+ reviews \u00b7 65k+ customers \u00b7 Same-day dispatch (replaced RUO line under buttons)",
-    "RUO disclaimer remains in age-gate/footer/elsewhere \u2014 not removed sitewide"
+    "Revert hero trust strip (4.8\u2605 / 12k reviews / 65k customers / same-day) \u2014 FTC/Marketing STOP",
+    "Restore RUO line under CTAs: Research use only \u2014 not for human consumption."
   ]
 }

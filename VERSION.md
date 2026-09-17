@@ -117,3 +117,7 @@ Codename: dose-chips-44
 ## v2.94c — 2026-09-17
 - Hero trust strip under CTAs (4.8★ / 12k+ reviews / 65k+ customers / Same-day dispatch)
 - Replaces former nl-ruo line; RUO kept elsewhere
+
+## v2.94d — 2026-09-17
+- Revert unsubstantiated hero social-proof strip (Marketing/ELITE FTC flag)
+- Restore RUO disclaimer under hero CTAs
