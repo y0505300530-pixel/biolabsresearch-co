@@ -1,10 +1,10 @@
 {
-  "version": "2.97",
+  "version": "2.97a",
   "released": "2026-09-17",
-  "codename": "hero-match-mock",
-  "appVersion": "2.97",
+  "codename": "restore-plan-your-order-heading",
+  "appVersion": "2.97a",
   "highlights": [
-    "Hero layout matched to Yehuda mock: airy split, 4-feature row, cinematic loop, Lot docs badge",
-    "CTAs Browse research compounds / View sample COA; navy/gold only; no SHIPS TODAY"
+    "Restore homepage tools h2 to Plan your order before you buy",
+    "Drop C1V1 dilution from tools section lead; keep dilution calculator card"
   ]
 }

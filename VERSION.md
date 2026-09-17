@@ -147,3 +147,7 @@ Codename: dose-chips-44
 ## v2.96 — 2026-09-17
 - Hero split redesign (brand colors, our vial, Lot docs badge)
 - Strip unverified carousel star proof
+
+## v2.97a — 2026-09-17
+- Restore homepage tools h2 to **Plan your order before you buy**
+- Drop C1V1 dilution from tools lead; keep dilution calculator card
