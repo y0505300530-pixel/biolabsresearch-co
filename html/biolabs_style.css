@@ -12695,3 +12695,29 @@ button.product-card-mg:focus-visible{
 }
 
 /* v2.96d: video absolute rule removed — static cinematic still */
+
+
+/* === v2.96e hero breathing room (Yehuda: less cramped, like mock) === */
+.hero-v296 .nl-copy { padding-top: 24px !important; }
+.hero-v296 .nl-kicker { margin: 0 0 14px !important; }
+.hero-v296 .nl-title { margin: 0 0 14px !important; line-height: 1.18 !important; }
+.hero-v296 .nl-sub { margin: 0 0 22px !important; max-width: 34em !important; }
+.hero-v296 .nl-feats {
+  margin: 0 0 26px !important;
+  gap: 14px 18px !important;
+  grid-template-columns: 1fr 1fr !important;
+}
+.hero-v296 .nl-feat { gap: 10px !important; font-size: 13px !important; }
+.hero-v296 .nl-feat-ico { width: 30px !important; height: 30px !important; }
+.hero-v296 .nl-actions {
+  margin: 0 0 18px !important;
+  gap: 12px !important;
+}
+.hero-v296 .nl-trust { margin: 0 !important; }
+.hero-v296 .nl-hero--split { gap: 36px 48px !important; align-items: start !important; }
+@media (max-width: 899px) {
+  .hero-v296 .nl-copy { padding-top: 8px !important; }
+  .hero-v296 .nl-sub { margin-bottom: 18px !important; }
+  .hero-v296 .nl-feats { margin-bottom: 22px !important; gap: 12px !important; }
+  .hero-v296 .nl-actions { margin-bottom: 16px !important; }
+}

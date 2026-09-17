@@ -1,9 +1,9 @@
 {
-  "version": "2.96d",
+  "version": "2.96e",
   "released": "2026-09-17",
-  "codename": "hero-image-restore",
-  "appVersion": "2.96d",
+  "codename": "hero-spacing-breathing",
+  "appVersion": "2.96e",
   "highlights": [
-    "Hero: show existing cinematic still (jpg) reliably \u2014 fix blank/dead space from absolute video CSS conflict"
+    "Hero vertical breathing room: title\u2192sub\u21922\u00d72 feats\u2192CTAs\u2192trust like mock (less cramped)"
   ]
 }
