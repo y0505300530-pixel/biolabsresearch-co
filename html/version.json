@@ -1,11 +1,10 @@
 {
-  "version": "2.97b",
+  "version": "2.97c",
   "released": "2026-09-17",
-  "codename": "catalog-ruo-short-line",
-  "appVersion": "2.97b",
+  "codename": "tools-heading-yehuda-sot",
+  "appVersion": "2.97c",
   "highlights": [
-    "Remove catalog section-kicker Most popular among researchers",
-    "Replace long catalog-ruo copy with short Research use only under h2",
-    "Polish catalog-ruo typography above product grid; tighten header spacing"
+    "Restore tools h2 Laboratory research calculations (Yehuda screenshot SoT)",
+    "Restore C1V1 dilution in tools lead; remove Plan your order"
   ]
 }

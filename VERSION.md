@@ -151,3 +151,7 @@ Codename: dose-chips-44
 ## v2.97a — 2026-09-17
 - Restore homepage tools h2 to **Plan your order before you buy**
 - Drop C1V1 dilution from tools lead; keep dilution calculator card
+
+## v2.97c — 2026-09-17
+- Restore tools h2 to **Laboratory research calculations** (Yehuda SoT)
+- Restore C1V1 dilution in tools lead; remove Plan your order
