@@ -167,3 +167,6 @@ Codename: dose-chips-44
 ## v2.97f — 2026-09-17
 - Remove only hero vial **Lot docs** photo badge (`nl-photo-badge`)
 - Keep trust Lot docs on request + Lot-specific documentation feat
+
+## v2.97g — 2026-09-17
+- Add only small **in stock** pill (green dot) upper-left on hero vial photo

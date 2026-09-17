@@ -1,10 +1,10 @@
 {
-  "version": "2.97f",
+  "version": "2.97g",
   "released": "2026-09-17",
-  "codename": "hero-drop-lot-docs-photo-badge",
-  "appVersion": "2.97f",
+  "codename": "hero-in-stock-photo-badge",
+  "appVersion": "2.97g",
   "highlights": [
-    "Remove only hero vial nl-photo-badge Lot docs",
-    "Keep trust Lot docs on request and feat Lot-specific documentation"
+    "Add only small in stock pill (green dot) upper-left on hero vial photo",
+    "Reuse nl-photo-badge; no other hero/copy changes"
   ]
 }

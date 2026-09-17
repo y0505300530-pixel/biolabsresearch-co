@@ -12814,3 +12814,15 @@ button.product-card-mg:focus-visible{
   .hero-v296 .nl-stage--photo{ order:-1 !important; }
   .hero-v296 .nl-feat{ max-width:none; flex:1 1 45%; }
 }
+
+/* v2.97g: in-stock pill on hero photo */
+.hero-v296 .nl-photo-badge{
+  display:inline-flex; align-items:center; gap:6px;
+  padding:6px 10px; border-radius:999px;
+  font-weight:600; letter-spacing:.01em; text-transform:none;
+}
+.hero-v296 .nl-stock-dot{
+  width:7px; height:7px; border-radius:50%;
+  background:#2f9e64; box-shadow:0 0 0 2px rgba(47,158,100,.18);
+  flex:0 0 auto;
+}
