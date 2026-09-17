@@ -1,10 +1,9 @@
 {
-  "version": "2.96b",
+  "version": "2.96c",
   "released": "2026-09-17",
-  "codename": "hero-existing-cinematic",
-  "appVersion": "2.96b",
+  "codename": "hero-no-dead-space",
+  "appVersion": "2.96c",
   "highlights": [
-    "Hero media: restore existing BIO LABS cinematic vial (not new hero-vial.png)",
-    "Keep split layout + Lot docs badge + Marketing features/CTAs"
+    "Hero vial card: 16:9 cover fill \u2014 remove empty dead space under cinematic"
   ]
 }
