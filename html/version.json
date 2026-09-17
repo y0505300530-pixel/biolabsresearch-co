@@ -1,10 +1,10 @@
 {
-  "version": "2.96a",
+  "version": "2.96b",
   "released": "2026-09-17",
-  "codename": "hero-hplc-claim-tighten",
-  "appVersion": "2.96a",
+  "codename": "hero-existing-cinematic",
+  "appVersion": "2.96b",
   "highlights": [
-    "Hero feature: HPLC analysis (drop MS \u2014 sample COAs show HPLC chromatogram, not MS)",
-    "Marketing RUO lock"
+    "Hero media: restore existing BIO LABS cinematic vial (not new hero-vial.png)",
+    "Keep split layout + Lot docs badge + Marketing features/CTAs"
   ]
 }

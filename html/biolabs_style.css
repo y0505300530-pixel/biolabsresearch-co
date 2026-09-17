@@ -12685,3 +12685,7 @@ button.product-card-mg:focus-visible{
   .hero-v296 .nl-stage--photo { order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
   .hero-v296 .nl-feats { grid-template-columns: 1fr; }
 }
+
+.hero-v296 .nl-hero-vial.hero-video{
+  width:100%;height:100%;object-fit:cover;display:block;background:#f2efe9;
+}
