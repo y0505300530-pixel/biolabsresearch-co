@@ -227,3 +227,6 @@ Codename: dose-chips-44
 
 ## v2.98m — 2026-09-17
 - Restore FAB clear-zone: icon FAB + right gutter + catalog CTA padding (ELITE FAIL)
+
+## v2.98n — 2026-09-17
+- Tools FAB clear-zone for .tr-cards (Soft-QA FAIL on /tools)

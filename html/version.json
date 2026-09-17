@@ -1,10 +1,10 @@
 {
-  "version": "2.98m",
+  "version": "2.98n",
   "released": "2026-09-17",
-  "codename": "fab-clear-zone-restore",
-  "appVersion": "2.98m",
+  "codename": "tools-fab-clear-tr",
+  "appVersion": "2.98n",
   "highlights": [
-    "Restore FAB icon-only + right gutter clear-zone on home/catalog/tools (ELITE FAIL)",
-    "Keep COA Close above nav from 2.98l"
+    "Tools FAB clear-zone via .tr-wrap/.tr-cards (2.98m missed)",
+    "Home/catalog clear + COA Close above nav kept"
   ]
 }

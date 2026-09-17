@@ -13831,3 +13831,44 @@ html body:has(#coa-modal[style*="flex"]) .sticky-cart-dock {
 }
 /* science/terms keep FAB hidden (2.98h) */
 /* === end v2.98m === */
+
+/* === v2.98n tools FAB clear (tr-* classes — 2.98m missed tools-hub) === */
+@media (max-width: 800px) {
+  /* Tools hub uses .tr-wrap / .tr-cards / .tr-card — not .tools-hub */
+  html body main.tr-wrap,
+  html body .tr-wrap,
+  html body .tr-cards,
+  html body .tr-hero {
+    padding-right: 64px !important;
+    box-sizing: border-box !important;
+  }
+  html body .tr-cards,
+  html body .tr-wrap {
+    padding-bottom: calc(100px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  html body .tr-cta-row {
+    padding-right: 8px !important;
+    padding-bottom: 16px !important;
+    flex-wrap: wrap !important;
+    gap: 10px !important;
+  }
+  html body .tr-card,
+  html body a.tr-card {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  /* Keep icon FAB corner; do not cover tool cards */
+  html body:has(main.tr-wrap) .sticky-cart-dock,
+  html body:has(.tr-cards) .sticky-cart-dock {
+    left: auto !important;
+    right: max(10px, env(safe-area-inset-right, 0px)) !important;
+    transform: none !important;
+    width: 48px !important;
+    max-width: 48px !important;
+    min-width: 48px !important;
+    height: 48px !important;
+    padding: 0 !important;
+    font-size: 0 !important;
+  }
+}
+/* === end v2.98n === */
