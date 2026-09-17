@@ -1,3 +1,19 @@
+# biolabsresearch.co — Version 2.95
+
+Released 2026-09-17.
+
+Codename: lab-calculators-reconstitution-dilution
+
+## Highlights
+
+- **NEW** `/tools/reconstitution` — vial amount (mg) + diluent volume (mL) → concentration; optional aliquot mass. Client-side only.
+- **Upgrade** `/tools/dilution` — unique C1V1 = C2V2 + serial fold helper (no longer a twin of reconstitution math).
+- **SEO**: both pages `index,follow` with unique title/meta. `/tools/solution-dilution` 301 → reconstitution (same former math). `/tools/units` stays 301 → unit-converter (SEO #22 thin alias; not dilution).
+- **Copy lock**: RUO near results; CTAs Request catalog / Inquire; no dosing or Buy language.
+- **GA4** (after Cookie Accept via `blrTrack`): `reconstitution_calc`, `dilution_calc`, optional `tool_inquire`.
+
+---
+
 # biolabsresearch.co — Version 2.94
 
 Released 2026-09-16.

@@ -323,17 +323,23 @@ def _tool(path, topic, canonical, desc):
     }
 
 PAGES.update({
+    "html/tools/reconstitution.html": _tool(
+        "html/tools/reconstitution.html",
+        "Reconstitution Calculator",
+        f"{HOST}/tools/reconstitution",
+        "Client-side reconstitution math for laboratory research calculations: vial amount (mg) and diluent volume (mL) to concentration (mg/mL). Research use only — not medical advice.",
+    ),
     "html/tools/dilution.html": _tool(
         "html/tools/dilution.html",
-        "Solution Dilution Tool",
+        "Dilution Calculator",
         f"{HOST}/tools/dilution",
-        "Work out mg per mL from vial mass and solvent volume on your own machine. This helper is not a protocol and does not replace laboratory SOPs. Research use only.",
+        "Client-side C1V1 = C2V2 dilution math for laboratory research calculations. Enter stock concentration, desired concentration, and final volume. Research use only — not medical advice.",
     ),
     "html/tools/solution-dilution.html": _tool(
         "html/tools/solution-dilution.html",
-        "Dilution Calculator Page",
-        f"{HOST}/tools/solution-dilution",
-        "Alternate URL for the same client-side dilution math: mass divided by solvent volume. No account and no stored results. Research use only, not a dosing tool.",
+        "Reconstitution Calculator",
+        f"{HOST}/tools/reconstitution",
+        "This URL now points to the reconstitution calculator for laboratory research calculations.",
     ),
     "html/tools/units.html": _tool(
         "html/tools/units.html",

@@ -1,11 +1,17 @@
 {
-  "version": "2.94",
-  "released": "2026-09-16",
-  "codename": "sitewide-qty-upsell-packs",
+  "version": "2.95",
+  "released": "2026-09-17",
+  "codename": "lab-calculators-reconstitution-dilution",
   "highlights": [
-    "Sitewide 1/2/3 qty packs on every catalog PDP (Semax-style UI)",
-    "Pack units: U / round(U\u00d789/99) / round(U\u00d779/99) from strength list prices",
-    "RUO/catalog chrome only \u2014 qty \u00b7 pack labels; no consumer save/deal copy",
-    "products-api + products-data expose pack_tiers_by_strength matching live PDP"
+    "NEW /tools/reconstitution: vial amount + diluent volume → concentration (optional aliquot)",
+    "Upgrade /tools/dilution to C1V1=C2V2 + serial folds (unique vs reconstitution)",
+    "solution-dilution 301 → reconstitution; units stays 301 → unit-converter",
+    "index,follow on both calculators; Request catalog / Inquire CTAs; RUO near results"
+  ],
+  "appVersion": "2.95",
+  "notes": [
+    "GA4 after Cookie Accept: reconstitution_calc, dilution_calc, tool_inquire (event_category=tools)",
+    "Existing lead events (inquiry, checkout_*, compare_view, selector_*) unchanged",
+    "v2.67 noindex on dilution was for a duplicate URL; dilution is now a unique C1V1 page"
   ]
 }
