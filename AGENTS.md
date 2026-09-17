@@ -14,7 +14,7 @@ The same files are also served on a second domain, `blrcommerce.io`.
 | `html/products/*.html` | 16 product pages, plus `product.html` — a template, not a public page |
 | `html/blog/*.html` | 27 articles and `index.html` |
 | `html/compare/`, `html/tools/` | comparison pages and calculators |
-| `html/checkout.html` | order form; posts to `/api/notify-order` |
+| `html/checkout.html` | order form; card path POSTs to CRM `/api/checkout/charge`; crypto still notifies `/api/notify-order` |
 | `html/*.js` | shared scripts loaded by every page |
 | `html/biolabs_style.css` | the only stylesheet |
 | `html/sitemap.xml` | must list every public page |
@@ -73,34 +73,32 @@ hardcoded cards and edits in CRM Site texts do not appear.
 
 ## Card payments
 
-Card payments are not live yet. Infra (Alejandro) reviews any payment code before customers see it.
+**Owner decision (2026-09-17, v2.99b `umg-checkout-hook`):** The storefront card path POSTs
+customer + card fields from the browser to the CRM sidecar
+`https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). The storefront does not call
+`pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`. Infra (Alejandro) reviews before
+customers see live charges — see `QA_TASKS.md` P1.
 
-**No card data reaches our server.** Never add a field, script or route that sends a full card number,
-expiry date or CVV to our own code: `/api/*`, the Node service behind it, a new endpoint, or anything
-served from this repo. Card details go only into the payment provider's own secure fields or hosted
-page, for example the Tagada checkout.
+**No card data on the storefront Node service.** Never add a field, script or route that sends a
+full card number, expiry date or CVV to `/api/*` on this site, the Node service behind it, or a new
+endpoint in this repo. Card details leave the browser only for the CRM charge URL above.
 
-**No gateway that takes card data from the merchant server.** That includes UMG: its REST API
-(`pay.umg.inc/rest/v1/transactions`) expects the card number and CVV in the request body. This site is
-not WordPress, so do not install or port the UMG WooCommerce plugin. Do not copy its checkout script
-either: it prints the card number and CVV to the browser console.
+**Do not install or port the UMG WooCommerce plugin.** This site is not WordPress. Do not copy that
+plugin's checkout script: it prints the card number and CVV to the browser console.
 
 **No payment keys in the repo**: not in pages, scripts, commit messages or logs. Secret keys live in
 the server environment, managed by infra.
 
 **Keep only the last four digits** of the card and the provider's transaction ID with an order.
-CVV is never stored or logged.
+CVV is never stored or logged. Do not `console.log` charge request or response bodies (they can
+contain PAN).
 
-**The server sets the amount to charge**: the total the API already calculates, never a number read
-from the page.
-
-**An order is paid only after the server confirms it with the provider.** A return from the payment
-page or a callback is only a signal. Check the transaction status and amount through the provider's
-API first.
+**The amount to charge** is the cart total sent to the CRM sidecar; CRM/UMG is the system of record
+for authorize. Do not treat a redirect or callback alone as paid.
 
 **Show only what works.** No Apple Pay or Google Pay logos unless the provider really takes those
-payments. The "card simulation" on checkout sends only the last four digits; keep it that way until
-real provider fields replace it.
+payments. Success UI and GA `checkout_complete` fire only when the charge response has `ok===true`.
+Do not show cascade / "trying another processor" copy.
 
 **Before payment code goes live**, add a row to `QA_TASKS.md` with owner `infra`. An exception to
 these rules needs a written decision by the business owner, recorded in this file.

@@ -14,6 +14,7 @@ was closed.
 
 | # | Finding | Owner | Status |
 |---|---|---|---|
+| P1 | v2.99b card checkout POSTs to the live CRM UMG sidecar (`https://crm.biolabsresearch.co/api/checkout/charge`). Infra review before customers see live charges. Soft-QA: sandbox authorize + decline; confirm no PAN/CVV in console or localStorage; GA `checkout_complete` only on `ok===true`. | infra | open |
 | H1 | Plus, minus and remove in the cart drawer did nothing on 17 product pages: `updateQty` used an undeclared `cart` and called `saveCart()` with no argument, which writes an empty cart | pages | done (pages, 2026-09-08) |
 | H2 | The discount code on checkout did nothing and the page could not say what a code was worth | infra | done (infra, 2026-09-07) |
 | H3 | Five blog articles were up to four times wider than a phone screen | infra | done (infra, 2026-09-07) |

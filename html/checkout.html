@@ -13,18 +13,18 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<title>Catalog Inquiry Form — BioLabs Research</title>
-<meta name="description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
+<title>Checkout — BioLabs Research</title>
+<meta name="description" content="Complete your research-use catalog checkout. Pay by card or send crypto USDT/USDC on ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://biolabsresearch.co/checkout">
-<meta property="og:title" content="Catalog Inquiry Form — BioLabs Research">
-<meta property="og:description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
+<meta property="og:title" content="Checkout — BioLabs Research">
+<meta property="og:description" content="Complete your research-use catalog checkout. Pay by card or send crypto USDT/USDC on ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
 <meta property="og:url" content="https://biolabsresearch.co/checkout">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Catalog Inquiry Form — BioLabs Research">
-<meta name="twitter:description" content="Complete your research-use catalog checkout. Card is simulation-only on this page; crypto USDT/USDC addresses provided for ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
+<meta name="twitter:title" content="Checkout — BioLabs Research">
+<meta name="twitter:description" content="Complete your research-use catalog checkout. Pay by card or send crypto USDT/USDC on ERC-20 or TRC-20. Fulfillment follows the published shipping policy.">
 <link rel="stylesheet" href="/biolabs_style.css?v=403">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -230,7 +230,8 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 /* PAYMENT METHOD v1.78 */
 .pm-option .pm-marks{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;align-items:center}
 .pm-option .pm-marks img{height:22px;width:auto;max-width:40px;object-fit:contain}
-.sim-banner{font-size:12px;color:#8a6a3a;background:#FFF8EE;border:1px solid #E8D9B8;border-radius:8px;padding:10px 12px;margin-bottom:12px;line-height:1.45}
+.charge-error{display:none;font-size:13px;color:#c0392b;background:#F7EDEA;border:1.5px solid #E2D1CA;border-radius:8px;padding:10px 12px;margin:12px 0 0;line-height:1.45}
+.charge-error.visible{display:block}
 .card-input-area .form-row{margin-bottom:0}
 .crypto-inline-note{font-size:12px;color:var(--muted);margin:10px 0 0;line-height:1.45}
 .crypto-warn{font-size:11px;color:var(--muted);text-align:center;margin:10px 0 0;line-height:1.5}
@@ -289,8 +290,9 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 </style>
 <script src="/cart-vial.js?v=314" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Inquiry", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="2.99a">
+<script src="/checkout-charge.js?v=1"></script>
+<script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Checkout", "item": "https://biolabsresearch.co/checkout"}]}</script>
+<meta name="app-version" content="2.99b">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -346,7 +348,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 <!-- MAIN CONTENT -->
 <div id="mainContent">
   <div class="checkout-page">
-    <h1 style="grid-column:1/-1;font-family:var(--font, system-ui, sans-serif);font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-0.5px;margin:0 0 8px">Catalog inquiry</h1>
+    <h1 style="grid-column:1/-1;font-family:var(--font, system-ui, sans-serif);font-size:28px;font-weight:800;color:var(--navy);letter-spacing:-0.5px;margin:0 0 8px">Checkout</h1>
 
     <!-- LEFT: FORM -->
     <div>
@@ -513,23 +515,22 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
         </div>
 
         <div class="card-input-area visible" id="cardInputArea">
-          <div class="sim-banner">Simulation only — your card is <strong>not charged</strong> on this page. No payment processor is connected.</div>
           <div class="form-group">
-            <label for="simCardName">Name on card</label>
-            <input type="text" id="simCardName" name="sim-card-name" autocomplete="cc-name" placeholder="Name as shown on card" maxlength="80">
+            <label for="cardName">Name on card</label>
+            <input type="text" id="cardName" name="ccname" autocomplete="cc-name" placeholder="Name as shown on card" maxlength="80">
           </div>
           <div class="form-group">
-            <label for="simCardNumber">Card number</label>
-            <input type="text" id="simCardNumber" name="sim-card-number" autocomplete="off" inputmode="numeric" placeholder="ACCT-000015" maxlength="24">
+            <label for="cardNumber">Card number</label>
+            <input type="text" id="cardNumber" name="cardnumber" autocomplete="cc-number" inputmode="numeric" placeholder="Card number" maxlength="24">
           </div>
           <div class="form-row">
             <div class="form-group">
-              <label for="simCardExpiry">Expiry</label>
-              <input type="text" id="simCardExpiry" name="sim-card-expiry" autocomplete="off" placeholder="MM/YY" maxlength="5">
+              <label for="cardExpiry">Expiry</label>
+              <input type="text" id="cardExpiry" name="cc-exp" autocomplete="cc-exp" inputmode="numeric" placeholder="MM/YY" maxlength="5">
             </div>
             <div class="form-group">
-              <label for="simCardCvc">CVC</label>
-              <input type="password" id="simCardCvc" name="sim-card-cvc" autocomplete="off" inputmode="numeric" placeholder="123" maxlength="4">
+              <label for="cardCvc">CVC</label>
+              <input type="password" id="cardCvc" name="cvc" autocomplete="cc-csc" inputmode="numeric" placeholder="123" maxlength="4">
             </div>
           </div>
         </div>
@@ -555,13 +556,14 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
           </div>
           <div id="couponNote" aria-live="polite" style="margin-top:6px;font-size:12px;line-height:1.5;min-height:16px"></div>
         </div>
+        <div class="charge-error" id="cardChargeError" role="alert" aria-live="polite"></div>
 <button class="btn-submit" id="placeOrderBtn" onclick="placeOrder()">
-          <span id="submitBtnText">Continue request</span>
+          <span id="submitBtnText">Place order</span>
           <div class="spinner" id="submitSpinner"></div>
         </button>
         <p id="ctaMicrocopy">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-          <span id="ctaMicrocopyText">Simulation only · no charge on this page · settle after inquiry</span>
+          <span id="ctaMicrocopyText">Card authorize · RUO catalog only</span>
         </p>
       </div>
     </div>
@@ -581,14 +583,13 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
           <div class="summary-lines">
             <div class="sum-line"><span>Subtotal</span><span id="sumSubtotal">$0</span></div>
             <div class="sum-line"><span>Shipping</span><span id="sumShipping">Free</span></div>
-            <!-- No live card fee — simulation / crypto -->
             <div class="sum-line total-line"><span>Total</span><span id="sumTotal">$0</span></div>
           </div>
         </div>
         <div class="trust-strip">
           <div class="trust-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            <span class="trust-row-text" style="display:block;min-width:0;max-width:100%;white-space:normal;overflow-wrap:break-word;word-break:normal">Card simulation or crypto USDT/USDC · RUO catalog only</span>
+            <span class="trust-row-text" style="display:block;min-width:0;max-width:100%;white-space:normal;overflow-wrap:break-word;word-break:normal">Card or crypto USDT/USDC · RUO catalog only</span>
           </div>
           <div class="trust-row">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
@@ -614,11 +615,11 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
   <div class="success-icon-wrap">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
   </div>
-  <h2>Request received</h2>
-  <p>Card simulation does not charge your card. Crypto orders use the address shown — team confirms receipt.</p>
+  <h2 id="successTitle">Order received</h2>
+  <p id="successLead">We received your research-use catalog order.</p>
   <p id="successPaymentNote" style="margin-top:10px"></p>
   <div class="order-ref" id="orderRefDisplay"></div>
-  <p style="font-size:13px;color:var(--muted)">We will reply to <strong id="successEmail"></strong> about availability and next steps (card settle after inquiry, or crypto confirmation).</p>
+  <p style="font-size:13px;color:var(--muted)">We will follow up at <strong id="successEmail"></strong>. Products are for laboratory research use only.</p>
   <a href="https://biolabsresearch.co/index.html?from=nav" class="btn-back">← Continue Shopping</a>
 </div>
 
@@ -751,33 +752,59 @@ var CRYPTO_WALLETS = {
 };
 
 
-/* Yehuda GA events — only after Cookie Accept (blrTrack) */
-var __blrCardSimTracked = false;
+/* Yehuda GA events — only after Cookie Accept (blrTrack).
+   checkout_complete / purchase fire only after a real card authorize (ok===true). */
 function blrTrackCheckout(name, params){
   try { if (typeof window.blrTrack === 'function') window.blrTrack(name, params||{}); } catch(e){}
 }
 document.addEventListener('DOMContentLoaded', function(){
   blrTrackCheckout('checkout_start', { page: 'checkout' });
-  ['simCardName','simCardNumber','simCardExpiry','simCardCvc'].forEach(function(id){
-    var el = document.getElementById(id);
-    if (!el) return;
-    el.addEventListener('input', function(){
-      if (__blrCardSimTracked) return;
-      if (!(el.value||'').trim()) return;
-      __blrCardSimTracked = true;
-      blrTrackCheckout('card_sim', { method: 'card-simulation' });
-    });
-  });
-  document.addEventListener('input', function(e){
-    if (__blrCardSimTracked) return;
-    var t = e.target;
-    if (!t || !t.closest) return;
-    if (!t.closest('#cardInputArea')) return;
-    if (!(t.value||'').trim()) return;
-    __blrCardSimTracked = true;
-    blrTrackCheckout('card_sim', { method: 'card-simulation' });
-  }, true);
+  var num = document.getElementById('cardNumber');
+  var exp = document.getElementById('cardExpiry');
+  if (num) num.addEventListener('input', formatCardNumberInput);
+  if (exp) exp.addEventListener('input', formatCardExpiryInput);
 });
+
+function formatCardNumberInput(e){
+  var el = e && e.target;
+  if (!el) return;
+  var d = String(el.value || '').replace(/\D/g, '').slice(0, 19);
+  var parts = [];
+  for (var i = 0; i < d.length; i += 4) parts.push(d.slice(i, i + 4));
+  el.value = parts.join(' ');
+}
+function formatCardExpiryInput(e){
+  var el = e && e.target;
+  if (!el) return;
+  var d = String(el.value || '').replace(/\D/g, '').slice(0, 4);
+  el.value = d.length > 2 ? d.slice(0, 2) + '/' + d.slice(2) : d;
+}
+
+function showChargeError(msg){
+  var el = document.getElementById('cardChargeError');
+  if (!el) return;
+  var text = String(msg || '');
+  el.textContent = text;
+  el.classList.toggle('visible', !!text);
+}
+function readCardFields(){
+  return {
+    name: (document.getElementById('cardName') || {}).value || '',
+    number: (document.getElementById('cardNumber') || {}).value || '',
+    expiry: (document.getElementById('cardExpiry') || {}).value || '',
+    cvv: (document.getElementById('cardCvc') || {}).value || ''
+  };
+}
+function clearCardFields(){
+  ['cardName','cardNumber','cardExpiry','cardCvc'].forEach(function(id){
+    var el = document.getElementById(id);
+    if (el) el.value = '';
+  });
+}
+function clearCardSecrets(){
+  var cvc = document.getElementById('cardCvc');
+  if (cvc) cvc.value = '';
+}
 
 function selectPaymentMethod(pm) {
   selectedPaymentMethod = pm === 'crypto' ? 'crypto' : 'card';
@@ -796,12 +823,13 @@ function selectPaymentMethod(pm) {
   var btnText = document.getElementById('submitBtnText');
   var micro = document.getElementById('ctaMicrocopyText');
   if (selectedPaymentMethod === 'card') {
-    if (btnText) btnText.textContent = 'Continue request';
-    if (micro) micro.textContent = 'Simulation only · no charge on this page · settle after inquiry';
+    if (btnText) btnText.textContent = 'Place order';
+    if (micro) micro.textContent = 'Card authorize · RUO catalog only';
   } else {
     if (btnText) btnText.textContent = 'Continue request';
     if (micro) micro.textContent = 'Crypto USDT/USDC · payment address provided · RUO catalog only';
   }
+  showChargeError('');
 }
 
 function selectCryptoChain(chain) {
@@ -856,21 +884,14 @@ function copyCryptoAddress() {
   }
 }
 
-function validateCardSimFields() {
-  var name = (document.getElementById('simCardName') || {}).value || '';
-  var num = ((document.getElementById('simCardNumber') || {}).value || '').replace(/\s+/g, '');
-  var exp = (document.getElementById('simCardExpiry') || {}).value || '';
-  var cvc = (document.getElementById('simCardCvc') || {}).value || '';
-  if (!name.trim()) { alert('Please enter the name on card (simulation).'); return false; }
-  if (num.length < 12 || !/^\d+$/.test(num)) { alert('Please enter a card number (simulation — not charged).'); return false; }
-  if (!/^\d{2}\/\d{2}$/.test(exp.trim())) { alert('Please enter expiry as MM/YY (simulation).'); return false; }
-  if (cvc.length < 3 || !/^\d+$/.test(cvc)) { alert('Please enter CVC (simulation — not charged).'); return false; }
+function validateCardFields() {
+  var api = window.BLRCheckoutCharge;
+  var err = api && typeof api.validateCardFields === 'function'
+    ? api.validateCardFields(readCardFields())
+    : 'Payment module failed to load. Refresh and try again.';
+  if (err) { showChargeError(err); return false; }
+  showChargeError('');
   return true;
-}
-
-function getSimLast4() {
-  var num = ((document.getElementById('simCardNumber') || {}).value || '').replace(/\s+/g, '');
-  return num.length >= 4 ? num.slice(-4) : '';
 }
 
 function confirmCryptoSent() {
@@ -938,7 +959,7 @@ function collectOrderData(ref) {
     subtotal: getSubtotal().toFixed(2),
     shippingCost: getShippingCost().toFixed(2),
     total: getTotal().toFixed(2),
-    paymentMethod: 'card-simulation',
+    paymentMethod: selectedPaymentMethod === 'crypto' ? 'crypto' : 'card',
     notes: document.getElementById('orderNotes') ? document.getElementById('orderNotes').value.trim() : '',
     coupon: (document.getElementById('couponCode') && document.getElementById('couponCode').value) || (function(){try{return localStorage.getItem('biolabs_coupon')||localStorage.getItem('biofirst_coupon')||'';}catch(e){return '';}})(),
     timestamp: new Date().toISOString()
@@ -954,50 +975,116 @@ function setSubmitBusy(busy) {
 }
 
 function placeOrder() {
+  showChargeError('');
   if (!cart.length) { alert('Your cart is empty. Please add products first.'); return; }
   if (!validate()) return;
   if (selectedPaymentMethod === 'crypto') {
     openCryptoModal();
     return;
   }
-  if (!validateCardSimFields()) return;
+  if (!validateCardFields()) return;
+  submitCardCharge();
+}
+
+function chargeNotes() {
+  var notes = document.getElementById('orderNotes') ? document.getElementById('orderNotes').value.trim() : '';
+  var coupon = (document.getElementById('couponCode') && document.getElementById('couponCode').value) || '';
+  coupon = String(coupon || '').trim();
+  if (coupon) notes = (notes ? notes + ' | ' : '') + 'coupon:' + coupon;
+  return notes;
+}
+
+function persistSafeOrder(orderData) {
+  var safe = {
+    ref: orderData.ref,
+    customer: orderData.customer,
+    shipping: orderData.shipping,
+    items: (orderData.items || []).map(function(i){
+      return { slug: i.slug || '', name: i.name || '', mg: i.mg || '', qty: i.qty, price: i.price };
+    }),
+    subtotal: orderData.subtotal,
+    shippingCost: orderData.shippingCost,
+    total: orderData.total,
+    paymentMethod: orderData.paymentMethod,
+    cardLast4: orderData.cardLast4 || '',
+    transactionId: orderData.transactionId || '',
+    coupon: orderData.coupon || '',
+    notes: orderData.notes || '',
+    timestamp: orderData.timestamp
+  };
+  try { localStorage.setItem('biolabs_last_order', JSON.stringify(safe)); } catch (e) {}
+}
+
+function submitCardCharge() {
+  var api = window.BLRCheckoutCharge;
+  if (!api || typeof api.charge !== 'function') {
+    showChargeError('Payment module failed to load. Refresh and try again.');
+    return;
+  }
   var btnText = document.getElementById('submitBtnText');
-  if (btnText) btnText.textContent = 'TBD';
+  if (btnText) btnText.textContent = 'Authorizing…';
   setSubmitBusy(true);
-  setTimeout(function() {
-    submitOrderWithMethod('card-simulation', getSimLast4());
-  }, 1200);
+  var cardFields = readCardFields();
+  api.charge({
+    cart: cart,
+    amount: getTotal(),
+    customer: {
+      firstName: document.getElementById('firstName').value,
+      lastName: document.getElementById('lastName').value,
+      email: document.getElementById('email').value,
+      phone: document.getElementById('phone').value,
+      address1: document.getElementById('address1').value,
+      address2: document.getElementById('address2').value,
+      city: document.getElementById('city').value,
+      state: document.getElementById('state').value,
+      zip: document.getElementById('zip').value,
+      country: document.getElementById('country').value
+    },
+    card: cardFields,
+    notes: chargeNotes()
+  }).then(function(result){
+    clearCardSecrets();
+    if (result && result.ok === true) {
+      currentOrderRef = result.orderId || generateOrderRef();
+      var orderData = collectOrderData(currentOrderRef);
+      orderData.paymentMethod = 'card';
+      orderData.cardLast4 = result.last4 || '';
+      orderData.transactionId = result.orderId || '';
+      persistSafeOrder(orderData);
+      blrTrackCheckout('checkout_complete', {
+        payment_method: 'card',
+        value: parseFloat(orderData.total) || 0,
+        currency: 'USD',
+        transaction_id: orderData.transactionId || orderData.ref || ''
+      });
+      clearCardFields();
+      showSuccess(orderData, 'Payment authorized. Research-use catalog only — we will follow up at the email you provided.');
+      return;
+    }
+    setSubmitBusy(false);
+    if (btnText) btnText.textContent = 'Place order';
+    showChargeError((result && result.message) || 'The card was declined. Check the details and try again.');
+  });
 }
 
 function submitOrderWithMethod(paymentMethod, last4) {
   currentOrderRef = generateOrderRef();
   const orderData = collectOrderData(currentOrderRef);
   orderData.paymentMethod = paymentMethod;
-  if (paymentMethod === 'card-simulation') {
-    orderData.cardSim = { last4: last4 || '', simulated: true, charged: false };
-  }
   if (paymentMethod.indexOf('crypto-usdt-') === 0) {
     var chain = paymentMethod.indexOf('trc') !== -1 ? 'trc' : 'erc';
     orderData.crypto = { chain: chain, address: CRYPTO_WALLETS[chain].address, asset: 'USDT/USDC' };
   }
-  // Never send full card number or CVC
-  localStorage.setItem('biolabs_last_order', JSON.stringify(orderData));
+  persistSafeOrder(orderData);
   setSubmitBusy(true);
   notifyAdmin(orderData).then(function(ok) {
     if (ok) {
-      blrTrackCheckout('checkout_complete', { payment_method: paymentMethod, value: parseFloat(orderData.total)||0, currency: 'USD', transaction_id: orderData.ref||'' });
-
-      var note;
-      if (paymentMethod === 'card-simulation') {
-        note = 'Request received (card simulation). No charge was processed on this page. Our team will follow up at the email you provided.';
-      } else {
-        note = 'Request received. Crypto payment address was provided (' + (orderData.crypto && orderData.crypto.chain === 'trc' ? 'Tron TRC-20' : 'Ethereum ERC-20') + '). Our team will confirm receipt and follow up at your email.';
-      }
+      var note = 'Request received. Crypto payment address was provided (' + (orderData.crypto && orderData.crypto.chain === 'trc' ? 'Tron TRC-20' : 'Ethereum ERC-20') + '). Our team will confirm receipt and follow up at your email.';
       showSuccess(orderData, note);
     } else {
       setSubmitBusy(false);
       var bt = document.getElementById('submitBtnText');
-      if (bt) bt.textContent = selectedPaymentMethod === 'crypto' ? 'Continue request' : 'Continue request';
+      if (bt) bt.textContent = 'Continue request';
       alert('We could not deliver the order automatically. Please send the email draft so we receive your request.');
     }
   });
@@ -1024,7 +1111,7 @@ ${items}
 Subtotal: $${orderData.subtotal}
 TOTAL: $${orderData.total}
 
-Method: ${orderData.paymentMethod}${orderData.cardSim && orderData.cardSim.last4 ? ` (sim last4 ${orderData.cardSim.last4}, not charged)` : ''}${orderData.crypto ? ` · ${orderData.crypto.address}` : ''}
+Method: ${orderData.paymentMethod}${orderData.cardLast4 ? ` (card •••• ${orderData.cardLast4})` : ''}${orderData.crypto ? ` · ${orderData.crypto.address}` : ''}
 Coupon: ${orderData.coupon || 'None'}
 Notes: ${orderData.notes || 'None'}
 Timestamp: ${orderData.timestamp}
@@ -1035,10 +1122,10 @@ Timestamp: ${orderData.timestamp}
 
 function notifyAdmin(orderData) {
   const { subject, body } = buildInquiryMail(orderData);
-  return fetch('https://biolabsresearch.co/api/notify-order', {
+  return fetch('/api/notify-order', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({ subject, body, orderData, paymentMethod: orderData.paymentMethod || 'card-simulation' })
+    body: JSON.stringify({ subject, body, orderData, paymentMethod: orderData.paymentMethod || 'crypto' })
   }).then(function(r) {
     if (!r.ok) throw new Error('notify ' + r.status);
     return true;
@@ -1177,7 +1264,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99a" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99a</p>
+<p class="site-version" data-site-version="2.99b" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99b</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

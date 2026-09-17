@@ -1,3 +1,19 @@
+# biolabsresearch.co — Version 2.99b
+
+Released 2026-09-17.
+
+Codename: umg-checkout-hook
+
+## Highlights
+
+- **Checkout card**: Replace the card simulation with `POST https://crm.biolabsresearch.co/api/checkout/charge` (CRM UMG sidecar). Crypto USDT/USDC path unchanged.
+- **Authorize gate**: Success UI and GA `checkout_complete` fire only when the charge body has `ok===true`. Decline (HTTP 402) shows a clear error; no cascade copy.
+- **PCI hygiene**: Full PAN/CVV never written to console, `localStorage`, or storefront `/api/*`. Last four + CRM order id only. Idempotency key is stable for one in-flight submit and rotates after a completed decline.
+- **Copy**: Remove “Simulation only — your card is not charged”. CTA **Place order**. RUO footer kept. Navy `#0d2137` / gold / `#F2EFE9`. Homepage hero / Popular catalog / PDP split SoT untouched.
+- New module `html/checkout-charge.js?v=1`. Shared `cart-vial.js` not rewritten.
+
+---
+
 # biolabsresearch.co — Version 2.99a
 
 Released 2026-09-17.

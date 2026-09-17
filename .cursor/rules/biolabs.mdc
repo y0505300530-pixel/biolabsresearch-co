@@ -53,22 +53,17 @@ percentages, no fabricated reviews, no dosing or human-use advice. Certificates 
 
 # Card payments
 
-Not live yet. Infra reviews any payment code before customers see it.
+Owner decision (v2.99b): browser POSTs card fields to the CRM sidecar
+`https://crm.biolabsresearch.co/api/checkout/charge`. Infra reviews before customers see live charges.
 
-- No full card number, expiry date or CVV may reach our code: `/api/*`, the Node service, a new
-  endpoint, anything in this repo. Card details go only into the provider's own secure fields or
-  hosted page, for example the Tagada checkout.
-- Do not connect a gateway that takes card data from the merchant server. That includes UMG
-  (`pay.umg.inc/rest/v1/transactions` wants the card number and CVV in the request body) and its
-  WooCommerce plugin; this site is not WordPress. Do not copy the plugin's checkout script: it prints
-  the card number and CVV to the browser console.
+- No full card number, expiry date or CVV may reach storefront `/api/*`, the Node service, a new
+  endpoint, or anything persisted in this repo. Do not `console.log` charge bodies.
+- Do not call `pay.umg.inc` from this repo. Do not install or copy the UMG WooCommerce plugin
+  (it prints PAN/CVV to the console). This site is not WordPress.
 - No payment keys in pages, scripts, commit messages or logs. Secret keys live on the server, with infra.
 - An order keeps only the last four digits and the provider's transaction ID. CVV is never stored or logged.
-- The amount to charge is the server's total, never a number read from the page.
-- An order is paid only after the server confirms status and amount with the provider's API.
-  A redirect or callback alone proves nothing.
-- No Apple Pay or Google Pay logos unless the provider takes them. The checkout "card simulation"
-  sends only the last four digits; keep it that way until real provider fields replace it.
+- Success UI and GA `checkout_complete` only after charge `ok===true`. No cascade copy to the customer.
+- No Apple Pay or Google Pay logos unless the provider takes them.
 - Before payment code goes live, add a row to `QA_TASKS.md` with owner `infra`. Exceptions need a
   written decision by the business owner, recorded in `AGENTS.md`.
 
