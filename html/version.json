@@ -1,11 +1,12 @@
 {
-  "version": "2.95",
+  "version": "2.96",
   "released": "2026-09-17",
-  "codename": "lab-calculators-reconstitution-dilution",
-  "appVersion": "2.95",
+  "codename": "hero-split-brand-mock",
+  "appVersion": "2.96",
   "highlights": [
-    "NEW /tools/reconstitution + C1V1 /tools/dilution (Marketing SoT)",
-    "Keep hero trust SoT: 20 research compounds \u00b7 45K+ customers \u00b7 Lot docs on request",
-    "solution-dilution \u2192 reconstitution; GA4 reconstitution_calc / dilution_calc / tool_inquire"
+    "Homepage hero redesign: split mock layout in BioLabs navy/gold (no green)",
+    "Our vial image + Lot docs badge (no SHIPS TODAY); feature row RUO-safe",
+    "CTAs: Browse research compounds + View sample COA; trust SoT kept",
+    "Removed unverified researchers carousel 4.9/5 \u00b7 1,200 reviews"
   ]
 }

@@ -143,3 +143,7 @@ Codename: dose-chips-44
 
 ## v2.94f — 2026-09-17
 - Unhide hero trust SoT (CSS override of v1.25 display:none)
+
+## v2.96 — 2026-09-17
+- Hero split redesign (brand colors, our vial, Lot docs badge)
+- Strip unverified carousel star proof
