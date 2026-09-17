@@ -12739,3 +12739,76 @@ button.product-card-mg:focus-visible{
   border-radius: 0 !important;
   background: #f2efe9 !important;
 }
+
+
+/* === v2.97 hero match Yehuda mock layout (our colors, our cinematic) === */
+.hero-v296{
+  padding: 28px 0 36px !important;
+}
+.hero-v296 .nl-hero--split{
+  display:grid !important;
+  grid-template-columns: minmax(0,1.05fr) minmax(0,0.95fr) !important;
+  gap: 40px 56px !important;
+  align-items: center !important;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+.hero-v296 .nl-copy{ padding-top: 8px !important; max-width: 560px !important; }
+.hero-v296 .nl-kicker{
+  display:inline-flex !important; align-items:center; gap:8px;
+  margin:0 0 18px !important; padding:6px 12px; border-radius:999px;
+  background:#f2efe9; color:#0d2137; font-size:11px; font-weight:700; letter-spacing:.06em;
+}
+.hero-v296 .nl-dot{ width:7px;height:7px;border-radius:50%;background:#b8943f;display:inline-block; }
+.hero-v296 .nl-title{
+  margin:0 0 16px !important; font-size:clamp(2rem,3.4vw,2.85rem) !important;
+  line-height:1.12 !important; color:#0d2137 !important; font-weight:800 !important;
+}
+.hero-v296 .nl-accent{ color:#b8943f !important; }
+.hero-v296 .nl-sub{
+  margin:0 0 28px !important; font-size:15px !important; line-height:1.6 !important;
+  color:#5a6570 !important; max-width:34em !important;
+}
+/* mock: one horizontal row of 4 features */
+.hero-v296 .nl-feats{
+  list-style:none !important; margin:0 0 28px !important; padding:0 !important;
+  display:flex !important; flex-wrap:wrap !important; gap:14px 18px !important;
+  grid-template-columns:none !important;
+}
+.hero-v296 .nl-feat{
+  flex:1 1 140px; min-width:140px; max-width:200px;
+  display:flex !important; align-items:flex-start !important; gap:10px !important;
+  font-size:12.5px !important; font-weight:600 !important; color:#0d2137 !important; line-height:1.35 !important;
+}
+.hero-v296 .nl-feat-ico{
+  flex:0 0 auto; width:32px !important; height:32px !important; border-radius:10px !important;
+  background:#f2efe9 !important; border:1px solid #e4ddd2 !important; color:#0d2137 !important;
+  display:inline-flex !important; align-items:center !important; justify-content:center !important;
+}
+.hero-v296 .nl-actions{ display:flex !important; flex-wrap:wrap !important; gap:12px !important; margin:0 0 20px !important; }
+.hero-v296 .nl-trust{ margin:0 !important; font-size:13px !important; color:#6b6560 !important; }
+.hero-v296 .nl-stage--photo{ width:100%; }
+.hero-v296 .nl-photo-wrap{
+  position:relative !important; border-radius:22px !important; overflow:hidden !important;
+  background:#f2efe9 !important; line-height:0 !important;
+  box-shadow:0 18px 40px rgba(13,33,55,.12) !important;
+  aspect-ratio:auto !important; max-height:none !important; height:auto !important;
+}
+.hero-v296 .nl-photo-badge{
+  position:absolute !important; top:14px !important; left:14px !important; z-index:3 !important;
+}
+.hero-v296 video.nl-hero-vial,
+.hero-v296 .nl-hero-vial.hero-video,
+.hero-v296 video.hero-video{
+  position:static !important; inset:auto !important;
+  display:block !important; width:100% !important; max-width:100% !important;
+  height:auto !important; max-height:none !important;
+  aspect-ratio:16/9 !important; object-fit:cover !important;
+  border:0 !important; border-radius:0 !important; background:#f2efe9 !important;
+}
+@media (max-width:899px){
+  .hero-v296 .nl-hero--split{ grid-template-columns:1fr !important; gap:22px !important; }
+  .hero-v296 .nl-stage--photo{ order:-1 !important; }
+  .hero-v296 .nl-feat{ max-width:none; flex:1 1 45%; }
+}

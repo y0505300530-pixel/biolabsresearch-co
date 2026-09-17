@@ -1,9 +1,10 @@
 {
-  "version": "2.96g",
+  "version": "2.97",
   "released": "2026-09-17",
-  "codename": "restore-researchers-carousel",
-  "appVersion": "2.96g",
+  "codename": "hero-match-mock",
+  "appVersion": "2.97",
   "highlights": [
-    "Emergency restore Researchers say carousel HTML (broken by v2.96 proof strip)"
+    "Hero layout matched to Yehuda mock: airy split, 4-feature row, cinematic loop, Lot docs badge",
+    "CTAs Browse research compounds / View sample COA; navy/gold only; no SHIPS TODAY"
   ]
 }
