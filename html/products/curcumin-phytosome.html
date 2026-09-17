@@ -58,7 +58,7 @@
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Saira:wght@600;700;800&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=401">
+<link rel="stylesheet" href="/biolabs_style.css?v=402">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -248,9 +248,9 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/cart-vial.js?v=314"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=37"></script>
-<meta name="app-version" content="2.98o">
+<meta name="app-version" content="2.99">
 </head>
-<body>
+<body class="product-page">
 <div class="promo-stack" id="promoStack" hidden style="display:none!important" aria-hidden="true">
   <!-- promo ended: insider code / percent-off countdown removed -->
 </div>
@@ -297,7 +297,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 
 <!-- PRODUCT CONTENT — injected by JS -->
 <div id="product-container">
-<div class="product-hero">
+<div class="product-hero pdp-split product-page">
         <div class="product-img-section">
 <div class="product-img-main">
             <img src="/media/vial-curcumin-phytosome.webp?v=178" alt="Curcumin Phytosome 500 mg research vial" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
@@ -394,7 +394,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.98o" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.98o</p>
+<p class="site-version" data-site-version="2.99" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99</p>
 </footer>
 
 <script>
@@ -549,7 +549,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
       : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>';
     document.getElementById('product-container').innerHTML =
-      '<div class="product-hero">' +
+      '<div class="product-hero pdp-split product-page">' +
         '<div class="product-img-section">' +
           '<div class="product-img-main"><img id="pdpMainImg" src="'+img+'" alt="'+doseAwareAlt(p)+'"></div>' +
           pdpReviewHtml(p, img) +
@@ -562,6 +562,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
             '<span class="purity-badge">See COA for this lot</span>' +
             '<span class="ruo-badge">RUO — Research Use Only</span>' +
           '</div>' +
+          (p.description ? '<p class="product-desc-text">'+p.description+'</p>' : '') +
           '<div class="price-section">' +
             sizeHtml +
             '<div class="price-row"><div class="price-main" id="current-price">$'+p.price+'</div>'+origHtml+'</div>' +
@@ -1330,7 +1331,8 @@ document.addEventListener('keydown', function(e) {
 </script>
 <script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=43"></script>
-<script src="/qty-upsell.js?v=1"></script>
+<script src="/pdp-split.js?v=4"></script>
+<script src="/qty-upsell.js?v=2"></script>
 <script src="/prices-sync.js?v=2"></script>
 <script src="/product-marquee.js?v=50"></script>
 </body>

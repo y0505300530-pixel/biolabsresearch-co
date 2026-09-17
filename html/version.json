@@ -1,11 +1,12 @@
 {
-  "version": "2.98o",
+  "version": "2.99",
   "released": "2026-09-17",
-  "codename": "home-cta-fab-clear",
-  "appVersion": "2.98o",
+  "codename": "pdp-institutional-split",
+  "appVersion": "2.99",
   "highlights": [
-    "Home hero/catalog/teaser CTA clear from FAB @320\u2013390",
-    "Tools .tr-cards clear from 2.98n unchanged",
-    "COA Close above nav kept"
+    "All SKU PDPs: institutional split (vial media left / buy panel right), navy/gold/cream",
+    "Trust: Research use only · Lot docs on request · COA on request; Overview | Specs | Docs; Docs = request COA",
+    "Pack ATC/cart unchanged; no stars, IN STOCK, SHIPS TODAY, invented HPLC, or fake PDFs",
+    "Keeps v2.98o FAB clear-zones and COA Close z-index above sticky nav"
   ]
 }
