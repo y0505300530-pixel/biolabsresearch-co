@@ -50,14 +50,6 @@
     return c ? c.toUpperCase() : "RESEARCH COMPOUND";
   }
 
-  function isInStock(p) {
-    var stock = String(p.stock_status || "").trim();
-    if (!stock) return null;
-    if (/out\s*of\s*stock|sold\s*out|unavailable/i.test(stock)) return false;
-    if (/in\s*stock|available/i.test(stock)) return true;
-    return null;
-  }
-
   function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v=181'; } return '/media/vial-'+slug+'.png?v=181'; }
 
   /* The page's own addToCart knows nothing about strengths, so the line it just wrote says only "$62".
@@ -130,19 +122,12 @@
     var href = "/products/" + encodeURIComponent(p.slug) + ".html";
     var mg = strengthLine(p);
     var price = strengthPrice(p, mg);
-    var stockState = isInStock(p);
-    var stockHtml = "";
-    if (stockState === true) {
-      stockHtml = '<span class="pr-card-stock"><span class="pr-card-stock-dot" aria-hidden="true"></span>In stock</span>';
-    } else if (stockState === false) {
-      stockHtml = '<span class="pr-card-stock pr-card-stock-out">Out of stock</span>';
-    }
+    /* v2.99a: no In stock / Out of stock on related/pairs cards (Yehuda: do not invent stock). */
     return (
       '<article class="pr-card">' +
         '<a class="pr-card-media" href="' + href + '">' +
           '<img src="' + esc(img) + '" alt="' + esc(p.name) + '" loading="lazy" decoding="async" width="320" height="320">' +
         "</a>" +
-        stockHtml +
         '<p class="pr-card-cat">' + esc(categoryLabel(p)) + "</p>" +
         '<a class="pr-card-name" href="' + href + '">' + esc(p.name) + "</a>" +
         (mg

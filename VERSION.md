@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.99a
+
+Released 2026-09-17.
+
+Codename: related-stock-hide-fab-clear
+
+## Highlights
+
+- **Related cards**: Remove In stock / Out of stock badges from Pairs-well / related product cards. Marketing lock: no IN STOCK unless API-true; Yehuda: do not invent stock. Badge markup removed from `product-marquee.js` (shared script, required) + CSS hide.
+- **FAB clear-zone**: Restore v2.98o standard @320–390 — icon-only 48px corner FAB; home hero CTAs, catalog View details/ATC, tools `.tr-wrap`/`.tr-cards` clear of the dock. Beats `html body .hero + .catalog-section` padding-right:24px that overrode 2.98o.
+- **Unchanged**: PDP split / trust / Overview|Specs|Docs from v2.99. Homepage hero + Popular catalog design locked (hero in-stock pill stays). Science/terms FAB hidden; COA Close above sticky nav (2.98l/o).
+- CSS `biolabs_style.css?v=403`. Navy `#0d2137` / gold / `#F2EFE9` only.
+
+---
+
 # biolabsresearch.co — Version 2.99
 
 Released 2026-09-17.
