@@ -190,3 +190,6 @@ Codename: dose-chips-44
 ## v2.98a — 2026-09-17
 - Fix catalog ATC + View details clicks (actions z-index/pointer-events)
 - Kill card hover translateY shake
+
+## v2.98b — 2026-09-17
+- Remove only Popular `<p class="catalog-ruo">Research use only</p>`

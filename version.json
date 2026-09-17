@@ -1,10 +1,10 @@
 {
-  "version": "2.98a",
+  "version": "2.98b",
   "released": "2026-09-17",
-  "codename": "catalog-atc-view-hover-fix",
-  "appVersion": "2.98a",
+  "codename": "drop-catalog-ruo-line",
+  "appVersion": "2.98b",
   "highlights": [
-    "Remove catalog card translateY hover (shadow/border only) to kill shake",
-    "Raise product-card-actions z-index + pointer-events so ATC and View details click"
+    "Remove only Popular header Research use only line (catalog-ruo)",
+    "Keep title, filters, cards; hero untouched"
   ]
 }
