@@ -159,3 +159,7 @@ Codename: dose-chips-44
 ## v2.97d — 2026-09-17
 - Remove only **Compound comparison (04)** card from `/tools` top grid (Yehuda red circle)
 - Leave Compare research compounds section untouched
+
+## v2.97e — 2026-09-17
+- Remove only hero feature **Third-party testing (where available)**
+- Keep Lot docs / HPLC / Traceable

@@ -1,10 +1,10 @@
 {
-  "version": "2.97d",
+  "version": "2.97e",
   "released": "2026-09-17",
-  "codename": "tools-drop-compound-comparison-card",
-  "appVersion": "2.97d",
+  "codename": "hero-drop-third-party-feat",
+  "appVersion": "2.97e",
   "highlights": [
-    "Remove only Compound comparison (04) card from /tools top grid (Yehuda red circle)",
-    "Leave Compare research compounds section and other tools untouched"
+    "Remove only hero feature Third-party testing (where available)",
+    "Keep Lot docs / HPLC / Traceable features"
   ]
 }
