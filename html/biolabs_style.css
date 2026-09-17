@@ -13002,8 +13002,7 @@ html body #products-grid > .product-card{
   min-width:0;
 }
 html body .catalog-grid > .product-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 14px 32px rgba(13,33,55,.08);
+box-shadow:0 14px 32px rgba(13,33,55,.08);
   border-color:#d6cbb8;
 }
 .catalog-grid .product-card-media,
@@ -13241,3 +13240,36 @@ html body .catalog-grid > .product-card:hover{
   }
 }
 /* === end v2.98 === */
+
+/* === v2.98a catalog click + hover fix === */
+html body .catalog-grid > .product-card:hover,
+html body #products-grid > .product-card:hover{
+  transform: none !important;
+}
+.catalog-grid .product-card-actions,
+#products-grid .product-card-actions{
+  position: relative !important;
+  z-index: 5 !important;
+  pointer-events: auto !important;
+}
+.catalog-grid .product-card-view,
+.catalog-grid .product-card-atc,
+#products-grid .product-card-view,
+#products-grid .product-card-atc{
+  position: relative !important;
+  z-index: 6 !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+.catalog-grid .product-card-body,
+#products-grid .product-card-body{
+  position: relative !important;
+  z-index: 2 !important;
+  pointer-events: auto !important;
+}
+/* media stays clickable but must not cover actions */
+.catalog-grid .product-card-media,
+#products-grid .product-card-media{
+  z-index: 1 !important;
+}
+/* === end v2.98a === */

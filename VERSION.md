@@ -186,3 +186,7 @@ Codename: dose-chips-44
 
 ## v2.97g — 2026-09-17
 - Add only small **in stock** pill (green dot) upper-left on hero vial photo
+
+## v2.98a — 2026-09-17
+- Fix catalog ATC + View details clicks (actions z-index/pointer-events)
+- Kill card hover translateY shake
