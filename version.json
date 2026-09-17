@@ -1,11 +1,10 @@
 {
-  "version": "2.98g",
+  "version": "2.98h",
   "released": "2026-09-17",
-  "codename": "sitewide-fab-coa-cart-close",
-  "appVersion": "2.98g",
+  "codename": "fab-hide-sci-terms-coa-fix",
+  "appVersion": "2.98h",
   "highlights": [
-    "Sitewide mobile FAB clear-zone (tools/science/terms/catalog)",
-    "COA modal no horizontal overflow @320\u2013414",
-    "Cart close above sticky nav"
+    "Hide mobile FAB on science/terms (sci-toc/toc) \u2014 header cart remains",
+    "COA modal stacks header @320 to stop horizontal overflow"
   ]
 }

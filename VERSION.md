@@ -208,3 +208,6 @@ Codename: dose-chips-44
 
 ## v2.98g — 2026-09-17
 - Sitewide FAB clear-zone; COA modal overflow @320; cart close above nav
+
+## v2.98h — 2026-09-17
+- Hide FAB on science/terms; COA modal no overflow @320
