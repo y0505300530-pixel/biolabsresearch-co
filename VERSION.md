@@ -8,11 +8,12 @@ Codename: pdp-institutional-split
 
 - **PDP split**: Every catalog product page uses an institutional two-column layout — vial photo left (square 1:1, `#F2EFE9`, `object-fit: contain`), buy panel right. No thumbnail strip.
 - **Buy panel**: Product name → strength (mg) → 1/2/3 bottle packs (existing `qty-upsell.js` math) → unit price → **ADD TO CART**. Cart/ATC/pack pricing unchanged.
-- **Trust row** under CTA: Lot docs on request · HPLC · Traceable. No stars, review counts, “In stock”, or “Ships today”.
-- **Tabs** below the split: Overview | Specs | Docs (existing RUO copy, CAS/identity/formula, Request lot COA).
+- **Trust row** under CTA: **Research use only · Lot docs on request · COA on request**. No HPLC invented, no stars, review counts, In stock, or Ships today.
+- **Tabs**: Overview | Specs | Docs only. Docs is inquire / Request lot COA (no fake PDF / HPLC / MS downloads). Overview feature grid is RUO-safe.
+- **Chrome**: Yehuda split structure with navy `#0d2137` / gold / `#F2EFE9`. No thumbnail strip. No IN STOCK on PDP media.
 - **Mobile**: photo stacked above buy; 44px tap targets; ATC full-width; floating View cart does not cover ATC.
 - **qty-upsell.js**: packs mount inside `.pdp-buy-col` (no full-width span). Commit note: shared script touched only for layout mount.
-- CSS `biolabs_style.css?v=393`. Homepage hero + Popular catalog cards not restyled.
+- CSS `biolabs_style.css?v=395`. Homepage hero + Popular catalog cards not restyled.
 
 ---
 

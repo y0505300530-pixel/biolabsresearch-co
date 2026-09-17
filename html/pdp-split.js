@@ -1,7 +1,10 @@
 /* v2.99 PDP split + Overview/Specs/Docs tabs.
-   Rearranges existing markup; does not rewrite cart, mg-picker, or pack math. */
+   Rearranges existing markup; does not rewrite cart, mg-picker, or pack math.
+   Marketing lock: RUO / lot docs on request / COA on request; no stars, IN STOCK,
+   SHIPS TODAY, invented HPLC, or fake PDF downloads. */
 (function () {
   var CSS_ID = 'pdp-split-css';
+  var TRUST = '<li>Research use only</li><li>Lot docs on request</li><li>COA on request</li>';
   var BOUND = false;
   var BUSY = false;
 
@@ -24,10 +27,11 @@
       '#product-container .pdp-split > .product-img-section{grid-column:1!important;order:0!important;position:sticky!important;top:88px!important}',
       '#product-container .pdp-split > .pdp-buy-col{grid-column:2!important;order:0!important}',
       '}',
-      'html.qty-upsell-on .pdp-split .qty-upsell-span .price-row,',
-      'html.qty-upsell-on .pdp-split .semax-qty-span .price-row{display:flex!important}',
+      'html.qty-upsell-on .pdp-split .price-row{display:flex!important}',
       '#product-container .pdp-split .qty-cta-btn::after,',
-      '#product-container .pdp-split .semax-qty-cta-btn::after{content:none!important}'
+      '#product-container .pdp-split .semax-qty-cta-btn::after{content:none!important}',
+      '.pdp-docs-wrap,.pdp-expect-wrap,.pdp-review,[class*="pdp-in-stock"],.product-img-section .nl-photo-badge,',
+      '#product-container .pdp-split .pdp-ship-note,#product-container .pdp-split .pdp-atc-note{display:none!important}'
     ].join('');
     (document.head || document.documentElement).appendChild(s);
   }
@@ -41,18 +45,43 @@
     if (!t || /added/i.test(t)) return;
     btn.textContent = 'ADD TO CART';
   }
+  function relabelPackHeads(buy) {
+    if (!buy) return;
+    buy.querySelectorAll('.qty-title, .semax-qty-title').forEach(function (el) {
+      var t = String(el.textContent || '');
+      if (/strength/i.test(t)) el.textContent = 'Strength';
+      else if (/quantity|qty/i.test(t)) el.textContent = 'Quantity';
+    });
+  }
+  function styleCrumbs() {
+    var bc = document.querySelector('.breadcrumb');
+    if (!bc || bc.getAttribute('data-pdp-crumb') === '1') return;
+    bc.setAttribute('data-pdp-crumb', '1');
+    var links = bc.querySelectorAll('a');
+    if (links[0]) {
+      links[0].textContent = 'Home';
+      links[0].setAttribute('href', '/');
+    }
+    if (links[1]) {
+      links[1].textContent = 'Catalog';
+      links[1].setAttribute('href', '/#catalog');
+    }
+  }
   function ensureTrust(buy) {
     if (!buy) return;
-    if (buy.querySelector('.pdp-trust-row')) return;
-    var row = document.createElement('ul');
-    row.className = 'pdp-trust-row';
-    row.setAttribute('aria-label', 'Listing facts');
-    row.innerHTML = '<li>Lot docs on request</li><li>HPLC</li><li>Traceable</li>';
-    var packs = buy.querySelector('#qtyUpsell, .qty-upsell-span, .semax-qty-span');
-    var cta = buy.querySelector('.qty-cta, .semax-qty-cta, #atc-btn');
-    if (packs) packs.appendChild(row);
-    else if (cta && cta.parentNode) cta.insertAdjacentElement('afterend', row);
-    else buy.appendChild(row);
+    var row = buy.querySelector('.pdp-trust-row');
+    if (!row) {
+      row = document.createElement('ul');
+      row.className = 'pdp-trust-row';
+      row.setAttribute('aria-label', 'Listing facts');
+    }
+    row.innerHTML = TRUST;
+    var cta = buy.querySelector('.qty-cta, .semax-qty-cta');
+    if (cta && cta.parentNode) {
+      if (row.previousElementSibling !== cta) cta.insertAdjacentElement('afterend', row);
+    } else if (!buy.contains(row)) {
+      buy.appendChild(row);
+    }
   }
   function placePacks(hero, buy) {
     var packs = hero.querySelector('#qtyUpsell, .qty-upsell-span, .semax-qty-span');
@@ -66,12 +95,23 @@
     }
     return packs;
   }
-  function placeUnitPrice(buy, packs) {
+  function placeUnitPrice(buy) {
     if (!buy) return;
     var row = buy.querySelector('.price-row');
-    var cta = (packs && packs.querySelector('.qty-cta, .semax-qty-cta')) || buy.querySelector('.qty-cta, .semax-qty-cta');
-    if (row && cta && row.parentNode !== packs) {
-      cta.parentNode.insertBefore(row, cta);
+    if (!row) return;
+    var hook = buy.querySelector('.product-purity-row') || buy.querySelector('.product-subtitle') || buy.querySelector('.product-title');
+    if (hook) hook.insertAdjacentElement('afterend', row);
+  }
+  function placeSpecStrip(buy, specs) {
+    var strip = document.querySelector('#product-container .spec-strip');
+    if (!strip || !buy) return;
+    var trust = buy.querySelector('.pdp-trust-row');
+    if (strip.parentNode !== buy) {
+      if (trust) trust.insertAdjacentElement('afterend', strip);
+      else buy.appendChild(strip);
+    }
+    if (specs && !specs.querySelector('.spec-strip')) {
+      specs.appendChild(strip.cloneNode(true));
     }
   }
   function ensureTabs(box, hero) {
@@ -95,10 +135,20 @@
     hero.insertAdjacentElement('afterend', tabs);
     return tabs;
   }
-  function fillIfEmpty(panel, html) {
-    if (!panel) return;
-    if (panel.childElementCount) return;
-    panel.innerHTML = html;
+  function overviewExtras() {
+    return ''
+      + '<div class="pdp-overview-grid">'
+      + '<article><p class="pdp-og-kicker">Documentation</p><h3>Lot docs on request</h3><p>Lot identity belongs on the matching lot file when issued. This page does not invent a lot number.</p></article>'
+      + '<article><p class="pdp-og-kicker">Certificate</p><h3>COA on request</h3><p>Inquire for the certificate of analysis. No purity % is invented on this page.</p></article>'
+      + '<article><p class="pdp-og-kicker">Use</p><h3>Research use only</h3><p>Laboratory research reagent. Not a medicine and not for human consumption.</p></article>'
+      + '<article><p class="pdp-og-kicker">Records</p><h3>Traceable lots</h3><p>Lot-specific records sit on the COA when a file is issued.</p></article>'
+      + '</div>'
+      + '<p class="pdp-ruo-banner">Research use only. Not for human consumption. Not a medicine.</p>';
+  }
+  function docsHtml() {
+    return '<div class="pdp-docs-request" data-pdp-placeholder="1">'
+      + '<p>Lot documentation and the certificate of analysis are available on request for this research compound. Inquire for the matching lot file. This page does not host a downloadable certificate unless a real lot file exists.</p>'
+      + '</div>';
   }
   function adopt(box, hero, buy, tabs) {
     var overview = document.getElementById('pdpPanelOverview');
@@ -106,32 +156,40 @@
     var docs = document.getElementById('pdpPanelDocs');
     if (!overview || !specs || !docs) return;
 
-    var desc = buy.querySelector('.product-desc-text');
-    if (desc) move(desc, overview);
-    var expect = box.querySelector('.pdp-expect-wrap');
-    if (expect) move(expect, overview);
-    var note = box.querySelector('.research-note');
-    if (note) move(note, overview);
-    fillIfEmpty(overview, '<p class="product-desc-text">Research compound listing. Research use only — not a medicine.</p>');
+    box.querySelectorAll('.pdp-docs-wrap, .pdp-review').forEach(function (el) { el.remove(); });
 
-    box.querySelectorAll('.spec-strip, .spec-note, .storage-box').forEach(function (el) {
-      if (overview.contains(el) || docs.contains(el) || specs.contains(el)) return;
+    var desc = buy.querySelector('.product-desc-text');
+    if (desc && !overview.querySelector('.product-desc-lead')) {
+      var lead = desc.cloneNode(true);
+      lead.classList.add('product-desc-lead');
+      overview.insertBefore(lead, overview.firstChild);
+    }
+    if (!overview.querySelector('.pdp-overview-grid')) {
+      var wrap = document.createElement('div');
+      wrap.innerHTML = overviewExtras();
+      while (wrap.firstChild) overview.appendChild(wrap.firstChild);
+    }
+    var expect = box.querySelector('.pdp-expect-wrap');
+    if (expect) expect.remove();
+
+    box.querySelectorAll('.spec-note, .storage-box').forEach(function (el) {
+      if (overview.contains(el) || docs.contains(el) || buy.contains(el)) return;
       move(el, specs);
     });
-    fillIfEmpty(specs, '<p class="spec-note">Public identifiers for this research compound appear on the listing when published. Lot results live on the COA when issued. No purity % is invented on this page.</p>');
-
-    var docsWrap = box.querySelector('.pdp-docs-wrap');
-    if (docsWrap && !docs.contains(docsWrap)) {
-      docs.querySelectorAll('[data-pdp-placeholder]').forEach(function (n) { n.remove(); });
-      move(docsWrap, docs);
+    placeSpecStrip(buy, specs);
+    if (!specs.querySelector('.spec-strip') && !specs.querySelector('.spec-note')) {
+      specs.innerHTML = '<p class="spec-note">Public identifiers for this research compound appear on the listing when published. Lot results live on the COA when issued. No purity % is invented on this page.</p>';
     }
+
     buy.querySelectorAll('.btn-coa-secondary').forEach(function (btn) { move(btn, docs); });
     hero.querySelectorAll('.qty-upsell-span .btn-coa-secondary, .semax-qty-span .btn-coa-secondary').forEach(function (btn) {
       move(btn, docs);
     });
     var priceNote = buy.querySelector('.price-note');
     if (priceNote) move(priceNote, docs);
-    fillIfEmpty(docs, '<p data-pdp-placeholder="1">Lot COA and SDS are available on request for this research compound.</p>');
+    if (!docs.querySelector('.btn-coa-secondary') && !docs.querySelector('.pdp-docs-request')) {
+      docs.insertAdjacentHTML('afterbegin', docsHtml());
+    }
   }
   function bindTabs() {
     if (BOUND) return;
@@ -167,6 +225,7 @@
       document.body.classList.add('product-page');
       document.documentElement.classList.add('product-page');
       hero.classList.add('pdp-split', 'product-page');
+      styleCrumbs();
       var buy = hero.querySelector('.pdp-buy-col');
       if (!buy) return;
       var packs = placePacks(hero, buy);
@@ -175,6 +234,7 @@
         el.style.display = 'none';
       });
       ensureTrust(buy);
+      relabelPackHeads(buy);
       labelAtc(document.getElementById('qtyAtc'));
       labelAtc(document.getElementById('semaxQtyAtc'));
       var tabs = ensureTabs(box, hero);
