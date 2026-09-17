@@ -155,3 +155,7 @@ Codename: dose-chips-44
 ## v2.97c — 2026-09-17
 - Restore tools h2 to **Laboratory research calculations** (Yehuda SoT)
 - Restore C1V1 dilution in tools lead; remove Plan your order
+
+## v2.97d — 2026-09-17
+- Remove only **Compound comparison (04)** card from `/tools` top grid (Yehuda red circle)
+- Leave Compare research compounds section untouched
