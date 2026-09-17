@@ -13277,4 +13277,11 @@ html body #products-grid > .product-card:hover .product-card-media img{
     transition:none !important;
   }
 }
+/* Cookie bar wrapper is left/right stretched; only the visible chip should capture clicks. */
+#blr-consent.blr-c-open{
+  pointer-events:none !important;
+}
+#blr-consent.blr-c-open .blr-c-inner{
+  pointer-events:auto !important;
+}
 /* === end v2.98a === */
