@@ -13353,3 +13353,49 @@ p.catalog-ruo{
   }
 }
 /* === end v2.98e === */
+
+/* === v2.98f catalog cards clear floating View cart === */
+@media (max-width: 800px) {
+  /* empty band under CTAs — dock may cover padding, not View details/ATC/price */
+  html body .catalog-grid > .product-card,
+  html body #products-grid > .product-card{
+    padding-bottom: 72px !important;
+  }
+  .catalog-grid .product-card-actions,
+  #products-grid .product-card-actions{
+    margin-bottom: 0 !important;
+    position: relative !important;
+    z-index: 5 !important;
+  }
+  /* compact corner FAB */
+  html body .sticky-cart-dock{
+    left: auto !important;
+    right: max(10px, env(safe-area-inset-right, 0px)) !important;
+    transform: none !important;
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+    min-height: 48px !important;
+    min-width: 48px !important;
+    max-width: 48px !important;
+    width: 48px !important;
+    padding: 0 !important;
+    gap: 0 !important;
+    font-size: 0 !important;
+    line-height: 0 !important;
+    border-radius: 999px !important;
+    overflow: hidden !important;
+  }
+  html body .sticky-cart-dock svg{
+    width: 20px !important;
+    height: 20px !important;
+    margin: 0 !important;
+  }
+  html body .sticky-cart-dock .sticky-cart-dock-count{
+    position: absolute !important;
+    top: -2px !important;
+    right: -2px !important;
+    min-width: 18px !important;
+    height: 18px !important;
+    font-size: 10px !important;
+  }
+}
+/* === end v2.98f === */

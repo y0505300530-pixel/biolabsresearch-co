@@ -1,9 +1,9 @@
 {
-  "version": "2.98e",
+  "version": "2.98f",
   "released": "2026-09-17",
-  "codename": "mobile-view-cart-clear-catalog",
-  "appVersion": "2.98e",
+  "codename": "catalog-clear-floating-cart",
+  "appVersion": "2.98f",
   "highlights": [
-    "Mobile View cart dock to bottom-right + catalog padding so it no longer covers first-row price/ATC"
+    "Mobile: 72px clear under catalog card CTAs + icon-only View cart FAB so dock does not cover View details/ATC"
   ]
 }

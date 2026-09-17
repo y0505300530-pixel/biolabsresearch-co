@@ -202,3 +202,6 @@ Codename: dose-chips-44
 
 ## v2.98e — 2026-09-17
 - Mobile floating View cart: bottom-right + catalog padding (no overlap on first-row cards)
+
+## v2.98f — 2026-09-17
+- Catalog card bottom clear-zone + icon-only floating View cart (no CTA overlap @320–414)
