@@ -196,3 +196,6 @@ Codename: dose-chips-44
 
 ## v2.98c — 2026-09-17
 - Stabilize View details hover (color only; no layout jump)
+
+## v2.98d — 2026-09-17
+- Restore Popular **Research use only** under title in gold

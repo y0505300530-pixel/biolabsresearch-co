@@ -13318,3 +13318,17 @@ html body #products-grid > .product-card:hover{
   align-items:center !important;
 }
 /* === end v2.98c === */
+
+/* === v2.98d catalog-ruo gold under Popular === */
+.catalog-header .catalog-ruo,
+p.catalog-ruo{
+  margin: 6px 0 0 !important;
+  padding: 0 !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: .04em !important;
+  text-transform: none !important;
+  color: #B08D57 !important;
+  line-height: 1.35 !important;
+}
+/* === end v2.98d === */

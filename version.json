@@ -1,10 +1,10 @@
 {
-  "version": "2.98c",
+  "version": "2.98d",
   "released": "2026-09-17",
-  "codename": "view-details-hover-stable",
-  "appVersion": "2.98c",
+  "codename": "catalog-ruo-gold-restore",
+  "appVersion": "2.98d",
   "highlights": [
-    "View details hover color-only \u2014 no font-weight/size jump shoving ATC",
-    "Keep 2.98a click z-index + 2.98b catalog-ruo removed"
+    "Restore Popular Research use only under title in gold (#B08D57)",
+    "Keep ATC/View click fixes from 2.98a\u2013c"
   ]
 }
