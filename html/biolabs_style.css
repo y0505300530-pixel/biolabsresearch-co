@@ -13671,3 +13671,43 @@ html body .cart-close {
   }
 }
 /* === end v2.98j === */
+
+/* === v2.98k COA request modal force mobile stack === */
+@media (max-width: 414px) {
+  #coa-request-modal {
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+    inset: 0 !important;
+  }
+  #coa-request-modal .coa-request-panel,
+  #coa-request-modal > div {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  #coa-request-modal .coa-req-name-row,
+  #coa-request-form .coa-req-name-row {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  #coa-request-form {
+    padding: 16px 14px !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  #coa-request-modal input,
+  #coa-request-modal textarea {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+/* === end v2.98k === */

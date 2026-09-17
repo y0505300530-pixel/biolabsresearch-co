@@ -1,9 +1,9 @@
 {
-  "version": "2.98j",
+  "version": "2.98k",
   "released": "2026-09-17",
-  "codename": "coa-request-modal-mobile",
-  "appVersion": "2.98j",
+  "codename": "coa-request-force-stack",
+  "appVersion": "2.98k",
   "highlights": [
-    "COA request modal no horizontal overflow @320; stack name fields; navy submit"
+    "COA request modal: force stacked name fields + full-width panel @320"
   ]
 }

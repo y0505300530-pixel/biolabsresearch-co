@@ -217,3 +217,6 @@ Codename: dose-chips-44
 
 ## v2.98j — 2026-09-17
 - Fix #coa-request-modal overflow @320 (Request lot COA form)
+
+## v2.98k — 2026-09-17
+- Force-stack COA request name fields; kill @320 horizontal scroll
