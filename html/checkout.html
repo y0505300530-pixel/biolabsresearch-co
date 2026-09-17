@@ -1136,7 +1136,17 @@ function notifyAdmin(orderData) {
 }
 
 function showSuccess(orderData, paymentNote) {
-  localStorage.removeItem('biolabs_cart');try{localStorage.removeItem('biofirst_cart');}catch(_e){}
+  cart = [];
+  try {
+    if (typeof _writeCartLS === 'function') _writeCartLS([]);
+    else {
+      localStorage.removeItem('biolabs_cart');
+      localStorage.removeItem('biofirst_cart');
+    }
+  } catch (_e) {
+    try { localStorage.removeItem('biolabs_cart'); } catch (_e2) {}
+    try { localStorage.removeItem('biofirst_cart'); } catch (_e3) {}
+  }
   document.getElementById('mainContent').style.display = 'none';
   const ss = document.getElementById('successScreen');
   ss.style.display = 'block';
