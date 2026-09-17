@@ -163,3 +163,7 @@ Codename: dose-chips-44
 ## v2.97e — 2026-09-17
 - Remove only hero feature **Third-party testing (where available)**
 - Keep Lot docs / HPLC / Traceable
+
+## v2.97f — 2026-09-17
+- Remove only hero vial **Lot docs** photo badge (`nl-photo-badge`)
+- Keep trust Lot docs on request + Lot-specific documentation feat
