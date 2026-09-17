@@ -205,3 +205,6 @@ Codename: dose-chips-44
 
 ## v2.98f — 2026-09-17
 - Catalog card bottom clear-zone + icon-only floating View cart (no CTA overlap @320–414)
+
+## v2.98g — 2026-09-17
+- Sitewide FAB clear-zone; COA modal overflow @320; cart close above nav

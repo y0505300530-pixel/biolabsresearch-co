@@ -13399,3 +13399,96 @@ p.catalog-ruo{
   }
 }
 /* === end v2.98f === */
+
+/* === v2.98g sitewide FAB clear + COA modal + cart close === */
+@media (max-width: 800px) {
+  /* sitewide bottom clear so FAB does not cover tools CTA / science / terms TOC / next-row media */
+  html body main,
+  html body .page-main,
+  html body .tools-hub,
+  html body .tools-grid,
+  html body .tools-section,
+  html body .science-page,
+  html body .science-body,
+  html body .toc,
+  html body .terms-wrap,
+  html body .legal-page,
+  html body .catalog-section,
+  html body .bl-section,
+  html body .site-footer,
+  html body footer {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  /* keep catalog CTAs above FAB (retain 2.98f clear under actions) */
+  html body .catalog-grid > .product-card,
+  html body #products-grid > .product-card {
+    padding-bottom: 72px !important;
+  }
+}
+
+/* COA modal: no horizontal overflow @320–414 */
+@media (max-width: 414px) {
+  #coa-modal {
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  #coa-modal > div {
+    width: calc(100vw - 16px) !important;
+    max-width: 100% !important;
+    max-height: 92vh !important;
+    box-sizing: border-box !important;
+    overflow-x: hidden !important;
+  }
+  #coa-modal > div > div:first-child {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    max-width: 100% !important;
+  }
+  #coa-modal #coa-download-btn {
+    padding: 8px 12px !important;
+    font-size: 11px !important;
+    max-width: 100% !important;
+  }
+  #coa-modal #coa-iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: min(48vh, 360px) !important;
+  }
+  #coa-modal #coa-tabs {
+    padding: 8px 12px 0 !important;
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+}
+
+/* Close cart must beat sticky nav (both were z-index 10050) */
+html body .cart-drawer.open,
+html body .cart-drawer[aria-hidden="false"],
+html body.cart-open .cart-drawer {
+  z-index: 12050 !important;
+}
+html body #cartOverlay.cart-overlay,
+html body .cart-overlay.open,
+html body.cart-open .cart-overlay,
+html body:has(.cart-drawer.open) .cart-overlay {
+  z-index: 12040 !important;
+}
+html body.cart-open .nav,
+html body:has(.cart-drawer.open) .nav,
+html body:has(.cart-drawer.open) .site-sticky-chrome .nav {
+  z-index: 9000 !important;
+}
+html body .cart-drawer .cart-close,
+html body .cart-close {
+  position: relative !important;
+  z-index: 12060 !important;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+/* === end v2.98g === */
