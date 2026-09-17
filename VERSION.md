@@ -199,3 +199,6 @@ Codename: dose-chips-44
 
 ## v2.98d — 2026-09-17
 - Restore Popular **Research use only** under title in gold
+
+## v2.98e — 2026-09-17
+- Mobile floating View cart: bottom-right + catalog padding (no overlap on first-row cards)

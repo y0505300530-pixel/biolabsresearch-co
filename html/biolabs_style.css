@@ -13332,3 +13332,24 @@ p.catalog-ruo{
   line-height: 1.35 !important;
 }
 /* === end v2.98d === */
+
+/* === v2.98e mobile View cart dock clear of catalog cards === */
+@media (max-width: 800px) {
+  /* corner FAB — stop covering first-row price/ATC in center */
+  html body .sticky-cart-dock {
+    left: auto !important;
+    right: max(12px, env(safe-area-inset-right, 0px)) !important;
+    transform: none !important;
+    bottom: calc(12px + env(safe-area-inset-bottom, 0px)) !important;
+    max-width: min(200px, calc(100vw - 24px)) !important;
+    z-index: 9200 !important;
+  }
+  /* clear catalog content above dock */
+  .catalog-section {
+    padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .catalog-grid {
+    padding-bottom: 16px !important;
+  }
+}
+/* === end v2.98e === */

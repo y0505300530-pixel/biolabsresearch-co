@@ -1,10 +1,9 @@
 {
-  "version": "2.98d",
+  "version": "2.98e",
   "released": "2026-09-17",
-  "codename": "catalog-ruo-gold-restore",
-  "appVersion": "2.98d",
+  "codename": "mobile-view-cart-clear-catalog",
+  "appVersion": "2.98e",
   "highlights": [
-    "Restore Popular Research use only under title in gold (#B08D57)",
-    "Keep ATC/View click fixes from 2.98a\u2013c"
+    "Mobile View cart dock to bottom-right + catalog padding so it no longer covers first-row price/ATC"
   ]
 }
