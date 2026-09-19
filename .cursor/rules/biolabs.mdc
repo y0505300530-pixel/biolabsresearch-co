@@ -55,7 +55,7 @@ percentages, no fabricated reviews, no dosing or human-use advice. Certificates 
 
 Owner decision (CRM charge SoT): browser POSTs card fields to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` with camelCase `idempotencyKey`.
-Visible tip is v2.99c (`calculator-seo-finish`). Card path remains the v2.99b CRM UMG authorize hook. Infra reviews before customers see live charges.
+Visible tip is v2.99c2 (`reconstitution-faq`). Card path remains the v2.99b CRM UMG authorize hook. Infra reviews before customers see live charges.
 
 - No full card number, expiry date or CVV may reach storefront `/api/*`, the Node service, a new
   endpoint, or anything persisted in this repo. Do not `console.log` charge bodies.
