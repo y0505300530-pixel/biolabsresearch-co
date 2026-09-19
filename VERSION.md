@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.99g1
+
+Released 2026-09-19.
+
+Codename: catalog-filter-flicker-fix
+
+## Highlights
+
+- **Homepage catalog flicker:** Category / search / strength / availability / docs changes only toggle `.is-catalog-hidden`, the empty state, and `html.catalog-filtered`. `apply()` no longer `appendChild`s every card when sort order is unchanged.
+- **Observer race:** `applying` stays true across a `requestAnimationFrame`, and the `#products-grid` MutationObserver is disconnected during `apply()` then reconnected after paint. Stops the ~60ms second enhance/populate/apply that rebuilt the grid and tripped `catalog-mg.js` chip `innerHTML`.
+- **Unchanged:** Categories stay client-side on the homepage grid — not wired to `/families`. Quote, G3-R, hubs, and `coa-pdp.js` not touched. CSS cache stays `biolabs_style.css?v=407`.
+- **Tip stack:** Sits on live **v2.99g** (`hub-spoke-dynamic-coa`, `f4438915`) over **v2.99f1** catalog-mobile-2col / **v2.99f** SEO L1 / **v2.99e3** / e2 / **v2.99e1** G3-R / abandon **v2.99e** / Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v2.99g1**. Shared `cart-vial.js`, `mg-picker.js`, `prices-sync.js`, `catalog-mg.js` not rewritten.
+
+---
+
 # biolabsresearch.co — Version 2.99g
 
 Released 2026-09-19.
