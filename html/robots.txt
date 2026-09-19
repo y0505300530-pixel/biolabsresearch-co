@@ -1,6 +1,7 @@
-# biolabsresearch.co — v2.99d
+# biolabsresearch.co — v2.99e (AI Allow lock from v2.99d)
 # Yehuda/Marketing lock: major AI crawlers are explicitly Allowed.
 # Do not Disallow / for these agents. /api/ stays closed except /api/products.
+# After v2.99e is live: scripts/indexnow-ping.sh (same IndexNow key as d).
 
 User-agent: Googlebot
 Allow: /

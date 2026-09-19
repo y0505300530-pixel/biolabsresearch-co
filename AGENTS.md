@@ -78,19 +78,23 @@ customer + card fields from the browser to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). Required key is
 `idempotencyKey` (camelCase; `extOrderId` is an accepted alias — never `idempotency_key`).
 The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
-Visible site tip is **v2.99d** (`checkout-quote`) — Quote mode while CRM `paymentsEnabled:false`.
+Visible site tip is **v2.99e** (`abandoned-checkout`) on top of Quote mode (**v2.99d**) while CRM
+`paymentsEnabled:false`. v2.99c2 (`reconstitution-faq`) remains the version base under d.
 Checkout primary CTA is **Request a Quote**. Browser POSTs customer + cart (no card fields) to
 `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)
-and `session_id` (sessionStorage uuid, key `blr_session_id` — same id the v2.99e abandon beacon will use).
+and the same `session_id` used for abandoned-checkout capture.
+Abandoned checkout POSTs `https://crm.biolabsresearch.co/api/checkout/abandon` (silent 204; 400 if card
+fields are present). Capture: contact→shipping advance, email blur ~800ms, pagehide / visibility hidden
+via `sendBeacon`. Throttle 20–30s. Never send PAN/CVV/last4. Failures must not break quote or charge.
 Success copy is locked: **We'll send your quote within one business day.** GA: keep `checkout_start`;
 on quote `ok===true` fire `generate_lead`; do **not** fire `checkout_complete` while payments are off.
-The UMG charge path (`/api/checkout/charge`, `html/checkout-charge.js`) is retained and unused.
-v2.99c2 (`reconstitution-faq`) is the version base on main. Infra reviews before customers see live charges — see `QA_TASKS.md` P1.
-**Parallel (no new letter) — G3-R:** Public catalog name is **G3-R** only (`/products/g3-r`; gold-band **G3-R**). Old retatrutide/r3ta/reta paths 301. Does not take a stamp beyond v2.99d.
+The UMG charge path (`/api/checkout/charge`, `html/checkout-charge.js`) is retained and unused; if
+re-enabled it must also pass `session_id`. Infra reviews before customers see live charges — see `QA_TASKS.md` P1.
+**Parallel (no new letter) — G3-R:** Public catalog name is **G3-R** only (`/products/g3-r`; gold-band **G3-R**). Old retatrutide/r3ta/reta paths 301. Does not take a stamp beyond v2.99e.
 
-**robots.txt (v2.99d Marketing lock):** explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, Googlebot, Bingbot. Do not `Disallow: /` for them.
+**robots.txt (v2.99d Marketing lock, ships with v2.99e):** explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, Googlebot, Bingbot. Do not `Disallow: /` for them.
 
-**IndexNow (v2.99d):** key in `html/indexnow-key.txt` and `html/{key}.txt`. After deploy, `scripts/indexnow-ping.sh` (or the curl in `VERSION.md`).
+**IndexNow (same key as d):** `html/indexnow-key.txt` and `html/{key}.txt`. **v2.99e deploy must run IndexNow after live** — `scripts/indexnow-ping.sh` (or the curl in `VERSION.md`). Do not block abandon capture on this ping.
 
 **No card data on the storefront Node service.** Never add a field, script or route that sends a
 full card number, expiry date or CVV to `/api/*` on this site, the Node service behind it, or a new

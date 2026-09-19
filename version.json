@@ -1,15 +1,13 @@
 {
-  "version": "2.99d",
+  "version": "2.99e",
   "released": "2026-09-19",
-  "codename": "checkout-quote",
-  "appVersion": "2.99d",
+  "codename": "abandoned-checkout",
+  "appVersion": "2.99e",
   "highlights": [
-    "Checkout primary CTA is Request a Quote; POST CRM /api/checkout/quote with session_id",
-    "Locked success copy: We'll send your quote within one business day.",
-    "GA checkout_start kept; generate_lead on quote ok; no checkout_complete while payments off",
-    "UMG /api/checkout/charge retained unused (paymentsEnabled:false)",
-    "robots.txt Allow GPTBot/ClaudeBot/Google-Extended/Bytespider/CCBot/anthropic-ai/PerplexityBot/Applebot-Extended + Googlebot/Bingbot",
-    "IndexNow key in html/ webroot; ping after deploy via scripts/indexnow-ping.sh",
+    "Abandoned checkout POSTs CRM /api/checkout/abandon (no card fields)",
+    "Capture on contact→shipping, email blur ~800ms, pagehide/visibility sendBeacon",
+    "Same session_id on Quote submit; 25s throttle; silent fail-safe",
+    "Tip v2.99e sits on Quote v2.99d (AI crawlers/IndexNow); after live run scripts/indexnow-ping.sh",
     "Parallel: public catalog name for this SKU is G3-R only; /products/g3-r; gold-band G3-R; old retatrutide/r3ta/reta 301"
   ]
 }

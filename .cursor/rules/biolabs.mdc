@@ -53,9 +53,12 @@ percentages, no fabricated reviews, no dosing or human-use advice. Certificates 
 
 # Checkout / payments
 
-Visible tip is **v2.99d** (Quote mode). CRM `paymentsEnabled:false`. Primary CTA is **Request a Quote**.
-Browser POSTs (no card fields) to `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase
-`idempotencyKey` (`BL-QUOTE-<stable-id>`) and `session_id` (sessionStorage uuid, key `blr_session_id`).
+Visible tip is **v2.99e** (abandoned-checkout on Quote mode v2.99d). CRM `paymentsEnabled:false`.
+Primary CTA is **Request a Quote**. Browser POSTs (no card fields) to
+`https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)
+and the same `session_id` as abandon capture. Abandoned checkout POSTs
+`https://crm.biolabsresearch.co/api/checkout/abandon` (204 silent; 400 if card fields). Capture on
+contact→shipping, email blur ~800ms, pagehide/visibility sendBeacon. Throttle 20–30s. Never break quote/charge.
 Success copy lock: **We'll send your quote within one business day.**
 GA: keep `checkout_start`; on quote ok fire `generate_lead`; do **not** fire `checkout_complete` while payments off.
 Charge path (`/api/checkout/charge`, `checkout-charge.js`) is retained unused — do not delete it.
@@ -63,6 +66,8 @@ Charge path (`/api/checkout/charge`, `checkout-charge.js`) is retained unused �
 Owner decision (CRM charge SoT, when payments return): browser POSTs card fields to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` with camelCase `idempotencyKey`.
 Card path remains the v2.99b CRM UMG authorize hook (retained unused while payments are off). Infra reviews before customers see live charges.
+
+**robots.txt / IndexNow:** Keep the v2.99d AI-crawler `Allow: /` list. Same IndexNow key as d. After **v2.99e** is live, run `scripts/indexnow-ping.sh`. Do not block abandon capture on the ping.
 
 - No full card number, expiry date or CVV may reach storefront `/api/*`, the Node service, a new
   endpoint, or anything persisted in this repo. Do not `console.log` charge bodies.
