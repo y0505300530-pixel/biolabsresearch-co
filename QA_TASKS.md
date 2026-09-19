@@ -70,4 +70,4 @@ from low-resolution thumbnails; the third was an artefact of the test tooling.
 | # | Rule | Owner | Status |
 |---|---|---|---|
 | C1 | Keep `id="faq"` on the Science FAQ section. CRM Site texts writes into that block. | pages | standing (infra, 2026-09-10) |
-| C2 | G3-R public rename (Yehuda lock 2026-09-19): live DOM alt after mg-picker must stay dose-aware (`G3-R 10 mg research vial` → `G3-R 20 mg` / `50 mg`). Indian/ELITE Soft-QA. Vial PNG gold band still reads old chrome until design regen. | infra | open |
+| C2 | G3-R public rename (Yehuda lock 2026-09-19): live DOM alt after mg-picker must stay dose-aware (`G3-R 10 mg research vial` → `G3-R 20 mg` / `50 mg`). Indian/ELITE Soft-QA: gold-band text on live `vial-g3-r` GLOW-chrome is **G3-R** (pixels patched on the existing master; confirm catalog + PDP + after strength chip). | infra | open |

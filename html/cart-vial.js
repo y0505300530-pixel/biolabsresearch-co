@@ -680,7 +680,7 @@ function productUrl(item){
 function vialImg(item){
   if (item && (item.gift || item.slug === 'research-solvent')) return '/media/research-solvent.png?v=2';
   var slug = productSlug(item);
-  return '/media/vial-'+(slug)+'.png?v=181';
+  return '/media/vial-'+(slug)+'.png?v='+(slug==='g3-r'?'182':'181');
 }
 var CART_SUGGEST = [
   {slug:'bpc-157', name:'BPC-157', price:88},

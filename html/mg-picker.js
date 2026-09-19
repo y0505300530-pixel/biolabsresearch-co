@@ -44,7 +44,7 @@
     return n.replace("mg", " mg");
   }
   function fileFor(slug) {
-    return "/media/vial-" + slug + ".png?v=181";
+    return "/media/vial-" + slug + ".png?v=" + (slug === "g3-r" ? "182" : "181");
   }
   function baseName(name) {
     return String(name || "").replace(/\s*\([^)]*mg[^)]*\)\s*$/i, "").trim();
