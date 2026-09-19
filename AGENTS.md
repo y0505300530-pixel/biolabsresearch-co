@@ -78,7 +78,7 @@ customer + card fields from the browser to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). Required key is
 `idempotencyKey` (camelCase; `extOrderId` is an accepted alias — never `idempotency_key`).
 The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
-Visible site tip is **v3.00** (`release-3-00`) on top of **v2.99g1** (`catalog-filter-flicker-fix`) / **v2.99g** (`hub-spoke-dynamic-coa`) / **v2.99f1** (`catalog-mobile-2col-compact`) /
+Visible site tip is **v3.00b** (`css-cache-align-407`) on top of **v3.00a** (`qa-meta-css-align`) / **v3.00** (`release-3-00`) / **v2.99g1** (`catalog-filter-flicker-fix`) / **v2.99g** (`hub-spoke-dynamic-coa`) / **v2.99f1** (`catalog-mobile-2col-compact`) /
 **v2.99f** (`seo-level1-compare-faq`) / **v2.99e3** (`mobile-catalog-search`) / **v2.99e2** /
 **v2.99e1** (`g3-r-public-rename`) / **v2.99e** (`abandoned-checkout`) and Quote mode (**v2.99d**)
 while CRM `paymentsEnabled:false`. v2.99c2 (`reconstitution-faq`) remains the version base under d.
@@ -93,7 +93,7 @@ on quote `ok===true` fire `generate_lead`; do **not** fire `checkout_complete` w
 The UMG charge path (`/api/checkout/charge`, `html/checkout-charge.js`) is retained and unused; if
 re-enabled it must also pass `session_id`. Infra reviews before customers see live charges — see `QA_TASKS.md` P1.
 
-**G3-R (v2.99e1, kept under g):** Public catalog name is **G3-R** only (`/products/g3-r`; gold-band **G3-R**). Old retatrutide/r3ta/reta paths 301. Do not resurrect `html/products/retatrutide.html`. Soft-QA Gate 0 stamp for this tip is **v3.00**.
+**G3-R (v2.99e1, kept under g):** Public catalog name is **G3-R** only (`/products/g3-r`; gold-band **G3-R**). Old retatrutide/r3ta/reta paths 301. Do not resurrect `html/products/retatrutide.html`. Soft-QA Gate 0 stamp for this tip is **v3.00b**.
 
 **robots.txt (v2.99d Marketing lock, ships with v2.99e / e1 / f / g):** explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, Googlebot, Bingbot. Do not `Disallow: /` for them.
 
