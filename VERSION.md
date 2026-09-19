@@ -19,8 +19,7 @@ Codename: checkout-quote
     -H 'Content-Type: application/json; charset=utf-8' \
     -d '{"host":"biolabsresearch.co","key":"d265cfed-378b-45a0-9b56-3c05c205f805","keyLocation":"https://biolabsresearch.co/d265cfed-378b-45a0-9b56-3c05c205f805.txt","urlList":["https://biolabsresearch.co/sitemap.xml"]}'
   ```
-- **Hold merge** until Soft-QA **v2.99c2 PASS**. Quote SoT unchanged.
-- Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched.
+- Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched. c2 FAQ / short-URL base kept.
 
 ---
 
