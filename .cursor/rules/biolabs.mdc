@@ -55,7 +55,8 @@ percentages, no fabricated reviews, no dosing or human-use advice. Certificates 
 
 Visible tip is **v2.99d** (Quote mode). CRM `paymentsEnabled:false`. Primary CTA is **Request a Quote**.
 Browser POSTs (no card fields) to `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase
-`idempotencyKey` (`BL-QUOTE-<stable-id>`). Success copy lock: **We'll send your quote within one business day.**
+`idempotencyKey` (`BL-QUOTE-<stable-id>`) and `session_id` (sessionStorage uuid, key `blr_session_id`).
+Success copy lock: **We'll send your quote within one business day.**
 GA: keep `checkout_start`; on quote ok fire `generate_lead`; do **not** fire `checkout_complete` while payments off.
 Charge path (`/api/checkout/charge`, `checkout-charge.js`) is retained unused — do not delete it.
 

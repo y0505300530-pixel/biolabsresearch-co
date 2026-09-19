@@ -80,7 +80,8 @@ customer + card fields from the browser to the CRM sidecar
 The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
 Visible site tip is **v2.99d** (`checkout-quote`) — Quote mode while CRM `paymentsEnabled:false`.
 Checkout primary CTA is **Request a Quote**. Browser POSTs customer + cart (no card fields) to
-`https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`).
+`https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)
+and `session_id` (sessionStorage uuid, key `blr_session_id` — same id the v2.99e abandon beacon will use).
 Success copy is locked: **We'll send your quote within one business day.** GA: keep `checkout_start`;
 on quote `ok===true` fire `generate_lead`; do **not** fire `checkout_complete` while payments are off.
 The UMG charge path (`/api/checkout/charge`, `html/checkout-charge.js`) is retained and unused.

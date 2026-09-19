@@ -1,12 +1,15 @@
-/*! checkout-quote.js v1 — CRM storefront quote SoT (site tip v2.99d).
+/*! checkout-quote.js v2 — CRM storefront quote SoT (site tip v2.99d).
    POST https://crm.biolabsresearch.co/api/checkout/quote
    No card fields. Required: idempotencyKey (camelCase, BL-QUOTE-<stable-id>).
+   Also sends session_id (sessionStorage uuid, key blr_session_id) so CRM abandon
+   can join this quote to the later v2.99e beacon. Do not rotate session_id on submit.
    Charge path stays in checkout-charge.js and is unused while payments are off. */
 (function (root) {
   'use strict';
 
   var ENDPOINT = 'https://crm.biolabsresearch.co/api/checkout/quote';
   var KEY_SLOT = 'blr_quote_idem';
+  var SESSION_SLOT = 'blr_session_id';
   var SUCCESS_COPY = "We'll send your quote within one business day.";
   var ISO3 = {
     US: 'USA', USA: 'USA', GB: 'GBR', CA: 'CAN', AU: 'AUS', DE: 'DEU', FR: 'FRA',
@@ -30,6 +33,42 @@
     var c = String(code || '').trim().toUpperCase();
     if (!c || c === 'OTHER') return 'USA';
     return ISO3[c] || c;
+  }
+
+  function newUuid() {
+    try {
+      if (root.crypto && typeof root.crypto.randomUUID === 'function') return root.crypto.randomUUID();
+    } catch (e) {}
+    try {
+      var a = new Uint8Array(16);
+      (root.crypto || crypto).getRandomValues(a);
+      a[6] = (a[6] & 0x0f) | 0x40;
+      a[8] = (a[8] & 0x3f) | 0x80;
+      var hex = [];
+      for (var i = 0; i < 16; i++) hex.push(('0' + a[i].toString(16)).slice(-2));
+      return hex.slice(0, 4).join('') + '-' + hex.slice(4, 6).join('') + '-' +
+        hex.slice(6, 8).join('') + '-' + hex.slice(8, 10).join('') + '-' + hex.slice(10).join('');
+    } catch (e2) {
+      return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (ch) {
+        var r = Math.random() * 16 | 0;
+        var v = ch === 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+      });
+    }
+  }
+
+  function sessionId() {
+    var id = '';
+    try {
+      id = String((root.sessionStorage && sessionStorage.getItem(SESSION_SLOT)) || '').replace(/^\s+|\s+$/g, '');
+    } catch (e) {}
+    if (!id) {
+      id = newUuid();
+      try {
+        if (root.sessionStorage) sessionStorage.setItem(SESSION_SLOT, id);
+      } catch (e2) {}
+    }
+    return id;
   }
 
   function newStableId() {
@@ -156,6 +195,7 @@
     var key = idempotencyKey(fp, !!input.rotateKey);
     var body = {
       idempotencyKey: key,
+      session_id: sessionId(),
       amount: amount,
       currency: 'USD',
       customer: customer,
@@ -197,7 +237,9 @@
   var api = {
     ENDPOINT: ENDPOINT,
     SUCCESS_COPY: SUCCESS_COPY,
+    SESSION_SLOT: SESSION_SLOT,
     quote: quote,
+    sessionId: sessionId,
     money: money,
     buildItems: buildItems,
     customerPayload: customerPayload,

@@ -11,7 +11,8 @@ Codename: checkout-quote
 - **GA4:** keep `checkout_start`. On successful quote fire `generate_lead`. Do **not** fire `checkout_complete` while payments are off (`paymentsEnabled:false`).
 - **Charge retained:** `html/checkout-charge.js` and `submitCardCharge()` stay in the tree. Card / crypto UX is hidden and unused. Do not delete the charge path.
 - **Tip stack:** Sits on live **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). G3-R rename PR #20 is a separate tip and does not take this letter. Checkout footer + `version.json` stamped **v2.99d**.
-- New module `html/checkout-quote.js?v=1`. Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched.
+- New module `html/checkout-quote.js?v=2`. Quote POST also sends `session_id` (sessionStorage uuid, key `blr_session_id`) so CRM abandon can join the later v2.99e beacon. Full abandon capture is **not** this tip.
+- Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched.
 
 ---
 

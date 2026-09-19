@@ -4,7 +4,7 @@
   "codename": "checkout-quote",
   "appVersion": "2.99d",
   "highlights": [
-    "Checkout primary CTA is Request a Quote; POST CRM /api/checkout/quote",
+    "Checkout primary CTA is Request a Quote; POST CRM /api/checkout/quote with session_id",
     "Locked success copy: We'll send your quote within one business day.",
     "GA checkout_start kept; generate_lead on quote ok; no checkout_complete while payments off",
     "UMG /api/checkout/charge retained unused (paymentsEnabled:false)"
