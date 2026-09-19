@@ -1,12 +1,16 @@
 {
-  "version": "2.99g1",
+  "version": "3.00",
   "released": "2026-09-19",
-  "codename": "catalog-filter-flicker-fix",
-  "appVersion": "2.99g1",
+  "codename": "release-3-00",
+  "appVersion": "3.00",
   "highlights": [
-    "Homepage catalog category/filter changes toggle visibility only — no DOM reorder unless sort order changed",
-    "MutationObserver no longer double-applies after apply() (applying held across rAF; observer disconnected during apply)",
-    "Stops catalog-mg.js chip innerHTML rebuild on category change",
-    "Sits on v2.99g hub-spoke-dynamic-coa; CSS cache stays biolabs_style.css?v=407"
+    "Locked ship of the 2.99 series — stamp only, no feature or checkout changes",
+    "Quote mode (v2.99d): Request a Quote, no card fields, generate_lead",
+    "Abandoned-checkout capture (v2.99e) with the same session_id as quote",
+    "G3-R public catalog name (v2.99e1); /products/g3-r",
+    "SEO L1 compare matrix + PDP FAQ (v2.99f)",
+    "Mobile catalog 2-col + search (v2.99f1 / e3 / e2)",
+    "Family hubs + dynamic lot COA (v2.99g)",
+    "Catalog filter flicker fix (v2.99g1, Soft-QA PASS)"
   ]
 }

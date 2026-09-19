@@ -1,3 +1,23 @@
+# biolabsresearch.co — Version 3.00
+
+Released 2026-09-19.
+
+Codename: release-3-00
+
+## Highlights
+
+- **Release stamp:** Locked ship of the 2.99 series. No feature, CSS layout, or checkout changes in this tip.
+- **Quote (v2.99d):** Checkout CTA is **Request a Quote**. No card fields. Success copy locked. GA `generate_lead` on `ok===true`; do not fire `checkout_complete` while payments are off.
+- **Abandon (v2.99e):** First-party RUO / Quote lead capture to CRM `/api/checkout/abandon`. Same `session_id` as quote.
+- **G3-R (v2.99e1):** Public catalog name **G3-R** only; URL `/products/g3-r`; old retatrutide / r3ta / reta paths 301.
+- **SEO L1 (v2.99f):** Compare pages, PDP FAQ + FAQPage, Organization + BreadcrumbList JSON-LD.
+- **Mobile catalog (v2.99e2 / e3 / f1):** Search icon, ATC clip, 2-col compact grid. CSS cache stays `biolabs_style.css?v=407`.
+- **Hubs + COA (v2.99g):** `/families/` hubs; PDP **Download COA** / **View lot COA** only when `/api/products.coa_pdf_url` is a real PDF.
+- **Filter flicker (v2.99g1):** Soft-QA PASS. Category / filter changes toggle visibility only — no DOM reorder unless sort order changed.
+- **Tip stack:** Sits on live **v2.99g1** (`catalog-filter-flicker-fix`, `9f145ea0`) over **v2.99g** hubs+COA / **v2.99f1** catalog-mobile-2col / **v2.99f** SEO L1 / **v2.99e3** / e2 / **v2.99e1** G3-R / abandon **v2.99e** / Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v3.00**. Feature code unchanged.
+
+---
+
 # biolabsresearch.co — Version 2.99g1
 
 Released 2026-09-19.
