@@ -1,13 +1,10 @@
 {
-  "version": "3.00",
+  "version": "3.00a",
   "released": "2026-09-19",
-  "codename": "release-3-00",
-  "appVersion": "3.00",
+  "codename": "qa-meta-css-align",
+  "appVersion": "3.00a",
   "highlights": [
-    "Quote mode + abandoned checkout",
-    "G3-R public rename",
-    "Mobile catalog 2-col + filter flicker fix",
-    "SEO L1: compares + PDP FAQ + JSON-LD",
-    "Family hubs + dynamic COA fail-closed"
+    "Homepage meta description shortened to ≤159 (QA draft verbatim)",
+    "Catalog + PDP CSS cache-bust aligned to biolabs_style.css?v=407"
   ]
 }

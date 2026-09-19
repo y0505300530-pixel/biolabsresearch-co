@@ -1,3 +1,17 @@
+# biolabsresearch.co — Version 3.00a
+
+Released 2026-09-19.
+
+Codename: qa-meta-css-align
+
+## Highlights
+
+- **Homepage meta:** Replaced the 196-character description with the QA draft (158 chars, ≤159): *BioLabs Research supplies research-use-only (RUO) compounds with lot documentation on request. Browse our catalog and request COAs. Not for human consumption.* Same string on `name="description"`, `og:description`, and `twitter:description`. No invented counts, no dosing.
+- **CSS cache-bust:** Catalog (`/research-peptides`) and all `html/products/*.html` PDPs now load `biolabs_style.css?v=407`. Homepage was already 407. Did not bump past 407. Checkout, family hubs, quote, and G3-R naming/content untouched.
+- **Tip stack:** Hotfix on live **v3.00** (`release-3-00`, `5f180ae5`) over **v2.99g1** / g / f1 / f / e3 / e2 / e1 / e / Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v3.00a**.
+
+---
+
 # biolabsresearch.co — Version 3.00
 
 Released 2026-09-19.
