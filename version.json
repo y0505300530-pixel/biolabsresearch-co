@@ -1,12 +1,13 @@
 {
-  "version": "2.99e3",
+  "version": "2.99f",
   "released": "2026-09-19",
-  "codename": "mobile-catalog-search",
-  "appVersion": "2.99e3",
+  "codename": "seo-level1-compare-faq",
+  "appVersion": "2.99f",
   "highlights": [
-    "Mobile catalog search: flex 0 0 auto (kill 1 1 240px) so icon pins to 44px input",
-    "ATC / Inquire nowrap at 320 so ADD TO CART is not clipped",
-    "CSS only; home cache-bust biolabs_style.css?v=405",
-    "Sits on v2.99e2 search attempt + v2.99e1 G3-R; hero / checkout / FAQ SEO / G3-R untouched"
+    "24 new /compare identity pages from live catalog SKUs (G3-R naming; existing 11 compares content-untouched)",
+    "FAQ (storage, form/solubility docs, COA, purity, shipping) on every live PDP",
+    "JSON-LD: Product+Offer kept; FAQPage on PDP FAQ + new compares; Organization sitewide; BreadcrumbList on PDPs/compares",
+    "AggregateRating omitted \u2014 live PDPs do not render a numeric star rating (pdp-split hides review stars)",
+    "Rebased onto v2.99e1 G3-R public rename; CTAs use /products/g3-r; sitemap lists the new compare URLs"
   ]
 }
