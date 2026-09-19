@@ -84,7 +84,7 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
 <meta name="twitter:title" content="Certificate of Analysis — BioLabs Research">
 <meta name="twitter:description" content="Hosted lot certificates for catalog SKUs when a real file exists in the COA library. Request a missing lot document through the inquiry desk. Research use only.">
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "COA Library", "item": "https://biolabsresearch.co/coa"}]}</script>
-<meta name="app-version" content="2.99f">
+<meta name="app-version" content="2.99g">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -180,6 +180,7 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
 <script>
 (function(){
   // Filename-derived rows only. Unknown fields = See PDF. Never invent lot/purity.
+  // Hosted files only. API rows join when CRM emits coa_pdf_url. Never invent lot/purity.
   var ROWS = [
     {compound:'GLOW 70', slug:'glow-70', file:'glow-70-coa.pdf', q:'glow-70 glow 70 ghk'},
     {compound:'G3-R', slug:'g3-r', file:'g3-r-coa.pdf', q:'g3-r'},
@@ -187,17 +188,28 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
   ];
   var body=document.getElementById('coaBody'), empty=document.getElementById('coaEmpty'), q=document.getElementById('coaQ');
   if(!body||!empty) return;
+  function realPdf(u){
+    if (typeof u !== 'string') return '';
+    u = u.trim();
+    if (!u || /^(none|null|undefined|n\/a|-)$/i.test(u)) return '';
+    if (/\/coa\?/.test(u)) return '';
+    if (!/\.pdf(\?|#|$)/i.test(u)) return '';
+    if (/^https?:\/\//i.test(u) || u.charAt(0) === '/') return u;
+    return '';
+  }
   function render(){
     var term=((q&&q.value)||'').trim().toLowerCase();
     var params=new URLSearchParams(location.search); var urlQ=(params.get('q')||'').toLowerCase();
     if(!term && urlQ){ term=urlQ; q.value=urlQ; }
     var shown=0; var html='';
     ROWS.forEach(function(r){
-      var hay=(r.compound+' '+r.file+' '+r.slug+' '+r.q).toLowerCase();
+      var hay=(r.compound+' '+(r.file||'')+' '+(r.href||'')+' '+r.slug+' '+r.q+' '+(r.lot||'')).toLowerCase();
       if(term && hay.indexOf(term)===-1) return;
       shown++;
-      html+='<tr><td><strong>'+r.compound+'</strong></td><td>See PDF</td><td>See PDF</td><td>See PDF</td><td>See PDF</td>'+
-        '<td><a href="/media/coa/'+r.file+'" target="_blank" rel="noopener">Download PDF</a></td></tr>';
+      var href = r.href || ('/media/coa/'+r.file);
+      var lot = r.lot || 'See PDF';
+      html+='<tr><td><strong>'+r.compound+'</strong></td><td>'+lot+'</td><td>See PDF</td><td>See PDF</td><td>See PDF</td>'+
+        '<td><a href="'+href+'" target="_blank" rel="noopener">Download PDF</a></td></tr>';
     });
     body.innerHTML=html; empty.hidden = shown>0;
   }
@@ -207,6 +219,26 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
     render();
   });
   render();
+  fetch('/api/products').then(function(r){ return r.ok ? r.json() : []; }).then(function(list){
+    var seen = {};
+    ROWS.forEach(function(r){ seen[(r.href||'').split('?')[0]] = 1; seen[r.slug]=1; });
+    (list||[]).forEach(function(p){
+      if (!p) return;
+      var href = realPdf(p.coa_pdf_url || p.coaPdfUrl);
+      if (!href) return;
+      var key = href.split('?')[0];
+      if (seen[key] || seen[p.slug]) return;
+      seen[key]=1; seen[p.slug]=1;
+      ROWS.push({
+        compound: p.name || p.slug,
+        slug: p.slug || '',
+        href: href,
+        lot: (p.coa_lot || p.coaLot || 'See PDF'),
+        q: (p.slug||'')+' '+(p.name||'')
+      });
+    });
+    render();
+  }).catch(function(){});
 })();
 </script>
 
@@ -225,7 +257,7 @@ body{background:var(--cream);color:var(--ink);margin:0;font-family:Inter,system-
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99f" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99f</p>
+<p class="site-version" data-site-version="2.99g" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99g</p>
 </footer>
 <script src="/promo-bar.js?v=293"></script>
 

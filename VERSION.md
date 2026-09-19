@@ -1,3 +1,22 @@
+# biolabsresearch.co — Version 2.99g
+
+Released 2026-09-19.
+
+Codename: hub-spoke-dynamic-coa
+
+## Highlights
+
+- **Family hubs:** `/families/` plus `/families/recovery`, `/families/ghrp-ghrh`, `/families/copper-skin`, `/families/mitochondrial`. Titles are “{Family} research compounds” with an RUO line. Seed examples are BPC-157, TB-500, GHK-Cu, NAD+, Tesamorelin / Ipamorelin, MOTS-c — **not** GLP-1, Retatrutide, Semaglutide, Tirzepatide, or G3-R.
+- **Hub index:** `/research-peptides` stays as the public research-compounds index (no 404). It links the four families.
+- **Spoke crumbs:** Product pages in a family show Home › {Family} research compounds › SKU, plus a contextual link back to the hub (`html/coa-pdp.js`).
+- **COA SoT:** PDP **Download COA** / **View lot COA** only when `/api/products` returns a real `coa_pdf_url` PDF. Optional `coa_lot` switches the label to View lot COA. Otherwise **Request lot COA** inquiry. No Authentic / invented-file button. JSON-LD `DigitalDocument` only when that URL exists.
+- **CRM:** Required API field documented in `docs/CRM-COA-API.md`. Live catalog does not yet emit the keys — storefront fails closed to inquiry.
+- **Tip stack:** Rebased onto **v2.99f** (`seo-level1-compare-faq`, `fef725c1`) over **v2.99e3** mobile-catalog / **v2.99e2** / **v2.99e1** G3-R / abandoned-checkout **v2.99e** / Quote **v2.99d** / c2 FAQ. Sitewide footer + meta + `version.json` stamped **v2.99g**. **HOLD MERGE** until v2.99f1 (2×2 mobile catalog) lands on `origin/main`.
+- **Preserved from f:** 24 new compare pages, PDP FAQ + FAQPage, Organization + BreadcrumbList JSON-LD, f sitemap compares. Home CSS cache-bust `biolabs_style.css?v=405`. Quote + abandon scripts untouched.
+- **Unchanged:** Abandoned-checkout capture, Quote CTA, charge path retained unused, robots Allow list, IndexNow key, G3-R public name / `/products/g3-r`. Shared `cart-vial.js`, `mg-picker.js`, `prices-sync.js` not rewritten. `pdp-split.js` only respects family crumbs (commit note). `pdp-story.js` Docs copy aligned.
+
+---
+
 # biolabsresearch.co — Version 2.99f
 
 Released 2026-09-19.

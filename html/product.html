@@ -160,7 +160,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
   }
 }
 </style>
-<meta name="app-version" content="2.99f">
+<meta name="app-version" content="2.99g">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -503,18 +503,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
 </div>
 <script>
 // COA DATA MAP
-var COA_DATA = {
-  'glow-70': [
-    {url:'/media/coa/glow-70-coa.pdf', filename:'glow-70-coa.pdf', label:'GLOW 70 — Certificate of Analysis'}
-  ],
-  'g3-r': [
-    {url:'/media/coa/g3-r-coa.pdf', filename:'g3-r-coa.pdf', label:'G3-R — Certificate of Analysis'}
-  ],
-  'bpc-157-tb-500-blend': [
-    {url:'/media/coa/sample-coa.pdf', filename:'sample-coa.pdf', label:'BPC-157 / TB-500 Blend — Lot ARC-WV10-004'}
-  ],
-  'tesamorelin-ipamorelin': []
-};
+var COA_DATA = {};
 
 function openCOAModal(slug) {
   var entries = COA_DATA[slug];
@@ -686,5 +675,6 @@ document.addEventListener('keydown', function(e) {
 <script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=44"></script>
 <script src="/prices-sync.js?v=3"></script>
+<script src="/coa-pdp.js?v=1"></script>
 </body>
 </html>
