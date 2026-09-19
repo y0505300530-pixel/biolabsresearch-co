@@ -80,6 +80,13 @@ a.tr-btn:hover{opacity:.92}
 .tr-cta-band .tr-cta-catalog:hover{background:#c4a06a;border-color:#c4a06a;color:#0d2137}
 .tr-cta-band .tr-cta-inquire{background:transparent;color:#F2EFE9;border-color:#B08D57}
 .tr-cta-band .tr-cta-inquire:hover{background:rgba(242,239,233,.08);color:#F2EFE9;border-color:#F2EFE9}
+.tr-faq{margin:0 0 28px;background:#fff;border:1px solid var(--tr-line);border-radius:18px;padding:8px 26px 12px}
+.tr-faq h2{font-size:18px;font-weight:700;margin:18px 0 6px;color:var(--tr-ink)}
+.tr-faq-item{border-top:1px solid var(--tr-line)}
+.tr-faq-item:first-of-type{border-top:none}
+.tr-faq-item summary{cursor:pointer;font-size:15px;font-weight:700;padding:14px 0;color:var(--tr-ink);list-style:none}
+.tr-faq-item summary::-webkit-details-marker{display:none}
+.tr-faq-item p{margin:0 0 16px;font-size:14.5px;line-height:1.65;color:var(--tr-muted);max-width:100%;overflow-wrap:anywhere}
 .tr-related{margin:0 0 24px}
 .tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
 .tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -98,16 +105,20 @@ a.tr-btn:hover{opacity:.92}
   .tr-result{flex-direction:column}
   .tr-result .val{font-size:36px}
   .tr-cta{flex:1 1 100%;width:100%}
+  .tr-faq{padding:8px 18px 12px}
 }
 </style>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Reconstitution Calculator","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculate mg/mL concentration from vial amount and diluent volume for laboratory research calculations.","url":"https://biolabsresearch.co/tools/reconstitution","publisher":{"@type":"Organization","name":"BioLabs Research"}}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is mg/mL concentration calculated for research?","acceptedAnswer":{"@type":"Answer","text":"Concentration (mg/mL) = vial amount (mg) ÷ diluent volume (mL). Example: 10 mg vial amount + 2 mL diluent volume → 5 mg/mL. An optional aliquot mass is concentration × aliquot volume (0.1 mL at 5 mg/mL → 0.5 mg). This is laboratory notebook arithmetic on this device only — not a protocol and not medical advice."}},{"@type":"Question","name":"How does diluent volume enter the mg/mL math?","acceptedAnswer":{"@type":"Answer","text":"Diluent volume is the denominator. The same vial amount in a larger volume yields a lower mg/mL figure; a smaller volume yields a higher figure. This page does not choose a solvent, a volume, or a method — the millilitres come from the notebook. Output is not a lot specification. Certificates are on request."}},{"@type":"Question","name":"What does this calculator not do?","acceptedAnswer":{"@type":"Answer","text":"It does not calculate a dose, a syringe marking, an injection volume, or any human or veterinary use. It does not recommend volumes for any organism. For C1V1 = C2V2 after a stock already exists, use the dilution calculator. Research use only."}}]}
+</script>
 <meta name="twitter:title" content="Reconstitution Calculator | BioLabs Research">
 <meta name="twitter:description" content="Client-side reconstitution math for laboratory research calculations: vial amount and diluent volume to concentration. Research use only.">
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Reconstitution Calculator", "item": "https://biolabsresearch.co/tools/reconstitution"}]}</script>
-<meta name="app-version" content="2.99c">
+<meta name="app-version" content="2.99c2">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -216,6 +227,28 @@ a.tr-btn:hover{opacity:.92}
     </aside>
   </div>
 
+  <section class="tr-faq" id="tool-faq" aria-labelledby="recFaqTitle">
+    <h2 id="recFaqTitle">mg/mL laboratory FAQ</h2>
+    <details class="tr-faq-item" open>
+      <summary>How is mg/mL concentration calculated for research?</summary>
+      <p>Concentration (mg/mL) = vial amount (mg) ÷ diluent volume (mL). Example: 10 mg vial amount + 2 mL diluent volume → <strong>5 mg/mL</strong>. An optional aliquot mass is concentration × aliquot volume (0.1 mL at 5 mg/mL → 0.5 mg). This is laboratory notebook arithmetic on this device only — not a protocol and not medical advice.</p>
+    </details>
+    <details class="tr-faq-item">
+      <summary>How does diluent volume enter the mg/mL math?</summary>
+      <p>Diluent volume is the denominator. The same vial amount in a larger volume yields a lower mg/mL figure; a smaller volume yields a higher figure. This page does not choose a solvent, a volume, or a method — the millilitres come from the notebook. Output is not a lot specification. Certificates are on request.</p>
+    </details>
+    <details class="tr-faq-item">
+      <summary>What does this calculator not do?</summary>
+      <p>It does not calculate a dose, a syringe marking, an injection volume, or any human or veterinary use. It does not recommend volumes for any organism. For C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub> after a stock already exists, use the <a href="/tools/dilution">dilution calculator</a>. Research use only.</p>
+    </details>
+  </section>
+
+  <div class="tr-cta-band" aria-label="Catalog and inquiry">
+    <p>Need a listed research compound or a lot note? Open the catalog or send an inquiry.</p>
+    <a class="tr-cta tr-cta-catalog" href="/#catalog">Request catalog</a>
+    <a class="tr-cta tr-cta-inquire" href="/contact">Inquire</a>
+  </div>
+
   <section class="tr-related">
     <h2>Related</h2>
     <div class="tr-related-grid">
@@ -224,12 +257,6 @@ a.tr-btn:hover{opacity:.92}
       <a href="/tools/compound-comparison"><strong>Compound comparison</strong><span>CAS, MW, sequence side-by-side</span></a>
     </div>
   </section>
-
-  <div class="tr-cta-band" aria-label="Catalog and inquiry">
-    <p>Need a listed research compound or a lot note? Open the catalog or send an inquiry.</p>
-    <a class="tr-cta tr-cta-catalog" href="/#catalog">Request catalog</a>
-    <a class="tr-cta tr-cta-inquire" href="/contact">Inquire</a>
-  </div>
 
   <p class="tr-ruo">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</p>
 </main>
@@ -293,7 +320,7 @@ a.tr-btn:hover{opacity:.92}
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99c" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99c</p>
+<p class="site-version" data-site-version="2.99c2" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99c2</p>
 </footer>
 <script src="/tools-video.js?v=1"></script>
 <script src="/promo-bar.js?v=293"></script>
