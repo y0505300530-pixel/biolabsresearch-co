@@ -1,12 +1,12 @@
 {
-  "version": "2.99e2",
+  "version": "2.99e3",
   "released": "2026-09-19",
-  "codename": "mobile-catalog-search-fix",
-  "appVersion": "2.99e2",
+  "codename": "mobile-catalog-search",
+  "appVersion": "2.99e3",
   "highlights": [
-    "Mobile catalog: search icon pinned inside input (no floating gap)",
-    "catalog-sr visually hidden so absolute icon centers on the field",
-    "CSS cache-bust biolabs_style.css?v=404",
-    "Sits on tip v2.99e1 G3-R"
+    "Mobile catalog search: flex 0 0 auto (kill 1 1 240px) so icon pins to 44px input",
+    "ATC / Inquire nowrap at 320 so ADD TO CART is not clipped",
+    "CSS only; home cache-bust biolabs_style.css?v=405",
+    "Sits on v2.99e2 search attempt + v2.99e1 G3-R; hero / checkout / FAQ SEO / G3-R untouched"
   ]
 }

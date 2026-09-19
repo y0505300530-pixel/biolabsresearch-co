@@ -14535,3 +14535,57 @@ html body .catalog-search input{
   }
 }
 /* === end v2.99e2 search === */
+
+/* === v2.99e3 mobile catalog search + ATC clip === */
+@media (max-width: 768px) {
+  html body .catalog-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  html body .catalog-search {
+    flex: 0 0 auto !important;
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    position: relative;
+    display: block;
+  }
+  html body .catalog-sr {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0,0,0,0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  html body .catalog-search-ico {
+    position: absolute !important;
+    left: 14px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    pointer-events: none;
+    z-index: 2;
+  }
+  html body .catalog-search input {
+    width: 100% !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 10px 14px 10px 42px !important;
+    box-sizing: border-box !important;
+  }
+  html body .product-card-actions button,
+  html body .product-card-atc,
+  html body .product-card-inquire {
+    white-space: nowrap !important;
+    font-size: 13px !important;
+    padding: 10px 12px !important;
+    overflow: visible !important;
+  }
+}
+/* === end v2.99e3 === */
