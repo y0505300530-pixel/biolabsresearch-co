@@ -1,3 +1,21 @@
+# biolabsresearch.co — Version 2.99e
+
+Released 2026-09-19.
+
+Codename: abandoned-checkout
+
+## Highlights
+
+- **Abandoned checkout:** First-party RUO / Quote lead capture. Browser POSTs `https://crm.biolabsresearch.co/api/checkout/abandon` (no card / PAN / CVV / last4). CRM returns silent **204** or **400** if card fields are present.
+- **Capture SoT:** (a) contact → shipping advance, (b) email blur debounce ~800ms when the address is valid, (c) `pagehide` / `visibilitychange` → hidden via `sendBeacon`.
+- **Session:** `session_id` is a `bl-sess-` + UUID in `sessionStorage`. Same id is sent on Quote submit (`/api/checkout/quote`) and on charge if payments are re-enabled. Throttle 25s upsert. Failures are silent and never break quote/charge.
+- **Tip stack:** Live **v2.99d** (`checkout-quote`, PR #21, Soft-QA PASS at `105a5266`) sits on **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). This ship is **v2.99e**. G3-R rename PR #20 is a separate tip and does not take this letter. Sitewide footer + meta + `version.json` stamped **v2.99e**.
+- New module `html/checkout-abandon.js?v=1`. Quote prefers `BLRCheckoutAbandon.sessionId()` then `blr_session_id`. Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched. c2 FAQ / short-URL base kept.
+- **IndexNow (Yehuda lock):** same key as d (`d265cfed-378b-45a0-9b56-3c05c205f805`). **After this tip is live**, run `scripts/indexnow-ping.sh` (or the curl under v2.99d). Do not block abandon capture on the ping.
+- **AI crawlers:** Keep the d Allow list (GPTBot / ClaudeBot / Google-Extended / Bytespider / CCBot / anthropic-ai / PerplexityBot / Applebot-Extended + Googlebot / Bingbot).
+
+---
+
 # biolabsresearch.co — Version 2.99d
 
 Released 2026-09-19.

@@ -1,6 +1,7 @@
-/*! checkout-charge.js v3 — CRM storefront charge SoT (site tip v2.99d).
+/*! checkout-charge.js v4 — CRM storefront charge SoT (retained unused; tip v2.99e).
    POST https://crm.biolabsresearch.co/api/checkout/charge
    Required: idempotencyKey (camelCase; extOrderId accepted as alias). Never idempotency_key.
+   Passes the same session_id as abandoned-checkout capture if charge is re-enabled.
    Never logs or stores full PAN/CVV. Idempotency is stable for one in-flight submit. */
 (function (root) {
   'use strict';
@@ -189,6 +190,13 @@
       subscriptionStatus: 0,
       notes: String(input.notes || '')
     };
+    try {
+      var sid = input.session_id;
+      if (!sid && root.BLRCheckoutAbandon && typeof root.BLRCheckoutAbandon.sessionId === 'function') {
+        sid = root.BLRCheckoutAbandon.sessionId();
+      }
+      if (sid) body.session_id = String(sid);
+    } catch (eSid) {}
 
     return fetch(ENDPOINT, {
       method: 'POST',
