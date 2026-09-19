@@ -1,3 +1,22 @@
+# biolabsresearch.co — Version 2.99g
+
+Released 2026-09-19.
+
+Codename: hub-spoke-dynamic-coa
+
+## Highlights
+
+- **Family hubs:** `/families/` plus `/families/recovery`, `/families/ghrp-ghrh`, `/families/copper-skin`, `/families/mitochondrial`. Titles are “{Family} research compounds” with an RUO line. Seed examples are BPC-157, TB-500, GHK-Cu, NAD+, Tesamorelin / Ipamorelin, MOTS-c — **not** GLP-1, Retatrutide, Semaglutide, Tirzepatide, or G3-R.
+- **Hub index:** `/research-peptides` stays as the public research-compounds index (no 404). It links the four families.
+- **Spoke crumbs:** Product pages in a family show Home › {Family} research compounds › SKU, plus a contextual link back to the hub (`html/coa-pdp.js`).
+- **COA SoT:** PDP **Download COA** / **View lot COA** only when `/api/products` returns a real `coa_pdf_url` PDF. Optional `coa_lot` switches the label to View lot COA. Otherwise **Request lot COA** inquiry. No Authentic / invented-file button. JSON-LD `DigitalDocument` only when that URL exists.
+- **CRM:** Required API field documented in `docs/CRM-COA-API.md`. Live catalog does not yet emit the keys — storefront fails closed to inquiry.
+- **Tip stack:** Rebased onto **v2.99f1** (`catalog-mobile-2col-compact`, `9669cc28`) over **v2.99f** SEO L1 / **v2.99e3** mobile-catalog / **v2.99e2** / **v2.99e1** G3-R / abandoned-checkout **v2.99e** / Quote **v2.99d** / c2 FAQ. Sitewide footer + meta + `version.json` stamped **v2.99g**.
+- **Preserved from f1:** mobile catalog 2-col + compact toolbar, `biolabs_style.css?v=407`. Preserved from f: 24 new compare pages, PDP FAQ + FAQPage, Organization + BreadcrumbList JSON-LD, f sitemap compares. Quote + abandon scripts untouched.
+- **Unchanged:** Abandoned-checkout capture, Quote CTA, charge path retained unused, robots Allow list, IndexNow key, G3-R public name / `/products/g3-r`. Shared `cart-vial.js`, `mg-picker.js`, `prices-sync.js` not rewritten. `pdp-split.js` only respects family crumbs (commit note). `pdp-story.js` Docs copy aligned.
+
+---
+
 # biolabsresearch.co — Version 2.99f1
 
 Released 2026-09-19.
@@ -11,7 +30,7 @@ Codename: catalog-mobile-2col-compact
 - **Fix:** 1-col rule removed. End-of-file SoT forces 2-col at ≤800 / ≤390 / ≤380. Toolbar filters are a **2×2** select grid (Documentation hidden on mobile). Cards: hide tagline / trust / View details; clamp name to 2 lines; chips nowrap; compact ATC nowrap; kill FAB card pad; 12px section gutters so cards are not ~99px wide.
 - **Cache:** `html/index.html` loads `biolabs_style.css?v=407`.
 - **Unchanged:** Hero, Quote / G3-R / abandon / f SEO (compares, PDP FAQ). Sits on live **v2.99f** (`fef725c1` seo-level1-compare-faq) over **v2.99e3** / e2 / e1 / e / Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v2.99f1**.
-- **Hold:** PR #32 / hub-spoke **g** not merged.
+- **ELITE Soft-QA:** formal PASS lock on `9669cc28`. Hub-spoke **g** ships next.
 
 ---
 
