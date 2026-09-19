@@ -1,0 +1,10 @@
+{
+  "version": "2.79",
+  "released": "2026-09-16",
+  "codename": "catalog-cover-marketing-header",
+  "highlights": [
+    "Restore object-fit:cover on catalog / product cards / Pairs / cart; remove v2.78 catalog contain overrides; PDP mains stay contain",
+    "Catalog header Marketing SoT: Popular research compounds + short RUO + View all compounds + lot docs on request",
+    "KEEP ADD TO CART"
+  ]
+}

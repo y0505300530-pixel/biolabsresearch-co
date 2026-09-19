@@ -1,4 +1,4 @@
-/*! checkout-charge.js v3 — CRM storefront charge SoT (site tip v2.99c2).
+/*! checkout-charge.js v3 — CRM storefront charge SoT (site tip v2.99d).
    POST https://crm.biolabsresearch.co/api/checkout/charge
    Required: idempotencyKey (camelCase; extOrderId accepted as alias). Never idempotency_key.
    Never logs or stores full PAN/CVV. Idempotency is stable for one in-flight submit. */
