@@ -169,7 +169,7 @@ Codename: rsay-ftc-strip-verified-dist
 
 - **FTC / Marketing**: Remove ✓ Verified reviewer badges from “What researchers say” cards
 - **FTC / Marketing**: Remove star distribution bars (92/6/1/1/0) under aggregate rating
-- **Keep**: olive stars, 4.9/5, “Based on 1,200 reviews”, carousel names/quotes
+- **Keep**: olive stars, 4.9/5, carousel names/quotes (review-count line later removed in 2.99c)
 - CSS `biolabs_style.css?v=360`
 
 ---
@@ -225,7 +225,7 @@ Codename: dose-chips-44
 - Restore RUO disclaimer under hero CTAs
 
 ## v2.94e — 2026-09-17
-- Hero trust SoT: 20 research compounds · 45K+ customers · Lot docs on request (no ★/reviews; no Same-day)
+- Hero trust SoT then: compound count + invented customer count + Lot docs on request (superseded in 2.99c)
 
 ## v2.94f — 2026-09-17
 - Unhide hero trust SoT (CSS override of v1.25 display:none)
