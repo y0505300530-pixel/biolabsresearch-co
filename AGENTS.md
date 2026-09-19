@@ -78,7 +78,7 @@ customer + card fields from the browser to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). Required key is
 `idempotencyKey` (camelCase; `extOrderId` is an accepted alias — never `idempotency_key`).
 The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
-Visible site tip is **v2.99c** (`calculator-seo-finish`). Card path remains the v2.99b CRM UMG authorize hook for Soft-QA live charges.
+Visible site tip is **v2.99c2** (`reconstitution-faq`). Card path remains the v2.99b CRM UMG authorize hook for Soft-QA live charges.
 Infra (Alejandro) reviews before customers see live charges — see `QA_TASKS.md` P1.
 
 **No card data on the storefront Node service.** Never add a field, script or route that sends a
