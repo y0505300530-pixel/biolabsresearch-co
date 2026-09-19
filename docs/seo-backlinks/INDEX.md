@@ -7,6 +7,7 @@ Location in repo: `docs/seo-backlinks/`
 - `email-drafts-8-2026-09-19.md` — 8 listing outreach drafts (send from admin@ preferred)
 - `backlink-candidates-wave1.csv` — candidate list
 - `waveE-*` / `waveF-*` / `waveG-*` / `waveH-*` — session logs
+- `blog-p21-audit-2026-09-19.md` — Blog P2.1 terminology audit (copy only; no live edits)
 
 ## Honest totals (as of 2026-09-19)
 - Live verified inbound: **0**
