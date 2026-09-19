@@ -280,7 +280,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <div class="product-hero pdp-split product-page">
         <div class="product-img-section">
 <div class="product-img-main">
-            <img src="/media/vial-g3-r.webp?v=182" alt="G3-R 10 mg research vial" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+            <img id="pdpMainImg" src="/media/vial-g3-r.webp?v=182" alt="G3-R 10 mg research vial" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
           </div>
           </div>
         <div class="pdp-buy-col">
@@ -516,7 +516,8 @@ footer{background:var(--ink);padding:60px 60px 30px}
     var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
       ? '<a class="btn-coa-secondary" href="/coa?q='+encodeURIComponent(p.slug)+'">View lot COA</a>'
       : '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
-    var imgAlt = 'G3-R 10 mg research vial';
+    var dose0 = window._pdpMg || '10mg';
+    var imgAlt = 'G3-R ' + String(dose0).replace(/\s+/g, '').toLowerCase().replace('mg', ' mg') + ' research vial';
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero pdp-split product-page">' +
         '<div class="product-img-section">' +
@@ -562,6 +563,7 @@ storageHtml + presentationHtml +
           '<div class="pdp-sticky-price"><span class="pdp-sticky-label">Unit</span> <strong id="pdpStickyPrice">$'+p.price+'</strong></div>' +
           '<button type="button" class="pdp-sticky-atc" onclick="addToCartTemplate()">ADD TO CART</button>' +
         '</div>';
+    paintG3RAlt(window._pdpMg || '10mg');
   }
   function renderNotFound() {
     document.getElementById('product-container').innerHTML =
@@ -590,6 +592,21 @@ storageHtml + presentationHtml +
       } catch(e){}
       if (!document.querySelector("#product-container .product-hero")) renderNotFound();
     });
+
+  function paintG3RAlt(mg) {
+    var img = document.getElementById('pdpMainImg') || document.querySelector('.product-img-main img');
+    if (!img) return;
+    var pretty = String(mg || window._pdpMg || '10mg').replace(/\s+/g, '').toLowerCase().replace('mg', ' mg');
+    img.alt = 'G3-R ' + pretty + ' research vial';
+    img.setAttribute('alt', img.alt);
+  }
+  document.addEventListener('click', function (e) {
+    var b = e.target && e.target.closest && e.target.closest('button[data-mg], .mg-btn');
+    if (!b) return;
+    var mg = b.getAttribute('data-mg') || b.textContent;
+    window._pdpMg = mg;
+    paintG3RAlt(mg);
+  }, true);
 
   window.selectSize = function(btn, price) {
     document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
