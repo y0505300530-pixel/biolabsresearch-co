@@ -70,4 +70,4 @@ from low-resolution thumbnails; the third was an artefact of the test tooling.
 | # | Rule | Owner | Status |
 |---|---|---|---|
 | C1 | Keep `id="faq"` on the Science FAQ section. CRM Site texts writes into that block. | pages | standing (infra, 2026-09-10) |
-| C2 | G3-R public rename (Yehuda lock 2026-09-19): live DOM alt after mg-picker must stay dose-aware (`G3-R 10 mg research vial` → `G3-R 20 mg` / `50 mg`). Indian/ELITE Soft-QA: gold-band text on live `vial-g3-r` GLOW-chrome is **G3-R** (pixels patched on the existing master; confirm catalog + PDP + after strength chip). | infra | open |
+| C2 | G3-R public rename (Yehuda lock 2026-09-19): live DOM alt after mg-picker must stay dose-aware (`G3-R 10 mg research vial` → `G3-R 20 mg` / `50 mg`). **Indian must regenerate GLOW-chrome vial (text-only master) with gold-band G3-R before Soft-QA lock** — live catalog/PDP/qty files no longer read R3TA/RETA/Retatrutide (storefront text-only patch + qty composites), but they are not Indian's locked master: catalog PNG still has the pre-existing gold fill bar; `vial-g3-r-20mg` is off-chrome cream label; PIL is not the GLOW-70 text-only pattern. | infra | open |

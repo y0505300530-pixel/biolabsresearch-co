@@ -55,7 +55,7 @@
     return c ? c.toUpperCase() : "RESEARCH COMPOUND";
   }
 
-  function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v=181'; } return '/media/vial-'+slug+'.png?v=181'; }
+  function vialImg(item){ if(item&&(item.gift||item.slug==='research-solvent')) return '/media/research-solvent.svg'; var slug=productSlug(item); var mg=((item&&item.mg)||'').toString().split(' ').join('').toLowerCase(); var v=(slug==='g3-r')?'183':'181'; if(mg){ return '/media/vial-'+slug+'-'+mg+'.png?v='+v; } return '/media/vial-'+slug+'.png?v='+v; }
 
   /* The page's own addToCart knows nothing about strengths, so the line it just wrote says only "$62".
      Name the strength the card showed; a line that already names one is left alone. */

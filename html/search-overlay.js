@@ -38,7 +38,7 @@
       var q = u.indexOf("?");
       return (q === -1 ? u.replace(/\.webp$/, ".png") : u.slice(0, q).replace(/\.webp$/, ".png")) + "?v=181";
     }
-    return "/media/vial-" + slug + ".png?v=181";
+    return "/media/vial-" + slug + ".png?v=" + (slug === "g3-r" ? "183" : "181");
   }
   function catalog(list) {
     return (list || []).filter(function (p) {

@@ -9,7 +9,7 @@
   var RATIO3 = 79 / 99;
   var PACK_QTY = [1, 2, 3];
   var DEFAULT_QTY = 2;
-  var ASSET_V = '183';
+  var ASSET_V = '184';
   var CSS_ID = 'qty-upsell-css';
   var PRODUCT = null;
   var MG = '';
@@ -110,7 +110,7 @@
     };
   }
   function fileFor(slug) {
-    return '/media/vial-' + slug + '.png?v=181';
+    return '/media/vial-' + slug + '.png?v=' + (slug === 'g3-r' ? '183' : '181');
   }
   function packImg(slug, q) {
     return {
