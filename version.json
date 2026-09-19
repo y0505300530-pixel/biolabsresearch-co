@@ -1,12 +1,12 @@
 {
-  "version": "2.99g",
+  "version": "2.99g1",
   "released": "2026-09-19",
-  "codename": "hub-spoke-dynamic-coa",
-  "appVersion": "2.99g",
+  "codename": "catalog-filter-flicker-fix",
+  "appVersion": "2.99g1",
   "highlights": [
-    "Family hubs at /families/ and /families/{slug}: recovery, ghrp-ghrh, copper-skin, mitochondrial",
-    "PDP Download / View lot COA only when /api/products.coa_pdf_url is a real PDF",
-    "Otherwise Request lot COA inquiry; JSON-LD DigitalDocument only when URL exists",
-    "Sits on v2.99f1 catalog-mobile-2col (?v=407) over f SEO L1 / e3 / e1 G3-R / e abandon / d Quote"
+    "Homepage catalog category/filter changes toggle visibility only — no DOM reorder unless sort order changed",
+    "MutationObserver no longer double-applies after apply() (applying held across rAF; observer disconnected during apply)",
+    "Stops catalog-mg.js chip innerHTML rebuild on category change",
+    "Sits on v2.99g hub-spoke-dynamic-coa; CSS cache stays biolabs_style.css?v=407"
   ]
 }
