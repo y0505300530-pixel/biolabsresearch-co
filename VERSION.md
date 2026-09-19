@@ -247,7 +247,7 @@ Codename: dose-chips-44
 - Leave Compare research compounds section untouched
 
 ## v2.97e — 2026-09-17
-- Remove only hero feature **Third-party testing (where available)**
+- Remove only the hero feature that claimed testing availability without a lot file
 - Keep Lot docs / HPLC / Traceable
 
 ## v2.97f — 2026-09-17
