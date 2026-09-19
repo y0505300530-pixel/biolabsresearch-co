@@ -1,3 +1,20 @@
+# biolabsresearch.co — Version 2.99e1
+
+Released 2026-09-19.
+
+Codename: g3-r-public-rename
+
+## Highlights
+
+- **G3-R public name (Yehuda lock):** Catalog display name is **G3-R** only. PDP URL is `/products/g3-r`. Gold-band text on live GLOW-chrome is **G3-R** (`vial-g3-r.png` / `.webp` + 10/20/50). No public Retatrutide / R3TA / Reta on band, alt, or URL.
+- **Redirects:** Old `/products/retatrutide`, `/products/r3ta`, `/products/reta` and compare/blog/media variants **301** to the G3-R slug. Do not resurrect `html/products/retatrutide.html`.
+- **Alt:** After mg-picker / strength chip the live DOM alt stays `G3-R {dose} research vial`.
+- **Tip stack:** Sits on locked **v2.99e** (`abandoned-checkout`, Soft-QA PASS at `671f9e27`) over Quote **v2.99d** / c2 FAQ / AI-crawler Allow / IndexNow. Sitewide footer + meta + `version.json` stamped **v2.99e1** for Soft-QA Gate 0.
+- **Unchanged:** Abandoned-checkout capture, Quote CTA, charge path retained unused, robots Allow list, IndexNow key. f (`#26`) and g (`#25`) are not in this tip.
+- **Infra after live:** Deploy nginx 301s. CRM / products-api: slug `g3-r`, name `G3-R`, `image_url` `/media/vial-g3-r.webp?v=184`.
+
+---
+
 # biolabsresearch.co — Version 2.99e
 
 Released 2026-09-19.
@@ -9,8 +26,7 @@ Codename: abandoned-checkout
 - **Abandoned checkout:** First-party RUO / Quote lead capture. Browser POSTs `https://crm.biolabsresearch.co/api/checkout/abandon` (no card / PAN / CVV / last4). CRM returns silent **204** or **400** if card fields are present.
 - **Capture SoT:** (a) contact → shipping advance, (b) email blur debounce ~800ms when the address is valid, (c) `pagehide` / `visibilitychange` → hidden via `sendBeacon`.
 - **Session:** `session_id` is a `bl-sess-` + UUID in `sessionStorage`. Same id is sent on Quote submit (`/api/checkout/quote`) and on charge if payments are re-enabled. Throttle 25s upsert. Failures are silent and never break quote/charge.
-- **Tip stack:** Live **v2.99d** (`checkout-quote`, PR #21, Soft-QA PASS at `105a5266`) sits on **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). This ship is **v2.99e**. Sitewide footer + meta + `version.json` stamped **v2.99e**. Does not take a new letter beyond e.
-- **Parallel (no new letter) — G3-R public name:** Display name **G3-R** only; URL `/products/g3-r`; gold-band text **G3-R** on live GLOW-chrome (`vial-g3-r.png` / `.webp` + 10/20/50). Old `/products/retatrutide`, `/products/r3ta`, `/products/reta` and compare/blog/media variants 301 here. Alt after mg-picker: `G3-R {dose} research vial`. Folded into v2.99e rather than stealing a stamp.
+- **Tip stack:** Live **v2.99d** (`checkout-quote`, PR #21, Soft-QA PASS at `105a5266`) sits on **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). This ship is **v2.99e**. Sitewide footer + meta + `version.json` stamped **v2.99e**. G3-R public rename ships as **v2.99e1**.
 - New module `html/checkout-abandon.js?v=1`. Quote prefers `BLRCheckoutAbandon.sessionId()` then `blr_session_id`. Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched. c2 FAQ / short-URL base kept.
 - **IndexNow (Yehuda lock):** same key as d (`d265cfed-378b-45a0-9b56-3c05c205f805`). **After this tip is live**, run `scripts/indexnow-ping.sh` (or the curl under v2.99d). Do not block abandon capture on the ping.
 - **AI crawlers:** Keep the d Allow list (GPTBot / ClaudeBot / Google-Extended / Bytespider / CCBot / anthropic-ai / PerplexityBot / Applebot-Extended + Googlebot / Bingbot).
