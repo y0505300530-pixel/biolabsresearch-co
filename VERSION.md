@@ -11,7 +11,22 @@ Codename: seo-level1-compare-faq
 - **PDP FAQ**: 5 questions on every live product page — storage, form/solubility docs, COA/lot docs, purity, shipping. No dosing, inject, or how-to-use copy.
 - **JSON-LD**: Product+Offer kept on PDPs; FAQPage on PDP FAQ and new compares; Organization sitewide (`org-jsonld.js` + inline on PDPs/new compares); BreadcrumbList on PDPs and new compares. AggregateRating not added (no visible PDP numeric rating).
 - **Sitemap**: new compare URLs added. G3-R CTAs on new pages point at `/products/g3-r` (e1 public slug).
-- **Tip stack**: Rebased onto **v2.99e1** (`g3-r-public-rename`) over abandoned-checkout **v2.99e** / Quote **v2.99d** / c2 FAQ. Sitewide footer + meta + `version.json` stamped **v2.99f**. Checkout/abandon/G3-R behavior unchanged.
+- **Tip stack**: Rebased onto latest **main** at **v2.99e3** (`05d81983` mobile-catalog-search + ATC clip) over **v2.99e2** / **v2.99e1** G3-R / abandoned-checkout **v2.99e** / Quote **v2.99d** / c2 FAQ. Sitewide footer + meta + `version.json` stamped **v2.99f**. Prefer main for checkout/abandon/G3-R/mobile catalog CSS. PR #25 (g) not merged.
+
+---
+
+# biolabsresearch.co — Version 2.99e3
+
+Released 2026-09-19.
+
+Codename: mobile-catalog-search
+
+## Highlights
+
+- **Mobile catalog search:** Kill `flex: 1 1 240px` on `.catalog-search` when the toolbar is column. Pin the search icon to the 44px input. Screen-reader label stays clipped.
+- **ATC clip @320:** Product-card actions / ATC / Inquire `nowrap` at 13px so “ADD TO CART” is not clipped to “ADD TO CA”.
+- CSS only in `html/biolabs_style.css` (v2.99e3 block after v2.99e2). Home cache-bust `biolabs_style.css?v=405`.
+- **Unchanged:** Homepage hero, checkout, FAQ SEO, G3-R. Sits on live **v2.99e2** (`96341d9b`) over **v2.99e1** G3-R / **v2.99e** abandon.
 
 ---
 

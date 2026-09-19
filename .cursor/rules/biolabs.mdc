@@ -53,7 +53,7 @@ percentages, no fabricated reviews, no dosing or human-use advice. Certificates 
 
 # Checkout / payments
 
-Visible tip is **v2.99f** (`seo-level1-compare-faq` on G3-R e1 / abandoned-checkout v2.99e / Quote v2.99d). CRM `paymentsEnabled:false`.
+Visible tip is **v2.99f** (`seo-level1-compare-faq` on e3 mobile-catalog / e2 / G3-R e1 / abandoned-checkout v2.99e / Quote v2.99d). CRM `paymentsEnabled:false`.
 Primary CTA is **Request a Quote**. Browser POSTs (no card fields) to
 `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)
 and the same `session_id` as abandon capture. Abandoned checkout POSTs
