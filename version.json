@@ -1,12 +1,12 @@
 {
-  "version": "2.99e1",
+  "version": "2.99e2",
   "released": "2026-09-19",
-  "codename": "g3-r-public-rename",
-  "appVersion": "2.99e1",
+  "codename": "mobile-catalog-search-fix",
+  "appVersion": "2.99e2",
   "highlights": [
-    "Public catalog name G3-R only; PDP /products/g3-r; gold-band G3-R",
-    "Old /products/retatrutide|r3ta|reta 301 to /products/g3-r",
-    "Gold-band GLOW-chrome assets vial-g3-r.webp (+10/20/50)",
-    "Sits on tip v2.99e abandoned-checkout (Quote v2.99d / AI crawlers / IndexNow)"
+    "Mobile catalog: search icon pinned inside input (no floating gap)",
+    "catalog-sr visually hidden so absolute icon centers on the field",
+    "CSS cache-bust biolabs_style.css?v=404",
+    "Sits on tip v2.99e1 G3-R"
   ]
 }

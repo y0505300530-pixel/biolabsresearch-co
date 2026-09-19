@@ -14488,3 +14488,50 @@ html body #coa-modal button[aria-label="Close"] {
   pointer-events: auto !important;
 }
 /* === end v2.99a === */
+
+/* === v2.99e2 mobile catalog search icon (Yehuda) === */
+html body .catalog-search{
+  position:relative !important;
+  display:block !important;
+  width:100%;
+  max-width:100%;
+}
+html body .catalog-sr{
+  position:absolute !important;
+  width:1px !important;
+  height:1px !important;
+  padding:0 !important;
+  margin:-1px !important;
+  overflow:hidden !important;
+  clip:rect(0,0,0,0) !important;
+  white-space:nowrap !important;
+  border:0 !important;
+}
+html body .catalog-search-ico{
+  position:absolute !important;
+  left:14px !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  z-index:2 !important;
+  margin:0 !important;
+  line-height:0 !important;
+}
+html body .catalog-search input{
+  display:block !important;
+  width:100% !important;
+  padding-left:42px !important;
+}
+@media (max-width:800px){
+  html body .catalog-toolbar{
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:stretch !important;
+    gap:10px !important;
+  }
+  html body .catalog-search{
+    flex:none !important;
+    max-width:none !important;
+    width:100% !important;
+  }
+}
+/* === end v2.99e2 search === */
