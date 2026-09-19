@@ -1,13 +1,12 @@
 {
-  "version": "2.99f1",
+  "version": "2.99g",
   "released": "2026-09-19",
-  "codename": "catalog-mobile-2col-compact",
-  "appVersion": "2.99f1",
+  "codename": "hub-spoke-dynamic-coa",
+  "appVersion": "2.99g",
   "highlights": [
-    "Mobile homepage catalog stays 2 columns through 320px (Yehuda 2×2 SoT)",
-    "Card density: hide tagline/trust/View details; clamp name; compact ATC; no 84px FAB pad",
-    "Toolbar filters 2×2; Documentation select hidden on mobile",
-    "CSS cache bust biolabs_style.css?v=407 on index.html",
-    "Quote / G3-R / abandon / f SEO (compares, PDP FAQ) intact; sits on v2.99f; PR #32 g held"
+    "Family hubs at /families/ and /families/{slug}: recovery, ghrp-ghrh, copper-skin, mitochondrial",
+    "PDP Download / View lot COA only when /api/products.coa_pdf_url is a real PDF",
+    "Otherwise Request lot COA inquiry; JSON-LD DigitalDocument only when URL exists",
+    "Sits on v2.99f1 catalog-mobile-2col (?v=407) over f SEO L1 / e3 / e1 G3-R / e abandon / d Quote"
   ]
 }
