@@ -4,13 +4,10 @@
   "codename": "release-3-00",
   "appVersion": "3.00",
   "highlights": [
-    "Locked ship of the 2.99 series — stamp only, no feature or checkout changes",
-    "Quote mode (v2.99d): Request a Quote, no card fields, generate_lead",
-    "Abandoned-checkout capture (v2.99e) with the same session_id as quote",
-    "G3-R public catalog name (v2.99e1); /products/g3-r",
-    "SEO L1 compare matrix + PDP FAQ (v2.99f)",
-    "Mobile catalog 2-col + search (v2.99f1 / e3 / e2)",
-    "Family hubs + dynamic lot COA (v2.99g)",
-    "Catalog filter flicker fix (v2.99g1, Soft-QA PASS)"
+    "Quote mode + abandoned checkout",
+    "G3-R public rename",
+    "Mobile catalog 2-col + filter flicker fix",
+    "SEO L1: compares + PDP FAQ + JSON-LD",
+    "Family hubs + dynamic COA fail-closed"
   ]
 }
