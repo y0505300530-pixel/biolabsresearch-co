@@ -1,12 +1,12 @@
 {
-  "version": "2.99b",
-  "released": "2026-09-17",
-  "codename": "umg-checkout-hook",
-  "appVersion": "2.99b",
+  "version": "2.99c",
+  "released": "2026-09-19",
+  "codename": "calculator-seo-finish",
+  "appVersion": "2.99c",
   "highlights": [
-    "Checkout card path POSTs to CRM UMG sidecar /api/checkout/charge",
-    "Success UI and GA checkout_complete only after ok===true",
-    "Simulation banner removed; crypto path unchanged",
-    "No PAN/CVV in console, localStorage, or storefront /api/*"
+    "Tools CTAs: Request catalog + Inquire on reconstitution, dilution, unit-converter (navy/gold/cream)",
+    "Unit converter RUO + mg→IU FAQ uses only a declared mass-per-IU factor",
+    "Dilution FAQ covers mg/mL laboratory concentration math",
+    "Tools hub top grid 01–03: Reconstitution / Dilution / Unit converter"
   ]
 }

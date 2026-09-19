@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=403">
+<link rel="stylesheet" href="/biolabs_style.css?v=404">
 <script src="/cart-vial.js?v=314" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
 
@@ -29,7 +29,7 @@
 <meta name="robots" content="index,follow">
 
 <style>
-:root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
+:root{--tr-cream:#F2EFE9;--tr-ink:#0d2137;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
 body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-wrap{max-width:1120px;margin:0 auto;padding:48px 40px 100px}
 .tr-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 14px}
@@ -68,10 +68,28 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-out-cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a8a8a8;margin:0 0 4px}
 .tr-out-cell .v{font-size:18px;font-weight:700;color:#fff;word-break:break-word}
 .tr-note{margin-top:12px;font-size:13px;line-height:1.5;color:#c8c2b6}
-.tr-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.tr-actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#F2EFE9;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
 .tr-btn.secondary{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
 a.tr-btn:hover{opacity:.92}
+.tr-cta{display:inline-flex;align-items:center;justify-content:center;padding:16px 26px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;min-height:52px;box-sizing:border-box;letter-spacing:.01em;transition:transform .15s,box-shadow .15s,background .15s,border-color .15s}
+.tr-cta-catalog{background:#0d2137;color:#F2EFE9;border:2px solid #0d2137;box-shadow:0 8px 20px rgba(13,33,55,.18)}
+.tr-cta-catalog:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(13,33,55,.22);color:#F2EFE9}
+.tr-cta-inquire{background:#F2EFE9;color:#0d2137;border:2px solid #B08D57}
+.tr-cta-inquire:hover{background:#fff;border-color:#0d2137;color:#0d2137}
+.tr-cta-band{margin:0 0 28px;padding:22px 24px;background:#0d2137;border-radius:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.tr-cta-band p{margin:0;flex:1 1 200px;color:#F2EFE9;font-size:15px;font-weight:600;line-height:1.45}
+.tr-cta-band .tr-cta-catalog{background:#B08D57;border-color:#B08D57;color:#0d2137;box-shadow:none}
+.tr-cta-band .tr-cta-catalog:hover{background:#c4a06a;border-color:#c4a06a;color:#0d2137}
+.tr-cta-band .tr-cta-inquire{background:transparent;color:#F2EFE9;border-color:#B08D57}
+.tr-cta-band .tr-cta-inquire:hover{background:rgba(242,239,233,.08);color:#F2EFE9;border-color:#F2EFE9}
+.tr-faq{margin:0 0 28px;background:#fff;border:1px solid var(--tr-line);border-radius:18px;padding:8px 26px 12px}
+.tr-faq h2{font-size:18px;font-weight:700;margin:18px 0 6px;color:var(--tr-ink)}
+.tr-faq-item{border-top:1px solid var(--tr-line)}
+.tr-faq-item:first-of-type{border-top:none}
+.tr-faq-item summary{cursor:pointer;font-size:15px;font-weight:700;padding:14px 0;color:var(--tr-ink);list-style:none}
+.tr-faq-item summary::-webkit-details-marker{display:none}
+.tr-faq-item p{margin:0 0 16px;font-size:14.5px;line-height:1.65;color:var(--tr-muted);max-width:100%;overflow-wrap:anywhere}
 .tr-related{margin:0 0 24px}
 .tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
 .tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -94,16 +112,21 @@ a.tr-btn:hover{opacity:.92}
   .tr-related-grid{grid-template-columns:1fr}
   .tr-out-grid{grid-template-columns:1fr}
   .tr-result .val{font-size:36px}
+  .tr-cta{flex:1 1 100%;width:100%}
+  .tr-faq{padding:8px 18px 12px}
 }
 </style>
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Dilution Calculator","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"C1V1 = C2V2 and serial dilution math for laboratory research calculations.","url":"https://biolabsresearch.co/tools/dilution","publisher":{"@type":"Organization","name":"BioLabs Research"}}
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How is mg/mL concentration calculated for research?","acceptedAnswer":{"@type":"Answer","text":"mg/mL is milligrams of research compound per millilitre of solution. When a stock already exists, this page uses C1V1 = C2V2: stock volume V1 = (C2 × V2) ÷ C1, and diluent volume = V2 − V1. Use the same concentration units for C1 and C2. This is laboratory notebook arithmetic only — not a protocol and not medical advice."}},{"@type":"Question","name":"What does a 10× mg/mL dilution look like on paper?","acceptedAnswer":{"@type":"Answer","text":"Example: stock 5 mg/mL, desired 0.5 mg/mL, final volume 2 mL → 0.2 mL of stock plus 1.8 mL diluent (factor 10×). Serial steps optionally divide concentration by the fold factor at each step. Figures are research calculations on this device only."}},{"@type":"Question","name":"Is this medical advice or a use instruction?","acceptedAnswer":{"@type":"Answer","text":"No. The helper is for laboratory research calculations on research compounds. It does not recommend volumes for any organism, and it is not a substitute for a notebook, SOP, or lot paperwork. Certificates are on request."}}]}
+</script>
 <meta name="twitter:title" content="Dilution Calculator | BioLabs Research">
 <meta name="twitter:description" content="C1V1 = C2V2 and serial dilution helper for laboratory research calculations. Research use only — not medical advice.">
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Dilution Calculator", "item": "https://biolabsresearch.co/tools/dilution"}]}</script>
-<meta name="app-version" content="2.99b">
+<meta name="app-version" content="2.99c">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -155,7 +178,7 @@ a.tr-btn:hover{opacity:.92}
     <div class="tr-hero-copy">
       <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools">TOOLS</a> / DILUTION</p></div>
       <h1>Dilution Calculator</h1>
-      <p class="tr-lede">For laboratory research calculations. This helper applies C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub>: stock concentration, desired concentration, and final volume → stock volume and diluent volume. Optional serial steps show each fold. Not a protocol and not medical advice.</p>
+      <p class="tr-lede">For laboratory research calculations on research compounds. This helper applies C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub>: stock concentration, desired concentration, and final volume → stock volume and diluent volume. Optional serial steps show each fold. Research use only — not a protocol and not medical advice.</p>
     </div>
     <figure class="bl-video bl-video-tools">
       <div class="bl-video-frame" style="aspect-ratio:1344/768">
@@ -206,8 +229,8 @@ a.tr-btn:hover{opacity:.92}
         </table>
       </div>
       <div class="tr-actions">
-        <a class="tr-btn" href="/#catalog" id="dilCatalog">Request catalog</a>
-        <a class="tr-btn secondary" href="/contact" id="dilInquire">Inquire</a>
+        <a class="tr-cta tr-cta-catalog" href="/#catalog" id="dilCatalog">Request catalog</a>
+        <a class="tr-cta tr-cta-inquire" href="/contact" id="dilInquire">Inquire</a>
         <button type="button" class="tr-btn secondary" id="dilReset">Reset</button>
       </div>
     </div>
@@ -218,11 +241,33 @@ a.tr-btn:hover{opacity:.92}
       <p>Serial steps (optional): after <em>n</em> folds of factor <em>f</em>, concentration = C<sub>1</sub> ÷ f<sup>n</sup>.</p>
       <div class="tr-example">
         <strong>Worked example</strong>
-        <p style="margin:0">Stock 5 mg/mL, desired concentration 0.5 mg/mL, final volume 2 mL → <strong style="color:#0d0d0d">0.2 mL</strong> stock + <strong style="color:#0d0d0d">1.8 mL</strong> diluent (10×).</p>
+        <p style="margin:0">Stock 5 mg/mL, desired concentration 0.5 mg/mL, final volume 2 mL → <strong style="color:#0d2137">0.2 mL</strong> stock + <strong style="color:#0d2137">1.8 mL</strong> diluent (10×).</p>
       </div>
       <p>Starting from a dry vial? Use the <a href="/tools/reconstitution">reconstitution calculator</a> (vial amount ÷ diluent volume).</p>
       <p style="margin:0"><a href="/coa">Browse COA library →</a></p>
     </aside>
+  </div>
+
+  <section class="tr-faq" id="tool-faq" aria-labelledby="dilFaqTitle">
+    <h2 id="dilFaqTitle">mg/mL laboratory FAQ</h2>
+    <details class="tr-faq-item" open>
+      <summary>How is mg/mL concentration calculated for research?</summary>
+      <p>mg/mL is milligrams of research compound per millilitre of solution. When a stock already exists, this page uses C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub>: stock volume V<sub>1</sub> = (C<sub>2</sub> × V<sub>2</sub>) ÷ C<sub>1</sub>, and diluent volume = V<sub>2</sub> − V<sub>1</sub>. Use the same concentration units for C<sub>1</sub> and C<sub>2</sub> (examples on this page use mg/mL). This is laboratory notebook arithmetic only — not a protocol and not medical advice.</p>
+    </details>
+    <details class="tr-faq-item">
+      <summary>What does a 10× mg/mL dilution look like on paper?</summary>
+      <p>Example: stock 5 mg/mL, desired 0.5 mg/mL, final volume 2 mL → 0.2 mL of stock plus 1.8 mL diluent (factor 10×). Serial steps (optional) divide concentration by the fold factor at each step. Figures are research calculations on this device only.</p>
+    </details>
+    <details class="tr-faq-item">
+      <summary>Is this medical advice or a use instruction?</summary>
+      <p>No. The helper is for laboratory research calculations on research compounds. It does not recommend volumes for any organism, and it is not a substitute for your own notebook, SOP, or lot paperwork. Certificates are on request.</p>
+    </details>
+  </section>
+
+  <div class="tr-cta-band" aria-label="Catalog and inquiry">
+    <p>Need a listed research compound or a lot note? Open the catalog or send an inquiry.</p>
+    <a class="tr-cta tr-cta-catalog" href="/#catalog">Request catalog</a>
+    <a class="tr-cta tr-cta-inquire" href="/contact">Inquire</a>
   </div>
 
   <section class="tr-related">
@@ -342,7 +387,7 @@ a.tr-btn:hover{opacity:.92}
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99b" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99b</p>
+<p class="site-version" data-site-version="2.99c" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99c</p>
 </footer>
 <script src="/tools-video.js?v=1"></script>
 <script src="/promo-bar.js?v=293"></script>

@@ -15,6 +15,7 @@ was closed.
 | # | Finding | Owner | Status |
 |---|---|---|---|
 | P1 | v2.99b card checkout POSTs to the live CRM sidecar (`https://crm.biolabsresearch.co/api/checkout/charge`, camelCase `idempotencyKey`). Soft-QA runs real UMG authorize against this tip. Infra review before customers see live charges. Confirm no PAN/CVV in console or localStorage; GA `checkout_complete` only on `ok===true`. | infra | open |
+| P2 | v2.99c calculator SEO: `/tools` top grid 01–03 includes unit-converter; reconstitution / dilution / unit-converter show navy/gold **Request catalog** + **Inquire**; unit-converter IU FAQ uses declared factor only; dilution has mg/mL FAQ; no Buy/dosing copy. Soft-QA before customers see the tip. | pages | open |
 | H1 | Plus, minus and remove in the cart drawer did nothing on 17 product pages: `updateQty` used an undeclared `cart` and called `saveCart()` with no argument, which writes an empty cart | pages | done (pages, 2026-09-08) |
 | H2 | The discount code on checkout did nothing and the page could not say what a code was worth | infra | done (infra, 2026-09-07) |
 | H3 | Five blog articles were up to four times wider than a phone screen | infra | done (infra, 2026-09-07) |

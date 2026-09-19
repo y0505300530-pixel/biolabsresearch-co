@@ -1,3 +1,20 @@
+# biolabsresearch.co — Version 2.99c
+
+Released 2026-09-19.
+
+Codename: calculator-seo-finish
+
+## Highlights
+
+- **Calculator CTAs**: `/tools/reconstitution`, `/tools/dilution`, `/tools/unit-converter` carry primary **Request catalog** (`/#catalog`) and **Inquire** (`/contact`) buttons — navy `#0d2137` / gold / cream `#F2EFE9`. No green. No Buy now.
+- **Unit converter**: RUO framing; mg ↔ mcg ↔ ng kept; mg→IU FAQ and math use only a **declared** mass-per-IU factor (never a compound-specific invented factor).
+- **Dilution**: FAQ for mg/mL laboratory concentration math (C1V1 = C2V2). Research calculations only — not medical advice.
+- **Tools hub**: Top grid is 01 Reconstitution / 02 Dilution / 03 Unit converter (compound comparison stays below).
+- **Unchanged**: Homepage hero / Popular catalog / PDP split. Calculator arithmetic and existing GA (`reconstitution_calc`, `dilution_calc`, `tool_inquire`) kept. Card path remains CRM UMG authorize from v2.99b.
+- Tools CSS query `biolabs_style.css?v=404` (page-local styles; shared stylesheet not rewritten).
+
+---
+
 # biolabsresearch.co — Version 2.99b
 
 Released 2026-09-17.
