@@ -12,6 +12,14 @@ Codename: checkout-quote
 - **Charge retained:** `html/checkout-charge.js` and `submitCardCharge()` stay in the tree. Card / crypto UX is hidden and unused. Do not delete the charge path.
 - **Tip stack:** Sits on live **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). G3-R rename PR #20 is a separate tip and does not take this letter. Checkout footer + `version.json` stamped **v2.99d**.
 - New module `html/checkout-quote.js?v=2`. Quote POST also sends `session_id` (sessionStorage uuid, key `blr_session_id`) so CRM abandon can join the later v2.99e beacon. Full abandon capture is **not** this tip.
+- **AI crawlers (Marketing lock):** `html/robots.txt` explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, plus Googlebot and Bingbot. Do **not** `Disallow: /` for them. `/api/` stays closed except `/api/products`.
+- **IndexNow:** key `d265cfed-378b-45a0-9b56-3c05c205f805` at webroot `html/indexnow-key.txt` and official `html/d265cfed-378b-45a0-9b56-3c05c205f805.txt`. After deploy, ping new/changed URLs (or the sitemap) with `scripts/indexnow-ping.sh`. Curl:
+  ```
+  curl -X POST https://api.indexnow.org/indexnow \
+    -H 'Content-Type: application/json; charset=utf-8' \
+    -d '{"host":"biolabsresearch.co","key":"d265cfed-378b-45a0-9b56-3c05c205f805","keyLocation":"https://biolabsresearch.co/d265cfed-378b-45a0-9b56-3c05c205f805.txt","urlList":["https://biolabsresearch.co/sitemap.xml"]}'
+  ```
+- **Hold merge** until Soft-QA **v2.99c2 PASS**. Quote SoT unchanged.
 - Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched.
 
 ---

@@ -1,7 +1,59 @@
+# biolabsresearch.co — v2.99d
+# Yehuda/Marketing lock: major AI crawlers are explicitly Allowed.
+# Do not Disallow / for these agents. /api/ stays closed except /api/products.
+
+User-agent: Googlebot
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: GPTBot
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: Google-Extended
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: Bytespider
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: CCBot
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: anthropic-ai
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
+User-agent: Applebot-Extended
+Allow: /
+Allow: /api/products
+Disallow: /api/
+
 User-agent: *
 Allow: /
-
-# Public product API only; everything else under /api/ stays closed
 Allow: /api/products
 Disallow: /api/
 
