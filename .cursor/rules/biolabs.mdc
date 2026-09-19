@@ -51,11 +51,17 @@ Relative only: `/api/products`, never `https://biolabsresearch.co/api/...`. The 
 No accounts exist: never write "sign in", "my account" or "track your order". No invented purity
 percentages, no fabricated reviews, no dosing or human-use advice. Certificates are "on request".
 
-# Card payments
+# Checkout / payments
 
-Owner decision (CRM charge SoT): browser POSTs card fields to the CRM sidecar
+Visible tip is **v2.99d** (Quote mode). CRM `paymentsEnabled:false`. Primary CTA is **Request a Quote**.
+Browser POSTs (no card fields) to `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase
+`idempotencyKey` (`BL-QUOTE-<stable-id>`). Success copy lock: **We'll send your quote within one business day.**
+GA: keep `checkout_start`; on quote ok fire `generate_lead`; do **not** fire `checkout_complete` while payments off.
+Charge path (`/api/checkout/charge`, `checkout-charge.js`) is retained unused — do not delete it.
+
+Owner decision (CRM charge SoT, when payments return): browser POSTs card fields to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` with camelCase `idempotencyKey`.
-Visible tip is v2.99c2 (`reconstitution-faq`). Card path remains the v2.99b CRM UMG authorize hook. Infra reviews before customers see live charges.
+Card path remains the v2.99b CRM UMG authorize hook (retained unused while payments are off). Infra reviews before customers see live charges.
 
 - No full card number, expiry date or CVV may reach storefront `/api/*`, the Node service, a new
   endpoint, or anything persisted in this repo. Do not `console.log` charge bodies.
@@ -63,7 +69,7 @@ Visible tip is v2.99c2 (`reconstitution-faq`). Card path remains the v2.99b CRM 
   (it prints PAN/CVV to the console). This site is not WordPress.
 - No payment keys in pages, scripts, commit messages or logs. Secret keys live on the server, with infra.
 - An order keeps only the last four digits and the provider's transaction ID. CVV is never stored or logged.
-- Success UI and GA `checkout_complete` only after charge `ok===true`. No cascade copy to the customer.
+- Charge success UI and GA `checkout_complete` only after charge `ok===true`. No cascade copy to the customer.
 - No Apple Pay or Google Pay logos unless the provider takes them.
 - Before payment code goes live, add a row to `QA_TASKS.md` with owner `infra`. Exceptions need a
   written decision by the business owner, recorded in `AGENTS.md`.

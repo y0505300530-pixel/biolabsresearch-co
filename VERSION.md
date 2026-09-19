@@ -1,3 +1,20 @@
+# biolabsresearch.co — Version 2.99d
+
+Released 2026-09-19.
+
+Codename: checkout-quote
+
+## Highlights
+
+- **Quote mode (primary):** Checkout CTA is **Request a Quote**. Submit POSTs `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`), amount, currency, customer, items, optional notes. **No card fields.**
+- **Success copy (Marketing lock):** `We'll send your quote within one business day.` Shown after `ok===true`. CRM also returns `quoteId`.
+- **GA4:** keep `checkout_start`. On successful quote fire `generate_lead`. Do **not** fire `checkout_complete` while payments are off (`paymentsEnabled:false`).
+- **Charge retained:** `html/checkout-charge.js` and `submitCardCharge()` stay in the tree. Card / crypto UX is hidden and unused. Do not delete the charge path.
+- **Tip stack:** Sits on live **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). G3-R rename PR #20 is a separate tip and does not take this letter. Checkout footer + `version.json` stamped **v2.99d**.
+- New module `html/checkout-quote.js?v=1`. Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched.
+
+---
+
 # biolabsresearch.co — Version 2.99c2
 
 Released 2026-09-19.
