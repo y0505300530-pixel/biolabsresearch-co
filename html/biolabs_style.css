@@ -12403,9 +12403,7 @@ html.has-age-gate:not(.tc-ok) .tc-check-label input[type="checkbox"]:focus:not(:
 @media (max-width: 800px){
   .catalog-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 12px !important; }
 }
-@media (max-width: 380px){
-  .catalog-grid{ grid-template-columns: 1fr !important; gap: 12px !important; }
-}
+/* v2.99f1: do not collapse catalog to 1 column at ≤380px — 2-col SoT through 320px */
 
 .catalog-header{
   display: flex;
@@ -14488,3 +14486,27 @@ html body #coa-modal button[aria-label="Close"] {
   pointer-events: auto !important;
 }
 /* === end v2.99a === */
+
+/* === v2.99f1 mobile catalog 2-col SoT (Yehuda) === */
+@media (max-width: 800px) {
+  html body .catalog-grid,
+  html body #products-grid.catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px !important;
+  }
+}
+@media (max-width: 380px) {
+  html body .catalog-grid,
+  html body #products-grid.catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  html body .catalog-grid .product-card-atc,
+  html body #products-grid.catalog-grid .product-card-atc {
+    font-size: 10px !important;
+    padding: 8px 6px !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
+  }
+}
+/* === end v2.99f1 === */

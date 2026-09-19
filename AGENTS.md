@@ -78,7 +78,8 @@ customer + card fields from the browser to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). Required key is
 `idempotencyKey` (camelCase; `extOrderId` is an accepted alias — never `idempotency_key`).
 The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
-Visible site tip is **v2.99e** (`abandoned-checkout`) on top of Quote mode (**v2.99d**) while CRM
+Visible site tip is **v2.99f1** (`mobile-catalog-2col`) on top of **v2.99e** (`abandoned-checkout`)
+and Quote mode (**v2.99d**) while CRM
 `paymentsEnabled:false`. v2.99c2 (`reconstitution-faq`) remains the version base under d.
 Checkout primary CTA is **Request a Quote**. Browser POSTs customer + cart (no card fields) to
 `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)

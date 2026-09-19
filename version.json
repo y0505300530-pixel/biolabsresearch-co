@@ -1,12 +1,12 @@
 {
-  "version": "2.99e",
+  "version": "2.99f1",
   "released": "2026-09-19",
-  "codename": "abandoned-checkout",
-  "appVersion": "2.99e",
+  "codename": "mobile-catalog-2col",
+  "appVersion": "2.99f1",
   "highlights": [
-    "Abandoned checkout POSTs CRM /api/checkout/abandon (no card fields)",
-    "Capture on contact→shipping, email blur ~800ms, pagehide/visibility sendBeacon",
-    "Same session_id on Quote submit; 25s throttle; silent fail-safe",
-    "Tip v2.99e sits on Quote v2.99d (AI crawlers/IndexNow); after live run scripts/indexnow-ping.sh"
+    "Mobile homepage catalog stays 2 columns through 320px (Yehuda 2×2 SoT)",
+    "Removed @media (max-width:380px) 1-col catalog-grid collapse",
+    "CSS cache bust biolabs_style.css?v=406 on index.html",
+    "Quote / G3-R / abandon untouched; sits on v2.99e"
   ]
 }
