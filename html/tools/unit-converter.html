@@ -9,15 +9,15 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=403">
+<link rel="stylesheet" href="/biolabs_style.css?v=404">
 <script src="/cart-vial.js?v=314" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
 
-<title>Unit Conversion Tool — BioLabs Research</title>
-<meta name="description" content="Second path for the mass-unit helper used beside catalog vials. Output is not a specification. Keep conversions with your own lab notebook. Research use only.">
+<title>Unit Converter (mg, mcg, ng, IU) — BioLabs Research</title>
+<meta name="description" content="Convert mg ↔ mcg ↔ ng for laboratory research compounds. Optional mg→IU only with a declared mass-per-IU factor you supply — we never invent a compound-specific IU factor. Research use only.">
 <link rel="canonical" href="https://biolabsresearch.co/tools/unit-converter">
-<meta property="og:title" content="Unit Conversion Tool — BioLabs Research">
-<meta property="og:description" content="Second path for the mass-unit helper used beside catalog vials. Output is not a specification. Keep conversions with your own lab notebook. Research use only.">
+<meta property="og:title" content="Unit Converter (mg, mcg, ng, IU) — BioLabs Research">
+<meta property="og:description" content="Convert mg ↔ mcg ↔ ng for laboratory research compounds. Optional mg→IU only with a declared mass-per-IU factor you supply. Research use only.">
 <meta property="og:url" content="https://biolabsresearch.co/tools/unit-converter">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="BioLabs Research">
@@ -29,7 +29,7 @@
 <meta name="robots" content="index,follow">
 
 <style>
-:root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
+:root{--tr-cream:#F2EFE9;--tr-ink:#0d2137;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
 body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-wrap{max-width:1120px;margin:0 auto;padding:48px 40px 100px}
 .tr-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 14px}
@@ -66,9 +66,28 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-out-cell{background:rgba(255,255,255,.06);border-radius:10px;padding:12px 14px}
 .tr-out-cell .k{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a8a8a8;margin:0 0 4px}
 .tr-out-cell .v{font-size:18px;font-weight:700;color:#fff}
-.tr-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+.tr-actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#F2EFE9;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
 .tr-btn.secondary{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
+.tr-cta{display:inline-flex;align-items:center;justify-content:center;padding:16px 26px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;min-height:52px;box-sizing:border-box;letter-spacing:.01em;transition:transform .15s,box-shadow .15s,background .15s,border-color .15s}
+.tr-cta-catalog{background:#0d2137;color:#F2EFE9;border:2px solid #0d2137;box-shadow:0 8px 20px rgba(13,33,55,.18)}
+.tr-cta-catalog:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(13,33,55,.22);color:#F2EFE9}
+.tr-cta-inquire{background:#F2EFE9;color:#0d2137;border:2px solid #B08D57}
+.tr-cta-inquire:hover{background:#fff;border-color:#0d2137;color:#0d2137}
+.tr-cta-band{margin:0 0 28px;padding:22px 24px;background:#0d2137;border-radius:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.tr-cta-band p{margin:0;flex:1 1 200px;color:#F2EFE9;font-size:15px;font-weight:600;line-height:1.45}
+.tr-cta-band .tr-cta-catalog{background:#B08D57;border-color:#B08D57;color:#0d2137;box-shadow:none}
+.tr-cta-band .tr-cta-catalog:hover{background:#c4a06a;border-color:#c4a06a;color:#0d2137}
+.tr-cta-band .tr-cta-inquire{background:transparent;color:#F2EFE9;border-color:#B08D57}
+.tr-cta-band .tr-cta-inquire:hover{background:rgba(242,239,233,.08);color:#F2EFE9;border-color:#F2EFE9}
+.tr-faq{margin:0 0 28px;background:#fff;border:1px solid var(--tr-line);border-radius:18px;padding:8px 26px 12px}
+.tr-faq h2{font-size:18px;font-weight:700;margin:18px 0 6px;color:var(--tr-ink)}
+.tr-faq-item{border-top:1px solid var(--tr-line)}
+.tr-faq-item:first-of-type{border-top:none}
+.tr-faq-item summary{cursor:pointer;font-size:15px;font-weight:700;padding:14px 0;color:var(--tr-ink);list-style:none}
+.tr-faq-item summary::-webkit-details-marker{display:none}
+.tr-faq-item p{margin:0 0 16px;font-size:14.5px;line-height:1.65;color:var(--tr-muted);max-width:100%;overflow-wrap:anywhere}
+.tr-ruo-inline{margin:14px 0 0;padding:12px 14px;background:rgba(244,239,228,.12);border-radius:10px;font-size:13px;line-height:1.5;color:#d8d2c6;border-left:3px solid var(--tr-gold)}
 .tr-related{margin:0 0 24px}
 .tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
 .tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -84,16 +103,21 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
   .tr-form{grid-template-columns:1fr}
   .tr-related-grid{grid-template-columns:1fr}
   .tr-out-grid{grid-template-columns:1fr}
+  .tr-cta{flex:1 1 100%;width:100%}
+  .tr-faq{padding:8px 18px 12px}
 }
 </style>
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Mass Unit Converter","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert milligrams, micrograms, and nanograms for laboratory research. Optional IU with declared factor.","url":"https://biolabsresearch.co/tools/unit-converter"}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"Mass Unit Converter","applicationCategory":"LaboratoryApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Convert milligrams, micrograms, and nanograms for laboratory research. Optional IU only with a declared mass-per-IU factor.","url":"https://biolabsresearch.co/tools/unit-converter"}
 </script>
-<meta name="twitter:title" content="Unit Conversion Tool — BioLabs Research">
-<meta name="twitter:description" content="Second path for the mass-unit helper used beside catalog vials. Output is not a specification. Keep conversions with your own lab notebook. Research use only.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How do I convert mg to IU on this page?","acceptedAnswer":{"@type":"Answer","text":"IU is not a fixed mass. This helper converts mg ↔ IU only when you enter a declared mass-per-IU factor (mg per 1 IU) from your own reagent note or notebook. We do not publish or assume compound-specific IU factors. Example: if you declare 0.001 mg per 1 IU, then 1 mg = 1,000 IU under that declared factor only."}},{"@type":"Question","name":"Which mass units can I convert without an IU factor?","acceptedAnswer":{"@type":"Answer","text":"Milligrams (mg), micrograms (mcg), and nanograms (ng). 1 mg = 1,000 mcg = 1,000,000 ng. These SI mass conversions do not require an IU factor."}},{"@type":"Question","name":"Is this medical advice?","acceptedAnswer":{"@type":"Answer","text":"No. This is a research-use-only laboratory helper for notebook arithmetic on research compounds. Output is not a specification, not a protocol, and not for human or veterinary use. Certificates are on request."}}]}
+</script>
+<meta name="twitter:title" content="Unit Converter (mg, mcg, ng, IU) — BioLabs Research">
+<meta name="twitter:description" content="Convert mg ↔ mcg ↔ ng for laboratory research compounds. Optional mg→IU only with a declared mass-per-IU factor you supply. Research use only.">
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Unit Conversion Tool", "item": "https://biolabsresearch.co/tools/unit-converter"}]}</script>
-<meta name="app-version" content="2.99b">
+<meta name="app-version" content="2.99c">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -145,7 +169,7 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
     <div class="tr-hero-copy">
       <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools">TOOLS</a> / UNITS</p></div>
       <h1>Unit converter</h1>
-      <p class="tr-lede">Convert between milligrams (mg), micrograms (mcg), and nanograms (ng). Optional international units (IU) only when you declare the mass-per-IU factor for your reagent — we do not assume a factor.</p>
+      <p class="tr-lede">Research-use-only (RUO) helper for research compounds. Convert milligrams (mg), micrograms (mcg), and nanograms (ng). Optional international units (IU) only when you declare the mass-per-IU factor for your own reagent — we never invent a compound-specific IU factor. Output is notebook arithmetic, not a specification or medical advice.</p>
     </div>
     <figure class="bl-video bl-video-tools">
       <div class="bl-video-frame" style="aspect-ratio:1344/768">
@@ -185,18 +209,45 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
           <div class="tr-out-cell"><div class="k">ng</div><div class="v" id="outNg">—</div></div>
           <div class="tr-out-cell"><div class="k">IU</div><div class="v" id="outIu">—</div></div>
         </div>
+        <p class="tr-ruo-inline">For research use only. IU uses only the mass-per-IU factor you declare. Not for human or veterinary use. Not medical advice.</p>
       </div>
-      <div class="tr-actions"><button type="button" class="tr-btn secondary" id="ucReset">Reset</button></div>
+      <div class="tr-actions">
+        <a class="tr-cta tr-cta-catalog" href="/#catalog" id="ucCatalog">Request catalog</a>
+        <a class="tr-cta tr-cta-inquire" href="/contact" id="ucInquire">Inquire</a>
+        <button type="button" class="tr-btn secondary" id="ucReset">Reset</button>
+      </div>
     </div>
     <aside class="tr-panel tr-side">
       <h2>How it works</h2>
       <p>1 mg = 1,000 mcg = 1,000,000 ng. IU is not a fixed mass; enter mg per IU for your material if you need an IU line.</p>
       <div class="tr-example">
         <strong>Worked example</strong>
-        <p style="margin:0">1 mg = <strong style="color:#0d0d0d">1,000 mcg</strong> = <strong style="color:#0d0d0d">1,000,000 ng</strong>.</p>
+        <p style="margin:0">1 mg = <strong style="color:#0d2137">1,000 mcg</strong> = <strong style="color:#0d2137">1,000,000 ng</strong>.</p>
       </div>
       <p style="margin:0"><a href="/coa">Browse COA library →</a></p>
     </aside>
+  </div>
+
+  <section class="tr-faq" id="tool-faq" aria-labelledby="ucFaqTitle">
+    <h2 id="ucFaqTitle">mg → IU and mass-unit FAQ</h2>
+    <details class="tr-faq-item" open>
+      <summary>How do I convert mg to IU on this page?</summary>
+      <p>IU is not a fixed mass. This helper converts mg ↔ IU only when you enter a <strong>declared mass-per-IU factor</strong> (mg per 1 IU) from your own reagent note or notebook. We do not publish or assume compound-specific IU factors. Example: if you declare 0.001 mg per 1 IU, then 1 mg = 1,000 IU under that declared factor only.</p>
+    </details>
+    <details class="tr-faq-item">
+      <summary>Which mass units can I convert without an IU factor?</summary>
+      <p>Milligrams (mg), micrograms (mcg), and nanograms (ng). 1 mg = 1,000 mcg = 1,000,000 ng. These SI mass conversions run without an IU factor. Keep the figures with your own lab notebook — output is not a lot specification.</p>
+    </details>
+    <details class="tr-faq-item">
+      <summary>Is this medical advice?</summary>
+      <p>No. This is a research-use-only laboratory helper for notebook arithmetic on research compounds. It is not a protocol, not a specification, and not for human or veterinary use. Certificates are on request.</p>
+    </details>
+  </section>
+
+  <div class="tr-cta-band" aria-label="Catalog and inquiry">
+    <p>Need a listed research compound or a lot note? Open the catalog or send an inquiry.</p>
+    <a class="tr-cta tr-cta-catalog" href="/#catalog">Request catalog</a>
+    <a class="tr-cta tr-cta-inquire" href="/contact">Inquire</a>
   </div>
 
   <section class="tr-related">
@@ -213,6 +264,13 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 </main>
 <script>
 (function(){
+  function track(name, params){
+    if (typeof window.blrTrack === 'function') {
+      var p = params && typeof params === 'object' ? params : {};
+      p.event_category = p.event_category || 'tools';
+      window.blrTrack(name, p);
+    }
+  }
   var val=document.getElementById('ucVal'), from=document.getElementById('ucFrom'), factor=document.getElementById('iuFactor');
   var outMg=document.getElementById('outMg'), outMcg=document.getElementById('outMcg'), outNg=document.getElementById('outNg'), outIu=document.getElementById('outIu');
   var primaryVal=document.getElementById('primaryVal');
@@ -249,6 +307,9 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
     });
   });
   val.value='1'; update();
+  var inquire=document.getElementById('ucInquire');
+  if(inquire){ inquire.addEventListener('click', function(){ track('tool_inquire', { tool: 'unit-converter' }); }); }
+  track('unit_converter_calc', { tool: 'unit-converter' });
 })();
 </script>
 
@@ -267,7 +328,7 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99b" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99b</p>
+<p class="site-version" data-site-version="2.99c" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99c</p>
 </footer>
 <script src="/tools-video.js?v=1"></script>
 <script src="/promo-bar.js?v=293"></script>

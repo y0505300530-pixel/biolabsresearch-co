@@ -15,6 +15,7 @@ was closed.
 | # | Finding | Owner | Status |
 |---|---|---|---|
 | P1 | v2.99b card checkout POSTs to the live CRM sidecar (`https://crm.biolabsresearch.co/api/checkout/charge`, camelCase `idempotencyKey`). Soft-QA runs real UMG authorize against this tip. Infra review before customers see live charges. Confirm no PAN/CVV in console or localStorage; GA `checkout_complete` only on `ok===true`. | infra | open |
+| P2 | v2.99c Soft-QA (Red 1 + calculators + Red 3): bacteriostatic blog/compare third-person, RUO above fold, no usage-scenario table, banned phrases grep-zero; calculator CTAs/FAQs/hub; hero trust without invented customer/review counts or hard SKU digits. PDP stars left alone. | pages | open |
 | H1 | Plus, minus and remove in the cart drawer did nothing on 17 product pages: `updateQty` used an undeclared `cart` and called `saveCart()` with no argument, which writes an empty cart | pages | done (pages, 2026-09-08) |
 | H2 | The discount code on checkout did nothing and the page could not say what a code was worth | infra | done (infra, 2026-09-07) |
 | H3 | Five blog articles were up to four times wider than a phone screen | infra | done (infra, 2026-09-07) |

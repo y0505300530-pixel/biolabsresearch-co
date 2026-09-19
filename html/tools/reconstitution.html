@@ -9,7 +9,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-b-32.png?v=1">
 <link rel="apple-touch-icon" href="/apple-touch-b.png?v=1">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/biolabs_style.css?v=403">
+<link rel="stylesheet" href="/biolabs_style.css?v=404">
 <script src="/cart-vial.js?v=314" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
 
@@ -29,7 +29,7 @@
 <meta name="robots" content="index,follow">
 
 <style>
-:root{--tr-cream:#F5F2EC;--tr-ink:#0d0d0d;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
+:root{--tr-cream:#F2EFE9;--tr-ink:#0d2137;--tr-gold:#B08D57;--tr-white:#fff;--tr-muted:#5a5a5a;--tr-line:#e5dfd4}
 body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-wrap{max-width:1120px;margin:0 auto;padding:48px 40px 100px}
 .tr-eyebrow{display:flex;align-items:center;gap:10px;margin:0 0 14px}
@@ -65,10 +65,21 @@ body{background:var(--tr-cream);color:var(--tr-ink)}
 .tr-result .sub .val{font-size:26px}
 .tr-copy{appearance:none;border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:10px 14px;border-radius:10px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;flex:0 0 auto}
 .tr-copy:hover{border-color:var(--tr-gold);color:var(--tr-gold)}
-.tr-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
-.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
+.tr-actions{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.tr-btn{appearance:none;border:none;background:var(--tr-ink);color:#F2EFE9;padding:12px 20px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;min-height:44px;box-sizing:border-box}
 .tr-btn.secondary{background:transparent;color:var(--tr-ink);border:1px solid var(--tr-line)}
 a.tr-btn:hover{opacity:.92}
+.tr-cta{display:inline-flex;align-items:center;justify-content:center;padding:16px 26px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;min-height:52px;box-sizing:border-box;letter-spacing:.01em;transition:transform .15s,box-shadow .15s,background .15s,border-color .15s}
+.tr-cta-catalog{background:#0d2137;color:#F2EFE9;border:2px solid #0d2137;box-shadow:0 8px 20px rgba(13,33,55,.18)}
+.tr-cta-catalog:hover{transform:translateY(-1px);box-shadow:0 12px 28px rgba(13,33,55,.22);color:#F2EFE9}
+.tr-cta-inquire{background:#F2EFE9;color:#0d2137;border:2px solid #B08D57}
+.tr-cta-inquire:hover{background:#fff;border-color:#0d2137;color:#0d2137}
+.tr-cta-band{margin:0 0 28px;padding:22px 24px;background:#0d2137;border-radius:16px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.tr-cta-band p{margin:0;flex:1 1 200px;color:#F2EFE9;font-size:15px;font-weight:600;line-height:1.45}
+.tr-cta-band .tr-cta-catalog{background:#B08D57;border-color:#B08D57;color:#0d2137;box-shadow:none}
+.tr-cta-band .tr-cta-catalog:hover{background:#c4a06a;border-color:#c4a06a;color:#0d2137}
+.tr-cta-band .tr-cta-inquire{background:transparent;color:#F2EFE9;border-color:#B08D57}
+.tr-cta-band .tr-cta-inquire:hover{background:rgba(242,239,233,.08);color:#F2EFE9;border-color:#F2EFE9}
 .tr-related{margin:0 0 24px}
 .tr-related h2{font-size:18px;font-weight:700;margin:0 0 14px}
 .tr-related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -86,6 +97,7 @@ a.tr-btn:hover{opacity:.92}
   .tr-related-grid{grid-template-columns:1fr}
   .tr-result{flex-direction:column}
   .tr-result .val{font-size:36px}
+  .tr-cta{flex:1 1 100%;width:100%}
 }
 </style>
 
@@ -95,7 +107,7 @@ a.tr-btn:hover{opacity:.92}
 <meta name="twitter:title" content="Reconstitution Calculator | BioLabs Research">
 <meta name="twitter:description" content="Client-side reconstitution math for laboratory research calculations: vial amount and diluent volume to concentration. Research use only.">
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://biolabsresearch.co/tools"}, {"@type": "ListItem", "position": 3, "name": "Reconstitution Calculator", "item": "https://biolabsresearch.co/tools/reconstitution"}]}</script>
-<meta name="app-version" content="2.99b">
+<meta name="app-version" content="2.99c">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -147,7 +159,7 @@ a.tr-btn:hover{opacity:.92}
     <div class="tr-hero-copy">
       <div class="tr-eyebrow"><span class="tr-eyebrow-bar" aria-hidden="true"></span><p class="tr-eyebrow-txt"><a href="/tools">TOOLS</a> / RECONSTITUTION</p></div>
       <h1>Reconstitution Calculator</h1>
-      <p class="tr-lede">For laboratory research calculations. Enter vial amount (mg) and diluent volume (mL) to get concentration (mg/mL). Optionally enter an aliquot volume to see mass in that aliquot. Arithmetic runs on this device only — not a protocol and not medical advice.</p>
+      <p class="tr-lede">For laboratory research calculations on research compounds. Enter vial amount (mg) and diluent volume (mL) to get concentration (mg/mL). Optionally enter an aliquot volume to see mass in that aliquot. Arithmetic runs on this device only — research use only, not a protocol and not medical advice.</p>
     </div>
     <figure class="bl-video bl-video-tools">
       <div class="bl-video-frame" style="aspect-ratio:1344/768">
@@ -186,8 +198,8 @@ a.tr-btn:hover{opacity:.92}
         <button type="button" class="tr-copy" id="recCopy">Copy result</button>
       </div>
       <div class="tr-actions">
-        <a class="tr-btn" href="/#catalog" id="recCatalog">Request catalog</a>
-        <a class="tr-btn secondary" href="/contact" id="recInquire">Inquire</a>
+        <a class="tr-cta tr-cta-catalog" href="/#catalog" id="recCatalog">Request catalog</a>
+        <a class="tr-cta tr-cta-inquire" href="/contact" id="recInquire">Inquire</a>
         <button type="button" class="tr-btn secondary" id="recReset">Reset</button>
       </div>
     </div>
@@ -197,7 +209,7 @@ a.tr-btn:hover{opacity:.92}
       <p>Aliquot mass (mg) = concentration (mg/mL) × aliquot volume (mL).</p>
       <div class="tr-example">
         <strong>Worked example</strong>
-        <p style="margin:0">10 mg vial amount + 2 mL diluent volume → <strong style="color:#0d0d0d">5 mg/mL</strong>. A 0.1 mL aliquot holds <strong style="color:#0d0d0d">0.5 mg</strong>.</p>
+        <p style="margin:0">10 mg vial amount + 2 mL diluent volume → <strong style="color:#0d2137">5 mg/mL</strong>. A 0.1 mL aliquot holds <strong style="color:#0d2137">0.5 mg</strong>.</p>
       </div>
       <p>Need C<sub>1</sub>V<sub>1</sub> = C<sub>2</sub>V<sub>2</sub> after a stock exists? Use the <a href="/tools/dilution">dilution calculator</a>.</p>
       <p style="margin:0"><a href="/coa">Browse COA library →</a></p>
@@ -212,6 +224,12 @@ a.tr-btn:hover{opacity:.92}
       <a href="/tools/compound-comparison"><strong>Compound comparison</strong><span>CAS, MW, sequence side-by-side</span></a>
     </div>
   </section>
+
+  <div class="tr-cta-band" aria-label="Catalog and inquiry">
+    <p>Need a listed research compound or a lot note? Open the catalog or send an inquiry.</p>
+    <a class="tr-cta tr-cta-catalog" href="/#catalog">Request catalog</a>
+    <a class="tr-cta tr-cta-inquire" href="/contact">Inquire</a>
+  </div>
 
   <p class="tr-ruo">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</p>
 </main>
@@ -275,7 +293,7 @@ a.tr-btn:hover{opacity:.92}
       </div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99b" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99b</p>
+<p class="site-version" data-site-version="2.99c" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99c</p>
 </footer>
 <script src="/tools-video.js?v=1"></script>
 <script src="/promo-bar.js?v=293"></script>

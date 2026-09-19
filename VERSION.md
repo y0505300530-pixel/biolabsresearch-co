@@ -1,3 +1,22 @@
+# biolabsresearch.co — Version 2.99c
+
+Released 2026-09-19.
+
+Codename: calculator-seo-finish
+
+## Highlights
+
+- **Red 1**: Blog + compare bacteriostatic vs sterile water — usage-scenario table removed; neutral lab comparison only; third-person body; RUO above the fold. Banned phrases (`which one does your` / `your protocol` / `you’ll open` / `open the vial`) zero on those URLs. Titles/H1/canonical unchanged.
+- **Red 3**: Homepage hero trust — COA on request · Research use only · Crypto & card payment options. No invented customer or review counts; no hard SKU digit in the hero strip. PDP stars left alone.
+- **Calculator CTAs**: `/tools/reconstitution`, `/tools/dilution`, `/tools/unit-converter` carry primary **Request catalog** (`/#catalog`) and **Inquire** (`/contact`) buttons — navy `#0d2137` / gold / cream `#F2EFE9`. No green. No Buy now.
+- **Unit converter**: RUO framing; mg ↔ mcg ↔ ng kept; mg→IU FAQ and math use only a **declared** mass-per-IU factor (never a compound-specific invented factor).
+- **Dilution**: FAQ for mg/mL laboratory concentration math (C1V1 = C2V2). Research calculations only — not medical advice.
+- **Tools hub**: Top grid is 01 Reconstitution / 02 Dilution / 03 Unit converter (compound comparison stays below).
+- **Unchanged**: Homepage hero / Popular catalog / PDP split. Calculator arithmetic and existing GA (`reconstitution_calc`, `dilution_calc`, `tool_inquire`) kept. Card path remains CRM UMG authorize from v2.99b.
+- Tools CSS query `biolabs_style.css?v=404` (page-local styles; shared stylesheet not rewritten).
+
+---
+
 # biolabsresearch.co — Version 2.99b
 
 Released 2026-09-17.
@@ -150,7 +169,7 @@ Codename: rsay-ftc-strip-verified-dist
 
 - **FTC / Marketing**: Remove ✓ Verified reviewer badges from “What researchers say” cards
 - **FTC / Marketing**: Remove star distribution bars (92/6/1/1/0) under aggregate rating
-- **Keep**: olive stars, 4.9/5, “Based on 1,200 reviews”, carousel names/quotes
+- **Keep**: olive stars, 4.9/5, carousel names/quotes (review-count line later removed in 2.99c)
 - CSS `biolabs_style.css?v=360`
 
 ---
@@ -206,7 +225,7 @@ Codename: dose-chips-44
 - Restore RUO disclaimer under hero CTAs
 
 ## v2.94e — 2026-09-17
-- Hero trust SoT: 20 research compounds · 45K+ customers · Lot docs on request (no ★/reviews; no Same-day)
+- Hero trust SoT then: compound count + invented customer count + Lot docs on request (superseded in 2.99c)
 
 ## v2.94f — 2026-09-17
 - Unhide hero trust SoT (CSS override of v1.25 display:none)
@@ -228,7 +247,7 @@ Codename: dose-chips-44
 - Leave Compare research compounds section untouched
 
 ## v2.97e — 2026-09-17
-- Remove only hero feature **Third-party testing (where available)**
+- Remove only the hero feature that claimed testing availability without a lot file
 - Keep Lot docs / HPLC / Traceable
 
 ## v2.97f — 2026-09-17
