@@ -110,7 +110,7 @@
     };
   }
   function fileFor(slug) {
-    return '/media/vial-' + slug + '.png?v=' + (slug === 'g3-r' ? '183' : '181');
+    return '/media/vial-' + slug + '.png?v=' + (slug === 'g3-r' ? '184' : '181');
   }
   function packImg(slug, q) {
     return {

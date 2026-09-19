@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="G3-R 10 mg — BioLabs Research">
 <meta name="twitter:description" content="G3-R is listed as a laboratory research compound in 10 mg, 20 mg, and 50 mg vials. Lot papers on request. Investigational laboratory context only.">
 <meta name="twitter:image" content="https://biolabsresearch.co/media/og-share.jpg">
-<script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "G3-R", "image": "https://biolabsresearch.co/media/vial-g3-r.png?v=183", "description": "G3-R is a research-use-only (RUO) laboratory reagent in the BioLabs Research inquiry catalog. Investigational triple GLP-1/GIP/glucagon receptor agonist studied in metabolic research models. Available vial strengths include 10mg, 20mg, 50mg. Lot documentation (COA) is available on request. Not for human consumption or therapeutic use. Product page: https://biolabsresearch.co/products/g3-r", "sku": "g3-r", "brand": {"@type": "Brand", "name": "BioLabs Research"}, "manufacturer": {"@type": "Organization", "name": "LEEDS MARKETING GROUP LTD"}, "offers": {"@type": "Offer", "url": "https://biolabsresearch.co/products/g3-r", "priceCurrency": "USD", "price": "85", "availability": "https://schema.org/InStock"}, "url": "https://biolabsresearch.co/products/g3-r", "additionalProperty": [{"@type": "PropertyValue", "name": "CAS", "value": "2381089-83-2"}]}</script>
+<script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "G3-R", "image": "https://biolabsresearch.co/media/vial-g3-r.png?v=184", "description": "G3-R is a research-use-only (RUO) laboratory reagent in the BioLabs Research inquiry catalog. Investigational triple GLP-1/GIP/glucagon receptor agonist studied in metabolic research models. Available vial strengths include 10mg, 20mg, 50mg. Lot documentation (COA) is available on request. Not for human consumption or therapeutic use. Product page: https://biolabsresearch.co/products/g3-r", "sku": "g3-r", "brand": {"@type": "Brand", "name": "BioLabs Research"}, "manufacturer": {"@type": "Organization", "name": "LEEDS MARKETING GROUP LTD"}, "offers": {"@type": "Offer", "url": "https://biolabsresearch.co/products/g3-r", "priceCurrency": "USD", "price": "85", "availability": "https://schema.org/InStock"}, "url": "https://biolabsresearch.co/products/g3-r", "additionalProperty": [{"@type": "PropertyValue", "name": "CAS", "value": "2381089-83-2"}]}</script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://biolabsresearch.co/#catalog"}, {"@type": "ListItem", "position": 3, "name": "G3-R", "item": "https://biolabsresearch.co/products/g3-r"}]}</script>
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
@@ -280,7 +280,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <div class="product-hero pdp-split product-page">
         <div class="product-img-section">
 <div class="product-img-main">
-            <img id="pdpMainImg" src="/media/vial-g3-r.webp?v=183" alt="G3-R 10 mg research vial" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
+            <img id="pdpMainImg" src="/media/vial-g3-r.webp?v=184" alt="G3-R 10 mg research vial" loading="eager" fetchpriority="high" decoding="async" width="400" height="500" onerror="this.onerror=null;this.src='/media/vial-fallback.webp';">
           </div>
           </div>
         <div class="pdp-buy-col">
@@ -498,7 +498,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     applyProductSeo(p);
     /* Stage 2: keep unique static document.title */
     document.getElementById('breadcrumb-name').textContent = p.name;
-    var img = '/media/vial-g3-r.webp?v=183';
+    var img = '/media/vial-g3-r.webp?v=184';
     var sizes = parseSizeOptions(p.size_options);
     var sizeHtml = '';
     if (sizes.length > 1) {
@@ -601,7 +601,7 @@ storageHtml + presentationHtml +
     img.setAttribute('alt', img.alt);
   }
   document.addEventListener('click', function (e) {
-    var b = e.target && e.target.closest && e.target.closest('button[data-mg], .mg-btn');
+    var b = e.target && e.target.closest && e.target.closest('button[data-mg], .mg-btn, .size-btn');
     if (!b) return;
     var mg = b.getAttribute('data-mg') || b.textContent;
     window._pdpMg = mg;
@@ -612,6 +612,9 @@ storageHtml + presentationHtml +
     document.querySelectorAll('.size-btn').forEach(function(b){b.classList.remove('active');});
     btn.classList.add('active');
     if (price) { document.getElementById('current-price').textContent = price; var sp=document.getElementById('pdpStickyPrice'); if(sp) sp.textContent = price; }
+    var mg = (btn.getAttribute('data-mg') || btn.textContent || '').trim();
+    window._pdpMg = mg;
+    paintG3RAlt(mg);
   };
 })();
 </script>

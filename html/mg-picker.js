@@ -44,7 +44,7 @@
     return n.replace("mg", " mg");
   }
   function fileFor(slug) {
-    return "/media/vial-" + slug + ".png?v=" + (slug === "g3-r" ? "183" : "181");
+    return "/media/vial-" + slug + ".png?v=" + (slug === "g3-r" ? "184" : "181");
   }
   function baseName(name) {
     return String(name || "").replace(/\s*\([^)]*mg[^)]*\)\s*$/i, "").trim();
@@ -133,7 +133,7 @@
       mainImg.src = src;
       /* Keep Marketing dose-aware alt after render + chip change: {Product} {dose} research vial
          Strip parenthetical brand e.g. (Meriva) so Soft-QA matches Marketing SoT.
-         ALT_BASE: display title may be brand short (G3-R) but Marketing alt wants full INN. */
+         ALT_BASE: G3-R is locked; do not fall back to an old INN/slug in the alt. */
       var nameEl = document.querySelector("h1.product-title");
       var name = ALT_BASE[slug] || (nameEl ? nameEl.textContent.trim() : "");
       name = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();

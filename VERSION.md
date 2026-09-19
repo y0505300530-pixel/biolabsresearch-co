@@ -15,7 +15,7 @@ Codename: calculator-seo-finish
 - **Unchanged**: Homepage hero / Popular catalog / PDP split. Calculator arithmetic and existing GA (`reconstitution_calc`, `dilution_calc`, `tool_inquire`) kept. Card path remains CRM UMG authorize from v2.99b.
 - Tools CSS query `biolabs_style.css?v=404` (page-local styles; shared stylesheet not rewritten).
 - **Parallel tip (no new letter) — G3-R public name**: The former Retatrutide / R3TA listing is **G3-R** only. URL `/products/g3-r`; old paths `/products/retatrutide`, `/products/r3ta`, `/products/reta` 301 here. Alt / OG: `G3-R {dose} research vial`. Does not take the v2.99c letter from calculator-seo-finish. Quote remains v2.99d.
-- **G3-R visual lock**: Live catalog/PDP/qty/search/blog-card vial files show gold-band text **G3-R** (not R3TA / RETA / Retatrutide). **Indian must regenerate the official GLOW-chrome text-only master (band G3-R) before Soft-QA lock** — current PNGs are a storefront text swap on existing chrome (gold fill bar remains; 20 mg file is off-chrome cream label).
+- **G3-R visual lock**: Live GLOW-chrome vial (`vial-g3-r.png` / `.webp`, 10/20/50) gold-band text is **G3-R** (unified gold cap / BIO LABS chrome from the GLOW-70 master). Qty packs and search/blog thumbs match. Tip stays **v2.99c** (folded with calculator-seo-finish).
 
 ---
 

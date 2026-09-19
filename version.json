@@ -9,6 +9,6 @@
     "Tools CTAs: Request catalog + Inquire on reconstitution, dilution, unit-converter",
     "Unit converter IU FAQ uses only a declared mass-per-IU factor; dilution mg/mL FAQ",
     "Parallel: public catalog name for this SKU is G3-R only; /products/g3-r; old retatrutide/r3ta/reta 301",
-    "G3-R vial/qty gold-band text is G3-R (not R3TA); Indian GLOW-chrome text-only master still required before Soft-QA lock"
+    "G3-R vial gold-band text is G3-R on GLOW-70 chrome (catalog/PDP/qty); tip folded into v2.99c"
   ]
 }
