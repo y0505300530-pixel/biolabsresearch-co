@@ -1,3 +1,20 @@
+# biolabsresearch.co — Version 2.99f1
+
+Released 2026-09-19.
+
+Codename: catalog-mobile-2col-compact
+
+## Highlights
+
+- **Mobile catalog 2×2 (Yehuda):** Homepage `.catalog-grid` stays **2 columns through 320px**. Soft-QA at 320 / 375 / 390 must show 2 columns × 2 rows (4 products visible), not a single narrow column and not 99×640 skyscraper cards.
+- **Root cause:** `@media (max-width: 380px) { .catalog-grid { 1fr } }` plus a tall toolbar (search + stacked filters) and FAB `padding-bottom: 72–84px` / 64px right gutter made cards צר ארוך.
+- **Fix:** 1-col rule removed. End-of-file SoT forces 2-col at ≤800 / ≤390 / ≤380. Toolbar filters are a **2×2** select grid (Documentation hidden on mobile). Cards: hide tagline / trust / View details; clamp name to 2 lines; chips nowrap; compact ATC nowrap; kill FAB card pad; 12px section gutters so cards are not ~99px wide.
+- **Cache:** `html/index.html` loads `biolabs_style.css?v=407`.
+- **Unchanged:** Hero, Quote / G3-R / abandon / f SEO (compares, PDP FAQ). Sits on live **v2.99f** (`fef725c1` seo-level1-compare-faq) over **v2.99e3** / e2 / e1 / e / Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v2.99f1**.
+- **Hold:** PR #32 / hub-spoke **g** not merged.
+
+---
+
 # biolabsresearch.co — Version 2.99f
 
 Released 2026-09-19.
