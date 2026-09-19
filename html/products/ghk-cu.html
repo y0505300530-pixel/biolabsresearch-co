@@ -503,9 +503,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
       ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
-    var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<a class="btn-coa-secondary" href="/coa?q='+encodeURIComponent(p.slug)+'">View lot COA</a>'
-      : '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
+    var coaBtn = '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero pdp-split product-page">' +
         '<div class="product-img-section">' +

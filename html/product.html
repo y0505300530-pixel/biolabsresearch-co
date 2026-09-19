@@ -306,9 +306,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
       ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
-    var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
-      : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>';
+    var coaBtn = '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero">' +
         '<div class="product-img-section">' +
@@ -688,3 +686,5 @@ document.addEventListener('keydown', function(e) {
 <script src="/prices-sync.js?v=3"></script>
 </body>
 </html>
+
+<script src="/coa-pdp.js?v=1"></script>

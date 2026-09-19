@@ -444,9 +444,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
       ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
-    var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<a class="btn-inquiry" href="/coa?q='+encodeURIComponent(p.slug)+'" style="cursor:pointer;display:inline-flex;align-items:center;justify-content:center;text-decoration:none">View / Download COA</a>'
-      : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>';
+    var coaBtn = '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero pdp-split product-page">' +
         '<div class="product-img-section">' +
@@ -1213,7 +1211,8 @@ document.addEventListener('keydown', function(e) {
 });
 </script>
 
-<script src="/pdp-split.js?v=4"></script>
+<script src="/pdp-split.js?v=5"></script>
+<script src="/coa-pdp.js?v=1"></script>
 <script src="/email-capture.js?v=5"></script>
 <script src="/enhance-schema.js"></script>
 <script src="/promo-bar.js?v=293"></script>

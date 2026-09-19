@@ -31,7 +31,7 @@ was closed.
 
 | # | Finding | Owner | Status |
 |---|---|---|---|
-| M1 | The certificate viewer exists on product pages but no button opens it; the only visible control is *Request COA*, which opens a form | pages | open |
+| M1 | The certificate viewer exists on product pages but no button opens it; the only visible control is *Request COA*, which opens a form | pages | done (pages, 2026-09-19; v2.99g SoT: Download / View lot COA only when `coa_pdf_url` is a real PDF; otherwise Request lot COA — no broken Authentic button) |
 | M2 | FAQ answers print on top of the questions below them on a phone, six overlapping pairs | pages | open |
 | M3 | The country selector on checkout has no label and no accessible name | pages | open |
 | M4 | The menu button on the home page has no accessible name | pages | open |

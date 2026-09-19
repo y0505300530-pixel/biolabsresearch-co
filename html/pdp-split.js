@@ -56,7 +56,17 @@
   }
   function styleCrumbs() {
     var bc = document.querySelector('.breadcrumb');
-    if (!bc || bc.getAttribute('data-pdp-crumb') === '1') return;
+    if (!bc) return;
+    /* v2.99g: family spoke crumbs are owned by coa-pdp.js */
+    if (bc.getAttribute('data-family-crumb') === '1') {
+      var home = bc.querySelector('a');
+      if (home) {
+        home.textContent = 'Home';
+        home.setAttribute('href', '/');
+      }
+      return;
+    }
+    if (bc.getAttribute('data-pdp-crumb') === '1') return;
     bc.setAttribute('data-pdp-crumb', '1');
     var links = bc.querySelectorAll('a');
     if (links[0]) {

@@ -545,9 +545,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       ? '<div class="storage-box"><div><strong>Storage</strong> '+p.storage+'</div></div>' : '';
     var presentationHtml = p.presentation
       ? '<div class="storage-box"><div><strong>Presentation</strong> '+p.presentation+'</div></div>' : '';
-    var coaBtn = (COA_DATA && COA_DATA[p.slug] && COA_DATA[p.slug].length)
-      ? '<button class="btn-inquiry" onclick="openCOAModal(\''+p.slug+'\')" style="cursor:pointer">View / Download COA</button>'
-      : '<button class="btn-inquiry" onclick="openCOARequest(\''+p.name+'\')" style="cursor:pointer">Request COA</button>';
+    var coaBtn = '<button type="button" class="btn-coa-secondary" onclick="openCOARequest(\''+p.name+'\')">Request lot COA</button>';
     document.getElementById('product-container').innerHTML =
       '<div class="product-hero pdp-split product-page">' +
         '<div class="product-img-section">' +
@@ -1123,18 +1121,7 @@ function specStripHtml(slug){
     '</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity lives on the lot COA when issued.</p>';
 }
 
-var COA_DATA = {
-  // Live catalog slugs only. No hosted lot PDF for the other SKUs — those use Request COA.
-  // Do not invent a lab name. The blend file is the existing hosted lot PDF (not a new document).
-  'bpc-157-tb-500-blend': [
-    {url:'https://base44.app/api/apps/6a2a71f7657c7f4b9841fe12/files/mp/public/6a2a71f7657c7f4b9841fe12/25ab4ff3f_ARC-WV10-004.pdf', filename:'COA-BPC-157-TB-500-Blend-ARC-WV10-004.pdf', label:'BPC-157 / TB-500 Blend — Lot ARC-WV10-004'}
-  ],
-  'bpc-157': [],
-  'nad-plus': [],
-  'aod-9604': [],
-  'curcumin-phytosome': [],
-  'tesamorelin-ipamorelin': []
-};
+var COA_DATA = {};
 
 function openCOAModal(slug) {
   var entries = COA_DATA[slug];
