@@ -219,7 +219,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/search-overlay.js?v=37" defer></script>
 <script type="application/ld+json" id="product-jsonld">{"@context": "https://schema.org", "@type": "Product", "name": "Research compound listing", "description": "Fallback template used when a SKU file is missing. Prefer a dedicated product path from the catalog. Research use only and sold by inquiry, not checkout.", "url": "https://biolabsresearch.co/products/product", "offers": {"@type": "Offer", "url": "https://biolabsresearch.co/products/product", "priceCurrency": "USD", "price": "", "availability": "https://schema.org/InStock"}}</script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Catalog", "item": "https://biolabsresearch.co/#catalog"}, {"@type": "ListItem", "position": 3, "name": "Listing", "item": "https://biolabsresearch.co/products/product"}]}</script>
-<meta name="app-version" content="2.99e1">
+<meta name="app-version" content="2.99g">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body class="product-page">
@@ -1029,18 +1029,7 @@ function specStripHtml(slug){
     '</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity lives on the lot COA when issued.</p>';
 }
 
-var COA_DATA = {
-  'glow-70': [
-    {url:'/media/coa/glow-70-coa.pdf', filename:'glow-70-coa.pdf', label:'GLOW 70 — Certificate of Analysis'}
-  ],
-  'g3-r': [
-    {url:'/media/coa/g3-r-coa.pdf', filename:'g3-r-coa.pdf', label:'G3-R — Certificate of Analysis'}
-  ],
-  'bpc-157-tb-500-blend': [
-    {url:'/media/coa/sample-coa.pdf', filename:'sample-coa.pdf', label:'BPC-157 / TB-500 Blend — Lot ARC-WV10-004'}
-  ],
-  'tesamorelin-ipamorelin': []
-};
+var COA_DATA = {};
 
 function openCOAModal(slug) {
   var entries = COA_DATA[slug];

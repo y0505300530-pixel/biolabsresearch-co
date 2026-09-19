@@ -217,7 +217,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 <script src="/cart-vial.js?v=315" defer></script>
 <script src="/pdp-story.js?v=47"></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<meta name="app-version" content="2.99e1">
+<meta name="app-version" content="2.99g">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -378,7 +378,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99e1" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99e1</p>
+<p class="site-version" data-site-version="2.99g" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99g</p>
 </footer>
 
 <script>
@@ -1096,23 +1096,7 @@ function specStripHtml(slug){
     '</dl><p class="spec-note">Public identifiers for the named compound, not lot results. Purity lives on the lot COA when issued.</p>';
 }
 
-var COA_DATA = {
-  // Live catalog slugs only. Hosted lot PDFs on biolabsresearch.co (same-origin for CSP iframe).
-  'bpc-157-tb-500-blend': [
-    {url:'/media/coa/sample-coa.pdf', filename:'sample-coa.pdf', label:'BPC-157 / TB-500 Blend — Lot ARC-WV10-004'}
-  ],
-  'g3-r': [
-    {url:'/media/coa/g3-r-coa.pdf', filename:'g3-r-coa.pdf', label:'G3-R — Certificate of Analysis'}
-  ],
-  'glow-70': [
-    {url:'/media/coa/glow-70-coa.pdf', filename:'glow-70-coa.pdf', label:'GLOW 70 — Certificate of Analysis'}
-  ],
-  'bpc-157': [],
-  'nad-plus': [],
-  'aod-9604': [],
-  'curcumin-phytosome': [],
-  'tesamorelin-ipamorelin': []
-};
+var COA_DATA = {};
 
 function openCOAModal(slug) {
   var entries = COA_DATA[slug];
@@ -1287,7 +1271,8 @@ document.addEventListener('keydown', function(e) {
 <script src="/enhance-schema.js"></script>
 <script src="/promo-bar.js?v=293"></script>
 <script src="/mg-picker.js?v=44"></script>
-<script src="/pdp-split.js?v=4"></script>
+<script src="/pdp-split.js?v=5"></script>
+<script src="/coa-pdp.js?v=1"></script>
 <script src="/qty-upsell.js?v=2"></script>
 <script src="/prices-sync.js?v=3"></script>
 <script src="/product-marquee.js?v=52"></script>

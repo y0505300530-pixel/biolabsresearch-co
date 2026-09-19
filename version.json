@@ -1,12 +1,12 @@
 {
-  "version": "2.99e1",
+  "version": "2.99g",
   "released": "2026-09-19",
-  "codename": "g3-r-public-rename",
-  "appVersion": "2.99e1",
+  "codename": "hub-coa",
+  "appVersion": "2.99g",
   "highlights": [
-    "Public catalog name G3-R only; PDP /products/g3-r; gold-band G3-R",
-    "Old /products/retatrutide|r3ta|reta 301 to /products/g3-r",
-    "Gold-band GLOW-chrome assets vial-g3-r.webp (+10/20/50)",
-    "Sits on tip v2.99e abandoned-checkout (Quote v2.99d / AI crawlers / IndexNow)"
+    "Family hubs at /families/ and /families/{slug}: recovery, ghrp-ghrh, copper-skin, mitochondrial",
+    "PDP Download / View lot COA only when /api/products.coa_pdf_url is a real PDF",
+    "Otherwise Request lot COA inquiry; JSON-LD DigitalDocument only when URL exists",
+    "Sits on v2.99e1 G3-R + v2.99e abandoned-checkout (Quote v2.99d / AI crawlers / IndexNow); f (#26) not in this tip"
   ]
 }

@@ -78,9 +78,10 @@ customer + card fields from the browser to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). Required key is
 `idempotencyKey` (camelCase; `extOrderId` is an accepted alias — never `idempotency_key`).
 The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
-Visible site tip is **v2.99e1** (`g3-r-public-rename`) on top of **v2.99e** (`abandoned-checkout`)
-and Quote mode (**v2.99d**) while CRM `paymentsEnabled:false`. v2.99c2 (`reconstitution-faq`)
-remains the version base under d.
+Visible site tip is **v2.99g** (`hub-coa`) on top of **v2.99e1** (`g3-r-public-rename`),
+**v2.99e** (`abandoned-checkout`), and Quote mode (**v2.99d**) while CRM
+`paymentsEnabled:false`. v2.99c2 (`reconstitution-faq`) remains the version base under d.
+v2.99f (`#26` SEO Level 1) is not in this tip.
 Checkout primary CTA is **Request a Quote**. Browser POSTs customer + cart (no card fields) to
 `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)
 and the same `session_id` used for abandoned-checkout capture.
@@ -92,11 +93,11 @@ on quote `ok===true` fire `generate_lead`; do **not** fire `checkout_complete` w
 The UMG charge path (`/api/checkout/charge`, `html/checkout-charge.js`) is retained and unused; if
 re-enabled it must also pass `session_id`. Infra reviews before customers see live charges — see `QA_TASKS.md` P1.
 
-**G3-R (v2.99e1):** Public catalog name is **G3-R** only (`/products/g3-r`; gold-band **G3-R**). Old retatrutide/r3ta/reta paths 301. Soft-QA Gate 0 stamp is **v2.99e1**.
+**G3-R (v2.99e1, kept under g):** Public catalog name is **G3-R** only (`/products/g3-r`; gold-band **G3-R**). Old retatrutide/r3ta/reta paths 301. Do not resurrect `html/products/retatrutide.html`.
 
-**robots.txt (v2.99d Marketing lock, ships with v2.99e / e1):** explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, Googlebot, Bingbot. Do not `Disallow: /` for them.
+**robots.txt (v2.99d Marketing lock, ships with v2.99e / e1 / g):** explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, Googlebot, Bingbot. Do not `Disallow: /` for them.
 
-**IndexNow (same key as d):** `html/indexnow-key.txt` and `html/{key}.txt`. **v2.99e / e1 deploy must run IndexNow after live** — `scripts/indexnow-ping.sh` (or the curl in `VERSION.md`). Do not block abandon capture on this ping.
+**IndexNow (same key as d):** `html/indexnow-key.txt` and `html/{key}.txt`. **v2.99g deploy must run IndexNow after live** — `scripts/indexnow-ping.sh` (or the curl in `VERSION.md`). Do not block abandon capture on this ping.
 
 **No card data on the storefront Node service.** Never add a field, script or route that sends a
 full card number, expiry date or CVV to `/api/*` on this site, the Node service behind it, or a new

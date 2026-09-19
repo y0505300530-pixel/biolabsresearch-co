@@ -1,3 +1,21 @@
+# biolabsresearch.co — Version 2.99g
+
+Released 2026-09-19.
+
+Codename: hub-coa
+
+## Highlights
+
+- **Family hubs:** `/families/` plus `/families/recovery`, `/families/ghrp-ghrh`, `/families/copper-skin`, `/families/mitochondrial`. Titles are “{Family} research compounds” with an RUO line. Seed examples are BPC-157, TB-500, GHK-Cu, NAD+, Tesamorelin / Ipamorelin, MOTS-c — **not** GLP-1, Retatrutide, Semaglutide, Tirzepatide, or G3-R.
+- **Hub index:** `/research-peptides` stays as the public research-compounds index (no 404). It links the four families.
+- **Spoke crumbs:** Product pages in a family show Home › {Family} research compounds › SKU, plus a contextual link back to the hub.
+- **COA SoT:** PDP **Download COA** / **View lot COA** only when `/api/products` returns a real `coa_pdf_url` PDF. Optional `coa_lot` switches the label to View lot COA. Otherwise **Request lot COA** inquiry. No Authentic / invented-file button. JSON-LD `DigitalDocument` only when that URL exists.
+- **CRM:** Required API field documented in `docs/CRM-COA-API.md`. Live catalog does not yet emit the keys — storefront fails closed to inquiry.
+- **Tip stack:** Sits on locked **v2.99e1** (`g3-r-public-rename`, `cbdd1ea2`) over **v2.99e** (`abandoned-checkout`) / Quote **v2.99d** / c2 FAQ / AI-crawler Allow / IndexNow. Sitewide footer + meta + `version.json` stamped **v2.99g**. **v2.99f** (`#26` SEO Level 1) is still unmerged — this rebase is onto current main (e + e1); a later rebase onto f may be needed.
+- **Unchanged:** Abandoned-checkout capture, Quote CTA, charge path retained unused, robots Allow list, IndexNow key, G3-R public name / `/products/g3-r`. Shared `cart-vial.js`, `mg-picker.js`, `prices-sync.js` not rewritten. `pdp-split.js` only respects family crumbs (commit note). `pdp-story.js` Docs copy aligned.
+
+---
+
 # biolabsresearch.co — Version 2.99e1
 
 Released 2026-09-19.
