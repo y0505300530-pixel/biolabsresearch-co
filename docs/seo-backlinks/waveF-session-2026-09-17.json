@@ -1,0 +1,67 @@
+{
+  "date": "2026-09-17",
+  "live_verified": 0,
+  "live_checks": {
+    "peptidetrace.com": "not_found",
+    "biocompare.com": "not_found",
+    "molport.com": "not_found",
+    "chemblink.com": "not_found_404_company_page",
+    "peptidesfinder.com_public": "not_live_yet_under_review"
+  },
+  "new_submits": [
+    {
+      "domain": "peptidesfinder.com",
+      "action": "contact_suggest_vendor",
+      "status": "submitted"
+    },
+    {
+      "domain": "peptidesfinder.com",
+      "action": "vendor_listing_onboarding",
+      "status": "under_review",
+      "note": "Listing received 2026-09-17; manual review ~1 business day"
+    },
+    {
+      "domain": "b2b-directory-uk.co.uk",
+      "action": "contact_listing_request",
+      "status": "submitted_uncertain"
+    },
+    {
+      "domain": "sorply.com",
+      "action": "supplier_register",
+      "status": "submitted_uncertain"
+    },
+    {
+      "domain": "chemblink.com",
+      "action": "product_submit_attempt",
+      "status": "submitted_uncertain"
+    }
+  ],
+  "email_drafts_gmail_payments_biofirst": [
+    {
+      "to": "sales@worldofchemicals.com",
+      "subject": "Supplier listing request \u2014 BioLabs Research (RUO lab reagents)"
+    },
+    {
+      "to": "admin@peptidebase.io",
+      "subject": "Research-vendor listing request \u2014 BioLabs Research (RUO)"
+    },
+    {
+      "to": "adam@bpg.bio",
+      "subject": "Directory listing request \u2014 BioLabs Research (RUO biotech/reagents)"
+    }
+  ],
+  "captcha_parked_new": [
+    "https://www.biolabprotocols.com/contact-us.php?s=Product%20Listing",
+    "https://peptides.wiki/contact/",
+    "https://www.directree.io/submit",
+    "https://labshake.com/contact-us",
+    "https://www.cylex-uk.co.uk/add-company.html",
+    "https://businessuk.directory/login/register/",
+    "https://www.labmanager.com/contact-us"
+  ],
+  "peptidesfinder_login": {
+    "email": "admin@biolabsresearch.co",
+    "password": "REDACTED",
+    "portal": "https://peptidesfinder.com/vendor-dashboard"
+  }
+}
