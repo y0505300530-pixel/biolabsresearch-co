@@ -245,7 +245,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
   }
 }
 </style>
-<script src="/cart-vial.js?v=314"></script>
+<script src="/cart-vial.js?v=315"></script>
 <script src="/pdp-story.js?v=10"></script>
 <script src="/search-overlay.js?v=37"></script>
 <meta name="app-version" content="2.99c">
@@ -371,7 +371,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/products/semax">Semax</a>
         <a href="https://biolabsresearch.co/products/kisspeptin-10">Kisspeptin-10</a>
         <a href="https://biolabsresearch.co/products/thymosin-alpha-1">Thymosin Alpha-1</a>
-        <a href="https://biolabsresearch.co/products/retatrutide">R3TA</a>
+        <a href="https://biolabsresearch.co/products/g3-r">G3-R</a>
         <a href="https://biolabsresearch.co/products/curcumin-phytosome">Curcumin Phytosome</a>
       </div>
       <div class="footer-col">
@@ -457,7 +457,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
     setMetaByName('twitter:title', title);
     setMetaByName('twitter:description', desc);
     setMetaByName('twitter:image', p.image_url || '/media/vial-curcumin-phytosome.png?v=178');
-    var LIVE_API_SLUGS = ['bpc-157-tb-500-blend','nad-plus','aod-9604','curcumin-phytosome','tesamorelin-ipamorelin','bpc-157','glow-70','epithalon','ghk-cu','mots-c','kpv','semax','kisspeptin-10','thymosin-alpha-1','tb-500','retatrutide'];
+    var LIVE_API_SLUGS = ['bpc-157-tb-500-blend','nad-plus','aod-9604','curcumin-phytosome','tesamorelin-ipamorelin','bpc-157','glow-70','epithalon','ghk-cu','mots-c','kpv','semax','kisspeptin-10','thymosin-alpha-1','tb-500','g3-r','retatrutide'];
     if (LIVE_API_SLUGS.indexOf(p.slug) === -1 || p.price == null || p.price === '') {
       var el = document.getElementById('product-jsonld');
       if (el) el.remove();
@@ -500,7 +500,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       'glow-70': {q:'This is the catalog I trust. I tell people to start here.', who:'Rafael D. \u00b7 PI \u00b7 GLOW-70', face:'/media/reviewer-rafael.webp?v=67'},
       'kisspeptin-10': {q:'I keep recommending this one. It is my go-to.', who:'Yael M. \u00b7 Technician \u00b7 Kisspeptin-10', face:'/media/reviewer-yael.webp?v=67'},
       'thymosin-alpha-1': {q:'Changed how we stock. I recommend it without hesitation.', who:'Ben Q. \u00b7 Procurement \u00b7 Thymosin Alpha-1', face:'/media/reviewer-ben.webp?v=67'},
-      'retatrutide': {q:'I tell every buyer I know: get it from here.', who:'Sofia W. \u00b7 Lab manager \u00b7 R3TA', face:'/media/reviewer-sofia.webp?v=67'},
+      'g3-r': {q:'I tell every buyer I know: get it from here.', who:'Sofia W. \u00b7 Lab manager \u00b7 G3-R', face:'/media/reviewer-sofia.webp?v=67'},
       'tesamorelin-ipamorelin': {q:'This is my go-to. I recommend it every time.', who:'Itai G. \u00b7 Scientist \u00b7 Tesamorelin / Ipamorelin', face:'/media/reviewer-itai.webp?v=67'},
       'curcumin-phytosome': {q:'Wasted money on a fancy phytosome before. This one actually felt like the real thing. Champions.', who:'Hannah J. \u00b7 Buyer \u00b7 Curcumin Phytosome', face:'/media/reviewer-hannah.webp?v=67'}
     };
@@ -601,9 +601,9 @@ storageHtml + presentationHtml +
   fetch('https://biolabsresearch.co/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
-      (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });
+      (products||[]).forEach(function(x){ if(x&&(x.slug==='g3-r'||x.slug==='retatrutide'||x.slug==='r3ta'||x.slug==='reta')){ x.name='G3-R'; x.slug='g3-r'; } });
       localStorage.setItem('biolabs_products', JSON.stringify(products));
-      var p = products.find(function(x){return x.slug===slug;});
+      var p = products.find(function(x){return x&&(x.slug===slug||(slug==='g3-r'&&(x.slug==='retatrutide'||x.slug==='r3ta'||x.slug==='reta')));});
       if (p) { window._currentProduct = p; renderProduct(p); if (window.qtyUpsellRefresh) window.qtyUpsellRefresh(); } else renderNotFound();
     })
     .catch(function(){
@@ -728,7 +728,7 @@ storageHtml + presentationHtml +
 </div>
 
 <script>
-window.COMPARE_AT = {"aod-9604":120,"AOD-9604":120,"bpc-157-tb-500-blend":220,"BPC-157 / TB-500 Blend":220,"bpc-157":135,"BPC-157":135,"curcumin-phytosome":175,"Curcumin Phytosome":175,"epithalon":150,"Epithalon":150,"ghk-cu":125,"GHK-Cu":125,"glow-70":210,"GLOW 70":210,"kisspeptin-10":155,"Kisspeptin-10":155,"kpv":115,"KPV":115,"mots-c":165,"MOTS-c":165,"MOTS-C":165,"nad-plus":150,"NAD+":150,"retatrutide":230,"R3TA":230,"semax":130,"Semax":130,"tb-500":145,"TB-500":145,"tesamorelin-ipamorelin":190,"Tesamorelin / Ipamorelin":190,"thymosin-alpha-1":175,"Thymosin Alpha-1":175};
+window.COMPARE_AT = {"aod-9604":120,"AOD-9604":120,"bpc-157-tb-500-blend":220,"BPC-157 / TB-500 Blend":220,"bpc-157":135,"BPC-157":135,"curcumin-phytosome":175,"Curcumin Phytosome":175,"epithalon":150,"Epithalon":150,"ghk-cu":125,"GHK-Cu":125,"glow-70":210,"GLOW 70":210,"kisspeptin-10":155,"Kisspeptin-10":155,"kpv":115,"KPV":115,"mots-c":165,"MOTS-c":165,"MOTS-C":165,"nad-plus":150,"NAD+":150,"g3-r":230,"G3-R":230,"semax":130,"Semax":130,"tb-500":145,"TB-500":145,"tesamorelin-ipamorelin":190,"Tesamorelin / Ipamorelin":190,"thymosin-alpha-1":175,"Thymosin Alpha-1":175};
 window.compareAtPrice = function(item){
   var p = parseFloat(item.price) || 0;
   var w = parseFloat(item.original_price || item.compare || 0) || 0;
@@ -1034,7 +1034,7 @@ var PUB_IDS = {
     "mw": "",
     "seq": ""
   },
-  "retatrutide": {
+  "g3-r": {
     "cas": "2381089-83-2",
     "formula": "",
     "mw": "",
@@ -1103,8 +1103,8 @@ var RESEARCH = {
     "body": "TB-500 is a catalog name for a thymosin-beta-4 fragment listing (commonly Ac-LKKTETQ). Public CAS listings for the fragment vs intact T-beta-4 are not the same thing. Identity is the sequence printed on the lot COA when issued.",
     "limit": "Research fragment listing. Not a healing protocol, no dose on this page."
   },
-  "retatrutide": {
-    "body": "R3TA (retatrutide, LY3437943) is a published triple agonist at GIP, GLP-1, and glucagon receptors (CAS 2381089-83-2). It is a research reagent for incretin-pathway assays.",
+  "g3-r": {
+    "body": "G3-R (LY3437943) is a published triple agonist at GIP, GLP-1, and glucagon receptors (CAS 2381089-83-2). It is a research reagent for incretin-pathway assays.",
     "limit": "Research agonist. Not a weight-loss product, no dose on this page."
   }
 };
@@ -1330,10 +1330,10 @@ document.addEventListener('keydown', function(e) {
 })();
 </script>
 <script src="/promo-bar.js?v=293"></script>
-<script src="/mg-picker.js?v=43"></script>
+<script src="/mg-picker.js?v=44"></script>
 <script src="/pdp-split.js?v=4"></script>
 <script src="/qty-upsell.js?v=2"></script>
-<script src="/prices-sync.js?v=2"></script>
-<script src="/product-marquee.js?v=51"></script>
+<script src="/prices-sync.js?v=3"></script>
+<script src="/product-marquee.js?v=52"></script>
 </body>
 </html>

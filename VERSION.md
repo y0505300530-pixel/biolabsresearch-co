@@ -14,6 +14,7 @@ Codename: calculator-seo-finish
 - **Tools hub**: Top grid is 01 Reconstitution / 02 Dilution / 03 Unit converter (compound comparison stays below).
 - **Unchanged**: Homepage hero / Popular catalog / PDP split. Calculator arithmetic and existing GA (`reconstitution_calc`, `dilution_calc`, `tool_inquire`) kept. Card path remains CRM UMG authorize from v2.99b.
 - Tools CSS query `biolabs_style.css?v=404` (page-local styles; shared stylesheet not rewritten).
+- **Parallel tip (no new letter) — G3-R public name**: The former Retatrutide / R3TA listing is **G3-R** only. URL `/products/g3-r`; old paths `/products/retatrutide`, `/products/r3ta`, `/products/reta` 301 here. Alt / OG: `G3-R {dose} research vial`. Does not take the v2.99c letter from calculator-seo-finish. Quote remains v2.99d.
 
 ---
 

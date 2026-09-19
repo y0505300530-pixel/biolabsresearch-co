@@ -665,9 +665,10 @@ function productSlug(item){
   var slug = (item && item.slug) ? String(item.slug) : '';
   if (!slug && item && item.name) {
     var n = String(item.name).toLowerCase().replace(/\s*\(.*\)\s*$/,'').trim();
-    var map = {'bpc-157 / tb-500 blend':'bpc-157-tb-500-blend','bpc-157':'bpc-157','nad+':'nad-plus','aod-9604':'aod-9604','curcumin phytosome':'curcumin-phytosome','tesamorelin / ipamorelin':'tesamorelin-ipamorelin','glow 70':'glow-70','epithalon':'epithalon','ghk-cu':'ghk-cu','mots-c':'mots-c','kpv':'kpv','semax':'semax','kisspeptin-10':'kisspeptin-10','thymosin alpha-1':'thymosin-alpha-1','tb-500':'tb-500','retatrutide':'retatrutide','r3ta':'retatrutide'};
+    var map = {'bpc-157 / tb-500 blend':'bpc-157-tb-500-blend','bpc-157':'bpc-157','nad+':'nad-plus','aod-9604':'aod-9604','curcumin phytosome':'curcumin-phytosome','tesamorelin / ipamorelin':'tesamorelin-ipamorelin','glow 70':'glow-70','epithalon':'epithalon','ghk-cu':'ghk-cu','mots-c':'mots-c','kpv':'kpv','semax':'semax','kisspeptin-10':'kisspeptin-10','thymosin alpha-1':'thymosin-alpha-1','tb-500':'tb-500','g3-r':'g3-r','retatrutide':'g3-r','r3ta':'g3-r','reta':'g3-r'};
     slug = map[n] || n.replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   }
+  if (slug === 'retatrutide' || slug === 'r3ta' || slug === 'reta') slug = 'g3-r';
   return slug;
 }
 function productUrl(item){
@@ -697,7 +698,7 @@ var CART_SUGGEST = [
   {slug:'thymosin-alpha-1', name:'Thymosin Alpha-1', price:109},
   {slug:'tesamorelin-ipamorelin', name:'Tesamorelin / Ipamorelin', price:119},
   {slug:'curcumin-phytosome', name:'Curcumin Phytosome', price:109},
-  {slug:'retatrutide', name:'R3TA', price:85},
+  {slug:'g3-r', name:'G3-R', price:85},
   {slug:'ipamorelin', name:'Ipamorelin', price:80},
   {slug:'tesamorelin', name:'Tesamorelin', price:85},
   {slug:'tirzepatide', name:'Tirzepatide', price:90},

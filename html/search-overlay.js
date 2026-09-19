@@ -1,7 +1,7 @@
 /* Search overlay — command palette. GET /api/products, no research-solvent, Esc closes */
 (function () {
   var API = "/api/products";
-  var POPULAR = ["retatrutide", "bpc-157", "bpc-157-tb-500-blend", "nad-plus", "ghk-cu", "glow-70"];
+  var POPULAR = ["g3-r", "bpc-157", "bpc-157-tb-500-blend", "nad-plus", "ghk-cu", "glow-70"];
   var cache = null;
   var open = false;
 
@@ -11,8 +11,13 @@
       .replace(/</g, "&lt;")
       .replace(/"/g, "&quot;");
   }
+  function canonSlug(s) {
+    s = String(s || "").toLowerCase();
+    if (s === "retatrutide" || s === "r3ta" || s === "reta") return "g3-r";
+    return s;
+  }
   function displayName(p) {
-    if (p && p.slug === "retatrutide") return "R3TA";
+    if (p && canonSlug(p.slug) === "g3-r") return "G3-R";
     return (p && p.name) || "";
   }
   function stockLabel(p) {
@@ -23,10 +28,10 @@
     return "";
   }
   function hrefFor(p) {
-    return "/products/" + encodeURIComponent(p.slug) + ".html";
+    return "/products/" + encodeURIComponent(canonSlug(p.slug)) + ".html";
   }
   function thumb(p) {
-    var slug = (p && p.slug) ? String(p.slug) : "";
+    var slug = canonSlug((p && p.slug) ? String(p.slug) : "");
     if (!slug) return "";
     var u = (p && p.image_url) ? String(p.image_url) : "";
     if (u.indexOf("/media/vial-") === 0) {
@@ -44,7 +49,10 @@
     var by = {};
     list.forEach(function (p) { by[p.slug] = p; });
     var out = [];
-    POPULAR.forEach(function (s) { if (by[s]) out.push(by[s]); });
+    POPULAR.forEach(function (s) {
+      var p = by[s] || (s === "g3-r" && (by.retatrutide || by.r3ta || by.reta));
+      if (p) out.push(p);
+    });
     if (out.length < 6) {
       list.forEach(function (p) {
         if (out.length >= 6) return;

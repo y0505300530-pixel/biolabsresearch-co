@@ -1,6 +1,11 @@
 /* Pairs well at the bench — infinite product rail for PDP (RUO-safe) */
 (function () {
   var EXCLUDE_ALWAYS = { "research-solvent": 1 };
+  function canonSlug(s) {
+    s = String(s || "").toLowerCase();
+    if (s === "retatrutide" || s === "r3ta" || s === "reta") return "g3-r";
+    return s;
+  }
 
   function esc(s) {
     return String(s == null ? "" : s)
@@ -12,10 +17,10 @@
   function currentSlug() {
     var rail = document.getElementById("productRail");
     if (rail && rail.getAttribute("data-exclude-slug")) {
-      return String(rail.getAttribute("data-exclude-slug") || "");
+      return canonSlug(rail.getAttribute("data-exclude-slug") || "");
     }
     var m = location.pathname.match(/\/products\/([^\/\.]+)/);
-    return m ? decodeURIComponent(m[1]) : "";
+    return m ? canonSlug(decodeURIComponent(m[1])) : "";
   }
 
   function strengthLine(p) {
@@ -119,7 +124,7 @@
 
   function card(p, inquiry) {
     var img = vialImg(p);
-    var href = "/products/" + encodeURIComponent(p.slug) + ".html";
+    var href = "/products/" + encodeURIComponent(canonSlug(p.slug)) + ".html";
     var mg = strengthLine(p);
     var price = strengthPrice(p, mg);
     /* v2.99a: no In stock / Out of stock on related/pairs cards (Yehuda: do not invent stock). */
@@ -164,7 +169,7 @@
     var exclude = currentSlug();
     var list = (products || []).filter(function (p) {
       if (!p || p.is_active === false) return false;
-      var slug = String(p.slug || "");
+      var slug = canonSlug(p.slug || "");
       if (EXCLUDE_ALWAYS[slug]) return false;
       if (exclude && slug === exclude) return false;
       if (parseFloat(p.price) === 0) return false;
@@ -200,6 +205,11 @@
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var items = Array.isArray(d) ? d : d.products || d.items || [];
+        items = (items || []).map(function (x) {
+          if (!x) return x;
+          if (canonSlug(x.slug) === "g3-r") return Object.assign({}, x, { slug: "g3-r", name: "G3-R" });
+          return x;
+        });
         try { localStorage.setItem("bl_products_cache", JSON.stringify(items)); } catch (e) {}
         mount(rail, items);
       })

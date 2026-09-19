@@ -14,7 +14,7 @@ OG_VIAL = {
     "kpv": f"{HOST}/media/vial-kpv.png",
     "mots-c": f"{HOST}/media/vial-mots-c.png",
     "nad-plus": f"{HOST}/media/vial-nad-plus.png",
-    "retatrutide": f"{HOST}/media/vial-retatrutide.png",
+    "g3-r": f"{HOST}/media/vial-g3-r.png",
     "semax": f"{HOST}/media/vial-semax.png",
     "tb-500": f"{HOST}/media/vial-tb-500.png",
     "tesamorelin-ipamorelin": f"{HOST}/media/vial-tesamorelin-ipamorelin.png",
@@ -38,7 +38,7 @@ PRICES = {
     "kisspeptin-10": 99,
     "thymosin-alpha-1": 109,
     "tb-500": 99,
-    "retatrutide": 139,
+    "g3-r": 139,
 }
 
 # path -> record
@@ -284,8 +284,8 @@ PAGES.update({
         "an hGH-fragment analog listing",
         "Lot papers on request. Match the printed sequence on the vial.",
     ),
-    "html/products/retatrutide.html": _pdp(
-        "retatrutide", "R3TA Research Reagent", "R3TA",
+    "html/products/g3-r.html": _pdp(
+        "g3-r", "G3-R Research Reagent", "G3-R",
         "a metabolic research compound listing",
         "Lot papers on request. Investigational laboratory context only.",
     ),
@@ -451,11 +451,11 @@ PAGES.update({
         "NAD+ as a biochemical reference standard versus consumer supplement marketing. The catalog listing is laboratory-only. No human-use directions are provided.",
         "NAD+ Research Applications: A Biochemical Overview",
     ),
-    "html/blog/retatrutide-metabolic-research.html": _art(
-        "retatrutide-metabolic-research",
-        "R3TA Metabolic Research",
-        "Laboratory-context notes on the R3TA (retatrutide) listing. Investigational literature is not a catalog claim of efficacy. Research use only, inquiry-only.",
-        "R3TA (Retatrutide): Metabolic Research Overview",
+    "html/blog/g3-r-metabolic-research.html": _art(
+        "g3-r-metabolic-research",
+        "G3-R Metabolic Research",
+        "Laboratory-context notes on the G3-R listing. Investigational literature is not a catalog claim of efficacy. Research use only, inquiry-only.",
+        "G3-R: Metabolic Research Overview",
     ),
     "html/blog/epithalon-aging-research-peptide.html": _art(
         "epithalon-aging-research-peptide",

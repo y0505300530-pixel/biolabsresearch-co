@@ -18,7 +18,7 @@ PDPS = [
     "kpv",
     "mots-c",
     "nad-plus",
-    "retatrutide",
+    "g3-r",
     "semaglutide",
     "semax",
     "tb-500",
