@@ -1,13 +1,13 @@
 {
-  "version": "2.99f",
+  "version": "2.99f1",
   "released": "2026-09-19",
-  "codename": "seo-level1-compare-faq",
-  "appVersion": "2.99f",
+  "codename": "catalog-mobile-2col-compact",
+  "appVersion": "2.99f1",
   "highlights": [
-    "24 new /compare identity pages from live catalog SKUs (G3-R naming; existing 11 compares content-untouched)",
-    "FAQ (storage, form/solubility docs, COA, purity, shipping) on every live PDP",
-    "JSON-LD: Product+Offer kept; FAQPage on PDP FAQ + new compares; Organization sitewide; BreadcrumbList on PDPs/compares",
-    "AggregateRating omitted \u2014 live PDPs do not render a numeric star rating (pdp-split hides review stars)",
-    "Rebased onto v2.99e3 (mobile catalog search + ATC clip) over e2/e1 G3-R; CTAs use /products/g3-r; sitemap lists the new compare URLs"
+    "Mobile homepage catalog stays 2 columns through 320px (Yehuda 2×2 SoT)",
+    "Card density: hide tagline/trust/View details; clamp name; compact ATC; no 84px FAB pad",
+    "Toolbar filters 2×2; Documentation select hidden on mobile",
+    "CSS cache bust biolabs_style.css?v=407 on index.html",
+    "Quote / G3-R / abandon / f SEO (compares, PDP FAQ) intact; sits on v2.99f; PR #32 g held"
   ]
 }
