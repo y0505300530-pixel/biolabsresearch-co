@@ -126,15 +126,15 @@ PDPS = {
         "alt": "Clear glass research vial labeled NAD+ with a gold crimp cap",
         "desc": "NAD+ is listed as a biochemical reference standard in 500 mg and 1000 mg sizes. Lot papers on request. Research use only; this is not a dietary supplement.",
     },
-    "retatrutide": {
-        "name": "R3TA",
+    "g3-r": {
+        "name": "G3-R",
         "mg": "10 mg",
         "price": 85,
-        "image": f"{HOST}/media/vial-retatrutide.png?v=155",
-        "sku": "retatrutide",
+        "image": f"{HOST}/media/vial-g3-r.png?v=155",
+        "sku": "g3-r",
         "cas": ["2381089-83-2"],
-        "alt": "Clear glass research vial labeled R3TA with a gold crimp cap",
-        "desc": "R3TA is listed as a laboratory research compound in 10 mg, 20 mg, and 50 mg vials. Lot papers on request. Investigational laboratory context only.",
+        "alt": "Clear glass research vial labeled G3-R with a gold crimp cap",
+        "desc": "G3-R is listed as a laboratory research compound in 10 mg, 20 mg, and 50 mg vials. Lot papers on request. Investigational laboratory context only.",
     },
     "semaglutide": {
         "name": "Semaglutide",

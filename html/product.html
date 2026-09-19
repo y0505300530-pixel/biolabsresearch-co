@@ -160,7 +160,7 @@ footer{background:var(--navy);padding:60px 60px 30px}
   }
 }
 </style>
-<meta name="app-version" content="2.99e">
+<meta name="app-version" content="2.99e1">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
 </head>
 <body>
@@ -367,16 +367,16 @@ footer{background:var(--navy);padding:60px 60px 30px}
   fetch('https://biolabsresearch.co/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
-      (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });
+      (products||[]).forEach(function(x){ if(x&&(x.slug==='g3-r'||x.slug==='retatrutide'||x.slug==='r3ta'||x.slug==='reta')){ x.name='G3-R'; x.slug='g3-r'; } });
       localStorage.setItem('biolabs_products', JSON.stringify(products));
-      var p = products.find(function(x){return x.slug===slug;});
+      var p = products.find(function(x){return x&&(x.slug===slug||(slug==='g3-r'&&(x.slug==='retatrutide'||x.slug==='r3ta'||x.slug==='reta')));});
       if (p) renderProduct(p); else renderNotFound();
     })
     .catch(function(){
       try {
         var s = localStorage.getItem('biolabs_products')||localStorage.getItem('biofirst_products');
         if (s) {
-          var p = JSON.parse(s).find(function(x){return x.slug===slug;});
+          var p = JSON.parse(s).find(function(x){return x&&(x.slug===slug||(slug==='g3-r'&&(x.slug==='retatrutide'||x.slug==='r3ta'||x.slug==='reta')));});
           if (p){renderProduct(p);return;}
         }
       } catch(e){}
@@ -507,8 +507,8 @@ var COA_DATA = {
   'glow-70': [
     {url:'/media/coa/glow-70-coa.pdf', filename:'glow-70-coa.pdf', label:'GLOW 70 — Certificate of Analysis'}
   ],
-  'retatrutide': [
-    {url:'/media/coa/retatrutide-coa.pdf', filename:'retatrutide-coa.pdf', label:'Retatrutide — Certificate of Analysis'}
+  'g3-r': [
+    {url:'/media/coa/g3-r-coa.pdf', filename:'g3-r-coa.pdf', label:'G3-R — Certificate of Analysis'}
   ],
   'bpc-157-tb-500-blend': [
     {url:'/media/coa/sample-coa.pdf', filename:'sample-coa.pdf', label:'BPC-157 / TB-500 Blend — Lot ARC-WV10-004'}
@@ -684,7 +684,7 @@ document.addEventListener('keydown', function(e) {
 </script>
 
 <script src="/promo-bar.js?v=293"></script>
-<script src="/mg-picker.js?v=43"></script>
-<script src="/prices-sync.js?v=2"></script>
+<script src="/mg-picker.js?v=44"></script>
+<script src="/prices-sync.js?v=3"></script>
 </body>
 </html>

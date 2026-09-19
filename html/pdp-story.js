@@ -6,7 +6,7 @@
     "bpc-157-tb-500-blend": ["bpc-157","tb-500","tesamorelin-ipamorelin"],
     "nad-plus": ["mots-c","aod-9604","epithalon"],
     "ghk-cu": ["bpc-157","kpv","glow-70"],
-    "aod-9604": ["tesamorelin-ipamorelin","nad-plus","retatrutide"],
+    "aod-9604": ["tesamorelin-ipamorelin","nad-plus","g3-r"],
     "glow-70": ["ghk-cu","bpc-157","epithalon"],
     "epithalon": ["mots-c","nad-plus","ghk-cu"],
     "mots-c": ["nad-plus","epithalon","aod-9604"],
@@ -16,7 +16,7 @@
     "thymosin-alpha-1": ["tb-500","epithalon","semax"],
     "tesamorelin-ipamorelin": ["aod-9604","bpc-157-tb-500-blend","kisspeptin-10"],
     "curcumin-phytosome": ["ghk-cu","nad-plus","epithalon"],
-    "retatrutide": ["aod-9604","mots-c","nad-plus"]
+    "g3-r": ["aod-9604","mots-c","nad-plus"]
   };
   var NAMES = {
     "bpc-157":"BPC-157","tb-500":"TB-500","bpc-157-tb-500-blend":"BPC-157 / TB-500 Blend",
@@ -24,7 +24,7 @@
     "epithalon":"Epithalon","mots-c":"MOTS-c","kpv":"KPV","semax":"Semax",
     "kisspeptin-10":"Kisspeptin-10","thymosin-alpha-1":"Thymosin Alpha-1",
     "tesamorelin-ipamorelin":"Tesamorelin / Ipamorelin","curcumin-phytosome":"Curcumin Phytosome",
-    "retatrutide":"R3TA"
+    "g3-r":"G3-R"
   };
   var STEPS = {
     "bpc-157": [
@@ -102,8 +102,8 @@
       ["In the literature","Polyphenol pathways","Used in laboratory studies of polyphenol pathways. Not a dietary supplement."],
       ["This listing","Research formulation","BIO LABS listing. This page does not claim a licensed clinical product."]
     ],
-    "retatrutide": [
-      ["The compound","Triple agonist","R3TA (retatrutide, LY3437943). Published agonist at GIP, GLP-1, and glucagon receptors. CAS 2381089-83-2."],
+    "g3-r": [
+      ["The compound","Triple agonist","G3-R (LY3437943). Published agonist at GIP, GLP-1, and glucagon receptors. CAS 2381089-83-2."],
       ["In the literature","Incretin assays","Research reagent for incretin-pathway assays. Not a weight-loss product."],
       ["This listing","Lyophilized reagent","BIO LABS vial, research use only. Lot documentation on request."]
     ]
@@ -131,11 +131,16 @@
       + '<ol class="pdp-steps">'+lis+'</ol>'
       + '</div></div></div>';
   }
+  function canonSlug(s) {
+    s = String(s || "").toLowerCase();
+    if (s === "retatrutide" || s === "r3ta" || s === "reta") return "g3-r";
+    return s;
+  }
   window.pdpStoryHtml = function(p){
-    var slug = (p && p.slug) ? p.slug : "";
-    var name = (p && p.name) ? p.name : (NAMES[slug]||"This reagent");
+    var slug = canonSlug((p && p.slug) ? p.slug : "");
+    var name = (slug === "g3-r") ? "G3-R" : ((p && p.name) ? p.name : (NAMES[slug]||"This reagent"));
     var rel = RELATED[slug] || ["bpc-157","tb-500","nad-plus"];
-    var PRICE = {"bpc-157":110,"tb-500":120,"bpc-157-tb-500-blend":185,"nad-plus":120,"ghk-cu":105,"aod-9604":95,"glow-70":180,"epithalon":125,"mots-c":140,"kpv":95,"semax":110,"kisspeptin-10":130,"thymosin-alpha-1":150,"tesamorelin-ipamorelin":155,"curcumin-phytosome":140,"retatrutide":195};
+    var PRICE = {"bpc-157":110,"tb-500":120,"bpc-157-tb-500-blend":185,"nad-plus":120,"ghk-cu":105,"aod-9604":95,"glow-70":180,"epithalon":125,"mots-c":140,"kpv":95,"semax":110,"kisspeptin-10":130,"thymosin-alpha-1":150,"tesamorelin-ipamorelin":155,"curcumin-phytosome":140,"g3-r":195};
     var figHplc = '<svg class="pdp-doc-fig" viewBox="0 0 220 88" aria-hidden="true"><path d="M4 80 C18 78 28 74 36 70 C48 28 52 22 60 78 C72 76 88 72 96 68 C110 12 118 10 128 76 C150 74 170 70 216 80" fill="none" stroke="#c4a574" stroke-width="2.4" stroke-linecap="round"/></svg>';
     var figMs = '<svg class="pdp-doc-fig" viewBox="0 0 220 88" aria-hidden="true"><path d="M18 80 V52 M40 80 V36 M58 80 V70 M86 80 V18 M108 80 V58 M132 80 V42 M158 80 V28 M184 80 V64 M204 80 V50" fill="none" stroke="#c4a574" stroke-width="3.2" stroke-linecap="round"/></svg>';
     var figCoa = '<svg class="pdp-doc-fig" viewBox="0 0 220 88" aria-hidden="true"><rect x="58" y="8" width="104" height="72" rx="6" fill="#fff" stroke="#c4a574" stroke-width="1.6"/><path d="M74 28h72M74 40h72M74 52h48" stroke="#d9c7a2" stroke-width="3" stroke-linecap="round"/><circle cx="148" cy="62" r="10" fill="#c4a574"/></svg>';

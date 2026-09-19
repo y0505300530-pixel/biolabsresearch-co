@@ -268,10 +268,10 @@ footer{background:var(--ink);padding:60px 60px 30px}
   .semax-qty-cta-btn{width:100%;justify-content:center}
 }
 </style>
-<script src="/cart-vial.js?v=314" defer></script>
-<script src="/pdp-story.js?v=46"></script>
+<script src="/cart-vial.js?v=315" defer></script>
+<script src="/pdp-story.js?v=47"></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<meta name="app-version" content="2.99e">
+<meta name="app-version" content="2.99e1">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="google-site-verification" content="Xv1Ik8H9U7MtC7cq9epujNlazzwlMM9J2ZMqgQuRklU">
@@ -467,7 +467,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
         <a href="https://biolabsresearch.co/products/semax">Semax</a>
         <a href="https://biolabsresearch.co/products/kisspeptin-10">Kisspeptin-10</a>
         <a href="https://biolabsresearch.co/products/thymosin-alpha-1">Thymosin Alpha-1</a>
-        <a href="https://biolabsresearch.co/products/retatrutide">R3TA</a>
+        <a href="https://biolabsresearch.co/products/g3-r">G3-R</a>
 </div>
       <div class="footer-col">
         <p class="footer-col-title">Company</p>
@@ -494,7 +494,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99e" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99e</p>
+<p class="site-version" data-site-version="2.99e1" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99e1</p>
 </footer>
 
 <script>
@@ -626,9 +626,9 @@ footer{background:var(--ink);padding:60px 60px 30px}
   fetch('/api/products')
     .then(function(r){return r.json();})
     .then(function(products){
-      (products||[]).forEach(function(x){ if(x&&x.slug==='retatrutide') x.name='R3TA'; });
+      (products||[]).forEach(function(x){ if(x&&(x.slug==='g3-r'||x.slug==='retatrutide'||x.slug==='r3ta'||x.slug==='reta')){ x.name='G3-R'; x.slug='g3-r'; } });
       localStorage.setItem('biolabs_products', JSON.stringify(products));
-      var p = products.find(function(x){return x.slug===slug;});
+      var p = products.find(function(x){return x&&(x.slug===slug||(slug==='g3-r'&&(x.slug==='retatrutide'||x.slug==='r3ta'||x.slug==='reta')));});
       if (p) { window._currentProduct = p; renderProduct(p); if (window.qtyUpsellRefresh) window.qtyUpsellRefresh(); } else renderNotFound();
     })
     .catch(function(){
@@ -740,7 +740,7 @@ footer{background:var(--ink);padding:60px 60px 30px}
 </div>
 
 <script>
-window.COMPARE_AT = {"aod-9604":105,"AOD-9604":105,"bpc-157-tb-500-blend":155,"BPC-157 / TB-500 Blend":155,"bpc-157":109,"BPC-157":109,"curcumin-phytosome":135,"Curcumin Phytosome":135,"epithalon":99,"Epithalon":99,"ghk-cu":85,"GHK-Cu":85,"glow-70":169,"GLOW 70":169,"kisspeptin-10":119,"Kisspeptin-10":119,"kpv":95,"KPV":95,"mots-c":115,"MOTS-c":115,"MOTS-C":115,"nad-plus":119,"NAD+":119,"retatrutide":169,"R3TA":169,"semax":119,"Semax":119,"tb-500":119,"TB-500":119,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"thymosin-alpha-1":135,"Thymosin Alpha-1":135};
+window.COMPARE_AT = {"aod-9604":105,"AOD-9604":105,"bpc-157-tb-500-blend":155,"BPC-157 / TB-500 Blend":155,"bpc-157":109,"BPC-157":109,"curcumin-phytosome":135,"Curcumin Phytosome":135,"epithalon":99,"Epithalon":99,"ghk-cu":85,"GHK-Cu":85,"glow-70":169,"GLOW 70":169,"kisspeptin-10":119,"Kisspeptin-10":119,"kpv":95,"KPV":95,"mots-c":115,"MOTS-c":115,"MOTS-C":115,"nad-plus":119,"NAD+":119,"g3-r":169,"G3-R":169,"semax":119,"Semax":119,"tb-500":119,"TB-500":119,"tesamorelin-ipamorelin":145,"Tesamorelin / Ipamorelin":145,"thymosin-alpha-1":135,"Thymosin Alpha-1":135};
 window.compareAtPrice = function(item){
   if (item && item.pack_tiers) {
     var t = item.pack_tiers;
@@ -1071,7 +1071,7 @@ var PUB_IDS = {
     "mw": "",
     "seq": ""
   },
-  "retatrutide": {
+  "g3-r": {
     "cas": "2381089-83-2",
     "formula": "",
     "mw": "",
@@ -1140,8 +1140,8 @@ var RESEARCH = {
     "body": "TB-500 is a catalog name for a thymosin-beta-4 fragment listing (commonly Ac-LKKTETQ). Public CAS listings for the fragment vs intact T-beta-4 are not the same thing. Identity is the sequence printed on the lot COA when issued.",
     "limit": "Research fragment listing. Not a healing protocol, no dose on this page."
   },
-  "retatrutide": {
-    "body": "R3TA (retatrutide, LY3437943) is a published triple agonist at GIP, GLP-1, and glucagon receptors (CAS 2381089-83-2). It is a research reagent for incretin-pathway assays.",
+  "g3-r": {
+    "body": "G3-R (LY3437943) is a published triple agonist at GIP, GLP-1, and glucagon receptors (CAS 2381089-83-2). It is a research reagent for incretin-pathway assays.",
     "limit": "Research agonist. Not a weight-loss product, no dose on this page."
   }
 };
@@ -1168,8 +1168,8 @@ var COA_DATA = {
   'bpc-157-tb-500-blend': [
     {url:'/media/coa/sample-coa.pdf', filename:'sample-coa.pdf', label:'BPC-157 / TB-500 Blend — Lot ARC-WV10-004'}
   ],
-  'retatrutide': [
-    {url:'/media/coa/retatrutide-coa.pdf', filename:'retatrutide-coa.pdf', label:'Retatrutide — Certificate of Analysis'}
+  'g3-r': [
+    {url:'/media/coa/g3-r-coa.pdf', filename:'g3-r-coa.pdf', label:'G3-R — Certificate of Analysis'}
   ],
   'glow-70': [
     {url:'/media/coa/glow-70-coa.pdf', filename:'glow-70-coa.pdf', label:'GLOW 70 — Certificate of Analysis'}
@@ -1353,11 +1353,11 @@ document.addEventListener('keydown', function(e) {
 <script src="/email-capture.js?v=5"></script>
 <script src="/enhance-schema.js"></script>
 <script src="/promo-bar.js?v=293"></script>
-<script src="/mg-picker.js?v=43"></script>
+<script src="/mg-picker.js?v=44"></script>
 <script src="/pdp-split.js?v=4"></script>
 <script src="/qty-upsell.js?v=2"></script>
-<script src="/prices-sync.js?v=2"></script>
-<script src="/product-marquee.js?v=51"></script>
+<script src="/prices-sync.js?v=3"></script>
+<script src="/product-marquee.js?v=52"></script>
 <script>(function(){function etNow(){try{var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',weekday:'short',hour:'numeric',hour12:false,minute:'numeric'}).formatToParts(new Date());var map={};parts.forEach(function(p){map[p.type]=p.value;});return{dow:map.weekday,hour:parseInt(map.hour,10),minute:parseInt(map.minute,10)};}catch(e){return null;}}function isOnline(t){if(!t)return false;var days={Mon:1,Tue:1,Wed:1,Thu:1,Fri:1,Sat:0,Sun:0};if(!days[t.dow])return false;var mins=t.hour*60+(t.minute||0);return mins>=8*60&&mins<21*60;}function paint(){var t=etNow(),on=isOnline(t),nodes=document.querySelectorAll('[data-support-status]');for(var i=0;i<nodes.length;i++){var el=nodes[i];el.className='support-status '+(on?'on':'off');el.innerHTML=on?'<span class="dot" aria-hidden="true"></span><span>Online now</span>':'<span class="dot" aria-hidden="true"></span><span>Offline — we reply within 12 hours</span>';}}paint();setInterval(paint,60000);})();</script>
 
 <script src="/tools-video.js?v=2"></script>

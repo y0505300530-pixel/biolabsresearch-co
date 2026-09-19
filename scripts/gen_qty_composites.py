@@ -28,7 +28,7 @@ SLUGS = [
     "kpv",
     "mots-c",
     "nad-plus",
-    "retatrutide",
+    "g3-r",
     "semaglutide",
     "tb-500",
     "tesamorelin",

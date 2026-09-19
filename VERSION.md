@@ -1,3 +1,20 @@
+# biolabsresearch.co — Version 2.99e1
+
+Released 2026-09-19.
+
+Codename: g3-r-public-rename
+
+## Highlights
+
+- **G3-R public name (Yehuda lock):** Catalog display name is **G3-R** only. PDP URL is `/products/g3-r`. Gold-band text on live GLOW-chrome is **G3-R** (`vial-g3-r.png` / `.webp` + 10/20/50). No public Retatrutide / R3TA / Reta on band, alt, or URL.
+- **Redirects:** Old `/products/retatrutide`, `/products/r3ta`, `/products/reta` and compare/blog/media variants **301** to the G3-R slug. Do not resurrect `html/products/retatrutide.html`.
+- **Alt:** After mg-picker / strength chip the live DOM alt stays `G3-R {dose} research vial`.
+- **Tip stack:** Sits on locked **v2.99e** (`abandoned-checkout`, Soft-QA PASS at `671f9e27`) over Quote **v2.99d** / c2 FAQ / AI-crawler Allow / IndexNow. Sitewide footer + meta + `version.json` stamped **v2.99e1** for Soft-QA Gate 0.
+- **Unchanged:** Abandoned-checkout capture, Quote CTA, charge path retained unused, robots Allow list, IndexNow key. f (`#26`) and g (`#25`) are not in this tip.
+- **Infra after live:** Deploy nginx 301s. CRM / products-api: slug `g3-r`, name `G3-R`, `image_url` `/media/vial-g3-r.webp?v=184`.
+
+---
+
 # biolabsresearch.co — Version 2.99e
 
 Released 2026-09-19.
@@ -9,7 +26,7 @@ Codename: abandoned-checkout
 - **Abandoned checkout:** First-party RUO / Quote lead capture. Browser POSTs `https://crm.biolabsresearch.co/api/checkout/abandon` (no card / PAN / CVV / last4). CRM returns silent **204** or **400** if card fields are present.
 - **Capture SoT:** (a) contact → shipping advance, (b) email blur debounce ~800ms when the address is valid, (c) `pagehide` / `visibilitychange` → hidden via `sendBeacon`.
 - **Session:** `session_id` is a `bl-sess-` + UUID in `sessionStorage`. Same id is sent on Quote submit (`/api/checkout/quote`) and on charge if payments are re-enabled. Throttle 25s upsert. Failures are silent and never break quote/charge.
-- **Tip stack:** Live **v2.99d** (`checkout-quote`, PR #21, Soft-QA PASS at `105a5266`) sits on **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). This ship is **v2.99e**. G3-R rename PR #20 is a separate tip and does not take this letter. Sitewide footer + meta + `version.json` stamped **v2.99e**.
+- **Tip stack:** Live **v2.99d** (`checkout-quote`, PR #21, Soft-QA PASS at `105a5266`) sits on **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). This ship is **v2.99e**. Sitewide footer + meta + `version.json` stamped **v2.99e**. G3-R public rename ships as **v2.99e1**.
 - New module `html/checkout-abandon.js?v=1`. Quote prefers `BLRCheckoutAbandon.sessionId()` then `blr_session_id`. Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched. c2 FAQ / short-URL base kept.
 - **IndexNow (Yehuda lock):** same key as d (`d265cfed-378b-45a0-9b56-3c05c205f805`). **After this tip is live**, run `scripts/indexnow-ping.sh` (or the curl under v2.99d). Do not block abandon capture on the ping.
 - **AI crawlers:** Keep the d Allow list (GPTBot / ClaudeBot / Google-Extended / Bytespider / CCBot / anthropic-ai / PerplexityBot / Applebot-Extended + Googlebot / Bingbot).
@@ -28,7 +45,8 @@ Codename: checkout-quote
 - **Success copy (Marketing lock):** `We'll send your quote within one business day.` Shown after `ok===true`. CRM also returns `quoteId`.
 - **GA4:** keep `checkout_start`. On successful quote fire `generate_lead`. Do **not** fire `checkout_complete` while payments are off (`paymentsEnabled:false`).
 - **Charge retained:** `html/checkout-charge.js` and `submitCardCharge()` stay in the tree. Card / crypto UX is hidden and unused. Do not delete the charge path.
-- **Tip stack:** Sits on live **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). G3-R rename PR #20 is a separate tip and does not take this letter. Checkout footer + `version.json` stamped **v2.99d**.
+- **Tip stack:** Sits on live **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). Checkout footer + `version.json` stamped **v2.99d**. Does not take a new letter beyond d.
+- **Parallel (no new letter) — G3-R public name:** Display name **G3-R** only; URL `/products/g3-r`; gold-band text **G3-R** on live GLOW-chrome (`vial-g3-r.png` / `.webp` + 10/20/50). Old `/products/retatrutide`, `/products/r3ta`, `/products/reta` and compare/blog/media variants 301 here. Alt after mg-picker: `G3-R {dose} research vial`. Folded into v2.99d rather than stealing a stamp.
 - New module `html/checkout-quote.js?v=2`. Quote POST also sends `session_id` (sessionStorage uuid, key `blr_session_id`) so CRM abandon can join the later v2.99e beacon. Full abandon capture is **not** this tip.
 - **AI crawlers (Marketing lock):** `html/robots.txt` explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, plus Googlebot and Bingbot. Do **not** `Disallow: /` for them. `/api/` stays closed except `/api/products`.
 - **IndexNow:** key `d265cfed-378b-45a0-9b56-3c05c205f805` at webroot `html/indexnow-key.txt` and official `html/d265cfed-378b-45a0-9b56-3c05c205f805.txt`. After deploy, ping new/changed URLs (or the sitemap) with `scripts/indexnow-ping.sh`. Curl:
@@ -52,7 +70,8 @@ Codename: reconstitution-faq
 - **Reconstitution FAQ**: `/tools/reconstitution` now has the same FAQ block as dilution + unit-converter — concentration math, diluent volume, mg/mL, and what the helper does **not** do (no dose, syringe, injection, or human/veterinary use). Laboratory research calculations only; RUO / not medical advice.
 - **CTAs unchanged**: Request catalog (`/#catalog`) + Inquire (`/contact`). No Buy.
 - **Short URLs** (ELITE soft-note): nginx snapshot + static stubs 301 `/dilution` and `/unit-converter` → `/tools/dilution` and `/tools/unit-converter`.
-- **Unchanged**: Calculator arithmetic; Quote / G3-R / Abandon not in this tip. Card path remains the v2.99b CRM UMG authorize hook.
+- **Unchanged**: Calculator arithmetic; Quote / Abandon not in this tip. Card path remains the v2.99b CRM UMG authorize hook.
+- **Parallel (no new letter) — G3-R public name**: Display name **G3-R** only; URL `/products/g3-r`; gold-band text **G3-R**; old retatrutide/r3ta/reta paths 301. Folded into v2.99c2 rather than a new stamp.
 
 ---
 
@@ -72,6 +91,8 @@ Codename: calculator-seo-finish
 - **Tools hub**: Top grid is 01 Reconstitution / 02 Dilution / 03 Unit converter (compound comparison stays below).
 - **Unchanged**: Homepage hero / Popular catalog / PDP split. Calculator arithmetic and existing GA (`reconstitution_calc`, `dilution_calc`, `tool_inquire`) kept. Card path remains CRM UMG authorize from v2.99b.
 - Tools CSS query `biolabs_style.css?v=404` (page-local styles; shared stylesheet not rewritten).
+- **Parallel tip (no new letter) — G3-R public name**: The former Retatrutide / R3TA listing is **G3-R** only. URL `/products/g3-r`; old paths `/products/retatrutide`, `/products/r3ta`, `/products/reta` 301 here. Alt / OG: `G3-R {dose} research vial`. Does not take the v2.99c letter from calculator-seo-finish. Quote remains v2.99d.
+- **G3-R visual lock**: Live GLOW-chrome vial (`vial-g3-r.png` / `.webp`, 10/20/50) gold-band text is **G3-R** (unified gold cap / BIO LABS chrome from the GLOW-70 master). Qty packs and search/blog thumbs match. Tip stays **v2.99c** (folded with calculator-seo-finish).
 
 ---
 

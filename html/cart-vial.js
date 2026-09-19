@@ -665,9 +665,10 @@ function productSlug(item){
   var slug = (item && item.slug) ? String(item.slug) : '';
   if (!slug && item && item.name) {
     var n = String(item.name).toLowerCase().replace(/\s*\(.*\)\s*$/,'').trim();
-    var map = {'bpc-157 / tb-500 blend':'bpc-157-tb-500-blend','bpc-157':'bpc-157','nad+':'nad-plus','aod-9604':'aod-9604','curcumin phytosome':'curcumin-phytosome','tesamorelin / ipamorelin':'tesamorelin-ipamorelin','glow 70':'glow-70','epithalon':'epithalon','ghk-cu':'ghk-cu','mots-c':'mots-c','kpv':'kpv','semax':'semax','kisspeptin-10':'kisspeptin-10','thymosin alpha-1':'thymosin-alpha-1','tb-500':'tb-500','retatrutide':'retatrutide','r3ta':'retatrutide'};
+    var map = {'bpc-157 / tb-500 blend':'bpc-157-tb-500-blend','bpc-157':'bpc-157','nad+':'nad-plus','aod-9604':'aod-9604','curcumin phytosome':'curcumin-phytosome','tesamorelin / ipamorelin':'tesamorelin-ipamorelin','glow 70':'glow-70','epithalon':'epithalon','ghk-cu':'ghk-cu','mots-c':'mots-c','kpv':'kpv','semax':'semax','kisspeptin-10':'kisspeptin-10','thymosin alpha-1':'thymosin-alpha-1','tb-500':'tb-500','g3-r':'g3-r','retatrutide':'g3-r','r3ta':'g3-r','reta':'g3-r'};
     slug = map[n] || n.replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
   }
+  if (slug === 'retatrutide' || slug === 'r3ta' || slug === 'reta') slug = 'g3-r';
   return slug;
 }
 function productUrl(item){
@@ -679,7 +680,7 @@ function productUrl(item){
 function vialImg(item){
   if (item && (item.gift || item.slug === 'research-solvent')) return '/media/research-solvent.png?v=2';
   var slug = productSlug(item);
-  return '/media/vial-'+(slug)+'.png?v=181';
+  return '/media/vial-'+(slug)+'.png?v='+(slug==='g3-r'?'184':'181');
 }
 var CART_SUGGEST = [
   {slug:'bpc-157', name:'BPC-157', price:88},
@@ -697,7 +698,7 @@ var CART_SUGGEST = [
   {slug:'thymosin-alpha-1', name:'Thymosin Alpha-1', price:109},
   {slug:'tesamorelin-ipamorelin', name:'Tesamorelin / Ipamorelin', price:119},
   {slug:'curcumin-phytosome', name:'Curcumin Phytosome', price:109},
-  {slug:'retatrutide', name:'R3TA', price:85},
+  {slug:'g3-r', name:'G3-R', price:85},
   {slug:'ipamorelin', name:'Ipamorelin', price:80},
   {slug:'tesamorelin', name:'Tesamorelin', price:85},
   {slug:'tirzepatide', name:'Tirzepatide', price:90},
@@ -723,7 +724,7 @@ function addMoreHtml(cart){
     var mgSafe = d ? String(d.mg).replace(/[^0-9A-Za-z. ]/g, '') : '';
     var mgArg = mgSafe ? ',\'' + mgSafe + '\'' : '';
     html += '<div class="cart-addcard">' +
-      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=181" alt="' + p.name + '" width="84" height="64"></a>' +
+      '<a href="/products/' + p.slug + '.html"><img src="/media/vial-' + p.slug + '.png?v=' + (p.slug === 'g3-r' ? '184' : '181') + '" alt="' + p.name + '" width="84" height="64"></a>' +
       '<div class="cart-addcard-name">' + p.name + '</div>' +
       '<div class="cart-addcard-price">' + (mgSafe ? _blrPrettyMg(mgSafe) + ' · ' : '') + '$' + price + '</div>' +
       '<button type="button" class="cart-addcard-btn" onclick="addSuggest(\'' + p.slug + '\',\'' + p.name.replace(/'/g,'') + '\',' + price + mgArg + ')">Add</button>' +
@@ -822,7 +823,7 @@ function addSuggest(slug, name, price, mg){
     var c = getCart();
     var ex = c.find(function(i){ return _sameCartLine(i, slug, name, mg); });
     if (ex) { ex.qty += 1; ex.name = _baseCartName(ex.name) || name; if (slug) ex.slug = slug; if (mg && !ex.mg) ex.mg = mg; }
-    else c.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=181'});
+    else c.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v='+(slug==='g3-r'?'184':'181')});
     if (typeof saveCart === 'function') {
       try { saveCart(c); } catch (e) { try { saveCart(); } catch(e2){} }
     } else {
@@ -837,7 +838,7 @@ function addSuggest(slug, name, price, mg){
   if (typeof cart !== 'undefined') {
     var ex2 = cart.find(function(i){ return _sameCartLine(i, slug, name, mg); });
     if (ex2) { ex2.qty += 1; ex2.name = _baseCartName(ex2.name) || name; if (slug) ex2.slug = slug; if (mg && !ex2.mg) ex2.mg = mg; }
-    else cart.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v=181'});
+    else cart.push({name:name, price:price, qty:1, slug:slug, mg:(mg || undefined), imageUrl:'/media/vial-'+(slug)+'.png?v='+(slug==='g3-r'?'184':'181')});
     if (typeof saveCart === 'function') saveCart();
     else _writeCartLS(cart);
     if (typeof updateBadge === 'function') updateBadge();

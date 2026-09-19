@@ -10,16 +10,16 @@
       "path": "/compare/semaglutide-vs-tirzepatide"
     },
     {
-      "id": "tirzepatide-vs-retatrutide",
+      "id": "tirzepatide-vs-g3-r",
       "a": "tirzepatide",
-      "b": "retatrutide",
-      "path": "/compare/tirzepatide-vs-retatrutide"
+      "b": "g3-r",
+      "path": "/compare/tirzepatide-vs-g3-r"
     },
     {
-      "id": "semaglutide-vs-retatrutide",
+      "id": "semaglutide-vs-g3-r",
       "a": "semaglutide",
-      "b": "retatrutide",
-      "path": "/compare/semaglutide-vs-retatrutide"
+      "b": "g3-r",
+      "path": "/compare/semaglutide-vs-g3-r"
     },
     {
       "id": "bpc-157-vs-tb-500",
@@ -75,8 +75,8 @@
       "form": "Lyophilized peptide",
       "pdp": "/products/tirzepatide"
     },
-    "retatrutide": {
-      "name": "R3TA (Retatrutide)",
+    "g3-r": {
+      "name": "G3-R",
       "cas": "2381089-83-2",
       "strengths": {
         "10mg": 85,
@@ -84,7 +84,7 @@
         "50mg": 300
       },
       "form": "Lyophilized peptide",
-      "pdp": "/products/retatrutide"
+      "pdp": "/products/g3-r"
     },
     "bpc-157": {
       "name": "BPC-157",

@@ -297,7 +297,7 @@ VIAL_ALT = {
     "kisspeptin-10": "Clear glass research vial labeled Kisspeptin-10 with a gold crimp cap",
     "thymosin-alpha-1": "Clear glass research vial labeled Thymosin Alpha-1 with a gold crimp cap",
     "aod-9604": "Clear glass research vial labeled AOD-9604 with a gold crimp cap",
-    "retatrutide": "Clear glass research vial labeled R3TA with a gold crimp cap",
+    "g3-r": "Clear glass research vial labeled G3-R with a gold crimp cap",
     "glow-70": "Clear glass research vial labeled GLOW 70 with a gold crimp cap",
     "curcumin-phytosome": "Clear glass research vial labeled Curcumin Phytosome with a gold crimp cap",
     "tesamorelin-ipamorelin": "Clear glass research vial labeled Tesamorelin / Ipamorelin with a gold crimp cap",
@@ -362,7 +362,7 @@ def fix_image_alts(doc: str) -> str:
             "BPC-157", "TB-500", "NAD+", "GHK-Cu", "Epithalon", "MOTS-c", "KPV",
             "Semax", "Kisspeptin-10", "Thymosin Alpha-1", "AOD-9604", "GLOW 70",
             "Curcumin Phytosome (Meriva)", "Tesamorelin / Ipamorelin",
-            "BPC-157 / TB-500 Blend", "R3TA",
+            "BPC-157 / TB-500 Blend", "G3-R",
         }:
             new_alt = describe_src(src, alt.strip())
         else:

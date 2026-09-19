@@ -127,7 +127,7 @@
       price: 90,
       original_price: 110
     },
-    "retatrutide": {
+    "g3-r": {
       strengths: ["10mg", "20mg", "50mg"],
       strength_prices: { "10mg": 85, "20mg": 135, "50mg": 300 },
       strength_originals: { "10mg": 105, "20mg": 165, "50mg": 360 },
@@ -329,7 +329,11 @@
   function bySlug(products) {
     var m = {};
     (products || []).forEach(function (p) {
-      if (p && p.slug) m[p.slug] = p;
+      if (!p || !p.slug) return;
+      var cs = (p.slug === "retatrutide" || p.slug === "r3ta" || p.slug === "reta") ? "g3-r" : p.slug;
+      var np = (cs === "g3-r") ? Object.assign({}, p, { slug: "g3-r", name: "G3-R" }) : p;
+      m[p.slug] = np;
+      m[cs] = np;
     });
     return m;
   }

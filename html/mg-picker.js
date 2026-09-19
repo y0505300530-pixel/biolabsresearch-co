@@ -20,14 +20,19 @@
     "tesamorelin": ["10mg", "20mg"],
     "tirzepatide": ["10mg"],
     "semaglutide": ["5mg", "10mg"],
-    "retatrutide": ["10mg", "20mg", "50mg"]
+    "g3-r": ["10mg", "20mg", "50mg"]
   };
+  function canonSlug(s) {
+    s = String(s || "").toLowerCase();
+    if (s === "retatrutide" || s === "r3ta" || s === "reta") return "g3-r";
+    return s;
+  }
   function slugFromPath() {
     var m = location.pathname.match(/\/products\/([^/.]+)/);
-    return m ? m[1] : "";
+    return m ? canonSlug(m[1]) : "";
   }
-  /* Marketing alt base-name (display title may differ, e.g. R3TA vs Retatrutide) */
-  var ALT_BASE = { retatrutide: "Retatrutide" };
+  /* Marketing alt base-name (G3-R locked; CRM may still send an old slug) */
+  var ALT_BASE = { "g3-r": "G3-R" };
   function listFor(slug) {
     return STRENGTHS[slug] || ["10mg"];
   }
@@ -39,7 +44,7 @@
     return n.replace("mg", " mg");
   }
   function fileFor(slug) {
-    return "/media/vial-" + slug + ".png?v=181";
+    return "/media/vial-" + slug + ".png?v=" + (slug === "g3-r" ? "184" : "181");
   }
   function baseName(name) {
     return String(name || "").replace(/\s*\([^)]*mg[^)]*\)\s*$/i, "").trim();
@@ -128,7 +133,7 @@
       mainImg.src = src;
       /* Keep Marketing dose-aware alt after render + chip change: {Product} {dose} research vial
          Strip parenthetical brand e.g. (Meriva) so Soft-QA matches Marketing SoT.
-         ALT_BASE: display title may be brand short (R3TA) but Marketing alt wants full INN. */
+         ALT_BASE: G3-R is locked; do not fall back to an old INN/slug in the alt. */
       var nameEl = document.querySelector("h1.product-title");
       var name = ALT_BASE[slug] || (nameEl ? nameEl.textContent.trim() : "");
       name = String(name || "").replace(/\s*\([^)]*\)\s*/g, " ").replace(/\s+/g, " ").trim();
@@ -302,8 +307,12 @@
   function applyApi(items) {
     if (!items || !items.length) return;
     items.forEach(function (p) {
-      if (p && p.slug && p.strengths && p.strengths.length) STRENGTHS[p.slug] = p.strengths;
-      if (p && p.slug && p.slug === slugFromPath()) PRODUCT = p;
+      if (!p || !p.slug) return;
+      var cs = canonSlug(p.slug);
+      if (p.strengths && p.strengths.length) STRENGTHS[cs] = p.strengths;
+      if (cs === slugFromPath()) {
+        PRODUCT = Object.assign({}, p, { slug: cs, name: cs === "g3-r" ? "G3-R" : p.name });
+      }
     });
     var el = document.getElementById("mgPicker");
     if (el) el.remove();
