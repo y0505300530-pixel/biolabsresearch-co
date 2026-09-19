@@ -124,6 +124,8 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 /* SUBMIT BUTTON */
 .btn-submit{width:100%;background:var(--green);color:white;border:none;padding:17px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:all .25s;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--font, system-ui, sans-serif);letter-spacing:0.5px;text-transform:uppercase}
 #placeOrderBtn{text-transform:none;letter-spacing:0.2px}
+.btn-continue-ship{width:100%;margin-top:8px;padding:14px 16px;border:1.5px solid var(--navy);background:#fff;color:var(--navy);border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--font, system-ui, sans-serif);letter-spacing:0.2px}
+.btn-continue-ship:hover{background:#F5F2ED}
 .quote-mode-note{margin:0 0 16px;font-size:14px;line-height:1.55;color:var(--muted);max-width:100%}
 #paymentChargeUi[hidden]{display:none!important}
 .btn-submit:hover:not(:disabled){background:var(--green2);transform:translateY(-2px);box-shadow:0 10px 28px rgba(196,165,116,0.3)}
@@ -293,10 +295,11 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
 </style>
 <script src="/cart-vial.js?v=314" defer></script>
 <script src="/search-overlay.js?v=37" defer></script>
-<script src="/checkout-charge.js?v=3"></script>
+<script src="/checkout-charge.js?v=4"></script>
 <script src="/checkout-quote.js?v=2"></script>
+<script src="/checkout-abandon.js?v=1"></script>
 <script type="application/ld+json" id="breadcrumb-jsonld">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://biolabsresearch.co/"}, {"@type": "ListItem", "position": 2, "name": "Checkout", "item": "https://biolabsresearch.co/checkout"}]}</script>
-<meta name="app-version" content="2.99d">
+<meta name="app-version" content="2.99e">
 <meta property="og:image" content="https://biolabsresearch.co/media/og-preview.jpg?v=2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -382,6 +385,7 @@ body{background:var(--cream);color:var(--text);font-family:var(--font, system-ui
           <label>Phone</label>
           <input type="tel" id="phone" name="tel" placeholder="+1 234 567 8900" autocomplete="shipping tel">
         </div>
+        <button type="button" class="btn-continue-ship" id="continueToShipping" onclick="continueToShipping()">Continue to shipping</button>
       </div>
 
       <!-- SHIPPING ADDRESS -->
@@ -1027,9 +1031,11 @@ function submitQuoteRequest() {
       zip: document.getElementById('zip').value,
       country: document.getElementById('country').value
     },
-    notes: chargeNotes()
+    notes: chargeNotes(),
+    session_id: (function(){ try { return window.BLRCheckoutAbandon && BLRCheckoutAbandon.sessionId ? BLRCheckoutAbandon.sessionId() : ''; } catch (e) { return ''; } })()
   }).then(function(result){
     if (result && result.ok === true) {
+      try { if (window.BLRCheckoutAbandon && BLRCheckoutAbandon.stop) BLRCheckoutAbandon.stop(); } catch (eStop) {}
       currentOrderRef = result.quoteId || generateOrderRef();
       var orderData = collectOrderData(currentOrderRef);
       orderData.paymentMethod = 'quote';
@@ -1048,6 +1054,25 @@ function submitQuoteRequest() {
     if (btnText) btnText.textContent = 'Request a Quote';
     showChargeError((result && result.message) || 'We could not send your quote request. Please try again.');
   });
+}
+
+function continueToShipping() {
+  try {
+    var email = document.getElementById('email');
+    if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+      var grp = email.closest('.form-group');
+      if (grp) grp.classList.add('has-error');
+    }
+    if (window.BLRCheckoutAbandon && typeof window.BLRCheckoutAbandon.advanceShipping === 'function') {
+      window.BLRCheckoutAbandon.advanceShipping();
+    }
+  } catch (e) {}
+  try {
+    var ship = document.getElementById('shippingAddressCard');
+    var addr = document.getElementById('address1');
+    if (ship && ship.scrollIntoView) ship.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (addr) addr.focus();
+  } catch (e2) {}
 }
 
 function chargeNotes() {
@@ -1224,6 +1249,7 @@ function showSuccess(orderData, paymentNote) {
   } else {
     document.getElementById('orderRefDisplay').textContent = 'Order #' + orderData.ref;
   }
+  try { if (window.BLRCheckoutAbandon && BLRCheckoutAbandon.stop) BLRCheckoutAbandon.stop(); } catch (eStop2) {}
   document.getElementById('successEmail').textContent = orderData.customer.email;
   document.getElementById('successPaymentNote').textContent = paymentNote || '';
   window.scrollTo(0, 0);
@@ -1347,7 +1373,7 @@ function showSuccess(orderData, paymentNote) {
       <div class="footer-disclaimer">Not FDA approved. For research purposes only. Not intended for human consumption, self-administration, or therapeutic use. All products sold for in vitro and laboratory research use only.</div>
     </div>
   </div>
-<p class="site-version" data-site-version="2.99d" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99d</p>
+<p class="site-version" data-site-version="2.99e" style="margin:8px 0 0;font-size:11px;opacity:.55;letter-spacing:.04em">v2.99e</p>
 </footer>
 
 <!-- ENTRY GATE MODAL -->

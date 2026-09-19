@@ -1,8 +1,8 @@
-/*! checkout-quote.js v2 — CRM storefront quote SoT (site tip v2.99d).
+/*! checkout-quote.js v2 — CRM storefront quote SoT (site tip v2.99e on Quote v2.99d).
    POST https://crm.biolabsresearch.co/api/checkout/quote
    No card fields. Required: idempotencyKey (camelCase, BL-QUOTE-<stable-id>).
-   Also sends session_id (sessionStorage uuid, key blr_session_id) so CRM abandon
-   can join this quote to the later v2.99e beacon. Do not rotate session_id on submit.
+   Passes the same session_id as abandoned-checkout capture (prefer BLRCheckoutAbandon,
+   else sessionStorage blr_session_id). Do not rotate session_id on submit.
    Charge path stays in checkout-charge.js and is unused while payments are off. */
 (function (root) {
   'use strict';
@@ -58,6 +58,17 @@
   }
 
   function sessionId() {
+    try {
+      if (root.BLRCheckoutAbandon && typeof root.BLRCheckoutAbandon.sessionId === 'function') {
+        var fromAbandon = root.BLRCheckoutAbandon.sessionId();
+        if (fromAbandon) {
+          try {
+            if (root.sessionStorage) sessionStorage.setItem(SESSION_SLOT, fromAbandon);
+          } catch (eSync) {}
+          return fromAbandon;
+        }
+      }
+    } catch (eAb) {}
     var id = '';
     try {
       id = String((root.sessionStorage && sessionStorage.getItem(SESSION_SLOT)) || '').replace(/^\s+|\s+$/g, '');
@@ -195,7 +206,6 @@
     var key = idempotencyKey(fp, !!input.rotateKey);
     var body = {
       idempotencyKey: key,
-      session_id: sessionId(),
       amount: amount,
       currency: 'USD',
       customer: customer,
@@ -203,6 +213,11 @@
     };
     var notes = String(input.notes || '');
     if (notes) body.notes = notes;
+    try {
+      var sid = input.session_id;
+      if (!sid) sid = sessionId();
+      if (sid) body.session_id = String(sid);
+    } catch (eSid) {}
 
     return fetch(ENDPOINT, {
       method: 'POST',
