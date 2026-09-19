@@ -1,10 +1,10 @@
 {
-  "version": "3.00a",
+  "version": "3.00b",
   "released": "2026-09-19",
-  "codename": "qa-meta-css-align",
-  "appVersion": "3.00a",
+  "codename": "css-cache-align-407",
+  "appVersion": "3.00b",
   "highlights": [
-    "Homepage meta description shortened to ≤159 (QA draft verbatim)",
-    "Catalog + PDP CSS cache-bust aligned to biolabs_style.css?v=407"
+    "Sitewide CSS cache-bust aligned to biolabs_style.css?v=407",
+    "Checkout, tools, families, blog, compare leftover 403/404 cleared"
   ]
 }
