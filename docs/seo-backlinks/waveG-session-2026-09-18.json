@@ -1,0 +1,211 @@
+{
+  "date": "2026-09-18",
+  "timezone": "Asia/Jerusalem (UTC+3)",
+  "wave": "G",
+  "brand": {
+    "name": "BioLabs Research",
+    "website": "https://biolabsresearch.co",
+    "email": "admin@biolabsresearch.co",
+    "ruo_only": true
+  },
+  "live_verified_inbound": 0,
+  "skipped": {
+    "peptidesfinder.com": "under review \u2014 do NOT re-spam",
+    "prior_pending_dirs": [
+      "peptidetrace.com",
+      "biocompare.com",
+      "molport.com",
+      "chemblink.com",
+      "b2b-directory-uk.co.uk",
+      "sorply.com"
+    ],
+    "prior_emails": [
+      "APS PeptideLinks",
+      "CiteAb",
+      "BioPitch",
+      "BIOS+"
+    ]
+  },
+  "new_form_submits": [
+    {
+      "domain": "peptinox.com",
+      "action": "vendor_apply",
+      "status": "form_nonfunctional_get_only",
+      "url": "https://peptinox.com/apply",
+      "note": "Form posts as GET querystring; no backend POST observed. Email draft to info@peptinox.com created instead."
+    },
+    {
+      "domain": "reagentgate.com",
+      "action": "list_products_contact",
+      "status": "submitted",
+      "url": "https://www.reagentgate.com/contact",
+      "note": "For Suppliers Thank you for contacting us. We will be in touch shortly. (c) 2025 Molcentrics, Inc. | Privacy Policy | Terms of Service | Contact"
+    },
+    {
+      "domain": "saashub.com",
+      "action": "product_submit",
+      "status": "submitted",
+      "url": "https://www.saashub.com/services/submit",
+      "note": "Feedback Software Alternatives & Startups Register | Login Tools & Categories Feature My Product Submit Product Submit a Product Please register to submit more than one product. Successful submission advice Follow the gu"
+    },
+    {
+      "domain": "businessmagnet.co.uk",
+      "action": "free_listing_register",
+      "status": "blocked_captcha",
+      "url": "https://www.businessmagnet.co.uk/manage-account/register?step=1",
+      "note": "CAPTCHA \u2014 park https://www.businessmagnet.co.uk/manage-account/register?step=1"
+    },
+    {
+      "domain": "lsindex.co.uk",
+      "action": "vendor_listing_contact",
+      "status": "blocked_captcha",
+      "url": "https://lsindex.co.uk/contact-us/",
+      "note": "CAPTCHA \u2014 park https://lsindex.co.uk/contact-us/"
+    },
+    {
+      "domain": "curlie.org",
+      "action": "suggest_site",
+      "status": "error",
+      "url": "https://curlie.org/en/Science/",
+      "note": "HTTP 500 on category/suggest path"
+    },
+    {
+      "domain": "curlie.org",
+      "action": "suggest_site",
+      "status": "needs_editor_or_account",
+      "url": "https://curlie.org/docs/en/add.html",
+      "note": "Curlie The Curlie Directory Directory About Curlie Become an Editor Social Contract Curlie Data - RDF Privacy Policy Submitting a Site Curlie User Accounts Editing Guidelines Editor Resources In Other Languages \u0639\u0631\u0628\u064a\u0651\u0629 - "
+    },
+    {
+      "domain": "selectscience.net",
+      "action": "manufacturer_contact",
+      "status": "needs_account_or_email",
+      "url": "https://www.selectscience.net/contact",
+      "note": "(Opens in new tab) (Opens in new tab) (Opens in new tab) Login Join Free Fields & Topics Life Sciences All Content Applications & Methods News & Articles Videos Events & Summits Webinars Drug Discovery & Development Biop"
+    },
+    {
+      "domain": "laboratorynetwork.com",
+      "action": "supplier_contact",
+      "status": "blocked_captcha",
+      "url": "https://www.laboratorynetwork.com/solution/contact-laboratory-network",
+      "note": "CAPTCHA \u2014 park https://www.laboratorynetwork.com/solution/contact-laboratory-network"
+    },
+    {
+      "domain": "chemexper.com",
+      "action": "contact_form_dns",
+      "status": "server_error_500",
+      "url": "https://dns.chemexper.com/contact.shtml",
+      "note": "POST reached /cgi/email-to-info.cgi \u2192 HTTP 500. webmaster@chemexper.com draft created."
+    },
+    {
+      "domain": "chemexper.com",
+      "action": "catalog_submit_attempt",
+      "status": "form_found_partial",
+      "url": "https://dns.chemexper.com/services/submit.shtml",
+      "note": "New-supplier form reachable via dns.chemexper.com; submitData() missing in session; seed CSV prepared."
+    },
+    {
+      "domain": "protocols.io",
+      "action": "contact_us",
+      "status": "blocked_captcha",
+      "url": "https://www.protocols.io/contact-us",
+      "note": "CAPTCHA parked; email draft to info@protocols.io created."
+    }
+  ],
+  "counts": {
+    "targets_attempted": 12,
+    "confirmed_form_submits": 2,
+    "uncertain_or_server_error": 1,
+    "captcha_parked_new_this_session": 4,
+    "captcha_parked_cumulative_listed": 18,
+    "email_drafts_new": 5,
+    "email_drafts_prior_still_unsent": 3,
+    "live_verified_inbound": 0,
+    "uncertain_partial_or_blocked_noncaptcha": 5
+  },
+  "confirmed_submits": [
+    {
+      "domain": "reagentgate.com",
+      "action": "list_products_contact",
+      "status": "submitted",
+      "url": "https://www.reagentgate.com/contact",
+      "note": "For Suppliers Thank you for contacting us. We will be in touch shortly. (c) 2025 Molcentrics, Inc. | Privacy Policy | Terms of Service | Contact"
+    },
+    {
+      "domain": "saashub.com",
+      "action": "product_submit",
+      "status": "submitted",
+      "url": "https://www.saashub.com/services/submit",
+      "note": "Feedback Software Alternatives & Startups Register | Login Tools & Categories Feature My Product Submit Product Submit a Product Please register to submit more than one product. Successful submission advice Follow the gu"
+    }
+  ],
+  "email_drafts_gmail_payments_biofirst": [
+    {
+      "to": "info@peptinox.com",
+      "subject": "Vendor listing request \u2014 BioLabs Research (RUO)",
+      "draft_id": "r4811375601461710586"
+    },
+    {
+      "to": "insightsteam@selectscience.com",
+      "subject": "Manufacturer listing inquiry \u2014 BioLabs Research (RUO lab reagents)",
+      "draft_id": "r5110369055514764950"
+    },
+    {
+      "to": "info@protocols.io",
+      "subject": "RUO protocol / supplier presence inquiry \u2014 BioLabs Research",
+      "draft_id": "r-7363040648248697436"
+    },
+    {
+      "to": "lsi-admin@lsinex.co.uk",
+      "subject": "Vendor listing request \u2014 BioLabs Research (RUO lab reagents)",
+      "draft_id": "r5941051660174865721"
+    },
+    {
+      "to": "webmaster@chemexper.com",
+      "subject": "New supplier free catalog listing \u2014 BioLabs Research (RUO)",
+      "draft_id": "r-179209127441964759"
+    }
+  ],
+  "email_drafts_prior_unsent": [
+    {
+      "to": "sales@worldofchemicals.com",
+      "subject": "Supplier listing request \u2014 BioLabs Research (RUO lab reagents)"
+    },
+    {
+      "to": "admin@peptidebase.io",
+      "subject": "Research-vendor listing request \u2014 BioLabs Research (RUO)"
+    },
+    {
+      "to": "adam@bpg.bio",
+      "subject": "Directory listing request \u2014 BioLabs Research (RUO biotech/reagents)"
+    }
+  ],
+  "captcha_parked_prior_14": [
+    "https://www.chemicalregister.com/register/add.asp",
+    "https://www.biosciregister.com/register/add.asp",
+    "https://www.biotech.wales/submit.php",
+    "https://chemicalindustrysuppliersearch.co.uk/getlisted",
+    "https://www.approvedbusiness.co.uk/register?tier=free",
+    "https://www.europages.com/en/list-your-company.html",
+    "https://contractlaboratory.com/register-your-lab/",
+    "https://www.biolabprotocols.com/contact-us.php?s=Product%20Listing",
+    "https://peptides.wiki/contact/",
+    "https://www.directree.io/submit",
+    "https://labshake.com/contact-us",
+    "https://www.cylex-uk.co.uk/add-company.html",
+    "https://businessuk.directory/login/register/",
+    "https://www.labmanager.com/contact-us"
+  ],
+  "captcha_parked_new": [
+    "https://www.businessmagnet.co.uk/manage-account/register?step=1",
+    "https://lsindex.co.uk/contact-us/",
+    "https://www.laboratorynetwork.com/solution/contact-laboratory-network",
+    "https://www.protocols.io/contact-us"
+  ],
+  "notes": [
+    "No therapeutic claims used in any copy.",
+    "PeptiNox /apply and /contact are GET-only shells without backend POST.",
+    "ChemExper www timed out from curl; dns.chemexper.com reachable via Playwright.",
+    "Gmail connected inbox is payments@biofirst.co \u2014 drafts only; send from brand mailbox when ready."
+  ]
+}

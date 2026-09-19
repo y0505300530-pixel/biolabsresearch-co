@@ -1,0 +1,21 @@
+{
+  "domain": "peptidesfinder.com",
+  "checks": [
+    {
+      "url": "https://peptidesfinder.com/vendors/biolabs-research",
+      "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://peptidesfinder.com/vendors/biolabs-research\nCall log:\n  - navigating to \"https://peptidesfinder.com/vendors/biolabs-research\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "url": "https://peptidesfinder.com/vendors/biolabsresearch",
+      "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://peptidesfinder.com/vendors/biolabsresearch\nCall log:\n  - navigating to \"https://peptidesfinder.com/vendors/biolabsresearch\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "url": "https://peptidesfinder.com/vendors?q=BioLabs%20Research",
+      "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://peptidesfinder.com/vendors?q=BioLabs%20Research\nCall log:\n  - navigating to \"https://peptidesfinder.com/vendors?q=BioLabs%20Research\", waiting until \"domcontentloaded\"\n"
+    },
+    {
+      "url": "https://peptidesfinder.com/vendors",
+      "error": "Page.goto: net::ERR_NAME_NOT_RESOLVED at https://peptidesfinder.com/vendors\nCall log:\n  - navigating to \"https://peptidesfinder.com/vendors\", waiting until \"domcontentloaded\"\n"
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+domain|URL|type|notes
+chemblink.com|https://www.chemblink.com/en/userRegistry.htm|chemical_supplier_directory|FREE company registry + product submit (https://www.chemblink.com/en/submit.htm); company registration SUBMITTED 2026-09-15 for Bio Labs Research; verified 200
+chemicalregister.com|https://www.chemicalregister.com/register/add.asp|chemical_supplier_directory|Clear FREE basic company listing form (company/website/products); verified 200
+biosciregister.com|https://www.biosciregister.com/register/add.asp|life_science_directory|Clear FREE biotech/life-sciences company listing form; verified 200
+chemexper.com|https://www.chemexper.com/services/submit.shtml|chemical_catalog_directory|FREE catalog submit (Excel/SDF); company details + CAS/IUPAC; search-verified (curl timeout from box)
+biotech.wales|https://www.biotech.wales/submit.php|UK_biotech_directory|Clear FREE organization submit form; reviewed before publish; verified 200
+ingoo.co.uk|https://www.ingoo.co.uk/join|UK_business_directory|FREE plan for UK biotech/life-sciences listing; UK-only terms; WebFetch verified
+chemicalindustrysuppliersearch.co.uk|https://chemicalindustrysuppliersearch.co.uk/getlisted|UK_chemical_directory|Clear Get Listed form (company/VAT/categories); verified 200
+scienceexchange.com|https://www.scienceexchange.com/supplier-application-request|lab_marketplace|FREE to list R&D products/services (fees only on transactions); verified 200
+reagentgate.com|https://www.reagentgate.com/suppliers/list_your_products|chemical_directory|List products via contact + SDF/Excel/CSV catalog; verified 200
+lookchem.com|https://www.lookchem.com/Register.aspx|chemical_marketplace|Free supplier registration; 10 free selling leads; verified 200
+contractlaboratory.com|https://contractlaboratory.com/become-a-member/|lab_directory|FREE Basic Membership lab/supplier profile; verified 200
+biolabprotocols.com|https://www.biolabprotocols.com/services.php|lab_protocol_product_directory|States free protocol/product listing (Excel/CSV via contact); verified 200
+labshake.com|https://labshake.com/supplier/onboard|biomedical_marketplace|FREE product hosting for biomedical suppliers (spreadsheet onboard); homepage 200
+freeindex.co.uk|https://www.freeindex.co.uk/signup-business.htm|UK_business_directory|Clear FREE UK business signup form; WebFetch verified
+approvedbusiness.co.uk|https://www.approvedbusiness.co.uk/register?tier=free|UK_B2B_directory|Free tier registration; Laboratories/Biotechnology categories; verified 200
+businessmagnet.co.uk|https://www.businessmagnet.co.uk/free-listing.htm|UK_B2B_directory|Free basic B2B listing page; verified 200
+chemnet.com|https://www.chemnet.com/static/join_now.html|chemical_network_directory|Join Now company information form; verified 200
+worldofchemicals.com|https://www.worldofchemicals.com/sell.html|chemical_marketplace|Sell/list chemicals via sales contact; verified 200
+europages.com|https://www.europages.com/en/list-your-company.html|EU_B2B_marketplace|Free company profile start (EU buyers); verified 200
+businessuk.directory|https://businessuk.directory/|UK_business_directory|Free Add Business listing; science-technology category exists; verified 200
+hotfrog.co.uk|https://www.hotfrog.co.uk/add|UK_local_directory|Free Add Business listing; verified 200
+curlie.org|https://curlie.org/docs/en/add.html|open_web_directory|Free Suggest a Site (editor-reviewed); Science/Chemistry categories; verified 200
+directree.io|https://www.directree.io/submit|startup_saas_directory|Free SaaS/tool submit + claim; science tools OK; verified 200
+saashub.com|https://saashub.com/submit|startup_directory|Free product submission helper/list; verified 200
+lsindex.co.uk|https://lsindex.co.uk/vendor-information/|UK_life_science_directory|Vendor/list company info pages for life sciences; verified 200
+b2b-directory-uk.co.uk|https://www.b2b-directory-uk.co.uk/science.html|UK_science_directory|FREE science listings (reciprocal link exchange model); verified 200
+sorply.com|https://sorply.com/|scientific_procurement|Claims free basic scientific storefront; verified 200
+laboratorynetwork.com|https://www.laboratorynetwork.com/|lab_industry_network|Lab industry portal (explore supplier/advertise paths); verified 200
+labbase.net|https://www.labbase.net/en/|lab_supplier_directory|LabBase EN portal for lab suppliers; verified 200
+scientist.com|https://www.scientist.com/|research_marketplace|Scientist.com research marketplace (supplier onboarding path); verified 200

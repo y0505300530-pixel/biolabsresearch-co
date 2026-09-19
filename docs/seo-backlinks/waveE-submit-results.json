@@ -1,0 +1,80 @@
+[
+  {
+    "domain": "chemicalregister.com",
+    "url": "https://www.chemicalregister.com/register/add.asp",
+    "status": "blocked_captcha",
+    "detail": "CAPTCHA present; filled fields but cannot complete"
+  },
+  {
+    "domain": "biosciregister.com",
+    "url": "https://www.biosciregister.com/register/add.asp",
+    "status": "blocked_captcha",
+    "detail": "CAPTCHA present; fields filled"
+  },
+  {
+    "domain": "biotech.wales",
+    "url": "https://www.biotech.wales/submit.php",
+    "status": "blocked_captcha",
+    "detail": "Could not OCR captcha; human solve required. Fields filled."
+  },
+  {
+    "domain": "chemblink.com",
+    "url": "https://www.chemblink.com/en/userRegistry.htm",
+    "status": "submitted",
+    "detail": "\u00a0\n\n\n\n\n\n\n\n\n\nThanks for submitting company information to chemBlink!\n\nBelow is what you submitted:\n\nCompany's URL - biolabsresearch.co\nCompany's Full Name - Bio Labs Research\nCompany's Email Address - admin@biolabsresearch.co\nCompany's Phone Numbers - 02000000000\nMailing Address - Research Office\nCity - London\nState / Province - England\nZip Code - EC1A1BB\nCompany Type - D\nYear Business Established -"
+  },
+  {
+    "domain": "chemicalindustrysuppliersearch.co.uk",
+    "url": "https://chemicalindustrysuppliersearch.co.uk/getlisted",
+    "status": "blocked_captcha",
+    "detail": "CAPTCHA; fields filled"
+  },
+  {
+    "domain": "approvedbusiness.co.uk",
+    "url": "https://www.approvedbusiness.co.uk/register?tier=free",
+    "status": "blocked_captcha",
+    "detail": "CAPTCHA; fields=[{\"name\": \"company_name\", \"type\": \"text\", \"id\": \"company_name\", \"tag\": \"INPUT\", \"ph\": \"\"}, {\"name\": \"website_url\", \"type\": \"text\", \"id\": \"website_url\", \"tag\": \"INPUT\", \"ph\": \"\"}, {\"name\": \"company_email\", \"type\": \"email\", \"id\": \"company_email\", \"tag\""
+  },
+  {
+    "domain": "chemnet.com",
+    "url": "https://www.chemnet.com/static/join_now.html",
+    "status": "submitted_uncertain",
+    "detail": "url=https://www.chemnet.com/static/contact.cgi txt='Internal Server Error\\n\\nThe server encountered an internal error or misconfiguration and was unable to complete your request.\\n\\nPlease contact the server administrator at info@chemnet.com to inform them of the time this error occurred, and the actions you performed just before this error.\\n\\nMore information about this error may be available in the server error log.'"
+  },
+  {
+    "domain": "freeindex.co.uk",
+    "url": "https://www.freeindex.co.uk/signup-business.htm",
+    "status": "submitted_uncertain",
+    "detail": "url=https://www.freeindex.co.uk/signup-business.htm txt=\"Forbidden\\nThe request you made looks similar to automated requests from spyware applications or excessive / unusual activity has been detected from your IP Address. To protect our users, we can't process your request right now.\\n\\nYour access to FreeIndex.co.uk has been temporarily restricted, and your details have been recorded.\\n\\nPlease make sure yo\""
+  },
+  {
+    "domain": "europages.com",
+    "url": "https://www.europages.com/en/list-your-company.html",
+    "status": "blocked_captcha",
+    "detail": "Signup/list form has captcha"
+  },
+  {
+    "domain": "businessmagnet.co.uk",
+    "url": "https://www.businessmagnet.co.uk/free-listing.htm",
+    "status": "form_found_partial",
+    "detail": "fields=[{\"name\": \"product_title\", \"type\": \"text\", \"id\": \"product_title\"}, {\"name\": \"searchtype\", \"type\": \"select-one\", \"id\": \"searchtype\"}]"
+  },
+  {
+    "domain": "lookchem.com",
+    "url": "https://www.lookchem.com/Register.aspx",
+    "status": "submitted_uncertain",
+    "detail": "url=https://www.lookchem.com/Register.aspx#country txt='Create Account\\nAlready have an account? Sign in now!\\nSupplier Registration\\xa0Buyer Registration\\n*Email:\\nThe email address is incorrect.\\n*Create Password:\\nPlease enter 8 - 16 characters (must contain: numbers, uppercase or lowercase letters, special characters).\\n*Confirm Password:\\nPlease enter 8 - 16 c'"
+  },
+  {
+    "domain": "scienceexchange.com",
+    "url": "https://www.scienceexchange.com/supplier-application-request",
+    "status": "account_or_embedded_form",
+    "detail": "fields=[{\"name\": \"\", \"type\": \"select-one\", \"id\": \"\", \"ph\": null}] txt='This website stores cookies on your computer. These cookies are used to collect information about how you interact with our website and allow us to remember you. We use this information in order to improve and customize your browsing experience and f'"
+  },
+  {
+    "domain": "contractlaboratory.com",
+    "url": "https://contractlaboratory.com/register-your-lab/",
+    "status": "blocked_captcha",
+    "detail": "fields=[{\"name\": \"email\", \"type\": \"email\", \"id\": \"\"}, {\"name\": \"password\", \"type\": \"password\", \"id\": \"\"}, {\"name\": \"_terms\", \"type\": \"checkbox\", \"id\": \"_terms_6a981f44db5b3\"}, {\"name\": \"g-recaptcha-response\", \"type\": \"textarea\", \"id\": \"g-recaptcha-response\""
+  }
+]

@@ -1,0 +1,79 @@
+{
+  "date": "2026-09-18",
+  "wave": "G",
+  "results": [
+    {
+      "domain": "peptinox.com",
+      "url": "https://peptinox.com/apply",
+      "action": "vendor_apply",
+      "status": "submitted_uncertain",
+      "detail": "PEPTI NOX Directory Database Verification Research Apply Verification Program Apply for Vendor Verification Demonstrate your commitment to quality and transparency. PeptiNox-verified vendors earn trust with the research community through independent, rigorous assessment. Verification Badge Earn the PeptiNox Verified badge \u2014 recognized by researchers as a mark of quality and transparency. Trust Score Receive a comprehensive trust score based on our four-pillar assessment, visible to researchers evaluating vendors. Directory Listing Full vendor profile in our directory with detailed information,",
+      "final_url": "https://peptinox.com/apply?company=BioLabs+Research&website=https%3A%2F%2Fbiolabsresearch.co&year=2024&location=London%2C+United+Kingdom&contactName=Yehuda+Ashash&contactEmail=admin%40biolabsresearch.co&productCount=25&purityMin=98&testing=Lot+COA+%2F+HPLC+documentation+available+on+request+for+RUO+catalog+items.+Strict+Research+Use+Only+labeling.&additional=BioLabs+Research+supplies+Research+Use+Only+%28RUO%29+research+compounds+and+laboratory+reagents+for+qualified+laboratory+inquiry.+Lot+COA+documentation+available+on+request.+Products+are+not+for+human+or+veterinary+use+and+are+not+marketed+as+medicines%2C+supplements%2C+or+treatments.",
+      "clicked": true
+    },
+    {
+      "domain": "reagentgate.com",
+      "url": "https://www.reagentgate.com/contact",
+      "action": "list_products_contact",
+      "status": "submitted",
+      "detail": "For Suppliers Thank you for contacting us. We will be in touch shortly. (c) 2025 Molcentrics, Inc. | Privacy Policy | Terms of Service | Contact",
+      "clicked": true
+    },
+    {
+      "domain": "saashub.com",
+      "url": "https://www.saashub.com/services/submit",
+      "action": "product_submit",
+      "status": "submitted",
+      "detail": "Feedback Software Alternatives & Startups Register | Login Tools & Categories Feature My Product Submit Product Submit a Product Please register to submit more than one product. Successful submission advice Follow the guidelines Please read the guidelines below before submitting your product. Add Categories List a few relevant categories. You may check your competitors' categories for inspiration. List Competitors The submission will be slowed down and put to the bottom of the queue if there are not listed competitors. Verify the product Verifying your product will give it a higher priority. Y",
+      "final_url": "https://www.saashub.com/services/submit?url=https%3A%2F%2Fbiolabsresearch.co"
+    },
+    {
+      "domain": "businessmagnet.co.uk",
+      "url": "https://www.businessmagnet.co.uk/manage-account/register?step=1",
+      "action": "free_listing_register",
+      "status": "blocked_captcha",
+      "detail": "CAPTCHA \u2014 park https://www.businessmagnet.co.uk/manage-account/register?step=1"
+    },
+    {
+      "domain": "lsindex.co.uk",
+      "url": "https://lsindex.co.uk/contact-us/",
+      "action": "vendor_listing_contact",
+      "status": "blocked_captcha",
+      "detail": "CAPTCHA \u2014 park https://lsindex.co.uk/contact-us/"
+    },
+    {
+      "domain": "curlie.org",
+      "url": "https://curlie.org/en/Science/",
+      "action": "suggest_site",
+      "status": "error",
+      "detail": "HTTP 500 on category/suggest path"
+    },
+    {
+      "domain": "curlie.org",
+      "url": "https://curlie.org/docs/en/add.html",
+      "action": "suggest_site",
+      "status": "needs_editor_or_account",
+      "detail": "Curlie The Curlie Directory Directory About Curlie Become an Editor Social Contract Curlie Data - RDF Privacy Policy Submitting a Site Curlie User Accounts Editing Guidelines Editor Resources In Other Languages \u0639\u0631\u0628\u064a\u0651\u0629 - Arabic \u010desky - Czech Dansk - Danish Deutsch - German Espa\u00f1ol - Spanish Fran\u00e7ais - French \u05e2\u05d1\u05e8\u05d9\u05ea - Hebrew Italiano - Italian \u65e5\u672c\u8a9e - Japanese \ud55c\uad6d\uc5b4 - Korean Nederlands - Dutch Portugu\u00eas "
+    },
+    {
+      "domain": "selectscience.net",
+      "url": "https://www.selectscience.net/contact",
+      "action": "manufacturer_contact",
+      "status": "needs_account_or_email",
+      "detail": "(Opens in new tab) (Opens in new tab) (Opens in new tab) Login Join Free Fields & Topics Life Sciences All Content Applications & Methods News & Articles Videos Events & Summits Webinars Drug Discovery & Development Biopharmaceuticals Basic Research Target Discovery Lead Discovery Pre-Clinical Development Clinical Development Drug Manufacturing Clinical Diagnostics All Content Clinical CE Webinars CLINICAL24 Applications & Methods News & Articles Videos Events & Summits Webinars Immersive Content Environmental All Content Applications & Methods News & Articles Videos Events & Summits Webinars ",
+      "cta": false
+    },
+    {
+      "domain": "laboratorynetwork.com",
+      "url": "https://www.laboratorynetwork.com/solution/contact-laboratory-network",
+      "action": "supplier_contact",
+      "status": "blocked_captcha",
+      "detail": "CAPTCHA \u2014 park https://www.laboratorynetwork.com/solution/contact-laboratory-network"
+    }
+  ],
+  "captcha_parked_new": [
+    "https://www.businessmagnet.co.uk/manage-account/register?step=1",
+    "https://lsindex.co.uk/contact-us/",
+    "https://www.laboratorynetwork.com/solution/contact-laboratory-network"
+  ]
+}
