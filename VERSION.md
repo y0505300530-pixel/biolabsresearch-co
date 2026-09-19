@@ -1,3 +1,20 @@
+# biolabsresearch.co — Version 3.00
+
+Released 2026-09-19.
+
+Codename: release-3-00
+
+## Highlights
+
+- **Quote mode + abandon:** Checkout CTA is **Request a Quote**. Browser POSTs (no card fields) to CRM `/api/checkout/quote` with camelCase `idempotencyKey`. Abandoned checkout POSTs `/api/checkout/abandon` (204 silent). Charge path retained unused while `paymentsEnabled:false`.
+- **G3-R:** Public catalog name is **G3-R** only (`/products/g3-r`). Old retatrutide / r3ta / reta paths 301.
+- **Mobile catalog:** 2-col compact grid through 320px, plus g1 category/filter flicker fix (visibility toggle only; no DOM reorder unless sort changes). CSS cache stays `biolabs_style.css?v=407`.
+- **SEO L1:** Compare matrix, PDP FAQ + FAQPage, Product+Offer / Organization / BreadcrumbList JSON-LD.
+- **Family hubs + COA:** `/families/` + four family spokes. PDP Download / View lot COA only when `coa_pdf_url` is a real PDF; otherwise Request lot COA (fail-closed).
+- **Tip stack:** Release stamp on live **v2.99g1** (`catalog-filter-flicker-fix`, `9f145ea0`) over **v2.99g** hubs/COA / **v2.99f1** 2-col / **v2.99f** SEO L1 / **v2.99e3** / e2 / **v2.99e1** G3-R / abandon **v2.99e** / Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v3.00**. No product, checkout, or CSS behavior change in this tip.
+
+---
+
 # biolabsresearch.co — Version 2.99g1
 
 Released 2026-09-19.

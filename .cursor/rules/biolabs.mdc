@@ -53,7 +53,7 @@ percentages, no fabricated reviews, no dosing or human-use advice. Certificates 
 
 # Checkout / payments
 
-Visible tip is **v2.99g1** (`catalog-filter-flicker-fix` on g hub-spoke / f1 catalog-mobile-2col / f SEO L1 / e3 mobile-catalog / e2 / G3-R e1 / abandoned-checkout v2.99e / Quote v2.99d). CRM `paymentsEnabled:false`.
+Visible tip is **v3.00** (`release-3-00` on g1 catalog-filter-flicker-fix / g hub-spoke-dynamic-coa / f1 catalog-mobile-2col / f SEO L1 / e3 mobile-catalog / e2 / G3-R e1 / abandoned-checkout v2.99e / Quote v2.99d). CRM `paymentsEnabled:false`.
 Primary CTA is **Request a Quote**. Browser POSTs (no card fields) to
 `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)
 and the same `session_id` as abandon capture. Abandoned checkout POSTs
@@ -67,7 +67,7 @@ Owner decision (CRM charge SoT, when payments return): browser POSTs card fields
 `https://crm.biolabsresearch.co/api/checkout/charge` with camelCase `idempotencyKey`.
 Card path remains the v2.99b CRM UMG authorize hook (retained unused while payments are off). Infra reviews before customers see live charges.
 
-**robots.txt / IndexNow:** Keep the v2.99d AI-crawler `Allow: /` list. Same IndexNow key as d. After **v2.99g1** is live, run `scripts/indexnow-ping.sh`. Do not block abandon capture on the ping.
+**robots.txt / IndexNow:** Keep the v2.99d AI-crawler `Allow: /` list. Same IndexNow key as d. After **v3.00** is live, run `scripts/indexnow-ping.sh`. Do not block abandon capture on the ping.
 
 - No full card number, expiry date or CVV may reach storefront `/api/*`, the Node service, a new
   endpoint, or anything persisted in this repo. Do not `console.log` charge bodies.
