@@ -1,3 +1,17 @@
+# biolabsresearch.co — Version 3.00b
+
+Released 2026-09-19.
+
+Codename: css-cache-align-407
+
+## Highlights
+
+- **CSS cache-bust sitewide:** Every leftover live HTML stylesheet query (`?v=403`, `?v=404`, any other non-407) now loads `biolabs_style.css?v=407`. Homepage, catalog (`/research-peptides`), and PDPs were already 407 on **v3.00a** and were left alone.
+- **Unchanged:** CSS file contents not edited. Quote / checkout JS, G3-R naming, and family-hub markup untouched beyond the stylesheet query string.
+- **Tip stack:** Hotfix on live **v3.00a** (`qa-meta-css-align`, `94ecd47e`) over **v3.00** / **v2.99g1** / g / f1 / f / e3 / e2 / e1 / e / Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v3.00b**.
+
+---
+
 # biolabsresearch.co — Version 3.00a
 
 Released 2026-09-19.
