@@ -5,8 +5,9 @@
   "appVersion": "2.99f1",
   "highlights": [
     "Mobile homepage catalog stays 2 columns through 320px (Yehuda 2×2 SoT)",
-    "Removed @media (max-width:380px) 1-col catalog-grid collapse",
-    "CSS cache bust biolabs_style.css?v=406 on index.html",
-    "Quote / G3-R / abandon untouched; sits on v2.99e"
+    "Card density: hide tagline/trust/View details; clamp name; compact ATC; no 84px FAB pad",
+    "Toolbar filters 2×2; Documentation select hidden on mobile",
+    "CSS cache bust biolabs_style.css?v=407 on index.html",
+    "Quote / G3-R / abandon / hero untouched; sits on v2.99e"
   ]
 }

@@ -14493,6 +14493,182 @@ html body #coa-modal button[aria-label="Close"] {
   html body #products-grid.catalog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 10px !important;
+    align-items: start !important;
+    padding-right: 0 !important;
+  }
+
+  /* Beat FAB 64px gutter — that crushed 2-col cards to ~99px */
+  html body .hero + .catalog-section,
+  html body .catalog-section#catalog,
+  html body #catalog.catalog-section {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    padding-top: 16px !important;
+  }
+
+  /* Compact header so Popular cards start higher */
+  html body .catalog-header {
+    margin-bottom: 8px !important;
+  }
+  html body .catalog-header .catalog-title {
+    font-size: 22px !important;
+    line-height: 1.15 !important;
+    margin: 0 !important;
+  }
+  html body .catalog-header .catalog-ruo,
+  html body p.catalog-ruo {
+    margin: 2px 0 0 !important;
+    font-size: 11px !important;
+  }
+
+  /* Search + 2×2 filter grid (hide redundant Docs select) */
+  html body .catalog-toolbar {
+    gap: 8px !important;
+    margin: 0 0 10px !important;
+  }
+  html body .catalog-search input {
+    min-height: 36px !important;
+    font-size: 13px !important;
+    padding: 6px 12px 6px 36px !important;
+  }
+  html body .catalog-filter-row {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 6px !important;
+  }
+  html body .catalog-filter-row select {
+    flex: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 36px !important;
+    font-size: 12px !important;
+    padding: 6px 28px 6px 10px !important;
+    background-position: right 10px center !important;
+  }
+  html body #catalogFilterDocs {
+    display: none !important;
+  }
+  html body .catalog-toolbar-meta {
+    min-height: 0 !important;
+    margin: 0 !important;
+  }
+  html body .catalog-filter-status:empty {
+    display: none !important;
+  }
+
+  /* Card density — kill 72/80/84px FAB pad and skyscraper extras */
+  html body .catalog-grid > .product-card,
+  html body #products-grid > .product-card {
+    padding: 6px 6px 8px !important;
+    border-radius: 12px !important;
+    height: auto !important;
+  }
+  html body .catalog-grid .product-card-media,
+  html body .catalog-grid .product-card-img,
+  html body #products-grid .product-card-media,
+  html body #products-grid .product-card-img {
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 10px !important;
+  }
+  html body .catalog-grid .product-card-body,
+  html body #products-grid .product-card-body {
+    padding: 6px 2px 0 !important;
+  }
+  html body .catalog-grid .product-card-desc,
+  html body .catalog-grid .product-card-tagline,
+  html body .catalog-grid .product-card-trust,
+  html body #products-grid .product-card-desc,
+  html body #products-grid .product-card-tagline,
+  html body #products-grid .product-card-trust,
+  html body .catalog-grid .product-card-view,
+  html body #products-grid .product-card-view {
+    display: none !important;
+  }
+  html body .catalog-grid .product-card-name,
+  html body #products-grid .product-card-name {
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 2 !important;
+    overflow: hidden !important;
+    font-size: 13px !important;
+    line-height: 1.2 !important;
+    min-height: 0 !important;
+    max-height: 2.4em !important;
+    margin: 0 0 4px !important;
+  }
+  html body .catalog-grid .product-card-strengths,
+  html body #products-grid .product-card-strengths {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow: hidden !important;
+    min-height: 0 !important;
+    margin: 0 0 4px !important;
+    gap: 4px !important;
+  }
+  html body .catalog-grid .product-card-mg,
+  html body #products-grid .product-card-mg {
+    font-size: 10px !important;
+    padding: 2px 6px !important;
+    white-space: nowrap !important;
+  }
+  html body .catalog-grid .product-card-row,
+  html body #products-grid .product-card-row {
+    margin: 0 0 6px !important;
+  }
+  html body .catalog-grid .product-card-price,
+  html body #products-grid .product-card-price {
+    font-size: 16px !important;
+  }
+  html body .catalog-grid .product-card-from,
+  html body #products-grid .product-card-from {
+    font-size: 10px !important;
+    display: inline !important;
+    width: auto !important;
+  }
+  html body .catalog-grid .product-card-actions,
+  html body #products-grid .product-card-actions {
+    flex-direction: column !important;
+    gap: 4px !important;
+    margin: 0 !important;
+  }
+  html body .catalog-grid .product-card-atc,
+  html body #products-grid .product-card-atc,
+  html body #products-grid.catalog-grid .product-card-atc {
+    min-height: 34px !important;
+    padding: 6px 8px !important;
+    font-size: 10px !important;
+    letter-spacing: -0.01em !important;
+    white-space: nowrap !important;
+    width: 100% !important;
+  }
+  html body .catalog-grid .product-card-atc-ico,
+  html body #products-grid .product-card-atc-ico {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+@media (max-width: 390px) {
+  html body .catalog-grid,
+  html body #products-grid.catalog-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px !important;
+  }
+  html body .catalog-grid > .product-card,
+  html body #products-grid > .product-card {
+    padding: 5px 5px 6px !important;
+  }
+  html body .catalog-grid .product-card-name,
+  html body #products-grid .product-card-name {
+    font-size: 12px !important;
+  }
+  html body .catalog-grid .product-card-atc,
+  html body #products-grid .product-card-atc,
+  html body #products-grid.catalog-grid .product-card-atc {
+    min-height: 32px !important;
+    padding: 6px 6px !important;
+    font-size: 10px !important;
+    letter-spacing: -0.02em !important;
+    white-space: nowrap !important;
   }
 }
 @media (max-width: 380px) {
@@ -14500,13 +14676,6 @@ html body #coa-modal button[aria-label="Close"] {
   html body #products-grid.catalog-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 8px !important;
-  }
-  html body .catalog-grid .product-card-atc,
-  html body #products-grid.catalog-grid .product-card-atc {
-    font-size: 10px !important;
-    padding: 8px 6px !important;
-    letter-spacing: -0.02em !important;
-    white-space: nowrap !important;
   }
 }
 /* === end v2.99f1 === */

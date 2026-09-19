@@ -6,12 +6,11 @@ Codename: mobile-catalog-2col
 
 ## Highlights
 
-- **Mobile catalog 2×2 (Yehuda):** Homepage `.catalog-grid` stays **2 columns through 320px**. Soft-QA at 320 / 375 / 390 must show 2 columns × 2 rows (4 products visible), not a single narrow column.
-- **Root cause:** `@media (max-width: 380px) { .catalog-grid { grid-template-columns: 1fr } }` collapsed phones ≤380px (and fought Soft-QA @320/375).
-- **Fix:** That 1-col rule is removed. End-of-file SoT forces `repeat(2, minmax(0, 1fr))` at ≤800px and again at ≤380px. Desktop 3/4/5-col rules above 800px unchanged.
-- **ATC:** Compact font/padding at ≤380px so ADD TO CART does not clip in the 2-col card.
-- **Cache:** `html/index.html` loads `biolabs_style.css?v=406`.
-- **Unchanged:** Quote / G3-R / abandon. Sits on **v2.99e** (`abandoned-checkout`) over Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v2.99f1**.
+- **Mobile catalog 2×2 (Yehuda):** Homepage `.catalog-grid` stays **2 columns through 320px**. Soft-QA at 320 / 375 / 390 must show 2 columns × 2 rows (4 products visible), not a single narrow column and not 99×640 skyscraper cards.
+- **Root cause:** `@media (max-width: 380px) { .catalog-grid { 1fr } }` plus a tall toolbar (search + stacked filters) and FAB `padding-bottom: 72–84px` / 64px right gutter made cards צר ארוך.
+- **Fix:** 1-col rule removed. End-of-file SoT forces 2-col at ≤800 / ≤390 / ≤380. Toolbar filters are a **2×2** select grid (Documentation hidden on mobile). Cards: hide tagline / trust / View details; clamp name to 2 lines; chips nowrap; compact ATC nowrap; kill FAB card pad; 12px section gutters so cards are not ~99px wide.
+- **Cache:** `html/index.html` loads `biolabs_style.css?v=407`.
+- **Unchanged:** Hero, Quote / G3-R / abandon. Sits on **v2.99e** over Quote **v2.99d**. Sitewide footer + meta + `version.json` stamped **v2.99f1**.
 - **Soft-QA:** f SEO pages can Soft-QA in parallel after this tip.
 
 ---
