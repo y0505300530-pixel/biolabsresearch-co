@@ -78,8 +78,19 @@ customer + card fields from the browser to the CRM sidecar
 `https://crm.biolabsresearch.co/api/checkout/charge` (UMG authorize). Required key is
 `idempotencyKey` (camelCase; `extOrderId` is an accepted alias — never `idempotency_key`).
 The storefront does not call `pay.umg.inc` and does not send PAN/CVV to storefront `/api/*`.
-Visible site tip is **v2.99c2** (`reconstitution-faq`). Card path remains the v2.99b CRM UMG authorize hook for Soft-QA live charges.
-Infra (Alejandro) reviews before customers see live charges — see `QA_TASKS.md` P1.
+Visible site tip is **v2.99d** (`checkout-quote`) — Quote mode while CRM `paymentsEnabled:false`.
+Checkout primary CTA is **Request a Quote**. Browser POSTs customer + cart (no card fields) to
+`https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`)
+and `session_id` (sessionStorage uuid, key `blr_session_id` — same id the v2.99e abandon beacon will use).
+Success copy is locked: **We'll send your quote within one business day.** GA: keep `checkout_start`;
+on quote `ok===true` fire `generate_lead`; do **not** fire `checkout_complete` while payments are off.
+The UMG charge path (`/api/checkout/charge`, `html/checkout-charge.js`) is retained and unused.
+v2.99c2 (`reconstitution-faq`) is the version base on main. Infra reviews before customers see live charges — see `QA_TASKS.md` P1.
+**Parallel (no new letter) — G3-R:** Public catalog name is **G3-R** only (`/products/g3-r`; gold-band **G3-R**). Old retatrutide/r3ta/reta paths 301. Does not take a stamp beyond v2.99d.
+
+**robots.txt (v2.99d Marketing lock):** explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, Googlebot, Bingbot. Do not `Disallow: /` for them.
+
+**IndexNow (v2.99d):** key in `html/indexnow-key.txt` and `html/{key}.txt`. After deploy, `scripts/indexnow-ping.sh` (or the curl in `VERSION.md`).
 
 **No card data on the storefront Node service.** Never add a field, script or route that sends a
 full card number, expiry date or CVV to `/api/*` on this site, the Node service behind it, or a new

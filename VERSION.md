@@ -1,3 +1,29 @@
+# biolabsresearch.co — Version 2.99d
+
+Released 2026-09-19.
+
+Codename: checkout-quote
+
+## Highlights
+
+- **Quote mode (primary):** Checkout CTA is **Request a Quote**. Submit POSTs `https://crm.biolabsresearch.co/api/checkout/quote` with camelCase `idempotencyKey` (`BL-QUOTE-<stable-id>`), amount, currency, customer, items, optional notes. **No card fields.**
+- **Success copy (Marketing lock):** `We'll send your quote within one business day.` Shown after `ok===true`. CRM also returns `quoteId`.
+- **GA4:** keep `checkout_start`. On successful quote fire `generate_lead`. Do **not** fire `checkout_complete` while payments are off (`paymentsEnabled:false`).
+- **Charge retained:** `html/checkout-charge.js` and `submitCardCharge()` stay in the tree. Card / crypto UX is hidden and unused. Do not delete the charge path.
+- **Tip stack:** Sits on live **v2.99c2** (`reconstitution-faq`, PR #24) over **v2.99c** (`calculator-seo-finish`, PR #19). Checkout footer + `version.json` stamped **v2.99d**. Does not take a new letter beyond d.
+- **Parallel (no new letter) — G3-R public name:** Display name **G3-R** only; URL `/products/g3-r`; gold-band text **G3-R** on live GLOW-chrome (`vial-g3-r.png` / `.webp` + 10/20/50). Old `/products/retatrutide`, `/products/r3ta`, `/products/reta` and compare/blog/media variants 301 here. Alt after mg-picker: `G3-R {dose} research vial`. Folded into v2.99d rather than stealing a stamp.
+- New module `html/checkout-quote.js?v=2`. Quote POST also sends `session_id` (sessionStorage uuid, key `blr_session_id`) so CRM abandon can join the later v2.99e beacon. Full abandon capture is **not** this tip.
+- **AI crawlers (Marketing lock):** `html/robots.txt` explicitly `Allow: /` for GPTBot, ClaudeBot, Google-Extended, Bytespider, CCBot, anthropic-ai, PerplexityBot, Applebot-Extended, plus Googlebot and Bingbot. Do **not** `Disallow: /` for them. `/api/` stays closed except `/api/products`.
+- **IndexNow:** key `d265cfed-378b-45a0-9b56-3c05c205f805` at webroot `html/indexnow-key.txt` and official `html/d265cfed-378b-45a0-9b56-3c05c205f805.txt`. After deploy, ping new/changed URLs (or the sitemap) with `scripts/indexnow-ping.sh`. Curl:
+  ```
+  curl -X POST https://api.indexnow.org/indexnow \
+    -H 'Content-Type: application/json; charset=utf-8' \
+    -d '{"host":"biolabsresearch.co","key":"d265cfed-378b-45a0-9b56-3c05c205f805","keyLocation":"https://biolabsresearch.co/d265cfed-378b-45a0-9b56-3c05c205f805.txt","urlList":["https://biolabsresearch.co/sitemap.xml"]}'
+  ```
+- Shared `cart-vial.js` not rewritten. Homepage hero / Popular catalog / PDP split SoT untouched. c2 FAQ / short-URL base kept.
+
+---
+
 # biolabsresearch.co — Version 2.99c2
 
 Released 2026-09-19.
