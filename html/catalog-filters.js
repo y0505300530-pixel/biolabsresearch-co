@@ -1,5 +1,6 @@
-/* catalog-filters.js — homepage Popular grid toolbar (v2.98)
+/* catalog-filters.js — homepage Popular grid toolbar (v2.99g1)
    Progressive enhancement: client-filter existing .product-card nodes.
+   Category/filter-only changes toggle visibility; DOM reorder only when sort changes.
    Does not rewrite cart-vial / mg-picker / prices-sync. */
 (function () {
   var toolbar = document.getElementById("catalogToolbar");
@@ -17,6 +18,8 @@
   var emptyEl = document.getElementById("catalogEmpty");
 
   var applying = false;
+  var applyGen = 0;
+  var filterObs = null;
   var CHECK =
     '<svg class="product-card-trust-ico" viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.4"/><path fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" d="M5 8.1l2.1 2.1L11.2 5.8"/></svg>';
   var TRUST =
@@ -247,8 +250,58 @@
     );
   }
 
+  function sameCardOrder(a, b) {
+    if (a.length !== b.length) return false;
+    for (var i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) return false;
+    }
+    return true;
+  }
+
+  function sortCards(list, sort) {
+    var out = list.slice();
+    if (sort && sort !== "featured") {
+      out.sort(function (a, b) {
+        if (sort === "price-asc") return priceOf(a) - priceOf(b);
+        if (sort === "price-desc") return priceOf(b) - priceOf(a);
+        if (sort === "name") {
+          return (a.getAttribute("data-name") || "").localeCompare(
+            b.getAttribute("data-name") || "",
+            undefined,
+            { sensitivity: "base" }
+          );
+        }
+        if (sort === "new") {
+          var an = /new/i.test(a.getAttribute("data-badge") || "") ? 0 : 1;
+          var bn = /new/i.test(b.getAttribute("data-badge") || "") ? 0 : 1;
+          if (an !== bn) return an - bn;
+          return Number(a.getAttribute("data-catalog-i") || 0) - Number(b.getAttribute("data-catalog-i") || 0);
+        }
+        return 0;
+      });
+    } else {
+      out.sort(function (a, b) {
+        return Number(a.getAttribute("data-catalog-i") || 0) - Number(b.getAttribute("data-catalog-i") || 0);
+      });
+    }
+    return out;
+  }
+
+  function releaseApply(gen) {
+    requestAnimationFrame(function () {
+      if (gen !== applyGen) return;
+      applying = false;
+      if (filterObs) {
+        filterObs.observe(grid, { childList: true });
+      }
+    });
+  }
+
   function apply() {
+    applyGen += 1;
+    var gen = applyGen;
     applying = true;
+    if (filterObs) filterObs.disconnect();
     try {
     enhance();
     var q = searchEl ? searchEl.value.trim().toLowerCase() : "";
@@ -297,40 +350,15 @@
         : "";
     }
 
-    if (sort && sort !== "featured") {
-      list.sort(function (a, b) {
-        if (sort === "price-asc") return priceOf(a) - priceOf(b);
-        if (sort === "price-desc") return priceOf(b) - priceOf(a);
-        if (sort === "name") {
-          return (a.getAttribute("data-name") || "").localeCompare(
-            b.getAttribute("data-name") || "",
-            undefined,
-            { sensitivity: "base" }
-          );
-        }
-        if (sort === "new") {
-          var an = /new/i.test(a.getAttribute("data-badge") || "") ? 0 : 1;
-          var bn = /new/i.test(b.getAttribute("data-badge") || "") ? 0 : 1;
-          if (an !== bn) return an - bn;
-          return Number(a.getAttribute("data-catalog-i") || 0) - Number(b.getAttribute("data-catalog-i") || 0);
-        }
-        return 0;
-      });
-      list.forEach(function (c) {
+    /* Reorder only when sort order actually changed. Category/filter-only = class toggles. */
+    var ordered = sortCards(list, sort);
+    if (!sameCardOrder(list, ordered)) {
+      ordered.forEach(function (c) {
         grid.appendChild(c);
       });
-    } else {
-      list
-        .slice()
-        .sort(function (a, b) {
-          return Number(a.getAttribute("data-catalog-i") || 0) - Number(b.getAttribute("data-catalog-i") || 0);
-        })
-        .forEach(function (c) {
-          grid.appendChild(c);
-        });
     }
     } finally {
-      applying = false;
+      releaseApply(gen);
     }
   }
 
@@ -373,7 +401,7 @@
     if (!grid.__catalogFilterObs) {
       grid.__catalogFilterObs = 1;
       var t = null;
-      new MutationObserver(function () {
+      filterObs = new MutationObserver(function () {
         if (applying) return;
         clearTimeout(t);
         t = setTimeout(function () {
@@ -382,7 +410,8 @@
           populate();
           apply();
         }, 60);
-      }).observe(grid, { childList: true });
+      });
+      filterObs.observe(grid, { childList: true });
     }
   }
 
