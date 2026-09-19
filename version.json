@@ -1,12 +1,14 @@
 {
-  "version": "2.99c2",
+  "version": "2.99d",
   "released": "2026-09-19",
-  "codename": "reconstitution-faq",
-  "appVersion": "2.99c2",
+  "codename": "checkout-quote",
+  "appVersion": "2.99d",
   "highlights": [
-    "Reconstitution FAQ matches dilution + unit-converter (mg/mL math, diluent volume, what the tool does not do)",
-    "Research-use-only laboratory calculations — no dosing, syringe, or human-use copy",
-    "CTAs remain Request catalog + Inquire; no Buy",
-    "Short-URL 301: /dilution and /unit-converter → /tools/dilution and /tools/unit-converter"
+    "Checkout primary CTA is Request a Quote; POST CRM /api/checkout/quote with session_id",
+    "Locked success copy: We'll send your quote within one business day.",
+    "GA checkout_start kept; generate_lead on quote ok; no checkout_complete while payments off",
+    "UMG /api/checkout/charge retained unused (paymentsEnabled:false)",
+    "robots.txt Allow GPTBot/ClaudeBot/Google-Extended/Bytespider/CCBot/anthropic-ai/PerplexityBot/Applebot-Extended + Googlebot/Bingbot",
+    "IndexNow key in html/ webroot; ping after deploy via scripts/indexnow-ping.sh"
   ]
 }
