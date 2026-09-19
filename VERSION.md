@@ -6,6 +6,8 @@ Codename: calculator-seo-finish
 
 ## Highlights
 
+- **Red 1**: Blog + compare bacteriostatic vs sterile water — usage-scenario table removed; neutral lab comparison only; third-person body; RUO above the fold. Banned phrases (`which one does your` / `your protocol` / `you’ll open` / `open the vial`) zero on those URLs. Titles/H1/canonical unchanged.
+- **Red 3**: Homepage hero trust — no 45K+, no 1,200 reviews, no hard SKU count. Trust line is COA on request · Research use only · Crypto & card payment options. PDP stars left alone.
 - **Calculator CTAs**: `/tools/reconstitution`, `/tools/dilution`, `/tools/unit-converter` carry primary **Request catalog** (`/#catalog`) and **Inquire** (`/contact`) buttons — navy `#0d2137` / gold / cream `#F2EFE9`. No green. No Buy now.
 - **Unit converter**: RUO framing; mg ↔ mcg ↔ ng kept; mg→IU FAQ and math use only a **declared** mass-per-IU factor (never a compound-specific invented factor).
 - **Dilution**: FAQ for mg/mL laboratory concentration math (C1V1 = C2V2). Research calculations only — not medical advice.
