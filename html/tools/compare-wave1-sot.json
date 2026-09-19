@@ -1,5 +1,5 @@
 {
-  "version": "1.0",
+  "version": "1.1-v2.99f",
   "ruo": true,
   "cta": "Inquire only \u2014 no buy/order/dose language",
   "wave1_pairs": [
@@ -53,6 +53,150 @@
       "a": "mots-c",
       "b": "nad-plus",
       "path": "/compare/mots-c-vs-nad-plus"
+    },
+    {
+      "id": "bpc-157-vs-kpv",
+      "a": "bpc-157",
+      "b": "kpv",
+      "path": "/compare/bpc-157-vs-kpv"
+    },
+    {
+      "id": "tb-500-vs-kpv",
+      "a": "tb-500",
+      "b": "kpv",
+      "path": "/compare/tb-500-vs-kpv"
+    },
+    {
+      "id": "bpc-157-vs-glow-70",
+      "a": "bpc-157",
+      "b": "glow-70",
+      "path": "/compare/bpc-157-vs-glow-70"
+    },
+    {
+      "id": "ghk-cu-vs-glow-70",
+      "a": "ghk-cu",
+      "b": "glow-70",
+      "path": "/compare/ghk-cu-vs-glow-70"
+    },
+    {
+      "id": "kpv-vs-glow-70",
+      "a": "kpv",
+      "b": "glow-70",
+      "path": "/compare/kpv-vs-glow-70"
+    },
+    {
+      "id": "bpc-157-vs-bpc-157-tb-500-blend",
+      "a": "bpc-157",
+      "b": "bpc-157-tb-500-blend",
+      "path": "/compare/bpc-157-vs-bpc-157-tb-500-blend"
+    },
+    {
+      "id": "tb-500-vs-bpc-157-tb-500-blend",
+      "a": "tb-500",
+      "b": "bpc-157-tb-500-blend",
+      "path": "/compare/tb-500-vs-bpc-157-tb-500-blend"
+    },
+    {
+      "id": "ghk-cu-vs-kpv",
+      "a": "ghk-cu",
+      "b": "kpv",
+      "path": "/compare/ghk-cu-vs-kpv"
+    },
+    {
+      "id": "epithalon-vs-mots-c",
+      "a": "epithalon",
+      "b": "mots-c",
+      "path": "/compare/epithalon-vs-mots-c"
+    },
+    {
+      "id": "epithalon-vs-nad-plus",
+      "a": "epithalon",
+      "b": "nad-plus",
+      "path": "/compare/epithalon-vs-nad-plus"
+    },
+    {
+      "id": "thymosin-alpha-1-vs-kpv",
+      "a": "thymosin-alpha-1",
+      "b": "kpv",
+      "path": "/compare/thymosin-alpha-1-vs-kpv"
+    },
+    {
+      "id": "thymosin-alpha-1-vs-epithalon",
+      "a": "thymosin-alpha-1",
+      "b": "epithalon",
+      "path": "/compare/thymosin-alpha-1-vs-epithalon"
+    },
+    {
+      "id": "ghk-cu-vs-mots-c",
+      "a": "ghk-cu",
+      "b": "mots-c",
+      "path": "/compare/ghk-cu-vs-mots-c"
+    },
+    {
+      "id": "tesamorelin-vs-tesamorelin-ipamorelin",
+      "a": "tesamorelin",
+      "b": "tesamorelin-ipamorelin",
+      "path": "/compare/tesamorelin-vs-tesamorelin-ipamorelin"
+    },
+    {
+      "id": "ipamorelin-vs-tesamorelin-ipamorelin",
+      "a": "ipamorelin",
+      "b": "tesamorelin-ipamorelin",
+      "path": "/compare/ipamorelin-vs-tesamorelin-ipamorelin"
+    },
+    {
+      "id": "tesamorelin-vs-aod-9604",
+      "a": "tesamorelin",
+      "b": "aod-9604",
+      "path": "/compare/tesamorelin-vs-aod-9604"
+    },
+    {
+      "id": "ipamorelin-vs-kisspeptin-10",
+      "a": "ipamorelin",
+      "b": "kisspeptin-10",
+      "path": "/compare/ipamorelin-vs-kisspeptin-10"
+    },
+    {
+      "id": "g3-r-vs-aod-9604",
+      "a": "retatrutide",
+      "b": "aod-9604",
+      "path": "/compare/g3-r-vs-aod-9604"
+    },
+    {
+      "id": "g3-r-vs-mots-c",
+      "a": "retatrutide",
+      "b": "mots-c",
+      "path": "/compare/g3-r-vs-mots-c"
+    },
+    {
+      "id": "semaglutide-vs-aod-9604",
+      "a": "semaglutide",
+      "b": "aod-9604",
+      "path": "/compare/semaglutide-vs-aod-9604"
+    },
+    {
+      "id": "tirzepatide-vs-aod-9604",
+      "a": "tirzepatide",
+      "b": "aod-9604",
+      "path": "/compare/tirzepatide-vs-aod-9604"
+    },
+    {
+      "id": "semaglutide-vs-mots-c",
+      "a": "semaglutide",
+      "b": "mots-c",
+      "path": "/compare/semaglutide-vs-mots-c"
+    },
+    {
+      "id": "semax-vs-kisspeptin-10",
+      "a": "semax",
+      "b": "kisspeptin-10",
+      "path": "/compare/semax-vs-kisspeptin-10"
+    },
+    {
+      "id": "glow-70-vs-bpc-157-tb-500-blend",
+      "a": "glow-70",
+      "b": "bpc-157-tb-500-blend",
+      "path": "/compare/glow-70-vs-bpc-157-tb-500-blend"
     }
   ],
   "products": {
@@ -78,11 +222,11 @@
     "g3-r": {
       "name": "G3-R",
       "cas": "2381089-83-2",
-      "strengths": {
-        "10mg": 85,
-        "20mg": 135,
-        "50mg": 300
-      },
+      "strengths": [
+        "10mg",
+        "20mg",
+        "50mg"
+      ],
       "form": "Lyophilized peptide",
       "pdp": "/products/g3-r"
     },
@@ -181,6 +325,71 @@
       "form": "Bacteriostatic diluent (0.9% benzyl alcohol)",
       "pdp": null,
       "note": "Catalog add-on / solvent SKU"
+    },
+    "aod-9604": {
+      "name": "AOD-9604",
+      "cas": "221231-10-3",
+      "strengths": [
+        "5mg",
+        "10mg"
+      ],
+      "form": "Lyophilized peptide",
+      "pdp": "/products/aod-9604"
+    },
+    "kpv": {
+      "name": "KPV",
+      "cas": "67727-97-3",
+      "strengths": [
+        "10mg"
+      ],
+      "form": "Lyophilized peptide",
+      "pdp": "/products/kpv"
+    },
+    "glow-70": {
+      "name": "GLOW 70",
+      "cas": "Lot label / COA",
+      "strengths": [
+        "70mg"
+      ],
+      "form": "Lyophilized named blend",
+      "pdp": "/products/glow-70"
+    },
+    "bpc-157-tb-500-blend": {
+      "name": "BPC-157 / TB-500 Blend",
+      "cas": "137525-51-0 \u00b7 885340-09-2",
+      "strengths": [
+        "20mg"
+      ],
+      "form": "Lyophilized blend",
+      "pdp": "/products/bpc-157-tb-500-blend"
+    },
+    "thymosin-alpha-1": {
+      "name": "Thymosin Alpha-1",
+      "cas": "62304-98-7",
+      "strengths": [
+        "10mg"
+      ],
+      "form": "Lyophilized peptide",
+      "pdp": "/products/thymosin-alpha-1"
+    },
+    "kisspeptin-10": {
+      "name": "Kisspeptin-10",
+      "cas": "374675-21-5",
+      "strengths": [
+        "10mg"
+      ],
+      "form": "Lyophilized peptide",
+      "pdp": "/products/kisspeptin-10"
+    },
+    "semax": {
+      "name": "Semax",
+      "cas": "80714-61-0",
+      "strengths": [
+        "10mg",
+        "30mg"
+      ],
+      "form": "Lyophilized peptide",
+      "pdp": "/products/semax"
     }
   }
 }
