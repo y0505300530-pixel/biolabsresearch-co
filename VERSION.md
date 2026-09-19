@@ -1,3 +1,18 @@
+# biolabsresearch.co — Version 2.99c2
+
+Released 2026-09-19.
+
+Codename: reconstitution-faq
+
+## Highlights
+
+- **Reconstitution FAQ**: `/tools/reconstitution` now has the same FAQ block as dilution + unit-converter — concentration math, diluent volume, mg/mL, and what the helper does **not** do (no dose, syringe, injection, or human/veterinary use). Laboratory research calculations only; RUO / not medical advice.
+- **CTAs unchanged**: Request catalog (`/#catalog`) + Inquire (`/contact`). No Buy.
+- **Short URLs** (ELITE soft-note): nginx snapshot + static stubs 301 `/dilution` and `/unit-converter` → `/tools/dilution` and `/tools/unit-converter`.
+- **Unchanged**: Calculator arithmetic; Quote / G3-R / Abandon not in this tip. Card path remains the v2.99b CRM UMG authorize hook.
+
+---
+
 # biolabsresearch.co — Version 2.99c
 
 Released 2026-09-19.

@@ -1,12 +1,12 @@
 {
-  "version": "2.99c",
+  "version": "2.99c2",
   "released": "2026-09-19",
-  "codename": "calculator-seo-finish",
-  "appVersion": "2.99c",
+  "codename": "reconstitution-faq",
+  "appVersion": "2.99c2",
   "highlights": [
-    "Red 1: bacteriostatic vs sterile water blog+compare — third-person, RUO above fold, lab table only",
-    "Red 3: hero trust COA on request / RUO / crypto & card; no invented customer or review counts",
-    "Tools CTAs: Request catalog + Inquire on reconstitution, dilution, unit-converter",
-    "Unit converter IU FAQ uses only a declared mass-per-IU factor; dilution mg/mL FAQ"
+    "Reconstitution FAQ matches dilution + unit-converter (mg/mL math, diluent volume, what the tool does not do)",
+    "Research-use-only laboratory calculations — no dosing, syringe, or human-use copy",
+    "CTAs remain Request catalog + Inquire; no Buy",
+    "Short-URL 301: /dilution and /unit-converter → /tools/dilution and /tools/unit-converter"
   ]
 }
